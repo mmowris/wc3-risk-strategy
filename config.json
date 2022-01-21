@@ -1,0 +1,12 @@
+{   "fileName": "Risk Europe FFA Ranked",
+    "version": "0.80",
+    "mapFolder": "risk_system.w3x",
+    "minifyScript": true,
+    "gameExecutable": "C:\\Program Files (x86)\\Warcraft III\\_retail_\\x86_64\\Warcraft III.exe",
+    "outputFolder": "C:\\Users\\danie\\Documents\\Warcraft III\\Maps\\Download\\(0) Risk Series Testing",
+    "launchArgs": [
+      "-launch",
+      "-windowmode",
+      "windowed"
+    ]
+  }
