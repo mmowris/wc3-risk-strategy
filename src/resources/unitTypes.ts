@@ -1,0 +1,4 @@
+export const UTYPE = {
+    SPAWN: UNIT_TYPE_UNDEAD,
+    GUARD: UNIT_TYPE_SAPPER,
+}
