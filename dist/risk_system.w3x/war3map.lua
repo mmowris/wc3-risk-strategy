@@ -1,1 +1,11424 @@
-function InitGlobals()end;function InitCustomPlayerSlots()SetPlayerStartLocation(Player(0),0)ForcePlayerStartLocation(Player(0),0)SetPlayerColor(Player(0),ConvertPlayerColor(0))SetPlayerRacePreference(Player(0),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(0),true)SetPlayerController(Player(0),MAP_CONTROL_USER)SetPlayerStartLocation(Player(1),1)ForcePlayerStartLocation(Player(1),1)SetPlayerColor(Player(1),ConvertPlayerColor(1))SetPlayerRacePreference(Player(1),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(1),true)SetPlayerController(Player(1),MAP_CONTROL_USER)SetPlayerStartLocation(Player(2),2)ForcePlayerStartLocation(Player(2),2)SetPlayerColor(Player(2),ConvertPlayerColor(2))SetPlayerRacePreference(Player(2),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(2),true)SetPlayerController(Player(2),MAP_CONTROL_USER)SetPlayerStartLocation(Player(3),3)ForcePlayerStartLocation(Player(3),3)SetPlayerColor(Player(3),ConvertPlayerColor(3))SetPlayerRacePreference(Player(3),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(3),true)SetPlayerController(Player(3),MAP_CONTROL_USER)SetPlayerStartLocation(Player(4),4)ForcePlayerStartLocation(Player(4),4)SetPlayerColor(Player(4),ConvertPlayerColor(4))SetPlayerRacePreference(Player(4),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(4),true)SetPlayerController(Player(4),MAP_CONTROL_USER)SetPlayerStartLocation(Player(5),5)ForcePlayerStartLocation(Player(5),5)SetPlayerColor(Player(5),ConvertPlayerColor(5))SetPlayerRacePreference(Player(5),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(5),true)SetPlayerController(Player(5),MAP_CONTROL_USER)SetPlayerStartLocation(Player(6),6)ForcePlayerStartLocation(Player(6),6)SetPlayerColor(Player(6),ConvertPlayerColor(6))SetPlayerRacePreference(Player(6),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(6),true)SetPlayerController(Player(6),MAP_CONTROL_USER)SetPlayerStartLocation(Player(7),7)ForcePlayerStartLocation(Player(7),7)SetPlayerColor(Player(7),ConvertPlayerColor(7))SetPlayerRacePreference(Player(7),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(7),true)SetPlayerController(Player(7),MAP_CONTROL_USER)SetPlayerStartLocation(Player(8),8)ForcePlayerStartLocation(Player(8),8)SetPlayerColor(Player(8),ConvertPlayerColor(8))SetPlayerRacePreference(Player(8),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(8),true)SetPlayerController(Player(8),MAP_CONTROL_USER)SetPlayerStartLocation(Player(9),9)ForcePlayerStartLocation(Player(9),9)SetPlayerColor(Player(9),ConvertPlayerColor(9))SetPlayerRacePreference(Player(9),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(9),true)SetPlayerController(Player(9),MAP_CONTROL_USER)SetPlayerStartLocation(Player(10),10)ForcePlayerStartLocation(Player(10),10)SetPlayerColor(Player(10),ConvertPlayerColor(10))SetPlayerRacePreference(Player(10),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(10),true)SetPlayerController(Player(10),MAP_CONTROL_USER)SetPlayerStartLocation(Player(11),11)ForcePlayerStartLocation(Player(11),11)SetPlayerColor(Player(11),ConvertPlayerColor(11))SetPlayerRacePreference(Player(11),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(11),true)SetPlayerController(Player(11),MAP_CONTROL_USER)SetPlayerStartLocation(Player(12),12)ForcePlayerStartLocation(Player(12),12)SetPlayerColor(Player(12),ConvertPlayerColor(12))SetPlayerRacePreference(Player(12),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(12),true)SetPlayerController(Player(12),MAP_CONTROL_USER)SetPlayerStartLocation(Player(13),13)ForcePlayerStartLocation(Player(13),13)SetPlayerColor(Player(13),ConvertPlayerColor(13))SetPlayerRacePreference(Player(13),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(13),true)SetPlayerController(Player(13),MAP_CONTROL_USER)SetPlayerStartLocation(Player(14),14)ForcePlayerStartLocation(Player(14),14)SetPlayerColor(Player(14),ConvertPlayerColor(14))SetPlayerRacePreference(Player(14),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(14),true)SetPlayerController(Player(14),MAP_CONTROL_USER)SetPlayerStartLocation(Player(15),15)ForcePlayerStartLocation(Player(15),15)SetPlayerColor(Player(15),ConvertPlayerColor(15))SetPlayerRacePreference(Player(15),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(15),true)SetPlayerController(Player(15),MAP_CONTROL_USER)SetPlayerStartLocation(Player(16),16)ForcePlayerStartLocation(Player(16),16)SetPlayerColor(Player(16),ConvertPlayerColor(16))SetPlayerRacePreference(Player(16),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(16),true)SetPlayerController(Player(16),MAP_CONTROL_USER)SetPlayerStartLocation(Player(17),17)ForcePlayerStartLocation(Player(17),17)SetPlayerColor(Player(17),ConvertPlayerColor(17))SetPlayerRacePreference(Player(17),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(17),true)SetPlayerController(Player(17),MAP_CONTROL_USER)SetPlayerStartLocation(Player(18),18)ForcePlayerStartLocation(Player(18),18)SetPlayerColor(Player(18),ConvertPlayerColor(18))SetPlayerRacePreference(Player(18),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(18),true)SetPlayerController(Player(18),MAP_CONTROL_USER)SetPlayerStartLocation(Player(19),19)ForcePlayerStartLocation(Player(19),19)SetPlayerColor(Player(19),ConvertPlayerColor(19))SetPlayerRacePreference(Player(19),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(19),true)SetPlayerController(Player(19),MAP_CONTROL_USER)SetPlayerStartLocation(Player(20),20)ForcePlayerStartLocation(Player(20),20)SetPlayerColor(Player(20),ConvertPlayerColor(20))SetPlayerRacePreference(Player(20),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(20),true)SetPlayerController(Player(20),MAP_CONTROL_USER)SetPlayerStartLocation(Player(21),21)ForcePlayerStartLocation(Player(21),21)SetPlayerColor(Player(21),ConvertPlayerColor(21))SetPlayerRacePreference(Player(21),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(21),true)SetPlayerController(Player(21),MAP_CONTROL_USER)SetPlayerStartLocation(Player(22),22)ForcePlayerStartLocation(Player(22),22)SetPlayerColor(Player(22),ConvertPlayerColor(22))SetPlayerRacePreference(Player(22),RACE_PREF_RANDOM)SetPlayerRaceSelectable(Player(22),true)SetPlayerController(Player(22),MAP_CONTROL_USER)end;function InitCustomTeams()SetPlayerTeam(Player(0),0)SetPlayerTeam(Player(1),0)SetPlayerTeam(Player(2),0)SetPlayerTeam(Player(3),0)SetPlayerTeam(Player(4),0)SetPlayerTeam(Player(5),0)SetPlayerTeam(Player(6),0)SetPlayerTeam(Player(7),0)SetPlayerTeam(Player(8),0)SetPlayerTeam(Player(9),0)SetPlayerTeam(Player(10),0)SetPlayerTeam(Player(11),0)SetPlayerTeam(Player(12),0)SetPlayerTeam(Player(13),0)SetPlayerTeam(Player(14),0)SetPlayerTeam(Player(15),0)SetPlayerTeam(Player(16),0)SetPlayerTeam(Player(17),0)SetPlayerTeam(Player(18),0)SetPlayerTeam(Player(19),0)SetPlayerTeam(Player(20),0)SetPlayerTeam(Player(21),0)SetPlayerTeam(Player(22),0)end;function InitAllyPriorities()SetStartLocPrioCount(0,22)SetStartLocPrio(0,0,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,1,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,2,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,3,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,4,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,5,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,6,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,7,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,8,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(0,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(1,22)SetStartLocPrio(1,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,1,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,2,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,3,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,4,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,5,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,6,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,7,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,8,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(1,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(2,22)SetStartLocPrio(2,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,2,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,3,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,4,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,5,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,6,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,7,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,8,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(2,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(3,22)SetStartLocPrio(3,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,3,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,4,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,5,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,6,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,7,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,8,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(3,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(4,22)SetStartLocPrio(4,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,4,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,5,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,6,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,7,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,8,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(4,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(5,22)SetStartLocPrio(5,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,5,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,6,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,7,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,8,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(5,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(6,22)SetStartLocPrio(6,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,6,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,7,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,8,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(6,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(7,22)SetStartLocPrio(7,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,7,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,8,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(7,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(8,22)SetStartLocPrio(8,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,8,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(8,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(9,22)SetStartLocPrio(9,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,9,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(9,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(10,22)SetStartLocPrio(10,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,10,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(10,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(11,22)SetStartLocPrio(11,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,11,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(11,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(12,22)SetStartLocPrio(12,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,12,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(12,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(13,22)SetStartLocPrio(13,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,13,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(13,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(14,22)SetStartLocPrio(14,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,13,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,14,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(14,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(15,22)SetStartLocPrio(15,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,13,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,14,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,15,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(15,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(16,22)SetStartLocPrio(16,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,13,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,14,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,15,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,16,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(16,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(17,22)SetStartLocPrio(17,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,13,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,14,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,15,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,16,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,17,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(17,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(18,22)SetStartLocPrio(18,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,13,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,14,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,15,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,16,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,17,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,18,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(18,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(19,22)SetStartLocPrio(19,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,13,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,14,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,15,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,16,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,17,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,18,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,19,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(19,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(20,22)SetStartLocPrio(20,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,13,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,14,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,15,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,16,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,17,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,18,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,19,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,20,21,MAP_LOC_PRIO_HIGH)SetStartLocPrio(20,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(21,22)SetStartLocPrio(21,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,13,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,14,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,15,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,16,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,17,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,18,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,19,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,20,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(21,21,22,MAP_LOC_PRIO_HIGH)SetStartLocPrioCount(22,22)SetStartLocPrio(22,0,0,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,1,1,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,2,2,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,3,3,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,4,4,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,5,5,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,6,6,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,7,7,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,8,8,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,9,9,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,10,10,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,11,11,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,12,12,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,13,13,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,14,14,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,15,15,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,16,16,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,17,17,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,18,18,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,19,19,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,20,20,MAP_LOC_PRIO_HIGH)SetStartLocPrio(22,21,21,MAP_LOC_PRIO_HIGH)end;function main()SetCameraBounds(-13696.0+GetCameraMargin(CAMERA_MARGIN_LEFT),-15872.0+GetCameraMargin(CAMERA_MARGIN_BOTTOM),18816.0-GetCameraMargin(CAMERA_MARGIN_RIGHT),16256.0-GetCameraMargin(CAMERA_MARGIN_TOP),-13696.0+GetCameraMargin(CAMERA_MARGIN_LEFT),16256.0-GetCameraMargin(CAMERA_MARGIN_TOP),18816.0-GetCameraMargin(CAMERA_MARGIN_RIGHT),-15872.0+GetCameraMargin(CAMERA_MARGIN_BOTTOM))SetDayNightModels("Environment\\DNC\\DNCAshenvale\\DNCAshenvaleTerrain\\DNCAshenvaleTerrain.mdl","Environment\\DNC\\DNCAshenvale\\DNCAshenvaleUnit\\DNCAshenvaleUnit.mdl")SetTerrainFogEx(0,100000.0,100000.0,0.000,0.000,0.000,0.000)NewSoundEnvironment("Default")SetAmbientDaySound("AshenvaleDay")SetAmbientNightSound("AshenvaleNight")SetMapMusic("Music",true,0)InitBlizzard()InitGlobals()end;function config()SetMapName("")SetMapDescription("TRIGSTR_7297")SetPlayers(23)SetTeams(23)SetGamePlacement(MAP_PLACEMENT_TEAMS_TOGETHER)DefineStartLocation(0,-3072.0,11264.0)DefineStartLocation(1,-3072.0,11264.0)DefineStartLocation(2,-3072.0,11264.0)DefineStartLocation(3,-3072.0,11264.0)DefineStartLocation(4,-3072.0,11264.0)DefineStartLocation(5,-3072.0,11264.0)DefineStartLocation(6,-3072.0,11264.0)DefineStartLocation(7,-3072.0,11264.0)DefineStartLocation(8,-3072.0,11264.0)DefineStartLocation(9,-3072.0,11264.0)DefineStartLocation(10,-3072.0,11264.0)DefineStartLocation(11,-3072.0,11264.0)DefineStartLocation(12,-3072.0,11264.0)DefineStartLocation(13,-3072.0,11264.0)DefineStartLocation(14,-3072.0,11264.0)DefineStartLocation(15,-3072.0,11264.0)DefineStartLocation(16,-3072.0,11264.0)DefineStartLocation(17,-3072.0,11264.0)DefineStartLocation(18,-3072.0,11264.0)DefineStartLocation(19,-3072.0,11264.0)DefineStartLocation(20,-3072.0,11264.0)DefineStartLocation(21,-3072.0,11264.0)DefineStartLocation(22,-3072.0,11264.0)InitCustomPlayerSlots()SetPlayerSlotAvailable(Player(0),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(1),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(2),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(3),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(4),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(5),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(6),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(7),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(8),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(9),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(10),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(11),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(12),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(13),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(14),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(15),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(16),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(17),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(18),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(19),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(20),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(21),MAP_CONTROL_USER)SetPlayerSlotAvailable(Player(22),MAP_CONTROL_USER)InitGenericPlayerSlots()InitAllyPriorities()end;local a={}local b={}local c=require;local function require(d,...)if b[d]then return b[d].value end;if a[d]then local e=a[d]b[d]={value=select("#",...)>0 and e(...)or e(d)}return b[d].value else if c then return c(d)else error("module '"..d.."' not found")end end end;a={["lualib_bundle"]=function(...)function __TS__ArrayIsArray(f)return type(f)=="table"and(f[1]~=nil or next(f,nil)==nil)end;function __TS__ArrayConcat(g,...)local h={...}local i={}for j,k in ipairs(g)do i[#i+1]=k end;for j,l in ipairs(h)do if __TS__ArrayIsArray(l)then local m=l;for j,k in ipairs(m)do i[#i+1]=k end else i[#i+1]=l end end;return i end;function __TS__ArrayEntries(n)local o=0;return{[Symbol.iterator]=function(self)return self end,next=function(self)local p={done=n[o+1]==nil,value={o,n[o+1]}}o=o+1;return p end}end;function __TS__ArrayEvery(q,r)do local s=0;while s<#q do if not r(_G,q[s+1],s,q)then return false end;s=s+1 end end;return true end;function __TS__ArrayFilter(q,r)local p={}do local s=0;while s<#q do if r(_G,q[s+1],s,q)then p[#p+1]=q[s+1]end;s=s+1 end end;return p end;function __TS__ArrayForEach(q,t)do local s=0;while s<#q do t(_G,q[s+1],s,q)s=s+1 end end end;function __TS__ArrayFind(q,u)local v=#q;local w=0;while w<v do local x=q[w+1]if u(_G,x,w,q)then return x end;w=w+1 end;return nil end;function __TS__ArrayFindIndex(q,t)do local s=0;local v=#q;while s<v do if t(_G,q[s+1],s,q)then return s end;s=s+1 end end;return-1 end;function __TS__ArrayIncludes(self,y,z)if z==nil then z=0 end;local v=#self;local w=z;if z<0 then w=v+z end;if w<0 then w=0 end;for s=w,v do if self[s+1]==y then return true end end;return false end;function __TS__ArrayIndexOf(q,y,z)local v=#q;if v==0 then return-1 end;local A=0;if z then A=z end;if A>=v then return-1 end;local w;if A>=0 then w=A else w=v+A;if w<0 then w=0 end end;do local s=w;while s<v do if q[s+1]==y then return s end;s=s+1 end end;return-1 end;function __TS__ArrayJoin(self,B)if B==nil then B=","end;local p=""for C,f in ipairs(self)do if C>1 then p=p..B end;p=p..tostring(f)end;return p end;function __TS__ArrayMap(q,r)local D={}do local s=0;while s<#q do D[s+1]=r(_G,q[s+1],s,q)s=s+1 end end;return D end;function __TS__ArrayPush(q,...)local E={...}for j,F in ipairs(E)do q[#q+1]=F end;return#q end;function __TS__ArrayReduce(q,t,...)local v=#q;local w=0;local G=nil;if select("#",...)~=0 then G=select(1,...)elseif v>0 then G=q[1]w=1 else error("Reduce of empty array with no initial value",0)end;for s=w,v-1 do G=t(_G,G,q[s+1],s,q)end;return G end;function __TS__ArrayReduceRight(q,t,...)local v=#q;local w=v-1;local G=nil;if select("#",...)~=0 then G=select(1,...)elseif v>0 then G=q[w+1]w=w-1 else error("Reduce of empty array with no initial value",0)end;for s=w,0,-1 do G=t(_G,G,q[s+1],s,q)end;return G end;function __TS__ArrayReverse(q)local s=0;local H=#q-1;while s<H do local I=q[H+1]q[H+1]=q[s+1]q[s+1]=I;s=s+1;H=H-1 end;return q end;function __TS__ArrayShift(q)return table.remove(q,1)end;function __TS__ArrayUnshift(q,...)local E={...}do local s=#E-1;while s>=0 do table.insert(q,1,E[s+1])s=s-1 end end;return#q end;function __TS__ArraySort(q,J)if J~=nil then table.sort(q,function(K,L)return J(_G,K,L)<0 end)else table.sort(q)end;return q end;function __TS__ArraySlice(M,N,O)local v=#M;local P=N or 0;local w;if P<0 then w=math.max(v+P,0)else w=math.min(P,v)end;local Q=O;if O==nil then Q=v end;local R;if Q<0 then R=math.max(v+Q,0)else R=math.min(Q,v)end;local i={}local A=0;while w<R do i[A+1]=M[w+1]w=w+1;A=A+1 end;return i end;function __TS__ArraySome(q,r)do local s=0;while s<#q do if r(_G,q[s+1],s,q)then return true end;s=s+1 end end;return false end;function __TS__ArraySplice(M,...)local v=#M;local S=select("#",...)local T=select(1,...)local U=select(2,...)local V;if T<0 then V=math.max(v+T,0)else V=math.min(T,v)end;local W=math.max(S-2,0)local X;if S==0 then X=0 elseif S==1 then X=v-V else X=math.min(math.max(U or 0,0),v-V)end;local i={}do local w=0;while w<X do local Y=V+w;if M[Y+1]then i[w+1]=M[Y+1]end;w=w+1 end end;if W<X then do local w=V;while w<v-X do local Y=w+X;local Z=w+W;if M[Y+1]then M[Z+1]=M[Y+1]else M[Z+1]=nil end;w=w+1 end end;do local w=v;while w>v-X+W do M[w]=nil;w=w-1 end end elseif W>X then do local w=v-X;while w>V do local Y=w+X-1;local Z=w+W-1;if M[Y+1]then M[Z+1]=M[Y+1]else M[Z+1]=nil end;w=w-1 end end end;local H=V;for s=3,S do M[H+1]=select(s,...)H=H+1 end;do local w=#M-1;while w>=v-X+W do M[w+1]=nil;w=w-1 end end;return i end;function __TS__ArrayToObject(n)local _={}do local s=0;while s<#n do _[s]=n[s+1]s=s+1 end end;return _ end;function __TS__ArrayFlat(n,a0)if a0==nil then a0=1 end;local p={}for j,f in ipairs(n)do if a0>0 and __TS__ArrayIsArray(f)then p=__TS__ArrayConcat(p,__TS__ArrayFlat(f,a0-1))else p[#p+1]=f end end;return p end;function __TS__ArrayFlatMap(n,a1)local p={}do local s=0;while s<#n do local f=a1(_G,n[s+1],s,n)if type(f)=="table"and __TS__ArrayIsArray(f)then p=__TS__ArrayConcat(p,f)else p[#p+1]=f end;s=s+1 end end;return p end;function __TS__ArraySetLength(q,a2)if a2<0 or a2~=a2 or a2==math.huge or math.floor(a2)~=a2 then error("invalid array length: "..tostring(a2),0)end;do local s=#q-1;while s>=a2 do q[s+1]=nil;s=s-1 end end;return a2 end;____symbolMetatable={__tostring=function(self)return("Symbol("..(self.description or""))..")"end}function __TS__Symbol(a3)return setmetatable({description=a3},____symbolMetatable)end;Symbol={iterator=__TS__Symbol("Symbol.iterator"),hasInstance=__TS__Symbol("Symbol.hasInstance"),species=__TS__Symbol("Symbol.species"),toStringTag=__TS__Symbol("Symbol.toStringTag")}function __TS__InstanceOf(a4,a5)if type(a5)~="table"then error("Right-hand side of 'instanceof' is not an object",0)end;if a5[Symbol.hasInstance]~=nil then return not not a5[Symbol.hasInstance](a5,a4)end;if type(a4)=="table"then local a6=a4.constructor;while a6~=nil do if a6==a5 then return true end;a6=a6.____super end end;return false end;function __TS__New(a7,...)local a8=setmetatable({},a7.prototype)a8:____constructor(...)return a8 end;function __TS__AsyncAwaiter(a9)return __TS__New(__TS__Promise,function(j,aa,ab)local ac,ad,ae,af;function ad(self,f)return(__TS__InstanceOf(f,__TS__Promise)and function()return f end or function()return __TS__Promise.resolve(f)end)()end;function ae(self,f)local ag,ah=coroutine.resume(ac,f)if ag then af(_G,ah)else ab(_G,ah)end end;function af(self,p)if coroutine.status(ac)=="dead"then aa(_G,p)else(function()local ai=ad(_G,p)return ai["then"](ai,ae,function(j,aj)return ab(_G,aj)end)end)()end end;ac=coroutine.create(a9)local ag,ah=coroutine.resume(ac)if ag then af(_G,ah)else ab(_G,ah)end end)end;function __TS__Await(ak)return coroutine.yield(ak)end;function __TS__Class(self)local al={prototype={}}al.prototype.__index=al.prototype;al.prototype.constructor=al;return al end;function __TS__ClassExtends(a7,am)a7.____super=am;local an=setmetatable({__index=am},am)setmetatable(a7,an)local ao=getmetatable(am)if ao then if type(ao.__index)=="function"then an.__index=ao.__index end;if type(ao.__newindex)=="function"then an.__newindex=ao.__newindex end end;setmetatable(a7.prototype,am.prototype)if type(am.prototype.__index)=="function"then a7.prototype.__index=am.prototype.__index end;if type(am.prototype.__newindex)=="function"then a7.prototype.__newindex=am.prototype.__newindex end;if type(am.prototype.__tostring)=="function"then a7.prototype.__tostring=am.prototype.__tostring end end;function __TS__CloneDescriptor(ap)local aq;aq=ap.enumerable;local ar;ar=ap.configurable;local as;as=ap.get;local at;at=ap.set;local au;au=ap.writable;local f;f=ap.value;local av={enumerable=aq==true,configurable=ar==true}local aw=as~=nil or at~=nil;local ax=au~=nil or f~=nil;if aw and ax then error("Invalid property descriptor. Cannot both specify accessors and a value or writable attribute.",0)end;if as or at then av.get=as;av.set=at else av.value=f;av.writable=au==true end;return av end;function __TS__ObjectGetOwnPropertyDescriptor(_,o)local ay=getmetatable(_)if not ay then return end;if not rawget(ay,"_descriptors")then return end;return rawget(ay,"_descriptors")[o]end;function ____descriptorIndex(self,o)local f=rawget(self,o)if f~=nil then return f end;local ay=getmetatable(self)while ay do local az=rawget(ay,o)if az~=nil then return az end;local aA=rawget(ay,"_descriptors")if aA then local av=aA[o]if av then if av.get then return av.get(self)end;return av.value end end;ay=getmetatable(ay)end end;function ____descriptorNewindex(self,o,f)local ay=getmetatable(self)while ay do local aA=rawget(ay,"_descriptors")if aA then local av=aA[o]if av then if av.set then av.set(self,f)else if av.writable==false then error(((("Cannot assign to read only property '"..o).."' of object '")..tostring(self)).."'",0)end;av.value=f end;return end end;ay=getmetatable(ay)end;rawset(self,o,f)end;function __TS__SetDescriptor(a7,o,aB,aC)if aC==nil then aC=false end;local ay=(aC and function()return a7 end or function()return getmetatable(a7)end)()if not ay then ay={}setmetatable(a7,ay)end;local f=rawget(a7,o)if f~=nil then rawset(a7,o,nil)end;if not rawget(ay,"_descriptors")then ay._descriptors={}end;local av=__TS__CloneDescriptor(aB)ay._descriptors[o]=av;ay.__index=____descriptorIndex;ay.__newindex=____descriptorNewindex end;function __TS__ObjectAssign(Z,...)local aD={...}if Z==nil then return Z end;for j,aE in ipairs(aD)do for o in pairs(aE)do Z[o]=aE[o]end end;return Z end;function __TS__Decorate(aF,a7,o,aB)local p=a7;do local s=#aF;while s>=0 do local aG=aF[s+1]if aG then local aH=p;if o==nil then p=aG(_G,p)elseif aB==true then local f=rawget(a7,o)local av=__TS__ObjectGetOwnPropertyDescriptor(a7,o)or{configurable=true,writable=true,value=f}local aB=aG(_G,a7,o,av)or av;local aI=aB.configurable==true and aB.writable==true and not aB.get and not aB.set;if aI then rawset(a7,o,aB.value)else __TS__SetDescriptor(a7,o,__TS__ObjectAssign({},av,aB))end elseif aB==false then p=aG(_G,a7,o,aB)else p=aG(_G,a7,o)end;p=p or aH end;s=s-1 end end;return p end;function __TS__DecorateParam(aJ,aG)return function(j,a7,o)return aG(_G,a7,o,aJ)end end;function __TS__ObjectGetOwnPropertyDescriptors(_)local ay=getmetatable(_)if not ay then return{}end;return rawget(ay,"_descriptors")or{}end;function __TS__Delete(a7,o)local aA=__TS__ObjectGetOwnPropertyDescriptors(a7)local av=aA[o]if av then if not av.configurable then error(((("Cannot delete property "..tostring(o)).." of ")..tostring(a7))..".",0)end;aA[o]=nil;return true end;if a7[o]~=nil then a7[o]=nil;return true end;return false end;function __TS__StringAccess(self,C)if C>=0 and C<#self then return string.sub(self,C+1,C+1)end end;function __TS__DelegatedYield(aK)if type(aK)=="string"then for C=0,#aK-1 do coroutine.yield(__TS__StringAccess(aK,C))end elseif aK.____coroutine~=nil then local aL=aK.____coroutine;while true do local aM,f=coroutine.resume(aL)if not aM then error(f,0)end;if coroutine.status(aL)=="dead"then return f else coroutine.yield(f)end end elseif aK[Symbol.iterator]then local aN=aK[Symbol.iterator](aK)while true do local p=aN:next()if p.done then return p.value else coroutine.yield(p.value)end end else for j,f in ipairs(aK)do coroutine.yield(f)end end end;function __TS__GetErrorStack(self,aO)local aP=1;while true do local aQ=debug.getinfo(aP,"f")aP=aP+1;if not aQ then aP=1;break elseif aQ.func==aO then break end end;return debug.traceback(nil,aP)end;function __TS__WrapErrorToString(self,aR)return function(self)local a3=aR(self)local aS=debug.getinfo(3,"f")if _VERSION=="Lua 5.1"or aS and aS.func~=error then return a3 else return(tostring(a3).."\n")..self.stack end end end;function __TS__InitErrorClass(self,aT,aU)aT.name=aU;return setmetatable(aT,{__call=function(j,aV,aW)return __TS__New(aT,aW)end})end;Error=__TS__InitErrorClass(_G,(function()local j=__TS__Class()j.name=""function j.prototype.____constructor(self,aW)if aW==nil then aW=""end;self.message=aW;self.name="Error"self.stack=__TS__GetErrorStack(_G,self.constructor.new)local ay=getmetatable(self)if not ay.__errorToStringPatched then ay.__errorToStringPatched=true;ay.__tostring=__TS__WrapErrorToString(_G,ay.__tostring)end end;function j.prototype.__tostring(self)return(self.message~=""and function()return(self.name..": ")..self.message end or function()return self.name end)()end;return j end)(),"Error")for j,aX in ipairs({"RangeError","ReferenceError","SyntaxError","TypeError","URIError"})do _G[aX]=__TS__InitErrorClass(_G,(function()local j=__TS__Class()j.name=j.name;__TS__ClassExtends(j,Error)function j.prototype.____constructor(self,...)Error.prototype.____constructor(self,...)self.name=aX end;return j end)(),aX)end;__TS__Unpack=table.unpack or unpack;function __TS__FunctionBind(aY,aZ,...)local a_={...}return function(j,...)local h={...}do local s=0;while s<#a_ do table.insert(h,s+1,a_[s+1])s=s+1 end end;return aY(aZ,__TS__Unpack(h))end end;function __TS__GeneratorIterator(self)return self end;function __TS__GeneratorNext(self,...)local aL=self.____coroutine;if coroutine.status(aL)=="dead"then return{done=true}end;local aM,f=coroutine.resume(aL,...)if not aM then error(f,0)end;return{value=f,done=coroutine.status(aL)=="dead"}end;function __TS__Generator(aY)return function(...)local h={...}local b0=select("#",...)return{____coroutine=coroutine.create(function()return aY((unpack or table.unpack)(h,1,b0))end),[Symbol.iterator]=__TS__GeneratorIterator,next=__TS__GeneratorNext}end end;function __TS__InstanceOfObject(f)local b1=type(f)return b1=="table"or b1=="function"end;function __TS__IteratorGeneratorStep(self)local aL=self.____coroutine;local aM,f=coroutine.resume(aL)if not aM then error(f,0)end;if coroutine.status(aL)=="dead"then return end;return true,f end;function __TS__IteratorIteratorStep(self)local p=self:next()if p.done then return end;return true,p.value end;function __TS__IteratorStringStep(self,C)C=C+1;if C>#self then return end;return C,string.sub(self,C,C)end;function __TS__Iterator(aK)if type(aK)=="string"then return __TS__IteratorStringStep,aK,0 elseif aK.____coroutine~=nil then return __TS__IteratorGeneratorStep,aK elseif aK[Symbol.iterator]then local aN=aK[Symbol.iterator](aK)return __TS__IteratorIteratorStep,aN else return ipairs(aK)end end;Map=(function()local Map=__TS__Class()Map.name="Map"function Map.prototype.____constructor(self,b2)self[Symbol.toStringTag]="Map"self.items={}self.size=0;self.nextKey={}self.previousKey={}if b2==nil then return end;local aK=b2;if aK[Symbol.iterator]then local aN=aK[Symbol.iterator](aK)while true do local p=aN:next()if p.done then break end;local f=p.value;self:set(f[1],f[2])end else local n=b2;for j,b3 in ipairs(n)do self:set(b3[1],b3[2])end end end;function Map.prototype.clear(self)self.items={}self.nextKey={}self.previousKey={}self.firstKey=nil;self.lastKey=nil;self.size=0 end;function Map.prototype.delete(self,o)local b4=self:has(o)if b4 then self.size=self.size-1;local next=self.nextKey[o]local b5=self.previousKey[o]if next and b5 then self.nextKey[b5]=next;self.previousKey[next]=b5 elseif next then self.firstKey=next;self.previousKey[next]=nil elseif b5 then self.lastKey=b5;self.nextKey[b5]=nil else self.firstKey=nil;self.lastKey=nil end;self.nextKey[o]=nil;self.previousKey[o]=nil end;self.items[o]=nil;return b4 end;function Map.prototype.forEach(self,a1)for j,o in __TS__Iterator(self:keys())do a1(_G,self.items[o],o,self)end end;function Map.prototype.get(self,o)return self.items[o]end;function Map.prototype.has(self,o)return self.nextKey[o]~=nil or self.lastKey==o end;function Map.prototype.set(self,o,f)local b6=not self:has(o)if b6 then self.size=self.size+1 end;self.items[o]=f;if self.firstKey==nil then self.firstKey=o;self.lastKey=o elseif b6 then self.nextKey[self.lastKey]=o;self.previousKey[o]=self.lastKey;self.lastKey=o end;return self end;Map.prototype[Symbol.iterator]=function(self)return self:entries()end;function Map.prototype.entries(self)local j=self;local E=j.items;local b7=j.nextKey;local o=self.firstKey;return{[Symbol.iterator]=function(self)return self end,next=function(self)local p={done=not o,value={o,E[o]}}o=b7[o]return p end}end;function Map.prototype.keys(self)local b7=self.nextKey;local o=self.firstKey;return{[Symbol.iterator]=function(self)return self end,next=function(self)local p={done=not o,value=o}o=b7[o]return p end}end;function Map.prototype.values(self)local j=self;local E=j.items;local b7=j.nextKey;local o=self.firstKey;return{[Symbol.iterator]=function(self)return self end,next=function(self)local p={done=not o,value=E[o]}o=b7[o]return p end}end;Map[Symbol.species]=Map;return Map end)()__TS__MathAtan2=math.atan2 or math.atan;function __TS__Number(f)local b1=type(f)if b1=="number"then return f elseif b1=="string"then local b8=tonumber(f)if b8 then return b8 end;if f=="Infinity"then return math.huge end;if f=="-Infinity"then return-math.huge end;local b9=string.gsub(f,"%s","")if b9==""then return 0 end;return 0/0 elseif b1=="boolean"then return f and 1 or 0 else return 0/0 end end;function __TS__NumberIsFinite(f)return type(f)=="number"and f==f and f~=math.huge and f~=-math.huge end;function __TS__NumberIsNaN(f)return f~=f end;____radixChars="0123456789abcdefghijklmnopqrstuvwxyz"function __TS__NumberToString(self,ba)if ba==nil or ba==10 or self==math.huge or self==-math.huge or self~=self then return tostring(self)end;ba=math.floor(ba)if ba<2 or ba>36 then error("toString() radix argument must be between 2 and 36",0)end;local bb,bc=math.modf(math.abs(self))local p=""if ba==8 then p=string.format("%o",bb)elseif ba==16 then p=string.format("%x",bb)else repeat do p=__TS__StringAccess(____radixChars,bb%ba)..p;bb=math.floor(bb/ba)end until not(bb~=0)end;if bc~=0 then p=p.."."local bd=1e-16;repeat do bc=bc*ba;bd=bd*ba;local be=math.floor(bc)p=p..__TS__StringAccess(____radixChars,be)bc=bc-be end until not(bc>=bd)end;if self<0 then p="-"..p end;return p end;function __TS__ObjectDefineProperty(a7,o,aB)local bf=(type(o)=="number"and function()return o+1 end or function()return o end)()local f=rawget(a7,bf)local aw=aB.get~=nil or aB.set~=nil;local av;if aw then if f~=nil then error("Cannot redefine property: "..tostring(o),0)end;av=aB else local bg=f~=nil;av={set=aB.set,get=aB.get,configurable=(aB.configurable~=nil and function()return aB.configurable end or function()return bg end)(),enumerable=(aB.enumerable~=nil and function()return aB.enumerable end or function()return bg end)(),writable=(aB.writable~=nil and function()return aB.writable end or function()return bg end)(),value=(aB.value~=nil and function()return aB.value end or function()return f end)()}end;__TS__SetDescriptor(a7,bf,av)return a7 end;function __TS__ObjectEntries(a4)local p={}for o in pairs(a4)do p[#p+1]={o,a4[o]}end;return p end;function __TS__ObjectFromEntries(b2)local a4={}local aK=b2;if aK[Symbol.iterator]then local aN=aK[Symbol.iterator](aK)while true do local p=aN:next()if p.done then break end;local f=p.value;a4[f[1]]=f[2]end else for j,bh in ipairs(b2)do a4[bh[1]]=bh[2]end end;return a4 end;function __TS__ObjectKeys(a4)local p={}for o in pairs(a4)do p[#p+1]=o end;return p end;function __TS__ObjectRest(a7,bi)local p={}for bj in pairs(a7)do if not bi[bj]then p[bj]=a7[bj]end end;return p end;function __TS__ObjectValues(a4)local p={}for o in pairs(a4)do p[#p+1]=a4[o]end;return p end;function __TS__OptionalChainAccess(bk,o)if bk then return bk[o]end;return nil end;function __TS__OptionalFunctionCall(bl,...)if bl then return bl(...)end;return nil end;function __TS__OptionalMethodCall(bk,bm,bn,...)if bk then local bo=bk[bm]if bo then return bo(bk,...)elseif not bn then error(bm.." is not a function",0)end end;return nil end;function __TS__ParseFloat(bp)local bq=string.match(bp,"^%s*(-?Infinity)")if bq then return(__TS__StringAccess(bq,0)=="-"and function()return-math.huge end or function()return math.huge end)()end;local br=tonumber(string.match(bp,"^%s*(-?%d+%.?%d*)"))return br or 0/0 end;function __TS__StringSubstr(self,Y,a2)if Y~=Y then Y=0 end;if a2~=nil then if a2~=a2 or a2<=0 then return""end;a2=a2+Y end;if Y>=0 then Y=Y+1 end;return string.sub(self,Y,a2)end;function __TS__StringSubstring(self,T,bs)if bs~=bs then bs=0 end;if bs~=nil and T>bs then T,bs=bs,T end;if T>=0 then T=T+1 else T=1 end;if bs~=nil and bs<0 then bs=0 end;return string.sub(self,T,bs)end;__TS__parseInt_base_pattern="0123456789aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTvVwWxXyYzZ"function __TS__ParseInt(bp,am)if am==nil then am=10;local bt=string.match(bp,"^%s*-?0[xX]")if bt then am=16;bp=(string.match(bt,"-")and function()return"-"..__TS__StringSubstr(bp,#bt)end or function()return __TS__StringSubstr(bp,#bt)end)()end end;if am<2 or am>36 then return 0/0 end;local bu=(am<=10 and function()return __TS__StringSubstring(__TS__parseInt_base_pattern,0,am)end or function()return __TS__StringSubstr(__TS__parseInt_base_pattern,0,10+2*(am-10))end)()local bv=("^%s*(-?["..bu).."]*)"local br=tonumber(string.match(bp,bv),am)if br==nil then return 0/0 end;if br>=0 then return math.floor(br)else return math.ceil(br)end end;__TS__PromiseState=__TS__PromiseState or{}__TS__PromiseState.Pending=0;__TS__PromiseState[__TS__PromiseState.Pending]="Pending"__TS__PromiseState.Fulfilled=1;__TS__PromiseState[__TS__PromiseState.Fulfilled]="Fulfilled"__TS__PromiseState.Rejected=2;__TS__PromiseState[__TS__PromiseState.Rejected]="Rejected"function __TS__PromiseDeferred(self)local aa;local ab;local bw=__TS__New(__TS__Promise,function(j,bx,by)aa=bx;ab=by end)return{promise=bw,resolve=aa,reject=ab}end;function __TS__IsPromiseLike(self,ak)return __TS__InstanceOf(ak,__TS__Promise)end;__TS__Promise=__TS__Class()__TS__Promise.name="__TS__Promise"function __TS__Promise.prototype.____constructor(self,bz)self.state=__TS__PromiseState.Pending;self.fulfilledCallbacks={}self.rejectedCallbacks={}self.finallyCallbacks={}do local bA,bB=pcall(function()bz(_G,__TS__FunctionBind(self.resolve,self),__TS__FunctionBind(self.reject,self))end)if not bA then self:reject(bB)end end end;function __TS__Promise.resolve(bC)local bw=__TS__New(__TS__Promise,function()end)bw.state=__TS__PromiseState.Fulfilled;bw.value=bC;return bw end;function __TS__Promise.reject(aj)local bw=__TS__New(__TS__Promise,function()end)bw.state=__TS__PromiseState.Rejected;bw.rejectionReason=aj;return bw end;__TS__Promise.prototype["then"]=function(self,bD,bE)local j=__TS__PromiseDeferred(_G)local bw=j.promise;local aa=j.resolve;local ab=j.reject;if bD then local bF=self:createPromiseResolvingCallback(bD,aa,ab)__TS__ArrayPush(self.fulfilledCallbacks,bF)if self.state==__TS__PromiseState.Fulfilled then bF(_G,self.value)end else __TS__ArrayPush(self.fulfilledCallbacks,function()return aa(_G,nil)end)end;if bE then local bF=self:createPromiseResolvingCallback(bE,aa,ab)__TS__ArrayPush(self.rejectedCallbacks,bF)if self.state==__TS__PromiseState.Rejected then bF(_G,self.rejectionReason)end end;return bw end;function __TS__Promise.prototype.catch(self,bE)return self["then"](self,nil,bE)end;function __TS__Promise.prototype.finally(self,bG)if bG then __TS__ArrayPush(self.finallyCallbacks,bG)if self.state~=__TS__PromiseState.Pending then bG(_G)end end;return self end;function __TS__Promise.prototype.resolve(self,bC)if self.state==__TS__PromiseState.Pending then self.state=__TS__PromiseState.Fulfilled;self.value=bC;for j,a1 in ipairs(self.fulfilledCallbacks)do a1(_G,bC)end;for j,a1 in ipairs(self.finallyCallbacks)do a1(_G)end end end;function __TS__Promise.prototype.reject(self,aj)if self.state==__TS__PromiseState.Pending then self.state=__TS__PromiseState.Rejected;self.rejectionReason=aj;for j,a1 in ipairs(self.rejectedCallbacks)do a1(_G,aj)end;for j,a1 in ipairs(self.finallyCallbacks)do a1(_G)end end end;function __TS__Promise.prototype.createPromiseResolvingCallback(self,bl,aa,ab)return function(j,f)do local bA,bB=pcall(function()self:handleCallbackData(bl(_G,f),aa,ab)end)if not bA then ab(_G,bB)end end end end;function __TS__Promise.prototype.handleCallbackData(self,bC,aa,ab)if __TS__IsPromiseLike(_G,bC)then local bH=bC;if bH.state==__TS__PromiseState.Fulfilled then aa(_G,bH.value)elseif bH.state==__TS__PromiseState.Rejected then ab(_G,bH.rejectionReason)else bC["then"](bC,aa,ab)end else aa(_G,bC)end end;function __TS__PromiseAll(aK)local bI={}local bJ={}local bK=0;local s=0;for j,F in __TS__Iterator(aK)do if __TS__InstanceOf(F,__TS__Promise)then if F.state==__TS__PromiseState.Fulfilled then bI[s+1]=F.value elseif F.state==__TS__PromiseState.Rejected then return __TS__Promise.reject(F.rejectionReason)else bK=bK+1;bJ[s]=F end else bI[s+1]=F end;s=s+1 end;if bK==0 then return __TS__Promise.resolve(bI)end;return __TS__New(__TS__Promise,function(j,aa,ab)for C,bw in pairs(bJ)do bw["then"](bw,function(j,bC)bI[C+1]=bC;bK=bK-1;if bK==0 then aa(_G,bI)end end,function(j,aj)ab(_G,aj)end)end end)end;function __TS__PromiseAllSettled(aK)local bI={}local bJ={}local bK=0;local s=0;for j,F in __TS__Iterator(aK)do if __TS__InstanceOf(F,__TS__Promise)then if F.state==__TS__PromiseState.Fulfilled then bI[s+1]={status="fulfilled",value=F.value}elseif F.state==__TS__PromiseState.Rejected then bI[s+1]={status="rejected",reason=F.rejectionReason}else bK=bK+1;bJ[s]=F end else bI[s+1]={status="fulfilled",value=F}end;s=s+1 end;if bK==0 then return __TS__Promise.resolve(bI)end;return __TS__New(__TS__Promise,function(j,aa)for C,bw in pairs(bJ)do bw["then"](bw,function(j,bC)bI[C+1]={status="fulfilled",value=bC}bK=bK-1;if bK==0 then aa(_G,bI)end end,function(j,aj)bI[C+1]={status="rejected",reason=aj}bK=bK-1;if bK==0 then aa(_G,bI)end end)end end)end;function __TS__PromiseAny(aK)local bL={}local bM={}for j,F in __TS__Iterator(aK)do if __TS__InstanceOf(F,__TS__Promise)then if F.state==__TS__PromiseState.Fulfilled then return __TS__Promise.resolve(F.value)elseif F.state==__TS__PromiseState.Rejected then __TS__ArrayPush(bL,F.rejectionReason)else __TS__ArrayPush(bM,F)end else return __TS__Promise.resolve(F)end end;if#bM==0 then return __TS__Promise.reject("No promises to resolve with .any()")end;local bN=0;return __TS__New(__TS__Promise,function(j,aa,ab)for j,bw in ipairs(bM)do bw["then"](bw,function(j,bC)aa(_G,bC)end,function(j,aj)__TS__ArrayPush(bL,aj)bN=bN+1;if bN==#bM then ab(_G,{name="AggregateError",message="All Promises rejected",errors=bL})end end)end end)end;function __TS__PromiseRace(aK)local bM={}for j,F in __TS__Iterator(aK)do if __TS__InstanceOf(F,__TS__Promise)then if F.state==__TS__PromiseState.Fulfilled then return __TS__Promise.resolve(F.value)elseif F.state==__TS__PromiseState.Rejected then return __TS__Promise.reject(F.rejectionReason)else __TS__ArrayPush(bM,F)end else return __TS__Promise.resolve(F)end end;return __TS__New(__TS__Promise,function(j,aa,ab)for j,bw in ipairs(bM)do bw["then"](bw,function(j,f)return aa(_G,f)end,function(j,aj)return ab(_G,aj)end)end end)end;Set=(function()local Set=__TS__Class()Set.name="Set"function Set.prototype.____constructor(self,bO)self[Symbol.toStringTag]="Set"self.size=0;self.nextKey={}self.previousKey={}if bO==nil then return end;local aK=bO;if aK[Symbol.iterator]then local aN=aK[Symbol.iterator](aK)while true do local p=aN:next()if p.done then break end;self:add(p.value)end else local n=bO;for j,f in ipairs(n)do self:add(f)end end end;function Set.prototype.add(self,f)local b6=not self:has(f)if b6 then self.size=self.size+1 end;if self.firstKey==nil then self.firstKey=f;self.lastKey=f elseif b6 then self.nextKey[self.lastKey]=f;self.previousKey[f]=self.lastKey;self.lastKey=f end;return self end;function Set.prototype.clear(self)self.nextKey={}self.previousKey={}self.firstKey=nil;self.lastKey=nil;self.size=0 end;function Set.prototype.delete(self,f)local b4=self:has(f)if b4 then self.size=self.size-1;local next=self.nextKey[f]local b5=self.previousKey[f]if next and b5 then self.nextKey[b5]=next;self.previousKey[next]=b5 elseif next then self.firstKey=next;self.previousKey[next]=nil elseif b5 then self.lastKey=b5;self.nextKey[b5]=nil else self.firstKey=nil;self.lastKey=nil end;self.nextKey[f]=nil;self.previousKey[f]=nil end;return b4 end;function Set.prototype.forEach(self,a1)for j,o in __TS__Iterator(self:keys())do a1(_G,o,o,self)end end;function Set.prototype.has(self,f)return self.nextKey[f]~=nil or self.lastKey==f end;Set.prototype[Symbol.iterator]=function(self)return self:values()end;function Set.prototype.entries(self)local b7=self.nextKey;local o=self.firstKey;return{[Symbol.iterator]=function(self)return self end,next=function(self)local p={done=not o,value={o,o}}o=b7[o]return p end}end;function Set.prototype.keys(self)local b7=self.nextKey;local o=self.firstKey;return{[Symbol.iterator]=function(self)return self end,next=function(self)local p={done=not o,value=o}o=b7[o]return p end}end;function Set.prototype.values(self)local b7=self.nextKey;local o=self.firstKey;return{[Symbol.iterator]=function(self)return self end,next=function(self)local p={done=not o,value=o}o=b7[o]return p end}end;Set[Symbol.species]=Set;return Set end)()WeakMap=(function()local WeakMap=__TS__Class()WeakMap.name="WeakMap"function WeakMap.prototype.____constructor(self,b2)self[Symbol.toStringTag]="WeakMap"self.items={}setmetatable(self.items,{__mode="k"})if b2==nil then return end;local aK=b2;if aK[Symbol.iterator]then local aN=aK[Symbol.iterator](aK)while true do local p=aN:next()if p.done then break end;local f=p.value;self.items[f[1]]=f[2]end else for j,b3 in ipairs(b2)do self.items[b3[1]]=b3[2]end end end;function WeakMap.prototype.delete(self,o)local b4=self:has(o)self.items[o]=nil;return b4 end;function WeakMap.prototype.get(self,o)return self.items[o]end;function WeakMap.prototype.has(self,o)return self.items[o]~=nil end;function WeakMap.prototype.set(self,o,f)self.items[o]=f;return self end;WeakMap[Symbol.species]=WeakMap;return WeakMap end)()WeakSet=(function()local WeakSet=__TS__Class()WeakSet.name="WeakSet"function WeakSet.prototype.____constructor(self,bO)self[Symbol.toStringTag]="WeakSet"self.items={}setmetatable(self.items,{__mode="k"})if bO==nil then return end;local aK=bO;if aK[Symbol.iterator]then local aN=aK[Symbol.iterator](aK)while true do local p=aN:next()if p.done then break end;self.items[p.value]=true end else for j,f in ipairs(bO)do self.items[f]=true end end end;function WeakSet.prototype.add(self,f)self.items[f]=true;return self end;function WeakSet.prototype.delete(self,f)local b4=self:has(f)self.items[f]=nil;return b4 end;function WeakSet.prototype.has(self,f)return self.items[f]==true end;WeakSet[Symbol.species]=WeakSet;return WeakSet end)()function __TS__SourceMapTraceBack(bP,bQ)_G.__TS__sourcemap=_G.__TS__sourcemap or{}_G.__TS__sourcemap[bP]=bQ;if _G.__TS__originalTraceback==nil then _G.__TS__originalTraceback=debug.traceback;debug.traceback=function(bR,aW,aP)local bS;if bR==nil and aW==nil and aP==nil then bS=_G.__TS__originalTraceback()else bS=_G.__TS__originalTraceback(bR,aW,aP)end;if type(bS)~="string"then return bS end;local p=string.gsub(bS,"(%S+).lua:(%d+)",function(d,bT)local bU=_G.__TS__sourcemap[d..".lua"]if bU and bU[bT]then return(d..".ts:")..tostring(bU[bT])end;return(d..".lua:")..bT end)return p end end end;function __TS__Spread(aK)local q={}if type(aK)=="string"then do local s=0;while s<#aK do q[#q+1]=__TS__StringAccess(aK,s)s=s+1 end end else for j,F in __TS__Iterator(aK)do q[#q+1]=F end end;return __TS__Unpack(q)end;function __TS__StringCharAt(self,bV)if bV~=bV then bV=0 end;if bV<0 then return""end;return string.sub(self,bV+1,bV+1)end;function __TS__StringCharCodeAt(self,C)if C~=C then C=0 end;if C<0 then return 0/0 end;return string.byte(self,C+1)or 0/0 end;function __TS__StringConcat(bW,...)local h={...}local i=bW;for j,l in ipairs(h)do i=i..l end;return i end;function __TS__StringEndsWith(self,bX,bY)if bY==nil or bY>#self then bY=#self end;return string.sub(self,bY-#bX+1,bY)==bX end;function __TS__StringIncludes(self,bX,bZ)if not bZ then bZ=1 else bZ=bZ+1 end;local C=string.find(self,bX,bZ,true)return C~=nil end;function __TS__StringPadEnd(self,b_,c0)if c0==nil then c0=" "end;if b_~=b_ then b_=0 end;if b_==-math.huge or b_==math.huge then error("Invalid string length",0)end;if#self>=b_ or#c0==0 then return self end;b_=b_-#self;if b_>#c0 then c0=c0 ..string.rep(c0,math.floor(b_/#c0))end;return self..string.sub(c0,1,math.floor(b_))end;function __TS__StringPadStart(self,b_,c0)if c0==nil then c0=" "end;if b_~=b_ then b_=0 end;if b_==-math.huge or b_==math.huge then error("Invalid string length",0)end;if#self>=b_ or#c0==0 then return self end;b_=b_-#self;if b_>#c0 then c0=c0 ..string.rep(c0,math.floor(b_/#c0))end;return string.sub(c0,1,math.floor(b_))..self end;function __TS__StringReplace(aE,c1,c2)c1=string.gsub(c1,"[%%%(%)%.%+%-%*%?%[%^%$]","%%%1")if type(c2)=="string"then c2=string.gsub(c2,"%%","%%%%")local p=string.gsub(aE,c1,c2,1)return p else local p=string.gsub(aE,c1,function(c3)return c2(_G,c3)end,1)return p end end;function __TS__StringSlice(self,T,bs)if T==nil or T~=T then T=0 end;if bs~=bs then bs=0 end;if T>=0 then T=T+1 end;if bs~=nil and bs<0 then bs=bs-1 end;return string.sub(self,T,bs)end;function __TS__StringSplit(aE,B,c4)if c4==nil then c4=4294967295 end;if c4==0 then return{}end;local i={}local C=0;local c5=0;if B==nil or B==""then while C<#aE-1 and c5<c4 do i[c5+1]=__TS__StringAccess(aE,C)c5=c5+1;C=C+1 end else local c6=#B;local c7=(string.find(aE,B,nil,true)or 0)-1;while c7>=0 and c5<c4 do i[c5+1]=__TS__StringSubstring(aE,C,c7)c5=c5+1;C=c7+c6;c7=(string.find(aE,B,math.max(C+1,1),true)or 0)-1 end end;if c5<c4 then i[c5+1]=__TS__StringSubstring(aE,C)end;return i end;function __TS__StringStartsWith(self,bX,bZ)if bZ==nil or bZ<0 then bZ=0 end;return string.sub(self,bZ+1,#bX+bZ)==bX end;function __TS__StringTrim(self)local p=string.gsub(self,"^[%s ﻿]*(.-)[%s ﻿]*$","%1")return p end;function __TS__StringTrimEnd(self)local p=string.gsub(self,"[%s ﻿]*$","")return p end;function __TS__StringTrimStart(self)local p=string.gsub(self,"^[%s ﻿]*","")return p end;____symbolRegistry={}function __TS__SymbolRegistryFor(o)if not ____symbolRegistry[o]then ____symbolRegistry[o]=__TS__Symbol(o)end;return ____symbolRegistry[o]end;function __TS__SymbolRegistryKeyFor(c8)for o in pairs(____symbolRegistry)do if ____symbolRegistry[o]==c8 then return o end end end;function __TS__TypeOf(f)local c9=type(f)if c9=="table"then return"object"elseif c9=="nil"then return"undefined"else return c9 end end end,["lua_modules.w3ts.handles.handle"]=function(...)require("lualib_bundle")local ca={}local cb=__TS__New(WeakMap)ca.Handle=__TS__Class()local cc=ca.Handle;cc.name="Handle"function cc.prototype.____constructor(self,cd)self.handle=(cd==nil and function()return ca.Handle.initHandle end or function()return cd end)()cb:set(self.handle,self)end;__TS__SetDescriptor(cc.prototype,"id",{get=function(self)return GetHandleId(self.handle)end},true)function cc.initFromHandle(self)return ca.Handle.initHandle~=nil end;function cc.getObject(self,cd)local a4=cb:get(cd)if a4~=nil then return a4 end;ca.Handle.initHandle=cd;local ce=__TS__New(self)ca.Handle.initHandle=nil;return ce end;return ca end,["lua_modules.w3ts.handles.point"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Point=__TS__Class()local cg=ca.Point;cg.name="Point"__TS__ClassExtends(cg,cc)function cg.prototype.____constructor(self,ch,ci)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,Location(ch,ci))end end;__TS__SetDescriptor(cg.prototype,"x",{get=function(self)return GetLocationX(self.handle)end,set=function(self,f)MoveLocation(self.handle,f,self.y)end},true)__TS__SetDescriptor(cg.prototype,"y",{get=function(self)return GetLocationY(self.handle)end,set=function(self,f)MoveLocation(self.handle,self.x,f)end},true)__TS__SetDescriptor(cg.prototype,"z",{get=function(self)return GetLocationZ(self.handle)end},true)function cg.prototype.destroy(self)RemoveLocation(self.handle)end;function cg.prototype.setPosition(self,ch,ci)MoveLocation(self.handle,ch,ci)end;function cg.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.camera"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;local cj=require("lua_modules.w3ts.handles.point")local cg=cj.Point;ca.Camera=__TS__Class()local ck=ca.Camera;ck.name="Camera"function ck.prototype.____constructor(self)end;__TS__ObjectDefineProperty(ck,"visible",{get=function(self)return IsCineFilterDisplayed()end,set=function(self,cl)DisplayCineFilter(cl)end})__TS__ObjectDefineProperty(ck,"boundMinX",{get=function(self)return GetCameraBoundMinX()end})__TS__ObjectDefineProperty(ck,"boundMinY",{get=function(self)return GetCameraBoundMinY()end})__TS__ObjectDefineProperty(ck,"boundMaxX",{get=function(self)return GetCameraBoundMaxX()end})__TS__ObjectDefineProperty(ck,"boundMaxY",{get=function(self)return GetCameraBoundMaxY()end})__TS__ObjectDefineProperty(ck,"targetX",{get=function(self)return GetCameraTargetPositionX()end})__TS__ObjectDefineProperty(ck,"targetY",{get=function(self)return GetCameraTargetPositionY()end})__TS__ObjectDefineProperty(ck,"targetZ",{get=function(self)return GetCameraTargetPositionZ()end})__TS__ObjectDefineProperty(ck,"eyeX",{get=function(self)return GetCameraEyePositionX()end})__TS__ObjectDefineProperty(ck,"eyeY",{get=function(self)return GetCameraEyePositionY()end})__TS__ObjectDefineProperty(ck,"eyeZ",{get=function(self)return GetCameraEyePositionZ()end})__TS__ObjectDefineProperty(ck,"eyePoint",{get=function(self)return cg:fromHandle(GetCameraEyePositionLoc())end})__TS__ObjectDefineProperty(ck,"targetPoint",{get=function(self)return cg:fromHandle(GetCameraTargetPositionLoc())end})function ck.adjustField(self,cm,cn,co)AdjustCameraField(cm,cn,co)end;function ck.endCinematicScene(self)EndCinematicScene()end;function ck.forceCinematicSubtitles(self,cl)ForceCinematicSubtitles(cl)end;function ck.getField(self,cp)return GetCameraField(cp)end;function ck.getMargin(self,cq)return GetCameraMargin(cq)end;function ck.pan(self,ch,ci,cr)if not cr then PanCameraTo(ch,ci)else PanCameraToWithZ(ch,ci,cr)end end;function ck.panTimed(self,ch,ci,co,cr)if not cr then PanCameraToTimed(ch,ci,co)else PanCameraToTimedWithZ(ch,ci,cr,co)end end;function ck.reset(self,co)ResetToGameCamera(co)end;function ck.setBounds(self,cs,ct,cu,cv,cw,cx,cy,cz)SetCameraBounds(cs,ct,cu,cv,cw,cx,cy,cz)end;function ck.setCameraOrientController(self,cA,cB,cC)SetCameraOrientController(cA,cB,cC)end;function ck.setCineFilterBlendMode(self,cD)SetCineFilterBlendMode(cD)end;function ck.setCineFilterDuration(self,co)SetCineFilterDuration(co)end;function ck.setCineFilterEndColor(self,cE,cF,cG,cH)SetCineFilterEndColor(cE,cF,cG,cH)end;function ck.setCineFilterEndUV(self,cI,cJ,cK,cL)SetCineFilterEndUV(cI,cJ,cK,cL)end;function ck.setCineFilterStartColor(self,cE,cF,cG,cH)SetCineFilterStartColor(cE,cF,cG,cH)end;function ck.setCineFilterStartUV(self,cI,cJ,cK,cL)SetCineFilterStartUV(cI,cJ,cK,cL)end;function ck.setCineFilterTexMapFlags(self,cM)SetCineFilterTexMapFlags(cM)end;function ck.setCineFilterTexture(self,bP)SetCineFilterTexture(bP)end;function ck.setCinematicAudio(self,cN)SetCinematicAudio(cN)end;function ck.setCinematicCamera(self,cO)SetCinematicCamera(cO)end;function ck.SetCinematicScene(self,cP,cQ,cR,cS,cT,cU)SetCinematicScene(cP,cQ,cR,cS,cT,cU)end;function ck.setDepthOfFieldScale(self,cV)CameraSetDepthOfFieldScale(cV)end;function ck.setField(self,cm,f,co)SetCameraField(cm,f,co)end;function ck.setFocalDistance(self,cW)CameraSetFocalDistance(cW)end;function ck.setPos(self,ch,ci)SetCameraPosition(ch,ci)end;function ck.setRotateMode(self,ch,ci,cX,co)SetCameraRotateMode(ch,ci,cX,co)end;function ck.setSmoothingFactor(self,cY)CameraSetSmoothingFactor(cY)end;function ck.setSourceNoise(self,cZ,c_,d0)if d0==nil then d0=false end;CameraSetSourceNoiseEx(cZ,c_,d0)end;function ck.setTargetController(self,cA,cB,cC,d1)SetCameraTargetController(cA,cB,cC,d1)end;function ck.setTargetNoise(self,cZ,c_,d0)if d0==nil then d0=false end;CameraSetTargetNoiseEx(cZ,c_,d0)end;function ck.stop(self)StopCamera()end;ca.CameraSetup=__TS__Class()local d2=ca.CameraSetup;d2.name="CameraSetup"__TS__ClassExtends(d2,cc)function d2.prototype.____constructor(self)cc.prototype.____constructor(self,(cc:initFromHandle()and function()return nil end or function()return CreateCameraSetup()end)())end;__TS__SetDescriptor(d2.prototype,"destPoint",{get=function(self)return cg:fromHandle(CameraSetupGetDestPositionLoc(self.handle))end},true)__TS__SetDescriptor(d2.prototype,"destX",{get=function(self)return CameraSetupGetDestPositionX(self.handle)end,set=function(self,ch)CameraSetupSetDestPosition(self.handle,ch,self.destY,0)end},true)__TS__SetDescriptor(d2.prototype,"destY",{get=function(self)return CameraSetupGetDestPositionY(self.handle)end,set=function(self,ci)CameraSetupSetDestPosition(self.handle,self.destX,ci,0)end},true)__TS__SetDescriptor(d2.prototype,"label",{get=function(self)return BlzCameraSetupGetLabel(self.handle)end,set=function(self,d3)BlzCameraSetupSetLabel(self.handle,d3)end},true)function d2.prototype.apply(self,d4,d5)CameraSetupApply(self.handle,d4,d5)end;function d2.prototype.applyForceDuration(self,d4,d6)CameraSetupApplyForceDuration(self.handle,d4,d6)end;function d2.prototype.applyForceDurationSmooth(self,d4,d7,d8,d9,da)BlzCameraSetupApplyForceDurationSmooth(self.handle,d4,d7,d8,d9,da)end;function d2.prototype.applyForceDurationZ(self,db,d6)CameraSetupApplyForceDurationWithZ(self.handle,db,d6)end;function d2.prototype.applyZ(self,db)CameraSetupApplyWithZ(self.handle,db)end;function d2.prototype.getField(self,cm)return CameraSetupGetField(self.handle,cm)end;function d2.prototype.setDestPos(self,ch,ci,co)CameraSetupSetDestPosition(self.handle,ch,ci,co)end;function d2.prototype.setField(self,cm,f,co)CameraSetupSetField(self.handle,cm,f,co)end;function d2.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.widget"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Widget=__TS__Class()local dc=ca.Widget;dc.name="Widget"__TS__ClassExtends(dc,cc)__TS__SetDescriptor(dc.prototype,"life",{get=function(self)return GetWidgetLife(self.handle)end,set=function(self,f)SetWidgetLife(self.handle,f)end},true)__TS__SetDescriptor(dc.prototype,"x",{get=function(self)return GetWidgetX(self.handle)end},true)__TS__SetDescriptor(dc.prototype,"y",{get=function(self)return GetWidgetY(self.handle)end},true)function dc.fromEvent(self)return self:fromHandle(GetTriggerWidget())end;function dc.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.destructable"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;local dd=require("lua_modules.w3ts.handles.widget")local dc=dd.Widget;ca.Destructable=__TS__Class()local de=ca.Destructable;de.name="Destructable"__TS__ClassExtends(de,dc)function de.prototype.____constructor(self,df,ch,ci,dg,dh,cV,di)if cc:initFromHandle()then dc.prototype.____constructor(self)else dc.prototype.____constructor(self,CreateDestructableZ(df,ch,ci,dg,dh,cV,di))end end;__TS__SetDescriptor(de.prototype,"invulnerable",{get=function(self)return IsDestructableInvulnerable(self.handle)end,set=function(self,cl)SetDestructableInvulnerable(self.handle,cl)end},true)__TS__SetDescriptor(de.prototype,"life",{get=function(self)return GetDestructableLife(self.handle)end,set=function(self,f)SetDestructableLife(self.handle,f)end},true)__TS__SetDescriptor(de.prototype,"maxLife",{get=function(self)return GetDestructableMaxLife(self.handle)end,set=function(self,f)SetDestructableMaxLife(self.handle,f)end},true)__TS__SetDescriptor(de.prototype,"name",{get=function(self)return GetDestructableName(self.handle)end},true)__TS__SetDescriptor(de.prototype,"occluderHeight",{get=function(self)return GetDestructableOccluderHeight(self.handle)end,set=function(self,f)SetDestructableOccluderHeight(self.handle,f)end},true)__TS__SetDescriptor(de.prototype,"typeId",{get=function(self)return GetDestructableTypeId(self.handle)end},true)__TS__SetDescriptor(de.prototype,"x",{get=function(self)return GetDestructableX(self.handle)end},true)__TS__SetDescriptor(de.prototype,"y",{get=function(self)return GetDestructableY(self.handle)end},true)function de.prototype.destroy(self)RemoveDestructable(self.handle)end;function de.prototype.heal(self,dj,dk)DestructableRestoreLife(self.handle,dj,dk)end;function de.prototype.kill(self)KillDestructable(self.handle)end;function de.prototype.queueAnim(self,dl)QueueDestructableAnimation(self.handle,dl)end;function de.prototype.setAnim(self,dl)SetDestructableAnimation(self.handle,dl)end;function de.prototype.setAnimSpeed(self,dm)SetDestructableAnimationSpeed(self.handle,dm)end;function de.prototype.show(self,cl)ShowDestructable(self.handle,cl)end;function de.fromEvent(self)return self:fromHandle(GetTriggerDestructable())end;function de.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.force"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;local dn=require("lua_modules.w3ts.handles.player")local dp=dn.MapPlayer;ca.Force=__TS__Class()local dq=ca.Force;dq.name="Force"__TS__ClassExtends(dq,cc)function dq.prototype.____constructor(self)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateForce())end end;function dq.prototype.addPlayer(self,dr)ForceAddPlayer(self.handle,dr.handle)end;function dq.prototype.clear(self)ForceClear(self.handle)end;function dq.prototype.destroy(self)DestroyForce(self.handle)end;function dq.prototype.enumAllies(self,dr,ds)ForceEnumAllies(self.handle,dr.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function dq.prototype.enumEnemies(self,dr,ds)ForceEnumEnemies(self.handle,dr.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function dq.prototype.enumPlayers(self,ds)ForceEnumPlayers(self.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function dq.prototype.enumPlayersCounted(self,ds,dt)ForceEnumPlayersCounted(self.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)(),dt)end;dq.prototype["for"]=function(self,a1)ForForce(self.handle,a1)end;function dq.prototype.getPlayers(self)local du={}ForForce(self.handle,function()return __TS__ArrayPush(du,dp:fromEnum())end)return du end;function dq.prototype.hasPlayer(self,dr)return IsPlayerInForce(dr.handle,self.handle)end;function dq.prototype.removePlayer(self,dr)ForceRemovePlayer(self.handle,dr.handle)end;function dq.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.player"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.MapPlayer=__TS__Class()local dp=ca.MapPlayer;dp.name="MapPlayer"__TS__ClassExtends(dp,cc)function dp.prototype.____constructor(self,C)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,Player(C))end end;__TS__SetDescriptor(dp.prototype,"color",{get=function(self)return GetPlayerColor(self.handle)end,set=function(self,cQ)SetPlayerColor(self.handle,cQ)end},true)__TS__SetDescriptor(dp.prototype,"controller",{get=function(self)return GetPlayerController(self.handle)end},true)__TS__SetDescriptor(dp.prototype,"handicap",{get=function(self)return GetPlayerHandicap(self.handle)end,set=function(self,dv)SetPlayerHandicap(self.handle,dv)end},true)__TS__SetDescriptor(dp.prototype,"handicapXp",{get=function(self)return GetPlayerHandicapXP(self.handle)end,set=function(self,dv)SetPlayerHandicapXP(self.handle,dv)end},true)__TS__SetDescriptor(dp.prototype,"id",{get=function(self)return GetPlayerId(self.handle)end},true)__TS__SetDescriptor(dp.prototype,"name",{get=function(self)return GetPlayerName(self.handle)end,set=function(self,f)SetPlayerName(self.handle,f)end},true)__TS__SetDescriptor(dp.prototype,"race",{get=function(self)return GetPlayerRace(self.handle)end},true)__TS__SetDescriptor(dp.prototype,"slotState",{get=function(self)return GetPlayerSlotState(self.handle)end},true)__TS__SetDescriptor(dp.prototype,"startLocation",{get=function(self)return GetPlayerStartLocation(self.handle)end},true)__TS__SetDescriptor(dp.prototype,"startLocationX",{get=function(self)return GetStartLocationX(self.startLocation)end},true)__TS__SetDescriptor(dp.prototype,"startLocationY",{get=function(self)return GetStartLocationY(self.startLocation)end},true)__TS__SetDescriptor(dp.prototype,"startLocationPoint",{get=function(self)return GetStartLocationLoc(self.startLocation)end},true)__TS__SetDescriptor(dp.prototype,"team",{get=function(self)return GetPlayerTeam(self.handle)end},true)__TS__SetDescriptor(dp.prototype,"townHallCount",{get=function(self)return BlzGetPlayerTownHallCount(self.handle)end},true)function dp.prototype.addTechResearched(self,dw,dx)AddPlayerTechResearched(self.handle,dw,dx)end;function dp.prototype.decTechResearched(self,dw,dx)BlzDecPlayerTechResearched(self.handle,dw,dx)end;function dp.prototype.cacheHeroData(self)CachePlayerHeroData(self.handle)end;function dp.prototype.compareAlliance(self,dy,dz)return GetPlayerAlliance(self.handle,dy.handle,dz)end;function dp.prototype.coordsFogged(self,ch,ci)return IsFoggedToPlayer(ch,ci,self.handle)end;function dp.prototype.coordsMasked(self,ch,ci)return IsMaskedToPlayer(ch,ci,self.handle)end;function dp.prototype.coordsVisible(self,ch,ci)return IsVisibleToPlayer(ch,ci,self.handle)end;function dp.prototype.cripple(self,dA,cl)CripplePlayer(self.handle,dA.handle,cl)end;function dp.prototype.getScore(self,dB)return GetPlayerScore(self.handle,dB)end;function dp.prototype.getState(self,dC)return GetPlayerState(self.handle,dC)end;function dp.prototype.getStructureCount(self,dD)return GetPlayerStructureCount(self.handle,dD)end;function dp.prototype.getTaxRate(self,dy,dE)return GetPlayerTaxRate(self.handle,dy,dE)end;function dp.prototype.getTechCount(self,dw,dF)return GetPlayerTechCount(self.handle,dw,dF)end;function dp.prototype.getTechMaxAllowed(self,dw)return GetPlayerTechMaxAllowed(self.handle,dw)end;function dp.prototype.getTechResearched(self,dw,dF)return GetPlayerTechResearched(self.handle,dw,dF)end;function dp.prototype.getUnitCount(self,dD)return GetPlayerUnitCount(self.handle,dD)end;function dp.prototype.getUnitCountByType(self,dG,dD,dH)return GetPlayerTypedUnitCount(self.handle,dG,dD,dH)end;function dp.prototype.inForce(self,dI)return IsPlayerInForce(self.handle,dI.handle)end;function dp.prototype.isLocal(self)return GetLocalPlayer()==self.handle end;function dp.prototype.isObserver(self)return IsPlayerObserver(self.handle)end;function dp.prototype.isPlayerAlly(self,dy)return IsPlayerAlly(self.handle,dy.handle)end;function dp.prototype.isPlayerEnemy(self,dy)return IsPlayerEnemy(self.handle,dy.handle)end;function dp.prototype.isRacePrefSet(self,dJ)return IsPlayerRacePrefSet(self.handle,dJ)end;function dp.prototype.isSelectable(self)return GetPlayerSelectable(self.handle)end;function dp.prototype.pointFogged(self,dK)return IsLocationFoggedToPlayer(dK.handle,self.handle)end;function dp.prototype.pointMasked(self,dK)return IsLocationMaskedToPlayer(dK.handle,self.handle)end;function dp.prototype.pointVisible(self,dK)return IsLocationVisibleToPlayer(dK.handle,self.handle)end;function dp.prototype.remove(self,dL)RemovePlayer(self.handle,dL)end;function dp.prototype.removeAllGuardPositions(self)RemoveAllGuardPositions(self.handle)end;function dp.prototype.setAbilityAvailable(self,dM,dN)SetPlayerAbilityAvailable(self.handle,dM,dN)end;function dp.prototype.setAlliance(self,dy,dz,f)SetPlayerAlliance(self.handle,dy.handle,dz,f)end;function dp.prototype.setOnScoreScreen(self,cl)SetPlayerOnScoreScreen(self.handle,cl)end;function dp.prototype.setState(self,dC,f)SetPlayerState(self.handle,dC,f)end;function dp.prototype.setTaxRate(self,dy,dE,dO)SetPlayerTaxRate(self.handle,dy.handle,dE,dO)end;function dp.prototype.setTechMaxAllowed(self,dw,dP)SetPlayerTechMaxAllowed(self.handle,dw,dP)end;function dp.prototype.setTechResearched(self,dw,dQ)SetPlayerTechResearched(self.handle,dw,dQ)end;function dp.prototype.setUnitsOwner(self,dR)SetPlayerUnitsOwner(self.handle,dR)end;function dp.fromEnum(self)return ca.MapPlayer:fromHandle(GetEnumPlayer())end;function dp.fromEvent(self)return ca.MapPlayer:fromHandle(GetTriggerPlayer())end;function dp.fromFilter(self)return ca.MapPlayer:fromHandle(GetFilterPlayer())end;function dp.fromHandle(self,cd)return self:getObject(cd)end;function dp.fromIndex(self,C)return self:fromHandle(Player(C))end;function dp.fromLocal(self)return self:fromHandle(GetLocalPlayer())end;return ca end,["lua_modules.w3ts.handles.dialog"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.DialogButton=__TS__Class()local dS=ca.DialogButton;dS.name="DialogButton"__TS__ClassExtends(dS,cc)function dS.prototype.____constructor(self,dT,cS,dU,dV,dW)if dU==nil then dU=0 end;if dV==nil then dV=false end;if dW==nil then dW=false end;if cc:initFromHandle()then cc.prototype.____constructor(self)elseif not dV then cc.prototype.____constructor(self,DialogAddButton(dT.handle,cS,dU))else cc.prototype.____constructor(self,DialogAddQuitButton(dT.handle,dW,cS,dU))end end;function dS.fromHandle(self,cd)return self:getObject(cd)end;ca.Dialog=__TS__Class()local dX=ca.Dialog;dX.name="Dialog"__TS__ClassExtends(dX,cc)function dX.prototype.____constructor(self)cc.prototype.____constructor(self,(cc:initFromHandle()and function()return nil end or function()return DialogCreate()end)())end;function dX.prototype.addButton(self,cS,dU,dV,dW)if dU==nil then dU=0 end;if dV==nil then dV=false end;if dW==nil then dW=false end;return __TS__New(ca.DialogButton,self,cS,dU,dV,dW)end;function dX.prototype.clear(self)DialogClear(self.handle)end;function dX.prototype.destroy(self)DialogDestroy(self.handle)end;function dX.prototype.display(self,dr,cl)DialogDisplay(dr.handle,self.handle,cl)end;function dX.prototype.setMessage(self,dY)DialogSetMessage(self.handle,dY)end;function dX.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.effect"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Effect=__TS__Class()local dZ=ca.Effect;dZ.name="Effect"__TS__ClassExtends(dZ,cc)function dZ.prototype.____constructor(self,d_,K,L)if cc:initFromHandle()then cc.prototype.____constructor(self)elseif type(K)=="number"and type(L)=="number"then cc.prototype.____constructor(self,AddSpecialEffect(d_,K,L))elseif type(K)~="number"and type(L)=="string"then cc.prototype.____constructor(self,AddSpecialEffectTarget(d_,K.handle,L))end end;__TS__SetDescriptor(dZ.prototype,"scale",{get=function(self)return BlzGetSpecialEffectScale(self.handle)end,set=function(self,cV)BlzSetSpecialEffectScale(self.handle,cV)end},true)__TS__SetDescriptor(dZ.prototype,"x",{get=function(self)return BlzGetLocalSpecialEffectX(self.handle)end,set=function(self,ch)BlzSetSpecialEffectX(self.handle,ch)end},true)__TS__SetDescriptor(dZ.prototype,"y",{get=function(self)return BlzGetLocalSpecialEffectY(self.handle)end,set=function(self,ci)BlzSetSpecialEffectY(self.handle,ci)end},true)__TS__SetDescriptor(dZ.prototype,"z",{get=function(self)return BlzGetLocalSpecialEffectZ(self.handle)end,set=function(self,dg)BlzSetSpecialEffectZ(self.handle,dg)end},true)function dZ.prototype.addSubAnimation(self,e0)BlzSpecialEffectAddSubAnimation(self.handle,e0)end;function dZ.prototype.clearSubAnimations(self)BlzSpecialEffectClearSubAnimations(self.handle)end;function dZ.prototype.destroy(self)DestroyEffect(self.handle)end;function dZ.prototype.playAnimation(self,e1)BlzPlaySpecialEffect(self.handle,e1)end;function dZ.prototype.playWithTimeScale(self,e1,e2)BlzPlaySpecialEffectWithTimeScale(self.handle,e1,e2)end;function dZ.prototype.removeSubAnimation(self,e0)BlzSpecialEffectRemoveSubAnimation(self.handle,e0)end;function dZ.prototype.resetScaleMatrix(self)BlzResetSpecialEffectMatrix(self.handle)end;function dZ.prototype.setAlpha(self,cH)BlzSetSpecialEffectAlpha(self.handle,cH)end;function dZ.prototype.setColor(self,cE,cF,cG)BlzSetSpecialEffectColor(self.handle,cE,cF,cG)end;function dZ.prototype.setColorByPlayer(self,dr)BlzSetSpecialEffectColorByPlayer(self.handle,dr.handle)end;function dZ.prototype.setHeight(self,e3)BlzSetSpecialEffectHeight(self.handle,e3)end;function dZ.prototype.setOrientation(self,e4,e5,e6)BlzSetSpecialEffectOrientation(self.handle,e4,e5,e6)end;function dZ.prototype.setPitch(self,e5)BlzSetSpecialEffectPitch(self.handle,e5)end;function dZ.prototype.setPoint(self,e7)BlzSetSpecialEffectPositionLoc(self.handle,e7.handle)end;function dZ.prototype.setPosition(self,ch,ci,dg)BlzSetSpecialEffectPosition(self.handle,ch,ci,dg)end;function dZ.prototype.setRoll(self,e6)BlzSetSpecialEffectRoll(self.handle,e6)end;function dZ.prototype.setScaleMatrix(self,ch,ci,dg)BlzSetSpecialEffectMatrixScale(self.handle,ch,ci,dg)end;function dZ.prototype.setTime(self,f)BlzSetSpecialEffectTime(self.handle,f)end;function dZ.prototype.setTimeScale(self,e2)BlzSetSpecialEffectTimeScale(self.handle,e2)end;function dZ.prototype.setYaw(self,ci)BlzSetSpecialEffectYaw(self.handle,ci)end;function dZ.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.rect"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Rectangle=__TS__Class()local e8=ca.Rectangle;e8.name="Rectangle"__TS__ClassExtends(e8,cc)function e8.prototype.____constructor(self,e9,ea,eb,ec)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,Rect(e9,ea,eb,ec))end end;__TS__SetDescriptor(e8.prototype,"centerX",{get=function(self)return GetRectCenterX(self.handle)end},true)__TS__SetDescriptor(e8.prototype,"centerY",{get=function(self)return GetRectCenterY(self.handle)end},true)__TS__SetDescriptor(e8.prototype,"maxX",{get=function(self)return GetRectMaxX(self.handle)end},true)__TS__SetDescriptor(e8.prototype,"maxY",{get=function(self)return GetRectMaxY(self.handle)end},true)__TS__SetDescriptor(e8.prototype,"minX",{get=function(self)return GetRectMinX(self.handle)end},true)__TS__SetDescriptor(e8.prototype,"minY",{get=function(self)return GetRectMinY(self.handle)end},true)function e8.prototype.destroy(self)RemoveRect(self.handle)end;function e8.prototype.enumDestructables(self,ds,ed)EnumDestructablesInRect(self.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)(),ed)end;function e8.prototype.enumItems(self,ds,ed)EnumItemsInRect(self.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)(),ed)end;function e8.prototype.move(self,ee,ef)MoveRectTo(self.handle,ee,ef)end;function e8.prototype.movePoint(self,eg)MoveRectToLoc(self.handle,eg.handle)end;function e8.prototype.setRect(self,e9,ea,eb,ec)SetRect(self.handle,e9,ea,eb,ec)end;function e8.prototype.setRectFromPoint(self,eh,ei)SetRectFromLoc(self.handle,eh.handle,ei.handle)end;function e8.fromHandle(self,cd)return self:getObject(cd)end;function e8.fromPoint(self,eh,ei)return self:fromHandle(RectFromLoc(eh.handle,ei.handle))end;function e8.getWorldBounds(self)return ca.Rectangle:fromHandle(GetWorldBounds())end;return ca end,["lua_modules.w3ts.handles.fogmodifier"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.FogModifier=__TS__Class()local ej=ca.FogModifier;ej.name="FogModifier"__TS__ClassExtends(ej,cc)function ej.prototype.____constructor(self,ek,el,em,en,eo,ep,eq)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateFogModifierRadius(ek.handle,el,em,en,eo,ep,eq))end end;function ej.prototype.destroy(self)DestroyFogModifier(self.handle)end;function ej.prototype.start(self)FogModifierStart(self.handle)end;function ej.prototype.stop(self)FogModifierStop(self.handle)end;function ej.fromHandle(self,cd)return self:getObject(cd)end;function ej.fromRect(self,ek,el,er,ep,eq)return self:fromHandle(CreateFogModifierRect(ek.handle,el,er.handle,ep,eq))end;return ca end,["lua_modules.w3ts.handles.frame"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Frame=__TS__Class()local es=ca.Frame;es.name="Frame"__TS__ClassExtends(es,cc)function es.prototype.____constructor(self,aU,et,eu,ev,ew,ex)if cc:initFromHandle()then cc.prototype.____constructor(self)else if not ev then cc.prototype.____constructor(self,BlzCreateSimpleFrame(aU,et.handle,eu))else if ew and ex then cc.prototype.____constructor(self,BlzCreateFrameByType(ew,aU,et.handle,ex,ev))else cc.prototype.____constructor(self,BlzCreateFrame(aU,et.handle,eu,ev))end end end end;__TS__SetDescriptor(es.prototype,"alpha",{get=function(self)return BlzFrameGetAlpha(self.handle)end,set=function(self,cH)BlzFrameSetAlpha(self.handle,cH)end},true)__TS__SetDescriptor(es.prototype,"children",{get=function(self)local c5=self.childrenCount;local ey={}do local s=0;while s<c5 do __TS__ArrayPush(ey,self:getChild(s))s=s+1 end end;return ey end},true)__TS__SetDescriptor(es.prototype,"childrenCount",{get=function(self)return BlzFrameGetChildrenCount(self.handle)end},true)__TS__SetDescriptor(es.prototype,"enabled",{get=function(self)return BlzFrameGetEnable(self.handle)end,set=function(self,cl)BlzFrameSetEnable(self.handle,cl)end},true)__TS__SetDescriptor(es.prototype,"height",{get=function(self)return BlzFrameGetHeight(self.handle)end,set=function(self,e3)BlzFrameSetSize(self.handle,self.width,e3)end},true)__TS__SetDescriptor(es.prototype,"parent",{get=function(self)return ca.Frame:fromHandle(BlzFrameGetParent(self.handle))end,set=function(self,ez)BlzFrameSetParent(self.handle,ez.handle)end},true)__TS__SetDescriptor(es.prototype,"text",{get=function(self)return BlzFrameGetText(self.handle)end,set=function(self,cS)BlzFrameSetText(self.handle,cS)end},true)__TS__SetDescriptor(es.prototype,"textSizeLimit",{get=function(self)return BlzFrameGetTextSizeLimit(self.handle)end,set=function(self,eA)BlzFrameSetTextSizeLimit(self.handle,eA)end},true)__TS__SetDescriptor(es.prototype,"value",{get=function(self)return BlzFrameGetValue(self.handle)end,set=function(self,f)BlzFrameSetValue(self.handle,f)end},true)__TS__SetDescriptor(es.prototype,"visible",{get=function(self)return BlzFrameIsVisible(self.handle)end,set=function(self,cl)BlzFrameSetVisible(self.handle,cl)end},true)__TS__SetDescriptor(es.prototype,"width",{get=function(self)return BlzFrameGetWidth(self.handle)end,set=function(self,eB)BlzFrameSetSize(self.handle,eB,self.height)end},true)function es.prototype.addText(self,cS)BlzFrameAddText(self.handle,cS)return self end;function es.prototype.cageMouse(self,eC)BlzFrameCageMouse(self.handle,eC)return self end;function es.prototype.clearPoints(self)BlzFrameClearAllPoints(self.handle)return self end;function es.prototype.click(self)BlzFrameClick(self.handle)return self end;function es.prototype.destroy(self)BlzDestroyFrame(self.handle)return self end;function es.prototype.getChild(self,C)return ca.Frame:fromHandle(BlzFrameGetChild(self.handle,C))end;function es.prototype.setAbsPoint(self,eD,ch,ci)BlzFrameSetAbsPoint(self.handle,eD,ch,ci)return self end;function es.prototype.setAllPoints(self,eE)BlzFrameSetAllPoints(self.handle,eE.handle)return self end;function es.prototype.setAlpha(self,cH)BlzFrameSetAlpha(self.handle,cH)return self end;function es.prototype.setEnabled(self,cl)BlzFrameSetEnable(self.handle,cl)return self end;function es.prototype.setFocus(self,cl)BlzFrameSetFocus(self.handle,cl)return self end;function es.prototype.setFont(self,eF,e3,eG)BlzFrameSetFont(self.handle,eF,e3,eG)return self end;function es.prototype.setHeight(self,e3)BlzFrameSetSize(self.handle,self.width,e3)return self end;function es.prototype.setLevel(self,aP)BlzFrameSetLevel(self.handle,aP)return self end;function es.prototype.setMinMaxValue(self,eH,eI)BlzFrameSetMinMaxValue(self.handle,eH,eI)return self end;function es.prototype.setModel(self,eJ,eK)BlzFrameSetModel(self.handle,eJ,eK)return self end;function es.prototype.setParent(self,ez)BlzFrameSetParent(self.handle,ez.handle)return self end;function es.prototype.setPoint(self,eD,eE,eL,ch,ci)BlzFrameSetPoint(self.handle,eD,eE.handle,eL,ch,ci)return self end;function es.prototype.setScale(self,cV)BlzFrameSetScale(self.handle,cV)return self end;function es.prototype.setSize(self,eB,e3)BlzFrameSetSize(self.handle,eB,e3)return self end;function es.prototype.setSpriteAnimate(self,eM,eG)BlzFrameSetSpriteAnimate(self.handle,eM,eG)return self end;function es.prototype.setStepSize(self,eN)BlzFrameSetStepSize(self.handle,eN)return self end;function es.prototype.setText(self,cS)BlzFrameSetText(self.handle,cS)return self end;function es.prototype.setTextColor(self,cQ)BlzFrameSetTextColor(self.handle,cQ)return self end;function es.prototype.setTextSizeLimit(self,eA)BlzFrameSetTextSizeLimit(self.handle,eA)return self end;function es.prototype.setTexture(self,eO,cl,eP)BlzFrameSetTexture(self.handle,eO,cl,eP)return self end;function es.prototype.setTooltip(self,eQ)BlzFrameSetTooltip(self.handle,eQ.handle)return self end;function es.prototype.setValue(self,f)BlzFrameSetValue(self.handle,f)return self end;function es.prototype.setVertexColor(self,cQ)BlzFrameSetVertexColor(self.handle,cQ)return self end;function es.prototype.setVisible(self,cl)BlzFrameSetVisible(self.handle,cl)return self end;function es.prototype.setWidth(self,eB)BlzFrameSetSize(self.handle,eB,self.height)return self end;function es.autoPosition(self,eC)BlzEnableUIAutoPosition(eC)end;function es.fromEvent(self)return self:fromHandle(BlzGetTriggerFrame())end;function es.fromHandle(self,cd)return self:getObject(cd)end;function es.fromName(self,aU,ev)return self:fromHandle(BlzGetFrameByName(aU,ev))end;function es.fromOrigin(self,eR,C)return self:fromHandle(BlzGetOriginFrame(eR,C))end;function es.getEventHandle(self)return BlzGetTriggerFrameEvent()end;function es.getEventText(self)return BlzGetTriggerFrameValue()end;function es.getEventValue(self)return BlzGetTriggerFrameValue()end;function es.hideOrigin(self,eC)BlzHideOriginFrames(eC)end;function es.loadTOC(self,eF)return BlzLoadTOCFile(eF)end;return ca end,["lua_modules.w3ts.handles.gamecache"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.GameCache=__TS__Class()local eS=ca.GameCache;eS.name="GameCache"__TS__ClassExtends(eS,cc)function eS.prototype.____constructor(self,eT)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,InitGameCache(eT))end;self.filename=eT end;function eS.prototype.flush(self)FlushGameCache(self.handle)end;function eS.prototype.flushBoolean(self,eU,o)FlushStoredBoolean(self.handle,eU,o)end;function eS.prototype.flushInteger(self,eU,o)FlushStoredInteger(self.handle,eU,o)end;function eS.prototype.flushMission(self,eU)FlushStoredMission(self.handle,eU)end;function eS.prototype.flushNumber(self,eU,o)FlushStoredInteger(self.handle,eU,o)end;function eS.prototype.flushString(self,eU,o)FlushStoredString(self.handle,eU,o)end;function eS.prototype.flushUnit(self,eU,o)FlushStoredUnit(self.handle,eU,o)end;function eS.prototype.getBoolean(self,eU,o)return GetStoredBoolean(self.handle,eU,o)end;function eS.prototype.getInteger(self,eU,o)return GetStoredInteger(self.handle,eU,o)end;function eS.prototype.getNumber(self,eU,o)return GetStoredReal(self.handle,eU,o)end;function eS.prototype.getString(self,eU,o)return GetStoredString(self.handle,eU,o)end;function eS.prototype.hasBoolean(self,eU,o)return HaveStoredBoolean(self.handle,eU,o)end;function eS.prototype.hasInteger(self,eU,o)return HaveStoredInteger(self.handle,eU,o)end;function eS.prototype.hasNumber(self,eU,o)return HaveStoredReal(self.handle,eU,o)end;function eS.prototype.hasString(self,eU,o)return HaveStoredString(self.handle,eU,o)end;function eS.prototype.restoreUnit(self,eU,o,ek,ch,ci,dh)return RestoreUnit(self.handle,eU,o,ek.handle,ch,ci,dh)end;function eS.prototype.save(self)return SaveGameCache(self.handle)end;function eS.prototype.store(self,eU,o,f)if type(f)=="string"then StoreString(self.handle,eU,o,f)elseif type(f)=="boolean"then StoreBoolean(self.handle,eU,o,f)elseif type(f)=="number"then StoreReal(self.handle,eU,o,f)else StoreUnit(self.handle,eU,o,f)end end;function eS.prototype.syncBoolean(self,eU,o)return SyncStoredBoolean(self.handle,eU,o)end;function eS.prototype.syncInteger(self,eU,o)return SyncStoredInteger(self.handle,eU,o)end;function eS.prototype.syncNumber(self,eU,o)return SyncStoredReal(self.handle,eU,o)end;function eS.prototype.syncString(self,eU,o)return SyncStoredString(self.handle,eU,o)end;function eS.prototype.syncUnit(self,eU,o)return SyncStoredUnit(self.handle,eU,o)end;function eS.fromHandle(self,cd)return self:getObject(cd)end;function eS.reloadFromDisk(self)return ReloadGameCachesFromDisk()end;return ca end,["lua_modules.w3ts.globals.order"]=function(...)local ca={}return ca end,["lua_modules.w3ts.handles.item"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;local dd=require("lua_modules.w3ts.handles.widget")local dc=dd.Widget;ca.Item=__TS__Class()local eV=ca.Item;eV.name="Item"__TS__ClassExtends(eV,dc)function eV.prototype.____constructor(self,eW,ch,ci,eX)if cc:initFromHandle()then dc.prototype.____constructor(self)else dc.prototype.____constructor(self,(eX and function()return BlzCreateItemWithSkin(eW,ch,ci,eX)end or function()return CreateItem(eW,ch,ci)end)())end end;__TS__SetDescriptor(eV.prototype,"charges",{get=function(self)return GetItemCharges(self.handle)end,set=function(self,f)SetItemCharges(self.handle,f)end},true)__TS__SetDescriptor(eV.prototype,"invulnerable",{get=function(self)return IsItemInvulnerable(self.handle)end,set=function(self,cl)SetItemInvulnerable(self.handle,true)end},true)__TS__SetDescriptor(eV.prototype,"level",{get=function(self)return GetItemLevel(self.handle)end},true)__TS__SetDescriptor(eV.prototype,"description",{get=function(self)return BlzGetItemDescription(self.handle)end,set=function(self,a3)BlzSetItemDescription(self.handle,a3)end},true)__TS__SetDescriptor(eV.prototype,"extendedTooltip",{get=function(self)return BlzGetItemExtendedTooltip(self.handle)end,set=function(self,eQ)BlzSetItemExtendedTooltip(self.handle,eQ)end},true)__TS__SetDescriptor(eV.prototype,"icon",{get=function(self)return BlzGetItemIconPath(self.handle)end,set=function(self,eY)BlzSetItemIconPath(self.handle,eY)end},true)__TS__SetDescriptor(eV.prototype,"name",{get=function(self)return GetItemName(self.handle)end,set=function(self,f)BlzSetItemName(self.handle,f)end},true)__TS__SetDescriptor(eV.prototype,"tooltip",{get=function(self)return BlzGetItemTooltip(self.handle)end,set=function(self,eQ)BlzSetItemTooltip(self.handle,eQ)end},true)__TS__SetDescriptor(eV.prototype,"pawnable",{get=function(self)return IsItemPawnable(self.handle)end,set=function(self,cl)SetItemPawnable(self.handle,cl)end},true)__TS__SetDescriptor(eV.prototype,"player",{get=function(self)return GetItemPlayer(self.handle)end},true)__TS__SetDescriptor(eV.prototype,"type",{get=function(self)return GetItemType(self.handle)end},true)__TS__SetDescriptor(eV.prototype,"typeId",{get=function(self)return GetItemTypeId(self.handle)end},true)__TS__SetDescriptor(eV.prototype,"userData",{get=function(self)return GetItemUserData(self.handle)end,set=function(self,f)SetItemUserData(self.handle,f)end},true)__TS__SetDescriptor(eV.prototype,"visible",{get=function(self)return IsItemVisible(self.handle)end,set=function(self,cl)SetItemVisible(self.handle,cl)end},true)__TS__SetDescriptor(eV.prototype,"skin",{get=function(self)return BlzGetItemSkin(self.handle)end,set=function(self,eX)BlzSetItemSkin(self.handle,eX)end},true)__TS__SetDescriptor(eV.prototype,"x",{get=function(self)return GetItemX(self.handle)end,set=function(self,f)SetItemPosition(self.handle,f,self.y)end},true)__TS__SetDescriptor(eV.prototype,"y",{get=function(self)return GetItemY(self.handle)end,set=function(self,f)SetItemPosition(self.handle,self.x,f)end},true)function eV.prototype.addAbility(self,eZ)BlzItemAddAbility(self.handle,eZ)end;function eV.prototype.getAbility(self,eZ)return BlzGetItemAbility(self.handle,eZ)end;function eV.prototype.getAbilityByIndex(self,C)return BlzGetItemAbilityByIndex(self.handle,C)end;function eV.prototype.removeAbility(self,eZ)BlzItemRemoveAbility(self.handle,eZ)end;function eV.prototype.destroy(self)RemoveItem(self.handle)end;function eV.prototype.getField(self,cp)local e_=__TS__StringSubstr(tostring(cp),0,(string.find(tostring(cp),":",nil,true)or 0)-1)repeat local f0=e_;local f1=f0=="unitbooleanfield"if f1 then return BlzGetItemBooleanField(self.handle,cp)end;f1=f1 or f0=="unitintegerfield"if f1 then return BlzGetItemIntegerField(self.handle,cp)end;f1=f1 or f0=="unitrealfield"if f1 then return BlzGetItemRealField(self.handle,cp)end;f1=f1 or f0=="unitstringfield"if f1 then return BlzGetItemStringField(self.handle,cp)end;do return 0 end until true end;function eV.prototype.isOwned(self)return IsItemOwned(self.handle)end;function eV.prototype.isPawnable(self)return IsItemPawnable(self.handle)end;function eV.prototype.isPowerup(self)return IsItemPowerup(self.handle)end;function eV.prototype.isSellable(self)return IsItemSellable(self.handle)end;function eV.prototype.setDropId(self,f2)SetItemDropID(self.handle,f2)end;function eV.prototype.setDropOnDeath(self,cl)SetItemDropOnDeath(self.handle,cl)end;function eV.prototype.setDroppable(self,cl)SetItemDroppable(self.handle,cl)end;function eV.prototype.setField(self,cp,f)local e_=__TS__StringSubstr(tostring(cp),0,(string.find(tostring(cp),":",nil,true)or 0)-1)if e_=="unitbooleanfield"and type(f)=="boolean"then return BlzSetItemBooleanField(self.handle,cp,f)elseif e_=="unitintegerfield"and type(f)=="number"then return BlzSetItemIntegerField(self.handle,cp,f)elseif e_=="unitrealfield"and type(f)=="number"then return BlzSetItemRealField(self.handle,cp,f)elseif e_=="unitstringfield"and type(f)=="string"then return BlzSetItemStringField(self.handle,cp,f)end;return false end;function eV.prototype.setOwner(self,dr,f3)SetItemPlayer(self.handle,dr.handle,f3)end;function eV.prototype.setPoint(self,dK)SetItemPosition(self.handle,dK.x,dK.y)end;function eV.prototype.setPosition(self,ch,ci)SetItemPosition(self.handle,ch,ci)end;function eV.fromEvent(self)return self:fromHandle(GetManipulatedItem())end;function eV.fromHandle(self,cd)return self:getObject(cd)end;function eV.isIdPawnable(self,eW)return IsItemIdPawnable(eW)end;function eV.isIdPowerup(self,eW)return IsItemIdPowerup(eW)end;function eV.isIdSellable(self,eW)return IsItemIdSellable(eW)end;return ca end,["lua_modules.w3ts.handles.sound"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Sound=__TS__Class()local f4=ca.Sound;f4.name="Sound"__TS__ClassExtends(f4,cc)function f4.prototype.____constructor(self,bP,f5,f6,f7,f8,f9,fa)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateSound(bP,f5,f6,f7,f8,f9,fa))end end;__TS__SetDescriptor(f4.prototype,"dialogueSpeakerNameKey",{get=function(self)return GetDialogueSpeakerNameKey(self.handle)end,set=function(self,fb)SetDialogueSpeakerNameKey(self.handle,fb)end},true)__TS__SetDescriptor(f4.prototype,"dialogueTextKey",{get=function(self)return GetDialogueTextKey(self.handle)end,set=function(self,fc)SetDialogueTextKey(self.handle,fc)end},true)__TS__SetDescriptor(f4.prototype,"duration",{get=function(self)return GetSoundDuration(self.handle)end,set=function(self,co)SetSoundDuration(self.handle,co)end},true)__TS__SetDescriptor(f4.prototype,"loading",{get=function(self)return GetSoundIsLoading(self.handle)end},true)__TS__SetDescriptor(f4.prototype,"playing",{get=function(self)return GetSoundIsPlaying(self.handle)end},true)function f4.prototype.killWhenDone(self)KillSoundWhenDone(self.handle)end;function f4.prototype.registerStacked(self,fd,fe,ff)RegisterStackedSound(self.handle,fd,fe,ff)end;function f4.prototype.setChannel(self,fg)SetSoundDistanceCutoff(self.handle,fg)end;function f4.prototype.setConeAngles(self,fh,fi,fj)SetSoundConeAngles(self.handle,fh,fi,fj)end;function f4.prototype.setConeOrientation(self,ch,ci,dg)SetSoundConeOrientation(self.handle,ch,ci,dg)end;function f4.prototype.setDistanceCutoff(self,fk)SetSoundDistanceCutoff(self.handle,fk)end;function f4.prototype.setDistances(self,fl,fm)SetSoundDistances(self.handle,fl,fm)end;function f4.prototype.setFacialAnimationFilepath(self,fn)SetSoundFacialAnimationSetFilepath(self.handle,fn)end;function f4.prototype.setFacialAnimationGroupLabel(self,fo)SetSoundFacialAnimationGroupLabel(self.handle,fo)end;function f4.prototype.setFacialAnimationLabel(self,fp)SetSoundFacialAnimationLabel(self.handle,fp)end;function f4.prototype.setParamsFromLabel(self,fq)SetSoundParamsFromLabel(self.handle,fq)end;function f4.prototype.setPitch(self,e5)SetSoundPitch(self.handle,e5)end;function f4.prototype.setPlayPosition(self,fr)SetSoundPlayPosition(self.handle,fr)end;function f4.prototype.setPosition(self,ch,ci,dg)SetSoundPosition(self.handle,ch,ci,dg)end;function f4.prototype.setVelocity(self,ch,ci,dg)SetSoundVelocity(self.handle,ch,ci,dg)end;function f4.prototype.setVolume(self,fs)SetSoundVolume(self.handle,fs)end;function f4.prototype.start(self)StartSound(self.handle)end;function f4.prototype.stop(self,ft,fu)StopSound(self.handle,ft,fu)end;function f4.prototype.unregisterStacked(self,fd,fe,ff)UnregisterStackedSound(self.handle,fd,fe,ff)end;function f4.fromHandle(self,cd)return self:getObject(cd)end;function f4.getFileDuration(self,bP)return GetSoundFileDuration(bP)end;return ca end,["lua_modules.w3ts.handles.unit"]=function(...)require("lualib_bundle")local ca={}local fv=require("lua_modules.w3ts.handles.destructable")local de=fv.Destructable;local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;local fw=require("lua_modules.w3ts.handles.item")local eV=fw.Item;local dn=require("lua_modules.w3ts.handles.player")local dp=dn.MapPlayer;local cj=require("lua_modules.w3ts.handles.point")local cg=cj.Point;local dd=require("lua_modules.w3ts.handles.widget")local dc=dd.Widget;ca.Unit=__TS__Class()local fx=ca.Unit;fx.name="Unit"__TS__ClassExtends(fx,dc)function fx.prototype.____constructor(self,et,f2,ch,ci,dh,eX)if cc:initFromHandle()then dc.prototype.____constructor(self)else local e7=(type(et)=="number"and function()return Player(et)end or function()return et.handle end)()dc.prototype.____constructor(self,(eX and function()return BlzCreateUnitWithSkin(e7,f2,ch,ci,dh,eX)end or function()return CreateUnit(e7,f2,ch,ci,dh)end)())end end;__TS__SetDescriptor(fx.prototype,"acquireRange",{get=function(self)return GetUnitAcquireRange(self.handle)end,set=function(self,f)SetUnitAcquireRange(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"agility",{get=function(self)return GetHeroAgi(self.handle,false)end,set=function(self,f)SetHeroAgi(self.handle,f,true)end},true)__TS__SetDescriptor(fx.prototype,"armor",{get=function(self)return BlzGetUnitArmor(self.handle)end,set=function(self,fy)BlzSetUnitArmor(self.handle,fy)end},true)__TS__SetDescriptor(fx.prototype,"canSleep",{get=function(self)return UnitCanSleep(self.handle)end,set=function(self,cl)UnitAddSleep(self.handle,cl)end},true)__TS__SetDescriptor(fx.prototype,"collisionSize",{get=function(self)return BlzGetUnitCollisionSize(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"color",{set=function(self,fz)SetUnitColor(self.handle,fz)end},true)__TS__SetDescriptor(fx.prototype,"currentOrder",{get=function(self)return GetUnitCurrentOrder(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"defaultAcquireRange",{get=function(self)return GetUnitDefaultAcquireRange(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"defaultFlyHeight",{get=function(self)return GetUnitDefaultFlyHeight(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"defaultMoveSpeed",{get=function(self)return GetUnitDefaultMoveSpeed(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"defaultPropWindow",{get=function(self)return GetUnitDefaultPropWindow(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"defaultTurnSpeed",{get=function(self)return GetUnitDefaultTurnSpeed(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"experience",{get=function(self)return GetHeroXP(self.handle)end,set=function(self,fA)SetHeroXP(self.handle,fA,true)end},true)__TS__SetDescriptor(fx.prototype,"facing",{get=function(self)return GetUnitFacing(self.handle)end,set=function(self,f)SetUnitFacing(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"foodMade",{get=function(self)return GetUnitFoodMade(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"foodUsed",{get=function(self)return GetUnitFoodUsed(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"ignoreAlarmToggled",{get=function(self)return UnitIgnoreAlarmToggled(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"intelligence",{get=function(self)return GetHeroInt(self.handle,false)end,set=function(self,f)SetHeroInt(self.handle,f,true)end},true)__TS__SetDescriptor(fx.prototype,"inventorySize",{get=function(self)return UnitInventorySize(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"invulnerable",{get=function(self)return BlzIsUnitInvulnerable(self.handle)end,set=function(self,cl)SetUnitInvulnerable(self.handle,cl)end},true)__TS__SetDescriptor(fx.prototype,"level",{get=function(self)return GetUnitLevel(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"localZ",{get=function(self)return BlzGetLocalUnitZ(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"mana",{get=function(self)return self:getState(UNIT_STATE_MANA)end,set=function(self,f)self:setState(UNIT_STATE_MANA,f)end},true)__TS__SetDescriptor(fx.prototype,"maxLife",{get=function(self)return BlzGetUnitMaxHP(self.handle)end,set=function(self,f)BlzSetUnitMaxHP(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"maxMana",{get=function(self)return BlzGetUnitMaxMana(self.handle)end,set=function(self,f)BlzSetUnitMaxMana(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"moveSpeed",{get=function(self)return GetUnitMoveSpeed(self.handle)end,set=function(self,f)SetUnitMoveSpeed(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"name",{get=function(self)return GetUnitName(self.handle)end,set=function(self,f)BlzSetUnitName(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"nameProper",{get=function(self)return GetHeroProperName(self.handle)end,set=function(self,f)BlzSetHeroProperName(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"owner",{get=function(self)return dp:fromHandle(GetOwningPlayer(self.handle))end,set=function(self,dr)SetUnitOwner(self.handle,dr.handle,true)end},true)__TS__SetDescriptor(fx.prototype,"paused",{get=function(self)return IsUnitPaused(self.handle)end,set=function(self,cl)PauseUnit(self.handle,cl)end},true)__TS__SetDescriptor(fx.prototype,"point",{get=function(self)return cg:fromHandle(GetUnitLoc(self.handle))end,set=function(self,dK)SetUnitPositionLoc(self.handle,dK.handle)end},true)__TS__SetDescriptor(fx.prototype,"pointValue",{get=function(self)return GetUnitPointValue(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"propWindow",{get=function(self)return GetUnitPropWindow(self.handle)end,set=function(self,fB)SetUnitPropWindow(self.handle,fB)end},true)__TS__SetDescriptor(fx.prototype,"race",{get=function(self)return GetUnitRace(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"rallyDestructable",{get=function(self)return de:fromHandle(GetUnitRallyDestructable(self.handle))end},true)__TS__SetDescriptor(fx.prototype,"rallyPoint",{get=function(self)return cg:fromHandle(GetUnitRallyPoint(self.handle))end},true)__TS__SetDescriptor(fx.prototype,"rallyUnit",{get=function(self)return ca.Unit:fromHandle(GetUnitRallyUnit(self.handle))end},true)__TS__SetDescriptor(fx.prototype,"resourceAmount",{get=function(self)return GetResourceAmount(self.handle)end,set=function(self,fC)SetResourceAmount(self.handle,fC)end},true)__TS__SetDescriptor(fx.prototype,"selectable",{get=function(self)return BlzIsUnitSelectable(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"selectionScale",{get=function(self)local p=self:getField(UNIT_RF_SELECTION_SCALE)return(type(p)=="number"and function()return p end or function()return 0 end)()end,set=function(self,cV)self:setField(UNIT_RF_SELECTION_SCALE,cV)end},true)__TS__SetDescriptor(fx.prototype,"show",{get=function(self)return not IsUnitHidden(self.handle)end,set=function(self,cl)ShowUnit(self.handle,cl)end},true)__TS__SetDescriptor(fx.prototype,"skin",{get=function(self)return BlzGetUnitSkin(self.handle)end,set=function(self,eX)BlzSetUnitSkin(self.handle,eX)end},true)__TS__SetDescriptor(fx.prototype,"skillPoints",{get=function(self)return GetHeroSkillPoints(self.handle)end,set=function(self,fD)UnitModifySkillPoints(self.handle,fD)end},true)__TS__SetDescriptor(fx.prototype,"sleeping",{get=function(self)return UnitIsSleeping(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"strength",{get=function(self)return GetHeroStr(self.handle,false)end,set=function(self,f)SetHeroStr(self.handle,f,true)end},true)__TS__SetDescriptor(fx.prototype,"turnSpeed",{get=function(self)return GetUnitTurnSpeed(self.handle)end,set=function(self,f)SetUnitTurnSpeed(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"typeId",{get=function(self)return GetUnitTypeId(self.handle)end},true)__TS__SetDescriptor(fx.prototype,"userData",{get=function(self)return GetUnitUserData(self.handle)end,set=function(self,f)SetUnitUserData(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"waygateActive",{get=function(self)return WaygateIsActive(self.handle)end,set=function(self,cl)WaygateActivate(self.handle,cl)end},true)__TS__SetDescriptor(fx.prototype,"x",{get=function(self)return GetUnitX(self.handle)end,set=function(self,f)SetUnitX(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"y",{get=function(self)return GetUnitY(self.handle)end,set=function(self,f)SetUnitY(self.handle,f)end},true)__TS__SetDescriptor(fx.prototype,"z",{get=function(self)return BlzGetUnitZ(self.handle)end},true)function fx.prototype.addAbility(self,fE)return UnitAddAbility(self.handle,fE)end;function fx.prototype.addAnimationProps(self,fF,fG)AddUnitAnimationProperties(self.handle,fF,fG)end;function fx.prototype.addExperience(self,fH,fI)AddHeroXP(self.handle,fH,fI)end;function fx.prototype.addIndicator(self,cE,cG,cF,cH)UnitAddIndicator(self.handle,cE,cG,cF,cH)end;function fx.prototype.addItem(self,fJ)return UnitAddItem(self.handle,fJ.handle)end;function fx.prototype.addItemById(self,eW)return eV:fromHandle(UnitAddItemById(self.handle,eW))end;function fx.prototype.addItemToSlotById(self,eW,fK)return UnitAddItemToSlotById(self.handle,eW,fK)end;function fx.prototype.addItemToStock(self,eW,fL,fM)AddItemToStock(self.handle,eW,fL,fM)end;function fx.prototype.addResourceAmount(self,fC)AddResourceAmount(self.handle,fC)end;function fx.prototype.addSleepPerm(self,fG)UnitAddSleepPerm(self.handle,fG)end;function fx.prototype.addType(self,fN)return UnitAddType(self.handle,fN)end;function fx.prototype.addUnitToStock(self,f2,fL,fM)AddUnitToStock(self.handle,f2,fL,fM)end;function fx.prototype.applyTimedLife(self,fO,co)UnitApplyTimedLife(self.handle,fO,co)end;function fx.prototype.attachSound(self,fP)AttachSoundToUnit(fP.handle,self.handle)end;function fx.prototype.cancelTimedLife(self)BlzUnitCancelTimedLife(self.handle)end;function fx.prototype.canSleepPerm(self)return UnitCanSleepPerm(self.handle)end;function fx.prototype.countBuffs(self,fQ,fR,fS,fT,fU,fV,fW)return UnitCountBuffsEx(self.handle,fQ,fR,fS,fT,fU,fV,fW)end;function fx.prototype.damageAt(self,fX,eo,ch,ci,fC,fY,fZ,f_,g0,g1)return UnitDamagePoint(self.handle,fX,eo,ch,ci,fC,fY,fZ,f_,g0,g1)end;function fx.prototype.damageTarget(self,a7,fC,fY,fZ,f_,g0,g1)return UnitDamageTarget(self.handle,a7,fC,fY,fZ,f_,g0,g1)end;function fx.prototype.decAbilityLevel(self,eZ)return DecUnitAbilityLevel(self.handle,eZ)end;function fx.prototype.destroy(self)RemoveUnit(self.handle)end;function fx.prototype.disableAbility(self,dM,cl,g2)BlzUnitDisableAbility(self.handle,dM,cl,g2)end;function fx.prototype.dropItem(self,fJ,ch,ci)return UnitDropItemPoint(self.handle,fJ.handle,ch,ci)end;function fx.prototype.dropItemFromSlot(self,fJ,g3)return UnitDropItemSlot(self.handle,fJ.handle,g3)end;function fx.prototype.dropItemTarget(self,fJ,a7)return UnitDropItemTarget(self.handle,fJ.handle,a7.handle)end;function fx.prototype.endAbilityCooldown(self,eZ)BlzEndUnitAbilityCooldown(self.handle,eZ)end;function fx.prototype.getAbility(self,dM)return BlzGetUnitAbility(self.handle,dM)end;function fx.prototype.getAbilityByIndex(self,C)return BlzGetUnitAbilityByIndex(self.handle,C)end;function fx.prototype.getAbilityCooldown(self,dM,aP)return BlzGetUnitAbilityCooldown(self.handle,dM,aP)end;function fx.prototype.getAbilityCooldownRemaining(self,dM)return BlzGetUnitAbilityCooldownRemaining(self.handle,dM)end;function fx.prototype.getAbilityLevel(self,eZ)return GetUnitAbilityLevel(self.handle,eZ)end;function fx.prototype.getAbilityManaCost(self,dM,aP)return BlzGetUnitAbilityManaCost(self.handle,dM,aP)end;function fx.prototype.getAgility(self,g4)return GetHeroAgi(self.handle,g4)end;function fx.prototype.getAttackCooldown(self,g5)return BlzGetUnitAttackCooldown(self.handle,g5)end;function fx.prototype.getBaseDamage(self,g5)return BlzGetUnitBaseDamage(self.handle,g5)end;function fx.prototype.getDiceNumber(self,g5)return BlzGetUnitDiceNumber(self.handle,g5)end;function fx.prototype.getDiceSides(self,g5)return BlzGetUnitDiceSides(self.handle,g5)end;function fx.prototype.getField(self,cp)local e_=__TS__StringSubstr(tostring(cp),0,(string.find(tostring(cp),":",nil,true)or 0)-1)repeat local g6=e_;local g7,g8,g9,ga;local gb=g6=="unitbooleanfield"if gb then g7=cp;return BlzGetUnitBooleanField(self.handle,g7)end;gb=gb or g6=="unitintegerfield"if gb then g8=cp;return BlzGetUnitIntegerField(self.handle,g8)end;gb=gb or g6=="unitrealfield"if gb then g9=cp;return BlzGetUnitRealField(self.handle,g9)end;gb=gb or g6=="unitstringfield"if gb then ga=cp;return BlzGetUnitStringField(self.handle,ga)end;do return 0 end until true end;function fx.prototype.getflyHeight(self)return GetUnitFlyHeight(self.handle)end;function fx.prototype.getHeroLevel(self)return GetHeroLevel(self.handle)end;function fx.prototype.getIgnoreAlarm(self,cl)return UnitIgnoreAlarm(self.handle,cl)end;function fx.prototype.getIntelligence(self,g4)return GetHeroInt(self.handle,g4)end;function fx.prototype.getItemInSlot(self,g3)return eV:fromHandle(UnitItemInSlot(self.handle,g3))end;function fx.prototype.getState(self,gc)return GetUnitState(self.handle,gc)end;function fx.prototype.getStrength(self,g4)return GetHeroStr(self.handle,g4)end;function fx.prototype.hasBuffs(self,fQ,fR,fS,fT,fU,fV,fW)return UnitHasBuffsEx(self.handle,fQ,fR,fS,fT,fU,fV,fW)end;function fx.prototype.hasItem(self,fJ)return UnitHasItem(self.handle,fJ.handle)end;function fx.prototype.hideAbility(self,dM,cl)BlzUnitHideAbility(self.handle,dM,cl)end;function fx.prototype.incAbilityLevel(self,eZ)return IncUnitAbilityLevel(self.handle,eZ)end;function fx.prototype.inForce(self,dI)return IsUnitInForce(self.handle,dI.handle)end;function fx.prototype.inGroup(self,gd)return IsUnitInGroup(self.handle,gd.handle)end;function fx.prototype.inRange(self,ch,ci,cW)return IsUnitInRangeXY(self.handle,ch,ci,cW)end;function fx.prototype.inRangeOfPoint(self,dK,cW)return IsUnitInRangeLoc(self.handle,dK.handle,cW)end;function fx.prototype.inRangeOfUnit(self,ge,cW)return IsUnitInRange(self.handle,ge.handle,cW)end;function fx.prototype.interruptAttack(self)BlzUnitInterruptAttack(self.handle)end;function fx.prototype.inTransport(self,gf)return IsUnitInTransport(self.handle,gf.handle)end;function fx.prototype.isAlive(self)return UnitAlive(self.handle)end;function fx.prototype.isAlly(self,dr)return IsUnitAlly(self.handle,dr.handle)end;function fx.prototype.isEnemy(self,dr)return IsUnitEnemy(self.handle,dr.handle)end;function fx.prototype.isExperienceSuspended(self)return IsSuspendedXP(self.handle)end;function fx.prototype.isFogged(self,dr)return IsUnitFogged(self.handle,dr.handle)end;function fx.prototype.isHero(self)return IsHeroUnitId(self.typeId)end;function fx.prototype.isIllusion(self)return IsUnitIllusion(self.handle)end;function fx.prototype.isLoaded(self)return IsUnitLoaded(self.handle)end;function fx.prototype.isMasked(self,dr)return IsUnitMasked(self.handle,dr.handle)end;function fx.prototype.isSelected(self,dr)return IsUnitSelected(self.handle,dr.handle)end;function fx.prototype.issueBuildOrder(self,gg,ch,ci)return(type(gg)=="string"and function()return IssueBuildOrder(self.handle,gg,ch,ci)end or function()return IssueBuildOrderById(self.handle,gg,ch,ci)end)()end;function fx.prototype.issueImmediateOrder(self,gh)return(type(gh)=="string"and function()return IssueImmediateOrder(self.handle,gh)end or function()return IssueImmediateOrderById(self.handle,gh)end)()end;function fx.prototype.issueInstantOrderAt(self,gh,ch,ci,gi)return(type(gh)=="string"and function()return IssueInstantPointOrder(self.handle,gh,ch,ci,gi.handle)end or function()return IssueInstantPointOrderById(self.handle,gh,ch,ci,gi.handle)end)()end;function fx.prototype.issueInstantTargetOrder(self,gh,gj,gi)return(type(gh)=="string"and function()return IssueInstantTargetOrder(self.handle,gh,gj.handle,gi.handle)end or function()return IssueInstantTargetOrderById(self.handle,gh,gj.handle,gi.handle)end)()end;function fx.prototype.issueOrderAt(self,gh,ch,ci)return(type(gh)=="string"and function()return IssuePointOrder(self.handle,gh,ch,ci)end or function()return IssuePointOrderById(self.handle,gh,ch,ci)end)()end;function fx.prototype.issuePointOrder(self,gh,dK)return(type(gh)=="string"and function()return IssuePointOrderLoc(self.handle,gh,dK.handle)end or function()return IssuePointOrderByIdLoc(self.handle,gh,dK.handle)end)()end;function fx.prototype.issueTargetOrder(self,gh,gj)return(type(gh)=="string"and function()return IssueTargetOrder(self.handle,gh,gj.handle)end or function()return IssueTargetOrderById(self.handle,gh,gj.handle)end)()end;function fx.prototype.isUnit(self,gk)return IsUnit(self.handle,gk.handle)end;function fx.prototype.isUnitType(self,fN)return IsUnitType(self.handle,fN)end;function fx.prototype.isVisible(self,dr)return IsUnitVisible(self.handle,dr.handle)end;function fx.prototype.kill(self)KillUnit(self.handle)end;function fx.prototype.lookAt(self,gl,gm,gn,go,gp)SetUnitLookAt(self.handle,gl,gm.handle,gn,go,gp)end;function fx.prototype.makeAbilityPermanent(self,gq,fE)UnitMakeAbilityPermanent(self.handle,gq,fE)end;function fx.prototype.modifySkillPoints(self,fD)return UnitModifySkillPoints(self.handle,fD)end;function fx.prototype.pauseEx(self,cl)BlzPauseUnitEx(self.handle,cl)end;function fx.prototype.pauseTimedLife(self,cl)UnitPauseTimedLife(self.handle,cl)end;function fx.prototype.queueAnimation(self,dl)QueueUnitAnimation(self.handle,dl)end;function fx.prototype.recycleGuardPosition(self)RecycleGuardPosition(self.handle)end;function fx.prototype.removeAbility(self,fE)return UnitRemoveAbility(self.handle,fE)end;function fx.prototype.removeBuffs(self,fQ,fR)UnitRemoveBuffs(self.handle,fQ,fR)end;function fx.prototype.removeBuffsEx(self,fQ,fR,fS,fT,fU,fV,fW)UnitRemoveBuffsEx(self.handle,fQ,fR,fS,fT,fU,fV,fW)end;function fx.prototype.removeGuardPosition(self)RemoveGuardPosition(self.handle)end;function fx.prototype.removeItem(self,fJ)UnitRemoveItem(self.handle,fJ.handle)end;function fx.prototype.removeItemFromSlot(self,fK)return eV:fromHandle(UnitRemoveItemFromSlot(self.handle,fK))end;function fx.prototype.removeItemFromStock(self,eW)RemoveItemFromStock(self.handle,eW)end;function fx.prototype.removeType(self,fN)return UnitRemoveType(self.handle,fN)end;function fx.prototype.removeUnitFromStock(self,eW)RemoveUnitFromStock(self.handle,eW)end;function fx.prototype.resetCooldown(self)UnitResetCooldown(self.handle)end;function fx.prototype.resetLookAt(self)ResetUnitLookAt(self.handle)end;function fx.prototype.revive(self,ch,ci,gr)return ReviveHero(self.handle,ch,ci,gr)end;function fx.prototype.reviveAtPoint(self,dK,gr)return ReviveHeroLoc(self.handle,dK.handle,gr)end;function fx.prototype.select(self,cl)SelectUnit(self.handle,cl)end;function fx.prototype.selectSkill(self,eZ)SelectHeroSkill(self.handle,eZ)end;function fx.prototype.setAbilityCooldown(self,dM,aP,gs)BlzSetUnitAbilityCooldown(self.handle,dM,aP,gs)end;function fx.prototype.setAbilityLevel(self,eZ,aP)return SetUnitAbilityLevel(self.handle,eZ,aP)end;function fx.prototype.setAbilityManaCost(self,dM,aP,gt)BlzSetUnitAbilityManaCost(self.handle,dM,aP,gt)end;function fx.prototype.setAgility(self,f,gq)SetHeroAgi(self.handle,f,gq)end;function fx.prototype.setAnimation(self,dl)if type(dl)=="string"then SetUnitAnimation(self.handle,dl)else SetUnitAnimationByIndex(self.handle,dl)end end;function fx.prototype.setAnimationWithRarity(self,dl,gu)SetUnitAnimationWithRarity(self.handle,dl,gu)end;function fx.prototype.setAttackCooldown(self,gs,g5)BlzSetUnitAttackCooldown(self.handle,gs,g5)end;function fx.prototype.setBaseDamage(self,gv,g5)BlzSetUnitBaseDamage(self.handle,gv,g5)end;function fx.prototype.setBlendTime(self,e2)SetUnitBlendTime(self.handle,e2)end;function fx.prototype.setConstructionProgress(self,gw)UnitSetConstructionProgress(self.handle,gw)end;function fx.prototype.setCreepGuard(self,gx)SetUnitCreepGuard(self.handle,gx)end;function fx.prototype.setDiceNumber(self,gy,g5)BlzSetUnitDiceNumber(self.handle,gy,g5)end;function fx.prototype.setDiceSides(self,gz,g5)BlzSetUnitDiceSides(self.handle,gz,g5)end;function fx.prototype.setExperience(self,fA,fI)SetHeroXP(self.handle,fA,fI)end;function fx.prototype.setExploded(self,gA)SetUnitExploded(self.handle,gA)end;function fx.prototype.setFacingEx(self,gB)BlzSetUnitFacingEx(self.handle,gB)end;function fx.prototype.setField(self,cp,f)local e_=__TS__StringSubstr(tostring(cp),0,(string.find(tostring(cp),":",nil,true)or 0)-1)if e_=="unitbooleanfield"and type(f)=="boolean"then return BlzSetUnitBooleanField(self.handle,cp,f)elseif e_=="unitintegerfield"and type(f)=="number"then return BlzSetUnitIntegerField(self.handle,cp,f)elseif e_=="unitrealfield"and type(f)=="number"then return BlzSetUnitRealField(self.handle,cp,f)elseif e_=="unitstringfield"and type(f)=="string"then return BlzSetUnitStringField(self.handle,cp,f)end;return false end;function fx.prototype.setflyHeight(self,f,dO)SetUnitFlyHeight(self.handle,f,dO)end;function fx.prototype.setHeroLevel(self,aP,fI)SetHeroLevel(self.handle,aP,fI)end;function fx.prototype.setIntelligence(self,f,gq)SetHeroInt(self.handle,f,gq)end;function fx.prototype.setItemTypeSlots(self,gC)SetItemTypeSlots(self.handle,gC)end;function fx.prototype.setOwner(self,dr,f3)SetUnitOwner(self.handle,dr.handle,f3)end;function fx.prototype.setPathing(self,cl)SetUnitPathing(self.handle,cl)end;function fx.prototype.setPosition(self,ch,ci)SetUnitPosition(self.handle,ch,ci)end;function fx.prototype.setRescuable(self,gD,cl)SetUnitRescuable(self.handle,gD.handle,cl)end;function fx.prototype.setRescueRange(self,gE)SetUnitRescueRange(self.handle,gE)end;function fx.prototype.setScale(self,gF,gG,gH)SetUnitScale(self.handle,gF,gG,gH)end;function fx.prototype.setState(self,gc,gI)SetUnitState(self.handle,gc,gI)end;function fx.prototype.setStrength(self,f,gq)SetHeroStr(self.handle,f,gq)end;function fx.prototype.setTimeScale(self,e2)SetUnitTimeScale(self.handle,e2)end;function fx.prototype.setUnitAttackCooldown(self,gs,g5)BlzSetUnitAttackCooldown(self.handle,gs,g5)end;function fx.prototype.setUnitTypeSlots(self,gC)SetUnitTypeSlots(self.handle,gC)end;function fx.prototype.setUpgradeProgress(self,gJ)UnitSetUpgradeProgress(self.handle,gJ)end;function fx.prototype.setUseAltIcon(self,cl)UnitSetUsesAltIcon(self.handle,cl)end;function fx.prototype.setUseFood(self,gK)SetUnitUseFood(self.handle,gK)end;function fx.prototype.setVertexColor(self,cE,cF,cG,cH)SetUnitVertexColor(self.handle,cE,cF,cG,cH)end;function fx.prototype.shareVision(self,dr,gL)UnitShareVision(self.handle,dr.handle,gL)end;function fx.prototype.showTeamGlow(self,gM)BlzShowUnitTeamGlow(self.handle,gM)end;function fx.prototype.startAbilityCooldown(self,eZ,gs)BlzStartUnitAbilityCooldown(self.handle,eZ,gs)end;function fx.prototype.stripLevels(self,gN)return UnitStripHeroLevel(self.handle,gN)end;function fx.prototype.suspendDecay(self,gO)UnitSuspendDecay(self.handle,gO)end;function fx.prototype.suspendExperience(self,cl)SuspendHeroXP(self.handle,cl)end;function fx.prototype.useItem(self,fJ)return UnitUseItem(self.handle,fJ.handle)end;function fx.prototype.useItemAt(self,fJ,ch,ci)return UnitUseItemPoint(self.handle,fJ.handle,ch,ci)end;function fx.prototype.useItemTarget(self,fJ,a7)return UnitUseItemTarget(self.handle,fJ.handle,a7.handle)end;function fx.prototype.wakeUp(self)UnitWakeUp(self.handle)end;function fx.prototype.waygateGetDestinationX(self)return WaygateGetDestinationX(self.handle)end;function fx.prototype.waygateGetDestinationY(self)return WaygateGetDestinationY(self.handle)end;function fx.prototype.waygateSetDestination(self,ch,ci)WaygateSetDestination(self.handle,ch,ci)end;function fx.foodMadeByType(self,f2)return GetFoodMade(f2)end;function fx.foodUsedByType(self,f2)return GetFoodUsed(f2)end;function fx.fromEnum(self)return self:fromHandle(GetEnumUnit())end;function fx.fromEvent(self)return self:fromHandle(GetTriggerUnit())end;function fx.fromFilter(self)return self:fromHandle(GetFilterUnit())end;function fx.fromHandle(self,cd)return self:getObject(cd)end;function fx.getPointValueByType(self,gP)return GetUnitPointValueByType(gP)end;function fx.isUnitIdHero(self,f2)return IsHeroUnitId(f2)end;function fx.isUnitIdType(self,f2,fN)return IsUnitIdType(f2,fN)end;return ca end,["lua_modules.w3ts.handles.group"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;local gQ=require("lua_modules.w3ts.handles.unit")local fx=gQ.Unit;ca.Group=__TS__Class()local gR=ca.Group;gR.name="Group"__TS__ClassExtends(gR,cc)function gR.prototype.____constructor(self)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateGroup())end end;__TS__SetDescriptor(gR.prototype,"first",{get=function(self)return fx:fromHandle(FirstOfGroup(self.handle))end},true)__TS__SetDescriptor(gR.prototype,"size",{get=function(self)return BlzGroupGetSize(self.handle)end},true)function gR.prototype.addGroupFast(self,gS)return BlzGroupAddGroupFast(self.handle,gS.handle)end;function gR.prototype.addUnit(self,cA)return GroupAddUnit(self.handle,cA.handle)end;function gR.prototype.clear(self)GroupClear(self.handle)end;function gR.prototype.destroy(self)DestroyGroup(self.handle)end;function gR.prototype.enumUnitsInRange(self,ch,ci,eo,ds)GroupEnumUnitsInRange(self.handle,ch,ci,eo,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function gR.prototype.enumUnitsInRangeCounted(self,ch,ci,eo,ds,dt)GroupEnumUnitsInRangeCounted(self.handle,ch,ci,eo,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)(),dt)end;function gR.prototype.enumUnitsInRangeOfPoint(self,dK,eo,ds)GroupEnumUnitsInRangeOfLoc(self.handle,dK.handle,eo,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function gR.prototype.enumUnitsInRangeOfPointCounted(self,dK,eo,ds,dt)GroupEnumUnitsInRangeOfLocCounted(self.handle,dK.handle,eo,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)(),dt)end;function gR.prototype.enumUnitsInRect(self,gT,ds)GroupEnumUnitsInRect(self.handle,gT.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function gR.prototype.enumUnitsInRectCounted(self,gT,ds,dt)GroupEnumUnitsInRectCounted(self.handle,gT.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)(),dt)end;function gR.prototype.enumUnitsOfPlayer(self,dr,ds)GroupEnumUnitsOfPlayer(self.handle,dr.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function gR.prototype.enumUnitsOfType(self,dG,ds)GroupEnumUnitsOfType(self.handle,dG,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function gR.prototype.enumUnitsOfTypeCounted(self,dG,ds,dt)GroupEnumUnitsOfTypeCounted(self.handle,dG,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)(),dt)end;function gR.prototype.enumUnitsSelected(self,dr,ds)GroupEnumUnitsSelected(self.handle,dr.handle,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;gR.prototype["for"]=function(self,a1)ForGroup(self.handle,a1)end;function gR.prototype.getUnits(self)local gU={}self["for"](self,function()return __TS__ArrayPush(gU,fx:fromFilter())end)return gU end;function gR.prototype.getUnitAt(self,C)return fx:fromHandle(BlzGroupUnitAt(self.handle,C))end;function gR.prototype.hasUnit(self,cA)return IsUnitInGroup(cA.handle,self.handle)end;function gR.prototype.orderCoords(self,gh,ch,ci)if type(gh)=="string"then GroupPointOrder(self.handle,gh,ch,ci)else GroupPointOrderById(self.handle,gh,ch,ci)end end;function gR.prototype.orderImmediate(self,gh)if type(gh)=="string"then GroupImmediateOrder(self.handle,gh)else GroupImmediateOrderById(self.handle,gh)end end;function gR.prototype.orderPoint(self,gh,dK)if type(gh)=="string"then GroupPointOrderLoc(self.handle,gh,dK.handle)else GroupPointOrderByIdLoc(self.handle,gh,dK.handle)end end;function gR.prototype.orderTarget(self,gh,gj)if type(gh)=="string"then GroupTargetOrder(self.handle,gh,gj.handle)else GroupTargetOrderById(self.handle,gh,gj.handle)end end;function gR.prototype.removeGroupFast(self,gV)return BlzGroupRemoveGroupFast(self.handle,gV.handle)end;function gR.prototype.removeUnit(self,cA)return GroupRemoveUnit(self.handle,cA.handle)end;function gR.fromHandle(self,cd)return self:getObject(cd)end;function gR.getEnumUnit(self)return fx:fromHandle(GetEnumUnit())end;function gR.getFilterUnit(self)return fx:fromHandle(GetFilterUnit())end;return ca end,["lua_modules.w3ts.handles.image"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.ImageType=ImageType or{}ca.ImageType.Selection=1;ca.ImageType[ca.ImageType.Selection]="Selection"ca.ImageType.Indicator=2;ca.ImageType[ca.ImageType.Indicator]="Indicator"ca.ImageType.OcclusionMask=3;ca.ImageType[ca.ImageType.OcclusionMask]="OcclusionMask"ca.ImageType.Ubersplat=4;ca.ImageType[ca.ImageType.Ubersplat]="Ubersplat"ca.Image=__TS__Class()local gW=ca.Image;gW.name="Image"__TS__ClassExtends(gW,cc)function gW.prototype.____constructor(self,d,gX,gY,gZ,g_,h0,h1,h2,h3,h4,h5)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateImage(d,gX,gY,gZ,g_,h0,h1,h2,h3,h4,h5))end end;function gW.prototype.destroy(self)DestroyImage(self.handle)end;function gW.prototype.setAboveWater(self,cl,h6)SetImageAboveWater(self.handle,cl,h6)end;function gW.prototype.setColor(self,cE,cF,cG,cH)SetImageColor(self.handle,cE,cF,cG,cH)end;function gW.prototype.setConstantHeight(self,cl,e3)SetImageConstantHeight(self.handle,cl,e3)end;function gW.prototype.setPosition(self,ch,ci,dg)SetImagePosition(self.handle,ch,ci,dg)end;function gW.prototype.setRender(self,cl)SetImageRenderAlways(self.handle,cl)end;function gW.prototype.setType(self,h5)SetImageType(self.handle,h5)end;function gW.prototype.show(self,cl)ShowImage(self.handle,cl)end;function gW.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.leaderboard"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Leaderboard=__TS__Class()local h7=ca.Leaderboard;h7.name="Leaderboard"__TS__ClassExtends(h7,cc)function h7.prototype.____constructor(self)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateLeaderboard())end end;__TS__SetDescriptor(h7.prototype,"displayed",{get=function(self)return IsLeaderboardDisplayed(self.handle)end},true)__TS__SetDescriptor(h7.prototype,"itemCount",{get=function(self)return LeaderboardGetItemCount(self.handle)end,set=function(self,c5)LeaderboardSetSizeByItemCount(self.handle,c5)end},true)__TS__SetDescriptor(h7.prototype,"label",{get=function(self)return LeaderboardGetLabelText(self.handle)end,set=function(self,f)LeaderboardSetLabel(self.handle,f)end},true)function h7.prototype.addItem(self,d3,f,e7)LeaderboardAddItem(self.handle,d3,f,e7.handle)end;function h7.prototype.clear(self)LeaderboardClear(self.handle)end;function h7.prototype.destroy(self)DestroyLeaderboard(self.handle)end;function h7.prototype.display(self,cl)if cl==nil then cl=true end;LeaderboardDisplay(self.handle,cl)end;function h7.prototype.getPlayerIndex(self,e7)return LeaderboardGetPlayerIndex(self.handle,e7.handle)end;function h7.prototype.hasPlayerItem(self,e7)LeaderboardHasPlayerItem(self.handle,e7.handle)end;function h7.prototype.removeItem(self,C)LeaderboardRemoveItem(self.handle,C)end;function h7.prototype.removePlayerItem(self,e7)LeaderboardRemovePlayerItem(self.handle,e7.handle)end;function h7.prototype.setItemLabel(self,F,d3)LeaderboardSetItemLabel(self.handle,F,d3)end;function h7.prototype.setItemLabelColor(self,F,cE,cF,cG,cH)LeaderboardSetItemLabelColor(self.handle,F,cE,cF,cG,cH)end;function h7.prototype.setItemStyle(self,F,h8,h9,ha)if h8==nil then h8=true end;if h9==nil then h9=true end;if ha==nil then ha=true end;LeaderboardSetItemStyle(self.handle,F,h8,h9,ha)end;function h7.prototype.setItemValue(self,F,f)LeaderboardSetItemValue(self.handle,F,f)end;function h7.prototype.setItemValueColor(self,F,cE,cF,cG,cH)LeaderboardSetItemValueColor(self.handle,F,cE,cF,cG,cH)end;function h7.prototype.setLabelColor(self,cE,cF,cG,cH)LeaderboardSetLabelColor(self.handle,cE,cF,cG,cH)end;function h7.prototype.setPlayerBoard(self,e7)PlayerSetLeaderboard(e7.handle,self.handle)end;function h7.prototype.setStyle(self,h8,hb,h9,ha)if h8==nil then h8=true end;if hb==nil then hb=true end;if h9==nil then h9=true end;if ha==nil then ha=true end;LeaderboardSetStyle(self.handle,h8,hb,h9,ha)end;function h7.prototype.setValueColor(self,cE,cF,cG,cH)LeaderboardSetValueColor(self.handle,cE,cF,cG,cH)end;function h7.prototype.sortByLabel(self,hc)if hc==nil then hc=true end;LeaderboardSortItemsByLabel(self.handle,hc)end;function h7.prototype.sortByPlayer(self,hc)if hc==nil then hc=true end;LeaderboardSortItemsByPlayer(self.handle,hc)end;function h7.prototype.sortByValue(self,hc)if hc==nil then hc=true end;LeaderboardSortItemsByValue(self.handle,hc)end;function h7.fromHandle(self,cd)return self:getObject(cd)end;function h7.fromPlayer(self,e7)return self:fromHandle(PlayerGetLeaderboard(e7.handle))end;return ca end,["lua_modules.w3ts.handles.multiboard"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.MultiboardItem=__TS__Class()local hd=ca.MultiboardItem;hd.name="MultiboardItem"__TS__ClassExtends(hd,cc)function hd.prototype.____constructor(self,he,ch,ci)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,MultiboardGetItem(he.handle,ch-1,ci-1))end end;function hd.prototype.destroy(self)MultiboardReleaseItem(self.handle)end;function hd.prototype.setIcon(self,hf)MultiboardSetItemIcon(self.handle,hf)end;function hd.prototype.setStyle(self,hg,hh)MultiboardSetItemStyle(self.handle,hg,hh)end;function hd.prototype.setValue(self,k)MultiboardSetItemValue(self.handle,k)end;function hd.prototype.setValueColor(self,cE,cF,cG,cH)MultiboardSetItemValueColor(self.handle,cE,cF,cG,cH)end;function hd.prototype.setWidth(self,eB)MultiboardSetItemWidth(self.handle,eB)end;function hd.fromHandle(self,cd)return self:getObject(cd)end;ca.Multiboard=__TS__Class()local hi=ca.Multiboard;hi.name="Multiboard"__TS__ClassExtends(hi,cc)function hi.prototype.____constructor(self)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateMultiboard())end end;__TS__SetDescriptor(hi.prototype,"columns",{get=function(self)return MultiboardGetColumnCount(self.handle)end,set=function(self,c5)MultiboardSetColumnCount(self.handle,c5)end},true)__TS__SetDescriptor(hi.prototype,"displayed",{get=function(self)return IsMultiboardDisplayed(self.handle)end},true)__TS__SetDescriptor(hi.prototype,"rows",{get=function(self)return MultiboardGetRowCount(self.handle)end,set=function(self,c5)MultiboardSetRowCount(self.handle,c5)end},true)__TS__SetDescriptor(hi.prototype,"title",{get=function(self)return MultiboardGetTitleText(self.handle)end,set=function(self,d3)MultiboardSetTitleText(self.handle,d3)end},true)function hi.prototype.clear(self)MultiboardClear(self.handle)end;function hi.prototype.createItem(self,ch,ci)return __TS__New(ca.MultiboardItem,self,ch,ci)end;function hi.prototype.destroy(self)DestroyMultiboard(self.handle)end;function hi.prototype.display(self,gM)MultiboardDisplay(self.handle,gM)end;function hi.prototype.minimize(self,cl)MultiboardMinimize(self.handle,cl)end;function hi.prototype.minimized(self)return IsMultiboardMinimized(self.handle)end;function hi.prototype.setItemsIcons(self,hf)MultiboardSetItemsIcon(self.handle,hf)end;function hi.prototype.setItemsStyle(self,h9,ha)MultiboardSetItemsStyle(self.handle,h9,ha)end;function hi.prototype.setItemsValue(self,f)MultiboardSetItemsValue(self.handle,f)end;function hi.prototype.setItemsValueColor(self,cE,cF,cG,cH)MultiboardSetItemsValueColor(self.handle,cE,cF,cG,cH)end;function hi.prototype.setItemsWidth(self,eB)MultiboardSetItemsWidth(self.handle,eB)end;function hi.prototype.setTitleTextColor(self,cE,cF,cG,cH)MultiboardSetTitleTextColor(self.handle,cE,cF,cG,cH)end;function hi.fromHandle(self,cd)return self:getObject(cd)end;function hi.suppressDisplay(self,cl)MultiboardSuppressDisplay(cl)end;return ca end,["lua_modules.w3ts.handles.quest"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.QuestItem=__TS__Class()local hj=ca.QuestItem;hj.name="QuestItem"__TS__ClassExtends(hj,cc)function hj.prototype.____constructor(self,hk)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,QuestCreateItem(hk.handle))end end;__TS__SetDescriptor(hj.prototype,"completed",{get=function(self)return IsQuestItemCompleted(self.handle)end,set=function(self,hl)QuestItemSetCompleted(self.handle,hl)end},true)function hj.prototype.setDescription(self,a3)QuestItemSetDescription(self.handle,a3)end;ca.Quest=__TS__Class()local hm=ca.Quest;hm.name="Quest"__TS__ClassExtends(hm,cc)function hm.prototype.____constructor(self)cc.prototype.____constructor(self,(cc:initFromHandle()and function()return nil end or function()return CreateQuest()end)())end;__TS__SetDescriptor(hm.prototype,"completed",{get=function(self)return IsQuestCompleted(self.handle)end,set=function(self,hl)QuestSetCompleted(self.handle,hl)end},true)__TS__SetDescriptor(hm.prototype,"discovered",{get=function(self)return IsQuestDiscovered(self.handle)end,set=function(self,hn)QuestSetDiscovered(self.handle,hn)end},true)__TS__SetDescriptor(hm.prototype,"enabled",{get=function(self)return IsQuestEnabled(self.handle)end,set=function(self,ho)QuestSetEnabled(self.handle,ho)end},true)__TS__SetDescriptor(hm.prototype,"failed",{get=function(self)return IsQuestFailed(self.handle)end,set=function(self,hp)QuestSetFailed(self.handle,hp)end},true)__TS__SetDescriptor(hm.prototype,"required",{get=function(self)return IsQuestRequired(self.handle)end,set=function(self,hq)QuestSetRequired(self.handle,hq)end},true)function hm.prototype.addItem(self,a3)local hr=__TS__New(ca.QuestItem,self)hr:setDescription(a3)return hr end;function hm.prototype.destroy(self)DestroyQuest(self.handle)end;function hm.prototype.setDescription(self,a3)QuestSetDescription(self.handle,a3)end;function hm.prototype.setIcon(self,hs)QuestSetIconPath(self.handle,hs)end;function hm.prototype.setTitle(self,ht)QuestSetTitle(self.handle,ht)end;function hm.flashQuestDialogButton(self)FlashQuestDialogButton()end;function hm.forceQuestDialogUpdate(self)ForceQuestDialogUpdate()end;function hm.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.region"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Region=__TS__Class()local hu=ca.Region;hu.name="Region"__TS__ClassExtends(hu,cc)function hu.prototype.____constructor(self)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateRegion())end end;function hu.prototype.addCell(self,ch,ci)RegionAddCell(self.handle,ch,ci)end;function hu.prototype.addCellPoint(self,dK)RegionAddCellAtLoc(self.handle,dK.handle)end;function hu.prototype.addRect(self,gT)RegionAddRect(self.handle,gT.handle)end;function hu.prototype.clearCell(self,ch,ci)RegionClearCell(self.handle,ch,ci)end;function hu.prototype.clearCellPoint(self,dK)RegionClearCellAtLoc(self.handle,dK.handle)end;function hu.prototype.clearRect(self,gT)RegionClearRect(self.handle,gT.handle)end;function hu.prototype.containsCoords(self,ch,ci)return IsPointInRegion(self.handle,ch,ci)end;function hu.prototype.containsPoint(self,dK)IsLocationInRegion(self.handle,dK.handle)end;function hu.prototype.containsUnit(self,cA)return IsUnitInRegion(self.handle,cA.handle)end;function hu.prototype.destroy(self)RemoveRegion(self.handle)end;function hu.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.texttag"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.TextTag=__TS__Class()local hv=ca.TextTag;hv.name="TextTag"__TS__ClassExtends(hv,cc)function hv.prototype.____constructor(self)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateTextTag())end end;function hv.prototype.destroy(self)DestroyTextTag(self.handle)end;function hv.prototype.setAge(self,hw)SetTextTagAge(self.handle,hw)end;function hv.prototype.setColor(self,cE,cF,cG,cH)SetTextTagColor(self.handle,cE,cF,cG,cH)end;function hv.prototype.setFadepoint(self,hx)SetTextTagFadepoint(self.handle,hx)end;function hv.prototype.setLifespan(self,hy)SetTextTagLifespan(self.handle,hy)end;function hv.prototype.setPermanent(self,cl)SetTextTagPermanent(self.handle,cl)end;function hv.prototype.setPos(self,ch,ci,hz)SetTextTagPos(self.handle,ch,ci,hz)end;function hv.prototype.setPosUnit(self,hA,hz)SetTextTagPosUnit(self.handle,hA.handle,hz)end;function hv.prototype.setSuspended(self,cl)SetTextTagSuspended(self.handle,cl)end;function hv.prototype.setText(self,hB,e3,hC)if hC==nil then hC=false end;if hC then e3=e3*0.0023 end;SetTextTagText(self.handle,hB,e3)end;function hv.prototype.setVelocity(self,hD,hE)SetTextTagVelocity(self.handle,hD,hE)end;function hv.prototype.setVelocityAngle(self,hF,hG)local hH=hF*0.071/128;self:setVelocity(hH*Cos(hG*bj_DEGTORAD),hH*Sin(hG*bj_DEGTORAD))end;function hv.prototype.setVisible(self,cl)SetTextTagVisibility(self.handle,cl)end;function hv.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.timer"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Timer=__TS__Class()local hI=ca.Timer;hI.name="Timer"__TS__ClassExtends(hI,cc)function hI.prototype.____constructor(self)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateTimer())end end;__TS__SetDescriptor(hI.prototype,"elapsed",{get=function(self)return TimerGetElapsed(self.handle)end},true)__TS__SetDescriptor(hI.prototype,"remaining",{get=function(self)return TimerGetRemaining(self.handle)end},true)__TS__SetDescriptor(hI.prototype,"timeout",{get=function(self)return TimerGetTimeout(self.handle)end},true)function hI.prototype.destroy(self)DestroyTimer(self.handle)return self end;function hI.prototype.pause(self)PauseTimer(self.handle)return self end;function hI.prototype.resume(self)ResumeTimer(self.handle)return self end;function hI.prototype.start(self,hJ,hK,hL)TimerStart(self.handle,hJ,hK,hL)return self end;function hI.fromExpired(self)return self:fromHandle(GetExpiredTimer())end;function hI.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.timerdialog"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.TimerDialog=__TS__Class()local hM=ca.TimerDialog;hM.name="TimerDialog"__TS__ClassExtends(hM,cc)function hM.prototype.____constructor(self,hN)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateTimerDialog(hN.handle))end end;__TS__SetDescriptor(hM.prototype,"display",{get=function(self)return IsTimerDialogDisplayed(self.handle)end,set=function(self,hO)TimerDialogDisplay(self.handle,hO)end},true)function hM.prototype.destroy(self)DestroyTimerDialog(self.handle)end;function hM.prototype.setSpeed(self,hP)TimerDialogSetSpeed(self.handle,hP)end;function hM.prototype.setTimeRemaining(self,f)TimerDialogSetRealTimeRemaining(self.handle,f)end;function hM.prototype.setTitle(self,ht)TimerDialogSetTitle(self.handle,ht)end;function hM.prototype.setTitleColor(self,cE,cF,cG,cH)TimerDialogSetTitleColor(self.handle,cE,cF,cG,cH)end;function hM.prototype.setTimeColor(self,cE,cF,cG,cH)TimerDialogSetTimeColor(self.handle,cE,cF,cG,cH)end;function hM.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.trigger"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Trigger=__TS__Class()local hQ=ca.Trigger;hQ.name="Trigger"__TS__ClassExtends(hQ,cc)function hQ.prototype.____constructor(self)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateTrigger())end end;__TS__SetDescriptor(hQ.prototype,"enabled",{get=function(self)return IsTriggerEnabled(self.handle)end,set=function(self,cl)if cl then EnableTrigger(self.handle)else DisableTrigger(self.handle)end end},true)__TS__SetDescriptor(hQ.prototype,"evalCount",{get=function(self)return GetTriggerEvalCount(self.handle)end},true)__TS__ObjectDefineProperty(hQ,"eventId",{get=function(self)return GetTriggerEventId()end})__TS__SetDescriptor(hQ.prototype,"execCount",{get=function(self)return GetTriggerExecCount(self.handle)end},true)__TS__SetDescriptor(hQ.prototype,"waitOnSleeps",{get=function(self)return IsTriggerWaitOnSleeps(self.handle)end,set=function(self,cl)TriggerWaitOnSleeps(self.handle,cl)end},true)function hQ.prototype.addAction(self,ed)return TriggerAddAction(self.handle,ed)end;function hQ.prototype.addCondition(self,hR)return TriggerAddCondition(self.handle,(type(hR)=="function"and function()return Condition(hR)end or function()return hR end)())end;function hQ.prototype.destroy(self)DestroyTrigger(self.handle)end;function hQ.prototype.eval(self)return TriggerEvaluate(self.handle)end;function hQ.prototype.exec(self)return TriggerExecute(self.handle)end;function hQ.prototype.execWait(self)TriggerExecuteWait(self.handle)end;function hQ.prototype.registerAnyUnitEvent(self,hS)return TriggerRegisterAnyUnitEventBJ(self.handle,hS)end;function hQ.prototype.registerCommandEvent(self,hT,gh)return TriggerRegisterCommandEvent(self.handle,hT,gh)end;function hQ.prototype.registerDeathEvent(self,hU)return TriggerRegisterDeathEvent(self.handle,hU.handle)end;function hQ.prototype.registerDialogButtonEvent(self,hV)return TriggerRegisterDialogButtonEvent(self.handle,hV.handle)end;function hQ.prototype.registerDialogEvent(self,dT)return TriggerRegisterDialogEvent(self.handle,dT.handle)end;function hQ.prototype.registerEnterRegion(self,hW,ds)return TriggerRegisterEnterRegion(self.handle,hW,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function hQ.prototype.registerFilterUnitEvent(self,cA,hX,ds)return TriggerRegisterFilterUnitEvent(self.handle,cA,hX,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function hQ.prototype.registerGameEvent(self,hY)return TriggerRegisterGameEvent(self.handle,hY)end;function hQ.prototype.registerGameStateEvent(self,el,hZ,h_)return TriggerRegisterGameStateEvent(self.handle,el,hZ,h_)end;function hQ.prototype.registerLeaveRegion(self,hW,ds)return TriggerRegisterLeaveRegion(self.handle,hW,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function hQ.prototype.registerPlayerAllianceChange(self,dr,i0)return TriggerRegisterPlayerAllianceChange(self.handle,dr.handle,i0)end;function hQ.prototype.registerPlayerChatEvent(self,dr,i1,i2)return TriggerRegisterPlayerChatEvent(self.handle,dr.handle,i1,i2)end;function hQ.prototype.registerPlayerEvent(self,dr,i3)return TriggerRegisterPlayerEvent(self.handle,dr.handle,i3)end;function hQ.prototype.registerPlayerKeyEvent(self,dr,i4,i5,i6)return BlzTriggerRegisterPlayerKeyEvent(self.handle,dr.handle,i4,i5,i6)end;function hQ.prototype.registerPlayerMouseEvent(self,dr,i7)return TriggerRegisterPlayerMouseEventBJ(self.handle,dr.handle,i7)end;function hQ.prototype.registerPlayerStateEvent(self,dr,el,hZ,h_)return TriggerRegisterPlayerStateEvent(self.handle,dr.handle,el,hZ,h_)end;function hQ.prototype.registerPlayerSyncEvent(self,dr,i8,i9)return BlzTriggerRegisterPlayerSyncEvent(self.handle,dr.handle,i8,i9)end;function hQ.prototype.registerPlayerUnitEvent(self,dr,hS,ds)return TriggerRegisterPlayerUnitEvent(self.handle,dr.handle,hS,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function hQ.prototype.registerTimerEvent(self,hJ,hK)return TriggerRegisterTimerEvent(self.handle,hJ,hK)end;function hQ.prototype.registerTimerExpireEvent(self,hN)return TriggerRegisterTimerExpireEvent(self.handle,hN)end;function hQ.prototype.registerTrackableHitEvent(self,ia)return TriggerRegisterTrackableHitEvent(self.handle,ia)end;function hQ.prototype.registerTrackableTrackEvent(self,ia)return TriggerRegisterTrackableTrackEvent(self.handle,ia)end;function hQ.prototype.registerUnitEvent(self,cA,hX)return TriggerRegisterUnitEvent(self.handle,cA.handle,hX)end;function hQ.prototype.registerUnitInRage(self,cA,gE,ds)return TriggerRegisterUnitInRange(self.handle,cA,gE,(type(ds)=="function"and function()return Filter(ds)end or function()return ds end)())end;function hQ.prototype.registerUnitStateEvent(self,cA,el,hZ,h_)return TriggerRegisterUnitStateEvent(self.handle,cA.handle,el,hZ,h_)end;function hQ.prototype.registerUpgradeCommandEvent(self,ib)return TriggerRegisterUpgradeCommandEvent(self.handle,ib)end;function hQ.prototype.registerVariableEvent(self,ic,hZ,h_)return TriggerRegisterVariableEvent(self.handle,ic,hZ,h_)end;function hQ.prototype.removeAction(self,id)return TriggerRemoveAction(self.handle,id)end;function hQ.prototype.removeActions(self)return TriggerClearActions(self.handle)end;function hQ.prototype.removeCondition(self,ie)return TriggerRemoveCondition(self.handle,ie)end;function hQ.prototype.removeConditions(self)return TriggerClearConditions(self.handle)end;function hQ.prototype.reset(self)ResetTrigger(self.handle)end;function hQ.prototype.triggerRegisterFrameEvent(self,ig,ih)return BlzTriggerRegisterFrameEvent(self.handle,ig.handle,ih)end;function hQ.fromEvent(self)return self:fromHandle(GetTriggeringTrigger())end;function hQ.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.ubersplat"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.Ubersplat=__TS__Class()local ii=ca.Ubersplat;ii.name="Ubersplat"__TS__ClassExtends(ii,cc)function ii.prototype.____constructor(self,ch,ci,aU,cE,cF,cG,cH,ij,ik)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,CreateUbersplat(ch,ci,aU,cE,cF,cG,cH,ij,ik))end end;function ii.prototype.destroy(self)DestroyUbersplat(self.handle)end;function ii.prototype.finish(self)FinishUbersplat(self.handle)end;function ii.prototype.render(self,cl,il)if il==nil then il=false end;if il then SetUbersplatRenderAlways(self.handle,cl)else SetUbersplatRender(self.handle,cl)end end;function ii.prototype.reset(self)ResetUbersplat(self.handle)end;function ii.prototype.show(self,cl)ShowUbersplat(self.handle,cl)end;function ii.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.weathereffect"]=function(...)require("lualib_bundle")local ca={}local cf=require("lua_modules.w3ts.handles.handle")local cc=cf.Handle;ca.WeatherEffect=__TS__Class()local im=ca.WeatherEffect;im.name="WeatherEffect"__TS__ClassExtends(im,cc)function im.prototype.____constructor(self,er,io)if cc:initFromHandle()then cc.prototype.____constructor(self)else cc.prototype.____constructor(self,AddWeatherEffect(er.handle,io))end end;function im.prototype.destroy(self)RemoveWeatherEffect(self.handle)end;function im.prototype.enable(self,cl)EnableWeatherEffect(self.handle,cl)end;function im.fromHandle(self,cd)return self:getObject(cd)end;return ca end,["lua_modules.w3ts.handles.index"]=function(...)local ca={}do local ip=require("lua_modules.w3ts.handles.camera")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.destructable")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.dialog")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.effect")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.fogmodifier")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.force")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.frame")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.gamecache")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.group")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.handle")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.image")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.item")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.leaderboard")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.multiboard")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.player")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.point")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.quest")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.rect")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.region")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.sound")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.texttag")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.timer")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.timerdialog")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.trigger")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.ubersplat")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.unit")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.weathereffect")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.handles.widget")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;return ca end,["lua_modules.w3ts.hooks.index"]=function(...)require("lualib_bundle")local ca={}local is=main;local it=config;local iu={}local iv={}local iw={}local ix={}ca.executeHooksMainBefore=function()return __TS__ArrayForEach(iu,function(j,iy)return iy()end)end;ca.executeHooksMainAfter=function()return __TS__ArrayForEach(iv,function(j,iy)return iy()end)end;function ca.hookedMain()ca.executeHooksMainBefore()is()ca.executeHooksMainAfter()end;ca.executeHooksConfigBefore=function()return __TS__ArrayForEach(iw,function(j,iy)return iy()end)end;ca.executeHooksConfigAfter=function()return __TS__ArrayForEach(ix,function(j,iy)return iy()end)end;function ca.hookedConfig()ca.executeHooksConfigBefore()it()ca.executeHooksConfigAfter()end;main=ca.hookedMain;config=ca.hookedConfig;ca.W3TS_HOOK=W3TS_HOOK or{}ca.W3TS_HOOK.MAIN_BEFORE="main::before"ca.W3TS_HOOK.MAIN_AFTER="main::after"ca.W3TS_HOOK.CONFIG_BEFORE="config::before"ca.W3TS_HOOK.CONFIG_AFTER="config::after"local iz={[ca.W3TS_HOOK.MAIN_BEFORE]=iu,[ca.W3TS_HOOK.MAIN_AFTER]=iv,[ca.W3TS_HOOK.CONFIG_BEFORE]=iw,[ca.W3TS_HOOK.CONFIG_AFTER]=ix}function ca.addScriptHook(iA,iB)if not(iz[iA]~=nil)then return false end;__TS__ArrayPush(iz[iA],iB)return true end;return ca end,["lua_modules.w3ts.system.base64"]=function(...)require("lualib_bundle")local ca={}local iC="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="function ca.base64Encode(iD)local ey=""do local iE=0;local iF=0;local iG=0;local cb=iC;while#__TS__StringCharAt(iD,math.floor(iG)|0)>0 or(function()(function()cb="="return cb end)()return iG%1 end)()do iF=string.byte(iD,math.floor((function()iG=iG+3/4;return iG end)())+1)or 0;if math.floor(iG)>#iD and iF==0 then if#ey%4==1 then return ey.."="end;return ey.."=="end;if iF>255 then print("'base64Encode' failed: The string to be encoded contains characters outside of the Latin1 range.")return ey end;iE=iE<<8|iF;ey=ey..__TS__StringCharAt(cb,math.floor(63&(iE>>8-iG%1*8)))end end;return ey end;function ca.base64Decode(iD)local s=#iD;do while s>0 and __TS__StringAccess(iD,s)~="="do s=s-1 end end;local iH=__TS__StringSubstr(iD,0,s-1)local ey=""if#iH%4==1 then print("'base64Decode' failed: The string to be decoded is not correctly encoded.")return ey end;local iI=0;do local iJ=0;local iK;local iG=0;while(function()iK=__TS__StringCharAt(iH,iG)return iK end)()do if#tostring(iK)==0 then break end;iK=(string.find(iC,iK,nil,true)or 0)-1;iG=iG+1(~iK and(function()(function()iI=(iJ%4~=0 and function()return iI*64+iK end or function()return iK end)()return iI end)()return(function()local iL=iJ;iJ=iL+1;return iL end)()%4 end)()~=0 and function()return(function()ey=ey..string.char(255&(iI>>(-2*iJ&6)))return ey end)()end or function()return 0 end)()end end;return ey end;return ca end,["lua_modules.w3ts.system.binaryreader"]=function(...)require("lualib_bundle")local ca={}ca.BinaryReader=__TS__Class()local iM=ca.BinaryReader;iM.name="BinaryReader"function iM.prototype.____constructor(self,iN)self.pos=1;self.data=iN end;function iM.prototype.read(self,iO,eA)local iP={string.unpack(iO,self.data,self.pos)}self.pos=self.pos+eA;if#iP<=0 then return 0 end;return iP[1]end;function iM.prototype.readDouble(self)return self:read(">d",4)end;function iM.prototype.readFloat(self)return self:read(">f",4)end;function iM.prototype.readInt16(self)return self:read(">h",2)end;function iM.prototype.readInt32(self)return self:read(">i4",4)end;function iM.prototype.readInt8(self)return self:read(">b",1)end;function iM.prototype.readString(self)local f=self:read(">z",0)self.pos=self.pos+#f+1;return f end;function iM.prototype.readUInt16(self)return self:read(">H",2)end;function iM.prototype.readUInt32(self)return self:read(">I4",4)end;function iM.prototype.readUInt8(self)return self:read(">B",1)end;return ca end,["lua_modules.w3ts.system.binarywriter"]=function(...)require("lualib_bundle")local ca={}ca.BinaryWriter=__TS__Class()local iQ=ca.BinaryWriter;iQ.name="BinaryWriter"function iQ.prototype.____constructor(self)self.values={}self.fmj=">"end;function iQ.prototype.__tostring(self)return string.pack(self.fmj,table.unpack(self.values))end;function iQ.prototype.writeDouble(self,f)self.fmj=self.fmj.."d"__TS__ArrayPush(self.values,f)end;function iQ.prototype.writeFloat(self,f)self.fmj=self.fmj.."f"__TS__ArrayPush(self.values,f)end;function iQ.prototype.writeInt16(self,f)self.fmj=self.fmj.."h"__TS__ArrayPush(self.values,f)end;function iQ.prototype.writeInt32(self,f)self.fmj=self.fmj.."i4"__TS__ArrayPush(self.values,f)end;function iQ.prototype.writeInt8(self,f)self.fmj=self.fmj.."b"__TS__ArrayPush(self.values,f)end;function iQ.prototype.writeString(self,f)self.fmj=self.fmj.."z"__TS__ArrayPush(self.values,f)end;function iQ.prototype.writeUInt16(self,f)self.fmj=self.fmj.."H"__TS__ArrayPush(self.values,f)end;function iQ.prototype.writeUInt32(self,f)self.fmj=self.fmj.."I4"__TS__ArrayPush(self.values,f)end;function iQ.prototype.writeUInt8(self,f)self.fmj=self.fmj.."B"__TS__ArrayPush(self.values,f)end;return ca end,["lua_modules.w3ts.system.file"]=function(...)require("lualib_bundle")local ca={}ca.File=__TS__Class()local iR=ca.File;iR.name="File"function iR.prototype.____constructor(self)end;function iR.escape(self,iS)iS=string.gsub(iS,ca.File.escapeCharacter,ca.File.escapedSelf)iS=string.gsub(iS,"\"",ca.File.escapedQuote)return iS end;function iR.unescape(self,iS)iS=string.gsub(iS,ca.File.escapedQuote,"\"")iS=string.gsub(iS,ca.File.escapedSelf,ca.File.escapeCharacter)return iS end;function iR.read(self,eF)local iT=BlzGetAbilityIcon(self.dummyAbility)Preloader(eF)local iU=BlzGetAbilityIcon(self.dummyAbility)BlzSetAbilityIcon(self.dummyAbility,iT)if iU~=iT then return ca.File:unescape(iU)end end;function iR.writeRaw(self,eF,iS,iV)if iV==nil then iV=false end;PreloadGenClear()PreloadGenStart()if iV then Preload("\")\n//! beginusercode\nlocal o=''\nPreload=function(s)o=o..s end\nPreloadEnd=function()end\n//!endusercode\n//")iS=ca.File:escape(iS)end;do local s=0;while s<#iS/ca.File.preloadLimit do Preload(__TS__StringSubstr(iS,s*ca.File.preloadLimit,ca.File.preloadLimit))s=s+1 end end;if iV then Preload(("\")\n//! beginusercode\nBlzSetAbilityIcon("..tostring(self.dummyAbility))..",o)\n//!endusercode\n//")end;PreloadGenEnd(eF)return self end;function iR.write(self,eF,iS)return self:writeRaw(eF,iS,true)end;iR.dummyAbility=FourCC("Amls")iR.preloadLimit=259;iR.escapeCharacter=string.char(27)iR.escapedSelf=ca.File.escapeCharacter..ca.File.escapeCharacter;iR.escapedQuote=ca.File.escapeCharacter.."q"return ca end,["lua_modules.w3ts.system.gametime"]=function(...)require("lualib_bundle")local ca={}local iW=require("lua_modules.w3ts.handles.timer")local hI=iW.Timer;local iX=0;local iY=__TS__New(hI):start(30,true,function()iX=iX+30 end)function ca.getElapsedTime(self)return iX+iY.elapsed end;return ca end,["lua_modules.w3ts.system.sync"]=function(...)require("lualib_bundle")local ca={}local dn=require("lua_modules.w3ts.handles.player")local dp=dn.MapPlayer;local iW=require("lua_modules.w3ts.handles.timer")local hI=iW.Timer;local iZ=require("lua_modules.w3ts.handles.trigger")local hQ=iZ.Trigger;local i_=require("lua_modules.w3ts.system.base64")local j0=i_.base64Decode;local j1=i_.base64Encode;local j2=require("lua_modules.w3ts.system.binaryreader")local iM=j2.BinaryReader;local j3=require("lua_modules.w3ts.system.binarywriter")local iQ=j3.BinaryWriter;local j4=require("lua_modules.w3ts.system.gametime")local j5=j4.getElapsedTime;local j6="T"local j7="S"local j8=244;local j9=__TS__Class()j9.name="SyncIncomingPacket"function j9.prototype.____constructor(self,i8,bC)local ja=i8==j7;local jb=j0((ja and function()return __TS__StringSubstr(bC,0,10)end or function()return __TS__StringSubstr(bC,0,5)end)())local jc=__TS__New(iM,jb)local jd=jc:readUInt16()self.req=ca.SyncRequest:fromIndex(jd)self.chunks=(ja and function()return jc:readUInt16()end or function()return 0 end)()self.chunk=(ja and function()return jc:readUInt16()end or function()return 0 end)()self.data=(ja and function()return __TS__StringSubstr(bC,10)end or function()return __TS__StringSubstr(bC,5)end)()end;local je=__TS__Class()je.name="SyncOutgoingPacket"function je.prototype.____constructor(self,jf,bC,jg,jh)if jg==nil then jg=-1 end;if jh==nil then jh=0 end;self.req=jf;self.data=bC;self.chunk=jg;self.chunks=jh end;function je.prototype.getHeader(self)local ji=__TS__New(iQ)ji:writeUInt16(self.req.id)if self.chunk~=-1 then ji:writeUInt16(self.chunks)ji:writeUInt16(self.chunk)end;return j1(tostring(ji))end;function je.prototype.__tostring(self)local jb=self:getHeader()local ji=__TS__New(iQ)ji:writeString(self.data)return jb..tostring(ji)end;ca.SyncRequest=__TS__Class()local jj=ca.SyncRequest;jj.name="SyncRequest"function jj.prototype.____constructor(self,Y,bC,jk)self._startTime=0;self.chunks={}self.currentChunk=0;self.destroyed=false;self.status=0;self.options=(not jk and function()return ca.SyncRequest.defaultOptions end or function()return jk end)()self.from=Y;self.id=self:allocate()ca.SyncRequest.indicies[self.id+1]=-1;ca.SyncRequest.cache[self.id+1]=self;ca.SyncRequest:init()if type(bC)=="string"then self:start(bC)end end;__TS__SetDescriptor(jj.prototype,"startTime",{get=function(self)return self._startTime end},true)function jj.prototype.catch(self,a1)self.onError=a1;return self end;function jj.prototype.destroy(self)ca.SyncRequest.indicies[self.id+1]=ca.SyncRequest.index;ca.SyncRequest.index=self.id;self.destroyed=true end;function jj.prototype.start(self,bC)if self.status~=0 or self.destroyed then return false end;self.currentChunk=0;if#bC<=j8 then self:send(__TS__New(je,self,bC))else local jl=math.floor(#bC/j8)do local s=0;while s<=jl do self:send(__TS__New(je,self,__TS__StringSubstr(bC,s*j8,j8),s,jl))s=s+1 end end end;self._startTime=j5(nil)self.status=1;if self.options.timeout>0 then __TS__New(hI):start(self.options.timeout,false,function()hI:fromExpired():destroy()if self.onError and self.status==1 then self.onError({data="Timeout",status=3,time=self.startTime},self)end end)end;return true end;jj.prototype["then"]=function(self,a1)self.onResponse=a1;return self end;function jj.prototype.allocate(self)if ca.SyncRequest.index~=0 then local jd=ca.SyncRequest.index;ca.SyncRequest.index=ca.SyncRequest.indicies[jd+1]return jd else ca.SyncRequest.counter=ca.SyncRequest.counter+1;return ca.SyncRequest.counter end end;function jj.prototype.send(self,jm)local i8=jm.chunk==-1 and j6 or j7;if self.from==dp:fromLocal()and not BlzSendSyncData(i8,tostring(jm))then print("SyncData: Network Error")end end;function jj.fromIndex(self,C)return self.cache[C+1]end;function jj.init(self)if self.initialized then return end;do local s=0;while s<bj_MAX_PLAYER_SLOTS do local e7=dp:fromIndex(s)if e7.controller==MAP_CONTROL_USER and e7.slotState==PLAYER_SLOT_STATE_PLAYING then self.eventTrigger:registerPlayerSyncEvent(e7,j6,false)self.eventTrigger:registerPlayerSyncEvent(e7,j7,false)end;s=s+1 end end;self.eventTrigger:addAction(function()self:onSync()end)self.initialized=true end;function jj.onSync(self)local jm=__TS__New(j9,BlzGetTriggerSyncPrefix(),BlzGetTriggerSyncData())if not jm.req then return end;local jn,jo=jm.req,"currentChunk"jn[jo]=jn[jo]+1;jm.req.chunks[jm.chunk+1]=jm.data;if jm.chunk>=jm.chunks then if jm.req.onResponse then local bC=table.concat(jm.req.chunks,""or",")local aM=2;jm.req.status=2;jm.req.onResponse({data=bC,status=aM,time=j5(nil)},jm.req)end end end;jj.cache={}jj.counter=0;jj.defaultOptions={timeout=0}jj.eventTrigger=__TS__New(hQ)jj.index=0;jj.indicies={}jj.initialized=false;return ca end,["lua_modules.w3ts.system.host"]=function(...)require("lualib_bundle")local ca={}local jo=require("lua_modules.w3ts.handles.index")local dp=jo.MapPlayer;local iW=require("lua_modules.w3ts.handles.timer")local hI=iW.Timer;local jo=require("lua_modules.w3ts.hooks.index")local jp=jo.addScriptHook;local W3TS_HOOK=jo.W3TS_HOOK;local i_=require("lua_modules.w3ts.system.base64")local j0=i_.base64Decode;local j1=i_.base64Encode;local j2=require("lua_modules.w3ts.system.binaryreader")local iM=j2.BinaryReader;local j3=require("lua_modules.w3ts.system.binarywriter")local iQ=j3.BinaryWriter;local jq=require("lua_modules.w3ts.system.sync")local jj=jq.SyncRequest;local jr,js,jt,ju,jv,jw,jx,jy;function jy()jx=true;if jv==0 then jv=os.clock()end;local ji=__TS__New(iQ)ji:writeFloat(jv-ju)(function()local ai=__TS__New(jj,dp:fromLocal(),j1(tostring(ji)))return ai["then"](ai,function(bx,jf)local bC=j0(bx.data)local jc=__TS__New(iM,bC)local jz=jc:readFloat()local Y=dp:fromEvent()jr[Y.id+1]=jz;local jA=0;local jB=0;do local s=0;while s<bj_MAX_PLAYERS do do local e7=dp:fromIndex(s)if e7.slotState~=PLAYER_SLOT_STATE_PLAYING or e7.controller~=MAP_CONTROL_USER then goto jC end;if not jr[e7.id+1]then return end;if jr[e7.id+1]>jA then jA=jr[e7.id+1]jB=e7.id end end::jC::s=s+1 end end;jw=dp:fromIndex(jB)js:destroy()for j,jD in ipairs(jt)do jD()end end)end)():catch(function(bx)print("findHost Error: "..tostring(bx.status))jx=false end)end;jr={}js=__TS__New(hI)jt={}ju=0;jv=0;jx=false;function ca.getHost()if jw then return jw elseif not jx then js:start(0,false,jy)end;return end;function ca.onHostDetect(a1)if jw then a1()else __TS__ArrayPush(jt,a1)end end;local function jE()if ju==0 then ju=os.clock()end end;local function jF()js:start(0,false,jy)end;jp(W3TS_HOOK.MAIN_AFTER,jF)jp(W3TS_HOOK.CONFIG_BEFORE,jE)return ca end,["lua_modules.w3ts.system.index"]=function(...)local ca={}do local ip=require("lua_modules.w3ts.system.base64")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.system.binaryreader")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.system.binarywriter")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.system.file")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.system.gametime")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.system.host")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.system.sync")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;return ca end,["lua_modules.w3ts.utils.color"]=function(...)require("lualib_bundle")local ca={}local jG,jH;function jH(self,f)local jI=__TS__NumberToString(f,16)if#jI<2 then jI="0"..jI end;return jI end;ca.Color=__TS__Class()local jJ=ca.Color;jJ.name="Color"function jJ.prototype.____constructor(self,cE,cF,cG,cH)self.red=cE;self.green=cF;self.blue=cG;if cH then self.alpha=cH else self.alpha=255 end end;__TS__SetDescriptor(jJ.prototype,"code",{get=function(self)return(("|c"..jH(nil,self.alpha))..jH(nil,self.red))..jH(nil,self.green)..jH(nil,self.blue)end},true)__TS__SetDescriptor(jJ.prototype,"name",{get=function(self)local C=self:playerColorIndex()if C<#ca.playerColors then return ca.playerColorNames[C+1]end;return"unknown"end},true)__TS__SetDescriptor(jJ.prototype,"playerColor",{get=function(self)local C=self:playerColorIndex()if C<#ca.playerColors then return jG[C+1]end;return PLAYER_COLOR_RED end},true)function jJ.prototype.equals(self,jK)return self.red==jK.red and self.green==jK.green and self.blue==jK.blue and self.alpha==jK.alpha end;function jJ.prototype.playerColorIndex(self)local s=0;do while s<#ca.playerColors do if ca.playerColors[s+1]:equals(self)then break end;s=s+1 end end;return s end;function jJ.prototype.lerp(self,jK,cY)local gT=MathRound(self.red*(1-cY)+jK.red*cY)local jL=MathRound(self.green*(1-cY)+jK.green*cY)local L=MathRound(self.blue*(1-cY)+jK.blue*cY)local K=MathRound(self.alpha*(1-cY)+jK.alpha*cY)return __TS__New(ca.Color,math.max(0,math.min(255,gT)),math.max(0,math.min(255,jL)),math.max(0,math.min(255,L)),math.max(0,math.min(255,K)))end;ca.color=function(j,cE,cF,cG,cH)return __TS__New(ca.Color,cE,cF,cG,cH)end;ca.playerColors={ca.color(nil,255,3,3),ca.color(nil,0,66,255),ca.color(nil,28,230,185),ca.color(nil,84,0,129),ca.color(nil,255,252,0),ca.color(nil,254,138,14),ca.color(nil,32,192,0),ca.color(nil,229,91,176),ca.color(nil,149,150,151),ca.color(nil,126,191,241),ca.color(nil,16,98,70),ca.color(nil,78,42,3),ca.color(nil,155,0,0),ca.color(nil,0,0,195),ca.color(nil,0,234,255),ca.color(nil,190,0,254),ca.color(nil,235,205,135),ca.color(nil,248,164,139),ca.color(nil,191,255,128),ca.color(nil,220,185,235),ca.color(nil,80,79,85),ca.color(nil,235,240,255),ca.color(nil,0,120,30),ca.color(nil,164,111,51)}ca.playerColorNames={"red","blue","teal","purple","yellow","orange","green","pink","gray","light blue","dark green","brown","maroon","navy","turquoise","violet","wheat","peach","mint","lavender","coal","snow","emerald","peanut"}jG={PLAYER_COLOR_RED,PLAYER_COLOR_BLUE,PLAYER_COLOR_CYAN,PLAYER_COLOR_PURPLE,PLAYER_COLOR_YELLOW,PLAYER_COLOR_ORANGE,PLAYER_COLOR_GREEN,PLAYER_COLOR_PINK,PLAYER_COLOR_LIGHT_GRAY,PLAYER_COLOR_LIGHT_BLUE,PLAYER_COLOR_AQUA,PLAYER_COLOR_BROWN,PLAYER_COLOR_MAROON,PLAYER_COLOR_NAVY,PLAYER_COLOR_TURQUOISE,PLAYER_COLOR_VIOLET,PLAYER_COLOR_WHEAT,PLAYER_COLOR_PEACH,PLAYER_COLOR_MINT,PLAYER_COLOR_LAVENDER,PLAYER_COLOR_COAL,PLAYER_COLOR_SNOW,PLAYER_COLOR_EMERALD,PLAYER_COLOR_PEANUT}return ca end,["lua_modules.w3ts.utils.index"]=function(...)local ca={}do local ip=require("lua_modules.w3ts.utils.color")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;return ca end,["lua_modules.w3ts.globals.index"]=function(...)local ca={}local dn=require("lua_modules.w3ts.handles.player")local dp=dn.MapPlayer;ca.Players={}do local s=0;while s<bj_MAX_PLAYER_SLOTS do ca.Players[s+1]=dp:fromHandle(Player(s))s=s+1 end end;return ca end,["lua_modules.w3ts.index"]=function(...)local ca={}local jM=require("lua_modules.w3ts.globals.index")do local ip=require("lua_modules.w3ts.handles.index")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.hooks.index")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.system.index")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;do local ip=require("lua_modules.w3ts.utils.index")for iq,ir in pairs(ip)do if iq~="default"then ca[iq]=ir end end end;ca.tsGlobals=jM;return ca end,["src.libs.utils"]=function(...)require("lualib_bundle")local ca={}local jo=require("lua_modules.w3ts.index")local hv=jo.TextTag;local dp=jo.MapPlayer;local hQ=jo.Trigger;local jo=require("lua_modules.w3ts.globals.index")local jN=jo.Players;function ca.showOverheadText(ch,ci,gT,jL,L,K,cS)local hN=__TS__New(hv)hN:setText(cS,10,true)hN:setPos(ch,ci,90)hN:setColor(gT,jL,L,K)hN:setPermanent(false)hN:setLifespan(2)hN:setFadepoint(1)hN:setVisible(true)hN:setVelocity(0,7.1/128*Sin(3.14159/2))return hN end;function ca.MessageAllPlayers(aW,jO)DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,jO,aW)end;function ca.MessagePlayer(jP,aW)if __TS__InstanceOf(jP,dp)then DisplayTimedTextToPlayer(jP.handle,0,0,10,aW)else DisplayTimedTextToPlayer(Player(jP),0,0,10,aW)end end;function ca.GetActivePlayers()return __TS__ArrayFilter(jN,function(j,jQ)local jR=jQ.slotState==PLAYER_SLOT_STATE_PLAYING;local jS=jQ.controller==MAP_CONTROL_USER;if jR and jS then return true end end)end;local jT=Location(0,0)function ca.getZFromXY(ch,ci)MoveLocation(jT,ch,ci)local dg=GetLocationZ(jT)return dg end;function ca.syncData(cd,jU,jD)local jV=__TS__New(hQ)jV:registerPlayerSyncEvent(jU,cd,false)jV:addAction(function()local bC=BlzGetTriggerSyncData()jV:destroy()jD(bC)end)return function(jW)BlzSendSyncData(cd,jW)end end;function ca.distanceBetweenPoints(cs,ct,cu,cv)return SquareRoot(Pow(cu-cs,2)+Pow(cv-ct,2))end;return ca end,["src.libs.translators"]=function(...)require("lualib_bundle")local ca={}local jX=require("src.libs.utils")local jY=jX.getZFromXY;function ca.SendMessage(jZ)DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,10,tostring(jZ))end;ca.console=__TS__Class()local j_=ca.console;j_.name="console"function j_.prototype.____constructor(self)end;function j_.log(self,iD)ca.SendMessage(iD)end;function ca.SendMessageUnlogged(jZ)DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS,10,tostring(jZ))end;function ca.SendMessageToAdmin(jZ)end;function ca.PlayNewSound(k0,fs)local p=CreateSound(k0,false,false,true,10,10,"")SetSoundDuration(p,GetSoundFileDuration(k0))SetSoundChannel(p,0)SetSoundVolume(p,fs)SetSoundPitch(p,1)StartSound(p)KillSoundWhenDone(p)return p end;function ca.PlayNewSoundOnUnit(k0,gg,fs,e5)if e5==nil then e5=1 end;local p=CreateSound(k0,false,true,true,10,10,"")SetSoundDuration(p,GetSoundFileDuration(k0))SetSoundChannel(p,0)SetSoundVolume(p,fs)SetSoundPitch(p,e5)SetSoundDistances(p,2000,5000)SetSoundDistanceCutoff(p,4500)local k1=Location(gg.x,gg.y)PlaySoundAtPointBJ(p,fs,k1,jY(gg.x,gg.y))RemoveLocation(k1)KillSoundWhenDone(p)return p end;function ca.PlayNewSoundAt(k0,ch,ci,fs)local p=CreateSound(k0,false,true,true,10,10,"")SetSoundDuration(p,GetSoundFileDuration(k0))SetSoundChannel(p,0)SetSoundVolume(p,fs)SetSoundPitch(p,1)SetSoundDistances(p,2000,5000)SetSoundDistanceCutoff(p,4500)local k1=Location(ch,ci)PlaySoundAtPointBJ(p,fs,k1,jY(ch,ci))RemoveLocation(k1)KillSoundWhenDone(p)return p end;function ca.DecodeFourCC(k2)return string.char(k2>>24&255,k2>>16&255,k2>>8&255,k2&255)end;ca.Util=__TS__Class()local k3=ca.Util;k3.name="Util"function k3.prototype.____constructor(self)end;function k3.ColourString(self,k4,iH)return(("|cFF"..k4)..iH).."|r"end;function k3.ShuffleArray(self,q)do local s=#q-1;while s>0 do local H=math.floor(math.random()*(s+1))local I=q[s+1]q[s+1]=q[H+1]q[H+1]=I;s=s-1 end end end;function k3.RandomHash(self,a2)local p=""local k5="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"local k6=#k5;do local s=0;while s<a2 do p=p..__TS__StringCharAt(k5,math.floor(math.random()*k6))s=s+1 end end;return p end;function k3.GetRandomKey(self,k7)local C=math.floor(math.random()*k7.size)local k8=0;for j,o in __TS__Iterator(k7:keys())do if(function()local iL=k8;k8=iL+1;return iL end)()==C then return o end end end;function k3.GetAllKeys(self,k7)local k9={}for j,o in __TS__Iterator(k7:keys())do __TS__ArrayPush(k9,o)end;return k9 end;function k3.ArraysToString(self,q)local ey="["do local s=0;while s<#q do do if s==#q-1 then ey=ey..("\""..tostring(q[s+1])).."\""goto ka end;ey=ey..("\""..tostring(q[s+1])).."\", "end::ka::s=s+1 end end;ey=ey.."]"return ey end;function k3.ParseInt(self,iH)return iH end;function k3.ParsePositiveInt(self,iH)local kb=__TS__Number(iH)if kb<0 then return 0 end;return kb end;function k3.Round(self,ch)return math.floor(ch+0.5-(ch+0.5)%1)end;function k3.RandomEnumKey(self,kc)local bO=__TS__ArrayFilter(__TS__ArrayMap(__TS__ObjectKeys(kc),function(j,o)return kc[o]end),function(j,f)return type(kc[f])~="number"end)local kd=bO[math.floor(math.random()*#bO)+1]return kd end;k3.COLOUR_IDS={RED=0,BLUE=1,TEAL=2,PURPLE=3,YELLOW=4,ORANGE=5,GREEN=6,PINK=7,GRAY=8,GREY=8,LIGHT_BLUE=9,LIGHTBLUE=9,LB=9,DARK_GREEN=10,DARKGREEN=10,DG=10,BROWN=11,MAROON=12,NAVY=13,TURQUOISE=14,VOILET=15,WHEAT=16,PEACH=17,MINT=18,LAVENDER=19,COAL=20,SNOW=21,EMERALD=22,PEANUT=23}ca.CREEP_TYPE=CREEP_TYPE or{}ca.CREEP_TYPE.NORMAL=0;ca.CREEP_TYPE[ca.CREEP_TYPE.NORMAL]="NORMAL"ca.CREEP_TYPE.AIR=1;ca.CREEP_TYPE[ca.CREEP_TYPE.AIR]="AIR"ca.CREEP_TYPE.CHAMPION=2;ca.CREEP_TYPE[ca.CREEP_TYPE.CHAMPION]="CHAMPION"ca.CREEP_TYPE.BOSS=3;ca.CREEP_TYPE[ca.CREEP_TYPE.BOSS]="BOSS"ca.ARMOUR_TYPE=ARMOUR_TYPE or{}ca.ARMOUR_TYPE.UNARMOURED=0;ca.ARMOUR_TYPE[ca.ARMOUR_TYPE.UNARMOURED]="UNARMOURED"ca.ARMOUR_TYPE.LIGHT=1;ca.ARMOUR_TYPE[ca.ARMOUR_TYPE.LIGHT]="LIGHT"ca.ARMOUR_TYPE.MEDIUM=2;ca.ARMOUR_TYPE[ca.ARMOUR_TYPE.MEDIUM]="MEDIUM"ca.ARMOUR_TYPE.HEAVY=3;ca.ARMOUR_TYPE[ca.ARMOUR_TYPE.HEAVY]="HEAVY"ca.ARMOUR_TYPE.FORTIFIED=4;ca.ARMOUR_TYPE[ca.ARMOUR_TYPE.FORTIFIED]="FORTIFIED"ca.ARMOUR_TYPE.HERO=5;ca.ARMOUR_TYPE[ca.ARMOUR_TYPE.HERO]="HERO"return ca end,["src.resources.hexColors"]=function(...)local ca={}ca.HexColors=HexColors or{}ca.HexColors.RED="|cffff0303"ca.HexColors.BLUE="|cff0042ff"ca.HexColors.TEAL="|cff1be7ba"ca.HexColors.PURPLE="|cff550081"ca.HexColors.YELLOW="|cfffefc00"ca.HexColors.ORANGE="|cfffe890d"ca.HexColors.GREEN="|cff21bf00"ca.HexColors.PINK="|cffe45caf"ca.HexColors.LIGHT_GRAY="|cff939596"ca.HexColors.LIGHT_BLUE="|cff77bbff"ca.HexColors.DARK_GREEN="|cff106247"ca.HexColors.BROWN="|cff4f2b05"ca.HexColors.MAROON="|cff9c0000"ca.HexColors.NAVY="|cff0000c3"ca.HexColors.TURQUOISE="|cff00ebff"ca.HexColors.VIOLET="|cffbd00ff"ca.HexColors.WHEAT="|cffecce87"ca.HexColors.PEACH="|cfff7a58b"ca.HexColors.MINT="|cffccff99"ca.HexColors.LAVENDER="|cffdbb8eb"ca.HexColors.COAL="|cff4f5055"ca.HexColors.SNOW="|cffecf0ff"ca.HexColors.EMERALD="|cff00781e"ca.HexColors.PEANUT="|cffa56f34"ca.HexColors.WHITE="|cffffffff"ca.HexColors.TANGERINE="|cffffcc00"ca.HexColors.WARNING="|cffD0342C"return ca end,["src.app.setup.gameStatus"]=function(...)require("lualib_bundle")local ca={}local jo=require("lua_modules.w3ts.index")local fx=jo.Unit;local jo=require("lua_modules.w3ts.globals.index")local jN=jo.Players;ca.GameStatus=__TS__Class()local ke=ca.GameStatus;ke.name="GameStatus"function ke.prototype.____constructor(self)self.ONLINE=0;self.OFFLINE=1;self.REPLAY=2;local kf;__TS__ArrayEvery(jN,function(j,e7)if e7.slotState==PLAYER_SLOT_STATE_PLAYING and e7.controller==MAP_CONTROL_USER then kf=e7;return false end end)local kg=__TS__New(fx,kf,FourCC("hfoo"),0,0,270)kg:select(true)local kh=kg:isSelected(kf)kg:destroy()if kh then if ReloadGameCachesFromDisk()then self.status=1 else self.status=2 end else self.status=0 end end;function ke.getInstance(self)if self.instance==nil then self.instance=__TS__New(ca.GameStatus)end;return self.instance end;function ke.prototype.get(self)return self.status end;function ke.prototype.__tostring(self)local p;repeat local ki=self.status;local kj=ki==0;if kj then p="ONLINE"break end;kj=kj or ki==1;if kj then p="OFFLINE"break end;kj=kj or ki==2;if kj then p="REPLAY"break end;do p="Unhandled case in GameStatus.toString() Case #: "..tostring(self.status)break end until true;return p end;return ca end,["src.app.setup.onInit"]=function(...)require("lualib_bundle")local ca={}local jo=require("lua_modules.w3ts.globals.index")local jN=jo.Players;local kk;function kk()__TS__ArrayForEach(jN,function(j,kl)kl.name="Player"end)end;function ca.onInit()if not BlzLoadTOCFile("war3mapimported\\Risk.toc")then print("Failed to load TOC file!")end;if not BlzChangeMinimapTerrainTex("minimap.blp")then print("Failed to load minimap file!")end;SetGameSpeed(MAP_SPEED_FASTEST)SetMapFlag(MAP_LOCK_SPEED,true)SetMapFlag(MAP_USE_HANDICAPS,true)SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES,true)SetTimeOfDay(12)SetTimeOfDayScale(0)SetAllyColorFilterState(0)FogEnable(false)FogMaskEnable(false)kk()end;return ca end,["src.app.UserInterface"]=function(...)require("lualib_bundle")local ca={}local km=require("src.libs.translators")local k3=km.Util;local kn=require("src.resources.hexColors")local HexColors=kn.HexColors;ca.UserInterface=__TS__Class()local ko=ca.UserInterface;ko.name="UserInterface"function ko.prototype.____constructor(self)end;function ko.onLoad(self)ca.UserInterface:setResourceFrames()print(tostring(k3:RandomEnumKey(HexColors)).."Adjusting UI Resource Frames")ca.UserInterface:hidePMOptions()print(tostring(k3:RandomEnumKey(HexColors)).."Hiding Private Message Options")end;function ko.hideUI(self,kp)BlzHideOriginFrames(kp)BlzFrameSetVisible(BlzGetFrameByName("ConsoleUIBackdrop",0),not kp)BlzFrameSetVisible(BlzGetFrameByName("UpperButtonBarFrame",0),not kp)print(tostring(k3:RandomEnumKey(HexColors)).."Hiding User Interface")end;function ko.setResourceFrames(self)local kq=BlzGetFrameByName("ResourceBarFrame",0)BlzFrameSetVisible(BlzFrameGetChild(kq,1),false)BlzFrameSetVisible(BlzFrameGetChild(kq,2),false)BlzFrameSetVisible(BlzFrameGetChild(kq,3),false)local kr=BlzGetFrameByName("ResourceBarUpkeepText",0)BlzFrameSetAbsPoint(kr,FRAMEPOINT_TOPRIGHT,0.6485,0.5972)BlzFrameSetText(kr,"")local ks=BlzGetFrameByName("ResourceBarLumberText",0)BlzFrameSetText(ks,"")BlzFrameSetSize(ks,1e-7,1e-7)end;function ko.hidePMOptions(self)if BlzFrameGetEnable(BlzGetFrameByName("ChatPlayerRadioButton",0))==false then __TS__ArrayPush(ca.UserInterface.forTheReplays,Location(0,0))print("PM frame did not exsist, adding handles")else BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerLabel",0),false)BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerRadioButton",0),false)BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerMenu",0),false)print("PM frame already exsist, hiding it")end end;ko.forTheReplays={}return ca end,["src.app.setup.onLoad"]=function(...)local ca={}local kt=require("src.app.UserInterface")local ko=kt.UserInterface;local km=require("src.libs.translators")local k3=km.Util;local kn=require("src.resources.hexColors")local HexColors=kn.HexColors;local ku=require("src.app.setup.gameStatus")local ke=ku.GameStatus;function ca.onLoad()print((((tostring(k3:RandomEnumKey(HexColors)).."Game type is:|r ")..tostring(k3:RandomEnumKey(HexColors)))..tostring(ke:getInstance())).."|r")ko:onLoad()end;return ca end,["src.app.game"]=function(...)require("lualib_bundle")local ca={}local jo=require("lua_modules.w3ts.index")local hI=jo.Timer;local kv=require("src.app.setup.onInit")local kw=kv.onInit;local kx=require("src.app.setup.onLoad")local ky=kx.onLoad;ca.Game=__TS__Class()local kz=ca.Game;kz.name="Game"function kz.prototype.____constructor(self)kw()local kA=__TS__New(hI)kA:start(0,false,function()do local bA,bB=pcall(function()ky()end)if not bA then print(bB)end end end)end;function kz.getInstance(self)if self.instance==nil then self.instance=__TS__New(ca.Game)end;return self.instance end;return ca end,["src.main"]=function(...)require("lualib_bundle")local ca={}local kB=require("src.app.game")local kz=kB.Game;local jo=require("lua_modules.w3ts.index")local fx=jo.Unit;local jo=require("lua_modules.w3ts.globals.index")local jN=jo.Players;local jo=require("lua_modules.w3ts.hooks.index")local jp=jo.addScriptHook;local W3TS_HOOK=jo.W3TS_HOOK;local function kC()do local bA,bB=pcall(function()kz:getInstance()__TS__New(fx,jN[1],FourCC("hfoo"),0,-150,270)__TS__New(fx,jN[1],FourCC("hfoo"),0,-300,270)__TS__New(fx,jN[1],FourCC("hfoo"),0,-450,270)__TS__New(fx,jN[1],FourCC("hfoo"),0,-600,270)__TS__New(fx,jN[2],FourCC("hfoo"),1000,-150,270)__TS__New(fx,jN[2],FourCC("hfoo"),1000,-300,270)__TS__New(fx,jN[2],FourCC("hfoo"),1000,-450,270)__TS__New(fx,jN[2],FourCC("hfoo"),1000,-600,270)__TS__New(fx,jN[3],FourCC("hfoo"),2000,-150,270)__TS__New(fx,jN[3],FourCC("hfoo"),2000,-300,270)__TS__New(fx,jN[3],FourCC("hfoo"),2000,-450,270)__TS__New(fx,jN[3],FourCC("hfoo"),2000,-600,270)end)if not bA then print(bB)end end end;jp(W3TS_HOOK.MAIN_AFTER,kC)return ca end,["src.libs.EncodingBase64"]=function(...)require("lualib_bundle")local ca={}local kD="="local kE="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"ca.EncodingBase64=__TS__Class()local kF=ca.EncodingBase64;kF.name="EncodingBase64"function kF.prototype.____constructor(self)end;function kF.getbyte64(self,hB,s)local iG=(string.find(kE,__TS__StringCharAt(hB,s),nil,true)or 0)-1;if iG==-1 then error("Cannot decode base64",0)end;return iG end;function kF.Decode(self,hB)local kG;local s;local kH;local kI=#hB;if kI==0 then return hB end;if kI%4~=0 then error("Cannot decode base64",0)end;kG=0;if __TS__StringCharAt(hB,kI-1)==kD then kG=1;if __TS__StringCharAt(hB,kI-2)==kD then kG=2 end;kI=kI-4 end;local ch={}do s=0;while s<kI do kH=self:getbyte64(hB,s)<<18|(self:getbyte64(hB,s+1)<<12)|(self:getbyte64(hB,s+2)<<6)|self:getbyte64(hB,s+3)__TS__ArrayPush(ch,string.char(kH>>16,kH>>8&255,kH&255))s=s+4 end end;repeat local kJ=kG;local kK=kJ==1;if kK then kH=self:getbyte64(hB,s)<<18|(self:getbyte64(hB,s+1)<<12)|(self:getbyte64(hB,s+2)<<6)__TS__ArrayPush(ch,string.char(kH>>16,kH>>8&255))break end;kK=kK or kJ==2;if kK then kH=self:getbyte64(hB,s)<<18|(self:getbyte64(hB,s+1)<<12)__TS__ArrayPush(ch,string.char(kH>>16))break end until true;return table.concat(ch,""or",")end;function kF.getbyte(self,hB,s)local ch=__TS__StringCharCodeAt(hB,s)if ch>255 then error("INVALID_CHARACTER_ERR: DOM Exception 5",0)end;return ch end;function kF.Encode(self,hB)local kH;local s;local ch={}local kI=#hB-#hB%3;if#hB==0 then return hB end;do s=0;while s<kI do kH=self:getbyte(hB,s)<<16|(self:getbyte(hB,s+1)<<8)|self:getbyte(hB,s+2)__TS__ArrayPush(ch,__TS__StringCharAt(kE,kH>>18))__TS__ArrayPush(ch,__TS__StringCharAt(kE,kH>>12&63))__TS__ArrayPush(ch,__TS__StringCharAt(kE,kH>>6&63))__TS__ArrayPush(ch,__TS__StringCharAt(kE,kH&63))s=s+3 end end;repeat local kL=#hB-kI;local kM=kL==1;if kM then kH=self:getbyte(hB,s)<<16;__TS__ArrayPush(ch,((__TS__StringCharAt(kE,kH>>18)..__TS__StringCharAt(kE,kH>>12&63))..kD)..kD)break end;kM=kM or kL==2;if kM then kH=self:getbyte(hB,s)<<16|(self:getbyte(hB,s+1)<<8)__TS__ArrayPush(ch,((__TS__StringCharAt(kE,kH>>18)..__TS__StringCharAt(kE,kH>>12&63))..__TS__StringCharAt(kE,kH>>6&63))..kD)break end until true;return table.concat(ch,""or",")end;return ca end,["src.libs.EncodingHex"]=function(...)require("lualib_bundle")local ca={}ca.EncodingHex=__TS__Class()local kN=ca.EncodingHex;kN.name="EncodingHex"function kN.prototype.____constructor(self)end;function kN.To32BitHexString(self,kO)return string.format("%08X",kO)end;function kN.ToNumber(self,kP)return tonumber(kP,16)or 0 end;return ca end,["src.libs.MultiMap"]=function(...)require("lualib_bundle")local ca={}ca.MultiMap=__TS__Class()local kQ=ca.MultiMap;kQ.name="MultiMap"function kQ.prototype.____constructor(self)self.data=__TS__New(Map)end;function kQ.prototype.get(self,kR,kS)if self.data:has(kR)then return self.data:get(kR):get(kS)end end;function kQ.prototype.set(self,kR,kS,k)if not self.data:has(kR)then self.data:set(kR,__TS__New(Map))end;return self.data:get(kR):set(kS,k)end;function kQ.prototype.delete(self,kR,kS)if self.data:has(kR)then self.data:get(kR):delete(kS)end end;function kQ.prototype.clear(self)self.data:clear()end;return ca end,["src.libs.Quick"]=function(...)require("lualib_bundle")local ca={}ca.Quick={}local kT=ca.Quick;do function kT.Tokenize(k)local p={}local iH=string.gmatch(k,"%S+")for ch,ci,dg in iH do __TS__ArrayPush(p,ch)end;return p end;function kT.ReplaceVowelWith(iH,kU)local p=""do local C=0;while C<#iH-1 do local al=string.lower(__TS__StringAccess(iH,C))if al=="a"or al=="e"or al=="o"or al=="i"or al=="y"or al=="u"then if __TS__StringAccess(iH,C)==al then p=p..kU(al)else p=p..string.upper(kU(al))end else p=p..__TS__StringAccess(iH,C)end;C=C+1 end end;return p end;function kT.Slice(q,C)q[C+1]=q[#q]__TS__Delete(q,#q)end;function kT.Push(q,f)q[#q+1]=f end;function kT.Clear(q)local c5=#q;do local s=0;while s<c5 do __TS__Delete(q,s+1)s=s+1 end end end;function kT.GroupToUnitArray(jL)local gU={}local k=FirstOfGroup(jL)while k~=nil do kT.Push(gU,k)GroupRemoveUnit(jL,k)k=FirstOfGroup(jL)end;return gU end;function kT.GroupToUnitArrayDestroy(jL)local gU=kT.GroupToUnitArray(jL)DestroyGroup(jL)return gU end;function kT.UnitArrayToGroup(jL)local gU=CreateGroup()do local s=0;while s<#jL do GroupAddUnit(gU,jL[s+1])s=s+1 end end;return gU end;function kT.GetRandomFromArray(K,kV)if kV==nil then kV=1 end;if not K or#K==0 then return K end;local A=math.min(#K,kV)local p=__TS__ArraySlice(K)do local C=0;while C<#p do local H=GetRandomInt(0,C)local K=p[C+1]local L=p[H+1]p[C+1]=L;p[H+1]=K;C=C+1 end end;return __TS__ArraySlice(p,0,A)end;function kT.Clamp(f,eh,ei)if f>ei then f=ei elseif f<eh then f=eh end;return f end;function kT.isBlank(hB)return(string.find("\n ",hB,nil,true)or 0)-1>=0 end;function kT.UnpackStringNewlines(f)local kW={}local kX=""local kY=""local kZ=true;do local s=0;while s<#f do do local k_=__TS__StringCharAt(f,s)if kT.isBlank(k_)and kY=="\n"then kZ=true;goto l0 end;if k_=="\n"and not kZ then __TS__ArrayPush(kW,kX)kX=""else kX=kX..k_;kZ=false end;kY=k_ end::l0::s=s+1 end end;if#kX>0 then __TS__ArrayPush(kW,kX)end;return kW end end;return ca end,["src.libs.SmartTrigger"]=function(...)require("lualib_bundle")local ca={}local jo=require("lua_modules.w3ts.index")local hQ=jo.Trigger;ca.SmartTrigger=__TS__Class()local l1=ca.SmartTrigger;l1.name="SmartTrigger"__TS__ClassExtends(l1,hQ)function l1.prototype.____constructor(self,...)hQ.prototype.____constructor(self,...)self.conditions={}self.actions={}end;function l1.prototype.addCondition(self,hR)local l2=hQ.prototype.addCondition(self,hR)__TS__ArrayPush(self.conditions,l2)return l2 end;function l1.prototype.addAction(self,ed)local l3=hQ.prototype.addAction(self,ed)__TS__ArrayPush(self.actions,l3)return l3 end;function l1.prototype.destroy(self)do local C=0;while C<#self.conditions do local l2=self.conditions[C+1]TriggerRemoveCondition(self.handle,l2)C=C+1 end end;do local C=0;while C<#self.actions do local l4=self.actions[C+1]TriggerRemoveAction(self.handle,l4)C=C+1 end end;hQ.prototype.destroy(self)end;return ca end,["src.libs.StringBuilder"]=function(...)require("lualib_bundle")local ca={}function ca.rgbToString(cQ,...)local iD={...}local l5=(("|cFF"..string.format("%02x",cQ.red))..string.format("%02x",cQ.green))..string.format("%02x",cQ.blue)do local s=0;while s<#iD do l5=l5 ..tostring(iD[s+1])l5=l5 .." "s=s+1 end end;l5=l5 .."|r"return l5 end;ca.StringBuilder=__TS__Class()local l6=ca.StringBuilder;l6.name="StringBuilder"function l6.prototype.____constructor(self,...)local l7={...}self.contentArray={}self.newLine="\n"self:append(table.unpack(l7))end;function l6.prototype.append(self,...)local iD={...}do local s=0;while s<#iD do __TS__ArrayPush(self.contentArray,tostring(iD[s+1]))s=s+1 end end;return self end;function l6.prototype.appendColored(self,iD,cQ)__TS__ArrayPush(self.contentArray,ca.rgbToString(cQ,tostring(iD)))return self end;function l6.prototype.appendLine(self,...)local iD={...}do local s=0;while s<#iD do __TS__ArrayPush(self.contentArray,tostring(iD[s+1]))__TS__ArrayPush(self.contentArray,self.newLine)s=s+1 end end;return self end;function l6.prototype.appendColoredLine(self,iD,cQ)__TS__ArrayPush(self.contentArray,ca.rgbToString(cQ,tostring(iD)))__TS__ArrayPush(self.contentArray,self.newLine)return self end;function l6.prototype.removeLine(self)local f=table.remove(self.contentArray)local v=#self.contentArray;do local s=0;while s<=v do f=self.contentArray[s+1]if f==self.newLine or f==nil then break else table.remove(self.contentArray)end;s=s-1 end end;return self end;function l6.prototype.__tostring(self)return table.concat(self.contentArray)end;return ca end,["src.libs.SyncSaveLoad"]=function(...)require("lualib_bundle")local ca={}local l8=require("src.libs.EncodingBase64")local kF=l8.EncodingBase64;local l9=require("src.libs.EncodingHex")local kN=l9.EncodingHex;local la=require("src.libs.StringBuilder")local l6=la.StringBuilder;ca.SyncSaveLoad=__TS__Class()local lb=ca.SyncSaveLoad;lb.name="SyncSaveLoad"function lb.prototype.____constructor(self)self.syncPrefix="S_TIO"self.syncPrefixFinish="S_TIOF"self.syncEvent=CreateTrigger()self.allPromises={}do local s=0;while s<GetBJMaxPlayers()do BlzTriggerRegisterPlayerSyncEvent(self.syncEvent,Player(s),self.syncPrefix,false)BlzTriggerRegisterPlayerSyncEvent(self.syncEvent,Player(s),self.syncPrefixFinish,false)s=s+1 end end;TriggerAddAction(self.syncEvent,function()return self:onSync()end)end;function lb.getInstance(self)if self.instance==nil then self.instance=__TS__New(ca.SyncSaveLoad)end;return self.instance end;function lb.prototype.writeFile(self,eF,...)PreloadGenClear()PreloadGenStart()local lc=tostring(__TS__New(l6,...))local ld=kF:Encode(lc)local le=180;local lf=""local lg=math.ceil(#ld/le)xpcall(function()do local s=0;while s<#ld do lf=lf..__TS__StringCharAt(ld,s)if#lf>=le then local jb=kN:To32BitHexString(lg)..kN:To32BitHexString(math.ceil(s/le))Preload(((("\")\ncall BlzSendSyncData(\""..self.syncPrefix).."\",\"")..jb..lf).."\")\ncall S2I(\"")lf=""end;s=s+1 end end;if#lf>0 then local jb=kN:To32BitHexString(lg)..kN:To32BitHexString(lg)Preload(((("\")\ncall BlzSendSyncData(\""..self.syncPrefix).."\",\"")..jb..lf).."\")\ncall S2I(\"")end end,nil)PreloadGenEnd(eF)end;function lb.prototype.isPlayerAllowedToRead(self,jc)return self.allPromises[GetPlayerId(jc)+1]==nil end;function lb.prototype.read(self,eF,jc,lh)if self.allPromises[GetPlayerId(jc)+1]==nil then self.allPromises[GetPlayerId(jc)+1]=__TS__New(ca.FilePromise,jc,lh)if GetLocalPlayer()==jc then PreloadStart()Preloader(eF)PreloadEnd(1)BlzSendSyncData(self.syncPrefixFinish,"")end else end;return self.allPromises[GetPlayerId(jc)+1]end;function lb.prototype.onSync(self)xpcall(function()local li=BlzGetTriggerSyncData()local lj=kN:ToNumber(__TS__StringSubstr(li,0,8))local lk=kN:ToNumber(__TS__StringSubstr(li,8,8))local ll=__TS__StringSubstr(li,16)local bw=self.allPromises[GetPlayerId(GetTriggerPlayer())+1]if bw then if BlzGetTriggerSyncPrefix()==self.syncPrefix then bw.buffer[lk]=ll elseif BlzGetTriggerSyncPrefix()==self.syncPrefixFinish then bw:finish()self.allPromises[GetPlayerId(bw.syncOwner)+1]=nil end else end end,nil)end;ca.FilePromise=__TS__Class()local lm=ca.FilePromise;lm.name="FilePromise"function lm.prototype.____constructor(self,ln,lh)self.syncOwner=ln;self.onFinish=lh;self.hasLoaded=false;self.buffer={}self.finalString=""end;function lm.prototype.finish(self)self.hasLoaded=true;local lo=tostring(__TS__New(l6,table.unpack(self.buffer)))self.finalString=kF:Decode(lo)if self.onFinish~=nil then self.onFinish(self)end end;return ca end,["src.libs.dummy"]=function(...)local ca={}function ca.DummyCast(a1,lp)do local lq=CreateUnit(Player(25),FourCC("dumy"),0,0,bj_UNIT_FACING)ShowUnit(lq,false)UnitAddAbility(lq,lp)a1(lq)UnitApplyTimedLife(lq,0,3)end end;return ca end,["src.resources.abilityID"]=function(...)local ca={}ca.AID={INDEXER=FourCC("uDex"),HEAL=FourCC("a000"),ROAR=FourCC("a001"),DISPEL_MAGIC=FourCC("a002"),FRENZY=FourCC("a003"),UNHOLY_FRENZY=FourCC("a004"),BERSERK=FourCC("a005"),SWAP=FourCC("a030"),SPWN_ALL=FourCC("a031"),SPWN_3000=FourCC("a032"),SPWN_6000=FourCC("a033"),SPWN_RESET=FourCC("a034"),CARGO_HOLD=FourCC("a009"),LOAD=FourCC("a010"),UNLOAD=FourCC("a011"),FORFEIT=FourCC("a050"),LOW_HEALTH_DEFENDER=FourCC("a051"),HIGH_HEALTH_DEFENDER=FourCC("a052"),LOW_VALUE_DEFENDER=FourCC("a053"),HIGH_VALUE_DEFENDER=FourCC("a054"),ALLOW_PINGS=FourCC("a055"),BLOCK_PINGS=FourCC("a056"),PING=FourCC("a057")}return ca end,["src.resources.buffID"]=function(...)local ca={}ca.BID={UNHOLY_FRENZY=FourCC("b000"),FRENZY=FourCC("b001"),BERSERK=FourCC("b002")}return ca end,["src.resources.unitID"]=function(...)local ca={}ca.UID={CITY=FourCC("h000"),PORT=FourCC("h001"),CONTROL_POINT=FourCC("h002"),SPAWNER=FourCC("h004"),RIFLEMEN=FourCC("u000"),MEDIC=FourCC("u001"),MORTAR=FourCC("u002"),ROARER=FourCC("u003"),KNIGHT=FourCC("u004"),GENERAL=FourCC("u005"),ARTILLERY=FourCC("u006"),TANK=FourCC("u007"),MARINE=FourCC("u008"),CAPTAIN=FourCC("u009"),ADMIRAL=FourCC("u010"),TRANSPORT_SHIP=FourCC("s000"),ARMORED_TRANSPORT_SHIP=FourCC("s001"),WARSHIP_A=FourCC("s002"),WARSHIP_B=FourCC("s003"),BATTLESHIP_SS=FourCC("s004"),DUMMY_GUARD=FourCC("u050"),CAMERA_LOCK_UNIT=FourCC("u051"),PLAYER_TOOLS=FourCC("H000")}return ca end}return require("src.main",...)
+function InitGlobals()
+end
+
+function InitCustomPlayerSlots()
+    SetPlayerStartLocation(Player(0), 0)
+    ForcePlayerStartLocation(Player(0), 0)
+    SetPlayerColor(Player(0), ConvertPlayerColor(0))
+    SetPlayerRacePreference(Player(0), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(0), true)
+    SetPlayerController(Player(0), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(1), 1)
+    ForcePlayerStartLocation(Player(1), 1)
+    SetPlayerColor(Player(1), ConvertPlayerColor(1))
+    SetPlayerRacePreference(Player(1), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(1), true)
+    SetPlayerController(Player(1), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(2), 2)
+    ForcePlayerStartLocation(Player(2), 2)
+    SetPlayerColor(Player(2), ConvertPlayerColor(2))
+    SetPlayerRacePreference(Player(2), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(2), true)
+    SetPlayerController(Player(2), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(3), 3)
+    ForcePlayerStartLocation(Player(3), 3)
+    SetPlayerColor(Player(3), ConvertPlayerColor(3))
+    SetPlayerRacePreference(Player(3), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(3), true)
+    SetPlayerController(Player(3), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(4), 4)
+    ForcePlayerStartLocation(Player(4), 4)
+    SetPlayerColor(Player(4), ConvertPlayerColor(4))
+    SetPlayerRacePreference(Player(4), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(4), true)
+    SetPlayerController(Player(4), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(5), 5)
+    ForcePlayerStartLocation(Player(5), 5)
+    SetPlayerColor(Player(5), ConvertPlayerColor(5))
+    SetPlayerRacePreference(Player(5), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(5), true)
+    SetPlayerController(Player(5), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(6), 6)
+    ForcePlayerStartLocation(Player(6), 6)
+    SetPlayerColor(Player(6), ConvertPlayerColor(6))
+    SetPlayerRacePreference(Player(6), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(6), true)
+    SetPlayerController(Player(6), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(7), 7)
+    ForcePlayerStartLocation(Player(7), 7)
+    SetPlayerColor(Player(7), ConvertPlayerColor(7))
+    SetPlayerRacePreference(Player(7), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(7), true)
+    SetPlayerController(Player(7), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(8), 8)
+    ForcePlayerStartLocation(Player(8), 8)
+    SetPlayerColor(Player(8), ConvertPlayerColor(8))
+    SetPlayerRacePreference(Player(8), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(8), true)
+    SetPlayerController(Player(8), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(9), 9)
+    ForcePlayerStartLocation(Player(9), 9)
+    SetPlayerColor(Player(9), ConvertPlayerColor(9))
+    SetPlayerRacePreference(Player(9), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(9), true)
+    SetPlayerController(Player(9), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(10), 10)
+    ForcePlayerStartLocation(Player(10), 10)
+    SetPlayerColor(Player(10), ConvertPlayerColor(10))
+    SetPlayerRacePreference(Player(10), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(10), true)
+    SetPlayerController(Player(10), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(11), 11)
+    ForcePlayerStartLocation(Player(11), 11)
+    SetPlayerColor(Player(11), ConvertPlayerColor(11))
+    SetPlayerRacePreference(Player(11), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(11), true)
+    SetPlayerController(Player(11), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(12), 12)
+    ForcePlayerStartLocation(Player(12), 12)
+    SetPlayerColor(Player(12), ConvertPlayerColor(12))
+    SetPlayerRacePreference(Player(12), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(12), true)
+    SetPlayerController(Player(12), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(13), 13)
+    ForcePlayerStartLocation(Player(13), 13)
+    SetPlayerColor(Player(13), ConvertPlayerColor(13))
+    SetPlayerRacePreference(Player(13), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(13), true)
+    SetPlayerController(Player(13), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(14), 14)
+    ForcePlayerStartLocation(Player(14), 14)
+    SetPlayerColor(Player(14), ConvertPlayerColor(14))
+    SetPlayerRacePreference(Player(14), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(14), true)
+    SetPlayerController(Player(14), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(15), 15)
+    ForcePlayerStartLocation(Player(15), 15)
+    SetPlayerColor(Player(15), ConvertPlayerColor(15))
+    SetPlayerRacePreference(Player(15), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(15), true)
+    SetPlayerController(Player(15), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(16), 16)
+    ForcePlayerStartLocation(Player(16), 16)
+    SetPlayerColor(Player(16), ConvertPlayerColor(16))
+    SetPlayerRacePreference(Player(16), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(16), true)
+    SetPlayerController(Player(16), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(17), 17)
+    ForcePlayerStartLocation(Player(17), 17)
+    SetPlayerColor(Player(17), ConvertPlayerColor(17))
+    SetPlayerRacePreference(Player(17), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(17), true)
+    SetPlayerController(Player(17), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(18), 18)
+    ForcePlayerStartLocation(Player(18), 18)
+    SetPlayerColor(Player(18), ConvertPlayerColor(18))
+    SetPlayerRacePreference(Player(18), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(18), true)
+    SetPlayerController(Player(18), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(19), 19)
+    ForcePlayerStartLocation(Player(19), 19)
+    SetPlayerColor(Player(19), ConvertPlayerColor(19))
+    SetPlayerRacePreference(Player(19), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(19), true)
+    SetPlayerController(Player(19), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(20), 20)
+    ForcePlayerStartLocation(Player(20), 20)
+    SetPlayerColor(Player(20), ConvertPlayerColor(20))
+    SetPlayerRacePreference(Player(20), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(20), true)
+    SetPlayerController(Player(20), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(21), 21)
+    ForcePlayerStartLocation(Player(21), 21)
+    SetPlayerColor(Player(21), ConvertPlayerColor(21))
+    SetPlayerRacePreference(Player(21), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(21), true)
+    SetPlayerController(Player(21), MAP_CONTROL_USER)
+    SetPlayerStartLocation(Player(22), 22)
+    ForcePlayerStartLocation(Player(22), 22)
+    SetPlayerColor(Player(22), ConvertPlayerColor(22))
+    SetPlayerRacePreference(Player(22), RACE_PREF_RANDOM)
+    SetPlayerRaceSelectable(Player(22), true)
+    SetPlayerController(Player(22), MAP_CONTROL_USER)
+end
+
+function InitCustomTeams()
+    SetPlayerTeam(Player(0), 0)
+    SetPlayerTeam(Player(1), 0)
+    SetPlayerTeam(Player(2), 0)
+    SetPlayerTeam(Player(3), 0)
+    SetPlayerTeam(Player(4), 0)
+    SetPlayerTeam(Player(5), 0)
+    SetPlayerTeam(Player(6), 0)
+    SetPlayerTeam(Player(7), 0)
+    SetPlayerTeam(Player(8), 0)
+    SetPlayerTeam(Player(9), 0)
+    SetPlayerTeam(Player(10), 0)
+    SetPlayerTeam(Player(11), 0)
+    SetPlayerTeam(Player(12), 0)
+    SetPlayerTeam(Player(13), 0)
+    SetPlayerTeam(Player(14), 0)
+    SetPlayerTeam(Player(15), 0)
+    SetPlayerTeam(Player(16), 0)
+    SetPlayerTeam(Player(17), 0)
+    SetPlayerTeam(Player(18), 0)
+    SetPlayerTeam(Player(19), 0)
+    SetPlayerTeam(Player(20), 0)
+    SetPlayerTeam(Player(21), 0)
+    SetPlayerTeam(Player(22), 0)
+end
+
+function InitAllyPriorities()
+    SetStartLocPrioCount(0, 22)
+    SetStartLocPrio(0, 0, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 1, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 2, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 3, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 4, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 5, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 6, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 7, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 8, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(0, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(1, 22)
+    SetStartLocPrio(1, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 1, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 2, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 3, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 4, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 5, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 6, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 7, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 8, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(1, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(2, 22)
+    SetStartLocPrio(2, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 2, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 3, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 4, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 5, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 6, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 7, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 8, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(2, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(3, 22)
+    SetStartLocPrio(3, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 3, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 4, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 5, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 6, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 7, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 8, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(3, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(4, 22)
+    SetStartLocPrio(4, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 4, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 5, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 6, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 7, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 8, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(4, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(5, 22)
+    SetStartLocPrio(5, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 5, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 6, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 7, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 8, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(5, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(6, 22)
+    SetStartLocPrio(6, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 6, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 7, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 8, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(6, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(7, 22)
+    SetStartLocPrio(7, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 7, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 8, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(7, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(8, 22)
+    SetStartLocPrio(8, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 8, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(8, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(9, 22)
+    SetStartLocPrio(9, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 9, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(9, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(10, 22)
+    SetStartLocPrio(10, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 10, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(10, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(11, 22)
+    SetStartLocPrio(11, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 11, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(11, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(12, 22)
+    SetStartLocPrio(12, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 12, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(12, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(13, 22)
+    SetStartLocPrio(13, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 13, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(13, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(14, 22)
+    SetStartLocPrio(14, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 13, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 14, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(14, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(15, 22)
+    SetStartLocPrio(15, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 13, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 14, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 15, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(15, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(16, 22)
+    SetStartLocPrio(16, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 13, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 14, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 15, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 16, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(16, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(17, 22)
+    SetStartLocPrio(17, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 13, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 14, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 15, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 16, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 17, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(17, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(18, 22)
+    SetStartLocPrio(18, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 13, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 14, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 15, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 16, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 17, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 18, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(18, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(19, 22)
+    SetStartLocPrio(19, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 13, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 14, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 15, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 16, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 17, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 18, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 19, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(19, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(20, 22)
+    SetStartLocPrio(20, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 13, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 14, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 15, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 16, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 17, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 18, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 19, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 20, 21, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(20, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(21, 22)
+    SetStartLocPrio(21, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 13, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 14, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 15, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 16, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 17, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 18, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 19, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 20, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(21, 21, 22, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrioCount(22, 22)
+    SetStartLocPrio(22, 0, 0, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 1, 1, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 2, 2, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 3, 3, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 4, 4, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 5, 5, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 6, 6, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 7, 7, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 8, 8, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 9, 9, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 10, 10, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 11, 11, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 12, 12, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 13, 13, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 14, 14, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 15, 15, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 16, 16, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 17, 17, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 18, 18, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 19, 19, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 20, 20, MAP_LOC_PRIO_HIGH)
+    SetStartLocPrio(22, 21, 21, MAP_LOC_PRIO_HIGH)
+end
+
+function main()
+    SetCameraBounds(-13696.0 + GetCameraMargin(CAMERA_MARGIN_LEFT), -15872.0 + GetCameraMargin(CAMERA_MARGIN_BOTTOM), 18816.0 - GetCameraMargin(CAMERA_MARGIN_RIGHT), 16256.0 - GetCameraMargin(CAMERA_MARGIN_TOP), -13696.0 + GetCameraMargin(CAMERA_MARGIN_LEFT), 16256.0 - GetCameraMargin(CAMERA_MARGIN_TOP), 18816.0 - GetCameraMargin(CAMERA_MARGIN_RIGHT), -15872.0 + GetCameraMargin(CAMERA_MARGIN_BOTTOM))
+    SetDayNightModels("Environment\\DNC\\DNCAshenvale\\DNCAshenvaleTerrain\\DNCAshenvaleTerrain.mdl", "Environment\\DNC\\DNCAshenvale\\DNCAshenvaleUnit\\DNCAshenvaleUnit.mdl")
+    SetTerrainFogEx(0, 100000.0, 100000.0, 0.000, 0.000, 0.000, 0.000)
+    NewSoundEnvironment("Default")
+    SetAmbientDaySound("AshenvaleDay")
+    SetAmbientNightSound("AshenvaleNight")
+    SetMapMusic("Music", true, 0)
+    InitBlizzard()
+    InitGlobals()
+end
+
+function config()
+    SetMapName("")
+    SetMapDescription("TRIGSTR_7297")
+    SetPlayers(23)
+    SetTeams(23)
+    SetGamePlacement(MAP_PLACEMENT_TEAMS_TOGETHER)
+    DefineStartLocation(0, -3072.0, 11264.0)
+    DefineStartLocation(1, -3072.0, 11264.0)
+    DefineStartLocation(2, -3072.0, 11264.0)
+    DefineStartLocation(3, -3072.0, 11264.0)
+    DefineStartLocation(4, -3072.0, 11264.0)
+    DefineStartLocation(5, -3072.0, 11264.0)
+    DefineStartLocation(6, -3072.0, 11264.0)
+    DefineStartLocation(7, -3072.0, 11264.0)
+    DefineStartLocation(8, -3072.0, 11264.0)
+    DefineStartLocation(9, -3072.0, 11264.0)
+    DefineStartLocation(10, -3072.0, 11264.0)
+    DefineStartLocation(11, -3072.0, 11264.0)
+    DefineStartLocation(12, -3072.0, 11264.0)
+    DefineStartLocation(13, -3072.0, 11264.0)
+    DefineStartLocation(14, -3072.0, 11264.0)
+    DefineStartLocation(15, -3072.0, 11264.0)
+    DefineStartLocation(16, -3072.0, 11264.0)
+    DefineStartLocation(17, -3072.0, 11264.0)
+    DefineStartLocation(18, -3072.0, 11264.0)
+    DefineStartLocation(19, -3072.0, 11264.0)
+    DefineStartLocation(20, -3072.0, 11264.0)
+    DefineStartLocation(21, -3072.0, 11264.0)
+    DefineStartLocation(22, -3072.0, 11264.0)
+    InitCustomPlayerSlots()
+    SetPlayerSlotAvailable(Player(0), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(1), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(2), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(3), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(4), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(5), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(6), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(7), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(8), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(9), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(10), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(11), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(12), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(13), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(14), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(15), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(16), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(17), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(18), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(19), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(20), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(21), MAP_CONTROL_USER)
+    SetPlayerSlotAvailable(Player(22), MAP_CONTROL_USER)
+    InitGenericPlayerSlots()
+    InitAllyPriorities()
+end
+
+
+local ____modules = {}
+local ____moduleCache = {}
+local ____originalRequire = require
+local function require(file, ...)
+    if ____moduleCache[file] then
+        return ____moduleCache[file].value
+    end
+    if ____modules[file] then
+        local module = ____modules[file]
+        ____moduleCache[file] = { value = (select("#", ...) > 0) and module(...) or module(file) }
+        return ____moduleCache[file].value
+    else
+        if ____originalRequire then
+            return ____originalRequire(file)
+        else
+            error("module '" .. file .. "' not found")
+        end
+    end
+end
+____modules = {
+["lualib_bundle"] = function(...) function __TS__ArrayIsArray(value)
+    return (type(value) == "table") and ((value[1] ~= nil) or (next(value, nil) == nil))
+end
+
+function __TS__ArrayConcat(arr1, ...)
+    local args = {...}
+    local out = {}
+    for ____, val in ipairs(arr1) do
+        out[#out + 1] = val
+    end
+    for ____, arg in ipairs(args) do
+        if __TS__ArrayIsArray(arg) then
+            local argAsArray = arg
+            for ____, val in ipairs(argAsArray) do
+                out[#out + 1] = val
+            end
+        else
+            out[#out + 1] = arg
+        end
+    end
+    return out
+end
+
+function __TS__ArrayEntries(array)
+    local key = 0
+    return {
+        [Symbol.iterator] = function(self)
+            return self
+        end,
+        next = function(self)
+            local result = {done = array[key + 1] == nil, value = {key, array[key + 1]}}
+            key = key + 1
+            return result
+        end
+    }
+end
+
+function __TS__ArrayEvery(arr, callbackfn)
+    do
+        local i = 0
+        while i < #arr do
+            if not callbackfn(_G, arr[i + 1], i, arr) then
+                return false
+            end
+            i = i + 1
+        end
+    end
+    return true
+end
+
+function __TS__ArrayFilter(arr, callbackfn)
+    local result = {}
+    do
+        local i = 0
+        while i < #arr do
+            if callbackfn(_G, arr[i + 1], i, arr) then
+                result[#result + 1] = arr[i + 1]
+            end
+            i = i + 1
+        end
+    end
+    return result
+end
+
+function __TS__ArrayForEach(arr, callbackFn)
+    do
+        local i = 0
+        while i < #arr do
+            callbackFn(_G, arr[i + 1], i, arr)
+            i = i + 1
+        end
+    end
+end
+
+function __TS__ArrayFind(arr, predicate)
+    local len = #arr
+    local k = 0
+    while k < len do
+        local elem = arr[k + 1]
+        if predicate(_G, elem, k, arr) then
+            return elem
+        end
+        k = k + 1
+    end
+    return nil
+end
+
+function __TS__ArrayFindIndex(arr, callbackFn)
+    do
+        local i = 0
+        local len = #arr
+        while i < len do
+            if callbackFn(_G, arr[i + 1], i, arr) then
+                return i
+            end
+            i = i + 1
+        end
+    end
+    return -1
+end
+
+function __TS__ArrayIncludes(self, searchElement, fromIndex)
+    if fromIndex == nil then
+        fromIndex = 0
+    end
+    local len = #self
+    local k = fromIndex
+    if fromIndex < 0 then
+        k = len + fromIndex
+    end
+    if k < 0 then
+        k = 0
+    end
+    for i = k, len do
+        if self[i + 1] == searchElement then
+            return true
+        end
+    end
+    return false
+end
+
+function __TS__ArrayIndexOf(arr, searchElement, fromIndex)
+    local len = #arr
+    if len == 0 then
+        return -1
+    end
+    local n = 0
+    if fromIndex then
+        n = fromIndex
+    end
+    if n >= len then
+        return -1
+    end
+    local k
+    if n >= 0 then
+        k = n
+    else
+        k = len + n
+        if k < 0 then
+            k = 0
+        end
+    end
+    do
+        local i = k
+        while i < len do
+            if arr[i + 1] == searchElement then
+                return i
+            end
+            i = i + 1
+        end
+    end
+    return -1
+end
+
+function __TS__ArrayJoin(self, separator)
+    if separator == nil then
+        separator = ","
+    end
+    local result = ""
+    for index, value in ipairs(self) do
+        if index > 1 then
+            result = result .. separator
+        end
+        result = result .. tostring(value)
+    end
+    return result
+end
+
+function __TS__ArrayMap(arr, callbackfn)
+    local newArray = {}
+    do
+        local i = 0
+        while i < #arr do
+            newArray[i + 1] = callbackfn(_G, arr[i + 1], i, arr)
+            i = i + 1
+        end
+    end
+    return newArray
+end
+
+function __TS__ArrayPush(arr, ...)
+    local items = {...}
+    for ____, item in ipairs(items) do
+        arr[#arr + 1] = item
+    end
+    return #arr
+end
+
+function __TS__ArrayReduce(arr, callbackFn, ...)
+    local len = #arr
+    local k = 0
+    local accumulator = nil
+    if select("#", ...) ~= 0 then
+        accumulator = select(1, ...)
+    elseif len > 0 then
+        accumulator = arr[1]
+        k = 1
+    else
+        error("Reduce of empty array with no initial value", 0)
+    end
+    for i = k, len - 1 do
+        accumulator = callbackFn(_G, accumulator, arr[i + 1], i, arr)
+    end
+    return accumulator
+end
+
+function __TS__ArrayReduceRight(arr, callbackFn, ...)
+    local len = #arr
+    local k = len - 1
+    local accumulator = nil
+    if select("#", ...) ~= 0 then
+        accumulator = select(1, ...)
+    elseif len > 0 then
+        accumulator = arr[k + 1]
+        k = k - 1
+    else
+        error("Reduce of empty array with no initial value", 0)
+    end
+    for i = k, 0, -1 do
+        accumulator = callbackFn(_G, accumulator, arr[i + 1], i, arr)
+    end
+    return accumulator
+end
+
+function __TS__ArrayReverse(arr)
+    local i = 0
+    local j = #arr - 1
+    while i < j do
+        local temp = arr[j + 1]
+        arr[j + 1] = arr[i + 1]
+        arr[i + 1] = temp
+        i = i + 1
+        j = j - 1
+    end
+    return arr
+end
+
+function __TS__ArrayShift(arr)
+    return table.remove(arr, 1)
+end
+
+function __TS__ArrayUnshift(arr, ...)
+    local items = {...}
+    do
+        local i = #items - 1
+        while i >= 0 do
+            table.insert(arr, 1, items[i + 1])
+            i = i - 1
+        end
+    end
+    return #arr
+end
+
+function __TS__ArraySort(arr, compareFn)
+    if compareFn ~= nil then
+        table.sort(
+            arr,
+            function(a, b) return compareFn(_G, a, b) < 0 end
+        )
+    else
+        table.sort(arr)
+    end
+    return arr
+end
+
+function __TS__ArraySlice(list, first, last)
+    local len = #list
+    local relativeStart = first or 0
+    local k
+    if relativeStart < 0 then
+        k = math.max(len + relativeStart, 0)
+    else
+        k = math.min(relativeStart, len)
+    end
+    local relativeEnd = last
+    if last == nil then
+        relativeEnd = len
+    end
+    local final
+    if relativeEnd < 0 then
+        final = math.max(len + relativeEnd, 0)
+    else
+        final = math.min(relativeEnd, len)
+    end
+    local out = {}
+    local n = 0
+    while k < final do
+        out[n + 1] = list[k + 1]
+        k = k + 1
+        n = n + 1
+    end
+    return out
+end
+
+function __TS__ArraySome(arr, callbackfn)
+    do
+        local i = 0
+        while i < #arr do
+            if callbackfn(_G, arr[i + 1], i, arr) then
+                return true
+            end
+            i = i + 1
+        end
+    end
+    return false
+end
+
+function __TS__ArraySplice(list, ...)
+    local len = #list
+    local actualArgumentCount = select("#", ...)
+    local start = select(1, ...)
+    local deleteCount = select(2, ...)
+    local actualStart
+    if start < 0 then
+        actualStart = math.max(len + start, 0)
+    else
+        actualStart = math.min(start, len)
+    end
+    local itemCount = math.max(actualArgumentCount - 2, 0)
+    local actualDeleteCount
+    if actualArgumentCount == 0 then
+        actualDeleteCount = 0
+    elseif actualArgumentCount == 1 then
+        actualDeleteCount = len - actualStart
+    else
+        actualDeleteCount = math.min(
+            math.max(deleteCount or 0, 0),
+            len - actualStart
+        )
+    end
+    local out = {}
+    do
+        local k = 0
+        while k < actualDeleteCount do
+            local from = actualStart + k
+            if list[from + 1] then
+                out[k + 1] = list[from + 1]
+            end
+            k = k + 1
+        end
+    end
+    if itemCount < actualDeleteCount then
+        do
+            local k = actualStart
+            while k < (len - actualDeleteCount) do
+                local from = k + actualDeleteCount
+                local to = k + itemCount
+                if list[from + 1] then
+                    list[to + 1] = list[from + 1]
+                else
+                    list[to + 1] = nil
+                end
+                k = k + 1
+            end
+        end
+        do
+            local k = len
+            while k > ((len - actualDeleteCount) + itemCount) do
+                list[k] = nil
+                k = k - 1
+            end
+        end
+    elseif itemCount > actualDeleteCount then
+        do
+            local k = len - actualDeleteCount
+            while k > actualStart do
+                local from = (k + actualDeleteCount) - 1
+                local to = (k + itemCount) - 1
+                if list[from + 1] then
+                    list[to + 1] = list[from + 1]
+                else
+                    list[to + 1] = nil
+                end
+                k = k - 1
+            end
+        end
+    end
+    local j = actualStart
+    for i = 3, actualArgumentCount do
+        list[j + 1] = select(i, ...)
+        j = j + 1
+    end
+    do
+        local k = #list - 1
+        while k >= ((len - actualDeleteCount) + itemCount) do
+            list[k + 1] = nil
+            k = k - 1
+        end
+    end
+    return out
+end
+
+function __TS__ArrayToObject(array)
+    local object = {}
+    do
+        local i = 0
+        while i < #array do
+            object[i] = array[i + 1]
+            i = i + 1
+        end
+    end
+    return object
+end
+
+function __TS__ArrayFlat(array, depth)
+    if depth == nil then
+        depth = 1
+    end
+    local result = {}
+    for ____, value in ipairs(array) do
+        if (depth > 0) and __TS__ArrayIsArray(value) then
+            result = __TS__ArrayConcat(
+                result,
+                __TS__ArrayFlat(value, depth - 1)
+            )
+        else
+            result[#result + 1] = value
+        end
+    end
+    return result
+end
+
+function __TS__ArrayFlatMap(array, callback)
+    local result = {}
+    do
+        local i = 0
+        while i < #array do
+            local value = callback(_G, array[i + 1], i, array)
+            if (type(value) == "table") and __TS__ArrayIsArray(value) then
+                result = __TS__ArrayConcat(result, value)
+            else
+                result[#result + 1] = value
+            end
+            i = i + 1
+        end
+    end
+    return result
+end
+
+function __TS__ArraySetLength(arr, length)
+    if (((length < 0) or (length ~= length)) or (length == math.huge)) or (math.floor(length) ~= length) then
+        error(
+            "invalid array length: " .. tostring(length),
+            0
+        )
+    end
+    do
+        local i = #arr - 1
+        while i >= length do
+            arr[i + 1] = nil
+            i = i - 1
+        end
+    end
+    return length
+end
+
+____symbolMetatable = {
+    __tostring = function(self)
+        return ("Symbol(" .. (self.description or "")) .. ")"
+    end
+}
+function __TS__Symbol(description)
+    return setmetatable({description = description}, ____symbolMetatable)
+end
+Symbol = {
+    iterator = __TS__Symbol("Symbol.iterator"),
+    hasInstance = __TS__Symbol("Symbol.hasInstance"),
+    species = __TS__Symbol("Symbol.species"),
+    toStringTag = __TS__Symbol("Symbol.toStringTag")
+}
+
+function __TS__InstanceOf(obj, classTbl)
+    if type(classTbl) ~= "table" then
+        error("Right-hand side of 'instanceof' is not an object", 0)
+    end
+    if classTbl[Symbol.hasInstance] ~= nil then
+        return not (not classTbl[Symbol.hasInstance](classTbl, obj))
+    end
+    if type(obj) == "table" then
+        local luaClass = obj.constructor
+        while luaClass ~= nil do
+            if luaClass == classTbl then
+                return true
+            end
+            luaClass = luaClass.____super
+        end
+    end
+    return false
+end
+
+function __TS__New(target, ...)
+    local instance = setmetatable({}, target.prototype)
+    instance:____constructor(...)
+    return instance
+end
+
+function __TS__AsyncAwaiter(generator)
+    return __TS__New(
+        __TS__Promise,
+        function(____, resolve, reject)
+            local asyncCoroutine, adopt, fulfilled, step
+            function adopt(self, value)
+                return ((__TS__InstanceOf(value, __TS__Promise) and (function() return value end)) or (function() return __TS__Promise.resolve(value) end))()
+            end
+            function fulfilled(self, value)
+                local success, resultOrError = coroutine.resume(asyncCoroutine, value)
+                if success then
+                    step(_G, resultOrError)
+                else
+                    reject(_G, resultOrError)
+                end
+            end
+            function step(self, result)
+                if coroutine.status(asyncCoroutine) == "dead" then
+                    resolve(_G, result)
+                else
+                    (function()
+                        local ____self = adopt(_G, result)
+                        return ____self["then"](
+                            ____self,
+                            fulfilled,
+                            function(____, reason) return reject(_G, reason) end
+                        )
+                    end)()
+                end
+            end
+            asyncCoroutine = coroutine.create(generator)
+            local success, resultOrError = coroutine.resume(asyncCoroutine)
+            if success then
+                step(_G, resultOrError)
+            else
+                reject(_G, resultOrError)
+            end
+        end
+    )
+end
+function __TS__Await(thing)
+    return coroutine.yield(thing)
+end
+
+function __TS__Class(self)
+    local c = {prototype = {}}
+    c.prototype.__index = c.prototype
+    c.prototype.constructor = c
+    return c
+end
+
+function __TS__ClassExtends(target, base)
+    target.____super = base
+    local staticMetatable = setmetatable({__index = base}, base)
+    setmetatable(target, staticMetatable)
+    local baseMetatable = getmetatable(base)
+    if baseMetatable then
+        if type(baseMetatable.__index) == "function" then
+            staticMetatable.__index = baseMetatable.__index
+        end
+        if type(baseMetatable.__newindex) == "function" then
+            staticMetatable.__newindex = baseMetatable.__newindex
+        end
+    end
+    setmetatable(target.prototype, base.prototype)
+    if type(base.prototype.__index) == "function" then
+        target.prototype.__index = base.prototype.__index
+    end
+    if type(base.prototype.__newindex) == "function" then
+        target.prototype.__newindex = base.prototype.__newindex
+    end
+    if type(base.prototype.__tostring) == "function" then
+        target.prototype.__tostring = base.prototype.__tostring
+    end
+end
+
+function __TS__CloneDescriptor(____bindingPattern0)
+    local enumerable
+    enumerable = ____bindingPattern0.enumerable
+    local configurable
+    configurable = ____bindingPattern0.configurable
+    local get
+    get = ____bindingPattern0.get
+    local set
+    set = ____bindingPattern0.set
+    local writable
+    writable = ____bindingPattern0.writable
+    local value
+    value = ____bindingPattern0.value
+    local descriptor = {enumerable = enumerable == true, configurable = configurable == true}
+    local hasGetterOrSetter = (get ~= nil) or (set ~= nil)
+    local hasValueOrWritableAttribute = (writable ~= nil) or (value ~= nil)
+    if hasGetterOrSetter and hasValueOrWritableAttribute then
+        error("Invalid property descriptor. Cannot both specify accessors and a value or writable attribute.", 0)
+    end
+    if get or set then
+        descriptor.get = get
+        descriptor.set = set
+    else
+        descriptor.value = value
+        descriptor.writable = writable == true
+    end
+    return descriptor
+end
+
+function __TS__ObjectGetOwnPropertyDescriptor(object, key)
+    local metatable = getmetatable(object)
+    if not metatable then
+        return
+    end
+    if not rawget(metatable, "_descriptors") then
+        return
+    end
+    return rawget(metatable, "_descriptors")[key]
+end
+
+function ____descriptorIndex(self, key)
+    local value = rawget(self, key)
+    if value ~= nil then
+        return value
+    end
+    local metatable = getmetatable(self)
+    while metatable do
+        local rawResult = rawget(metatable, key)
+        if rawResult ~= nil then
+            return rawResult
+        end
+        local descriptors = rawget(metatable, "_descriptors")
+        if descriptors then
+            local descriptor = descriptors[key]
+            if descriptor then
+                if descriptor.get then
+                    return descriptor.get(self)
+                end
+                return descriptor.value
+            end
+        end
+        metatable = getmetatable(metatable)
+    end
+end
+function ____descriptorNewindex(self, key, value)
+    local metatable = getmetatable(self)
+    while metatable do
+        local descriptors = rawget(metatable, "_descriptors")
+        if descriptors then
+            local descriptor = descriptors[key]
+            if descriptor then
+                if descriptor.set then
+                    descriptor.set(self, value)
+                else
+                    if descriptor.writable == false then
+                        error(
+                            ((("Cannot assign to read only property '" .. key) .. "' of object '") .. tostring(self)) .. "'",
+                            0
+                        )
+                    end
+                    descriptor.value = value
+                end
+                return
+            end
+        end
+        metatable = getmetatable(metatable)
+    end
+    rawset(self, key, value)
+end
+function __TS__SetDescriptor(target, key, desc, isPrototype)
+    if isPrototype == nil then
+        isPrototype = false
+    end
+    local metatable = ((isPrototype and (function() return target end)) or (function() return getmetatable(target) end))()
+    if not metatable then
+        metatable = {}
+        setmetatable(target, metatable)
+    end
+    local value = rawget(target, key)
+    if value ~= nil then
+        rawset(target, key, nil)
+    end
+    if not rawget(metatable, "_descriptors") then
+        metatable._descriptors = {}
+    end
+    local descriptor = __TS__CloneDescriptor(desc)
+    metatable._descriptors[key] = descriptor
+    metatable.__index = ____descriptorIndex
+    metatable.__newindex = ____descriptorNewindex
+end
+
+function __TS__ObjectAssign(to, ...)
+    local sources = {...}
+    if to == nil then
+        return to
+    end
+    for ____, source in ipairs(sources) do
+        for key in pairs(source) do
+            to[key] = source[key]
+        end
+    end
+    return to
+end
+
+function __TS__Decorate(decorators, target, key, desc)
+    local result = target
+    do
+        local i = #decorators
+        while i >= 0 do
+            local decorator = decorators[i + 1]
+            if decorator then
+                local oldResult = result
+                if key == nil then
+                    result = decorator(_G, result)
+                elseif desc == true then
+                    local value = rawget(target, key)
+                    local descriptor = __TS__ObjectGetOwnPropertyDescriptor(target, key) or ({configurable = true, writable = true, value = value})
+                    local desc = decorator(_G, target, key, descriptor) or descriptor
+                    local isSimpleValue = (((desc.configurable == true) and (desc.writable == true)) and (not desc.get)) and (not desc.set)
+                    if isSimpleValue then
+                        rawset(target, key, desc.value)
+                    else
+                        __TS__SetDescriptor(
+                            target,
+                            key,
+                            __TS__ObjectAssign({}, descriptor, desc)
+                        )
+                    end
+                elseif desc == false then
+                    result = decorator(_G, target, key, desc)
+                else
+                    result = decorator(_G, target, key)
+                end
+                result = result or oldResult
+            end
+            i = i - 1
+        end
+    end
+    return result
+end
+
+function __TS__DecorateParam(paramIndex, decorator)
+    return function(____, target, key) return decorator(_G, target, key, paramIndex) end
+end
+
+function __TS__ObjectGetOwnPropertyDescriptors(object)
+    local metatable = getmetatable(object)
+    if not metatable then
+        return {}
+    end
+    return rawget(metatable, "_descriptors") or ({})
+end
+
+function __TS__Delete(target, key)
+    local descriptors = __TS__ObjectGetOwnPropertyDescriptors(target)
+    local descriptor = descriptors[key]
+    if descriptor then
+        if not descriptor.configurable then
+            error(
+                ((("Cannot delete property " .. tostring(key)) .. " of ") .. tostring(target)) .. ".",
+                0
+            )
+        end
+        descriptors[key] = nil
+        return true
+    end
+    if target[key] ~= nil then
+        target[key] = nil
+        return true
+    end
+    return false
+end
+
+function __TS__StringAccess(self, index)
+    if (index >= 0) and (index < #self) then
+        return string.sub(self, index + 1, index + 1)
+    end
+end
+
+function __TS__DelegatedYield(iterable)
+    if type(iterable) == "string" then
+        for index = 0, #iterable - 1 do
+            coroutine.yield(
+                __TS__StringAccess(iterable, index)
+            )
+        end
+    elseif iterable.____coroutine ~= nil then
+        local co = iterable.____coroutine
+        while true do
+            local status, value = coroutine.resume(co)
+            if not status then
+                error(value, 0)
+            end
+            if coroutine.status(co) == "dead" then
+                return value
+            else
+                coroutine.yield(value)
+            end
+        end
+    elseif iterable[Symbol.iterator] then
+        local iterator = iterable[Symbol.iterator](iterable)
+        while true do
+            local result = iterator:next()
+            if result.done then
+                return result.value
+            else
+                coroutine.yield(result.value)
+            end
+        end
+    else
+        for ____, value in ipairs(iterable) do
+            coroutine.yield(value)
+        end
+    end
+end
+
+function __TS__GetErrorStack(self, constructor)
+    local level = 1
+    while true do
+        local info = debug.getinfo(level, "f")
+        level = level + 1
+        if not info then
+            level = 1
+            break
+        elseif info.func == constructor then
+            break
+        end
+    end
+    return debug.traceback(nil, level)
+end
+function __TS__WrapErrorToString(self, getDescription)
+    return function(self)
+        local description = getDescription(self)
+        local caller = debug.getinfo(3, "f")
+        if (_VERSION == "Lua 5.1") or (caller and (caller.func ~= error)) then
+            return description
+        else
+            return (tostring(description) .. "\n") .. self.stack
+        end
+    end
+end
+function __TS__InitErrorClass(self, Type, name)
+    Type.name = name
+    return setmetatable(
+        Type,
+        {
+            __call = function(____, _self, message) return __TS__New(Type, message) end
+        }
+    )
+end
+Error = __TS__InitErrorClass(
+    _G,
+    (function()
+        local ____ = __TS__Class()
+        ____.name = ""
+        function ____.prototype.____constructor(self, message)
+            if message == nil then
+                message = ""
+            end
+            self.message = message
+            self.name = "Error"
+            self.stack = __TS__GetErrorStack(_G, self.constructor.new)
+            local metatable = getmetatable(self)
+            if not metatable.__errorToStringPatched then
+                metatable.__errorToStringPatched = true
+                metatable.__tostring = __TS__WrapErrorToString(_G, metatable.__tostring)
+            end
+        end
+        function ____.prototype.__tostring(self)
+            return (((self.message ~= "") and (function() return (self.name .. ": ") .. self.message end)) or (function() return self.name end))()
+        end
+        return ____
+    end)(),
+    "Error"
+)
+for ____, errorName in ipairs({"RangeError", "ReferenceError", "SyntaxError", "TypeError", "URIError"}) do
+    _G[errorName] = __TS__InitErrorClass(
+        _G,
+        (function()
+            local ____ = __TS__Class()
+            ____.name = ____.name
+            __TS__ClassExtends(____, Error)
+            function ____.prototype.____constructor(self, ...)
+                Error.prototype.____constructor(self, ...)
+                self.name = errorName
+            end
+            return ____
+        end)(),
+        errorName
+    )
+end
+
+__TS__Unpack = table.unpack or unpack
+
+function __TS__FunctionBind(fn, thisArg, ...)
+    local boundArgs = {...}
+    return function(____, ...)
+        local args = {...}
+        do
+            local i = 0
+            while i < #boundArgs do
+                table.insert(args, i + 1, boundArgs[i + 1])
+                i = i + 1
+            end
+        end
+        return fn(
+            thisArg,
+            __TS__Unpack(args)
+        )
+    end
+end
+
+function __TS__GeneratorIterator(self)
+    return self
+end
+function __TS__GeneratorNext(self, ...)
+    local co = self.____coroutine
+    if coroutine.status(co) == "dead" then
+        return {done = true}
+    end
+    local status, value = coroutine.resume(co, ...)
+    if not status then
+        error(value, 0)
+    end
+    return {
+        value = value,
+        done = coroutine.status(co) == "dead"
+    }
+end
+function __TS__Generator(fn)
+    return function(...)
+        local args = {...}
+        local argsLength = select("#", ...)
+        return {
+            ____coroutine = coroutine.create(
+                function() return fn(
+                    (unpack or table.unpack)(args, 1, argsLength)
+                ) end
+            ),
+            [Symbol.iterator] = __TS__GeneratorIterator,
+            next = __TS__GeneratorNext
+        }
+    end
+end
+
+function __TS__InstanceOfObject(value)
+    local valueType = type(value)
+    return (valueType == "table") or (valueType == "function")
+end
+
+function __TS__IteratorGeneratorStep(self)
+    local co = self.____coroutine
+    local status, value = coroutine.resume(co)
+    if not status then
+        error(value, 0)
+    end
+    if coroutine.status(co) == "dead" then
+        return
+    end
+    return true, value
+end
+function __TS__IteratorIteratorStep(self)
+    local result = self:next()
+    if result.done then
+        return
+    end
+    return true, result.value
+end
+function __TS__IteratorStringStep(self, index)
+    index = index + 1
+    if index > #self then
+        return
+    end
+    return index, string.sub(self, index, index)
+end
+function __TS__Iterator(iterable)
+    if type(iterable) == "string" then
+        return __TS__IteratorStringStep, iterable, 0
+    elseif iterable.____coroutine ~= nil then
+        return __TS__IteratorGeneratorStep, iterable
+    elseif iterable[Symbol.iterator] then
+        local iterator = iterable[Symbol.iterator](iterable)
+        return __TS__IteratorIteratorStep, iterator
+    else
+        return ipairs(iterable)
+    end
+end
+
+Map = (function()
+    local Map = __TS__Class()
+    Map.name = "Map"
+    function Map.prototype.____constructor(self, entries)
+        self[Symbol.toStringTag] = "Map"
+        self.items = {}
+        self.size = 0
+        self.nextKey = {}
+        self.previousKey = {}
+        if entries == nil then
+            return
+        end
+        local iterable = entries
+        if iterable[Symbol.iterator] then
+            local iterator = iterable[Symbol.iterator](iterable)
+            while true do
+                local result = iterator:next()
+                if result.done then
+                    break
+                end
+                local value = result.value
+                self:set(value[1], value[2])
+            end
+        else
+            local array = entries
+            for ____, kvp in ipairs(array) do
+                self:set(kvp[1], kvp[2])
+            end
+        end
+    end
+    function Map.prototype.clear(self)
+        self.items = {}
+        self.nextKey = {}
+        self.previousKey = {}
+        self.firstKey = nil
+        self.lastKey = nil
+        self.size = 0
+    end
+    function Map.prototype.delete(self, key)
+        local contains = self:has(key)
+        if contains then
+            self.size = self.size - 1
+            local next = self.nextKey[key]
+            local previous = self.previousKey[key]
+            if next and previous then
+                self.nextKey[previous] = next
+                self.previousKey[next] = previous
+            elseif next then
+                self.firstKey = next
+                self.previousKey[next] = nil
+            elseif previous then
+                self.lastKey = previous
+                self.nextKey[previous] = nil
+            else
+                self.firstKey = nil
+                self.lastKey = nil
+            end
+            self.nextKey[key] = nil
+            self.previousKey[key] = nil
+        end
+        self.items[key] = nil
+        return contains
+    end
+    function Map.prototype.forEach(self, callback)
+        for ____, key in __TS__Iterator(
+            self:keys()
+        ) do
+            callback(_G, self.items[key], key, self)
+        end
+    end
+    function Map.prototype.get(self, key)
+        return self.items[key]
+    end
+    function Map.prototype.has(self, key)
+        return (self.nextKey[key] ~= nil) or (self.lastKey == key)
+    end
+    function Map.prototype.set(self, key, value)
+        local isNewValue = not self:has(key)
+        if isNewValue then
+            self.size = self.size + 1
+        end
+        self.items[key] = value
+        if self.firstKey == nil then
+            self.firstKey = key
+            self.lastKey = key
+        elseif isNewValue then
+            self.nextKey[self.lastKey] = key
+            self.previousKey[key] = self.lastKey
+            self.lastKey = key
+        end
+        return self
+    end
+    Map.prototype[Symbol.iterator] = function(self)
+        return self:entries()
+    end
+    function Map.prototype.entries(self)
+        local ____ = self
+        local items = ____.items
+        local nextKey = ____.nextKey
+        local key = self.firstKey
+        return {
+            [Symbol.iterator] = function(self)
+                return self
+            end,
+            next = function(self)
+                local result = {done = not key, value = {key, items[key]}}
+                key = nextKey[key]
+                return result
+            end
+        }
+    end
+    function Map.prototype.keys(self)
+        local nextKey = self.nextKey
+        local key = self.firstKey
+        return {
+            [Symbol.iterator] = function(self)
+                return self
+            end,
+            next = function(self)
+                local result = {done = not key, value = key}
+                key = nextKey[key]
+                return result
+            end
+        }
+    end
+    function Map.prototype.values(self)
+        local ____ = self
+        local items = ____.items
+        local nextKey = ____.nextKey
+        local key = self.firstKey
+        return {
+            [Symbol.iterator] = function(self)
+                return self
+            end,
+            next = function(self)
+                local result = {done = not key, value = items[key]}
+                key = nextKey[key]
+                return result
+            end
+        }
+    end
+    Map[Symbol.species] = Map
+    return Map
+end)()
+
+__TS__MathAtan2 = math.atan2 or math.atan
+
+function __TS__Number(value)
+    local valueType = type(value)
+    if valueType == "number" then
+        return value
+    elseif valueType == "string" then
+        local numberValue = tonumber(value)
+        if numberValue then
+            return numberValue
+        end
+        if value == "Infinity" then
+            return math.huge
+        end
+        if value == "-Infinity" then
+            return -math.huge
+        end
+        local stringWithoutSpaces = string.gsub(value, "%s", "")
+        if stringWithoutSpaces == "" then
+            return 0
+        end
+        return 0 / 0
+    elseif valueType == "boolean" then
+        return (value and 1) or 0
+    else
+        return 0 / 0
+    end
+end
+
+function __TS__NumberIsFinite(value)
+    return (((type(value) == "number") and (value == value)) and (value ~= math.huge)) and (value ~= -math.huge)
+end
+
+function __TS__NumberIsNaN(value)
+    return value ~= value
+end
+
+____radixChars = "0123456789abcdefghijklmnopqrstuvwxyz"
+function __TS__NumberToString(self, radix)
+    if ((((radix == nil) or (radix == 10)) or (self == math.huge)) or (self == -math.huge)) or (self ~= self) then
+        return tostring(self)
+    end
+    radix = math.floor(radix)
+    if (radix < 2) or (radix > 36) then
+        error("toString() radix argument must be between 2 and 36", 0)
+    end
+    local integer, fraction = math.modf(
+        math.abs(self)
+    )
+    local result = ""
+    if radix == 8 then
+        result = string.format("%o", integer)
+    elseif radix == 16 then
+        result = string.format("%x", integer)
+    else
+        repeat
+            do
+                result = __TS__StringAccess(____radixChars, integer % radix) .. result
+                integer = math.floor(integer / radix)
+            end
+        until not (integer ~= 0)
+    end
+    if fraction ~= 0 then
+        result = result .. "."
+        local delta = 1e-16
+        repeat
+            do
+                fraction = fraction * radix
+                delta = delta * radix
+                local digit = math.floor(fraction)
+                result = result .. __TS__StringAccess(____radixChars, digit)
+                fraction = fraction - digit
+            end
+        until not (fraction >= delta)
+    end
+    if self < 0 then
+        result = "-" .. result
+    end
+    return result
+end
+
+function __TS__ObjectDefineProperty(target, key, desc)
+    local luaKey = (((type(key) == "number") and (function() return key + 1 end)) or (function() return key end))()
+    local value = rawget(target, luaKey)
+    local hasGetterOrSetter = (desc.get ~= nil) or (desc.set ~= nil)
+    local descriptor
+    if hasGetterOrSetter then
+        if value ~= nil then
+            error(
+                "Cannot redefine property: " .. tostring(key),
+                0
+            )
+        end
+        descriptor = desc
+    else
+        local valueExists = value ~= nil
+        descriptor = {
+            set = desc.set,
+            get = desc.get,
+            configurable = (((desc.configurable ~= nil) and (function() return desc.configurable end)) or (function() return valueExists end))(),
+            enumerable = (((desc.enumerable ~= nil) and (function() return desc.enumerable end)) or (function() return valueExists end))(),
+            writable = (((desc.writable ~= nil) and (function() return desc.writable end)) or (function() return valueExists end))(),
+            value = (((desc.value ~= nil) and (function() return desc.value end)) or (function() return value end))()
+        }
+    end
+    __TS__SetDescriptor(target, luaKey, descriptor)
+    return target
+end
+
+function __TS__ObjectEntries(obj)
+    local result = {}
+    for key in pairs(obj) do
+        result[#result + 1] = {key, obj[key]}
+    end
+    return result
+end
+
+function __TS__ObjectFromEntries(entries)
+    local obj = {}
+    local iterable = entries
+    if iterable[Symbol.iterator] then
+        local iterator = iterable[Symbol.iterator](iterable)
+        while true do
+            local result = iterator:next()
+            if result.done then
+                break
+            end
+            local value = result.value
+            obj[value[1]] = value[2]
+        end
+    else
+        for ____, entry in ipairs(entries) do
+            obj[entry[1]] = entry[2]
+        end
+    end
+    return obj
+end
+
+function __TS__ObjectKeys(obj)
+    local result = {}
+    for key in pairs(obj) do
+        result[#result + 1] = key
+    end
+    return result
+end
+
+function __TS__ObjectRest(target, usedProperties)
+    local result = {}
+    for property in pairs(target) do
+        if not usedProperties[property] then
+            result[property] = target[property]
+        end
+    end
+    return result
+end
+
+function __TS__ObjectValues(obj)
+    local result = {}
+    for key in pairs(obj) do
+        result[#result + 1] = obj[key]
+    end
+    return result
+end
+
+function __TS__OptionalChainAccess(____table, key)
+    if ____table then
+        return ____table[key]
+    end
+    return nil
+end
+
+function __TS__OptionalFunctionCall(f, ...)
+    if f then
+        return f(...)
+    end
+    return nil
+end
+
+function __TS__OptionalMethodCall(____table, methodName, isMethodOptional, ...)
+    if ____table then
+        local method = ____table[methodName]
+        if method then
+            return method(____table, ...)
+        elseif not isMethodOptional then
+            error(methodName .. " is not a function", 0)
+        end
+    end
+    return nil
+end
+
+function __TS__ParseFloat(numberString)
+    local infinityMatch = string.match(numberString, "^%s*(-?Infinity)")
+    if infinityMatch then
+        return (((__TS__StringAccess(infinityMatch, 0) == "-") and (function() return -math.huge end)) or (function() return math.huge end))()
+    end
+    local number = tonumber(
+        string.match(numberString, "^%s*(-?%d+%.?%d*)")
+    )
+    return number or (0 / 0)
+end
+
+function __TS__StringSubstr(self, from, length)
+    if from ~= from then
+        from = 0
+    end
+    if length ~= nil then
+        if (length ~= length) or (length <= 0) then
+            return ""
+        end
+        length = length + from
+    end
+    if from >= 0 then
+        from = from + 1
+    end
+    return string.sub(self, from, length)
+end
+
+function __TS__StringSubstring(self, start, ____end)
+    if ____end ~= ____end then
+        ____end = 0
+    end
+    if (____end ~= nil) and (start > ____end) then
+        start, ____end = ____end, start
+    end
+    if start >= 0 then
+        start = start + 1
+    else
+        start = 1
+    end
+    if (____end ~= nil) and (____end < 0) then
+        ____end = 0
+    end
+    return string.sub(self, start, ____end)
+end
+
+__TS__parseInt_base_pattern = "0123456789aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTvVwWxXyYzZ"
+function __TS__ParseInt(numberString, base)
+    if base == nil then
+        base = 10
+        local hexMatch = string.match(numberString, "^%s*-?0[xX]")
+        if hexMatch then
+            base = 16
+            numberString = ((string.match(hexMatch, "-") and (function() return "-" .. __TS__StringSubstr(numberString, #hexMatch) end)) or (function() return __TS__StringSubstr(numberString, #hexMatch) end))()
+        end
+    end
+    if (base < 2) or (base > 36) then
+        return 0 / 0
+    end
+    local allowedDigits = (((base <= 10) and (function() return __TS__StringSubstring(__TS__parseInt_base_pattern, 0, base) end)) or (function() return __TS__StringSubstr(__TS__parseInt_base_pattern, 0, 10 + (2 * (base - 10))) end))()
+    local pattern = ("^%s*(-?[" .. allowedDigits) .. "]*)"
+    local number = tonumber(
+        string.match(numberString, pattern),
+        base
+    )
+    if number == nil then
+        return 0 / 0
+    end
+    if number >= 0 then
+        return math.floor(number)
+    else
+        return math.ceil(number)
+    end
+end
+
+__TS__PromiseState = __TS__PromiseState or ({})
+__TS__PromiseState.Pending = 0
+__TS__PromiseState[__TS__PromiseState.Pending] = "Pending"
+__TS__PromiseState.Fulfilled = 1
+__TS__PromiseState[__TS__PromiseState.Fulfilled] = "Fulfilled"
+__TS__PromiseState.Rejected = 2
+__TS__PromiseState[__TS__PromiseState.Rejected] = "Rejected"
+function __TS__PromiseDeferred(self)
+    local resolve
+    local reject
+    local promise = __TS__New(
+        __TS__Promise,
+        function(____, res, rej)
+            resolve = res
+            reject = rej
+        end
+    )
+    return {promise = promise, resolve = resolve, reject = reject}
+end
+function __TS__IsPromiseLike(self, thing)
+    return __TS__InstanceOf(thing, __TS__Promise)
+end
+__TS__Promise = __TS__Class()
+__TS__Promise.name = "__TS__Promise"
+function __TS__Promise.prototype.____constructor(self, executor)
+    self.state = __TS__PromiseState.Pending
+    self.fulfilledCallbacks = {}
+    self.rejectedCallbacks = {}
+    self.finallyCallbacks = {}
+    do
+        local ____try, e = pcall(
+            function()
+                executor(
+                    _G,
+                    __TS__FunctionBind(self.resolve, self),
+                    __TS__FunctionBind(self.reject, self)
+                )
+            end
+        )
+        if not ____try then
+            self:reject(e)
+        end
+    end
+end
+function __TS__Promise.resolve(data)
+    local promise = __TS__New(
+        __TS__Promise,
+        function()
+        end
+    )
+    promise.state = __TS__PromiseState.Fulfilled
+    promise.value = data
+    return promise
+end
+function __TS__Promise.reject(reason)
+    local promise = __TS__New(
+        __TS__Promise,
+        function()
+        end
+    )
+    promise.state = __TS__PromiseState.Rejected
+    promise.rejectionReason = reason
+    return promise
+end
+__TS__Promise.prototype["then"] = function(self, onFulfilled, onRejected)
+    local ____ = __TS__PromiseDeferred(_G)
+    local promise = ____.promise
+    local resolve = ____.resolve
+    local reject = ____.reject
+    if onFulfilled then
+        local internalCallback = self:createPromiseResolvingCallback(onFulfilled, resolve, reject)
+        __TS__ArrayPush(self.fulfilledCallbacks, internalCallback)
+        if self.state == __TS__PromiseState.Fulfilled then
+            internalCallback(_G, self.value)
+        end
+    else
+        __TS__ArrayPush(
+            self.fulfilledCallbacks,
+            function() return resolve(_G, nil) end
+        )
+    end
+    if onRejected then
+        local internalCallback = self:createPromiseResolvingCallback(onRejected, resolve, reject)
+        __TS__ArrayPush(self.rejectedCallbacks, internalCallback)
+        if self.state == __TS__PromiseState.Rejected then
+            internalCallback(_G, self.rejectionReason)
+        end
+    end
+    return promise
+end
+function __TS__Promise.prototype.catch(self, onRejected)
+    return self["then"](self, nil, onRejected)
+end
+function __TS__Promise.prototype.finally(self, onFinally)
+    if onFinally then
+        __TS__ArrayPush(self.finallyCallbacks, onFinally)
+        if self.state ~= __TS__PromiseState.Pending then
+            onFinally(_G)
+        end
+    end
+    return self
+end
+function __TS__Promise.prototype.resolve(self, data)
+    if self.state == __TS__PromiseState.Pending then
+        self.state = __TS__PromiseState.Fulfilled
+        self.value = data
+        for ____, callback in ipairs(self.fulfilledCallbacks) do
+            callback(_G, data)
+        end
+        for ____, callback in ipairs(self.finallyCallbacks) do
+            callback(_G)
+        end
+    end
+end
+function __TS__Promise.prototype.reject(self, reason)
+    if self.state == __TS__PromiseState.Pending then
+        self.state = __TS__PromiseState.Rejected
+        self.rejectionReason = reason
+        for ____, callback in ipairs(self.rejectedCallbacks) do
+            callback(_G, reason)
+        end
+        for ____, callback in ipairs(self.finallyCallbacks) do
+            callback(_G)
+        end
+    end
+end
+function __TS__Promise.prototype.createPromiseResolvingCallback(self, f, resolve, reject)
+    return function(____, value)
+        do
+            local ____try, e = pcall(
+                function()
+                    self:handleCallbackData(
+                        f(_G, value),
+                        resolve,
+                        reject
+                    )
+                end
+            )
+            if not ____try then
+                reject(_G, e)
+            end
+        end
+    end
+end
+function __TS__Promise.prototype.handleCallbackData(self, data, resolve, reject)
+    if __TS__IsPromiseLike(_G, data) then
+        local nextpromise = data
+        if nextpromise.state == __TS__PromiseState.Fulfilled then
+            resolve(_G, nextpromise.value)
+        elseif nextpromise.state == __TS__PromiseState.Rejected then
+            reject(_G, nextpromise.rejectionReason)
+        else
+            data["then"](data, resolve, reject)
+        end
+    else
+        resolve(_G, data)
+    end
+end
+
+function __TS__PromiseAll(iterable)
+    local results = {}
+    local toResolve = {}
+    local numToResolve = 0
+    local i = 0
+    for ____, item in __TS__Iterator(iterable) do
+        if __TS__InstanceOf(item, __TS__Promise) then
+            if item.state == __TS__PromiseState.Fulfilled then
+                results[i + 1] = item.value
+            elseif item.state == __TS__PromiseState.Rejected then
+                return __TS__Promise.reject(item.rejectionReason)
+            else
+                numToResolve = numToResolve + 1
+                toResolve[i] = item
+            end
+        else
+            results[i + 1] = item
+        end
+        i = i + 1
+    end
+    if numToResolve == 0 then
+        return __TS__Promise.resolve(results)
+    end
+    return __TS__New(
+        __TS__Promise,
+        function(____, resolve, reject)
+            for index, promise in pairs(toResolve) do
+                promise["then"](
+                    promise,
+                    function(____, data)
+                        results[index + 1] = data
+                        numToResolve = numToResolve - 1
+                        if numToResolve == 0 then
+                            resolve(_G, results)
+                        end
+                    end,
+                    function(____, reason)
+                        reject(_G, reason)
+                    end
+                )
+            end
+        end
+    )
+end
+
+function __TS__PromiseAllSettled(iterable)
+    local results = {}
+    local toResolve = {}
+    local numToResolve = 0
+    local i = 0
+    for ____, item in __TS__Iterator(iterable) do
+        if __TS__InstanceOf(item, __TS__Promise) then
+            if item.state == __TS__PromiseState.Fulfilled then
+                results[i + 1] = {status = "fulfilled", value = item.value}
+            elseif item.state == __TS__PromiseState.Rejected then
+                results[i + 1] = {status = "rejected", reason = item.rejectionReason}
+            else
+                numToResolve = numToResolve + 1
+                toResolve[i] = item
+            end
+        else
+            results[i + 1] = {status = "fulfilled", value = item}
+        end
+        i = i + 1
+    end
+    if numToResolve == 0 then
+        return __TS__Promise.resolve(results)
+    end
+    return __TS__New(
+        __TS__Promise,
+        function(____, resolve)
+            for index, promise in pairs(toResolve) do
+                promise["then"](
+                    promise,
+                    function(____, data)
+                        results[index + 1] = {status = "fulfilled", value = data}
+                        numToResolve = numToResolve - 1
+                        if numToResolve == 0 then
+                            resolve(_G, results)
+                        end
+                    end,
+                    function(____, reason)
+                        results[index + 1] = {status = "rejected", reason = reason}
+                        numToResolve = numToResolve - 1
+                        if numToResolve == 0 then
+                            resolve(_G, results)
+                        end
+                    end
+                )
+            end
+        end
+    )
+end
+
+function __TS__PromiseAny(iterable)
+    local rejections = {}
+    local pending = {}
+    for ____, item in __TS__Iterator(iterable) do
+        if __TS__InstanceOf(item, __TS__Promise) then
+            if item.state == __TS__PromiseState.Fulfilled then
+                return __TS__Promise.resolve(item.value)
+            elseif item.state == __TS__PromiseState.Rejected then
+                __TS__ArrayPush(rejections, item.rejectionReason)
+            else
+                __TS__ArrayPush(pending, item)
+            end
+        else
+            return __TS__Promise.resolve(item)
+        end
+    end
+    if #pending == 0 then
+        return __TS__Promise.reject("No promises to resolve with .any()")
+    end
+    local numResolved = 0
+    return __TS__New(
+        __TS__Promise,
+        function(____, resolve, reject)
+            for ____, promise in ipairs(pending) do
+                promise["then"](
+                    promise,
+                    function(____, data)
+                        resolve(_G, data)
+                    end,
+                    function(____, reason)
+                        __TS__ArrayPush(rejections, reason)
+                        numResolved = numResolved + 1
+                        if numResolved == #pending then
+                            reject(_G, {name = "AggregateError", message = "All Promises rejected", errors = rejections})
+                        end
+                    end
+                )
+            end
+        end
+    )
+end
+
+function __TS__PromiseRace(iterable)
+    local pending = {}
+    for ____, item in __TS__Iterator(iterable) do
+        if __TS__InstanceOf(item, __TS__Promise) then
+            if item.state == __TS__PromiseState.Fulfilled then
+                return __TS__Promise.resolve(item.value)
+            elseif item.state == __TS__PromiseState.Rejected then
+                return __TS__Promise.reject(item.rejectionReason)
+            else
+                __TS__ArrayPush(pending, item)
+            end
+        else
+            return __TS__Promise.resolve(item)
+        end
+    end
+    return __TS__New(
+        __TS__Promise,
+        function(____, resolve, reject)
+            for ____, promise in ipairs(pending) do
+                promise["then"](
+                    promise,
+                    function(____, value) return resolve(_G, value) end,
+                    function(____, reason) return reject(_G, reason) end
+                )
+            end
+        end
+    )
+end
+
+Set = (function()
+    local Set = __TS__Class()
+    Set.name = "Set"
+    function Set.prototype.____constructor(self, values)
+        self[Symbol.toStringTag] = "Set"
+        self.size = 0
+        self.nextKey = {}
+        self.previousKey = {}
+        if values == nil then
+            return
+        end
+        local iterable = values
+        if iterable[Symbol.iterator] then
+            local iterator = iterable[Symbol.iterator](iterable)
+            while true do
+                local result = iterator:next()
+                if result.done then
+                    break
+                end
+                self:add(result.value)
+            end
+        else
+            local array = values
+            for ____, value in ipairs(array) do
+                self:add(value)
+            end
+        end
+    end
+    function Set.prototype.add(self, value)
+        local isNewValue = not self:has(value)
+        if isNewValue then
+            self.size = self.size + 1
+        end
+        if self.firstKey == nil then
+            self.firstKey = value
+            self.lastKey = value
+        elseif isNewValue then
+            self.nextKey[self.lastKey] = value
+            self.previousKey[value] = self.lastKey
+            self.lastKey = value
+        end
+        return self
+    end
+    function Set.prototype.clear(self)
+        self.nextKey = {}
+        self.previousKey = {}
+        self.firstKey = nil
+        self.lastKey = nil
+        self.size = 0
+    end
+    function Set.prototype.delete(self, value)
+        local contains = self:has(value)
+        if contains then
+            self.size = self.size - 1
+            local next = self.nextKey[value]
+            local previous = self.previousKey[value]
+            if next and previous then
+                self.nextKey[previous] = next
+                self.previousKey[next] = previous
+            elseif next then
+                self.firstKey = next
+                self.previousKey[next] = nil
+            elseif previous then
+                self.lastKey = previous
+                self.nextKey[previous] = nil
+            else
+                self.firstKey = nil
+                self.lastKey = nil
+            end
+            self.nextKey[value] = nil
+            self.previousKey[value] = nil
+        end
+        return contains
+    end
+    function Set.prototype.forEach(self, callback)
+        for ____, key in __TS__Iterator(
+            self:keys()
+        ) do
+            callback(_G, key, key, self)
+        end
+    end
+    function Set.prototype.has(self, value)
+        return (self.nextKey[value] ~= nil) or (self.lastKey == value)
+    end
+    Set.prototype[Symbol.iterator] = function(self)
+        return self:values()
+    end
+    function Set.prototype.entries(self)
+        local nextKey = self.nextKey
+        local key = self.firstKey
+        return {
+            [Symbol.iterator] = function(self)
+                return self
+            end,
+            next = function(self)
+                local result = {done = not key, value = {key, key}}
+                key = nextKey[key]
+                return result
+            end
+        }
+    end
+    function Set.prototype.keys(self)
+        local nextKey = self.nextKey
+        local key = self.firstKey
+        return {
+            [Symbol.iterator] = function(self)
+                return self
+            end,
+            next = function(self)
+                local result = {done = not key, value = key}
+                key = nextKey[key]
+                return result
+            end
+        }
+    end
+    function Set.prototype.values(self)
+        local nextKey = self.nextKey
+        local key = self.firstKey
+        return {
+            [Symbol.iterator] = function(self)
+                return self
+            end,
+            next = function(self)
+                local result = {done = not key, value = key}
+                key = nextKey[key]
+                return result
+            end
+        }
+    end
+    Set[Symbol.species] = Set
+    return Set
+end)()
+
+WeakMap = (function()
+    local WeakMap = __TS__Class()
+    WeakMap.name = "WeakMap"
+    function WeakMap.prototype.____constructor(self, entries)
+        self[Symbol.toStringTag] = "WeakMap"
+        self.items = {}
+        setmetatable(self.items, {__mode = "k"})
+        if entries == nil then
+            return
+        end
+        local iterable = entries
+        if iterable[Symbol.iterator] then
+            local iterator = iterable[Symbol.iterator](iterable)
+            while true do
+                local result = iterator:next()
+                if result.done then
+                    break
+                end
+                local value = result.value
+                self.items[value[1]] = value[2]
+            end
+        else
+            for ____, kvp in ipairs(entries) do
+                self.items[kvp[1]] = kvp[2]
+            end
+        end
+    end
+    function WeakMap.prototype.delete(self, key)
+        local contains = self:has(key)
+        self.items[key] = nil
+        return contains
+    end
+    function WeakMap.prototype.get(self, key)
+        return self.items[key]
+    end
+    function WeakMap.prototype.has(self, key)
+        return self.items[key] ~= nil
+    end
+    function WeakMap.prototype.set(self, key, value)
+        self.items[key] = value
+        return self
+    end
+    WeakMap[Symbol.species] = WeakMap
+    return WeakMap
+end)()
+
+WeakSet = (function()
+    local WeakSet = __TS__Class()
+    WeakSet.name = "WeakSet"
+    function WeakSet.prototype.____constructor(self, values)
+        self[Symbol.toStringTag] = "WeakSet"
+        self.items = {}
+        setmetatable(self.items, {__mode = "k"})
+        if values == nil then
+            return
+        end
+        local iterable = values
+        if iterable[Symbol.iterator] then
+            local iterator = iterable[Symbol.iterator](iterable)
+            while true do
+                local result = iterator:next()
+                if result.done then
+                    break
+                end
+                self.items[result.value] = true
+            end
+        else
+            for ____, value in ipairs(values) do
+                self.items[value] = true
+            end
+        end
+    end
+    function WeakSet.prototype.add(self, value)
+        self.items[value] = true
+        return self
+    end
+    function WeakSet.prototype.delete(self, value)
+        local contains = self:has(value)
+        self.items[value] = nil
+        return contains
+    end
+    function WeakSet.prototype.has(self, value)
+        return self.items[value] == true
+    end
+    WeakSet[Symbol.species] = WeakSet
+    return WeakSet
+end)()
+
+function __TS__SourceMapTraceBack(fileName, sourceMap)
+    _G.__TS__sourcemap = _G.__TS__sourcemap or ({})
+    _G.__TS__sourcemap[fileName] = sourceMap
+    if _G.__TS__originalTraceback == nil then
+        _G.__TS__originalTraceback = debug.traceback
+        debug.traceback = function(thread, message, level)
+            local trace
+            if ((thread == nil) and (message == nil)) and (level == nil) then
+                trace = _G.__TS__originalTraceback()
+            else
+                trace = _G.__TS__originalTraceback(thread, message, level)
+            end
+            if type(trace) ~= "string" then
+                return trace
+            end
+            local result = string.gsub(
+                trace,
+                "(%S+).lua:(%d+)",
+                function(file, line)
+                    local fileSourceMap = _G.__TS__sourcemap[file .. ".lua"]
+                    if fileSourceMap and fileSourceMap[line] then
+                        return (file .. ".ts:") .. tostring(fileSourceMap[line])
+                    end
+                    return (file .. ".lua:") .. line
+                end
+            )
+            return result
+        end
+    end
+end
+
+function __TS__Spread(iterable)
+    local arr = {}
+    if type(iterable) == "string" then
+        do
+            local i = 0
+            while i < #iterable do
+                arr[#arr + 1] = __TS__StringAccess(iterable, i)
+                i = i + 1
+            end
+        end
+    else
+        for ____, item in __TS__Iterator(iterable) do
+            arr[#arr + 1] = item
+        end
+    end
+    return __TS__Unpack(arr)
+end
+
+function __TS__StringCharAt(self, pos)
+    if pos ~= pos then
+        pos = 0
+    end
+    if pos < 0 then
+        return ""
+    end
+    return string.sub(self, pos + 1, pos + 1)
+end
+
+function __TS__StringCharCodeAt(self, index)
+    if index ~= index then
+        index = 0
+    end
+    if index < 0 then
+        return 0 / 0
+    end
+    return string.byte(self, index + 1) or (0 / 0)
+end
+
+function __TS__StringConcat(str1, ...)
+    local args = {...}
+    local out = str1
+    for ____, arg in ipairs(args) do
+        out = out .. arg
+    end
+    return out
+end
+
+function __TS__StringEndsWith(self, searchString, endPosition)
+    if (endPosition == nil) or (endPosition > #self) then
+        endPosition = #self
+    end
+    return string.sub(self, (endPosition - #searchString) + 1, endPosition) == searchString
+end
+
+function __TS__StringIncludes(self, searchString, position)
+    if not position then
+        position = 1
+    else
+        position = position + 1
+    end
+    local index = string.find(self, searchString, position, true)
+    return index ~= nil
+end
+
+function __TS__StringPadEnd(self, maxLength, fillString)
+    if fillString == nil then
+        fillString = " "
+    end
+    if maxLength ~= maxLength then
+        maxLength = 0
+    end
+    if (maxLength == -math.huge) or (maxLength == math.huge) then
+        error("Invalid string length", 0)
+    end
+    if (#self >= maxLength) or (#fillString == 0) then
+        return self
+    end
+    maxLength = maxLength - #self
+    if maxLength > #fillString then
+        fillString = fillString .. string.rep(
+            fillString,
+            math.floor(maxLength / #fillString)
+        )
+    end
+    return self .. string.sub(
+        fillString,
+        1,
+        math.floor(maxLength)
+    )
+end
+
+function __TS__StringPadStart(self, maxLength, fillString)
+    if fillString == nil then
+        fillString = " "
+    end
+    if maxLength ~= maxLength then
+        maxLength = 0
+    end
+    if (maxLength == -math.huge) or (maxLength == math.huge) then
+        error("Invalid string length", 0)
+    end
+    if (#self >= maxLength) or (#fillString == 0) then
+        return self
+    end
+    maxLength = maxLength - #self
+    if maxLength > #fillString then
+        fillString = fillString .. string.rep(
+            fillString,
+            math.floor(maxLength / #fillString)
+        )
+    end
+    return string.sub(
+        fillString,
+        1,
+        math.floor(maxLength)
+    ) .. self
+end
+
+function __TS__StringReplace(source, searchValue, replaceValue)
+    searchValue = string.gsub(searchValue, "[%%%(%)%.%+%-%*%?%[%^%$]", "%%%1")
+    if type(replaceValue) == "string" then
+        replaceValue = string.gsub(replaceValue, "%%", "%%%%")
+        local result = string.gsub(source, searchValue, replaceValue, 1)
+        return result
+    else
+        local result = string.gsub(
+            source,
+            searchValue,
+            function(match) return replaceValue(_G, match) end,
+            1
+        )
+        return result
+    end
+end
+
+function __TS__StringSlice(self, start, ____end)
+    if (start == nil) or (start ~= start) then
+        start = 0
+    end
+    if ____end ~= ____end then
+        ____end = 0
+    end
+    if start >= 0 then
+        start = start + 1
+    end
+    if (____end ~= nil) and (____end < 0) then
+        ____end = ____end - 1
+    end
+    return string.sub(self, start, ____end)
+end
+
+function __TS__StringSplit(source, separator, limit)
+    if limit == nil then
+        limit = 4294967295
+    end
+    if limit == 0 then
+        return {}
+    end
+    local out = {}
+    local index = 0
+    local count = 0
+    if (separator == nil) or (separator == "") then
+        while (index < (#source - 1)) and (count < limit) do
+            out[count + 1] = __TS__StringAccess(source, index)
+            count = count + 1
+            index = index + 1
+        end
+    else
+        local separatorLength = #separator
+        local nextIndex = (string.find(source, separator, nil, true) or 0) - 1
+        while (nextIndex >= 0) and (count < limit) do
+            out[count + 1] = __TS__StringSubstring(source, index, nextIndex)
+            count = count + 1
+            index = nextIndex + separatorLength
+            nextIndex = (string.find(
+                source,
+                separator,
+                math.max(index + 1, 1),
+                true
+            ) or 0) - 1
+        end
+    end
+    if count < limit then
+        out[count + 1] = __TS__StringSubstring(source, index)
+    end
+    return out
+end
+
+function __TS__StringStartsWith(self, searchString, position)
+    if (position == nil) or (position < 0) then
+        position = 0
+    end
+    return string.sub(self, position + 1, #searchString + position) == searchString
+end
+
+function __TS__StringTrim(self)
+    local result = string.gsub(self, "^[%s ﻿]*(.-)[%s ﻿]*$", "%1")
+    return result
+end
+
+function __TS__StringTrimEnd(self)
+    local result = string.gsub(self, "[%s ﻿]*$", "")
+    return result
+end
+
+function __TS__StringTrimStart(self)
+    local result = string.gsub(self, "^[%s ﻿]*", "")
+    return result
+end
+
+____symbolRegistry = {}
+function __TS__SymbolRegistryFor(key)
+    if not ____symbolRegistry[key] then
+        ____symbolRegistry[key] = __TS__Symbol(key)
+    end
+    return ____symbolRegistry[key]
+end
+function __TS__SymbolRegistryKeyFor(sym)
+    for key in pairs(____symbolRegistry) do
+        if ____symbolRegistry[key] == sym then
+            return key
+        end
+    end
+end
+
+function __TS__TypeOf(value)
+    local luaType = type(value)
+    if luaType == "table" then
+        return "object"
+    elseif luaType == "nil" then
+        return "undefined"
+    else
+        return luaType
+    end
+end
+
+ end,
+["lua_modules.w3ts.handles.handle"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local map = __TS__New(WeakMap)
+____exports.Handle = __TS__Class()
+local Handle = ____exports.Handle
+Handle.name = "Handle"
+function Handle.prototype.____constructor(self, handle)
+    self.handle = (((handle == nil) and (function() return ____exports.Handle.initHandle end)) or (function() return handle end))()
+    map:set(self.handle, self)
+end
+__TS__SetDescriptor(
+    Handle.prototype,
+    "id",
+    {
+        get = function(self)
+            return GetHandleId(self.handle)
+        end
+    },
+    true
+)
+function Handle.initFromHandle(self)
+    return ____exports.Handle.initHandle ~= nil
+end
+function Handle.getObject(self, handle)
+    local obj = map:get(handle)
+    if obj ~= nil then
+        return obj
+    end
+    ____exports.Handle.initHandle = handle
+    local newObj = __TS__New(self)
+    ____exports.Handle.initHandle = nil
+    return newObj
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.point"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Point = __TS__Class()
+local Point = ____exports.Point
+Point.name = "Point"
+__TS__ClassExtends(Point, Handle)
+function Point.prototype.____constructor(self, x, y)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            Location(x, y)
+        )
+    end
+end
+__TS__SetDescriptor(
+    Point.prototype,
+    "x",
+    {
+        get = function(self)
+            return GetLocationX(self.handle)
+        end,
+        set = function(self, value)
+            MoveLocation(self.handle, value, self.y)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Point.prototype,
+    "y",
+    {
+        get = function(self)
+            return GetLocationY(self.handle)
+        end,
+        set = function(self, value)
+            MoveLocation(self.handle, self.x, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Point.prototype,
+    "z",
+    {
+        get = function(self)
+            return GetLocationZ(self.handle)
+        end
+    },
+    true
+)
+function Point.prototype.destroy(self)
+    RemoveLocation(self.handle)
+end
+function Point.prototype.setPosition(self, x, y)
+    MoveLocation(self.handle, x, y)
+end
+function Point.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.camera"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+local ____point = require("lua_modules.w3ts.handles.point")
+local Point = ____point.Point
+____exports.Camera = __TS__Class()
+local Camera = ____exports.Camera
+Camera.name = "Camera"
+function Camera.prototype.____constructor(self)
+end
+__TS__ObjectDefineProperty(
+    Camera,
+    "visible",
+    {
+        get = function(self)
+            return IsCineFilterDisplayed()
+        end,
+        set = function(self, flag)
+            DisplayCineFilter(flag)
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "boundMinX",
+    {
+        get = function(self)
+            return GetCameraBoundMinX()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "boundMinY",
+    {
+        get = function(self)
+            return GetCameraBoundMinY()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "boundMaxX",
+    {
+        get = function(self)
+            return GetCameraBoundMaxX()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "boundMaxY",
+    {
+        get = function(self)
+            return GetCameraBoundMaxY()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "targetX",
+    {
+        get = function(self)
+            return GetCameraTargetPositionX()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "targetY",
+    {
+        get = function(self)
+            return GetCameraTargetPositionY()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "targetZ",
+    {
+        get = function(self)
+            return GetCameraTargetPositionZ()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "eyeX",
+    {
+        get = function(self)
+            return GetCameraEyePositionX()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "eyeY",
+    {
+        get = function(self)
+            return GetCameraEyePositionY()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "eyeZ",
+    {
+        get = function(self)
+            return GetCameraEyePositionZ()
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "eyePoint",
+    {
+        get = function(self)
+            return Point:fromHandle(
+                GetCameraEyePositionLoc()
+            )
+        end
+    }
+)
+__TS__ObjectDefineProperty(
+    Camera,
+    "targetPoint",
+    {
+        get = function(self)
+            return Point:fromHandle(
+                GetCameraTargetPositionLoc()
+            )
+        end
+    }
+)
+function Camera.adjustField(self, whichField, offset, duration)
+    AdjustCameraField(whichField, offset, duration)
+end
+function Camera.endCinematicScene(self)
+    EndCinematicScene()
+end
+function Camera.forceCinematicSubtitles(self, flag)
+    ForceCinematicSubtitles(flag)
+end
+function Camera.getField(self, field)
+    return GetCameraField(field)
+end
+function Camera.getMargin(self, whichMargin)
+    return GetCameraMargin(whichMargin)
+end
+function Camera.pan(self, x, y, zOffsetDest)
+    if not zOffsetDest then
+        PanCameraTo(x, y)
+    else
+        PanCameraToWithZ(x, y, zOffsetDest)
+    end
+end
+function Camera.panTimed(self, x, y, duration, zOffsetDest)
+    if not zOffsetDest then
+        PanCameraToTimed(x, y, duration)
+    else
+        PanCameraToTimedWithZ(x, y, zOffsetDest, duration)
+    end
+end
+function Camera.reset(self, duration)
+    ResetToGameCamera(duration)
+end
+function Camera.setBounds(self, x1, y1, x2, y2, x3, y3, x4, y4)
+    SetCameraBounds(x1, y1, x2, y2, x3, y3, x4, y4)
+end
+function Camera.setCameraOrientController(self, whichUnit, xOffset, yOffset)
+    SetCameraOrientController(whichUnit, xOffset, yOffset)
+end
+function Camera.setCineFilterBlendMode(self, whichMode)
+    SetCineFilterBlendMode(whichMode)
+end
+function Camera.setCineFilterDuration(self, duration)
+    SetCineFilterDuration(duration)
+end
+function Camera.setCineFilterEndColor(self, red, green, blue, alpha)
+    SetCineFilterEndColor(red, green, blue, alpha)
+end
+function Camera.setCineFilterEndUV(self, minU, minV, maxU, maxV)
+    SetCineFilterEndUV(minU, minV, maxU, maxV)
+end
+function Camera.setCineFilterStartColor(self, red, green, blue, alpha)
+    SetCineFilterStartColor(red, green, blue, alpha)
+end
+function Camera.setCineFilterStartUV(self, minU, minV, maxU, maxV)
+    SetCineFilterStartUV(minU, minV, maxU, maxV)
+end
+function Camera.setCineFilterTexMapFlags(self, whichFlags)
+    SetCineFilterTexMapFlags(whichFlags)
+end
+function Camera.setCineFilterTexture(self, fileName)
+    SetCineFilterTexture(fileName)
+end
+function Camera.setCinematicAudio(self, cinematicAudio)
+    SetCinematicAudio(cinematicAudio)
+end
+function Camera.setCinematicCamera(self, cameraModelFile)
+    SetCinematicCamera(cameraModelFile)
+end
+function Camera.SetCinematicScene(self, portraitUnitId, color, speakerTitle, text, sceneDuration, voiceoverDuration)
+    SetCinematicScene(portraitUnitId, color, speakerTitle, text, sceneDuration, voiceoverDuration)
+end
+function Camera.setDepthOfFieldScale(self, scale)
+    CameraSetDepthOfFieldScale(scale)
+end
+function Camera.setField(self, whichField, value, duration)
+    SetCameraField(whichField, value, duration)
+end
+function Camera.setFocalDistance(self, distance)
+    CameraSetFocalDistance(distance)
+end
+function Camera.setPos(self, x, y)
+    SetCameraPosition(x, y)
+end
+function Camera.setRotateMode(self, x, y, radiansToSweep, duration)
+    SetCameraRotateMode(x, y, radiansToSweep, duration)
+end
+function Camera.setSmoothingFactor(self, factor)
+    CameraSetSmoothingFactor(factor)
+end
+function Camera.setSourceNoise(self, mag, velocity, vertOnly)
+    if vertOnly == nil then
+        vertOnly = false
+    end
+    CameraSetSourceNoiseEx(mag, velocity, vertOnly)
+end
+function Camera.setTargetController(self, whichUnit, xOffset, yOffset, inheritOrientation)
+    SetCameraTargetController(whichUnit, xOffset, yOffset, inheritOrientation)
+end
+function Camera.setTargetNoise(self, mag, velocity, vertOnly)
+    if vertOnly == nil then
+        vertOnly = false
+    end
+    CameraSetTargetNoiseEx(mag, velocity, vertOnly)
+end
+function Camera.stop(self)
+    StopCamera()
+end
+____exports.CameraSetup = __TS__Class()
+local CameraSetup = ____exports.CameraSetup
+CameraSetup.name = "CameraSetup"
+__TS__ClassExtends(CameraSetup, Handle)
+function CameraSetup.prototype.____constructor(self)
+    Handle.prototype.____constructor(
+        self,
+        ((Handle:initFromHandle() and (function() return nil end)) or (function() return CreateCameraSetup() end))()
+    )
+end
+__TS__SetDescriptor(
+    CameraSetup.prototype,
+    "destPoint",
+    {
+        get = function(self)
+            return Point:fromHandle(
+                CameraSetupGetDestPositionLoc(self.handle)
+            )
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    CameraSetup.prototype,
+    "destX",
+    {
+        get = function(self)
+            return CameraSetupGetDestPositionX(self.handle)
+        end,
+        set = function(self, x)
+            CameraSetupSetDestPosition(self.handle, x, self.destY, 0)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    CameraSetup.prototype,
+    "destY",
+    {
+        get = function(self)
+            return CameraSetupGetDestPositionY(self.handle)
+        end,
+        set = function(self, y)
+            CameraSetupSetDestPosition(self.handle, self.destX, y, 0)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    CameraSetup.prototype,
+    "label",
+    {
+        get = function(self)
+            return BlzCameraSetupGetLabel(self.handle)
+        end,
+        set = function(self, label)
+            BlzCameraSetupSetLabel(self.handle, label)
+        end
+    },
+    true
+)
+function CameraSetup.prototype.apply(self, doPan, panTimed)
+    CameraSetupApply(self.handle, doPan, panTimed)
+end
+function CameraSetup.prototype.applyForceDuration(self, doPan, forceDuration)
+    CameraSetupApplyForceDuration(self.handle, doPan, forceDuration)
+end
+function CameraSetup.prototype.applyForceDurationSmooth(self, doPan, forcedDuration, easeInDuration, easeOutDuration, smoothFactor)
+    BlzCameraSetupApplyForceDurationSmooth(self.handle, doPan, forcedDuration, easeInDuration, easeOutDuration, smoothFactor)
+end
+function CameraSetup.prototype.applyForceDurationZ(self, zDestOffset, forceDuration)
+    CameraSetupApplyForceDurationWithZ(self.handle, zDestOffset, forceDuration)
+end
+function CameraSetup.prototype.applyZ(self, zDestOffset)
+    CameraSetupApplyWithZ(self.handle, zDestOffset)
+end
+function CameraSetup.prototype.getField(self, whichField)
+    return CameraSetupGetField(self.handle, whichField)
+end
+function CameraSetup.prototype.setDestPos(self, x, y, duration)
+    CameraSetupSetDestPosition(self.handle, x, y, duration)
+end
+function CameraSetup.prototype.setField(self, whichField, value, duration)
+    CameraSetupSetField(self.handle, whichField, value, duration)
+end
+function CameraSetup.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.widget"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Widget = __TS__Class()
+local Widget = ____exports.Widget
+Widget.name = "Widget"
+__TS__ClassExtends(Widget, Handle)
+__TS__SetDescriptor(
+    Widget.prototype,
+    "life",
+    {
+        get = function(self)
+            return GetWidgetLife(self.handle)
+        end,
+        set = function(self, value)
+            SetWidgetLife(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Widget.prototype,
+    "x",
+    {
+        get = function(self)
+            return GetWidgetX(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Widget.prototype,
+    "y",
+    {
+        get = function(self)
+            return GetWidgetY(self.handle)
+        end
+    },
+    true
+)
+function Widget.fromEvent(self)
+    return self:fromHandle(
+        GetTriggerWidget()
+    )
+end
+function Widget.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.destructable"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+local ____widget = require("lua_modules.w3ts.handles.widget")
+local Widget = ____widget.Widget
+____exports.Destructable = __TS__Class()
+local Destructable = ____exports.Destructable
+Destructable.name = "Destructable"
+__TS__ClassExtends(Destructable, Widget)
+function Destructable.prototype.____constructor(self, objectId, x, y, z, face, scale, varation)
+    if Handle:initFromHandle() then
+        Widget.prototype.____constructor(self)
+    else
+        Widget.prototype.____constructor(
+            self,
+            CreateDestructableZ(objectId, x, y, z, face, scale, varation)
+        )
+    end
+end
+__TS__SetDescriptor(
+    Destructable.prototype,
+    "invulnerable",
+    {
+        get = function(self)
+            return IsDestructableInvulnerable(self.handle)
+        end,
+        set = function(self, flag)
+            SetDestructableInvulnerable(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Destructable.prototype,
+    "life",
+    {
+        get = function(self)
+            return GetDestructableLife(self.handle)
+        end,
+        set = function(self, value)
+            SetDestructableLife(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Destructable.prototype,
+    "maxLife",
+    {
+        get = function(self)
+            return GetDestructableMaxLife(self.handle)
+        end,
+        set = function(self, value)
+            SetDestructableMaxLife(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Destructable.prototype,
+    "name",
+    {
+        get = function(self)
+            return GetDestructableName(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Destructable.prototype,
+    "occluderHeight",
+    {
+        get = function(self)
+            return GetDestructableOccluderHeight(self.handle)
+        end,
+        set = function(self, value)
+            SetDestructableOccluderHeight(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Destructable.prototype,
+    "typeId",
+    {
+        get = function(self)
+            return GetDestructableTypeId(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Destructable.prototype,
+    "x",
+    {
+        get = function(self)
+            return GetDestructableX(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Destructable.prototype,
+    "y",
+    {
+        get = function(self)
+            return GetDestructableY(self.handle)
+        end
+    },
+    true
+)
+function Destructable.prototype.destroy(self)
+    RemoveDestructable(self.handle)
+end
+function Destructable.prototype.heal(self, life, birth)
+    DestructableRestoreLife(self.handle, life, birth)
+end
+function Destructable.prototype.kill(self)
+    KillDestructable(self.handle)
+end
+function Destructable.prototype.queueAnim(self, whichAnimation)
+    QueueDestructableAnimation(self.handle, whichAnimation)
+end
+function Destructable.prototype.setAnim(self, whichAnimation)
+    SetDestructableAnimation(self.handle, whichAnimation)
+end
+function Destructable.prototype.setAnimSpeed(self, speedFactor)
+    SetDestructableAnimationSpeed(self.handle, speedFactor)
+end
+function Destructable.prototype.show(self, flag)
+    ShowDestructable(self.handle, flag)
+end
+function Destructable.fromEvent(self)
+    return self:fromHandle(
+        GetTriggerDestructable()
+    )
+end
+function Destructable.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.force"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+local ____player = require("lua_modules.w3ts.handles.player")
+local MapPlayer = ____player.MapPlayer
+____exports.Force = __TS__Class()
+local Force = ____exports.Force
+Force.name = "Force"
+__TS__ClassExtends(Force, Handle)
+function Force.prototype.____constructor(self)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateForce()
+        )
+    end
+end
+function Force.prototype.addPlayer(self, whichPlayer)
+    ForceAddPlayer(self.handle, whichPlayer.handle)
+end
+function Force.prototype.clear(self)
+    ForceClear(self.handle)
+end
+function Force.prototype.destroy(self)
+    DestroyForce(self.handle)
+end
+function Force.prototype.enumAllies(self, whichPlayer, filter)
+    ForceEnumAllies(
+        self.handle,
+        whichPlayer.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Force.prototype.enumEnemies(self, whichPlayer, filter)
+    ForceEnumEnemies(
+        self.handle,
+        whichPlayer.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Force.prototype.enumPlayers(self, filter)
+    ForceEnumPlayers(
+        self.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Force.prototype.enumPlayersCounted(self, filter, countLimit)
+    ForceEnumPlayersCounted(
+        self.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))(),
+        countLimit
+    )
+end
+Force.prototype["for"] = function(self, callback)
+    ForForce(self.handle, callback)
+end
+function Force.prototype.getPlayers(self)
+    local players = {}
+    ForForce(
+        self.handle,
+        function() return __TS__ArrayPush(
+            players,
+            MapPlayer:fromEnum()
+        ) end
+    )
+    return players
+end
+function Force.prototype.hasPlayer(self, whichPlayer)
+    return IsPlayerInForce(whichPlayer.handle, self.handle)
+end
+function Force.prototype.removePlayer(self, whichPlayer)
+    ForceRemovePlayer(self.handle, whichPlayer.handle)
+end
+function Force.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.player"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.MapPlayer = __TS__Class()
+local MapPlayer = ____exports.MapPlayer
+MapPlayer.name = "MapPlayer"
+__TS__ClassExtends(MapPlayer, Handle)
+function MapPlayer.prototype.____constructor(self, index)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            Player(index)
+        )
+    end
+end
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "color",
+    {
+        get = function(self)
+            return GetPlayerColor(self.handle)
+        end,
+        set = function(self, color)
+            SetPlayerColor(self.handle, color)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "controller",
+    {
+        get = function(self)
+            return GetPlayerController(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "handicap",
+    {
+        get = function(self)
+            return GetPlayerHandicap(self.handle)
+        end,
+        set = function(self, handicap)
+            SetPlayerHandicap(self.handle, handicap)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "handicapXp",
+    {
+        get = function(self)
+            return GetPlayerHandicapXP(self.handle)
+        end,
+        set = function(self, handicap)
+            SetPlayerHandicapXP(self.handle, handicap)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "id",
+    {
+        get = function(self)
+            return GetPlayerId(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "name",
+    {
+        get = function(self)
+            return GetPlayerName(self.handle)
+        end,
+        set = function(self, value)
+            SetPlayerName(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "race",
+    {
+        get = function(self)
+            return GetPlayerRace(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "slotState",
+    {
+        get = function(self)
+            return GetPlayerSlotState(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "startLocation",
+    {
+        get = function(self)
+            return GetPlayerStartLocation(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "startLocationX",
+    {
+        get = function(self)
+            return GetStartLocationX(self.startLocation)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "startLocationY",
+    {
+        get = function(self)
+            return GetStartLocationY(self.startLocation)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "startLocationPoint",
+    {
+        get = function(self)
+            return GetStartLocationLoc(self.startLocation)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "team",
+    {
+        get = function(self)
+            return GetPlayerTeam(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    MapPlayer.prototype,
+    "townHallCount",
+    {
+        get = function(self)
+            return BlzGetPlayerTownHallCount(self.handle)
+        end
+    },
+    true
+)
+function MapPlayer.prototype.addTechResearched(self, techId, levels)
+    AddPlayerTechResearched(self.handle, techId, levels)
+end
+function MapPlayer.prototype.decTechResearched(self, techId, levels)
+    BlzDecPlayerTechResearched(self.handle, techId, levels)
+end
+function MapPlayer.prototype.cacheHeroData(self)
+    CachePlayerHeroData(self.handle)
+end
+function MapPlayer.prototype.compareAlliance(self, otherPlayer, whichAllianceSetting)
+    return GetPlayerAlliance(self.handle, otherPlayer.handle, whichAllianceSetting)
+end
+function MapPlayer.prototype.coordsFogged(self, x, y)
+    return IsFoggedToPlayer(x, y, self.handle)
+end
+function MapPlayer.prototype.coordsMasked(self, x, y)
+    return IsMaskedToPlayer(x, y, self.handle)
+end
+function MapPlayer.prototype.coordsVisible(self, x, y)
+    return IsVisibleToPlayer(x, y, self.handle)
+end
+function MapPlayer.prototype.cripple(self, toWhichPlayers, flag)
+    CripplePlayer(self.handle, toWhichPlayers.handle, flag)
+end
+function MapPlayer.prototype.getScore(self, whichPlayerScore)
+    return GetPlayerScore(self.handle, whichPlayerScore)
+end
+function MapPlayer.prototype.getState(self, whichPlayerState)
+    return GetPlayerState(self.handle, whichPlayerState)
+end
+function MapPlayer.prototype.getStructureCount(self, includeIncomplete)
+    return GetPlayerStructureCount(self.handle, includeIncomplete)
+end
+function MapPlayer.prototype.getTaxRate(self, otherPlayer, whichResource)
+    return GetPlayerTaxRate(self.handle, otherPlayer, whichResource)
+end
+function MapPlayer.prototype.getTechCount(self, techId, specificonly)
+    return GetPlayerTechCount(self.handle, techId, specificonly)
+end
+function MapPlayer.prototype.getTechMaxAllowed(self, techId)
+    return GetPlayerTechMaxAllowed(self.handle, techId)
+end
+function MapPlayer.prototype.getTechResearched(self, techId, specificonly)
+    return GetPlayerTechResearched(self.handle, techId, specificonly)
+end
+function MapPlayer.prototype.getUnitCount(self, includeIncomplete)
+    return GetPlayerUnitCount(self.handle, includeIncomplete)
+end
+function MapPlayer.prototype.getUnitCountByType(self, unitName, includeIncomplete, includeUpgrades)
+    return GetPlayerTypedUnitCount(self.handle, unitName, includeIncomplete, includeUpgrades)
+end
+function MapPlayer.prototype.inForce(self, whichForce)
+    return IsPlayerInForce(self.handle, whichForce.handle)
+end
+function MapPlayer.prototype.isLocal(self)
+    return GetLocalPlayer() == self.handle
+end
+function MapPlayer.prototype.isObserver(self)
+    return IsPlayerObserver(self.handle)
+end
+function MapPlayer.prototype.isPlayerAlly(self, otherPlayer)
+    return IsPlayerAlly(self.handle, otherPlayer.handle)
+end
+function MapPlayer.prototype.isPlayerEnemy(self, otherPlayer)
+    return IsPlayerEnemy(self.handle, otherPlayer.handle)
+end
+function MapPlayer.prototype.isRacePrefSet(self, pref)
+    return IsPlayerRacePrefSet(self.handle, pref)
+end
+function MapPlayer.prototype.isSelectable(self)
+    return GetPlayerSelectable(self.handle)
+end
+function MapPlayer.prototype.pointFogged(self, whichPoint)
+    return IsLocationFoggedToPlayer(whichPoint.handle, self.handle)
+end
+function MapPlayer.prototype.pointMasked(self, whichPoint)
+    return IsLocationMaskedToPlayer(whichPoint.handle, self.handle)
+end
+function MapPlayer.prototype.pointVisible(self, whichPoint)
+    return IsLocationVisibleToPlayer(whichPoint.handle, self.handle)
+end
+function MapPlayer.prototype.remove(self, gameResult)
+    RemovePlayer(self.handle, gameResult)
+end
+function MapPlayer.prototype.removeAllGuardPositions(self)
+    RemoveAllGuardPositions(self.handle)
+end
+function MapPlayer.prototype.setAbilityAvailable(self, abilId, avail)
+    SetPlayerAbilityAvailable(self.handle, abilId, avail)
+end
+function MapPlayer.prototype.setAlliance(self, otherPlayer, whichAllianceSetting, value)
+    SetPlayerAlliance(self.handle, otherPlayer.handle, whichAllianceSetting, value)
+end
+function MapPlayer.prototype.setOnScoreScreen(self, flag)
+    SetPlayerOnScoreScreen(self.handle, flag)
+end
+function MapPlayer.prototype.setState(self, whichPlayerState, value)
+    SetPlayerState(self.handle, whichPlayerState, value)
+end
+function MapPlayer.prototype.setTaxRate(self, otherPlayer, whichResource, rate)
+    SetPlayerTaxRate(self.handle, otherPlayer.handle, whichResource, rate)
+end
+function MapPlayer.prototype.setTechMaxAllowed(self, techId, maximum)
+    SetPlayerTechMaxAllowed(self.handle, techId, maximum)
+end
+function MapPlayer.prototype.setTechResearched(self, techId, setToLevel)
+    SetPlayerTechResearched(self.handle, techId, setToLevel)
+end
+function MapPlayer.prototype.setUnitsOwner(self, newOwner)
+    SetPlayerUnitsOwner(self.handle, newOwner)
+end
+function MapPlayer.fromEnum(self)
+    return ____exports.MapPlayer:fromHandle(
+        GetEnumPlayer()
+    )
+end
+function MapPlayer.fromEvent(self)
+    return ____exports.MapPlayer:fromHandle(
+        GetTriggerPlayer()
+    )
+end
+function MapPlayer.fromFilter(self)
+    return ____exports.MapPlayer:fromHandle(
+        GetFilterPlayer()
+    )
+end
+function MapPlayer.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function MapPlayer.fromIndex(self, index)
+    return self:fromHandle(
+        Player(index)
+    )
+end
+function MapPlayer.fromLocal(self)
+    return self:fromHandle(
+        GetLocalPlayer()
+    )
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.dialog"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.DialogButton = __TS__Class()
+local DialogButton = ____exports.DialogButton
+DialogButton.name = "DialogButton"
+__TS__ClassExtends(DialogButton, Handle)
+function DialogButton.prototype.____constructor(self, whichDialog, text, hotkey, quit, score)
+    if hotkey == nil then
+        hotkey = 0
+    end
+    if quit == nil then
+        quit = false
+    end
+    if score == nil then
+        score = false
+    end
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    elseif not quit then
+        Handle.prototype.____constructor(
+            self,
+            DialogAddButton(whichDialog.handle, text, hotkey)
+        )
+    else
+        Handle.prototype.____constructor(
+            self,
+            DialogAddQuitButton(whichDialog.handle, score, text, hotkey)
+        )
+    end
+end
+function DialogButton.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+____exports.Dialog = __TS__Class()
+local Dialog = ____exports.Dialog
+Dialog.name = "Dialog"
+__TS__ClassExtends(Dialog, Handle)
+function Dialog.prototype.____constructor(self)
+    Handle.prototype.____constructor(
+        self,
+        ((Handle:initFromHandle() and (function() return nil end)) or (function() return DialogCreate() end))()
+    )
+end
+function Dialog.prototype.addButton(self, text, hotkey, quit, score)
+    if hotkey == nil then
+        hotkey = 0
+    end
+    if quit == nil then
+        quit = false
+    end
+    if score == nil then
+        score = false
+    end
+    return __TS__New(____exports.DialogButton, self, text, hotkey, quit, score)
+end
+function Dialog.prototype.clear(self)
+    DialogClear(self.handle)
+end
+function Dialog.prototype.destroy(self)
+    DialogDestroy(self.handle)
+end
+function Dialog.prototype.display(self, whichPlayer, flag)
+    DialogDisplay(whichPlayer.handle, self.handle, flag)
+end
+function Dialog.prototype.setMessage(self, whichMessage)
+    DialogSetMessage(self.handle, whichMessage)
+end
+function Dialog.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.effect"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Effect = __TS__Class()
+local Effect = ____exports.Effect
+Effect.name = "Effect"
+__TS__ClassExtends(Effect, Handle)
+function Effect.prototype.____constructor(self, modelName, a, b)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    elseif (type(a) == "number") and (type(b) == "number") then
+        Handle.prototype.____constructor(
+            self,
+            AddSpecialEffect(modelName, a, b)
+        )
+    elseif (type(a) ~= "number") and (type(b) == "string") then
+        Handle.prototype.____constructor(
+            self,
+            AddSpecialEffectTarget(modelName, a.handle, b)
+        )
+    end
+end
+__TS__SetDescriptor(
+    Effect.prototype,
+    "scale",
+    {
+        get = function(self)
+            return BlzGetSpecialEffectScale(self.handle)
+        end,
+        set = function(self, scale)
+            BlzSetSpecialEffectScale(self.handle, scale)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Effect.prototype,
+    "x",
+    {
+        get = function(self)
+            return BlzGetLocalSpecialEffectX(self.handle)
+        end,
+        set = function(self, x)
+            BlzSetSpecialEffectX(self.handle, x)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Effect.prototype,
+    "y",
+    {
+        get = function(self)
+            return BlzGetLocalSpecialEffectY(self.handle)
+        end,
+        set = function(self, y)
+            BlzSetSpecialEffectY(self.handle, y)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Effect.prototype,
+    "z",
+    {
+        get = function(self)
+            return BlzGetLocalSpecialEffectZ(self.handle)
+        end,
+        set = function(self, z)
+            BlzSetSpecialEffectZ(self.handle, z)
+        end
+    },
+    true
+)
+function Effect.prototype.addSubAnimation(self, subAnim)
+    BlzSpecialEffectAddSubAnimation(self.handle, subAnim)
+end
+function Effect.prototype.clearSubAnimations(self)
+    BlzSpecialEffectClearSubAnimations(self.handle)
+end
+function Effect.prototype.destroy(self)
+    DestroyEffect(self.handle)
+end
+function Effect.prototype.playAnimation(self, animType)
+    BlzPlaySpecialEffect(self.handle, animType)
+end
+function Effect.prototype.playWithTimeScale(self, animType, timeScale)
+    BlzPlaySpecialEffectWithTimeScale(self.handle, animType, timeScale)
+end
+function Effect.prototype.removeSubAnimation(self, subAnim)
+    BlzSpecialEffectRemoveSubAnimation(self.handle, subAnim)
+end
+function Effect.prototype.resetScaleMatrix(self)
+    BlzResetSpecialEffectMatrix(self.handle)
+end
+function Effect.prototype.setAlpha(self, alpha)
+    BlzSetSpecialEffectAlpha(self.handle, alpha)
+end
+function Effect.prototype.setColor(self, red, green, blue)
+    BlzSetSpecialEffectColor(self.handle, red, green, blue)
+end
+function Effect.prototype.setColorByPlayer(self, whichPlayer)
+    BlzSetSpecialEffectColorByPlayer(self.handle, whichPlayer.handle)
+end
+function Effect.prototype.setHeight(self, height)
+    BlzSetSpecialEffectHeight(self.handle, height)
+end
+function Effect.prototype.setOrientation(self, yaw, pitch, roll)
+    BlzSetSpecialEffectOrientation(self.handle, yaw, pitch, roll)
+end
+function Effect.prototype.setPitch(self, pitch)
+    BlzSetSpecialEffectPitch(self.handle, pitch)
+end
+function Effect.prototype.setPoint(self, p)
+    BlzSetSpecialEffectPositionLoc(self.handle, p.handle)
+end
+function Effect.prototype.setPosition(self, x, y, z)
+    BlzSetSpecialEffectPosition(self.handle, x, y, z)
+end
+function Effect.prototype.setRoll(self, roll)
+    BlzSetSpecialEffectRoll(self.handle, roll)
+end
+function Effect.prototype.setScaleMatrix(self, x, y, z)
+    BlzSetSpecialEffectMatrixScale(self.handle, x, y, z)
+end
+function Effect.prototype.setTime(self, value)
+    BlzSetSpecialEffectTime(self.handle, value)
+end
+function Effect.prototype.setTimeScale(self, timeScale)
+    BlzSetSpecialEffectTimeScale(self.handle, timeScale)
+end
+function Effect.prototype.setYaw(self, y)
+    BlzSetSpecialEffectYaw(self.handle, y)
+end
+function Effect.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.rect"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Rectangle = __TS__Class()
+local Rectangle = ____exports.Rectangle
+Rectangle.name = "Rectangle"
+__TS__ClassExtends(Rectangle, Handle)
+function Rectangle.prototype.____constructor(self, minX, minY, maxX, maxY)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            Rect(minX, minY, maxX, maxY)
+        )
+    end
+end
+__TS__SetDescriptor(
+    Rectangle.prototype,
+    "centerX",
+    {
+        get = function(self)
+            return GetRectCenterX(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Rectangle.prototype,
+    "centerY",
+    {
+        get = function(self)
+            return GetRectCenterY(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Rectangle.prototype,
+    "maxX",
+    {
+        get = function(self)
+            return GetRectMaxX(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Rectangle.prototype,
+    "maxY",
+    {
+        get = function(self)
+            return GetRectMaxY(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Rectangle.prototype,
+    "minX",
+    {
+        get = function(self)
+            return GetRectMinX(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Rectangle.prototype,
+    "minY",
+    {
+        get = function(self)
+            return GetRectMinY(self.handle)
+        end
+    },
+    true
+)
+function Rectangle.prototype.destroy(self)
+    RemoveRect(self.handle)
+end
+function Rectangle.prototype.enumDestructables(self, filter, actionFunc)
+    EnumDestructablesInRect(
+        self.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))(),
+        actionFunc
+    )
+end
+function Rectangle.prototype.enumItems(self, filter, actionFunc)
+    EnumItemsInRect(
+        self.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))(),
+        actionFunc
+    )
+end
+function Rectangle.prototype.move(self, newCenterX, newCenterY)
+    MoveRectTo(self.handle, newCenterX, newCenterY)
+end
+function Rectangle.prototype.movePoint(self, newCenterPoint)
+    MoveRectToLoc(self.handle, newCenterPoint.handle)
+end
+function Rectangle.prototype.setRect(self, minX, minY, maxX, maxY)
+    SetRect(self.handle, minX, minY, maxX, maxY)
+end
+function Rectangle.prototype.setRectFromPoint(self, min, max)
+    SetRectFromLoc(self.handle, min.handle, max.handle)
+end
+function Rectangle.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function Rectangle.fromPoint(self, min, max)
+    return self:fromHandle(
+        RectFromLoc(min.handle, max.handle)
+    )
+end
+function Rectangle.getWorldBounds(self)
+    return ____exports.Rectangle:fromHandle(
+        GetWorldBounds()
+    )
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.fogmodifier"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.FogModifier = __TS__Class()
+local FogModifier = ____exports.FogModifier
+FogModifier.name = "FogModifier"
+__TS__ClassExtends(FogModifier, Handle)
+function FogModifier.prototype.____constructor(self, forWhichPlayer, whichState, centerX, centerY, radius, useSharedVision, afterUnits)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateFogModifierRadius(forWhichPlayer.handle, whichState, centerX, centerY, radius, useSharedVision, afterUnits)
+        )
+    end
+end
+function FogModifier.prototype.destroy(self)
+    DestroyFogModifier(self.handle)
+end
+function FogModifier.prototype.start(self)
+    FogModifierStart(self.handle)
+end
+function FogModifier.prototype.stop(self)
+    FogModifierStop(self.handle)
+end
+function FogModifier.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function FogModifier.fromRect(self, forWhichPlayer, whichState, where, useSharedVision, afterUnits)
+    return self:fromHandle(
+        CreateFogModifierRect(forWhichPlayer.handle, whichState, where.handle, useSharedVision, afterUnits)
+    )
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.frame"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Frame = __TS__Class()
+local Frame = ____exports.Frame
+Frame.name = "Frame"
+__TS__ClassExtends(Frame, Handle)
+function Frame.prototype.____constructor(self, name, owner, priority, createContext, typeName, inherits)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        if not createContext then
+            Handle.prototype.____constructor(
+                self,
+                BlzCreateSimpleFrame(name, owner.handle, priority)
+            )
+        else
+            if typeName and inherits then
+                Handle.prototype.____constructor(
+                    self,
+                    BlzCreateFrameByType(typeName, name, owner.handle, inherits, createContext)
+                )
+            else
+                Handle.prototype.____constructor(
+                    self,
+                    BlzCreateFrame(name, owner.handle, priority, createContext)
+                )
+            end
+        end
+    end
+end
+__TS__SetDescriptor(
+    Frame.prototype,
+    "alpha",
+    {
+        get = function(self)
+            return BlzFrameGetAlpha(self.handle)
+        end,
+        set = function(self, alpha)
+            BlzFrameSetAlpha(self.handle, alpha)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "children",
+    {
+        get = function(self)
+            local count = self.childrenCount
+            local output = {}
+            do
+                local i = 0
+                while i < count do
+                    __TS__ArrayPush(
+                        output,
+                        self:getChild(i)
+                    )
+                    i = i + 1
+                end
+            end
+            return output
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "childrenCount",
+    {
+        get = function(self)
+            return BlzFrameGetChildrenCount(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "enabled",
+    {
+        get = function(self)
+            return BlzFrameGetEnable(self.handle)
+        end,
+        set = function(self, flag)
+            BlzFrameSetEnable(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "height",
+    {
+        get = function(self)
+            return BlzFrameGetHeight(self.handle)
+        end,
+        set = function(self, height)
+            BlzFrameSetSize(self.handle, self.width, height)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "parent",
+    {
+        get = function(self)
+            return ____exports.Frame:fromHandle(
+                BlzFrameGetParent(self.handle)
+            )
+        end,
+        set = function(self, parent)
+            BlzFrameSetParent(self.handle, parent.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "text",
+    {
+        get = function(self)
+            return BlzFrameGetText(self.handle)
+        end,
+        set = function(self, text)
+            BlzFrameSetText(self.handle, text)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "textSizeLimit",
+    {
+        get = function(self)
+            return BlzFrameGetTextSizeLimit(self.handle)
+        end,
+        set = function(self, size)
+            BlzFrameSetTextSizeLimit(self.handle, size)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "value",
+    {
+        get = function(self)
+            return BlzFrameGetValue(self.handle)
+        end,
+        set = function(self, value)
+            BlzFrameSetValue(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "visible",
+    {
+        get = function(self)
+            return BlzFrameIsVisible(self.handle)
+        end,
+        set = function(self, flag)
+            BlzFrameSetVisible(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Frame.prototype,
+    "width",
+    {
+        get = function(self)
+            return BlzFrameGetWidth(self.handle)
+        end,
+        set = function(self, width)
+            BlzFrameSetSize(self.handle, width, self.height)
+        end
+    },
+    true
+)
+function Frame.prototype.addText(self, text)
+    BlzFrameAddText(self.handle, text)
+    return self
+end
+function Frame.prototype.cageMouse(self, enable)
+    BlzFrameCageMouse(self.handle, enable)
+    return self
+end
+function Frame.prototype.clearPoints(self)
+    BlzFrameClearAllPoints(self.handle)
+    return self
+end
+function Frame.prototype.click(self)
+    BlzFrameClick(self.handle)
+    return self
+end
+function Frame.prototype.destroy(self)
+    BlzDestroyFrame(self.handle)
+    return self
+end
+function Frame.prototype.getChild(self, index)
+    return ____exports.Frame:fromHandle(
+        BlzFrameGetChild(self.handle, index)
+    )
+end
+function Frame.prototype.setAbsPoint(self, point, x, y)
+    BlzFrameSetAbsPoint(self.handle, point, x, y)
+    return self
+end
+function Frame.prototype.setAllPoints(self, relative)
+    BlzFrameSetAllPoints(self.handle, relative.handle)
+    return self
+end
+function Frame.prototype.setAlpha(self, alpha)
+    BlzFrameSetAlpha(self.handle, alpha)
+    return self
+end
+function Frame.prototype.setEnabled(self, flag)
+    BlzFrameSetEnable(self.handle, flag)
+    return self
+end
+function Frame.prototype.setFocus(self, flag)
+    BlzFrameSetFocus(self.handle, flag)
+    return self
+end
+function Frame.prototype.setFont(self, filename, height, flags)
+    BlzFrameSetFont(self.handle, filename, height, flags)
+    return self
+end
+function Frame.prototype.setHeight(self, height)
+    BlzFrameSetSize(self.handle, self.width, height)
+    return self
+end
+function Frame.prototype.setLevel(self, level)
+    BlzFrameSetLevel(self.handle, level)
+    return self
+end
+function Frame.prototype.setMinMaxValue(self, minValue, maxValue)
+    BlzFrameSetMinMaxValue(self.handle, minValue, maxValue)
+    return self
+end
+function Frame.prototype.setModel(self, modelFile, cameraIndex)
+    BlzFrameSetModel(self.handle, modelFile, cameraIndex)
+    return self
+end
+function Frame.prototype.setParent(self, parent)
+    BlzFrameSetParent(self.handle, parent.handle)
+    return self
+end
+function Frame.prototype.setPoint(self, point, relative, relativePoint, x, y)
+    BlzFrameSetPoint(self.handle, point, relative.handle, relativePoint, x, y)
+    return self
+end
+function Frame.prototype.setScale(self, scale)
+    BlzFrameSetScale(self.handle, scale)
+    return self
+end
+function Frame.prototype.setSize(self, width, height)
+    BlzFrameSetSize(self.handle, width, height)
+    return self
+end
+function Frame.prototype.setSpriteAnimate(self, primaryProp, flags)
+    BlzFrameSetSpriteAnimate(self.handle, primaryProp, flags)
+    return self
+end
+function Frame.prototype.setStepSize(self, stepSize)
+    BlzFrameSetStepSize(self.handle, stepSize)
+    return self
+end
+function Frame.prototype.setText(self, text)
+    BlzFrameSetText(self.handle, text)
+    return self
+end
+function Frame.prototype.setTextColor(self, color)
+    BlzFrameSetTextColor(self.handle, color)
+    return self
+end
+function Frame.prototype.setTextSizeLimit(self, size)
+    BlzFrameSetTextSizeLimit(self.handle, size)
+    return self
+end
+function Frame.prototype.setTexture(self, texFile, flag, blend)
+    BlzFrameSetTexture(self.handle, texFile, flag, blend)
+    return self
+end
+function Frame.prototype.setTooltip(self, tooltip)
+    BlzFrameSetTooltip(self.handle, tooltip.handle)
+    return self
+end
+function Frame.prototype.setValue(self, value)
+    BlzFrameSetValue(self.handle, value)
+    return self
+end
+function Frame.prototype.setVertexColor(self, color)
+    BlzFrameSetVertexColor(self.handle, color)
+    return self
+end
+function Frame.prototype.setVisible(self, flag)
+    BlzFrameSetVisible(self.handle, flag)
+    return self
+end
+function Frame.prototype.setWidth(self, width)
+    BlzFrameSetSize(self.handle, width, self.height)
+    return self
+end
+function Frame.autoPosition(self, enable)
+    BlzEnableUIAutoPosition(enable)
+end
+function Frame.fromEvent(self)
+    return self:fromHandle(
+        BlzGetTriggerFrame()
+    )
+end
+function Frame.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function Frame.fromName(self, name, createContext)
+    return self:fromHandle(
+        BlzGetFrameByName(name, createContext)
+    )
+end
+function Frame.fromOrigin(self, frameType, index)
+    return self:fromHandle(
+        BlzGetOriginFrame(frameType, index)
+    )
+end
+function Frame.getEventHandle(self)
+    return BlzGetTriggerFrameEvent()
+end
+function Frame.getEventText(self)
+    return BlzGetTriggerFrameValue()
+end
+function Frame.getEventValue(self)
+    return BlzGetTriggerFrameValue()
+end
+function Frame.hideOrigin(self, enable)
+    BlzHideOriginFrames(enable)
+end
+function Frame.loadTOC(self, filename)
+    return BlzLoadTOCFile(filename)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.gamecache"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.GameCache = __TS__Class()
+local GameCache = ____exports.GameCache
+GameCache.name = "GameCache"
+__TS__ClassExtends(GameCache, Handle)
+function GameCache.prototype.____constructor(self, campaignFile)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            InitGameCache(campaignFile)
+        )
+    end
+    self.filename = campaignFile
+end
+function GameCache.prototype.flush(self)
+    FlushGameCache(self.handle)
+end
+function GameCache.prototype.flushBoolean(self, missionKey, key)
+    FlushStoredBoolean(self.handle, missionKey, key)
+end
+function GameCache.prototype.flushInteger(self, missionKey, key)
+    FlushStoredInteger(self.handle, missionKey, key)
+end
+function GameCache.prototype.flushMission(self, missionKey)
+    FlushStoredMission(self.handle, missionKey)
+end
+function GameCache.prototype.flushNumber(self, missionKey, key)
+    FlushStoredInteger(self.handle, missionKey, key)
+end
+function GameCache.prototype.flushString(self, missionKey, key)
+    FlushStoredString(self.handle, missionKey, key)
+end
+function GameCache.prototype.flushUnit(self, missionKey, key)
+    FlushStoredUnit(self.handle, missionKey, key)
+end
+function GameCache.prototype.getBoolean(self, missionKey, key)
+    return GetStoredBoolean(self.handle, missionKey, key)
+end
+function GameCache.prototype.getInteger(self, missionKey, key)
+    return GetStoredInteger(self.handle, missionKey, key)
+end
+function GameCache.prototype.getNumber(self, missionKey, key)
+    return GetStoredReal(self.handle, missionKey, key)
+end
+function GameCache.prototype.getString(self, missionKey, key)
+    return GetStoredString(self.handle, missionKey, key)
+end
+function GameCache.prototype.hasBoolean(self, missionKey, key)
+    return HaveStoredBoolean(self.handle, missionKey, key)
+end
+function GameCache.prototype.hasInteger(self, missionKey, key)
+    return HaveStoredInteger(self.handle, missionKey, key)
+end
+function GameCache.prototype.hasNumber(self, missionKey, key)
+    return HaveStoredReal(self.handle, missionKey, key)
+end
+function GameCache.prototype.hasString(self, missionKey, key)
+    return HaveStoredString(self.handle, missionKey, key)
+end
+function GameCache.prototype.restoreUnit(self, missionKey, key, forWhichPlayer, x, y, face)
+    return RestoreUnit(self.handle, missionKey, key, forWhichPlayer.handle, x, y, face)
+end
+function GameCache.prototype.save(self)
+    return SaveGameCache(self.handle)
+end
+function GameCache.prototype.store(self, missionKey, key, value)
+    if type(value) == "string" then
+        StoreString(self.handle, missionKey, key, value)
+    elseif type(value) == "boolean" then
+        StoreBoolean(self.handle, missionKey, key, value)
+    elseif type(value) == "number" then
+        StoreReal(self.handle, missionKey, key, value)
+    else
+        StoreUnit(self.handle, missionKey, key, value)
+    end
+end
+function GameCache.prototype.syncBoolean(self, missionKey, key)
+    return SyncStoredBoolean(self.handle, missionKey, key)
+end
+function GameCache.prototype.syncInteger(self, missionKey, key)
+    return SyncStoredInteger(self.handle, missionKey, key)
+end
+function GameCache.prototype.syncNumber(self, missionKey, key)
+    return SyncStoredReal(self.handle, missionKey, key)
+end
+function GameCache.prototype.syncString(self, missionKey, key)
+    return SyncStoredString(self.handle, missionKey, key)
+end
+function GameCache.prototype.syncUnit(self, missionKey, key)
+    return SyncStoredUnit(self.handle, missionKey, key)
+end
+function GameCache.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function GameCache.reloadFromDisk(self)
+    return ReloadGameCachesFromDisk()
+end
+return ____exports
+ end,
+["lua_modules.w3ts.globals.order"] = function(...) local ____exports = {}
+return ____exports
+ end,
+["lua_modules.w3ts.handles.item"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+local ____widget = require("lua_modules.w3ts.handles.widget")
+local Widget = ____widget.Widget
+____exports.Item = __TS__Class()
+local Item = ____exports.Item
+Item.name = "Item"
+__TS__ClassExtends(Item, Widget)
+function Item.prototype.____constructor(self, itemId, x, y, skinId)
+    if Handle:initFromHandle() then
+        Widget.prototype.____constructor(self)
+    else
+        Widget.prototype.____constructor(
+            self,
+            ((skinId and (function() return BlzCreateItemWithSkin(itemId, x, y, skinId) end)) or (function() return CreateItem(itemId, x, y) end))()
+        )
+    end
+end
+__TS__SetDescriptor(
+    Item.prototype,
+    "charges",
+    {
+        get = function(self)
+            return GetItemCharges(self.handle)
+        end,
+        set = function(self, value)
+            SetItemCharges(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "invulnerable",
+    {
+        get = function(self)
+            return IsItemInvulnerable(self.handle)
+        end,
+        set = function(self, flag)
+            SetItemInvulnerable(self.handle, true)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "level",
+    {
+        get = function(self)
+            return GetItemLevel(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "description",
+    {
+        get = function(self)
+            return BlzGetItemDescription(self.handle)
+        end,
+        set = function(self, description)
+            BlzSetItemDescription(self.handle, description)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "extendedTooltip",
+    {
+        get = function(self)
+            return BlzGetItemExtendedTooltip(self.handle)
+        end,
+        set = function(self, tooltip)
+            BlzSetItemExtendedTooltip(self.handle, tooltip)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "icon",
+    {
+        get = function(self)
+            return BlzGetItemIconPath(self.handle)
+        end,
+        set = function(self, path)
+            BlzSetItemIconPath(self.handle, path)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "name",
+    {
+        get = function(self)
+            return GetItemName(self.handle)
+        end,
+        set = function(self, value)
+            BlzSetItemName(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "tooltip",
+    {
+        get = function(self)
+            return BlzGetItemTooltip(self.handle)
+        end,
+        set = function(self, tooltip)
+            BlzSetItemTooltip(self.handle, tooltip)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "pawnable",
+    {
+        get = function(self)
+            return IsItemPawnable(self.handle)
+        end,
+        set = function(self, flag)
+            SetItemPawnable(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "player",
+    {
+        get = function(self)
+            return GetItemPlayer(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "type",
+    {
+        get = function(self)
+            return GetItemType(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "typeId",
+    {
+        get = function(self)
+            return GetItemTypeId(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "userData",
+    {
+        get = function(self)
+            return GetItemUserData(self.handle)
+        end,
+        set = function(self, value)
+            SetItemUserData(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "visible",
+    {
+        get = function(self)
+            return IsItemVisible(self.handle)
+        end,
+        set = function(self, flag)
+            SetItemVisible(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "skin",
+    {
+        get = function(self)
+            return BlzGetItemSkin(self.handle)
+        end,
+        set = function(self, skinId)
+            BlzSetItemSkin(self.handle, skinId)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "x",
+    {
+        get = function(self)
+            return GetItemX(self.handle)
+        end,
+        set = function(self, value)
+            SetItemPosition(self.handle, value, self.y)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Item.prototype,
+    "y",
+    {
+        get = function(self)
+            return GetItemY(self.handle)
+        end,
+        set = function(self, value)
+            SetItemPosition(self.handle, self.x, value)
+        end
+    },
+    true
+)
+function Item.prototype.addAbility(self, abilCode)
+    BlzItemAddAbility(self.handle, abilCode)
+end
+function Item.prototype.getAbility(self, abilCode)
+    return BlzGetItemAbility(self.handle, abilCode)
+end
+function Item.prototype.getAbilityByIndex(self, index)
+    return BlzGetItemAbilityByIndex(self.handle, index)
+end
+function Item.prototype.removeAbility(self, abilCode)
+    BlzItemRemoveAbility(self.handle, abilCode)
+end
+function Item.prototype.destroy(self)
+    RemoveItem(self.handle)
+end
+function Item.prototype.getField(self, field)
+    local fieldType = __TS__StringSubstr(
+        tostring(field),
+        0,
+        (string.find(
+            tostring(field),
+            ":",
+            nil,
+            true
+        ) or 0) - 1
+    )
+    repeat
+        local ____switch41 = fieldType
+        local ____cond41 = ____switch41 == "unitbooleanfield"
+        if ____cond41 then
+            return BlzGetItemBooleanField(self.handle, field)
+        end
+        ____cond41 = ____cond41 or (____switch41 == "unitintegerfield")
+        if ____cond41 then
+            return BlzGetItemIntegerField(self.handle, field)
+        end
+        ____cond41 = ____cond41 or (____switch41 == "unitrealfield")
+        if ____cond41 then
+            return BlzGetItemRealField(self.handle, field)
+        end
+        ____cond41 = ____cond41 or (____switch41 == "unitstringfield")
+        if ____cond41 then
+            return BlzGetItemStringField(self.handle, field)
+        end
+        do
+            return 0
+        end
+    until true
+end
+function Item.prototype.isOwned(self)
+    return IsItemOwned(self.handle)
+end
+function Item.prototype.isPawnable(self)
+    return IsItemPawnable(self.handle)
+end
+function Item.prototype.isPowerup(self)
+    return IsItemPowerup(self.handle)
+end
+function Item.prototype.isSellable(self)
+    return IsItemSellable(self.handle)
+end
+function Item.prototype.setDropId(self, unitId)
+    SetItemDropID(self.handle, unitId)
+end
+function Item.prototype.setDropOnDeath(self, flag)
+    SetItemDropOnDeath(self.handle, flag)
+end
+function Item.prototype.setDroppable(self, flag)
+    SetItemDroppable(self.handle, flag)
+end
+function Item.prototype.setField(self, field, value)
+    local fieldType = __TS__StringSubstr(
+        tostring(field),
+        0,
+        (string.find(
+            tostring(field),
+            ":",
+            nil,
+            true
+        ) or 0) - 1
+    )
+    if (fieldType == "unitbooleanfield") and (type(value) == "boolean") then
+        return BlzSetItemBooleanField(self.handle, field, value)
+    elseif (fieldType == "unitintegerfield") and (type(value) == "number") then
+        return BlzSetItemIntegerField(self.handle, field, value)
+    elseif (fieldType == "unitrealfield") and (type(value) == "number") then
+        return BlzSetItemRealField(self.handle, field, value)
+    elseif (fieldType == "unitstringfield") and (type(value) == "string") then
+        return BlzSetItemStringField(self.handle, field, value)
+    end
+    return false
+end
+function Item.prototype.setOwner(self, whichPlayer, changeColor)
+    SetItemPlayer(self.handle, whichPlayer.handle, changeColor)
+end
+function Item.prototype.setPoint(self, whichPoint)
+    SetItemPosition(self.handle, whichPoint.x, whichPoint.y)
+end
+function Item.prototype.setPosition(self, x, y)
+    SetItemPosition(self.handle, x, y)
+end
+function Item.fromEvent(self)
+    return self:fromHandle(
+        GetManipulatedItem()
+    )
+end
+function Item.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function Item.isIdPawnable(self, itemId)
+    return IsItemIdPawnable(itemId)
+end
+function Item.isIdPowerup(self, itemId)
+    return IsItemIdPowerup(itemId)
+end
+function Item.isIdSellable(self, itemId)
+    return IsItemIdSellable(itemId)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.sound"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Sound = __TS__Class()
+local Sound = ____exports.Sound
+Sound.name = "Sound"
+__TS__ClassExtends(Sound, Handle)
+function Sound.prototype.____constructor(self, fileName, looping, is3D, stopWhenOutOfRange, fadeInRate, fadeOutRate, eaxSetting)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateSound(fileName, looping, is3D, stopWhenOutOfRange, fadeInRate, fadeOutRate, eaxSetting)
+        )
+    end
+end
+__TS__SetDescriptor(
+    Sound.prototype,
+    "dialogueSpeakerNameKey",
+    {
+        get = function(self)
+            return GetDialogueSpeakerNameKey(self.handle)
+        end,
+        set = function(self, speakerName)
+            SetDialogueSpeakerNameKey(self.handle, speakerName)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Sound.prototype,
+    "dialogueTextKey",
+    {
+        get = function(self)
+            return GetDialogueTextKey(self.handle)
+        end,
+        set = function(self, dialogueText)
+            SetDialogueTextKey(self.handle, dialogueText)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Sound.prototype,
+    "duration",
+    {
+        get = function(self)
+            return GetSoundDuration(self.handle)
+        end,
+        set = function(self, duration)
+            SetSoundDuration(self.handle, duration)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Sound.prototype,
+    "loading",
+    {
+        get = function(self)
+            return GetSoundIsLoading(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Sound.prototype,
+    "playing",
+    {
+        get = function(self)
+            return GetSoundIsPlaying(self.handle)
+        end
+    },
+    true
+)
+function Sound.prototype.killWhenDone(self)
+    KillSoundWhenDone(self.handle)
+end
+function Sound.prototype.registerStacked(self, byPosition, rectWidth, rectHeight)
+    RegisterStackedSound(self.handle, byPosition, rectWidth, rectHeight)
+end
+function Sound.prototype.setChannel(self, channel)
+    SetSoundDistanceCutoff(self.handle, channel)
+end
+function Sound.prototype.setConeAngles(self, inside, outside, outsideVolume)
+    SetSoundConeAngles(self.handle, inside, outside, outsideVolume)
+end
+function Sound.prototype.setConeOrientation(self, x, y, z)
+    SetSoundConeOrientation(self.handle, x, y, z)
+end
+function Sound.prototype.setDistanceCutoff(self, cutoff)
+    SetSoundDistanceCutoff(self.handle, cutoff)
+end
+function Sound.prototype.setDistances(self, minDist, maxDist)
+    SetSoundDistances(self.handle, minDist, maxDist)
+end
+function Sound.prototype.setFacialAnimationFilepath(self, animationSetFilepath)
+    SetSoundFacialAnimationSetFilepath(self.handle, animationSetFilepath)
+end
+function Sound.prototype.setFacialAnimationGroupLabel(self, groupLabel)
+    SetSoundFacialAnimationGroupLabel(self.handle, groupLabel)
+end
+function Sound.prototype.setFacialAnimationLabel(self, animationLabel)
+    SetSoundFacialAnimationLabel(self.handle, animationLabel)
+end
+function Sound.prototype.setParamsFromLabel(self, soundLabel)
+    SetSoundParamsFromLabel(self.handle, soundLabel)
+end
+function Sound.prototype.setPitch(self, pitch)
+    SetSoundPitch(self.handle, pitch)
+end
+function Sound.prototype.setPlayPosition(self, millisecs)
+    SetSoundPlayPosition(self.handle, millisecs)
+end
+function Sound.prototype.setPosition(self, x, y, z)
+    SetSoundPosition(self.handle, x, y, z)
+end
+function Sound.prototype.setVelocity(self, x, y, z)
+    SetSoundVelocity(self.handle, x, y, z)
+end
+function Sound.prototype.setVolume(self, volume)
+    SetSoundVolume(self.handle, volume)
+end
+function Sound.prototype.start(self)
+    StartSound(self.handle)
+end
+function Sound.prototype.stop(self, killWhenDone, fadeOut)
+    StopSound(self.handle, killWhenDone, fadeOut)
+end
+function Sound.prototype.unregisterStacked(self, byPosition, rectWidth, rectHeight)
+    UnregisterStackedSound(self.handle, byPosition, rectWidth, rectHeight)
+end
+function Sound.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function Sound.getFileDuration(self, fileName)
+    return GetSoundFileDuration(fileName)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.unit"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____destructable = require("lua_modules.w3ts.handles.destructable")
+local Destructable = ____destructable.Destructable
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+local ____item = require("lua_modules.w3ts.handles.item")
+local Item = ____item.Item
+local ____player = require("lua_modules.w3ts.handles.player")
+local MapPlayer = ____player.MapPlayer
+local ____point = require("lua_modules.w3ts.handles.point")
+local Point = ____point.Point
+local ____widget = require("lua_modules.w3ts.handles.widget")
+local Widget = ____widget.Widget
+____exports.Unit = __TS__Class()
+local Unit = ____exports.Unit
+Unit.name = "Unit"
+__TS__ClassExtends(Unit, Widget)
+function Unit.prototype.____constructor(self, owner, unitId, x, y, face, skinId)
+    if Handle:initFromHandle() then
+        Widget.prototype.____constructor(self)
+    else
+        local p = (((type(owner) == "number") and (function() return Player(owner) end)) or (function() return owner.handle end))()
+        Widget.prototype.____constructor(
+            self,
+            ((skinId and (function() return BlzCreateUnitWithSkin(p, unitId, x, y, face, skinId) end)) or (function() return CreateUnit(p, unitId, x, y, face) end))()
+        )
+    end
+end
+__TS__SetDescriptor(
+    Unit.prototype,
+    "acquireRange",
+    {
+        get = function(self)
+            return GetUnitAcquireRange(self.handle)
+        end,
+        set = function(self, value)
+            SetUnitAcquireRange(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "agility",
+    {
+        get = function(self)
+            return GetHeroAgi(self.handle, false)
+        end,
+        set = function(self, value)
+            SetHeroAgi(self.handle, value, true)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "armor",
+    {
+        get = function(self)
+            return BlzGetUnitArmor(self.handle)
+        end,
+        set = function(self, armorAmount)
+            BlzSetUnitArmor(self.handle, armorAmount)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "canSleep",
+    {
+        get = function(self)
+            return UnitCanSleep(self.handle)
+        end,
+        set = function(self, flag)
+            UnitAddSleep(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "collisionSize",
+    {
+        get = function(self)
+            return BlzGetUnitCollisionSize(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "color",
+    {
+        set = function(self, whichColor)
+            SetUnitColor(self.handle, whichColor)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "currentOrder",
+    {
+        get = function(self)
+            return GetUnitCurrentOrder(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "defaultAcquireRange",
+    {
+        get = function(self)
+            return GetUnitDefaultAcquireRange(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "defaultFlyHeight",
+    {
+        get = function(self)
+            return GetUnitDefaultFlyHeight(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "defaultMoveSpeed",
+    {
+        get = function(self)
+            return GetUnitDefaultMoveSpeed(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "defaultPropWindow",
+    {
+        get = function(self)
+            return GetUnitDefaultPropWindow(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "defaultTurnSpeed",
+    {
+        get = function(self)
+            return GetUnitDefaultTurnSpeed(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "experience",
+    {
+        get = function(self)
+            return GetHeroXP(self.handle)
+        end,
+        set = function(self, newXpVal)
+            SetHeroXP(self.handle, newXpVal, true)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "facing",
+    {
+        get = function(self)
+            return GetUnitFacing(self.handle)
+        end,
+        set = function(self, value)
+            SetUnitFacing(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "foodMade",
+    {
+        get = function(self)
+            return GetUnitFoodMade(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "foodUsed",
+    {
+        get = function(self)
+            return GetUnitFoodUsed(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "ignoreAlarmToggled",
+    {
+        get = function(self)
+            return UnitIgnoreAlarmToggled(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "intelligence",
+    {
+        get = function(self)
+            return GetHeroInt(self.handle, false)
+        end,
+        set = function(self, value)
+            SetHeroInt(self.handle, value, true)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "inventorySize",
+    {
+        get = function(self)
+            return UnitInventorySize(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "invulnerable",
+    {
+        get = function(self)
+            return BlzIsUnitInvulnerable(self.handle)
+        end,
+        set = function(self, flag)
+            SetUnitInvulnerable(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "level",
+    {
+        get = function(self)
+            return GetUnitLevel(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "localZ",
+    {
+        get = function(self)
+            return BlzGetLocalUnitZ(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "mana",
+    {
+        get = function(self)
+            return self:getState(UNIT_STATE_MANA)
+        end,
+        set = function(self, value)
+            self:setState(UNIT_STATE_MANA, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "maxLife",
+    {
+        get = function(self)
+            return BlzGetUnitMaxHP(self.handle)
+        end,
+        set = function(self, value)
+            BlzSetUnitMaxHP(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "maxMana",
+    {
+        get = function(self)
+            return BlzGetUnitMaxMana(self.handle)
+        end,
+        set = function(self, value)
+            BlzSetUnitMaxMana(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "moveSpeed",
+    {
+        get = function(self)
+            return GetUnitMoveSpeed(self.handle)
+        end,
+        set = function(self, value)
+            SetUnitMoveSpeed(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "name",
+    {
+        get = function(self)
+            return GetUnitName(self.handle)
+        end,
+        set = function(self, value)
+            BlzSetUnitName(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "nameProper",
+    {
+        get = function(self)
+            return GetHeroProperName(self.handle)
+        end,
+        set = function(self, value)
+            BlzSetHeroProperName(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "owner",
+    {
+        get = function(self)
+            return MapPlayer:fromHandle(
+                GetOwningPlayer(self.handle)
+            )
+        end,
+        set = function(self, whichPlayer)
+            SetUnitOwner(self.handle, whichPlayer.handle, true)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "paused",
+    {
+        get = function(self)
+            return IsUnitPaused(self.handle)
+        end,
+        set = function(self, flag)
+            PauseUnit(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "point",
+    {
+        get = function(self)
+            return Point:fromHandle(
+                GetUnitLoc(self.handle)
+            )
+        end,
+        set = function(self, whichPoint)
+            SetUnitPositionLoc(self.handle, whichPoint.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "pointValue",
+    {
+        get = function(self)
+            return GetUnitPointValue(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "propWindow",
+    {
+        get = function(self)
+            return GetUnitPropWindow(self.handle)
+        end,
+        set = function(self, newPropWindowAngle)
+            SetUnitPropWindow(self.handle, newPropWindowAngle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "race",
+    {
+        get = function(self)
+            return GetUnitRace(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "rallyDestructable",
+    {
+        get = function(self)
+            return Destructable:fromHandle(
+                GetUnitRallyDestructable(self.handle)
+            )
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "rallyPoint",
+    {
+        get = function(self)
+            return Point:fromHandle(
+                GetUnitRallyPoint(self.handle)
+            )
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "rallyUnit",
+    {
+        get = function(self)
+            return ____exports.Unit:fromHandle(
+                GetUnitRallyUnit(self.handle)
+            )
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "resourceAmount",
+    {
+        get = function(self)
+            return GetResourceAmount(self.handle)
+        end,
+        set = function(self, amount)
+            SetResourceAmount(self.handle, amount)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "selectable",
+    {
+        get = function(self)
+            return BlzIsUnitSelectable(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "selectionScale",
+    {
+        get = function(self)
+            local result = self:getField(UNIT_RF_SELECTION_SCALE)
+            return (((type(result) == "number") and (function() return result end)) or (function() return 0 end))()
+        end,
+        set = function(self, scale)
+            self:setField(UNIT_RF_SELECTION_SCALE, scale)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "show",
+    {
+        get = function(self)
+            return not IsUnitHidden(self.handle)
+        end,
+        set = function(self, flag)
+            ShowUnit(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "skin",
+    {
+        get = function(self)
+            return BlzGetUnitSkin(self.handle)
+        end,
+        set = function(self, skinId)
+            BlzSetUnitSkin(self.handle, skinId)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "skillPoints",
+    {
+        get = function(self)
+            return GetHeroSkillPoints(self.handle)
+        end,
+        set = function(self, skillPointDelta)
+            UnitModifySkillPoints(self.handle, skillPointDelta)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "sleeping",
+    {
+        get = function(self)
+            return UnitIsSleeping(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "strength",
+    {
+        get = function(self)
+            return GetHeroStr(self.handle, false)
+        end,
+        set = function(self, value)
+            SetHeroStr(self.handle, value, true)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "turnSpeed",
+    {
+        get = function(self)
+            return GetUnitTurnSpeed(self.handle)
+        end,
+        set = function(self, value)
+            SetUnitTurnSpeed(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "typeId",
+    {
+        get = function(self)
+            return GetUnitTypeId(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "userData",
+    {
+        get = function(self)
+            return GetUnitUserData(self.handle)
+        end,
+        set = function(self, value)
+            SetUnitUserData(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "waygateActive",
+    {
+        get = function(self)
+            return WaygateIsActive(self.handle)
+        end,
+        set = function(self, flag)
+            WaygateActivate(self.handle, flag)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "x",
+    {
+        get = function(self)
+            return GetUnitX(self.handle)
+        end,
+        set = function(self, value)
+            SetUnitX(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "y",
+    {
+        get = function(self)
+            return GetUnitY(self.handle)
+        end,
+        set = function(self, value)
+            SetUnitY(self.handle, value)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Unit.prototype,
+    "z",
+    {
+        get = function(self)
+            return BlzGetUnitZ(self.handle)
+        end
+    },
+    true
+)
+function Unit.prototype.addAbility(self, abilityId)
+    return UnitAddAbility(self.handle, abilityId)
+end
+function Unit.prototype.addAnimationProps(self, animProperties, add)
+    AddUnitAnimationProperties(self.handle, animProperties, add)
+end
+function Unit.prototype.addExperience(self, xpToAdd, showEyeCandy)
+    AddHeroXP(self.handle, xpToAdd, showEyeCandy)
+end
+function Unit.prototype.addIndicator(self, red, blue, green, alpha)
+    UnitAddIndicator(self.handle, red, blue, green, alpha)
+end
+function Unit.prototype.addItem(self, whichItem)
+    return UnitAddItem(self.handle, whichItem.handle)
+end
+function Unit.prototype.addItemById(self, itemId)
+    return Item:fromHandle(
+        UnitAddItemById(self.handle, itemId)
+    )
+end
+function Unit.prototype.addItemToSlotById(self, itemId, itemSlot)
+    return UnitAddItemToSlotById(self.handle, itemId, itemSlot)
+end
+function Unit.prototype.addItemToStock(self, itemId, currentStock, stockMax)
+    AddItemToStock(self.handle, itemId, currentStock, stockMax)
+end
+function Unit.prototype.addResourceAmount(self, amount)
+    AddResourceAmount(self.handle, amount)
+end
+function Unit.prototype.addSleepPerm(self, add)
+    UnitAddSleepPerm(self.handle, add)
+end
+function Unit.prototype.addType(self, whichUnitType)
+    return UnitAddType(self.handle, whichUnitType)
+end
+function Unit.prototype.addUnitToStock(self, unitId, currentStock, stockMax)
+    AddUnitToStock(self.handle, unitId, currentStock, stockMax)
+end
+function Unit.prototype.applyTimedLife(self, buffId, duration)
+    UnitApplyTimedLife(self.handle, buffId, duration)
+end
+function Unit.prototype.attachSound(self, sound)
+    AttachSoundToUnit(sound.handle, self.handle)
+end
+function Unit.prototype.cancelTimedLife(self)
+    BlzUnitCancelTimedLife(self.handle)
+end
+function Unit.prototype.canSleepPerm(self)
+    return UnitCanSleepPerm(self.handle)
+end
+function Unit.prototype.countBuffs(self, removePositive, removeNegative, magic, physical, timedLife, aura, autoDispel)
+    return UnitCountBuffsEx(self.handle, removePositive, removeNegative, magic, physical, timedLife, aura, autoDispel)
+end
+function Unit.prototype.damageAt(self, delay, radius, x, y, amount, attack, ranged, attackType, damageType, weaponType)
+    return UnitDamagePoint(self.handle, delay, radius, x, y, amount, attack, ranged, attackType, damageType, weaponType)
+end
+function Unit.prototype.damageTarget(self, target, amount, attack, ranged, attackType, damageType, weaponType)
+    return UnitDamageTarget(self.handle, target, amount, attack, ranged, attackType, damageType, weaponType)
+end
+function Unit.prototype.decAbilityLevel(self, abilCode)
+    return DecUnitAbilityLevel(self.handle, abilCode)
+end
+function Unit.prototype.destroy(self)
+    RemoveUnit(self.handle)
+end
+function Unit.prototype.disableAbility(self, abilId, flag, hideUI)
+    BlzUnitDisableAbility(self.handle, abilId, flag, hideUI)
+end
+function Unit.prototype.dropItem(self, whichItem, x, y)
+    return UnitDropItemPoint(self.handle, whichItem.handle, x, y)
+end
+function Unit.prototype.dropItemFromSlot(self, whichItem, slot)
+    return UnitDropItemSlot(self.handle, whichItem.handle, slot)
+end
+function Unit.prototype.dropItemTarget(self, whichItem, target)
+    return UnitDropItemTarget(self.handle, whichItem.handle, target.handle)
+end
+function Unit.prototype.endAbilityCooldown(self, abilCode)
+    BlzEndUnitAbilityCooldown(self.handle, abilCode)
+end
+function Unit.prototype.getAbility(self, abilId)
+    return BlzGetUnitAbility(self.handle, abilId)
+end
+function Unit.prototype.getAbilityByIndex(self, index)
+    return BlzGetUnitAbilityByIndex(self.handle, index)
+end
+function Unit.prototype.getAbilityCooldown(self, abilId, level)
+    return BlzGetUnitAbilityCooldown(self.handle, abilId, level)
+end
+function Unit.prototype.getAbilityCooldownRemaining(self, abilId)
+    return BlzGetUnitAbilityCooldownRemaining(self.handle, abilId)
+end
+function Unit.prototype.getAbilityLevel(self, abilCode)
+    return GetUnitAbilityLevel(self.handle, abilCode)
+end
+function Unit.prototype.getAbilityManaCost(self, abilId, level)
+    return BlzGetUnitAbilityManaCost(self.handle, abilId, level)
+end
+function Unit.prototype.getAgility(self, includeBonuses)
+    return GetHeroAgi(self.handle, includeBonuses)
+end
+function Unit.prototype.getAttackCooldown(self, weaponIndex)
+    return BlzGetUnitAttackCooldown(self.handle, weaponIndex)
+end
+function Unit.prototype.getBaseDamage(self, weaponIndex)
+    return BlzGetUnitBaseDamage(self.handle, weaponIndex)
+end
+function Unit.prototype.getDiceNumber(self, weaponIndex)
+    return BlzGetUnitDiceNumber(self.handle, weaponIndex)
+end
+function Unit.prototype.getDiceSides(self, weaponIndex)
+    return BlzGetUnitDiceSides(self.handle, weaponIndex)
+end
+function Unit.prototype.getField(self, field)
+    local fieldType = __TS__StringSubstr(
+        tostring(field),
+        0,
+        (string.find(
+            tostring(field),
+            ":",
+            nil,
+            true
+        ) or 0) - 1
+    )
+    repeat
+        local ____switch124 = fieldType
+        local fieldBool, fieldInt, fieldReal, fieldString
+        local ____cond124 = ____switch124 == "unitbooleanfield"
+        if ____cond124 then
+            fieldBool = field
+            return BlzGetUnitBooleanField(self.handle, fieldBool)
+        end
+        ____cond124 = ____cond124 or (____switch124 == "unitintegerfield")
+        if ____cond124 then
+            fieldInt = field
+            return BlzGetUnitIntegerField(self.handle, fieldInt)
+        end
+        ____cond124 = ____cond124 or (____switch124 == "unitrealfield")
+        if ____cond124 then
+            fieldReal = field
+            return BlzGetUnitRealField(self.handle, fieldReal)
+        end
+        ____cond124 = ____cond124 or (____switch124 == "unitstringfield")
+        if ____cond124 then
+            fieldString = field
+            return BlzGetUnitStringField(self.handle, fieldString)
+        end
+        do
+            return 0
+        end
+    until true
+end
+function Unit.prototype.getflyHeight(self)
+    return GetUnitFlyHeight(self.handle)
+end
+function Unit.prototype.getHeroLevel(self)
+    return GetHeroLevel(self.handle)
+end
+function Unit.prototype.getIgnoreAlarm(self, flag)
+    return UnitIgnoreAlarm(self.handle, flag)
+end
+function Unit.prototype.getIntelligence(self, includeBonuses)
+    return GetHeroInt(self.handle, includeBonuses)
+end
+function Unit.prototype.getItemInSlot(self, slot)
+    return Item:fromHandle(
+        UnitItemInSlot(self.handle, slot)
+    )
+end
+function Unit.prototype.getState(self, whichUnitState)
+    return GetUnitState(self.handle, whichUnitState)
+end
+function Unit.prototype.getStrength(self, includeBonuses)
+    return GetHeroStr(self.handle, includeBonuses)
+end
+function Unit.prototype.hasBuffs(self, removePositive, removeNegative, magic, physical, timedLife, aura, autoDispel)
+    return UnitHasBuffsEx(self.handle, removePositive, removeNegative, magic, physical, timedLife, aura, autoDispel)
+end
+function Unit.prototype.hasItem(self, whichItem)
+    return UnitHasItem(self.handle, whichItem.handle)
+end
+function Unit.prototype.hideAbility(self, abilId, flag)
+    BlzUnitHideAbility(self.handle, abilId, flag)
+end
+function Unit.prototype.incAbilityLevel(self, abilCode)
+    return IncUnitAbilityLevel(self.handle, abilCode)
+end
+function Unit.prototype.inForce(self, whichForce)
+    return IsUnitInForce(self.handle, whichForce.handle)
+end
+function Unit.prototype.inGroup(self, whichGroup)
+    return IsUnitInGroup(self.handle, whichGroup.handle)
+end
+function Unit.prototype.inRange(self, x, y, distance)
+    return IsUnitInRangeXY(self.handle, x, y, distance)
+end
+function Unit.prototype.inRangeOfPoint(self, whichPoint, distance)
+    return IsUnitInRangeLoc(self.handle, whichPoint.handle, distance)
+end
+function Unit.prototype.inRangeOfUnit(self, otherUnit, distance)
+    return IsUnitInRange(self.handle, otherUnit.handle, distance)
+end
+function Unit.prototype.interruptAttack(self)
+    BlzUnitInterruptAttack(self.handle)
+end
+function Unit.prototype.inTransport(self, whichTransport)
+    return IsUnitInTransport(self.handle, whichTransport.handle)
+end
+function Unit.prototype.isAlive(self)
+    return UnitAlive(self.handle)
+end
+function Unit.prototype.isAlly(self, whichPlayer)
+    return IsUnitAlly(self.handle, whichPlayer.handle)
+end
+function Unit.prototype.isEnemy(self, whichPlayer)
+    return IsUnitEnemy(self.handle, whichPlayer.handle)
+end
+function Unit.prototype.isExperienceSuspended(self)
+    return IsSuspendedXP(self.handle)
+end
+function Unit.prototype.isFogged(self, whichPlayer)
+    return IsUnitFogged(self.handle, whichPlayer.handle)
+end
+function Unit.prototype.isHero(self)
+    return IsHeroUnitId(self.typeId)
+end
+function Unit.prototype.isIllusion(self)
+    return IsUnitIllusion(self.handle)
+end
+function Unit.prototype.isLoaded(self)
+    return IsUnitLoaded(self.handle)
+end
+function Unit.prototype.isMasked(self, whichPlayer)
+    return IsUnitMasked(self.handle, whichPlayer.handle)
+end
+function Unit.prototype.isSelected(self, whichPlayer)
+    return IsUnitSelected(self.handle, whichPlayer.handle)
+end
+function Unit.prototype.issueBuildOrder(self, unit, x, y)
+    return (((type(unit) == "string") and (function() return IssueBuildOrder(self.handle, unit, x, y) end)) or (function() return IssueBuildOrderById(self.handle, unit, x, y) end))()
+end
+function Unit.prototype.issueImmediateOrder(self, order)
+    return (((type(order) == "string") and (function() return IssueImmediateOrder(self.handle, order) end)) or (function() return IssueImmediateOrderById(self.handle, order) end))()
+end
+function Unit.prototype.issueInstantOrderAt(self, order, x, y, instantTargetWidget)
+    return (((type(order) == "string") and (function() return IssueInstantPointOrder(self.handle, order, x, y, instantTargetWidget.handle) end)) or (function() return IssueInstantPointOrderById(self.handle, order, x, y, instantTargetWidget.handle) end))()
+end
+function Unit.prototype.issueInstantTargetOrder(self, order, targetWidget, instantTargetWidget)
+    return (((type(order) == "string") and (function() return IssueInstantTargetOrder(self.handle, order, targetWidget.handle, instantTargetWidget.handle) end)) or (function() return IssueInstantTargetOrderById(self.handle, order, targetWidget.handle, instantTargetWidget.handle) end))()
+end
+function Unit.prototype.issueOrderAt(self, order, x, y)
+    return (((type(order) == "string") and (function() return IssuePointOrder(self.handle, order, x, y) end)) or (function() return IssuePointOrderById(self.handle, order, x, y) end))()
+end
+function Unit.prototype.issuePointOrder(self, order, whichPoint)
+    return (((type(order) == "string") and (function() return IssuePointOrderLoc(self.handle, order, whichPoint.handle) end)) or (function() return IssuePointOrderByIdLoc(self.handle, order, whichPoint.handle) end))()
+end
+function Unit.prototype.issueTargetOrder(self, order, targetWidget)
+    return (((type(order) == "string") and (function() return IssueTargetOrder(self.handle, order, targetWidget.handle) end)) or (function() return IssueTargetOrderById(self.handle, order, targetWidget.handle) end))()
+end
+function Unit.prototype.isUnit(self, whichSpecifiedUnit)
+    return IsUnit(self.handle, whichSpecifiedUnit.handle)
+end
+function Unit.prototype.isUnitType(self, whichUnitType)
+    return IsUnitType(self.handle, whichUnitType)
+end
+function Unit.prototype.isVisible(self, whichPlayer)
+    return IsUnitVisible(self.handle, whichPlayer.handle)
+end
+function Unit.prototype.kill(self)
+    KillUnit(self.handle)
+end
+function Unit.prototype.lookAt(self, whichBone, lookAtTarget, offsetX, offsetY, offsetZ)
+    SetUnitLookAt(self.handle, whichBone, lookAtTarget.handle, offsetX, offsetY, offsetZ)
+end
+function Unit.prototype.makeAbilityPermanent(self, permanent, abilityId)
+    UnitMakeAbilityPermanent(self.handle, permanent, abilityId)
+end
+function Unit.prototype.modifySkillPoints(self, skillPointDelta)
+    return UnitModifySkillPoints(self.handle, skillPointDelta)
+end
+function Unit.prototype.pauseEx(self, flag)
+    BlzPauseUnitEx(self.handle, flag)
+end
+function Unit.prototype.pauseTimedLife(self, flag)
+    UnitPauseTimedLife(self.handle, flag)
+end
+function Unit.prototype.queueAnimation(self, whichAnimation)
+    QueueUnitAnimation(self.handle, whichAnimation)
+end
+function Unit.prototype.recycleGuardPosition(self)
+    RecycleGuardPosition(self.handle)
+end
+function Unit.prototype.removeAbility(self, abilityId)
+    return UnitRemoveAbility(self.handle, abilityId)
+end
+function Unit.prototype.removeBuffs(self, removePositive, removeNegative)
+    UnitRemoveBuffs(self.handle, removePositive, removeNegative)
+end
+function Unit.prototype.removeBuffsEx(self, removePositive, removeNegative, magic, physical, timedLife, aura, autoDispel)
+    UnitRemoveBuffsEx(self.handle, removePositive, removeNegative, magic, physical, timedLife, aura, autoDispel)
+end
+function Unit.prototype.removeGuardPosition(self)
+    RemoveGuardPosition(self.handle)
+end
+function Unit.prototype.removeItem(self, whichItem)
+    UnitRemoveItem(self.handle, whichItem.handle)
+end
+function Unit.prototype.removeItemFromSlot(self, itemSlot)
+    return Item:fromHandle(
+        UnitRemoveItemFromSlot(self.handle, itemSlot)
+    )
+end
+function Unit.prototype.removeItemFromStock(self, itemId)
+    RemoveItemFromStock(self.handle, itemId)
+end
+function Unit.prototype.removeType(self, whichUnitType)
+    return UnitRemoveType(self.handle, whichUnitType)
+end
+function Unit.prototype.removeUnitFromStock(self, itemId)
+    RemoveUnitFromStock(self.handle, itemId)
+end
+function Unit.prototype.resetCooldown(self)
+    UnitResetCooldown(self.handle)
+end
+function Unit.prototype.resetLookAt(self)
+    ResetUnitLookAt(self.handle)
+end
+function Unit.prototype.revive(self, x, y, doEyecandy)
+    return ReviveHero(self.handle, x, y, doEyecandy)
+end
+function Unit.prototype.reviveAtPoint(self, whichPoint, doEyecandy)
+    return ReviveHeroLoc(self.handle, whichPoint.handle, doEyecandy)
+end
+function Unit.prototype.select(self, flag)
+    SelectUnit(self.handle, flag)
+end
+function Unit.prototype.selectSkill(self, abilCode)
+    SelectHeroSkill(self.handle, abilCode)
+end
+function Unit.prototype.setAbilityCooldown(self, abilId, level, cooldown)
+    BlzSetUnitAbilityCooldown(self.handle, abilId, level, cooldown)
+end
+function Unit.prototype.setAbilityLevel(self, abilCode, level)
+    return SetUnitAbilityLevel(self.handle, abilCode, level)
+end
+function Unit.prototype.setAbilityManaCost(self, abilId, level, manaCost)
+    BlzSetUnitAbilityManaCost(self.handle, abilId, level, manaCost)
+end
+function Unit.prototype.setAgility(self, value, permanent)
+    SetHeroAgi(self.handle, value, permanent)
+end
+function Unit.prototype.setAnimation(self, whichAnimation)
+    if type(whichAnimation) == "string" then
+        SetUnitAnimation(self.handle, whichAnimation)
+    else
+        SetUnitAnimationByIndex(self.handle, whichAnimation)
+    end
+end
+function Unit.prototype.setAnimationWithRarity(self, whichAnimation, rarity)
+    SetUnitAnimationWithRarity(self.handle, whichAnimation, rarity)
+end
+function Unit.prototype.setAttackCooldown(self, cooldown, weaponIndex)
+    BlzSetUnitAttackCooldown(self.handle, cooldown, weaponIndex)
+end
+function Unit.prototype.setBaseDamage(self, baseDamage, weaponIndex)
+    BlzSetUnitBaseDamage(self.handle, baseDamage, weaponIndex)
+end
+function Unit.prototype.setBlendTime(self, timeScale)
+    SetUnitBlendTime(self.handle, timeScale)
+end
+function Unit.prototype.setConstructionProgress(self, constructionPercentage)
+    UnitSetConstructionProgress(self.handle, constructionPercentage)
+end
+function Unit.prototype.setCreepGuard(self, creepGuard)
+    SetUnitCreepGuard(self.handle, creepGuard)
+end
+function Unit.prototype.setDiceNumber(self, diceNumber, weaponIndex)
+    BlzSetUnitDiceNumber(self.handle, diceNumber, weaponIndex)
+end
+function Unit.prototype.setDiceSides(self, diceSides, weaponIndex)
+    BlzSetUnitDiceSides(self.handle, diceSides, weaponIndex)
+end
+function Unit.prototype.setExperience(self, newXpVal, showEyeCandy)
+    SetHeroXP(self.handle, newXpVal, showEyeCandy)
+end
+function Unit.prototype.setExploded(self, exploded)
+    SetUnitExploded(self.handle, exploded)
+end
+function Unit.prototype.setFacingEx(self, facingAngle)
+    BlzSetUnitFacingEx(self.handle, facingAngle)
+end
+function Unit.prototype.setField(self, field, value)
+    local fieldType = __TS__StringSubstr(
+        tostring(field),
+        0,
+        (string.find(
+            tostring(field),
+            ":",
+            nil,
+            true
+        ) or 0) - 1
+    )
+    if (fieldType == "unitbooleanfield") and (type(value) == "boolean") then
+        return BlzSetUnitBooleanField(self.handle, field, value)
+    elseif (fieldType == "unitintegerfield") and (type(value) == "number") then
+        return BlzSetUnitIntegerField(self.handle, field, value)
+    elseif (fieldType == "unitrealfield") and (type(value) == "number") then
+        return BlzSetUnitRealField(self.handle, field, value)
+    elseif (fieldType == "unitstringfield") and (type(value) == "string") then
+        return BlzSetUnitStringField(self.handle, field, value)
+    end
+    return false
+end
+function Unit.prototype.setflyHeight(self, value, rate)
+    SetUnitFlyHeight(self.handle, value, rate)
+end
+function Unit.prototype.setHeroLevel(self, level, showEyeCandy)
+    SetHeroLevel(self.handle, level, showEyeCandy)
+end
+function Unit.prototype.setIntelligence(self, value, permanent)
+    SetHeroInt(self.handle, value, permanent)
+end
+function Unit.prototype.setItemTypeSlots(self, slots)
+    SetItemTypeSlots(self.handle, slots)
+end
+function Unit.prototype.setOwner(self, whichPlayer, changeColor)
+    SetUnitOwner(self.handle, whichPlayer.handle, changeColor)
+end
+function Unit.prototype.setPathing(self, flag)
+    SetUnitPathing(self.handle, flag)
+end
+function Unit.prototype.setPosition(self, x, y)
+    SetUnitPosition(self.handle, x, y)
+end
+function Unit.prototype.setRescuable(self, byWhichPlayer, flag)
+    SetUnitRescuable(self.handle, byWhichPlayer.handle, flag)
+end
+function Unit.prototype.setRescueRange(self, range)
+    SetUnitRescueRange(self.handle, range)
+end
+function Unit.prototype.setScale(self, scaleX, scaleY, scaleZ)
+    SetUnitScale(self.handle, scaleX, scaleY, scaleZ)
+end
+function Unit.prototype.setState(self, whichUnitState, newVal)
+    SetUnitState(self.handle, whichUnitState, newVal)
+end
+function Unit.prototype.setStrength(self, value, permanent)
+    SetHeroStr(self.handle, value, permanent)
+end
+function Unit.prototype.setTimeScale(self, timeScale)
+    SetUnitTimeScale(self.handle, timeScale)
+end
+function Unit.prototype.setUnitAttackCooldown(self, cooldown, weaponIndex)
+    BlzSetUnitAttackCooldown(self.handle, cooldown, weaponIndex)
+end
+function Unit.prototype.setUnitTypeSlots(self, slots)
+    SetUnitTypeSlots(self.handle, slots)
+end
+function Unit.prototype.setUpgradeProgress(self, upgradePercentage)
+    UnitSetUpgradeProgress(self.handle, upgradePercentage)
+end
+function Unit.prototype.setUseAltIcon(self, flag)
+    UnitSetUsesAltIcon(self.handle, flag)
+end
+function Unit.prototype.setUseFood(self, useFood)
+    SetUnitUseFood(self.handle, useFood)
+end
+function Unit.prototype.setVertexColor(self, red, green, blue, alpha)
+    SetUnitVertexColor(self.handle, red, green, blue, alpha)
+end
+function Unit.prototype.shareVision(self, whichPlayer, share)
+    UnitShareVision(self.handle, whichPlayer.handle, share)
+end
+function Unit.prototype.showTeamGlow(self, show)
+    BlzShowUnitTeamGlow(self.handle, show)
+end
+function Unit.prototype.startAbilityCooldown(self, abilCode, cooldown)
+    BlzStartUnitAbilityCooldown(self.handle, abilCode, cooldown)
+end
+function Unit.prototype.stripLevels(self, howManyLevels)
+    return UnitStripHeroLevel(self.handle, howManyLevels)
+end
+function Unit.prototype.suspendDecay(self, suspend)
+    UnitSuspendDecay(self.handle, suspend)
+end
+function Unit.prototype.suspendExperience(self, flag)
+    SuspendHeroXP(self.handle, flag)
+end
+function Unit.prototype.useItem(self, whichItem)
+    return UnitUseItem(self.handle, whichItem.handle)
+end
+function Unit.prototype.useItemAt(self, whichItem, x, y)
+    return UnitUseItemPoint(self.handle, whichItem.handle, x, y)
+end
+function Unit.prototype.useItemTarget(self, whichItem, target)
+    return UnitUseItemTarget(self.handle, whichItem.handle, target.handle)
+end
+function Unit.prototype.wakeUp(self)
+    UnitWakeUp(self.handle)
+end
+function Unit.prototype.waygateGetDestinationX(self)
+    return WaygateGetDestinationX(self.handle)
+end
+function Unit.prototype.waygateGetDestinationY(self)
+    return WaygateGetDestinationY(self.handle)
+end
+function Unit.prototype.waygateSetDestination(self, x, y)
+    WaygateSetDestination(self.handle, x, y)
+end
+function Unit.foodMadeByType(self, unitId)
+    return GetFoodMade(unitId)
+end
+function Unit.foodUsedByType(self, unitId)
+    return GetFoodUsed(unitId)
+end
+function Unit.fromEnum(self)
+    return self:fromHandle(
+        GetEnumUnit()
+    )
+end
+function Unit.fromEvent(self)
+    return self:fromHandle(
+        GetTriggerUnit()
+    )
+end
+function Unit.fromFilter(self)
+    return self:fromHandle(
+        GetFilterUnit()
+    )
+end
+function Unit.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function Unit.getPointValueByType(self, unitType)
+    return GetUnitPointValueByType(unitType)
+end
+function Unit.isUnitIdHero(self, unitId)
+    return IsHeroUnitId(unitId)
+end
+function Unit.isUnitIdType(self, unitId, whichUnitType)
+    return IsUnitIdType(unitId, whichUnitType)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.group"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+local ____unit = require("lua_modules.w3ts.handles.unit")
+local Unit = ____unit.Unit
+____exports.Group = __TS__Class()
+local Group = ____exports.Group
+Group.name = "Group"
+__TS__ClassExtends(Group, Handle)
+function Group.prototype.____constructor(self)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateGroup()
+        )
+    end
+end
+__TS__SetDescriptor(
+    Group.prototype,
+    "first",
+    {
+        get = function(self)
+            return Unit:fromHandle(
+                FirstOfGroup(self.handle)
+            )
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Group.prototype,
+    "size",
+    {
+        get = function(self)
+            return BlzGroupGetSize(self.handle)
+        end
+    },
+    true
+)
+function Group.prototype.addGroupFast(self, addGroup)
+    return BlzGroupAddGroupFast(self.handle, addGroup.handle)
+end
+function Group.prototype.addUnit(self, whichUnit)
+    return GroupAddUnit(self.handle, whichUnit.handle)
+end
+function Group.prototype.clear(self)
+    GroupClear(self.handle)
+end
+function Group.prototype.destroy(self)
+    DestroyGroup(self.handle)
+end
+function Group.prototype.enumUnitsInRange(self, x, y, radius, filter)
+    GroupEnumUnitsInRange(
+        self.handle,
+        x,
+        y,
+        radius,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Group.prototype.enumUnitsInRangeCounted(self, x, y, radius, filter, countLimit)
+    GroupEnumUnitsInRangeCounted(
+        self.handle,
+        x,
+        y,
+        radius,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))(),
+        countLimit
+    )
+end
+function Group.prototype.enumUnitsInRangeOfPoint(self, whichPoint, radius, filter)
+    GroupEnumUnitsInRangeOfLoc(
+        self.handle,
+        whichPoint.handle,
+        radius,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Group.prototype.enumUnitsInRangeOfPointCounted(self, whichPoint, radius, filter, countLimit)
+    GroupEnumUnitsInRangeOfLocCounted(
+        self.handle,
+        whichPoint.handle,
+        radius,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))(),
+        countLimit
+    )
+end
+function Group.prototype.enumUnitsInRect(self, r, filter)
+    GroupEnumUnitsInRect(
+        self.handle,
+        r.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Group.prototype.enumUnitsInRectCounted(self, r, filter, countLimit)
+    GroupEnumUnitsInRectCounted(
+        self.handle,
+        r.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))(),
+        countLimit
+    )
+end
+function Group.prototype.enumUnitsOfPlayer(self, whichPlayer, filter)
+    GroupEnumUnitsOfPlayer(
+        self.handle,
+        whichPlayer.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Group.prototype.enumUnitsOfType(self, unitName, filter)
+    GroupEnumUnitsOfType(
+        self.handle,
+        unitName,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Group.prototype.enumUnitsOfTypeCounted(self, unitName, filter, countLimit)
+    GroupEnumUnitsOfTypeCounted(
+        self.handle,
+        unitName,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))(),
+        countLimit
+    )
+end
+function Group.prototype.enumUnitsSelected(self, whichPlayer, filter)
+    GroupEnumUnitsSelected(
+        self.handle,
+        whichPlayer.handle,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+Group.prototype["for"] = function(self, callback)
+    ForGroup(self.handle, callback)
+end
+function Group.prototype.getUnits(self)
+    local units = {}
+    self["for"](
+        self,
+        function() return __TS__ArrayPush(
+            units,
+            Unit:fromFilter()
+        ) end
+    )
+    return units
+end
+function Group.prototype.getUnitAt(self, index)
+    return Unit:fromHandle(
+        BlzGroupUnitAt(self.handle, index)
+    )
+end
+function Group.prototype.hasUnit(self, whichUnit)
+    return IsUnitInGroup(whichUnit.handle, self.handle)
+end
+function Group.prototype.orderCoords(self, order, x, y)
+    if type(order) == "string" then
+        GroupPointOrder(self.handle, order, x, y)
+    else
+        GroupPointOrderById(self.handle, order, x, y)
+    end
+end
+function Group.prototype.orderImmediate(self, order)
+    if type(order) == "string" then
+        GroupImmediateOrder(self.handle, order)
+    else
+        GroupImmediateOrderById(self.handle, order)
+    end
+end
+function Group.prototype.orderPoint(self, order, whichPoint)
+    if type(order) == "string" then
+        GroupPointOrderLoc(self.handle, order, whichPoint.handle)
+    else
+        GroupPointOrderByIdLoc(self.handle, order, whichPoint.handle)
+    end
+end
+function Group.prototype.orderTarget(self, order, targetWidget)
+    if type(order) == "string" then
+        GroupTargetOrder(self.handle, order, targetWidget.handle)
+    else
+        GroupTargetOrderById(self.handle, order, targetWidget.handle)
+    end
+end
+function Group.prototype.removeGroupFast(self, removeGroup)
+    return BlzGroupRemoveGroupFast(self.handle, removeGroup.handle)
+end
+function Group.prototype.removeUnit(self, whichUnit)
+    return GroupRemoveUnit(self.handle, whichUnit.handle)
+end
+function Group.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function Group.getEnumUnit(self)
+    return Unit:fromHandle(
+        GetEnumUnit()
+    )
+end
+function Group.getFilterUnit(self)
+    return Unit:fromHandle(
+        GetFilterUnit()
+    )
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.image"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.ImageType = ImageType or ({})
+____exports.ImageType.Selection = 1
+____exports.ImageType[____exports.ImageType.Selection] = "Selection"
+____exports.ImageType.Indicator = 2
+____exports.ImageType[____exports.ImageType.Indicator] = "Indicator"
+____exports.ImageType.OcclusionMask = 3
+____exports.ImageType[____exports.ImageType.OcclusionMask] = "OcclusionMask"
+____exports.ImageType.Ubersplat = 4
+____exports.ImageType[____exports.ImageType.Ubersplat] = "Ubersplat"
+____exports.Image = __TS__Class()
+local Image = ____exports.Image
+Image.name = "Image"
+__TS__ClassExtends(Image, Handle)
+function Image.prototype.____constructor(self, file, sizeX, sizeY, sizeZ, posX, posY, posZ, originX, originY, originZ, imageType)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateImage(file, sizeX, sizeY, sizeZ, posX, posY, posZ, originX, originY, originZ, imageType)
+        )
+    end
+end
+function Image.prototype.destroy(self)
+    DestroyImage(self.handle)
+end
+function Image.prototype.setAboveWater(self, flag, useWaterAlpha)
+    SetImageAboveWater(self.handle, flag, useWaterAlpha)
+end
+function Image.prototype.setColor(self, red, green, blue, alpha)
+    SetImageColor(self.handle, red, green, blue, alpha)
+end
+function Image.prototype.setConstantHeight(self, flag, height)
+    SetImageConstantHeight(self.handle, flag, height)
+end
+function Image.prototype.setPosition(self, x, y, z)
+    SetImagePosition(self.handle, x, y, z)
+end
+function Image.prototype.setRender(self, flag)
+    SetImageRenderAlways(self.handle, flag)
+end
+function Image.prototype.setType(self, imageType)
+    SetImageType(self.handle, imageType)
+end
+function Image.prototype.show(self, flag)
+    ShowImage(self.handle, flag)
+end
+function Image.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.leaderboard"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Leaderboard = __TS__Class()
+local Leaderboard = ____exports.Leaderboard
+Leaderboard.name = "Leaderboard"
+__TS__ClassExtends(Leaderboard, Handle)
+function Leaderboard.prototype.____constructor(self)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateLeaderboard()
+        )
+    end
+end
+__TS__SetDescriptor(
+    Leaderboard.prototype,
+    "displayed",
+    {
+        get = function(self)
+            return IsLeaderboardDisplayed(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Leaderboard.prototype,
+    "itemCount",
+    {
+        get = function(self)
+            return LeaderboardGetItemCount(self.handle)
+        end,
+        set = function(self, count)
+            LeaderboardSetSizeByItemCount(self.handle, count)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Leaderboard.prototype,
+    "label",
+    {
+        get = function(self)
+            return LeaderboardGetLabelText(self.handle)
+        end,
+        set = function(self, value)
+            LeaderboardSetLabel(self.handle, value)
+        end
+    },
+    true
+)
+function Leaderboard.prototype.addItem(self, label, value, p)
+    LeaderboardAddItem(self.handle, label, value, p.handle)
+end
+function Leaderboard.prototype.clear(self)
+    LeaderboardClear(self.handle)
+end
+function Leaderboard.prototype.destroy(self)
+    DestroyLeaderboard(self.handle)
+end
+function Leaderboard.prototype.display(self, flag)
+    if flag == nil then
+        flag = true
+    end
+    LeaderboardDisplay(self.handle, flag)
+end
+function Leaderboard.prototype.getPlayerIndex(self, p)
+    return LeaderboardGetPlayerIndex(self.handle, p.handle)
+end
+function Leaderboard.prototype.hasPlayerItem(self, p)
+    LeaderboardHasPlayerItem(self.handle, p.handle)
+end
+function Leaderboard.prototype.removeItem(self, index)
+    LeaderboardRemoveItem(self.handle, index)
+end
+function Leaderboard.prototype.removePlayerItem(self, p)
+    LeaderboardRemovePlayerItem(self.handle, p.handle)
+end
+function Leaderboard.prototype.setItemLabel(self, item, label)
+    LeaderboardSetItemLabel(self.handle, item, label)
+end
+function Leaderboard.prototype.setItemLabelColor(self, item, red, green, blue, alpha)
+    LeaderboardSetItemLabelColor(self.handle, item, red, green, blue, alpha)
+end
+function Leaderboard.prototype.setItemStyle(self, item, showLabel, showValues, showIcons)
+    if showLabel == nil then
+        showLabel = true
+    end
+    if showValues == nil then
+        showValues = true
+    end
+    if showIcons == nil then
+        showIcons = true
+    end
+    LeaderboardSetItemStyle(self.handle, item, showLabel, showValues, showIcons)
+end
+function Leaderboard.prototype.setItemValue(self, item, value)
+    LeaderboardSetItemValue(self.handle, item, value)
+end
+function Leaderboard.prototype.setItemValueColor(self, item, red, green, blue, alpha)
+    LeaderboardSetItemValueColor(self.handle, item, red, green, blue, alpha)
+end
+function Leaderboard.prototype.setLabelColor(self, red, green, blue, alpha)
+    LeaderboardSetLabelColor(self.handle, red, green, blue, alpha)
+end
+function Leaderboard.prototype.setPlayerBoard(self, p)
+    PlayerSetLeaderboard(p.handle, self.handle)
+end
+function Leaderboard.prototype.setStyle(self, showLabel, showNames, showValues, showIcons)
+    if showLabel == nil then
+        showLabel = true
+    end
+    if showNames == nil then
+        showNames = true
+    end
+    if showValues == nil then
+        showValues = true
+    end
+    if showIcons == nil then
+        showIcons = true
+    end
+    LeaderboardSetStyle(self.handle, showLabel, showNames, showValues, showIcons)
+end
+function Leaderboard.prototype.setValueColor(self, red, green, blue, alpha)
+    LeaderboardSetValueColor(self.handle, red, green, blue, alpha)
+end
+function Leaderboard.prototype.sortByLabel(self, asc)
+    if asc == nil then
+        asc = true
+    end
+    LeaderboardSortItemsByLabel(self.handle, asc)
+end
+function Leaderboard.prototype.sortByPlayer(self, asc)
+    if asc == nil then
+        asc = true
+    end
+    LeaderboardSortItemsByPlayer(self.handle, asc)
+end
+function Leaderboard.prototype.sortByValue(self, asc)
+    if asc == nil then
+        asc = true
+    end
+    LeaderboardSortItemsByValue(self.handle, asc)
+end
+function Leaderboard.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function Leaderboard.fromPlayer(self, p)
+    return self:fromHandle(
+        PlayerGetLeaderboard(p.handle)
+    )
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.multiboard"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.MultiboardItem = __TS__Class()
+local MultiboardItem = ____exports.MultiboardItem
+MultiboardItem.name = "MultiboardItem"
+__TS__ClassExtends(MultiboardItem, Handle)
+function MultiboardItem.prototype.____constructor(self, board, x, y)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            MultiboardGetItem(board.handle, x - 1, y - 1)
+        )
+    end
+end
+function MultiboardItem.prototype.destroy(self)
+    MultiboardReleaseItem(self.handle)
+end
+function MultiboardItem.prototype.setIcon(self, icon)
+    MultiboardSetItemIcon(self.handle, icon)
+end
+function MultiboardItem.prototype.setStyle(self, showValue, showIcon)
+    MultiboardSetItemStyle(self.handle, showValue, showIcon)
+end
+function MultiboardItem.prototype.setValue(self, val)
+    MultiboardSetItemValue(self.handle, val)
+end
+function MultiboardItem.prototype.setValueColor(self, red, green, blue, alpha)
+    MultiboardSetItemValueColor(self.handle, red, green, blue, alpha)
+end
+function MultiboardItem.prototype.setWidth(self, width)
+    MultiboardSetItemWidth(self.handle, width)
+end
+function MultiboardItem.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+____exports.Multiboard = __TS__Class()
+local Multiboard = ____exports.Multiboard
+Multiboard.name = "Multiboard"
+__TS__ClassExtends(Multiboard, Handle)
+function Multiboard.prototype.____constructor(self)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateMultiboard()
+        )
+    end
+end
+__TS__SetDescriptor(
+    Multiboard.prototype,
+    "columns",
+    {
+        get = function(self)
+            return MultiboardGetColumnCount(self.handle)
+        end,
+        set = function(self, count)
+            MultiboardSetColumnCount(self.handle, count)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Multiboard.prototype,
+    "displayed",
+    {
+        get = function(self)
+            return IsMultiboardDisplayed(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Multiboard.prototype,
+    "rows",
+    {
+        get = function(self)
+            return MultiboardGetRowCount(self.handle)
+        end,
+        set = function(self, count)
+            MultiboardSetRowCount(self.handle, count)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Multiboard.prototype,
+    "title",
+    {
+        get = function(self)
+            return MultiboardGetTitleText(self.handle)
+        end,
+        set = function(self, label)
+            MultiboardSetTitleText(self.handle, label)
+        end
+    },
+    true
+)
+function Multiboard.prototype.clear(self)
+    MultiboardClear(self.handle)
+end
+function Multiboard.prototype.createItem(self, x, y)
+    return __TS__New(____exports.MultiboardItem, self, x, y)
+end
+function Multiboard.prototype.destroy(self)
+    DestroyMultiboard(self.handle)
+end
+function Multiboard.prototype.display(self, show)
+    MultiboardDisplay(self.handle, show)
+end
+function Multiboard.prototype.minimize(self, flag)
+    MultiboardMinimize(self.handle, flag)
+end
+function Multiboard.prototype.minimized(self)
+    return IsMultiboardMinimized(self.handle)
+end
+function Multiboard.prototype.setItemsIcons(self, icon)
+    MultiboardSetItemsIcon(self.handle, icon)
+end
+function Multiboard.prototype.setItemsStyle(self, showValues, showIcons)
+    MultiboardSetItemsStyle(self.handle, showValues, showIcons)
+end
+function Multiboard.prototype.setItemsValue(self, value)
+    MultiboardSetItemsValue(self.handle, value)
+end
+function Multiboard.prototype.setItemsValueColor(self, red, green, blue, alpha)
+    MultiboardSetItemsValueColor(self.handle, red, green, blue, alpha)
+end
+function Multiboard.prototype.setItemsWidth(self, width)
+    MultiboardSetItemsWidth(self.handle, width)
+end
+function Multiboard.prototype.setTitleTextColor(self, red, green, blue, alpha)
+    MultiboardSetTitleTextColor(self.handle, red, green, blue, alpha)
+end
+function Multiboard.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+function Multiboard.suppressDisplay(self, flag)
+    MultiboardSuppressDisplay(flag)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.quest"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.QuestItem = __TS__Class()
+local QuestItem = ____exports.QuestItem
+QuestItem.name = "QuestItem"
+__TS__ClassExtends(QuestItem, Handle)
+function QuestItem.prototype.____constructor(self, whichQuest)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            QuestCreateItem(whichQuest.handle)
+        )
+    end
+end
+__TS__SetDescriptor(
+    QuestItem.prototype,
+    "completed",
+    {
+        get = function(self)
+            return IsQuestItemCompleted(self.handle)
+        end,
+        set = function(self, completed)
+            QuestItemSetCompleted(self.handle, completed)
+        end
+    },
+    true
+)
+function QuestItem.prototype.setDescription(self, description)
+    QuestItemSetDescription(self.handle, description)
+end
+____exports.Quest = __TS__Class()
+local Quest = ____exports.Quest
+Quest.name = "Quest"
+__TS__ClassExtends(Quest, Handle)
+function Quest.prototype.____constructor(self)
+    Handle.prototype.____constructor(
+        self,
+        ((Handle:initFromHandle() and (function() return nil end)) or (function() return CreateQuest() end))()
+    )
+end
+__TS__SetDescriptor(
+    Quest.prototype,
+    "completed",
+    {
+        get = function(self)
+            return IsQuestCompleted(self.handle)
+        end,
+        set = function(self, completed)
+            QuestSetCompleted(self.handle, completed)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Quest.prototype,
+    "discovered",
+    {
+        get = function(self)
+            return IsQuestDiscovered(self.handle)
+        end,
+        set = function(self, discovered)
+            QuestSetDiscovered(self.handle, discovered)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Quest.prototype,
+    "enabled",
+    {
+        get = function(self)
+            return IsQuestEnabled(self.handle)
+        end,
+        set = function(self, enabled)
+            QuestSetEnabled(self.handle, enabled)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Quest.prototype,
+    "failed",
+    {
+        get = function(self)
+            return IsQuestFailed(self.handle)
+        end,
+        set = function(self, failed)
+            QuestSetFailed(self.handle, failed)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Quest.prototype,
+    "required",
+    {
+        get = function(self)
+            return IsQuestRequired(self.handle)
+        end,
+        set = function(self, required)
+            QuestSetRequired(self.handle, required)
+        end
+    },
+    true
+)
+function Quest.prototype.addItem(self, description)
+    local questItem = __TS__New(____exports.QuestItem, self)
+    questItem:setDescription(description)
+    return questItem
+end
+function Quest.prototype.destroy(self)
+    DestroyQuest(self.handle)
+end
+function Quest.prototype.setDescription(self, description)
+    QuestSetDescription(self.handle, description)
+end
+function Quest.prototype.setIcon(self, iconPath)
+    QuestSetIconPath(self.handle, iconPath)
+end
+function Quest.prototype.setTitle(self, title)
+    QuestSetTitle(self.handle, title)
+end
+function Quest.flashQuestDialogButton(self)
+    FlashQuestDialogButton()
+end
+function Quest.forceQuestDialogUpdate(self)
+    ForceQuestDialogUpdate()
+end
+function Quest.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.region"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Region = __TS__Class()
+local Region = ____exports.Region
+Region.name = "Region"
+__TS__ClassExtends(Region, Handle)
+function Region.prototype.____constructor(self)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateRegion()
+        )
+    end
+end
+function Region.prototype.addCell(self, x, y)
+    RegionAddCell(self.handle, x, y)
+end
+function Region.prototype.addCellPoint(self, whichPoint)
+    RegionAddCellAtLoc(self.handle, whichPoint.handle)
+end
+function Region.prototype.addRect(self, r)
+    RegionAddRect(self.handle, r.handle)
+end
+function Region.prototype.clearCell(self, x, y)
+    RegionClearCell(self.handle, x, y)
+end
+function Region.prototype.clearCellPoint(self, whichPoint)
+    RegionClearCellAtLoc(self.handle, whichPoint.handle)
+end
+function Region.prototype.clearRect(self, r)
+    RegionClearRect(self.handle, r.handle)
+end
+function Region.prototype.containsCoords(self, x, y)
+    return IsPointInRegion(self.handle, x, y)
+end
+function Region.prototype.containsPoint(self, whichPoint)
+    IsLocationInRegion(self.handle, whichPoint.handle)
+end
+function Region.prototype.containsUnit(self, whichUnit)
+    return IsUnitInRegion(self.handle, whichUnit.handle)
+end
+function Region.prototype.destroy(self)
+    RemoveRegion(self.handle)
+end
+function Region.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.texttag"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.TextTag = __TS__Class()
+local TextTag = ____exports.TextTag
+TextTag.name = "TextTag"
+__TS__ClassExtends(TextTag, Handle)
+function TextTag.prototype.____constructor(self)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateTextTag()
+        )
+    end
+end
+function TextTag.prototype.destroy(self)
+    DestroyTextTag(self.handle)
+end
+function TextTag.prototype.setAge(self, age)
+    SetTextTagAge(self.handle, age)
+end
+function TextTag.prototype.setColor(self, red, green, blue, alpha)
+    SetTextTagColor(self.handle, red, green, blue, alpha)
+end
+function TextTag.prototype.setFadepoint(self, fadepoint)
+    SetTextTagFadepoint(self.handle, fadepoint)
+end
+function TextTag.prototype.setLifespan(self, lifespan)
+    SetTextTagLifespan(self.handle, lifespan)
+end
+function TextTag.prototype.setPermanent(self, flag)
+    SetTextTagPermanent(self.handle, flag)
+end
+function TextTag.prototype.setPos(self, x, y, heightOffset)
+    SetTextTagPos(self.handle, x, y, heightOffset)
+end
+function TextTag.prototype.setPosUnit(self, u, heightOffset)
+    SetTextTagPosUnit(self.handle, u.handle, heightOffset)
+end
+function TextTag.prototype.setSuspended(self, flag)
+    SetTextTagSuspended(self.handle, flag)
+end
+function TextTag.prototype.setText(self, s, height, adjustHeight)
+    if adjustHeight == nil then
+        adjustHeight = false
+    end
+    if adjustHeight then
+        height = height * 0.0023
+    end
+    SetTextTagText(self.handle, s, height)
+end
+function TextTag.prototype.setVelocity(self, xvel, yvel)
+    SetTextTagVelocity(self.handle, xvel, yvel)
+end
+function TextTag.prototype.setVelocityAngle(self, speed, angle)
+    local vel = (speed * 0.071) / 128
+    self:setVelocity(
+        vel * Cos(angle * bj_DEGTORAD),
+        vel * Sin(angle * bj_DEGTORAD)
+    )
+end
+function TextTag.prototype.setVisible(self, flag)
+    SetTextTagVisibility(self.handle, flag)
+end
+function TextTag.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.timer"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Timer = __TS__Class()
+local Timer = ____exports.Timer
+Timer.name = "Timer"
+__TS__ClassExtends(Timer, Handle)
+function Timer.prototype.____constructor(self)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateTimer()
+        )
+    end
+end
+__TS__SetDescriptor(
+    Timer.prototype,
+    "elapsed",
+    {
+        get = function(self)
+            return TimerGetElapsed(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Timer.prototype,
+    "remaining",
+    {
+        get = function(self)
+            return TimerGetRemaining(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Timer.prototype,
+    "timeout",
+    {
+        get = function(self)
+            return TimerGetTimeout(self.handle)
+        end
+    },
+    true
+)
+function Timer.prototype.destroy(self)
+    DestroyTimer(self.handle)
+    return self
+end
+function Timer.prototype.pause(self)
+    PauseTimer(self.handle)
+    return self
+end
+function Timer.prototype.resume(self)
+    ResumeTimer(self.handle)
+    return self
+end
+function Timer.prototype.start(self, timeout, periodic, handlerFunc)
+    TimerStart(self.handle, timeout, periodic, handlerFunc)
+    return self
+end
+function Timer.fromExpired(self)
+    return self:fromHandle(
+        GetExpiredTimer()
+    )
+end
+function Timer.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.timerdialog"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.TimerDialog = __TS__Class()
+local TimerDialog = ____exports.TimerDialog
+TimerDialog.name = "TimerDialog"
+__TS__ClassExtends(TimerDialog, Handle)
+function TimerDialog.prototype.____constructor(self, t)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateTimerDialog(t.handle)
+        )
+    end
+end
+__TS__SetDescriptor(
+    TimerDialog.prototype,
+    "display",
+    {
+        get = function(self)
+            return IsTimerDialogDisplayed(self.handle)
+        end,
+        set = function(self, display)
+            TimerDialogDisplay(self.handle, display)
+        end
+    },
+    true
+)
+function TimerDialog.prototype.destroy(self)
+    DestroyTimerDialog(self.handle)
+end
+function TimerDialog.prototype.setSpeed(self, speedMultFactor)
+    TimerDialogSetSpeed(self.handle, speedMultFactor)
+end
+function TimerDialog.prototype.setTimeRemaining(self, value)
+    TimerDialogSetRealTimeRemaining(self.handle, value)
+end
+function TimerDialog.prototype.setTitle(self, title)
+    TimerDialogSetTitle(self.handle, title)
+end
+function TimerDialog.prototype.setTitleColor(self, red, green, blue, alpha)
+    TimerDialogSetTitleColor(self.handle, red, green, blue, alpha)
+end
+function TimerDialog.prototype.setTimeColor(self, red, green, blue, alpha)
+    TimerDialogSetTimeColor(self.handle, red, green, blue, alpha)
+end
+function TimerDialog.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.trigger"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Trigger = __TS__Class()
+local Trigger = ____exports.Trigger
+Trigger.name = "Trigger"
+__TS__ClassExtends(Trigger, Handle)
+function Trigger.prototype.____constructor(self)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateTrigger()
+        )
+    end
+end
+__TS__SetDescriptor(
+    Trigger.prototype,
+    "enabled",
+    {
+        get = function(self)
+            return IsTriggerEnabled(self.handle)
+        end,
+        set = function(self, flag)
+            if flag then
+                EnableTrigger(self.handle)
+            else
+                DisableTrigger(self.handle)
+            end
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Trigger.prototype,
+    "evalCount",
+    {
+        get = function(self)
+            return GetTriggerEvalCount(self.handle)
+        end
+    },
+    true
+)
+__TS__ObjectDefineProperty(
+    Trigger,
+    "eventId",
+    {
+        get = function(self)
+            return GetTriggerEventId()
+        end
+    }
+)
+__TS__SetDescriptor(
+    Trigger.prototype,
+    "execCount",
+    {
+        get = function(self)
+            return GetTriggerExecCount(self.handle)
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Trigger.prototype,
+    "waitOnSleeps",
+    {
+        get = function(self)
+            return IsTriggerWaitOnSleeps(self.handle)
+        end,
+        set = function(self, flag)
+            TriggerWaitOnSleeps(self.handle, flag)
+        end
+    },
+    true
+)
+function Trigger.prototype.addAction(self, actionFunc)
+    return TriggerAddAction(self.handle, actionFunc)
+end
+function Trigger.prototype.addCondition(self, condition)
+    return TriggerAddCondition(
+        self.handle,
+        (((type(condition) == "function") and (function() return Condition(condition) end)) or (function() return condition end))()
+    )
+end
+function Trigger.prototype.destroy(self)
+    DestroyTrigger(self.handle)
+end
+function Trigger.prototype.eval(self)
+    return TriggerEvaluate(self.handle)
+end
+function Trigger.prototype.exec(self)
+    return TriggerExecute(self.handle)
+end
+function Trigger.prototype.execWait(self)
+    TriggerExecuteWait(self.handle)
+end
+function Trigger.prototype.registerAnyUnitEvent(self, whichPlayerUnitEvent)
+    return TriggerRegisterAnyUnitEventBJ(self.handle, whichPlayerUnitEvent)
+end
+function Trigger.prototype.registerCommandEvent(self, whichAbility, order)
+    return TriggerRegisterCommandEvent(self.handle, whichAbility, order)
+end
+function Trigger.prototype.registerDeathEvent(self, whichWidget)
+    return TriggerRegisterDeathEvent(self.handle, whichWidget.handle)
+end
+function Trigger.prototype.registerDialogButtonEvent(self, whichButton)
+    return TriggerRegisterDialogButtonEvent(self.handle, whichButton.handle)
+end
+function Trigger.prototype.registerDialogEvent(self, whichDialog)
+    return TriggerRegisterDialogEvent(self.handle, whichDialog.handle)
+end
+function Trigger.prototype.registerEnterRegion(self, whichRegion, filter)
+    return TriggerRegisterEnterRegion(
+        self.handle,
+        whichRegion,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Trigger.prototype.registerFilterUnitEvent(self, whichUnit, whichEvent, filter)
+    return TriggerRegisterFilterUnitEvent(
+        self.handle,
+        whichUnit,
+        whichEvent,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Trigger.prototype.registerGameEvent(self, whichGameEvent)
+    return TriggerRegisterGameEvent(self.handle, whichGameEvent)
+end
+function Trigger.prototype.registerGameStateEvent(self, whichState, opcode, limitval)
+    return TriggerRegisterGameStateEvent(self.handle, whichState, opcode, limitval)
+end
+function Trigger.prototype.registerLeaveRegion(self, whichRegion, filter)
+    return TriggerRegisterLeaveRegion(
+        self.handle,
+        whichRegion,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Trigger.prototype.registerPlayerAllianceChange(self, whichPlayer, whichAlliance)
+    return TriggerRegisterPlayerAllianceChange(self.handle, whichPlayer.handle, whichAlliance)
+end
+function Trigger.prototype.registerPlayerChatEvent(self, whichPlayer, chatMessageToDetect, exactMatchOnly)
+    return TriggerRegisterPlayerChatEvent(self.handle, whichPlayer.handle, chatMessageToDetect, exactMatchOnly)
+end
+function Trigger.prototype.registerPlayerEvent(self, whichPlayer, whichPlayerEvent)
+    return TriggerRegisterPlayerEvent(self.handle, whichPlayer.handle, whichPlayerEvent)
+end
+function Trigger.prototype.registerPlayerKeyEvent(self, whichPlayer, whichKey, metaKey, fireOnKeyDown)
+    return BlzTriggerRegisterPlayerKeyEvent(self.handle, whichPlayer.handle, whichKey, metaKey, fireOnKeyDown)
+end
+function Trigger.prototype.registerPlayerMouseEvent(self, whichPlayer, whichMouseEvent)
+    return TriggerRegisterPlayerMouseEventBJ(self.handle, whichPlayer.handle, whichMouseEvent)
+end
+function Trigger.prototype.registerPlayerStateEvent(self, whichPlayer, whichState, opcode, limitval)
+    return TriggerRegisterPlayerStateEvent(self.handle, whichPlayer.handle, whichState, opcode, limitval)
+end
+function Trigger.prototype.registerPlayerSyncEvent(self, whichPlayer, prefix, fromServer)
+    return BlzTriggerRegisterPlayerSyncEvent(self.handle, whichPlayer.handle, prefix, fromServer)
+end
+function Trigger.prototype.registerPlayerUnitEvent(self, whichPlayer, whichPlayerUnitEvent, filter)
+    return TriggerRegisterPlayerUnitEvent(
+        self.handle,
+        whichPlayer.handle,
+        whichPlayerUnitEvent,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Trigger.prototype.registerTimerEvent(self, timeout, periodic)
+    return TriggerRegisterTimerEvent(self.handle, timeout, periodic)
+end
+function Trigger.prototype.registerTimerExpireEvent(self, t)
+    return TriggerRegisterTimerExpireEvent(self.handle, t)
+end
+function Trigger.prototype.registerTrackableHitEvent(self, whichTrackable)
+    return TriggerRegisterTrackableHitEvent(self.handle, whichTrackable)
+end
+function Trigger.prototype.registerTrackableTrackEvent(self, whichTrackable)
+    return TriggerRegisterTrackableTrackEvent(self.handle, whichTrackable)
+end
+function Trigger.prototype.registerUnitEvent(self, whichUnit, whichEvent)
+    return TriggerRegisterUnitEvent(self.handle, whichUnit.handle, whichEvent)
+end
+function Trigger.prototype.registerUnitInRage(self, whichUnit, range, filter)
+    return TriggerRegisterUnitInRange(
+        self.handle,
+        whichUnit,
+        range,
+        (((type(filter) == "function") and (function() return Filter(filter) end)) or (function() return filter end))()
+    )
+end
+function Trigger.prototype.registerUnitStateEvent(self, whichUnit, whichState, opcode, limitval)
+    return TriggerRegisterUnitStateEvent(self.handle, whichUnit.handle, whichState, opcode, limitval)
+end
+function Trigger.prototype.registerUpgradeCommandEvent(self, whichUpgrade)
+    return TriggerRegisterUpgradeCommandEvent(self.handle, whichUpgrade)
+end
+function Trigger.prototype.registerVariableEvent(self, varName, opcode, limitval)
+    return TriggerRegisterVariableEvent(self.handle, varName, opcode, limitval)
+end
+function Trigger.prototype.removeAction(self, whichAction)
+    return TriggerRemoveAction(self.handle, whichAction)
+end
+function Trigger.prototype.removeActions(self)
+    return TriggerClearActions(self.handle)
+end
+function Trigger.prototype.removeCondition(self, whichCondition)
+    return TriggerRemoveCondition(self.handle, whichCondition)
+end
+function Trigger.prototype.removeConditions(self)
+    return TriggerClearConditions(self.handle)
+end
+function Trigger.prototype.reset(self)
+    ResetTrigger(self.handle)
+end
+function Trigger.prototype.triggerRegisterFrameEvent(self, frame, eventId)
+    return BlzTriggerRegisterFrameEvent(self.handle, frame.handle, eventId)
+end
+function Trigger.fromEvent(self)
+    return self:fromHandle(
+        GetTriggeringTrigger()
+    )
+end
+function Trigger.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.ubersplat"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.Ubersplat = __TS__Class()
+local Ubersplat = ____exports.Ubersplat
+Ubersplat.name = "Ubersplat"
+__TS__ClassExtends(Ubersplat, Handle)
+function Ubersplat.prototype.____constructor(self, x, y, name, red, green, blue, alpha, forcePaused, noBirthTime)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            CreateUbersplat(x, y, name, red, green, blue, alpha, forcePaused, noBirthTime)
+        )
+    end
+end
+function Ubersplat.prototype.destroy(self)
+    DestroyUbersplat(self.handle)
+end
+function Ubersplat.prototype.finish(self)
+    FinishUbersplat(self.handle)
+end
+function Ubersplat.prototype.render(self, flag, always)
+    if always == nil then
+        always = false
+    end
+    if always then
+        SetUbersplatRenderAlways(self.handle, flag)
+    else
+        SetUbersplatRender(self.handle, flag)
+    end
+end
+function Ubersplat.prototype.reset(self)
+    ResetUbersplat(self.handle)
+end
+function Ubersplat.prototype.show(self, flag)
+    ShowUbersplat(self.handle, flag)
+end
+function Ubersplat.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.weathereffect"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____handle = require("lua_modules.w3ts.handles.handle")
+local Handle = ____handle.Handle
+____exports.WeatherEffect = __TS__Class()
+local WeatherEffect = ____exports.WeatherEffect
+WeatherEffect.name = "WeatherEffect"
+__TS__ClassExtends(WeatherEffect, Handle)
+function WeatherEffect.prototype.____constructor(self, where, effectID)
+    if Handle:initFromHandle() then
+        Handle.prototype.____constructor(self)
+    else
+        Handle.prototype.____constructor(
+            self,
+            AddWeatherEffect(where.handle, effectID)
+        )
+    end
+end
+function WeatherEffect.prototype.destroy(self)
+    RemoveWeatherEffect(self.handle)
+end
+function WeatherEffect.prototype.enable(self, flag)
+    EnableWeatherEffect(self.handle, flag)
+end
+function WeatherEffect.fromHandle(self, handle)
+    return self:getObject(handle)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.handles.index"] = function(...) local ____exports = {}
+do
+    local ____export = require("lua_modules.w3ts.handles.camera")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.destructable")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.dialog")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.effect")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.fogmodifier")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.force")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.frame")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.gamecache")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.group")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.handle")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.image")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.item")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.leaderboard")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.multiboard")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.player")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.point")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.quest")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.rect")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.region")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.sound")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.texttag")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.timer")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.timerdialog")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.trigger")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.ubersplat")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.unit")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.weathereffect")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.handles.widget")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+return ____exports
+ end,
+["lua_modules.w3ts.hooks.index"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local oldMain = main
+local oldConfig = config
+local hooksMainBefore = {}
+local hooksMainAfter = {}
+local hooksConfigBefore = {}
+local hooksConfigAfter = {}
+____exports.executeHooksMainBefore = function() return __TS__ArrayForEach(
+    hooksMainBefore,
+    function(____, func) return func() end
+) end
+____exports.executeHooksMainAfter = function() return __TS__ArrayForEach(
+    hooksMainAfter,
+    function(____, func) return func() end
+) end
+function ____exports.hookedMain()
+    ____exports.executeHooksMainBefore()
+    oldMain()
+    ____exports.executeHooksMainAfter()
+end
+____exports.executeHooksConfigBefore = function() return __TS__ArrayForEach(
+    hooksConfigBefore,
+    function(____, func) return func() end
+) end
+____exports.executeHooksConfigAfter = function() return __TS__ArrayForEach(
+    hooksConfigAfter,
+    function(____, func) return func() end
+) end
+function ____exports.hookedConfig()
+    ____exports.executeHooksConfigBefore()
+    oldConfig()
+    ____exports.executeHooksConfigAfter()
+end
+main = ____exports.hookedMain
+config = ____exports.hookedConfig
+____exports.W3TS_HOOK = W3TS_HOOK or ({})
+____exports.W3TS_HOOK.MAIN_BEFORE = "main::before"
+____exports.W3TS_HOOK.MAIN_AFTER = "main::after"
+____exports.W3TS_HOOK.CONFIG_BEFORE = "config::before"
+____exports.W3TS_HOOK.CONFIG_AFTER = "config::after"
+local entryPoints = {[____exports.W3TS_HOOK.MAIN_BEFORE] = hooksMainBefore, [____exports.W3TS_HOOK.MAIN_AFTER] = hooksMainAfter, [____exports.W3TS_HOOK.CONFIG_BEFORE] = hooksConfigBefore, [____exports.W3TS_HOOK.CONFIG_AFTER] = hooksConfigAfter}
+function ____exports.addScriptHook(entryPoint, hook)
+    if not (entryPoints[entryPoint] ~= nil) then
+        return false
+    end
+    __TS__ArrayPush(entryPoints[entryPoint], hook)
+    return true
+end
+return ____exports
+ end,
+["lua_modules.w3ts.system.base64"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
+function ____exports.base64Encode(input)
+    local output = ""
+    do
+        local block = 0
+        local charCode = 0
+        local idx = 0
+        local map = chars
+        while (#__TS__StringCharAt(
+            input,
+            math.floor(idx) | 0
+        ) > 0) or (function()
+            (function()
+                map = "="
+                return map
+            end)()
+            return idx % 1
+        end)() do
+            charCode = string.byte(
+                input,
+                math.floor(
+                    (function()
+                        idx = idx + (3 / 4)
+                        return idx
+                    end)()
+                ) + 1
+            ) or 0
+            if (math.floor(idx) > #input) and (charCode == 0) then
+                if (#output % 4) == 1 then
+                    return output .. "="
+                end
+                return output .. "=="
+            end
+            if charCode > 255 then
+                print("'base64Encode' failed: The string to be encoded contains characters outside of the Latin1 range.")
+                return output
+            end
+            block = (block << 8) | charCode
+            output = output .. __TS__StringCharAt(
+                map,
+                math.floor(63 & (block >> (8 - ((idx % 1) * 8))))
+            )
+        end
+    end
+    return output
+end
+function ____exports.base64Decode(input)
+    local i = #input
+    do
+        while (i > 0) and (__TS__StringAccess(input, i) ~= "=") do
+            i = i - 1
+        end
+    end
+    local str = __TS__StringSubstr(input, 0, i - 1)
+    local output = ""
+    if (#str % 4) == 1 then
+        print("'base64Decode' failed: The string to be decoded is not correctly encoded.")
+        return output
+    end
+    local bs = 0
+    do
+        local bc = 0
+        local buffer
+        local idx = 0
+        while (function()
+            buffer = __TS__StringCharAt(str, idx)
+            return buffer
+        end)() do
+            if #tostring(buffer) == 0 then
+                break
+            end
+            buffer = (string.find(chars, buffer, nil, true) or 0) - 1
+            idx = idx + 1;
+            (((~buffer and ((function()
+                (function()
+                    bs = ((((bc % 4) ~= 0) and (function() return (bs * 64) + buffer end)) or (function() return buffer end))()
+                    return bs
+                end)()
+                return (function()
+                    local ____tmp = bc
+                    bc = ____tmp + 1
+                    return ____tmp
+                end)() % 4
+            end)() ~= 0)) and (function() return (function()
+                output = output .. string.char(255 & (bs >> ((-2 * bc) & 6)))
+                return output
+            end)() end)) or (function() return 0 end))()
+        end
+    end
+    return output
+end
+return ____exports
+ end,
+["lua_modules.w3ts.system.binaryreader"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.BinaryReader = __TS__Class()
+local BinaryReader = ____exports.BinaryReader
+BinaryReader.name = "BinaryReader"
+function BinaryReader.prototype.____constructor(self, binaryString)
+    self.pos = 1
+    self.data = binaryString
+end
+function BinaryReader.prototype.read(self, fmt, size)
+    local unpacked = {
+        string.unpack(fmt, self.data, self.pos)
+    }
+    self.pos = self.pos + size
+    if #unpacked <= 0 then
+        return 0
+    end
+    return unpacked[1]
+end
+function BinaryReader.prototype.readDouble(self)
+    return self:read(">d", 4)
+end
+function BinaryReader.prototype.readFloat(self)
+    return self:read(">f", 4)
+end
+function BinaryReader.prototype.readInt16(self)
+    return self:read(">h", 2)
+end
+function BinaryReader.prototype.readInt32(self)
+    return self:read(">i4", 4)
+end
+function BinaryReader.prototype.readInt8(self)
+    return self:read(">b", 1)
+end
+function BinaryReader.prototype.readString(self)
+    local value = self:read(">z", 0)
+    self.pos = self.pos + (#value + 1)
+    return value
+end
+function BinaryReader.prototype.readUInt16(self)
+    return self:read(">H", 2)
+end
+function BinaryReader.prototype.readUInt32(self)
+    return self:read(">I4", 4)
+end
+function BinaryReader.prototype.readUInt8(self)
+    return self:read(">B", 1)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.system.binarywriter"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.BinaryWriter = __TS__Class()
+local BinaryWriter = ____exports.BinaryWriter
+BinaryWriter.name = "BinaryWriter"
+function BinaryWriter.prototype.____constructor(self)
+    self.values = {}
+    self.fmj = ">"
+end
+function BinaryWriter.prototype.__tostring(self)
+    return string.pack(
+        self.fmj,
+        table.unpack(self.values)
+    )
+end
+function BinaryWriter.prototype.writeDouble(self, value)
+    self.fmj = self.fmj .. "d"
+    __TS__ArrayPush(self.values, value)
+end
+function BinaryWriter.prototype.writeFloat(self, value)
+    self.fmj = self.fmj .. "f"
+    __TS__ArrayPush(self.values, value)
+end
+function BinaryWriter.prototype.writeInt16(self, value)
+    self.fmj = self.fmj .. "h"
+    __TS__ArrayPush(self.values, value)
+end
+function BinaryWriter.prototype.writeInt32(self, value)
+    self.fmj = self.fmj .. "i4"
+    __TS__ArrayPush(self.values, value)
+end
+function BinaryWriter.prototype.writeInt8(self, value)
+    self.fmj = self.fmj .. "b"
+    __TS__ArrayPush(self.values, value)
+end
+function BinaryWriter.prototype.writeString(self, value)
+    self.fmj = self.fmj .. "z"
+    __TS__ArrayPush(self.values, value)
+end
+function BinaryWriter.prototype.writeUInt16(self, value)
+    self.fmj = self.fmj .. "H"
+    __TS__ArrayPush(self.values, value)
+end
+function BinaryWriter.prototype.writeUInt32(self, value)
+    self.fmj = self.fmj .. "I4"
+    __TS__ArrayPush(self.values, value)
+end
+function BinaryWriter.prototype.writeUInt8(self, value)
+    self.fmj = self.fmj .. "B"
+    __TS__ArrayPush(self.values, value)
+end
+return ____exports
+ end,
+["lua_modules.w3ts.system.file"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.File = __TS__Class()
+local File = ____exports.File
+File.name = "File"
+function File.prototype.____constructor(self)
+end
+function File.escape(self, contents)
+    contents = string.gsub(contents, ____exports.File.escapeCharacter, ____exports.File.escapedSelf)
+    contents = string.gsub(contents, "\"", ____exports.File.escapedQuote)
+    return contents
+end
+function File.unescape(self, contents)
+    contents = string.gsub(contents, ____exports.File.escapedQuote, "\"")
+    contents = string.gsub(contents, ____exports.File.escapedSelf, ____exports.File.escapeCharacter)
+    return contents
+end
+function File.read(self, filename)
+    local originalIcon = BlzGetAbilityIcon(self.dummyAbility)
+    Preloader(filename)
+    local preloadText = BlzGetAbilityIcon(self.dummyAbility)
+    BlzSetAbilityIcon(self.dummyAbility, originalIcon)
+    if preloadText ~= originalIcon then
+        return ____exports.File:unescape(preloadText)
+    end
+end
+function File.writeRaw(self, filename, contents, allowReading)
+    if allowReading == nil then
+        allowReading = false
+    end
+    PreloadGenClear()
+    PreloadGenStart()
+    if allowReading then
+        Preload("\")\n//! beginusercode\nlocal o=''\nPreload=function(s)o=o..s end\nPreloadEnd=function()end\n//!endusercode\n//")
+        contents = ____exports.File:escape(contents)
+    end
+    do
+        local i = 0
+        while i < (#contents / ____exports.File.preloadLimit) do
+            Preload(
+                __TS__StringSubstr(contents, i * ____exports.File.preloadLimit, ____exports.File.preloadLimit)
+            )
+            i = i + 1
+        end
+    end
+    if allowReading then
+        Preload(
+            ("\")\n//! beginusercode\nBlzSetAbilityIcon(" .. tostring(self.dummyAbility)) .. ",o)\n//!endusercode\n//"
+        )
+    end
+    PreloadGenEnd(filename)
+    return self
+end
+function File.write(self, filename, contents)
+    return self:writeRaw(filename, contents, true)
+end
+File.dummyAbility = FourCC("Amls")
+File.preloadLimit = 259
+File.escapeCharacter = string.char(27)
+File.escapedSelf = ____exports.File.escapeCharacter .. ____exports.File.escapeCharacter
+File.escapedQuote = ____exports.File.escapeCharacter .. "q"
+return ____exports
+ end,
+["lua_modules.w3ts.system.gametime"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____timer = require("lua_modules.w3ts.handles.timer")
+local Timer = ____timer.Timer
+local elapsedTime = 0
+local gameTimer = __TS__New(Timer):start(
+    30,
+    true,
+    function()
+        elapsedTime = elapsedTime + 30
+    end
+)
+function ____exports.getElapsedTime(self)
+    return elapsedTime + gameTimer.elapsed
+end
+return ____exports
+ end,
+["lua_modules.w3ts.system.sync"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____player = require("lua_modules.w3ts.handles.player")
+local MapPlayer = ____player.MapPlayer
+local ____timer = require("lua_modules.w3ts.handles.timer")
+local Timer = ____timer.Timer
+local ____trigger = require("lua_modules.w3ts.handles.trigger")
+local Trigger = ____trigger.Trigger
+local ____base64 = require("lua_modules.w3ts.system.base64")
+local base64Decode = ____base64.base64Decode
+local base64Encode = ____base64.base64Encode
+local ____binaryreader = require("lua_modules.w3ts.system.binaryreader")
+local BinaryReader = ____binaryreader.BinaryReader
+local ____binarywriter = require("lua_modules.w3ts.system.binarywriter")
+local BinaryWriter = ____binarywriter.BinaryWriter
+local ____gametime = require("lua_modules.w3ts.system.gametime")
+local getElapsedTime = ____gametime.getElapsedTime
+local SYNC_PREFIX = "T"
+local SYNC_PREFIX_CHUNK = "S"
+local SYNC_MAX_CHUNK_SIZE = 244
+local SyncIncomingPacket = __TS__Class()
+SyncIncomingPacket.name = "SyncIncomingPacket"
+function SyncIncomingPacket.prototype.____constructor(self, prefix, data)
+    local isChunk = prefix == SYNC_PREFIX_CHUNK
+    local header = base64Decode(
+        ((isChunk and (function() return __TS__StringSubstr(data, 0, 10) end)) or (function() return __TS__StringSubstr(data, 0, 5) end))()
+    )
+    local reader = __TS__New(BinaryReader, header)
+    local id = reader:readUInt16()
+    self.req = ____exports.SyncRequest:fromIndex(id)
+    self.chunks = ((isChunk and (function() return reader:readUInt16() end)) or (function() return 0 end))()
+    self.chunk = ((isChunk and (function() return reader:readUInt16() end)) or (function() return 0 end))()
+    self.data = ((isChunk and (function() return __TS__StringSubstr(data, 10) end)) or (function() return __TS__StringSubstr(data, 5) end))()
+end
+local SyncOutgoingPacket = __TS__Class()
+SyncOutgoingPacket.name = "SyncOutgoingPacket"
+function SyncOutgoingPacket.prototype.____constructor(self, req, data, chunk, totalChunks)
+    if chunk == nil then
+        chunk = -1
+    end
+    if totalChunks == nil then
+        totalChunks = 0
+    end
+    self.req = req
+    self.data = data
+    self.chunk = chunk
+    self.chunks = totalChunks
+end
+function SyncOutgoingPacket.prototype.getHeader(self)
+    local writer = __TS__New(BinaryWriter)
+    writer:writeUInt16(self.req.id)
+    if self.chunk ~= -1 then
+        writer:writeUInt16(self.chunks)
+        writer:writeUInt16(self.chunk)
+    end
+    return base64Encode(
+        tostring(writer)
+    )
+end
+function SyncOutgoingPacket.prototype.__tostring(self)
+    local header = self:getHeader()
+    local writer = __TS__New(BinaryWriter)
+    writer:writeString(self.data)
+    return header .. tostring(writer)
+end
+____exports.SyncRequest = __TS__Class()
+local SyncRequest = ____exports.SyncRequest
+SyncRequest.name = "SyncRequest"
+function SyncRequest.prototype.____constructor(self, from, data, options)
+    self._startTime = 0
+    self.chunks = {}
+    self.currentChunk = 0
+    self.destroyed = false
+    self.status = 0
+    self.options = (((not options) and (function() return ____exports.SyncRequest.defaultOptions end)) or (function() return options end))()
+    self.from = from
+    self.id = self:allocate()
+    ____exports.SyncRequest.indicies[self.id + 1] = -1
+    ____exports.SyncRequest.cache[self.id + 1] = self
+    ____exports.SyncRequest:init()
+    if type(data) == "string" then
+        self:start(data)
+    end
+end
+__TS__SetDescriptor(
+    SyncRequest.prototype,
+    "startTime",
+    {
+        get = function(self)
+            return self._startTime
+        end
+    },
+    true
+)
+function SyncRequest.prototype.catch(self, callback)
+    self.onError = callback
+    return self
+end
+function SyncRequest.prototype.destroy(self)
+    ____exports.SyncRequest.indicies[self.id + 1] = ____exports.SyncRequest.index
+    ____exports.SyncRequest.index = self.id
+    self.destroyed = true
+end
+function SyncRequest.prototype.start(self, data)
+    if (self.status ~= 0) or self.destroyed then
+        return false
+    end
+    self.currentChunk = 0
+    if #data <= SYNC_MAX_CHUNK_SIZE then
+        self:send(
+            __TS__New(SyncOutgoingPacket, self, data)
+        )
+    else
+        local chunks = math.floor(#data / SYNC_MAX_CHUNK_SIZE)
+        do
+            local i = 0
+            while i <= chunks do
+                self:send(
+                    __TS__New(
+                        SyncOutgoingPacket,
+                        self,
+                        __TS__StringSubstr(data, i * SYNC_MAX_CHUNK_SIZE, SYNC_MAX_CHUNK_SIZE),
+                        i,
+                        chunks
+                    )
+                )
+                i = i + 1
+            end
+        end
+    end
+    self._startTime = getElapsedTime(nil)
+    self.status = 1
+    if self.options.timeout > 0 then
+        __TS__New(Timer):start(
+            self.options.timeout,
+            false,
+            function()
+                Timer:fromExpired():destroy()
+                if self.onError and (self.status == 1) then
+                    self.onError({data = "Timeout", status = 3, time = self.startTime}, self)
+                end
+            end
+        )
+    end
+    return true
+end
+SyncRequest.prototype["then"] = function(self, callback)
+    self.onResponse = callback
+    return self
+end
+function SyncRequest.prototype.allocate(self)
+    if ____exports.SyncRequest.index ~= 0 then
+        local id = ____exports.SyncRequest.index
+        ____exports.SyncRequest.index = ____exports.SyncRequest.indicies[id + 1]
+        return id
+    else
+        ____exports.SyncRequest.counter = ____exports.SyncRequest.counter + 1
+        return ____exports.SyncRequest.counter
+    end
+end
+function SyncRequest.prototype.send(self, packet)
+    local prefix = ((packet.chunk == -1) and SYNC_PREFIX) or SYNC_PREFIX_CHUNK
+    if (self.from == MapPlayer:fromLocal()) and (not BlzSendSyncData(
+        prefix,
+        tostring(packet)
+    )) then
+        print("SyncData: Network Error")
+    end
+end
+function SyncRequest.fromIndex(self, index)
+    return self.cache[index + 1]
+end
+function SyncRequest.init(self)
+    if self.initialized then
+        return
+    end
+    do
+        local i = 0
+        while i < bj_MAX_PLAYER_SLOTS do
+            local p = MapPlayer:fromIndex(i)
+            if (p.controller == MAP_CONTROL_USER) and (p.slotState == PLAYER_SLOT_STATE_PLAYING) then
+                self.eventTrigger:registerPlayerSyncEvent(p, SYNC_PREFIX, false)
+                self.eventTrigger:registerPlayerSyncEvent(p, SYNC_PREFIX_CHUNK, false)
+            end
+            i = i + 1
+        end
+    end
+    self.eventTrigger:addAction(
+        function()
+            self:onSync()
+        end
+    )
+    self.initialized = true
+end
+function SyncRequest.onSync(self)
+    local packet = __TS__New(
+        SyncIncomingPacket,
+        BlzGetTriggerSyncPrefix(),
+        BlzGetTriggerSyncData()
+    )
+    if not packet.req then
+        return
+    end
+    local ____obj, ____index = packet.req, "currentChunk"
+    ____obj[____index] = ____obj[____index] + 1
+    packet.req.chunks[packet.chunk + 1] = packet.data
+    if packet.chunk >= packet.chunks then
+        if packet.req.onResponse then
+            local data = table.concat(packet.req.chunks, "" or ",")
+            local status = 2
+            packet.req.status = 2
+            packet.req.onResponse(
+                {
+                    data = data,
+                    status = status,
+                    time = getElapsedTime(nil)
+                },
+                packet.req
+            )
+        end
+    end
+end
+SyncRequest.cache = {}
+SyncRequest.counter = 0
+SyncRequest.defaultOptions = {timeout = 0}
+SyncRequest.eventTrigger = __TS__New(Trigger)
+SyncRequest.index = 0
+SyncRequest.indicies = {}
+SyncRequest.initialized = false
+return ____exports
+ end,
+["lua_modules.w3ts.system.host"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____index = require("lua_modules.w3ts.handles.index")
+local MapPlayer = ____index.MapPlayer
+local ____timer = require("lua_modules.w3ts.handles.timer")
+local Timer = ____timer.Timer
+local ____index = require("lua_modules.w3ts.hooks.index")
+local addScriptHook = ____index.addScriptHook
+local W3TS_HOOK = ____index.W3TS_HOOK
+local ____base64 = require("lua_modules.w3ts.system.base64")
+local base64Decode = ____base64.base64Decode
+local base64Encode = ____base64.base64Encode
+local ____binaryreader = require("lua_modules.w3ts.system.binaryreader")
+local BinaryReader = ____binaryreader.BinaryReader
+local ____binarywriter = require("lua_modules.w3ts.system.binarywriter")
+local BinaryWriter = ____binarywriter.BinaryWriter
+local ____sync = require("lua_modules.w3ts.system.sync")
+local SyncRequest = ____sync.SyncRequest
+local lobbyTimes, checkTimer, hostCallbacks, localJoinTime, localStartTime, host, isChecking, findHost
+function findHost()
+    isChecking = true
+    if localStartTime == 0 then
+        localStartTime = os.clock()
+    end
+    local writer = __TS__New(BinaryWriter)
+    writer:writeFloat(localStartTime - localJoinTime);
+    (function()
+        local ____self = __TS__New(
+            SyncRequest,
+            MapPlayer:fromLocal(),
+            base64Encode(
+                tostring(writer)
+            )
+        )
+        return ____self["then"](
+            ____self,
+            function(res, req)
+                local data = base64Decode(res.data)
+                local reader = __TS__New(BinaryReader, data)
+                local syncedTime = reader:readFloat()
+                local from = MapPlayer:fromEvent()
+                lobbyTimes[from.id + 1] = syncedTime
+                local hostTime = 0
+                local hostId = 0
+                do
+                    local i = 0
+                    while i < bj_MAX_PLAYERS do
+                        do
+                            local p = MapPlayer:fromIndex(i)
+                            if (p.slotState ~= PLAYER_SLOT_STATE_PLAYING) or (p.controller ~= MAP_CONTROL_USER) then
+                                goto __continue14
+                            end
+                            if not lobbyTimes[p.id + 1] then
+                                return
+                            end
+                            if lobbyTimes[p.id + 1] > hostTime then
+                                hostTime = lobbyTimes[p.id + 1]
+                                hostId = p.id
+                            end
+                        end
+                        ::__continue14::
+                        i = i + 1
+                    end
+                end
+                host = MapPlayer:fromIndex(hostId)
+                checkTimer:destroy()
+                for ____, cb in ipairs(hostCallbacks) do
+                    cb()
+                end
+            end
+        )
+    end)():catch(
+        function(res)
+            print(
+                "findHost Error: " .. tostring(res.status)
+            )
+            isChecking = false
+        end
+    )
+end
+lobbyTimes = {}
+checkTimer = __TS__New(Timer)
+hostCallbacks = {}
+localJoinTime = 0
+localStartTime = 0
+isChecking = false
+function ____exports.getHost()
+    if host then
+        return host
+    elseif not isChecking then
+        checkTimer:start(0, false, findHost)
+    end
+    return
+end
+function ____exports.onHostDetect(callback)
+    if host then
+        callback()
+    else
+        __TS__ArrayPush(hostCallbacks, callback)
+    end
+end
+local function onConfig()
+    if localJoinTime == 0 then
+        localJoinTime = os.clock()
+    end
+end
+local function onMain()
+    checkTimer:start(0, false, findHost)
+end
+addScriptHook(W3TS_HOOK.MAIN_AFTER, onMain)
+addScriptHook(W3TS_HOOK.CONFIG_BEFORE, onConfig)
+return ____exports
+ end,
+["lua_modules.w3ts.system.index"] = function(...) local ____exports = {}
+do
+    local ____export = require("lua_modules.w3ts.system.base64")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.system.binaryreader")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.system.binarywriter")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.system.file")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.system.gametime")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.system.host")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.system.sync")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+return ____exports
+ end,
+["lua_modules.w3ts.utils.color"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local orderedPlayerColors, toHex
+function toHex(self, value)
+    local hex = __TS__NumberToString(value, 16)
+    if #hex < 2 then
+        hex = "0" .. hex
+    end
+    return hex
+end
+____exports.Color = __TS__Class()
+local Color = ____exports.Color
+Color.name = "Color"
+function Color.prototype.____constructor(self, red, green, blue, alpha)
+    self.red = red
+    self.green = green
+    self.blue = blue
+    if alpha then
+        self.alpha = alpha
+    else
+        self.alpha = 255
+    end
+end
+__TS__SetDescriptor(
+    Color.prototype,
+    "code",
+    {
+        get = function(self)
+            return (("|c" .. toHex(nil, self.alpha)) .. toHex(nil, self.red)) .. (toHex(nil, self.green) .. toHex(nil, self.blue))
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Color.prototype,
+    "name",
+    {
+        get = function(self)
+            local index = self:playerColorIndex()
+            if index < #____exports.playerColors then
+                return ____exports.playerColorNames[index + 1]
+            end
+            return "unknown"
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Color.prototype,
+    "playerColor",
+    {
+        get = function(self)
+            local index = self:playerColorIndex()
+            if index < #____exports.playerColors then
+                return orderedPlayerColors[index + 1]
+            end
+            return PLAYER_COLOR_RED
+        end
+    },
+    true
+)
+function Color.prototype.equals(self, other)
+    return (((self.red == other.red) and (self.green == other.green)) and (self.blue == other.blue)) and (self.alpha == other.alpha)
+end
+function Color.prototype.playerColorIndex(self)
+    local i = 0
+    do
+        while i < #____exports.playerColors do
+            if ____exports.playerColors[i + 1]:equals(self) then
+                break
+            end
+            i = i + 1
+        end
+    end
+    return i
+end
+function Color.prototype.lerp(self, other, factor)
+    local r = MathRound((self.red * (1 - factor)) + (other.red * factor))
+    local g = MathRound((self.green * (1 - factor)) + (other.green * factor))
+    local b = MathRound((self.blue * (1 - factor)) + (other.blue * factor))
+    local a = MathRound((self.alpha * (1 - factor)) + (other.alpha * factor))
+    return __TS__New(
+        ____exports.Color,
+        math.max(
+            0,
+            math.min(255, r)
+        ),
+        math.max(
+            0,
+            math.min(255, g)
+        ),
+        math.max(
+            0,
+            math.min(255, b)
+        ),
+        math.max(
+            0,
+            math.min(255, a)
+        )
+    )
+end
+____exports.color = function(____, red, green, blue, alpha) return __TS__New(____exports.Color, red, green, blue, alpha) end
+____exports.playerColors = {
+    ____exports.color(nil, 255, 3, 3),
+    ____exports.color(nil, 0, 66, 255),
+    ____exports.color(nil, 28, 230, 185),
+    ____exports.color(nil, 84, 0, 129),
+    ____exports.color(nil, 255, 252, 0),
+    ____exports.color(nil, 254, 138, 14),
+    ____exports.color(nil, 32, 192, 0),
+    ____exports.color(nil, 229, 91, 176),
+    ____exports.color(nil, 149, 150, 151),
+    ____exports.color(nil, 126, 191, 241),
+    ____exports.color(nil, 16, 98, 70),
+    ____exports.color(nil, 78, 42, 3),
+    ____exports.color(nil, 155, 0, 0),
+    ____exports.color(nil, 0, 0, 195),
+    ____exports.color(nil, 0, 234, 255),
+    ____exports.color(nil, 190, 0, 254),
+    ____exports.color(nil, 235, 205, 135),
+    ____exports.color(nil, 248, 164, 139),
+    ____exports.color(nil, 191, 255, 128),
+    ____exports.color(nil, 220, 185, 235),
+    ____exports.color(nil, 80, 79, 85),
+    ____exports.color(nil, 235, 240, 255),
+    ____exports.color(nil, 0, 120, 30),
+    ____exports.color(nil, 164, 111, 51)
+}
+____exports.playerColorNames = {"red", "blue", "teal", "purple", "yellow", "orange", "green", "pink", "gray", "light blue", "dark green", "brown", "maroon", "navy", "turquoise", "violet", "wheat", "peach", "mint", "lavender", "coal", "snow", "emerald", "peanut"}
+orderedPlayerColors = {PLAYER_COLOR_RED, PLAYER_COLOR_BLUE, PLAYER_COLOR_CYAN, PLAYER_COLOR_PURPLE, PLAYER_COLOR_YELLOW, PLAYER_COLOR_ORANGE, PLAYER_COLOR_GREEN, PLAYER_COLOR_PINK, PLAYER_COLOR_LIGHT_GRAY, PLAYER_COLOR_LIGHT_BLUE, PLAYER_COLOR_AQUA, PLAYER_COLOR_BROWN, PLAYER_COLOR_MAROON, PLAYER_COLOR_NAVY, PLAYER_COLOR_TURQUOISE, PLAYER_COLOR_VIOLET, PLAYER_COLOR_WHEAT, PLAYER_COLOR_PEACH, PLAYER_COLOR_MINT, PLAYER_COLOR_LAVENDER, PLAYER_COLOR_COAL, PLAYER_COLOR_SNOW, PLAYER_COLOR_EMERALD, PLAYER_COLOR_PEANUT}
+return ____exports
+ end,
+["lua_modules.w3ts.utils.index"] = function(...) local ____exports = {}
+do
+    local ____export = require("lua_modules.w3ts.utils.color")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+return ____exports
+ end,
+["lua_modules.w3ts.globals.index"] = function(...) local ____exports = {}
+local ____player = require("lua_modules.w3ts.handles.player")
+local MapPlayer = ____player.MapPlayer
+____exports.Players = {}
+do
+    local i = 0
+    while i < bj_MAX_PLAYER_SLOTS do
+        ____exports.Players[i + 1] = MapPlayer:fromHandle(
+            Player(i)
+        )
+        i = i + 1
+    end
+end
+return ____exports
+ end,
+["lua_modules.w3ts.index"] = function(...) local ____exports = {}
+local tsGlobals = require("lua_modules.w3ts.globals.index")
+do
+    local ____export = require("lua_modules.w3ts.handles.index")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.hooks.index")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.system.index")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+do
+    local ____export = require("lua_modules.w3ts.utils.index")
+    for ____exportKey, ____exportValue in pairs(____export) do
+        if ____exportKey ~= "default" then
+            ____exports[____exportKey] = ____exportValue
+        end
+    end
+end
+____exports.tsGlobals = tsGlobals
+return ____exports
+ end,
+["src.libs.utils"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____index = require("lua_modules.w3ts.index")
+local TextTag = ____index.TextTag
+local MapPlayer = ____index.MapPlayer
+local Trigger = ____index.Trigger
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+function ____exports.showOverheadText(x, y, r, g, b, a, text)
+    local t = __TS__New(TextTag)
+    t:setText(text, 10, true)
+    t:setPos(x, y, 90)
+    t:setColor(r, g, b, a)
+    t:setPermanent(false)
+    t:setLifespan(2)
+    t:setFadepoint(1)
+    t:setVisible(true)
+    t:setVelocity(
+        0,
+        (7.1 / 128) * Sin(3.14159 / 2)
+    )
+    return t
+end
+function ____exports.MessageAllPlayers(message, time)
+    DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, time, message)
+end
+function ____exports.MessagePlayer(who, message)
+    if __TS__InstanceOf(who, MapPlayer) then
+        DisplayTimedTextToPlayer(who.handle, 0, 0, 10, message)
+    else
+        DisplayTimedTextToPlayer(
+            Player(who),
+            0,
+            0,
+            10,
+            message
+        )
+    end
+end
+function ____exports.GetActivePlayers()
+    return __TS__ArrayFilter(
+        Players,
+        function(____, currentPlayer)
+            local isPlaying = currentPlayer.slotState == PLAYER_SLOT_STATE_PLAYING
+            local isUser = currentPlayer.controller == MAP_CONTROL_USER
+            if isPlaying and isUser then
+                return true
+            end
+        end
+    )
+end
+local TEMP_LOCATION = Location(0, 0)
+function ____exports.getZFromXY(x, y)
+    MoveLocation(TEMP_LOCATION, x, y)
+    local z = GetLocationZ(TEMP_LOCATION)
+    return z
+end
+function ____exports.syncData(handle, listenFor, cb)
+    local syncTrigger = __TS__New(Trigger)
+    syncTrigger:registerPlayerSyncEvent(listenFor, handle, false)
+    syncTrigger:addAction(
+        function()
+            local data = BlzGetTriggerSyncData()
+            syncTrigger:destroy()
+            cb(data)
+        end
+    )
+    return function(toSend)
+        BlzSendSyncData(handle, toSend)
+    end
+end
+function ____exports.distanceBetweenPoints(x1, y1, x2, y2)
+    return SquareRoot(
+        Pow(x2 - x1, 2) + Pow(y2 - y1, 2)
+    )
+end
+return ____exports
+ end,
+["src.libs.translators"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____utils = require("src.libs.utils")
+local getZFromXY = ____utils.getZFromXY
+function ____exports.SendMessage(msg)
+    DisplayTimedTextToForce(
+        bj_FORCE_ALL_PLAYERS,
+        10,
+        tostring(msg)
+    )
+end
+____exports.console = __TS__Class()
+local console = ____exports.console
+console.name = "console"
+function console.prototype.____constructor(self)
+end
+function console.log(self, input)
+    ____exports.SendMessage(input)
+end
+function ____exports.SendMessageUnlogged(msg)
+    DisplayTimedTextToForce(
+        bj_FORCE_ALL_PLAYERS,
+        10,
+        tostring(msg)
+    )
+end
+function ____exports.SendMessageToAdmin(msg)
+end
+function ____exports.PlayNewSound(soundPath, volume)
+    local result = CreateSound(soundPath, false, false, true, 10, 10, "")
+    SetSoundDuration(
+        result,
+        GetSoundFileDuration(soundPath)
+    )
+    SetSoundChannel(result, 0)
+    SetSoundVolume(result, volume)
+    SetSoundPitch(result, 1)
+    StartSound(result)
+    KillSoundWhenDone(result)
+    return result
+end
+function ____exports.PlayNewSoundOnUnit(soundPath, unit, volume, pitch)
+    if pitch == nil then
+        pitch = 1
+    end
+    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
+    SetSoundDuration(
+        result,
+        GetSoundFileDuration(soundPath)
+    )
+    SetSoundChannel(result, 0)
+    SetSoundVolume(result, volume)
+    SetSoundPitch(result, pitch)
+    SetSoundDistances(result, 2000, 5000)
+    SetSoundDistanceCutoff(result, 4500)
+    local loc = Location(unit.x, unit.y)
+    PlaySoundAtPointBJ(
+        result,
+        volume,
+        loc,
+        getZFromXY(unit.x, unit.y)
+    )
+    RemoveLocation(loc)
+    KillSoundWhenDone(result)
+    return result
+end
+function ____exports.PlayNewSoundAt(soundPath, x, y, volume)
+    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
+    SetSoundDuration(
+        result,
+        GetSoundFileDuration(soundPath)
+    )
+    SetSoundChannel(result, 0)
+    SetSoundVolume(result, volume)
+    SetSoundPitch(result, 1)
+    SetSoundDistances(result, 2000, 5000)
+    SetSoundDistanceCutoff(result, 4500)
+    local loc = Location(x, y)
+    PlaySoundAtPointBJ(
+        result,
+        volume,
+        loc,
+        getZFromXY(x, y)
+    )
+    RemoveLocation(loc)
+    KillSoundWhenDone(result)
+    return result
+end
+function ____exports.DecodeFourCC(fourcc)
+    return string.char((fourcc >> 24) & 255, (fourcc >> 16) & 255, (fourcc >> 8) & 255, fourcc & 255)
+end
+____exports.Util = __TS__Class()
+local Util = ____exports.Util
+Util.name = "Util"
+function Util.prototype.____constructor(self)
+end
+function Util.ColourString(self, colour, str)
+    return (("|cFF" .. colour) .. str) .. "|r"
+end
+function Util.ShuffleArray(self, arr)
+    do
+        local i = #arr - 1
+        while i > 0 do
+            local j = math.floor(
+                math.random() * (i + 1)
+            )
+            local temp = arr[i + 1]
+            arr[i + 1] = arr[j + 1]
+            arr[j + 1] = temp
+            i = i - 1
+        end
+    end
+end
+function Util.RandomHash(self, length)
+    local result = ""
+    local characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    local charactersLength = #characters
+    do
+        local i = 0
+        while i < length do
+            result = result .. __TS__StringCharAt(
+                characters,
+                math.floor(
+                    math.random() * charactersLength
+                )
+            )
+            i = i + 1
+        end
+    end
+    return result
+end
+function Util.GetRandomKey(self, collection)
+    local index = math.floor(
+        math.random() * collection.size
+    )
+    local cntr = 0
+    for ____, key in __TS__Iterator(
+        collection:keys()
+    ) do
+        if (function()
+            local ____tmp = cntr
+            cntr = ____tmp + 1
+            return ____tmp
+        end)() == index then
+            return key
+        end
+    end
+end
+function Util.GetAllKeys(self, collection)
+    local keys = {}
+    for ____, key in __TS__Iterator(
+        collection:keys()
+    ) do
+        __TS__ArrayPush(keys, key)
+    end
+    return keys
+end
+function Util.ArraysToString(self, arr)
+    local output = "["
+    do
+        local i = 0
+        while i < #arr do
+            do
+                if i == (#arr - 1) then
+                    output = output .. (("\"" .. tostring(arr[i + 1])) .. "\"")
+                    goto __continue24
+                end
+                output = output .. (("\"" .. tostring(arr[i + 1])) .. "\", ")
+            end
+            ::__continue24::
+            i = i + 1
+        end
+    end
+    output = output .. "]"
+    return output
+end
+function Util.ParseInt(self, str)
+    return str
+end
+function Util.ParsePositiveInt(self, str)
+    local int = __TS__Number(str)
+    if int < 0 then
+        return 0
+    end
+    return int
+end
+function Util.Round(self, x)
+    return math.floor((x + 0.5) - ((x + 0.5) % 1))
+end
+function Util.RandomEnumKey(self, enumeration)
+    local values = __TS__ArrayFilter(
+        __TS__ArrayMap(
+            __TS__ObjectKeys(enumeration),
+            function(____, key) return enumeration[key] end
+        ),
+        function(____, value) return type(enumeration[value]) ~= "number" end
+    )
+    local randValue = values[math.floor(
+        math.random() * #values
+    ) + 1]
+    return randValue
+end
+Util.COLOUR_IDS = {RED = 0, BLUE = 1, TEAL = 2, PURPLE = 3, YELLOW = 4, ORANGE = 5, GREEN = 6, PINK = 7, GRAY = 8, GREY = 8, LIGHT_BLUE = 9, LIGHTBLUE = 9, LB = 9, DARK_GREEN = 10, DARKGREEN = 10, DG = 10, BROWN = 11, MAROON = 12, NAVY = 13, TURQUOISE = 14, VOILET = 15, WHEAT = 16, PEACH = 17, MINT = 18, LAVENDER = 19, COAL = 20, SNOW = 21, EMERALD = 22, PEANUT = 23}
+____exports.CREEP_TYPE = CREEP_TYPE or ({})
+____exports.CREEP_TYPE.NORMAL = 0
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.NORMAL] = "NORMAL"
+____exports.CREEP_TYPE.AIR = 1
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.AIR] = "AIR"
+____exports.CREEP_TYPE.CHAMPION = 2
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.CHAMPION] = "CHAMPION"
+____exports.CREEP_TYPE.BOSS = 3
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.BOSS] = "BOSS"
+____exports.ARMOUR_TYPE = ARMOUR_TYPE or ({})
+____exports.ARMOUR_TYPE.UNARMOURED = 0
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.UNARMOURED] = "UNARMOURED"
+____exports.ARMOUR_TYPE.LIGHT = 1
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.LIGHT] = "LIGHT"
+____exports.ARMOUR_TYPE.MEDIUM = 2
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.MEDIUM] = "MEDIUM"
+____exports.ARMOUR_TYPE.HEAVY = 3
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HEAVY] = "HEAVY"
+____exports.ARMOUR_TYPE.FORTIFIED = 4
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.FORTIFIED] = "FORTIFIED"
+____exports.ARMOUR_TYPE.HERO = 5
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HERO] = "HERO"
+return ____exports
+ end,
+["src.resources.hexColors"] = function(...) local ____exports = {}
+____exports.HexColors = HexColors or ({})
+____exports.HexColors.RED = "|cffff0303"
+____exports.HexColors.BLUE = "|cff0042ff"
+____exports.HexColors.TEAL = "|cff1be7ba"
+____exports.HexColors.PURPLE = "|cff550081"
+____exports.HexColors.YELLOW = "|cfffefc00"
+____exports.HexColors.ORANGE = "|cfffe890d"
+____exports.HexColors.GREEN = "|cff21bf00"
+____exports.HexColors.PINK = "|cffe45caf"
+____exports.HexColors.LIGHT_GRAY = "|cff939596"
+____exports.HexColors.LIGHT_BLUE = "|cff77bbff"
+____exports.HexColors.DARK_GREEN = "|cff106247"
+____exports.HexColors.BROWN = "|cff4f2b05"
+____exports.HexColors.MAROON = "|cff9c0000"
+____exports.HexColors.NAVY = "|cff0000c3"
+____exports.HexColors.TURQUOISE = "|cff00ebff"
+____exports.HexColors.VIOLET = "|cffbd00ff"
+____exports.HexColors.WHEAT = "|cffecce87"
+____exports.HexColors.PEACH = "|cfff7a58b"
+____exports.HexColors.MINT = "|cffccff99"
+____exports.HexColors.LAVENDER = "|cffdbb8eb"
+____exports.HexColors.COAL = "|cff4f5055"
+____exports.HexColors.SNOW = "|cffecf0ff"
+____exports.HexColors.EMERALD = "|cff00781e"
+____exports.HexColors.PEANUT = "|cffa56f34"
+____exports.HexColors.WHITE = "|cffffffff"
+____exports.HexColors.TANGERINE = "|cffffcc00"
+____exports.HexColors.WARNING = "|cffD0342C"
+return ____exports
+ end,
+["src.app.setup.gameStatus"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____index = require("lua_modules.w3ts.index")
+local Unit = ____index.Unit
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+____exports.GameStatus = __TS__Class()
+local GameStatus = ____exports.GameStatus
+GameStatus.name = "GameStatus"
+function GameStatus.prototype.____constructor(self)
+    self.ONLINE = 0
+    self.OFFLINE = 1
+    self.REPLAY = 2
+    local humanPlayer
+    __TS__ArrayEvery(
+        Players,
+        function(____, p)
+            if (p.slotState == PLAYER_SLOT_STATE_PLAYING) and (p.controller == MAP_CONTROL_USER) then
+                humanPlayer = p
+                return false
+            end
+        end
+    )
+    local dummy = __TS__New(
+        Unit,
+        humanPlayer,
+        FourCC("hfoo"),
+        0,
+        0,
+        270
+    )
+    dummy:select(true)
+    local selected = dummy:isSelected(humanPlayer)
+    dummy:destroy()
+    if selected then
+        if ReloadGameCachesFromDisk() then
+            self.status = 1
+        else
+            self.status = 2
+        end
+    else
+        self.status = 0
+    end
+end
+function GameStatus.getInstance(self)
+    if self.instance == nil then
+        self.instance = __TS__New(____exports.GameStatus)
+    end
+    return self.instance
+end
+function GameStatus.prototype.get(self)
+    return self.status
+end
+function GameStatus.prototype.__tostring(self)
+    local result
+    repeat
+        local ____switch13 = self.status
+        local ____cond13 = ____switch13 == 0
+        if ____cond13 then
+            result = "ONLINE"
+            break
+        end
+        ____cond13 = ____cond13 or (____switch13 == 1)
+        if ____cond13 then
+            result = "OFFLINE"
+            break
+        end
+        ____cond13 = ____cond13 or (____switch13 == 2)
+        if ____cond13 then
+            result = "REPLAY"
+            break
+        end
+        do
+            result = "Unhandled case in GameStatus.toString() Case #: " .. tostring(self.status)
+            break
+        end
+    until true
+    return result
+end
+return ____exports
+ end,
+["src.app.camera-controls"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local CamSettings = CamSettings or ({})
+CamSettings.MIN_DISTANCE = 1000
+CamSettings[CamSettings.MIN_DISTANCE] = "MIN_DISTANCE"
+CamSettings.MAX_DISTANCE = 8500
+CamSettings[CamSettings.MAX_DISTANCE] = "MAX_DISTANCE"
+CamSettings.DEFAULT_DISTANCE = 4000
+CamSettings[CamSettings.DEFAULT_DISTANCE] = "DEFAULT_DISTANCE"
+CamSettings.MIN_ANGLE = 270
+CamSettings[CamSettings.MIN_ANGLE] = "MIN_ANGLE"
+CamSettings.MAX_ANGLE = 350
+CamSettings[CamSettings.MAX_ANGLE] = "MAX_ANGLE"
+CamSettings.DEFAULT_ANGLE = 290
+CamSettings[CamSettings.DEFAULT_ANGLE] = "DEFAULT_ANGLE"
+CamSettings.MIN_ROTATION = 0
+CamSettings[CamSettings.MIN_ROTATION] = "MIN_ROTATION"
+CamSettings.MAX_ROTATION = 360
+CamSettings[CamSettings.MAX_ROTATION] = "MAX_ROTATION"
+CamSettings.DEFAULT_ROTATION = 90
+CamSettings[CamSettings.DEFAULT_ROTATION] = "DEFAULT_ROTATION"
+____exports.PlayerCamData = __TS__New(Map)
+____exports.default = (function()
+    ____exports.default = __TS__Class()
+    local CameraControls = ____exports.default
+    CameraControls.name = "CameraControls"
+    function CameraControls.prototype.____constructor(self)
+        do
+            local i = 0
+            while i < bj_MAX_PLAYER_SLOTS do
+                if (GetPlayerSlotState(
+                    Player(i)
+                ) == PLAYER_SLOT_STATE_PLAYING) and (GetPlayerController(
+                    Player(i)
+                ) == MAP_CONTROL_USER) then
+                    local data = {distance = CamSettings.DEFAULT_DISTANCE, angle = CamSettings.DEFAULT_ANGLE, rotation = CamSettings.DEFAULT_ROTATION}
+                    ____exports.PlayerCamData:set(
+                        Player(i),
+                        data
+                    )
+                    data = nil
+                end
+                i = i + 1
+            end
+        end
+        self:camReset()
+    end
+    function CameraControls.getInstance(self)
+        if self.instance == nil then
+            self.instance = __TS__New(____exports.default)
+        end
+        return self.instance
+    end
+    function CameraControls.prototype.checkCamData(self, data, vals)
+        if vals[1] then
+            self:checkDistance(
+                data,
+                S2R(vals[1])
+            )
+        end
+        if vals[2] then
+            self:checkAngle(
+                data,
+                S2R(vals[2])
+            )
+        end
+        if vals[3] then
+            self:checkRotation(
+                data,
+                S2R(vals[3])
+            )
+        end
+    end
+    function CameraControls.prototype.camReset(self)
+        local resetTimer = CreateTimer()
+        TimerStart(
+            resetTimer,
+            0.5,
+            true,
+            function()
+                do
+                    local i = 0
+                    while i < bj_MAX_PLAYER_SLOTS do
+                        self:setCameraFields(
+                            Player(i),
+                            ____exports.PlayerCamData:get(
+                                Player(i)
+                            )
+                        )
+                        i = i + 1
+                    end
+                end
+            end
+        )
+    end
+    function CameraControls.prototype.checkDistance(self, data, val)
+        if val > CamSettings.MAX_DISTANCE then
+            val = CamSettings.MAX_DISTANCE
+        end
+        if val < CamSettings.MIN_DISTANCE then
+            val = CamSettings.MIN_DISTANCE
+        end
+        return (function(o, i, v)
+            o[i] = v
+            return v
+        end)(data, "distance", val)
+    end
+    function CameraControls.prototype.checkAngle(self, data, val)
+        if val > CamSettings.MAX_ANGLE then
+            val = CamSettings.MAX_ANGLE
+        end
+        if val < CamSettings.MIN_ANGLE then
+            val = CamSettings.MIN_ANGLE
+        end
+        return (function(o, i, v)
+            o[i] = v
+            return v
+        end)(data, "angle", val)
+    end
+    function CameraControls.prototype.checkRotation(self, data, val)
+        if val > CamSettings.MAX_ROTATION then
+            val = CamSettings.MAX_ROTATION
+        end
+        if val < CamSettings.MIN_ROTATION then
+            val = CamSettings.MIN_ROTATION
+        end
+        return (function(o, i, v)
+            o[i] = v
+            return v
+        end)(data, "rotation", val)
+    end
+    function CameraControls.prototype.setCameraFields(self, p, data)
+        SetCameraFieldForPlayer(p, CAMERA_FIELD_TARGET_DISTANCE, data.distance, 0)
+        SetCameraFieldForPlayer(p, CAMERA_FIELD_ANGLE_OF_ATTACK, data.angle, 0)
+        SetCameraFieldForPlayer(p, CAMERA_FIELD_ROTATION, data.rotation, 0)
+        SetCameraFieldForPlayer(p, CAMERA_FIELD_FARZ, 10000, 0)
+    end
+    return CameraControls
+end)()
+return ____exports
+ end,
+["src.resources.unitID"] = function(...) local ____exports = {}
+____exports.UID = {
+    CITY = FourCC("h000"),
+    PORT = FourCC("h001"),
+    CONTROL_POINT = FourCC("h002"),
+    SPAWNER = FourCC("h004"),
+    RIFLEMEN = FourCC("u000"),
+    MEDIC = FourCC("u001"),
+    MORTAR = FourCC("u002"),
+    ROARER = FourCC("u003"),
+    KNIGHT = FourCC("u004"),
+    GENERAL = FourCC("u005"),
+    ARTILLERY = FourCC("u006"),
+    TANK = FourCC("u007"),
+    MARINE = FourCC("u008"),
+    CAPTAIN = FourCC("u009"),
+    ADMIRAL = FourCC("u010"),
+    TRANSPORT_SHIP = FourCC("s000"),
+    ARMORED_TRANSPORT_SHIP = FourCC("s001"),
+    WARSHIP_A = FourCC("s002"),
+    WARSHIP_B = FourCC("s003"),
+    BATTLESHIP_SS = FourCC("s004"),
+    DUMMY_GUARD = FourCC("u050"),
+    CAMERA_LOCK_UNIT = FourCC("u051"),
+    PLAYER_TOOLS = FourCC("H000")
+}
+return ____exports
+ end,
+["src.resources.unitTypes"] = function(...) local ____exports = {}
+____exports.UTYPE = {SPAWN = UNIT_TYPE_UNDEAD, GUARD = UNIT_TYPE_SAPPER}
+return ____exports
+ end,
+["src.app.country.city-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+local ____unitTypes = require("src.resources.unitTypes")
+local UTYPE = ____unitTypes.UTYPE
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+____exports.Cities = {}
+____exports.CityRegionSize = 185
+____exports.City = __TS__Class()
+local City = ____exports.City
+City.name = "City"
+function City.prototype.____constructor(self, x, y, barrackType, name, guardType)
+    if guardType == nil then
+        guardType = UID.RIFLEMEN
+    end
+    self.defaultBarrackType = barrackType
+    self:setBarrack(x, y, name)
+    local offSetX = x - 125
+    local offSetY = y - 255
+    local rect = Rect(offSetX - (____exports.CityRegionSize / 2), offSetY - (____exports.CityRegionSize / 2), offSetX + (____exports.CityRegionSize / 2), offSetY + (____exports.CityRegionSize / 2))
+    self.x = GetRectCenterX(rect)
+    self.y = GetRectCenterY(rect)
+    self.region = CreateRegion()
+    RegionAddRect(self.region, rect)
+    RemoveRect(rect)
+    ____exports.City.fromRegion:set(self.region, self)
+    self.cop = CreateUnit(Players[25].handle, UID.CONTROL_POINT, offSetX, offSetY, 270)
+    self.defaultGuardType = guardType
+    self:setGuard(guardType)
+end
+__TS__SetDescriptor(
+    City.prototype,
+    "barrack",
+    {
+        get = function(self)
+            return self._barrack
+        end
+    },
+    true
+)
+function City.init(self)
+    ____exports.Cities[1] = __TS__New(____exports.City, 320, 320, UID.CITY)
+    ____exports.Cities[2] = __TS__New(____exports.City, -832, 64, UID.CITY)
+    ____exports.Cities[3] = __TS__New(____exports.City, 320, -1024, UID.CITY)
+    ____exports.Cities[4] = __TS__New(____exports.City, -1472, -1024, UID.CITY)
+    ____exports.Cities[5] = __TS__New(____exports.City, -1408, -2432, UID.CITY)
+    ____exports.Cities[6] = __TS__New(____exports.City, -384, -2944, UID.CITY)
+    ____exports.Cities[7] = __TS__New(____exports.City, 3584, 128, UID.CITY)
+    ____exports.Cities[8] = __TS__New(____exports.City, 1664, -384, UID.CITY)
+    ____exports.Cities[9] = __TS__New(____exports.City, 2048, 832, UID.CITY)
+    ____exports.Cities[10] = __TS__New(____exports.City, 4032, -1152, UID.CITY)
+    ____exports.Cities[11] = __TS__New(____exports.City, 768, -2048, UID.CITY)
+    ____exports.Cities[12] = __TS__New(____exports.City, 2112, -1664, UID.CITY)
+    ____exports.Cities[13] = __TS__New(____exports.City, 1408, -3008, UID.CITY)
+    ____exports.Cities[14] = __TS__New(____exports.City, 448, -3648, UID.CITY)
+    ____exports.Cities[15] = __TS__New(____exports.City, 1856, -4032, UID.CITY)
+    ____exports.Cities[16] = __TS__New(____exports.City, 896, -4736, UID.CITY)
+    ____exports.Cities[17] = __TS__New(____exports.City, 2880, -4864, UID.CITY)
+    ____exports.Cities[18] = __TS__New(____exports.City, 1920, -5760, UID.CITY)
+    ____exports.Cities[19] = __TS__New(____exports.City, 3456, -5632, UID.CITY)
+    ____exports.Cities[20] = __TS__New(____exports.City, 2752, -6656, UID.CITY)
+    ____exports.Cities[21] = __TS__New(____exports.City, 3776, -6656, UID.CITY)
+    ____exports.Cities[22] = __TS__New(____exports.City, 4736, -6720, UID.CITY)
+    ____exports.Cities[23] = __TS__New(____exports.City, 4416, -4992, UID.CITY)
+    ____exports.Cities[24] = __TS__New(____exports.City, 5248, -5568, UID.CITY)
+    ____exports.Cities[25] = __TS__New(____exports.City, 5952, -6848, UID.CITY)
+    ____exports.Cities[26] = __TS__New(____exports.City, 5440, -7872, UID.CITY)
+    ____exports.Cities[27] = __TS__New(____exports.City, 4736, -8768, UID.CITY)
+    ____exports.Cities[28] = __TS__New(____exports.City, 3680, -7904, UID.PORT)
+    ____exports.Cities[29] = __TS__New(____exports.City, 7168, -7616, UID.CITY)
+    ____exports.Cities[30] = __TS__New(____exports.City, 6112, -11232, UID.PORT)
+    ____exports.Cities[31] = __TS__New(____exports.City, 6464, -9472, UID.CITY)
+    ____exports.Cities[32] = __TS__New(____exports.City, 5504, -9536, UID.CITY)
+    ____exports.Cities[33] = __TS__New(____exports.City, 6784, -6016, UID.CITY)
+    ____exports.Cities[34] = __TS__New(____exports.City, 7808, -5952, UID.CITY)
+    ____exports.Cities[35] = __TS__New(____exports.City, 5184, -3968, UID.CITY)
+    ____exports.Cities[36] = __TS__New(____exports.City, 6144, -4864, UID.CITY)
+    ____exports.Cities[37] = __TS__New(____exports.City, 7616, -4672, UID.CITY)
+    ____exports.Cities[38] = __TS__New(____exports.City, 6528, -3456, UID.CITY)
+    ____exports.Cities[39] = __TS__New(____exports.City, 7296, -2496, UID.CITY)
+    ____exports.Cities[40] = __TS__New(____exports.City, 8384, -3136, UID.CITY)
+    ____exports.Cities[41] = __TS__New(____exports.City, 6080, -2048, UID.CITY)
+    ____exports.Cities[42] = __TS__New(____exports.City, 5696, -1024, UID.CITY)
+    ____exports.Cities[43] = __TS__New(____exports.City, 7232, -832, UID.CITY)
+    ____exports.Cities[44] = __TS__New(____exports.City, 9344, -1984, UID.CITY)
+    ____exports.Cities[45] = __TS__New(____exports.City, 10240, -384, UID.CITY)
+    ____exports.Cities[46] = __TS__New(____exports.City, 11328, -1664, UID.CITY)
+    ____exports.Cities[47] = __TS__New(____exports.City, 10048, -9280, UID.CITY)
+    ____exports.Cities[48] = __TS__New(____exports.City, 11072, -7168, UID.CITY)
+    ____exports.Cities[49] = __TS__New(____exports.City, 12288, -8192, UID.CITY)
+    ____exports.Cities[50] = __TS__New(____exports.City, 16704, -6080, UID.CITY)
+    ____exports.Cities[51] = __TS__New(____exports.City, 15424, -7360, UID.CITY)
+    ____exports.Cities[52] = __TS__New(____exports.City, 11360, -10336, UID.PORT)
+    ____exports.Cities[53] = __TS__New(____exports.City, 8800, -7392, UID.PORT)
+    ____exports.Cities[54] = __TS__New(____exports.City, 16064, -4096, UID.CITY)
+    ____exports.Cities[55] = __TS__New(____exports.City, 14976, -3648, UID.CITY)
+    ____exports.Cities[56] = __TS__New(____exports.City, 17472, -9664, UID.CITY)
+    ____exports.Cities[57] = __TS__New(____exports.City, 16064, -9408, UID.CITY)
+    ____exports.Cities[58] = __TS__New(____exports.City, 16512, -10880, UID.CITY)
+    ____exports.Cities[59] = __TS__New(____exports.City, 14784, -9600, UID.CITY)
+    ____exports.Cities[60] = __TS__New(____exports.City, 14976, -11136, UID.CITY)
+    ____exports.Cities[61] = __TS__New(____exports.City, 15808, -12224, UID.CITY)
+    ____exports.Cities[62] = __TS__New(____exports.City, 14976, -13440, UID.CITY)
+    ____exports.Cities[63] = __TS__New(____exports.City, 13900, -12320, UID.PORT)
+    ____exports.Cities[64] = __TS__New(____exports.City, 17344, -12480, UID.CITY)
+    ____exports.Cities[65] = __TS__New(____exports.City, 17728, -13440, UID.CITY)
+    ____exports.Cities[66] = __TS__New(____exports.City, 16128, -14272, UID.CITY)
+    ____exports.Cities[67] = __TS__New(____exports.City, 14400, -14784, UID.CITY)
+    ____exports.Cities[68] = __TS__New(____exports.City, 12480, -14080, UID.CITY)
+    ____exports.Cities[69] = __TS__New(____exports.City, 12928, -15104, UID.CITY)
+    ____exports.Cities[70] = __TS__New(____exports.City, 9408, -15104, UID.CITY)
+    ____exports.Cities[71] = __TS__New(____exports.City, 7680, -14528, UID.CITY)
+    ____exports.Cities[72] = __TS__New(____exports.City, 6208, -15040, UID.CITY)
+    ____exports.Cities[73] = __TS__New(____exports.City, 5088, -14112, UID.PORT)
+    ____exports.Cities[74] = __TS__New(____exports.City, -1408, -13824, UID.CITY)
+    ____exports.Cities[75] = __TS__New(____exports.City, -160, -14496, UID.PORT)
+    ____exports.Cities[76] = __TS__New(____exports.City, -3648, -14144, UID.CITY)
+    ____exports.Cities[77] = __TS__New(____exports.City, -5760, -15040, UID.CITY)
+    ____exports.Cities[78] = __TS__New(____exports.City, -7360, -14336, UID.CITY)
+    ____exports.Cities[79] = __TS__New(____exports.City, -8832, -15104, UID.CITY)
+    ____exports.Cities[80] = __TS__New(____exports.City, -10688, -14080, UID.CITY)
+    ____exports.Cities[81] = __TS__New(____exports.City, -12320, -14368, UID.PORT)
+    ____exports.Cities[82] = __TS__New(____exports.City, -11328, -9600, UID.CITY)
+    ____exports.Cities[83] = __TS__New(____exports.City, -10624, -7296, UID.CITY)
+    ____exports.Cities[84] = __TS__New(____exports.City, -12000, -7968, UID.PORT)
+    ____exports.Cities[85] = __TS__New(____exports.City, -9728, -10240, UID.CITY)
+    ____exports.Cities[86] = __TS__New(____exports.City, -9408, -8192, UID.CITY)
+    ____exports.Cities[87] = __TS__New(____exports.City, -6976, -8384, UID.CITY)
+    ____exports.Cities[88] = __TS__New(____exports.City, -7616, -6976, UID.CITY)
+    ____exports.Cities[89] = __TS__New(____exports.City, -10112, -5952, UID.CITY)
+    ____exports.Cities[90] = __TS__New(____exports.City, -6688, -10272, UID.PORT)
+    ____exports.Cities[91] = __TS__New(____exports.City, -5504, -6272, UID.CITY)
+    ____exports.Cities[92] = __TS__New(____exports.City, -5440, -5120, UID.CITY)
+    ____exports.Cities[93] = __TS__New(____exports.City, -3584, -5568, UID.CITY)
+    ____exports.Cities[94] = __TS__New(____exports.City, -3520, -3776, UID.CITY)
+    ____exports.Cities[95] = __TS__New(____exports.City, -4800, -3136, UID.CITY)
+    ____exports.Cities[96] = __TS__New(____exports.City, -6336, -3456, UID.CITY)
+    ____exports.Cities[97] = __TS__New(____exports.City, -6944, -4704, UID.PORT)
+    ____exports.Cities[98] = __TS__New(____exports.City, -4384, -7008, UID.PORT)
+    ____exports.Cities[99] = __TS__New(____exports.City, -2432, -4160, UID.CITY)
+    ____exports.Cities[100] = __TS__New(____exports.City, -1280, -4352, UID.CITY)
+    ____exports.Cities[101] = __TS__New(____exports.City, -1856, -5440, UID.CITY)
+    ____exports.Cities[102] = __TS__New(____exports.City, -448, -6272, UID.CITY)
+    ____exports.Cities[103] = __TS__New(____exports.City, 448, -7296, UID.CITY)
+    ____exports.Cities[104] = __TS__New(____exports.City, 1408, -8256, UID.CITY)
+    ____exports.Cities[105] = __TS__New(____exports.City, -3072, -2368, UID.CITY)
+    ____exports.Cities[106] = __TS__New(____exports.City, -4384, -608, UID.PORT)
+    ____exports.Cities[107] = __TS__New(____exports.City, -3200, -1024, UID.CITY)
+    ____exports.Cities[108] = __TS__New(____exports.City, -2368, -128, UID.CITY)
+    ____exports.Cities[109] = __TS__New(____exports.City, -3168, 480, UID.PORT)
+    ____exports.Cities[110] = __TS__New(____exports.City, -960, 1408, UID.CITY)
+    ____exports.Cities[111] = __TS__New(____exports.City, -1088, 2560, UID.CITY)
+    ____exports.Cities[112] = __TS__New(____exports.City, -2272, 2464, UID.PORT)
+    ____exports.Cities[113] = __TS__New(____exports.City, -1856, 5056, UID.CITY)
+    ____exports.Cities[114] = __TS__New(____exports.City, -768, 5312, UID.CITY)
+    ____exports.Cities[115] = __TS__New(____exports.City, -640, 7232, UID.CITY)
+    ____exports.Cities[116] = __TS__New(____exports.City, 576, 10112, UID.CITY)
+    ____exports.Cities[117] = __TS__New(____exports.City, 1728, 12224, UID.CITY)
+    ____exports.Cities[118] = __TS__New(____exports.City, -2464, 3680, UID.PORT)
+    ____exports.Cities[119] = __TS__New(____exports.City, -1760, 7904, UID.PORT)
+    ____exports.Cities[120] = __TS__New(____exports.City, 1856, 10240, UID.CITY)
+    ____exports.Cities[121] = __TS__New(____exports.City, 1216, 8704, UID.CITY)
+    ____exports.Cities[122] = __TS__New(____exports.City, 576, 6400, UID.CITY)
+    ____exports.Cities[123] = __TS__New(____exports.City, 512, 3392, UID.CITY)
+    ____exports.Cities[124] = __TS__New(____exports.City, 1760, 3040, UID.PORT)
+    ____exports.Cities[125] = __TS__New(____exports.City, 3968, 11584, UID.CITY)
+    ____exports.Cities[126] = __TS__New(____exports.City, 4800, 10368, UID.CITY)
+    ____exports.Cities[127] = __TS__New(____exports.City, 4480, 8448, UID.CITY)
+    ____exports.Cities[128] = __TS__New(____exports.City, 4096, 6848, UID.CITY)
+    ____exports.Cities[129] = __TS__New(____exports.City, 3424, 9184, UID.PORT)
+    ____exports.Cities[130] = __TS__New(____exports.City, -6528, 256, UID.CITY)
+    ____exports.Cities[131] = __TS__New(____exports.City, -6784, 1600, UID.CITY)
+    ____exports.Cities[132] = __TS__New(____exports.City, -7040, 3200, UID.CITY)
+    ____exports.Cities[133] = __TS__New(____exports.City, -8352, -672, UID.PORT)
+    ____exports.Cities[134] = __TS__New(____exports.City, -11136, 2368, UID.CITY)
+    ____exports.Cities[135] = __TS__New(____exports.City, -10208, 4000, UID.PORT)
+    ____exports.Cities[136] = __TS__New(____exports.City, -11488, 800, UID.PORT)
+    ____exports.Cities[137] = __TS__New(____exports.City, -6592, 9344, UID.CITY)
+    ____exports.Cities[138] = __TS__New(____exports.City, -7936, 9792, UID.CITY)
+    ____exports.Cities[139] = __TS__New(____exports.City, -7200, 7968, UID.PORT)
+    ____exports.Cities[140] = __TS__New(____exports.City, -5920, 10464, UID.PORT)
+    ____exports.Cities[141] = __TS__New(____exports.City, -576, 14912, UID.CITY)
+    ____exports.Cities[142] = __TS__New(____exports.City, -1760, 14496, UID.PORT)
+    ____exports.Cities[143] = __TS__New(____exports.City, 5056, 5312, UID.CITY)
+    ____exports.Cities[144] = __TS__New(____exports.City, 4128, 4640, UID.PORT)
+    ____exports.Cities[145] = __TS__New(____exports.City, 5440, 3520, UID.CITY)
+    ____exports.Cities[146] = __TS__New(____exports.City, 3104, 3616, UID.PORT)
+    ____exports.Cities[147] = __TS__New(____exports.City, 5312, 2048, UID.CITY)
+    ____exports.Cities[148] = __TS__New(____exports.City, 4160, 2496, UID.CITY)
+    ____exports.Cities[149] = __TS__New(____exports.City, 4096, 1344, UID.CITY)
+    ____exports.Cities[150] = __TS__New(____exports.City, 2976, 1952, UID.PORT)
+    ____exports.Cities[151] = __TS__New(____exports.City, 6912, 2560, UID.CITY)
+    ____exports.Cities[152] = __TS__New(____exports.City, 6912, 1472, UID.CITY)
+    ____exports.Cities[153] = __TS__New(____exports.City, 7680, 512, UID.CITY)
+    ____exports.Cities[154] = __TS__New(____exports.City, 5376, 384, UID.CITY)
+    ____exports.Cities[155] = __TS__New(____exports.City, 896, -13120, UID.CITY)
+    ____exports.Cities[156] = __TS__New(____exports.City, 2400, -12896, UID.PORT)
+    ____exports.Cities[157] = __TS__New(____exports.City, 6272, 12224, UID.CITY)
+    ____exports.Cities[158] = __TS__New(____exports.City, 10624, 11776, UID.CITY)
+    ____exports.Cities[159] = __TS__New(____exports.City, 10688, 9984, UID.CITY)
+    ____exports.Cities[160] = __TS__New(____exports.City, 12288, 8448, UID.CITY)
+    ____exports.Cities[161] = __TS__New(____exports.City, 9280, 6208, UID.CITY)
+    ____exports.Cities[162] = __TS__New(____exports.City, 6048, 6112, UID.PORT)
+    ____exports.Cities[163] = __TS__New(____exports.City, 6880, 10464, UID.PORT)
+    ____exports.Cities[164] = __TS__New(____exports.City, 3968, -2304, UID.CITY)
+    ____exports.Cities[165] = __TS__New(____exports.City, 2752, -2624, UID.CITY)
+    ____exports.Cities[166] = __TS__New(____exports.City, 4416, -3200, UID.CITY)
+    ____exports.Cities[167] = __TS__New(____exports.City, 3136, -3776, UID.CITY)
+    ____exports.Cities[168] = __TS__New(____exports.City, 320, -10368, UID.CITY)
+    ____exports.Cities[169] = __TS__New(____exports.City, 1238, -11566, UID.PORT)
+    ____exports.Cities[170] = __TS__New(____exports.City, -11584, 14400, UID.CITY)
+    ____exports.Cities[171] = __TS__New(____exports.City, -10432, 15104, UID.CITY)
+    ____exports.Cities[172] = __TS__New(____exports.City, -11040, 12960, UID.PORT)
+    ____exports.Cities[173] = __TS__New(____exports.City, -6016, 15424, UID.CITY)
+    ____exports.Cities[174] = __TS__New(____exports.City, -5600, 14048, UID.PORT)
+    ____exports.Cities[175] = __TS__New(____exports.City, 3264, 13504, UID.CITY)
+    ____exports.Cities[176] = __TS__New(____exports.City, 4160, 13056, UID.CITY)
+    ____exports.Cities[177] = __TS__New(____exports.City, -8000, 4672, UID.CITY)
+    ____exports.Cities[178] = __TS__New(____exports.City, -7552, 5952, UID.CITY)
+    ____exports.Cities[179] = __TS__New(____exports.City, -6432, 4960, UID.PORT)
+    ____exports.Cities[180] = __TS__New(____exports.City, 10496, 16064, UID.CITY)
+    ____exports.Cities[181] = __TS__New(____exports.City, 11936, 15584, UID.PORT)
+    ____exports.Cities[182] = __TS__New(____exports.City, 11456, -3264, UID.CITY)
+    ____exports.Cities[183] = __TS__New(____exports.City, 10464, -4128, UID.PORT)
+    ____exports.Cities[184] = __TS__New(____exports.City, 18432, -3584, UID.CITY)
+    ____exports.Cities[185] = __TS__New(____exports.City, 17472, -4352, UID.CITY)
+    ____exports.Cities[186] = __TS__New(____exports.City, 18432, -5888, UID.CITY)
+    ____exports.Cities[187] = __TS__New(____exports.City, 14400, -1856, UID.CITY)
+    ____exports.Cities[188] = __TS__New(____exports.City, 14848, 1216, UID.CITY)
+    ____exports.Cities[189] = __TS__New(____exports.City, 16704, 1088, UID.CITY)
+    ____exports.Cities[190] = __TS__New(____exports.City, 17088, -1152, UID.CITY)
+    ____exports.Cities[191] = __TS__New(____exports.City, 13024, -3808, UID.PORT)
+    ____exports.Cities[192] = __TS__New(____exports.City, 15424, 5376, UID.CITY)
+    ____exports.Cities[193] = __TS__New(____exports.City, 18048, 6720, UID.CITY)
+    ____exports.Cities[194] = __TS__New(____exports.City, 17984, 3840, UID.CITY)
+    ____exports.Cities[195] = __TS__New(____exports.City, 8640, 3264, UID.CITY)
+    ____exports.Cities[196] = __TS__New(____exports.City, 10496, 1536, UID.CITY)
+    ____exports.Cities[197] = __TS__New(____exports.City, 13056, 2496, UID.CITY)
+    ____exports.Cities[198] = __TS__New(____exports.City, 11264, 3968, UID.CITY)
+    ____exports.Cities[199] = __TS__New(____exports.City, 12864, 5632, UID.CITY)
+    ____exports.Cities[200] = __TS__New(____exports.City, 16576, 15744, UID.CITY)
+    ____exports.Cities[201] = __TS__New(____exports.City, 18176, 15616, UID.CITY)
+    ____exports.Cities[202] = __TS__New(____exports.City, 15296, 8960, UID.CITY)
+    ____exports.Cities[203] = __TS__New(____exports.City, 13952, 8384, UID.CITY)
+    ____exports.Cities[204] = __TS__New(____exports.City, -8768, 15232, UID.CITY)
+    ____exports.Cities[205] = __TS__New(____exports.City, -7936, 14336, UID.CITY)
+    ____exports.Cities[206] = __TS__New(____exports.City, -9472, 13696, UID.CITY)
+    ____exports.Cities[207] = __TS__New(____exports.City, -12736, 14976, UID.CITY)
+    ____exports.Cities[208] = __TS__New(____exports.City, -12352, 13120, UID.CITY)
+    ____exports.Cities[209] = __TS__New(____exports.City, -8000, 2304, UID.CITY)
+    ____exports.Cities[210] = __TS__New(____exports.City, -8512, 1216, UID.CITY)
+    ____exports.Cities[211] = __TS__New(____exports.City, -2400, -7400, UID.PORT)
+    ____exports.Cities[212] = __TS__New(____exports.City, -1376, -8928, UID.PORT)
+    ____exports.Cities[213] = __TS__New(____exports.City, 8864, -11680, UID.PORT)
+    ____exports.Cities[214] = __TS__New(____exports.City, 7008, -12192, UID.PORT)
+    ____exports.Cities[215] = __TS__New(____exports.City, 13408, -10272, UID.PORT)
+    ____exports.Cities[216] = __TS__New(____exports.City, 12576, -11808, UID.PORT)
+end
+function City.prototype.onCast(self)
+end
+function City.prototype.onGuardChange(self)
+end
+function City.prototype.setOwner(self, newOwner)
+end
+function City.prototype.reset(self)
+    local x = GetUnitX(self.barrack)
+    local y = GetUnitY(self.barrack)
+    local name = GetUnitName(self.barrack)
+    ____exports.City.fromBarrack:delete(self.barrack)
+    RemoveUnit(self.barrack)
+    self._barrack = nil
+    self:setBarrack(x, y, name)
+    self:removeGuard(true)
+    self:setGuard(self.defaultGuardType)
+end
+function City.prototype.onOwnerChange(self)
+end
+function City.prototype.setBarrack(self, x, y, name)
+    self._barrack = CreateUnit(Players[25].handle, self.defaultBarrackType, x, y, 270)
+    ____exports.City.fromBarrack:set(self.barrack, self)
+    if name and (name ~= GetUnitName(self.barrack)) then
+        BlzSetUnitName(self.barrack, name)
+    end
+end
+function City.prototype.setGuard(self, guard)
+    (((type(guard) == "number") and (function() return (function(o, i, v)
+        o[i] = v
+        return v
+    end)(
+        self,
+        "guard",
+        CreateUnit(Players[25].handle, guard, self.x, self.y, 270)
+    ) end)) or (function() return (function(o, i, v)
+        o[i] = v
+        return v
+    end)(self, "guard", guard) end))()
+    UnitAddType(self.guard, UTYPE.GUARD)
+    ____exports.City.fromGuard:set(self.guard, self)
+end
+function City.prototype.removeGuard(self, destroy)
+    ____exports.City.fromGuard:delete(self.guard)
+    if not destroy then
+        UnitRemoveType(self.guard, UTYPE.GUARD)
+    else
+        RemoveUnit(self.guard)
+    end
+    self.guard = nil
+end
+City.fromBarrack = __TS__New(Map)
+City.fromGuard = __TS__New(Map)
+City.fromRegion = __TS__New(Map)
+City.cities = {}
+return ____exports
+ end,
+["src.resources.abilityID"] = function(...) local ____exports = {}
+____exports.AID = {
+    INDEXER = FourCC("uDex"),
+    HEAL = FourCC("a000"),
+    ROAR = FourCC("a001"),
+    DISPEL_MAGIC = FourCC("a002"),
+    FRENZY = FourCC("a003"),
+    UNHOLY_FRENZY = FourCC("a004"),
+    BERSERK = FourCC("a005"),
+    SWAP = FourCC("a030"),
+    SPWN_ALL = FourCC("a031"),
+    SPWN_3000 = FourCC("a032"),
+    SPWN_6000 = FourCC("a033"),
+    SPWN_RESET = FourCC("a034"),
+    CARGO_HOLD = FourCC("a009"),
+    LOAD = FourCC("a010"),
+    UNLOAD = FourCC("a011"),
+    FORFEIT = FourCC("a050"),
+    LOW_HEALTH_DEFENDER = FourCC("a051"),
+    HIGH_HEALTH_DEFENDER = FourCC("a052"),
+    LOW_VALUE_DEFENDER = FourCC("a053"),
+    HIGH_VALUE_DEFENDER = FourCC("a054"),
+    ALLOW_PINGS = FourCC("a055"),
+    BLOCK_PINGS = FourCC("a056"),
+    PING = FourCC("a057")
+}
+return ____exports
+ end,
+["src.app.country.spawner-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____abilityID = require("src.resources.abilityID")
+local AID = ____abilityID.AID
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+local ____unitTypes = require("src.resources.unitTypes")
+local UTYPE = ____unitTypes.UTYPE
+local ____index = require("lua_modules.w3ts.index")
+local Group = ____index.Group
+local MapPlayer = ____index.MapPlayer
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+local SpawnTypeID = UID.RIFLEMEN
+local SpawnTurnLimit = 5
+____exports.Spawner = __TS__Class()
+local Spawner = ____exports.Spawner
+Spawner.name = "Spawner"
+function Spawner.prototype.____constructor(self, country, x, y, countrySize)
+    self.playerSpawns = __TS__New(Map)
+    self:create(x, y)
+    self.spawnAmount = math.floor((countrySize + 1) / 2)
+    self.spawnMax = self.spawnAmount * SpawnTurnLimit
+    self.country = country
+    self:setName()
+end
+__TS__SetDescriptor(
+    Spawner.prototype,
+    "unit",
+    {
+        get = function(self)
+            return self._unit
+        end
+    },
+    true
+)
+function Spawner.onCast(self)
+    local area
+    if GetSpellAbilityId() == AID.SPWN_ALL then
+        area = 12000
+    end
+    if GetSpellAbilityId() == AID.SPWN_6000 then
+        area = 6000
+    end
+    if GetSpellAbilityId() == AID.SPWN_3000 then
+        area = 3000
+    end
+    if GetSpellAbilityId() == AID.SPWN_RESET then
+        area = 50000
+    end
+    local group = __TS__New(Group)
+    local u = GetTriggerUnit()
+    group:enumUnitsInRange(
+        GetUnitX(u),
+        GetUnitY(u),
+        area,
+        function()
+            local fU = GetFilterUnit()
+            if (GetUnitTypeId(fU) == UID.SPAWNER) and (GetOwningPlayer(fU) == GetOwningPlayer(u)) then
+                if GetSpellAbilityId() == AID.SPWN_RESET then
+                    if GetOwningPlayer(fU) == GetLocalPlayer() then
+                        IssuePointOrder(
+                            fU,
+                            "setrally",
+                            GetUnitX(u),
+                            GetUnitY(u)
+                        )
+                    end
+                else
+                    if GetOwningPlayer(fU) == GetLocalPlayer() then
+                        SelectUnit(fU, true)
+                    end
+                end
+            end
+            return false
+        end
+    )
+    group:destroy()
+end
+function Spawner.prototype.setOwner(self, newOwner)
+    SetUnitOwner(self.unit, newOwner.handle, true)
+    self:setName()
+    IssuePointOrder(
+        self.unit,
+        "setrally",
+        GetUnitX(self.unit),
+        GetUnitY(self.unit)
+    )
+end
+function Spawner.prototype.step(self)
+    local owner = MapPlayer:fromHandle(
+        GetOwningPlayer(self.unit)
+    )
+    if owner == Players[25] then
+        return
+    end
+    if owner.slotState ~= PLAYER_SLOT_STATE_PLAYING then
+        return
+    end
+    local spawnCount = #self.playerSpawns:get(owner)
+    if spawnCount >= self.spawnMax then
+        return
+    end
+    local amount = math.min(self.spawnAmount, self.spawnMax - spawnCount)
+    do
+        local i = 0
+        while i < amount do
+            local u = CreateUnit(
+                owner.handle,
+                SpawnTypeID,
+                GetUnitX(self.unit),
+                GetUnitY(self.unit),
+                270
+            )
+            local loc = GetUnitRallyPoint(self.unit)
+            UnitAddType(u, UTYPE.SPAWN)
+            __TS__ArrayPush(
+                self.playerSpawns:get(owner),
+                u
+            )
+            IssuePointOrderLoc(u, "attack", loc)
+            RemoveLocation(loc)
+            loc = nil
+            u = nil
+            i = i + 1
+        end
+    end
+    self:setName()
+end
+function Spawner.prototype.reset(self)
+    local x = GetUnitX(self.unit)
+    local y = GetUnitY(self.unit)
+    self.playerSpawns:clear()
+    RemoveUnit(self.unit)
+    self._unit = nil
+    self:create(x, y)
+end
+function Spawner.prototype.create(self, x, y)
+    self._unit = CreateUnit(Players[25].handle, UID.SPAWNER, x, y, 270)
+    SetUnitPathing(self.unit, false)
+end
+function Spawner.prototype.setName(self)
+    if GetOwningPlayer(self.unit) == Players[25].handle then
+        BlzSetUnitName(self.unit, self.country .. " is unowned")
+        SetUnitAnimation(self.unit, "death")
+    else
+        local spawnCount = #self.playerSpawns:get(
+            MapPlayer:fromHandle(
+                GetOwningPlayer(self.unit)
+            )
+        )
+        BlzSetUnitName(
+            self.unit,
+            (((self.country .. " ") .. tostring(spawnCount)) .. " / ") .. tostring(self.spawnMax)
+        )
+        SetUnitAnimation(self.unit, "stand")
+    end
+end
+return ____exports
+ end,
+["src.app.country.country-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____hexColors = require("src.resources.hexColors")
+local HexColors = ____hexColors.HexColors
+local ____city_2Dtype = require("src.app.country.city-type")
+local Cities = ____city_2Dtype.Cities
+local ____spawner_2Dtype = require("src.app.country.spawner-type")
+local Spawner = ____spawner_2Dtype.Spawner
+____exports.Country = __TS__Class()
+local Country = ____exports.Country
+Country.name = "Country"
+function Country.prototype.____constructor(self, name, x, y, ...)
+    local cities = {...}
+    self.cities = {}
+    self.name = name
+    __TS__ArrayForEach(
+        cities,
+        function(____, city)
+            __TS__ArrayPush(self.cities, city)
+        end
+    )
+    self:setSpawner(x, y, #self.cities)
+    self:setText(100, 300)
+    ____exports.Country.fromName:set(name, self)
+end
+function Country.init(self)
+    ____exports.Country.fromName:set(
+        "Germany",
+        __TS__New(____exports.Country, "Germany", -960, -1088, Cities[1], Cities[2], Cities[3], Cities[4], Cities[5], Cities[6])
+    )
+    ____exports.Country.fromName:set(
+        "Poland",
+        __TS__New(____exports.Country, "Poland", 2752, -64, Cities[7], Cities[8], Cities[9], Cities[10])
+    )
+    ____exports.Country.fromName:set(
+        "Czech Republic",
+        __TS__New(____exports.Country, "Czech Republic", 1216, -1984, Cities[11], Cities[12])
+    )
+    ____exports.Country.fromName:set(
+        "Austria",
+        __TS__New(____exports.Country, "Austria", 832, -3392, Cities[13], Cities[14])
+    )
+    ____exports.Country.fromName:set(
+        "Slovenia",
+        __TS__New(____exports.Country, "Slovenia", 1216, -4544, Cities[15], Cities[16])
+    )
+    ____exports.Country.fromName:set(
+        "Croatia",
+        __TS__New(____exports.Country, "Croatia", 2112, -5056, Cities[17], Cities[18])
+    )
+    ____exports.Country.fromName:set(
+        "Bosnia",
+        __TS__New(____exports.Country, "Bosnia", 3008, -6080, Cities[19], Cities[20])
+    )
+    ____exports.Country.fromName:set(
+        "Montenegro",
+        __TS__New(____exports.Country, "Montenegro", 4032, -6976, Cities[21], Cities[22])
+    )
+    ____exports.Country.fromName:set(
+        "Serbia",
+        __TS__New(____exports.Country, "Serbia", 4416, -5696, Cities[23], Cities[24])
+    )
+    ____exports.Country.fromName:set(
+        "Macedonia",
+        __TS__New(____exports.Country, "Macedonia", 5056, -7488, Cities[25], Cities[26])
+    )
+    ____exports.Country.fromName:set(
+        "Albania",
+        __TS__New(____exports.Country, "Albania", 4160, -8128, Cities[27], Cities[28])
+    )
+    ____exports.Country.fromName:set(
+        "Greece",
+        __TS__New(____exports.Country, "Greece", 5696, -9024, Cities[29], Cities[30], Cities[31], Cities[32])
+    )
+    ____exports.Country.fromName:set(
+        "Bulgaria",
+        __TS__New(____exports.Country, "Bulgaria", 6976, -6464, Cities[33], Cities[34])
+    )
+    ____exports.Country.fromName:set(
+        "Romania",
+        __TS__New(____exports.Country, "Romania", 6080, -4288, Cities[35], Cities[36], Cities[37], Cities[38])
+    )
+    ____exports.Country.fromName:set(
+        "Moldova",
+        __TS__New(____exports.Country, "Moldova", 7744, -2880, Cities[39], Cities[40])
+    )
+    ____exports.Country.fromName:set(
+        "Ukraine",
+        __TS__New(____exports.Country, "Ukraine", 8256, -1216, Cities[41], Cities[42], Cities[43], Cities[44], Cities[45], Cities[46])
+    )
+    ____exports.Country.fromName:set(
+        "Turkey",
+        __TS__New(____exports.Country, "Turkey", 12864, -7232, Cities[47], Cities[48], Cities[49], Cities[50], Cities[51], Cities[52], Cities[53])
+    )
+    ____exports.Country.fromName:set(
+        "Georgia",
+        __TS__New(____exports.Country, "Georgia", 15424, -4032, Cities[54], Cities[55])
+    )
+    ____exports.Country.fromName:set(
+        "Syria",
+        __TS__New(____exports.Country, "Syria", 16704, -10048, Cities[56], Cities[57], Cities[58])
+    )
+    ____exports.Country.fromName:set(
+        "Lebanon",
+        __TS__New(____exports.Country, "Lebanon", 14784, -10304, Cities[59], Cities[60])
+    )
+    ____exports.Country.fromName:set(
+        "Palestine",
+        __TS__New(____exports.Country, "Palestine", 16192, -12480, Cities[61])
+    )
+    ____exports.Country.fromName:set(
+        "Israel",
+        __TS__New(____exports.Country, "Israel", 14656, -12736, Cities[62], Cities[63])
+    )
+    ____exports.Country.fromName:set(
+        "Jordan",
+        __TS__New(____exports.Country, "Jordan", 16960, -13504, Cities[64], Cities[65], Cities[66])
+    )
+    ____exports.Country.fromName:set(
+        "Egypt",
+        __TS__New(____exports.Country, "Egypt", 11072, -14912, Cities[67], Cities[68], Cities[69], Cities[70])
+    )
+    ____exports.Country.fromName:set(
+        "Lybia",
+        __TS__New(____exports.Country, "Lybia", 6976, -14912, Cities[71], Cities[72], Cities[73])
+    )
+    ____exports.Country.fromName:set(
+        "Tunisia",
+        __TS__New(____exports.Country, "Tunisia", -1728, -14400, Cities[74], Cities[75])
+    )
+    ____exports.Country.fromName:set(
+        "Algeria",
+        __TS__New(____exports.Country, "Algeria", -5312, -14272, Cities[76], Cities[77], Cities[78])
+    )
+    ____exports.Country.fromName:set(
+        "Morocco",
+        __TS__New(____exports.Country, "Morocco", -10176, -14400, Cities[79], Cities[80], Cities[81])
+    )
+    ____exports.Country.fromName:set(
+        "Portugal",
+        __TS__New(____exports.Country, "Portugal", -11200, -8128, Cities[82], Cities[83], Cities[84])
+    )
+    ____exports.Country.fromName:set(
+        "Spain",
+        __TS__New(____exports.Country, "Spain", -8896, -8384, Cities[85], Cities[86], Cities[87], Cities[88], Cities[89], Cities[90])
+    )
+    ____exports.Country.fromName:set(
+        "France",
+        __TS__New(____exports.Country, "France", -5056, -4288, Cities[91], Cities[92], Cities[93], Cities[94], Cities[95], Cities[96], Cities[97], Cities[98])
+    )
+    ____exports.Country.fromName:set(
+        "Switzerland",
+        __TS__New(____exports.Country, "Switzerland", -1856, -4288, Cities[99], Cities[100])
+    )
+    ____exports.Country.fromName:set(
+        "Italy",
+        __TS__New(____exports.Country, "Italy", -1088, -5568, Cities[101], Cities[102], Cities[103], Cities[104])
+    )
+    ____exports.Country.fromName:set(
+        "Belgium",
+        __TS__New(____exports.Country, "Belgium", -3648, -1856, Cities[105], Cities[106])
+    )
+    ____exports.Country.fromName:set(
+        "Netherlands",
+        __TS__New(____exports.Country, "Netherlands", -3008, -448, Cities[107], Cities[108], Cities[109])
+    )
+    ____exports.Country.fromName:set(
+        "Denmark",
+        __TS__New(____exports.Country, "Denmark", -1344, 1600, Cities[110], Cities[111], Cities[112])
+    )
+    ____exports.Country.fromName:set(
+        "Norway",
+        __TS__New(____exports.Country, "Norway", -1344, 6336, Cities[113], Cities[114], Cities[115], Cities[116], Cities[117], Cities[118], Cities[119])
+    )
+    ____exports.Country.fromName:set(
+        "Sweden",
+        __TS__New(____exports.Country, "Sweden", 704, 7744, Cities[120], Cities[121], Cities[122], Cities[123], Cities[124])
+    )
+    ____exports.Country.fromName:set(
+        "Finland",
+        __TS__New(____exports.Country, "Finland", 3648, 7744, Cities[125], Cities[126], Cities[127], Cities[128], Cities[129])
+    )
+    ____exports.Country.fromName:set(
+        "England",
+        __TS__New(____exports.Country, "England", -6848, 832, Cities[130], Cities[131], Cities[132], Cities[133])
+    )
+    ____exports.Country.fromName:set(
+        "Ireland",
+        __TS__New(____exports.Country, "Ireland", -11584, 2112, Cities[134], Cities[135], Cities[136])
+    )
+    ____exports.Country.fromName:set(
+        "Iceland",
+        __TS__New(____exports.Country, "Iceland", -7360, 9664, Cities[137], Cities[138], Cities[139], Cities[140])
+    )
+    ____exports.Country.fromName:set(
+        "Svalbard",
+        __TS__New(____exports.Country, "Svalbard", -1088, 14784, Cities[141], Cities[142])
+    )
+    ____exports.Country.fromName:set(
+        "Estonia",
+        __TS__New(____exports.Country, "Estonia", 4544, 4928, Cities[143], Cities[144])
+    )
+    ____exports.Country.fromName:set(
+        "Latvia",
+        __TS__New(____exports.Country, "Latvia", 4672, 3776, Cities[145], Cities[146])
+    )
+    ____exports.Country.fromName:set(
+        "Lithuania",
+        __TS__New(____exports.Country, "Lithuania", 4672, 2368, Cities[147], Cities[148])
+    )
+    ____exports.Country.fromName:set(
+        "Kaliningrad",
+        __TS__New(____exports.Country, "Kaliningrad", 3520, 1472, Cities[149], Cities[150])
+    )
+    ____exports.Country.fromName:set(
+        "Belarus",
+        __TS__New(____exports.Country, "Belarus", 6336, 1216, Cities[151], Cities[152], Cities[153], Cities[154])
+    )
+    ____exports.Country.fromName:set(
+        "Malta",
+        __TS__New(____exports.Country, "Malta", 1216, -12992, Cities[155], Cities[156])
+    )
+    ____exports.Country.fromName:set(
+        "North Russia",
+        __TS__New(____exports.Country, "North Russia", 9536, 8896, Cities[157], Cities[158], Cities[159], Cities[160], Cities[161], Cities[162], Cities[163])
+    )
+    ____exports.Country.fromName:set(
+        "Slovakia",
+        __TS__New(____exports.Country, "Slovakia", 3136, -2496, Cities[164], Cities[165])
+    )
+    ____exports.Country.fromName:set(
+        "Hungary",
+        __TS__New(____exports.Country, "Hungary", 3520, -3776, Cities[166], Cities[167])
+    )
+    ____exports.Country.fromName:set(
+        "Sicily",
+        __TS__New(____exports.Country, "Sicily", 960, -10816, Cities[168], Cities[169])
+    )
+    ____exports.Country.fromName:set(
+        "Disko Bay",
+        __TS__New(____exports.Country, "Disko Bay", -11072, 14272, Cities[170], Cities[171], Cities[172])
+    )
+    ____exports.Country.fromName:set(
+        "East Greenland",
+        __TS__New(____exports.Country, "East Greenland", -6464, 14784, Cities[173], Cities[174])
+    )
+    ____exports.Country.fromName:set(
+        "Sami",
+        __TS__New(____exports.Country, "Sami", 3776, 13376, Cities[175], Cities[176])
+    )
+    ____exports.Country.fromName:set(
+        "Scotland",
+        __TS__New(____exports.Country, "Scotland", -7488, 5056, Cities[177], Cities[178], Cities[179])
+    )
+    ____exports.Country.fromName:set(
+        "Novaya",
+        __TS__New(____exports.Country, "Novaya", 10816, 15808, Cities[180], Cities[181])
+    )
+    ____exports.Country.fromName:set(
+        "Crimea",
+        __TS__New(____exports.Country, "Crimea", 10944, -3904, Cities[182], Cities[183])
+    )
+    ____exports.Country.fromName:set(
+        "Azerbaijan",
+        __TS__New(____exports.Country, "Azerbaijan", 17984, -4288, Cities[184], Cities[185])
+    )
+    ____exports.Country.fromName:set(
+        "Armenia",
+        __TS__New(____exports.Country, "Armenia", 17984, -5952, Cities[186])
+    )
+    ____exports.Country.fromName:set(
+        "Southern Russia",
+        __TS__New(____exports.Country, "Southern Russia", 15936, -320, Cities[187], Cities[188], Cities[189], Cities[190], Cities[191])
+    )
+    ____exports.Country.fromName:set(
+        "Volga",
+        __TS__New(____exports.Country, "Volga", 17088, 5184, Cities[192], Cities[193], Cities[194])
+    )
+    ____exports.Country.fromName:set(
+        "Central Russia",
+        __TS__New(____exports.Country, "Central Russia", 11584, 3392, Cities[195], Cities[196], Cities[197], Cities[198], Cities[199])
+    )
+    ____exports.Country.fromName:set(
+        "Siberia",
+        __TS__New(____exports.Country, "Siberia", 17216, 15424, Cities[200], Cities[201])
+    )
+    ____exports.Country.fromName:set(
+        "Moscow",
+        __TS__New(____exports.Country, "Moscow", 14528, 8768, Cities[202], Cities[203])
+    )
+    ____exports.Country.fromName:set(
+        "National Park",
+        __TS__New(____exports.Country, "National Park", -8640, 14400, Cities[204], Cities[205], Cities[206])
+    )
+    ____exports.Country.fromName:set(
+        "West Greeland",
+        __TS__New(____exports.Country, "West Greeland", -12864, 13888, Cities[207], Cities[208])
+    )
+    ____exports.Country.fromName:set(
+        "Wales",
+        __TS__New(____exports.Country, "Wales", -8384, 1472, Cities[209], Cities[210])
+    )
+    ____exports.Country.fromName:set(
+        "Sardinia",
+        __TS__New(____exports.Country, "Sardinia", -1856, -8256, Cities[211], Cities[212])
+    )
+    ____exports.Country.fromName:set(
+        "Crete",
+        __TS__New(____exports.Country, "Crete", 7616, -11712, Cities[213], Cities[214])
+    )
+    ____exports.Country.fromName:set(
+        "Cyprus",
+        __TS__New(____exports.Country, "Cyprus", 12608, -10944, Cities[215], Cities[216])
+    )
+end
+function Country.prototype.animate(self)
+    __TS__ArrayForEach(
+        self.cities,
+        function(____, city)
+            local effect = AddSpecialEffect(
+                "Abilities\\Spells\\Human\\Resurrect\\ResurrectCaster.mdl",
+                GetUnitX(city.barrack),
+                GetUnitY(city.barrack)
+            )
+            BlzSetSpecialEffectScale(effect, 1.1)
+            DestroyEffect(effect)
+        end
+    )
+end
+function Country.prototype.setSpawner(self, x, y, countrySize)
+    self.spawner = __TS__New(Spawner, self.name, x, y, countrySize)
+end
+function Country.prototype.setText(self, x, y)
+    local offsetX = GetUnitX(self.spawner.unit) - x
+    local offsetY = GetUnitY(self.spawner.unit) - y
+    local lengthCheck = ((((#self.name * 5.5) < 200) and (function() return #self.name * 5.5 end)) or (function() return 200 end))()
+    self.text = CreateTextTag()
+    SetTextTagText(self.text, (HexColors.TANGERINE .. " ") .. self.name, 0.028)
+    SetTextTagPos(self.text, offsetX - lengthCheck, offsetY, 16)
+    SetTextTagVisibility(self.text, true)
+    SetTextTagPermanent(self.text, true)
+end
+Country.fromName = __TS__New(Map)
+Country.fromSpawner = __TS__New(Map)
+Country.fromCity = __TS__New(Map)
+return ____exports
+ end,
+["src.app.setup.onInit"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____camera_2Dcontrols = require("src.app.camera-controls")
+local CameraControls = ____camera_2Dcontrols.default
+local ____city_2Dtype = require("src.app.country.city-type")
+local City = ____city_2Dtype.City
+local ____country_2Dtype = require("src.app.country.country-type")
+local Country = ____country_2Dtype.Country
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+local changeNames
+function changeNames()
+    __TS__ArrayForEach(
+        Players,
+        function(____, player)
+            player.name = "Player"
+        end
+    )
+end
+function ____exports.onInit()
+    if not BlzLoadTOCFile("war3mapimported\\Risk.toc") then
+        print("Failed to load TOC file!")
+    end
+    if not BlzChangeMinimapTerrainTex("minimap.blp") then
+        print("Failed to load minimap file!")
+    end
+    SetGameSpeed(MAP_SPEED_FASTEST)
+    SetMapFlag(MAP_LOCK_SPEED, true)
+    SetMapFlag(MAP_USE_HANDICAPS, true)
+    SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true)
+    SetTimeOfDay(12)
+    SetTimeOfDayScale(0)
+    SetAllyColorFilterState(0)
+    FogEnable(false)
+    FogMaskEnable(false)
+    changeNames()
+    City:init()
+    Country:init()
+    CameraControls:getInstance()
+end
+return ____exports
+ end,
+["src.app.user-interface-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____translators = require("src.libs.translators")
+local Util = ____translators.Util
+local ____hexColors = require("src.resources.hexColors")
+local HexColors = ____hexColors.HexColors
+____exports.UserInterface = __TS__Class()
+local UserInterface = ____exports.UserInterface
+UserInterface.name = "UserInterface"
+function UserInterface.prototype.____constructor(self)
+end
+function UserInterface.onLoad(self)
+    ____exports.UserInterface:setResourceFrames()
+    print(
+        tostring(
+            Util:RandomEnumKey(HexColors)
+        ) .. "Adjusting UI Resource Frames"
+    )
+    ____exports.UserInterface:hidePMOptions()
+    print(
+        tostring(
+            Util:RandomEnumKey(HexColors)
+        ) .. "Hiding Private Message Options"
+    )
+end
+function UserInterface.hideUI(self, hidden)
+    BlzHideOriginFrames(hidden)
+    BlzFrameSetVisible(
+        BlzGetFrameByName("ConsoleUIBackdrop", 0),
+        not hidden
+    )
+    BlzFrameSetVisible(
+        BlzGetFrameByName("UpperButtonBarFrame", 0),
+        not hidden
+    )
+    print(
+        tostring(
+            Util:RandomEnumKey(HexColors)
+        ) .. "Hiding User Interface"
+    )
+end
+function UserInterface.setResourceFrames(self)
+    local resourceFrame = BlzGetFrameByName("ResourceBarFrame", 0)
+    BlzFrameSetVisible(
+        BlzFrameGetChild(resourceFrame, 1),
+        false
+    )
+    BlzFrameSetVisible(
+        BlzFrameGetChild(resourceFrame, 2),
+        false
+    )
+    BlzFrameSetVisible(
+        BlzFrameGetChild(resourceFrame, 3),
+        false
+    )
+    local upkeepFrame = BlzGetFrameByName("ResourceBarUpkeepText", 0)
+    BlzFrameSetAbsPoint(upkeepFrame, FRAMEPOINT_TOPRIGHT, 0.6485, 0.5972)
+    BlzFrameSetText(upkeepFrame, "")
+    local lumberFrame = BlzGetFrameByName("ResourceBarLumberText", 0)
+    BlzFrameSetText(lumberFrame, "")
+    BlzFrameSetSize(lumberFrame, 1e-7, 1e-7)
+end
+function UserInterface.hidePMOptions(self)
+    if BlzFrameGetEnable(
+        BlzGetFrameByName("ChatPlayerRadioButton", 0)
+    ) == false then
+        __TS__ArrayPush(
+            ____exports.UserInterface.forTheReplays,
+            Location(0, 0)
+        )
+        print("PM frame did not exsist, adding handles")
+    else
+        BlzFrameSetVisible(
+            BlzGetFrameByName("ChatPlayerLabel", 0),
+            false
+        )
+        BlzFrameSetVisible(
+            BlzGetFrameByName("ChatPlayerRadioButton", 0),
+            false
+        )
+        BlzFrameSetVisible(
+            BlzGetFrameByName("ChatPlayerMenu", 0),
+            false
+        )
+        print("PM frame already exsist, hiding it")
+    end
+end
+UserInterface.forTheReplays = {}
+return ____exports
+ end,
+["src.app.setup.onLoad"] = function(...) local ____exports = {}
+local ____user_2Dinterface_2Dtype = require("src.app.user-interface-type")
+local UserInterface = ____user_2Dinterface_2Dtype.UserInterface
+local ____translators = require("src.libs.translators")
+local Util = ____translators.Util
+local ____hexColors = require("src.resources.hexColors")
+local HexColors = ____hexColors.HexColors
+local ____gameStatus = require("src.app.setup.gameStatus")
+local GameStatus = ____gameStatus.GameStatus
+function ____exports.onLoad()
+    print(
+        (((tostring(
+            Util:RandomEnumKey(HexColors)
+        ) .. "Game type is:|r ") .. tostring(
+            Util:RandomEnumKey(HexColors)
+        )) .. tostring(
+            GameStatus:getInstance()
+        )) .. "|r"
+    )
+    UserInterface:onLoad()
+end
+return ____exports
+ end,
+["src.app.game"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____index = require("lua_modules.w3ts.index")
+local Timer = ____index.Timer
+local ____onInit = require("src.app.setup.onInit")
+local onInit = ____onInit.onInit
+local ____onLoad = require("src.app.setup.onLoad")
+local onLoad = ____onLoad.onLoad
+____exports.Game = __TS__Class()
+local Game = ____exports.Game
+Game.name = "Game"
+function Game.prototype.____constructor(self)
+    onInit()
+    local loadTimer = __TS__New(Timer)
+    loadTimer:start(
+        0,
+        false,
+        function()
+            do
+                local ____try, e = pcall(
+                    function()
+                        onLoad()
+                    end
+                )
+                if not ____try then
+                    print(e)
+                end
+            end
+        end
+    )
+end
+function Game.getInstance(self)
+    if self.instance == nil then
+        self.instance = __TS__New(____exports.Game)
+    end
+    return self.instance
+end
+return ____exports
+ end,
+["src.main"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____game = require("src.app.game")
+local Game = ____game.Game
+local ____index = require("lua_modules.w3ts.index")
+local Unit = ____index.Unit
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+local ____index = require("lua_modules.w3ts.hooks.index")
+local addScriptHook = ____index.addScriptHook
+local W3TS_HOOK = ____index.W3TS_HOOK
+local function tsMain()
+    do
+        local ____try, e = pcall(
+            function()
+                Game:getInstance()
+                __TS__New(
+                    Unit,
+                    Players[1],
+                    FourCC("hfoo"),
+                    0,
+                    -150,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[1],
+                    FourCC("hfoo"),
+                    0,
+                    -300,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[1],
+                    FourCC("hfoo"),
+                    0,
+                    -450,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[1],
+                    FourCC("hfoo"),
+                    0,
+                    -600,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[2],
+                    FourCC("hfoo"),
+                    1000,
+                    -150,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[2],
+                    FourCC("hfoo"),
+                    1000,
+                    -300,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[2],
+                    FourCC("hfoo"),
+                    1000,
+                    -450,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[2],
+                    FourCC("hfoo"),
+                    1000,
+                    -600,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[3],
+                    FourCC("hfoo"),
+                    2000,
+                    -150,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[3],
+                    FourCC("hfoo"),
+                    2000,
+                    -300,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[3],
+                    FourCC("hfoo"),
+                    2000,
+                    -450,
+                    270
+                )
+                __TS__New(
+                    Unit,
+                    Players[3],
+                    FourCC("hfoo"),
+                    2000,
+                    -600,
+                    270
+                )
+            end
+        )
+        if not ____try then
+            print(e)
+        end
+    end
+end
+addScriptHook(W3TS_HOOK.MAIN_AFTER, tsMain)
+return ____exports
+ end,
+["src.app.commands.command-processor"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____camera_2Dcontrols = require("src.app.camera-controls")
+local CameraControls = ____camera_2Dcontrols.default
+local PlayerCamData = ____camera_2Dcontrols.PlayerCamData
+____exports.CommandProcessor = function()
+    local t = CreateTrigger()
+    do
+        local i = 0
+        while i < bj_MAX_PLAYERS do
+            TriggerRegisterPlayerChatEvent(
+                t,
+                Player(i),
+                "-",
+                false
+            )
+            i = i + 1
+        end
+    end
+    TriggerAddCondition(
+        t,
+        Condition(
+            function()
+                local command = __TS__StringSplit(
+                    GetEventPlayerChatString(),
+                    " "
+                )[1]
+                local tPlayer = GetTriggerPlayer()
+                repeat
+                    local ____switch5 = command
+                    local camData, distance, angle, rotation
+                    local ____cond5 = ____switch5 == "-cam"
+                    if ____cond5 then
+                        camData = {}
+                        distance = __TS__StringSplit(
+                            GetEventPlayerChatString(),
+                            " "
+                        )[2]
+                        angle = __TS__StringSplit(
+                            GetEventPlayerChatString(),
+                            " "
+                        )[3]
+                        rotation = __TS__StringSplit(
+                            GetEventPlayerChatString(),
+                            " "
+                        )[4]
+                        if distance and S2R(distance) then
+                            __TS__ArrayPush(camData, distance)
+                        end
+                        if angle and S2R(angle) then
+                            __TS__ArrayPush(camData, angle)
+                        end
+                        if rotation and S2R(rotation) then
+                            __TS__ArrayPush(camData, rotation)
+                        end
+                        CameraControls:getInstance():checkCamData(
+                            PlayerCamData:get(tPlayer),
+                            camData
+                        )
+                        break
+                    end
+                    do
+                        break
+                    end
+                until true
+                return true
+            end
+        )
+    )
+end
+return ____exports
+ end,
+["src.libs.EncodingBase64"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local PADCHAR = "="
+local ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+____exports.EncodingBase64 = __TS__Class()
+local EncodingBase64 = ____exports.EncodingBase64
+EncodingBase64.name = "EncodingBase64"
+function EncodingBase64.prototype.____constructor(self)
+end
+function EncodingBase64.getbyte64(self, s, i)
+    local idx = (string.find(
+        ALPHA,
+        __TS__StringCharAt(s, i),
+        nil,
+        true
+    ) or 0) - 1
+    if idx == -1 then
+        error("Cannot decode base64", 0)
+    end
+    return idx
+end
+function EncodingBase64.Decode(self, s)
+    local pads
+    local i
+    local b10
+    local imax = #s
+    if imax == 0 then
+        return s
+    end
+    if (imax % 4) ~= 0 then
+        error("Cannot decode base64", 0)
+    end
+    pads = 0
+    if __TS__StringCharAt(s, imax - 1) == PADCHAR then
+        pads = 1
+        if __TS__StringCharAt(s, imax - 2) == PADCHAR then
+            pads = 2
+        end
+        imax = imax - 4
+    end
+    local x = {}
+    do
+        i = 0
+        while i < imax do
+            b10 = (((self:getbyte64(s, i) << 18) | (self:getbyte64(s, i + 1) << 12)) | (self:getbyte64(s, i + 2) << 6)) | self:getbyte64(s, i + 3)
+            __TS__ArrayPush(
+                x,
+                string.char(b10 >> 16, (b10 >> 8) & 255, b10 & 255)
+            )
+            i = i + 4
+        end
+    end
+    repeat
+        local ____switch11 = pads
+        local ____cond11 = ____switch11 == 1
+        if ____cond11 then
+            b10 = ((self:getbyte64(s, i) << 18) | (self:getbyte64(s, i + 1) << 12)) | (self:getbyte64(s, i + 2) << 6)
+            __TS__ArrayPush(
+                x,
+                string.char(b10 >> 16, (b10 >> 8) & 255)
+            )
+            break
+        end
+        ____cond11 = ____cond11 or (____switch11 == 2)
+        if ____cond11 then
+            b10 = (self:getbyte64(s, i) << 18) | (self:getbyte64(s, i + 1) << 12)
+            __TS__ArrayPush(
+                x,
+                string.char(b10 >> 16)
+            )
+            break
+        end
+    until true
+    return table.concat(x, "" or ",")
+end
+function EncodingBase64.getbyte(self, s, i)
+    local x = __TS__StringCharCodeAt(s, i)
+    if x > 255 then
+        error("INVALID_CHARACTER_ERR: DOM Exception 5", 0)
+    end
+    return x
+end
+function EncodingBase64.Encode(self, s)
+    local b10
+    local i
+    local x = {}
+    local imax = #s - (#s % 3)
+    if #s == 0 then
+        return s
+    end
+    do
+        i = 0
+        while i < imax do
+            b10 = ((self:getbyte(s, i) << 16) | (self:getbyte(s, i + 1) << 8)) | self:getbyte(s, i + 2)
+            __TS__ArrayPush(
+                x,
+                __TS__StringCharAt(ALPHA, b10 >> 18)
+            )
+            __TS__ArrayPush(
+                x,
+                __TS__StringCharAt(ALPHA, (b10 >> 12) & 63)
+            )
+            __TS__ArrayPush(
+                x,
+                __TS__StringCharAt(ALPHA, (b10 >> 6) & 63)
+            )
+            __TS__ArrayPush(
+                x,
+                __TS__StringCharAt(ALPHA, b10 & 63)
+            )
+            i = i + 3
+        end
+    end
+    repeat
+        local ____switch17 = #s - imax
+        local ____cond17 = ____switch17 == 1
+        if ____cond17 then
+            b10 = self:getbyte(s, i) << 16
+            __TS__ArrayPush(
+                x,
+                ((__TS__StringCharAt(ALPHA, b10 >> 18) .. __TS__StringCharAt(ALPHA, (b10 >> 12) & 63)) .. PADCHAR) .. PADCHAR
+            )
+            break
+        end
+        ____cond17 = ____cond17 or (____switch17 == 2)
+        if ____cond17 then
+            b10 = (self:getbyte(s, i) << 16) | (self:getbyte(s, i + 1) << 8)
+            __TS__ArrayPush(
+                x,
+                ((__TS__StringCharAt(ALPHA, b10 >> 18) .. __TS__StringCharAt(ALPHA, (b10 >> 12) & 63)) .. __TS__StringCharAt(ALPHA, (b10 >> 6) & 63)) .. PADCHAR
+            )
+            break
+        end
+    until true
+    return table.concat(x, "" or ",")
+end
+return ____exports
+ end,
+["src.libs.EncodingHex"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.EncodingHex = __TS__Class()
+local EncodingHex = ____exports.EncodingHex
+EncodingHex.name = "EncodingHex"
+function EncodingHex.prototype.____constructor(self)
+end
+function EncodingHex.To32BitHexString(self, num)
+    return string.format("%08X", num)
+end
+function EncodingHex.ToNumber(self, someHexString)
+    return tonumber(someHexString, 16) or 0
+end
+return ____exports
+ end,
+["src.libs.MultiMap"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.MultiMap = __TS__Class()
+local MultiMap = ____exports.MultiMap
+MultiMap.name = "MultiMap"
+function MultiMap.prototype.____constructor(self)
+    self.data = __TS__New(Map)
+end
+function MultiMap.prototype.get(self, k1, k2)
+    if self.data:has(k1) then
+        return self.data:get(k1):get(k2)
+    end
+end
+function MultiMap.prototype.set(self, k1, k2, val)
+    if not self.data:has(k1) then
+        self.data:set(
+            k1,
+            __TS__New(Map)
+        )
+    end
+    return self.data:get(k1):set(k2, val)
+end
+function MultiMap.prototype.delete(self, k1, k2)
+    if self.data:has(k1) then
+        self.data:get(k1):delete(k2)
+    end
+end
+function MultiMap.prototype.clear(self)
+    self.data:clear()
+end
+return ____exports
+ end,
+["src.libs.Quick"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.Quick = {}
+local Quick = ____exports.Quick
+do
+    function Quick.Tokenize(val)
+        local result = {}
+        local str = string.gmatch(val, "%S+")
+        for x, y, z in str do
+            __TS__ArrayPush(result, x)
+        end
+        return result
+    end
+    function Quick.ReplaceVowelWith(str, fnc)
+        local result = ""
+        do
+            local index = 0
+            while index < (#str - 1) do
+                local c = string.lower(
+                    __TS__StringAccess(str, index)
+                )
+                if (((((c == "a") or (c == "e")) or (c == "o")) or (c == "i")) or (c == "y")) or (c == "u") then
+                    if __TS__StringAccess(str, index) == c then
+                        result = result .. fnc(c)
+                    else
+                        result = result .. string.upper(
+                            fnc(c)
+                        )
+                    end
+                else
+                    result = result .. __TS__StringAccess(str, index)
+                end
+                index = index + 1
+            end
+        end
+        return result
+    end
+    function Quick.Slice(arr, index)
+        arr[index + 1] = arr[#arr]
+        __TS__Delete(arr, #arr)
+    end
+    function Quick.Push(arr, value)
+        arr[#arr + 1] = value
+    end
+    function Quick.Clear(arr)
+        local count = #arr
+        do
+            local i = 0
+            while i < count do
+                __TS__Delete(arr, i + 1)
+                i = i + 1
+            end
+        end
+    end
+    function Quick.GroupToUnitArray(g)
+        local units = {}
+        local val = FirstOfGroup(g)
+        while val ~= nil do
+            Quick.Push(units, val)
+            GroupRemoveUnit(g, val)
+            val = FirstOfGroup(g)
+        end
+        return units
+    end
+    function Quick.GroupToUnitArrayDestroy(g)
+        local units = Quick.GroupToUnitArray(g)
+        DestroyGroup(g)
+        return units
+    end
+    function Quick.UnitArrayToGroup(g)
+        local units = CreateGroup()
+        do
+            local i = 0
+            while i < #g do
+                GroupAddUnit(units, g[i + 1])
+                i = i + 1
+            end
+        end
+        return units
+    end
+    function Quick.GetRandomFromArray(a, howMany)
+        if howMany == nil then
+            howMany = 1
+        end
+        if (not a) or (#a == 0) then
+            return a
+        end
+        local n = math.min(#a, howMany)
+        local result = __TS__ArraySlice(a)
+        do
+            local index = 0
+            while index < #result do
+                local j = GetRandomInt(0, index)
+                local a = result[index + 1]
+                local b = result[j + 1]
+                result[index + 1] = b
+                result[j + 1] = a
+                index = index + 1
+            end
+        end
+        return __TS__ArraySlice(result, 0, n)
+    end
+    function Quick.Clamp(value, min, max)
+        if value > max then
+            value = max
+        elseif value < min then
+            value = min
+        end
+        return value
+    end
+    function Quick.isBlank(s)
+        return ((string.find("\n ", s, nil, true) or 0) - 1) >= 0
+    end
+    function Quick.UnpackStringNewlines(value)
+        local allLines = {}
+        local currentLine = ""
+        local previousChar = ""
+        local skipToRealChar = true
+        do
+            local i = 0
+            while i < #value do
+                do
+                    local currentChar = __TS__StringCharAt(value, i)
+                    if Quick.isBlank(currentChar) and (previousChar == "\n") then
+                        skipToRealChar = true
+                        goto __continue28
+                    end
+                    if (currentChar == "\n") and (not skipToRealChar) then
+                        __TS__ArrayPush(allLines, currentLine)
+                        currentLine = ""
+                    else
+                        currentLine = currentLine .. currentChar
+                        skipToRealChar = false
+                    end
+                    previousChar = currentChar
+                end
+                ::__continue28::
+                i = i + 1
+            end
+        end
+        if #currentLine > 0 then
+            __TS__ArrayPush(allLines, currentLine)
+        end
+        return allLines
+    end
+end
+return ____exports
+ end,
+["src.libs.SmartTrigger"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____index = require("lua_modules.w3ts.index")
+local Trigger = ____index.Trigger
+____exports.SmartTrigger = __TS__Class()
+local SmartTrigger = ____exports.SmartTrigger
+SmartTrigger.name = "SmartTrigger"
+__TS__ClassExtends(SmartTrigger, Trigger)
+function SmartTrigger.prototype.____constructor(self, ...)
+    Trigger.prototype.____constructor(self, ...)
+    self.conditions = {}
+    self.actions = {}
+end
+function SmartTrigger.prototype.addCondition(self, condition)
+    local cnd = Trigger.prototype.addCondition(self, condition)
+    __TS__ArrayPush(self.conditions, cnd)
+    return cnd
+end
+function SmartTrigger.prototype.addAction(self, actionFunc)
+    local act = Trigger.prototype.addAction(self, actionFunc)
+    __TS__ArrayPush(self.actions, act)
+    return act
+end
+function SmartTrigger.prototype.destroy(self)
+    do
+        local index = 0
+        while index < #self.conditions do
+            local cnd = self.conditions[index + 1]
+            TriggerRemoveCondition(self.handle, cnd)
+            index = index + 1
+        end
+    end
+    do
+        local index = 0
+        while index < #self.actions do
+            local action = self.actions[index + 1]
+            TriggerRemoveAction(self.handle, action)
+            index = index + 1
+        end
+    end
+    Trigger.prototype.destroy(self)
+end
+return ____exports
+ end,
+["src.libs.StringBuilder"] = function(...) require("lualib_bundle");
+local ____exports = {}
+function ____exports.rgbToString(color, ...)
+    local input = {...}
+    local ret = (("|cFF" .. string.format("%02x", color.red)) .. string.format("%02x", color.green)) .. string.format("%02x", color.blue)
+    do
+        local i = 0
+        while i < #input do
+            ret = ret .. tostring(input[i + 1])
+            ret = ret .. " "
+            i = i + 1
+        end
+    end
+    ret = ret .. "|r"
+    return ret
+end
+____exports.StringBuilder = __TS__Class()
+local StringBuilder = ____exports.StringBuilder
+StringBuilder.name = "StringBuilder"
+function StringBuilder.prototype.____constructor(self, ...)
+    local initialD = {...}
+    self.contentArray = {}
+    self.newLine = "\n"
+    self:append(
+        table.unpack(initialD)
+    )
+end
+function StringBuilder.prototype.append(self, ...)
+    local input = {...}
+    do
+        local i = 0
+        while i < #input do
+            __TS__ArrayPush(
+                self.contentArray,
+                tostring(input[i + 1])
+            )
+            i = i + 1
+        end
+    end
+    return self
+end
+function StringBuilder.prototype.appendColored(self, input, color)
+    __TS__ArrayPush(
+        self.contentArray,
+        ____exports.rgbToString(
+            color,
+            tostring(input)
+        )
+    )
+    return self
+end
+function StringBuilder.prototype.appendLine(self, ...)
+    local input = {...}
+    do
+        local i = 0
+        while i < #input do
+            __TS__ArrayPush(
+                self.contentArray,
+                tostring(input[i + 1])
+            )
+            __TS__ArrayPush(self.contentArray, self.newLine)
+            i = i + 1
+        end
+    end
+    return self
+end
+function StringBuilder.prototype.appendColoredLine(self, input, color)
+    __TS__ArrayPush(
+        self.contentArray,
+        ____exports.rgbToString(
+            color,
+            tostring(input)
+        )
+    )
+    __TS__ArrayPush(self.contentArray, self.newLine)
+    return self
+end
+function StringBuilder.prototype.removeLine(self)
+    local value = table.remove(self.contentArray)
+    local len = #self.contentArray
+    do
+        local i = 0
+        while i <= len do
+            value = self.contentArray[i + 1]
+            if (value == self.newLine) or (value == nil) then
+                break
+            else
+                table.remove(self.contentArray)
+            end
+            i = i - 1
+        end
+    end
+    return self
+end
+function StringBuilder.prototype.__tostring(self)
+    return table.concat(self.contentArray)
+end
+return ____exports
+ end,
+["src.libs.SyncSaveLoad"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____EncodingBase64 = require("src.libs.EncodingBase64")
+local EncodingBase64 = ____EncodingBase64.EncodingBase64
+local ____EncodingHex = require("src.libs.EncodingHex")
+local EncodingHex = ____EncodingHex.EncodingHex
+local ____StringBuilder = require("src.libs.StringBuilder")
+local StringBuilder = ____StringBuilder.StringBuilder
+____exports.SyncSaveLoad = __TS__Class()
+local SyncSaveLoad = ____exports.SyncSaveLoad
+SyncSaveLoad.name = "SyncSaveLoad"
+function SyncSaveLoad.prototype.____constructor(self)
+    self.syncPrefix = "S_TIO"
+    self.syncPrefixFinish = "S_TIOF"
+    self.syncEvent = CreateTrigger()
+    self.allPromises = {}
+    do
+        local i = 0
+        while i < GetBJMaxPlayers() do
+            BlzTriggerRegisterPlayerSyncEvent(
+                self.syncEvent,
+                Player(i),
+                self.syncPrefix,
+                false
+            )
+            BlzTriggerRegisterPlayerSyncEvent(
+                self.syncEvent,
+                Player(i),
+                self.syncPrefixFinish,
+                false
+            )
+            i = i + 1
+        end
+    end
+    TriggerAddAction(
+        self.syncEvent,
+        function() return self:onSync() end
+    )
+end
+function SyncSaveLoad.getInstance(self)
+    if self.instance == nil then
+        self.instance = __TS__New(____exports.SyncSaveLoad)
+    end
+    return self.instance
+end
+function SyncSaveLoad.prototype.writeFile(self, filename, ...)
+    PreloadGenClear()
+    PreloadGenStart()
+    local rawData = tostring(
+        __TS__New(StringBuilder, ...)
+    )
+    local toCompile = EncodingBase64:Encode(rawData)
+    local chunkSize = 180
+    local assemble = ""
+    local noOfChunks = math.ceil(#toCompile / chunkSize)
+    xpcall(
+        function()
+            do
+                local i = 0
+                while i < #toCompile do
+                    assemble = assemble .. __TS__StringCharAt(toCompile, i)
+                    if #assemble >= chunkSize then
+                        local header = EncodingHex:To32BitHexString(noOfChunks) .. EncodingHex:To32BitHexString(
+                            math.ceil(i / chunkSize)
+                        )
+                        Preload(((("\")\ncall BlzSendSyncData(\"" .. self.syncPrefix) .. "\",\"") .. (header .. assemble)) .. "\")\ncall S2I(\"")
+                        assemble = ""
+                    end
+                    i = i + 1
+                end
+            end
+            if #assemble > 0 then
+                local header = EncodingHex:To32BitHexString(noOfChunks) .. EncodingHex:To32BitHexString(noOfChunks)
+                Preload(((("\")\ncall BlzSendSyncData(\"" .. self.syncPrefix) .. "\",\"") .. (header .. assemble)) .. "\")\ncall S2I(\"")
+            end
+        end,
+        nil
+    )
+    PreloadGenEnd(filename)
+end
+function SyncSaveLoad.prototype.isPlayerAllowedToRead(self, reader)
+    return self.allPromises[GetPlayerId(reader) + 1] == nil
+end
+function SyncSaveLoad.prototype.read(self, filename, reader, onFinish)
+    if self.allPromises[GetPlayerId(reader) + 1] == nil then
+        self.allPromises[GetPlayerId(reader) + 1] = __TS__New(____exports.FilePromise, reader, onFinish)
+        if GetLocalPlayer() == reader then
+            PreloadStart()
+            Preloader(filename)
+            PreloadEnd(1)
+            BlzSendSyncData(self.syncPrefixFinish, "")
+        end
+    else
+    end
+    return self.allPromises[GetPlayerId(reader) + 1]
+end
+function SyncSaveLoad.prototype.onSync(self)
+    xpcall(
+        function()
+            local readData = BlzGetTriggerSyncData()
+            local totalChunkSize = EncodingHex:ToNumber(
+                __TS__StringSubstr(readData, 0, 8)
+            )
+            local currentChunk = EncodingHex:ToNumber(
+                __TS__StringSubstr(readData, 8, 8)
+            )
+            local theRest = __TS__StringSubstr(readData, 16)
+            local promise = self.allPromises[GetPlayerId(
+                GetTriggerPlayer()
+            ) + 1]
+            if promise then
+                if BlzGetTriggerSyncPrefix() == self.syncPrefix then
+                    promise.buffer[currentChunk] = theRest
+                elseif BlzGetTriggerSyncPrefix() == self.syncPrefixFinish then
+                    promise:finish()
+                    self.allPromises[GetPlayerId(promise.syncOwner) + 1] = nil
+                end
+            else
+            end
+        end,
+        nil
+    )
+end
+____exports.FilePromise = __TS__Class()
+local FilePromise = ____exports.FilePromise
+FilePromise.name = "FilePromise"
+function FilePromise.prototype.____constructor(self, syncOwner, onFinish)
+    self.syncOwner = syncOwner
+    self.onFinish = onFinish
+    self.hasLoaded = false
+    self.buffer = {}
+    self.finalString = ""
+end
+function FilePromise.prototype.finish(self)
+    self.hasLoaded = true
+    local loadString = tostring(
+        __TS__New(
+            StringBuilder,
+            table.unpack(self.buffer)
+        )
+    )
+    self.finalString = EncodingBase64:Decode(loadString)
+    if self.onFinish ~= nil then
+        self.onFinish(self)
+    end
+end
+return ____exports
+ end,
+["src.libs.dummy"] = function(...) local ____exports = {}
+function ____exports.DummyCast(callback, abilityToCast)
+    do
+        local dummyUnit = CreateUnit(
+            Player(25),
+            FourCC("dumy"),
+            0,
+            0,
+            bj_UNIT_FACING
+        )
+        ShowUnit(dummyUnit, false)
+        UnitAddAbility(dummyUnit, abilityToCast)
+        callback(dummyUnit)
+        UnitApplyTimedLife(dummyUnit, 0, 3)
+    end
+end
+return ____exports
+ end,
+["src.resources.buffID"] = function(...) local ____exports = {}
+____exports.BID = {
+    UNHOLY_FRENZY = FourCC("b000"),
+    FRENZY = FourCC("b001"),
+    BERSERK = FourCC("b002")
+}
+return ____exports
+ end,
+["src.resources.filters"] = function(...) local ____exports = {}
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+____exports.FilterIsOwnedSpawner = function(p) return Filter(
+    function()
+        local u = GetFilterUnit()
+        return ((((GetUnitTypeId(u) == UID.SPAWNER) and (GetOwningPlayer(u) == p.handle)) and (function() return true end)) or (function() return false end))()
+    end
+) end
+return ____exports
+ end,
+}
+return require("src.main", ...)

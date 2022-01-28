@@ -8576,8 +8576,1038 @@ function GameStatus.prototype.__tostring(self)
 end
 return ____exports
  end,
+["src.app.camera-controls"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local CamSettings = CamSettings or ({})
+CamSettings.MIN_DISTANCE = 1000
+CamSettings[CamSettings.MIN_DISTANCE] = "MIN_DISTANCE"
+CamSettings.MAX_DISTANCE = 8500
+CamSettings[CamSettings.MAX_DISTANCE] = "MAX_DISTANCE"
+CamSettings.DEFAULT_DISTANCE = 4000
+CamSettings[CamSettings.DEFAULT_DISTANCE] = "DEFAULT_DISTANCE"
+CamSettings.MIN_ANGLE = 270
+CamSettings[CamSettings.MIN_ANGLE] = "MIN_ANGLE"
+CamSettings.MAX_ANGLE = 350
+CamSettings[CamSettings.MAX_ANGLE] = "MAX_ANGLE"
+CamSettings.DEFAULT_ANGLE = 290
+CamSettings[CamSettings.DEFAULT_ANGLE] = "DEFAULT_ANGLE"
+CamSettings.MIN_ROTATION = 0
+CamSettings[CamSettings.MIN_ROTATION] = "MIN_ROTATION"
+CamSettings.MAX_ROTATION = 360
+CamSettings[CamSettings.MAX_ROTATION] = "MAX_ROTATION"
+CamSettings.DEFAULT_ROTATION = 90
+CamSettings[CamSettings.DEFAULT_ROTATION] = "DEFAULT_ROTATION"
+____exports.PlayerCamData = __TS__New(Map)
+____exports.default = (function()
+    ____exports.default = __TS__Class()
+    local CameraControls = ____exports.default
+    CameraControls.name = "CameraControls"
+    function CameraControls.prototype.____constructor(self)
+        do
+            local i = 0
+            while i < bj_MAX_PLAYER_SLOTS do
+                if (GetPlayerSlotState(
+                    Player(i)
+                ) == PLAYER_SLOT_STATE_PLAYING) and (GetPlayerController(
+                    Player(i)
+                ) == MAP_CONTROL_USER) then
+                    local data = {distance = CamSettings.DEFAULT_DISTANCE, angle = CamSettings.DEFAULT_ANGLE, rotation = CamSettings.DEFAULT_ROTATION}
+                    ____exports.PlayerCamData:set(
+                        Player(i),
+                        data
+                    )
+                    data = nil
+                end
+                i = i + 1
+            end
+        end
+        self:camReset()
+    end
+    function CameraControls.getInstance(self)
+        if self.instance == nil then
+            self.instance = __TS__New(____exports.default)
+        end
+        return self.instance
+    end
+    function CameraControls.prototype.checkCamData(self, data, vals)
+        if vals[1] then
+            self:checkDistance(
+                data,
+                S2R(vals[1])
+            )
+        end
+        if vals[2] then
+            self:checkAngle(
+                data,
+                S2R(vals[2])
+            )
+        end
+        if vals[3] then
+            self:checkRotation(
+                data,
+                S2R(vals[3])
+            )
+        end
+    end
+    function CameraControls.prototype.camReset(self)
+        local resetTimer = CreateTimer()
+        TimerStart(
+            resetTimer,
+            0.5,
+            true,
+            function()
+                do
+                    local i = 0
+                    while i < bj_MAX_PLAYER_SLOTS do
+                        self:setCameraFields(
+                            Player(i),
+                            ____exports.PlayerCamData:get(
+                                Player(i)
+                            )
+                        )
+                        i = i + 1
+                    end
+                end
+            end
+        )
+    end
+    function CameraControls.prototype.checkDistance(self, data, val)
+        if val > CamSettings.MAX_DISTANCE then
+            val = CamSettings.MAX_DISTANCE
+        end
+        if val < CamSettings.MIN_DISTANCE then
+            val = CamSettings.MIN_DISTANCE
+        end
+        return (function(o, i, v)
+            o[i] = v
+            return v
+        end)(data, "distance", val)
+    end
+    function CameraControls.prototype.checkAngle(self, data, val)
+        if val > CamSettings.MAX_ANGLE then
+            val = CamSettings.MAX_ANGLE
+        end
+        if val < CamSettings.MIN_ANGLE then
+            val = CamSettings.MIN_ANGLE
+        end
+        return (function(o, i, v)
+            o[i] = v
+            return v
+        end)(data, "angle", val)
+    end
+    function CameraControls.prototype.checkRotation(self, data, val)
+        if val > CamSettings.MAX_ROTATION then
+            val = CamSettings.MAX_ROTATION
+        end
+        if val < CamSettings.MIN_ROTATION then
+            val = CamSettings.MIN_ROTATION
+        end
+        return (function(o, i, v)
+            o[i] = v
+            return v
+        end)(data, "rotation", val)
+    end
+    function CameraControls.prototype.setCameraFields(self, p, data)
+        SetCameraFieldForPlayer(p, CAMERA_FIELD_TARGET_DISTANCE, data.distance, 0)
+        SetCameraFieldForPlayer(p, CAMERA_FIELD_ANGLE_OF_ATTACK, data.angle, 0)
+        SetCameraFieldForPlayer(p, CAMERA_FIELD_ROTATION, data.rotation, 0)
+        SetCameraFieldForPlayer(p, CAMERA_FIELD_FARZ, 10000, 0)
+    end
+    return CameraControls
+end)()
+return ____exports
+ end,
+["src.resources.unitID"] = function(...) local ____exports = {}
+____exports.UID = {
+    CITY = FourCC("h000"),
+    PORT = FourCC("h001"),
+    CONTROL_POINT = FourCC("h002"),
+    SPAWNER = FourCC("h004"),
+    RIFLEMEN = FourCC("u000"),
+    MEDIC = FourCC("u001"),
+    MORTAR = FourCC("u002"),
+    ROARER = FourCC("u003"),
+    KNIGHT = FourCC("u004"),
+    GENERAL = FourCC("u005"),
+    ARTILLERY = FourCC("u006"),
+    TANK = FourCC("u007"),
+    MARINE = FourCC("u008"),
+    CAPTAIN = FourCC("u009"),
+    ADMIRAL = FourCC("u010"),
+    TRANSPORT_SHIP = FourCC("s000"),
+    ARMORED_TRANSPORT_SHIP = FourCC("s001"),
+    WARSHIP_A = FourCC("s002"),
+    WARSHIP_B = FourCC("s003"),
+    BATTLESHIP_SS = FourCC("s004"),
+    DUMMY_GUARD = FourCC("u050"),
+    CAMERA_LOCK_UNIT = FourCC("u051"),
+    PLAYER_TOOLS = FourCC("H000")
+}
+return ____exports
+ end,
+["src.resources.unitTypes"] = function(...) local ____exports = {}
+____exports.UTYPE = {SPAWN = UNIT_TYPE_UNDEAD, GUARD = UNIT_TYPE_SAPPER}
+return ____exports
+ end,
+["src.app.country.city-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+local ____unitTypes = require("src.resources.unitTypes")
+local UTYPE = ____unitTypes.UTYPE
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+____exports.Cities = {}
+____exports.CityRegionSize = 185
+____exports.City = __TS__Class()
+local City = ____exports.City
+City.name = "City"
+function City.prototype.____constructor(self, x, y, barrackType, name, guardType)
+    if guardType == nil then
+        guardType = UID.RIFLEMEN
+    end
+    self.defaultBarrackType = barrackType
+    self:setBarrack(x, y, name)
+    local offSetX = x - 125
+    local offSetY = y - 255
+    local rect = Rect(offSetX - (____exports.CityRegionSize / 2), offSetY - (____exports.CityRegionSize / 2), offSetX + (____exports.CityRegionSize / 2), offSetY + (____exports.CityRegionSize / 2))
+    self.x = GetRectCenterX(rect)
+    self.y = GetRectCenterY(rect)
+    self.region = CreateRegion()
+    RegionAddRect(self.region, rect)
+    RemoveRect(rect)
+    ____exports.City.fromRegion:set(self.region, self)
+    self.cop = CreateUnit(Players[25].handle, UID.CONTROL_POINT, offSetX, offSetY, 270)
+    self.defaultGuardType = guardType
+    self:setGuard(guardType)
+end
+__TS__SetDescriptor(
+    City.prototype,
+    "barrack",
+    {
+        get = function(self)
+            return self._barrack
+        end
+    },
+    true
+)
+function City.init(self)
+    ____exports.Cities[1] = __TS__New(____exports.City, 320, 320, UID.CITY)
+    ____exports.Cities[2] = __TS__New(____exports.City, -832, 64, UID.CITY)
+    ____exports.Cities[3] = __TS__New(____exports.City, 320, -1024, UID.CITY)
+    ____exports.Cities[4] = __TS__New(____exports.City, -1472, -1024, UID.CITY)
+    ____exports.Cities[5] = __TS__New(____exports.City, -1408, -2432, UID.CITY)
+    ____exports.Cities[6] = __TS__New(____exports.City, -384, -2944, UID.CITY)
+    ____exports.Cities[7] = __TS__New(____exports.City, 3584, 128, UID.CITY)
+    ____exports.Cities[8] = __TS__New(____exports.City, 1664, -384, UID.CITY)
+    ____exports.Cities[9] = __TS__New(____exports.City, 2048, 832, UID.CITY)
+    ____exports.Cities[10] = __TS__New(____exports.City, 4032, -1152, UID.CITY)
+    ____exports.Cities[11] = __TS__New(____exports.City, 768, -2048, UID.CITY)
+    ____exports.Cities[12] = __TS__New(____exports.City, 2112, -1664, UID.CITY)
+    ____exports.Cities[13] = __TS__New(____exports.City, 1408, -3008, UID.CITY)
+    ____exports.Cities[14] = __TS__New(____exports.City, 448, -3648, UID.CITY)
+    ____exports.Cities[15] = __TS__New(____exports.City, 1856, -4032, UID.CITY)
+    ____exports.Cities[16] = __TS__New(____exports.City, 896, -4736, UID.CITY)
+    ____exports.Cities[17] = __TS__New(____exports.City, 2880, -4864, UID.CITY)
+    ____exports.Cities[18] = __TS__New(____exports.City, 1920, -5760, UID.CITY)
+    ____exports.Cities[19] = __TS__New(____exports.City, 3456, -5632, UID.CITY)
+    ____exports.Cities[20] = __TS__New(____exports.City, 2752, -6656, UID.CITY)
+    ____exports.Cities[21] = __TS__New(____exports.City, 3776, -6656, UID.CITY)
+    ____exports.Cities[22] = __TS__New(____exports.City, 4736, -6720, UID.CITY)
+    ____exports.Cities[23] = __TS__New(____exports.City, 4416, -4992, UID.CITY)
+    ____exports.Cities[24] = __TS__New(____exports.City, 5248, -5568, UID.CITY)
+    ____exports.Cities[25] = __TS__New(____exports.City, 5952, -6848, UID.CITY)
+    ____exports.Cities[26] = __TS__New(____exports.City, 5440, -7872, UID.CITY)
+    ____exports.Cities[27] = __TS__New(____exports.City, 4736, -8768, UID.CITY)
+    ____exports.Cities[28] = __TS__New(____exports.City, 3680, -7904, UID.PORT)
+    ____exports.Cities[29] = __TS__New(____exports.City, 7168, -7616, UID.CITY)
+    ____exports.Cities[30] = __TS__New(____exports.City, 6112, -11232, UID.PORT)
+    ____exports.Cities[31] = __TS__New(____exports.City, 6464, -9472, UID.CITY)
+    ____exports.Cities[32] = __TS__New(____exports.City, 5504, -9536, UID.CITY)
+    ____exports.Cities[33] = __TS__New(____exports.City, 6784, -6016, UID.CITY)
+    ____exports.Cities[34] = __TS__New(____exports.City, 7808, -5952, UID.CITY)
+    ____exports.Cities[35] = __TS__New(____exports.City, 5184, -3968, UID.CITY)
+    ____exports.Cities[36] = __TS__New(____exports.City, 6144, -4864, UID.CITY)
+    ____exports.Cities[37] = __TS__New(____exports.City, 7616, -4672, UID.CITY)
+    ____exports.Cities[38] = __TS__New(____exports.City, 6528, -3456, UID.CITY)
+    ____exports.Cities[39] = __TS__New(____exports.City, 7296, -2496, UID.CITY)
+    ____exports.Cities[40] = __TS__New(____exports.City, 8384, -3136, UID.CITY)
+    ____exports.Cities[41] = __TS__New(____exports.City, 6080, -2048, UID.CITY)
+    ____exports.Cities[42] = __TS__New(____exports.City, 5696, -1024, UID.CITY)
+    ____exports.Cities[43] = __TS__New(____exports.City, 7232, -832, UID.CITY)
+    ____exports.Cities[44] = __TS__New(____exports.City, 9344, -1984, UID.CITY)
+    ____exports.Cities[45] = __TS__New(____exports.City, 10240, -384, UID.CITY)
+    ____exports.Cities[46] = __TS__New(____exports.City, 11328, -1664, UID.CITY)
+    ____exports.Cities[47] = __TS__New(____exports.City, 10048, -9280, UID.CITY)
+    ____exports.Cities[48] = __TS__New(____exports.City, 11072, -7168, UID.CITY)
+    ____exports.Cities[49] = __TS__New(____exports.City, 12288, -8192, UID.CITY)
+    ____exports.Cities[50] = __TS__New(____exports.City, 16704, -6080, UID.CITY)
+    ____exports.Cities[51] = __TS__New(____exports.City, 15424, -7360, UID.CITY)
+    ____exports.Cities[52] = __TS__New(____exports.City, 11360, -10336, UID.PORT)
+    ____exports.Cities[53] = __TS__New(____exports.City, 8800, -7392, UID.PORT)
+    ____exports.Cities[54] = __TS__New(____exports.City, 16064, -4096, UID.CITY)
+    ____exports.Cities[55] = __TS__New(____exports.City, 14976, -3648, UID.CITY)
+    ____exports.Cities[56] = __TS__New(____exports.City, 17472, -9664, UID.CITY)
+    ____exports.Cities[57] = __TS__New(____exports.City, 16064, -9408, UID.CITY)
+    ____exports.Cities[58] = __TS__New(____exports.City, 16512, -10880, UID.CITY)
+    ____exports.Cities[59] = __TS__New(____exports.City, 14784, -9600, UID.CITY)
+    ____exports.Cities[60] = __TS__New(____exports.City, 14976, -11136, UID.CITY)
+    ____exports.Cities[61] = __TS__New(____exports.City, 15808, -12224, UID.CITY)
+    ____exports.Cities[62] = __TS__New(____exports.City, 14976, -13440, UID.CITY)
+    ____exports.Cities[63] = __TS__New(____exports.City, 13900, -12320, UID.PORT)
+    ____exports.Cities[64] = __TS__New(____exports.City, 17344, -12480, UID.CITY)
+    ____exports.Cities[65] = __TS__New(____exports.City, 17728, -13440, UID.CITY)
+    ____exports.Cities[66] = __TS__New(____exports.City, 16128, -14272, UID.CITY)
+    ____exports.Cities[67] = __TS__New(____exports.City, 14400, -14784, UID.CITY)
+    ____exports.Cities[68] = __TS__New(____exports.City, 12480, -14080, UID.CITY)
+    ____exports.Cities[69] = __TS__New(____exports.City, 12928, -15104, UID.CITY)
+    ____exports.Cities[70] = __TS__New(____exports.City, 9408, -15104, UID.CITY)
+    ____exports.Cities[71] = __TS__New(____exports.City, 7680, -14528, UID.CITY)
+    ____exports.Cities[72] = __TS__New(____exports.City, 6208, -15040, UID.CITY)
+    ____exports.Cities[73] = __TS__New(____exports.City, 5088, -14112, UID.PORT)
+    ____exports.Cities[74] = __TS__New(____exports.City, -1408, -13824, UID.CITY)
+    ____exports.Cities[75] = __TS__New(____exports.City, -160, -14496, UID.PORT)
+    ____exports.Cities[76] = __TS__New(____exports.City, -3648, -14144, UID.CITY)
+    ____exports.Cities[77] = __TS__New(____exports.City, -5760, -15040, UID.CITY)
+    ____exports.Cities[78] = __TS__New(____exports.City, -7360, -14336, UID.CITY)
+    ____exports.Cities[79] = __TS__New(____exports.City, -8832, -15104, UID.CITY)
+    ____exports.Cities[80] = __TS__New(____exports.City, -10688, -14080, UID.CITY)
+    ____exports.Cities[81] = __TS__New(____exports.City, -12320, -14368, UID.PORT)
+    ____exports.Cities[82] = __TS__New(____exports.City, -11328, -9600, UID.CITY)
+    ____exports.Cities[83] = __TS__New(____exports.City, -10624, -7296, UID.CITY)
+    ____exports.Cities[84] = __TS__New(____exports.City, -12000, -7968, UID.PORT)
+    ____exports.Cities[85] = __TS__New(____exports.City, -9728, -10240, UID.CITY)
+    ____exports.Cities[86] = __TS__New(____exports.City, -9408, -8192, UID.CITY)
+    ____exports.Cities[87] = __TS__New(____exports.City, -6976, -8384, UID.CITY)
+    ____exports.Cities[88] = __TS__New(____exports.City, -7616, -6976, UID.CITY)
+    ____exports.Cities[89] = __TS__New(____exports.City, -10112, -5952, UID.CITY)
+    ____exports.Cities[90] = __TS__New(____exports.City, -6688, -10272, UID.PORT)
+    ____exports.Cities[91] = __TS__New(____exports.City, -5504, -6272, UID.CITY)
+    ____exports.Cities[92] = __TS__New(____exports.City, -5440, -5120, UID.CITY)
+    ____exports.Cities[93] = __TS__New(____exports.City, -3584, -5568, UID.CITY)
+    ____exports.Cities[94] = __TS__New(____exports.City, -3520, -3776, UID.CITY)
+    ____exports.Cities[95] = __TS__New(____exports.City, -4800, -3136, UID.CITY)
+    ____exports.Cities[96] = __TS__New(____exports.City, -6336, -3456, UID.CITY)
+    ____exports.Cities[97] = __TS__New(____exports.City, -6944, -4704, UID.PORT)
+    ____exports.Cities[98] = __TS__New(____exports.City, -4384, -7008, UID.PORT)
+    ____exports.Cities[99] = __TS__New(____exports.City, -2432, -4160, UID.CITY)
+    ____exports.Cities[100] = __TS__New(____exports.City, -1280, -4352, UID.CITY)
+    ____exports.Cities[101] = __TS__New(____exports.City, -1856, -5440, UID.CITY)
+    ____exports.Cities[102] = __TS__New(____exports.City, -448, -6272, UID.CITY)
+    ____exports.Cities[103] = __TS__New(____exports.City, 448, -7296, UID.CITY)
+    ____exports.Cities[104] = __TS__New(____exports.City, 1408, -8256, UID.CITY)
+    ____exports.Cities[105] = __TS__New(____exports.City, -3072, -2368, UID.CITY)
+    ____exports.Cities[106] = __TS__New(____exports.City, -4384, -608, UID.PORT)
+    ____exports.Cities[107] = __TS__New(____exports.City, -3200, -1024, UID.CITY)
+    ____exports.Cities[108] = __TS__New(____exports.City, -2368, -128, UID.CITY)
+    ____exports.Cities[109] = __TS__New(____exports.City, -3168, 480, UID.PORT)
+    ____exports.Cities[110] = __TS__New(____exports.City, -960, 1408, UID.CITY)
+    ____exports.Cities[111] = __TS__New(____exports.City, -1088, 2560, UID.CITY)
+    ____exports.Cities[112] = __TS__New(____exports.City, -2272, 2464, UID.PORT)
+    ____exports.Cities[113] = __TS__New(____exports.City, -1856, 5056, UID.CITY)
+    ____exports.Cities[114] = __TS__New(____exports.City, -768, 5312, UID.CITY)
+    ____exports.Cities[115] = __TS__New(____exports.City, -640, 7232, UID.CITY)
+    ____exports.Cities[116] = __TS__New(____exports.City, 576, 10112, UID.CITY)
+    ____exports.Cities[117] = __TS__New(____exports.City, 1728, 12224, UID.CITY)
+    ____exports.Cities[118] = __TS__New(____exports.City, -2464, 3680, UID.PORT)
+    ____exports.Cities[119] = __TS__New(____exports.City, -1760, 7904, UID.PORT)
+    ____exports.Cities[120] = __TS__New(____exports.City, 1856, 10240, UID.CITY)
+    ____exports.Cities[121] = __TS__New(____exports.City, 1216, 8704, UID.CITY)
+    ____exports.Cities[122] = __TS__New(____exports.City, 576, 6400, UID.CITY)
+    ____exports.Cities[123] = __TS__New(____exports.City, 512, 3392, UID.CITY)
+    ____exports.Cities[124] = __TS__New(____exports.City, 1760, 3040, UID.PORT)
+    ____exports.Cities[125] = __TS__New(____exports.City, 3968, 11584, UID.CITY)
+    ____exports.Cities[126] = __TS__New(____exports.City, 4800, 10368, UID.CITY)
+    ____exports.Cities[127] = __TS__New(____exports.City, 4480, 8448, UID.CITY)
+    ____exports.Cities[128] = __TS__New(____exports.City, 4096, 6848, UID.CITY)
+    ____exports.Cities[129] = __TS__New(____exports.City, 3424, 9184, UID.PORT)
+    ____exports.Cities[130] = __TS__New(____exports.City, -6528, 256, UID.CITY)
+    ____exports.Cities[131] = __TS__New(____exports.City, -6784, 1600, UID.CITY)
+    ____exports.Cities[132] = __TS__New(____exports.City, -7040, 3200, UID.CITY)
+    ____exports.Cities[133] = __TS__New(____exports.City, -8352, -672, UID.PORT)
+    ____exports.Cities[134] = __TS__New(____exports.City, -11136, 2368, UID.CITY)
+    ____exports.Cities[135] = __TS__New(____exports.City, -10208, 4000, UID.PORT)
+    ____exports.Cities[136] = __TS__New(____exports.City, -11488, 800, UID.PORT)
+    ____exports.Cities[137] = __TS__New(____exports.City, -6592, 9344, UID.CITY)
+    ____exports.Cities[138] = __TS__New(____exports.City, -7936, 9792, UID.CITY)
+    ____exports.Cities[139] = __TS__New(____exports.City, -7200, 7968, UID.PORT)
+    ____exports.Cities[140] = __TS__New(____exports.City, -5920, 10464, UID.PORT)
+    ____exports.Cities[141] = __TS__New(____exports.City, -576, 14912, UID.CITY)
+    ____exports.Cities[142] = __TS__New(____exports.City, -1760, 14496, UID.PORT)
+    ____exports.Cities[143] = __TS__New(____exports.City, 5056, 5312, UID.CITY)
+    ____exports.Cities[144] = __TS__New(____exports.City, 4128, 4640, UID.PORT)
+    ____exports.Cities[145] = __TS__New(____exports.City, 5440, 3520, UID.CITY)
+    ____exports.Cities[146] = __TS__New(____exports.City, 3104, 3616, UID.PORT)
+    ____exports.Cities[147] = __TS__New(____exports.City, 5312, 2048, UID.CITY)
+    ____exports.Cities[148] = __TS__New(____exports.City, 4160, 2496, UID.CITY)
+    ____exports.Cities[149] = __TS__New(____exports.City, 4096, 1344, UID.CITY)
+    ____exports.Cities[150] = __TS__New(____exports.City, 2976, 1952, UID.PORT)
+    ____exports.Cities[151] = __TS__New(____exports.City, 6912, 2560, UID.CITY)
+    ____exports.Cities[152] = __TS__New(____exports.City, 6912, 1472, UID.CITY)
+    ____exports.Cities[153] = __TS__New(____exports.City, 7680, 512, UID.CITY)
+    ____exports.Cities[154] = __TS__New(____exports.City, 5376, 384, UID.CITY)
+    ____exports.Cities[155] = __TS__New(____exports.City, 896, -13120, UID.CITY)
+    ____exports.Cities[156] = __TS__New(____exports.City, 2400, -12896, UID.PORT)
+    ____exports.Cities[157] = __TS__New(____exports.City, 6272, 12224, UID.CITY)
+    ____exports.Cities[158] = __TS__New(____exports.City, 10624, 11776, UID.CITY)
+    ____exports.Cities[159] = __TS__New(____exports.City, 10688, 9984, UID.CITY)
+    ____exports.Cities[160] = __TS__New(____exports.City, 12288, 8448, UID.CITY)
+    ____exports.Cities[161] = __TS__New(____exports.City, 9280, 6208, UID.CITY)
+    ____exports.Cities[162] = __TS__New(____exports.City, 6048, 6112, UID.PORT)
+    ____exports.Cities[163] = __TS__New(____exports.City, 6880, 10464, UID.PORT)
+    ____exports.Cities[164] = __TS__New(____exports.City, 3968, -2304, UID.CITY)
+    ____exports.Cities[165] = __TS__New(____exports.City, 2752, -2624, UID.CITY)
+    ____exports.Cities[166] = __TS__New(____exports.City, 4416, -3200, UID.CITY)
+    ____exports.Cities[167] = __TS__New(____exports.City, 3136, -3776, UID.CITY)
+    ____exports.Cities[168] = __TS__New(____exports.City, 320, -10368, UID.CITY)
+    ____exports.Cities[169] = __TS__New(____exports.City, 1238, -11566, UID.PORT)
+    ____exports.Cities[170] = __TS__New(____exports.City, -11584, 14400, UID.CITY)
+    ____exports.Cities[171] = __TS__New(____exports.City, -10432, 15104, UID.CITY)
+    ____exports.Cities[172] = __TS__New(____exports.City, -11040, 12960, UID.PORT)
+    ____exports.Cities[173] = __TS__New(____exports.City, -6016, 15424, UID.CITY)
+    ____exports.Cities[174] = __TS__New(____exports.City, -5600, 14048, UID.PORT)
+    ____exports.Cities[175] = __TS__New(____exports.City, 3264, 13504, UID.CITY)
+    ____exports.Cities[176] = __TS__New(____exports.City, 4160, 13056, UID.CITY)
+    ____exports.Cities[177] = __TS__New(____exports.City, -8000, 4672, UID.CITY)
+    ____exports.Cities[178] = __TS__New(____exports.City, -7552, 5952, UID.CITY)
+    ____exports.Cities[179] = __TS__New(____exports.City, -6432, 4960, UID.PORT)
+    ____exports.Cities[180] = __TS__New(____exports.City, 10496, 16064, UID.CITY)
+    ____exports.Cities[181] = __TS__New(____exports.City, 11936, 15584, UID.PORT)
+    ____exports.Cities[182] = __TS__New(____exports.City, 11456, -3264, UID.CITY)
+    ____exports.Cities[183] = __TS__New(____exports.City, 10464, -4128, UID.PORT)
+    ____exports.Cities[184] = __TS__New(____exports.City, 18432, -3584, UID.CITY)
+    ____exports.Cities[185] = __TS__New(____exports.City, 17472, -4352, UID.CITY)
+    ____exports.Cities[186] = __TS__New(____exports.City, 18432, -5888, UID.CITY)
+    ____exports.Cities[187] = __TS__New(____exports.City, 14400, -1856, UID.CITY)
+    ____exports.Cities[188] = __TS__New(____exports.City, 14848, 1216, UID.CITY)
+    ____exports.Cities[189] = __TS__New(____exports.City, 16704, 1088, UID.CITY)
+    ____exports.Cities[190] = __TS__New(____exports.City, 17088, -1152, UID.CITY)
+    ____exports.Cities[191] = __TS__New(____exports.City, 13024, -3808, UID.PORT)
+    ____exports.Cities[192] = __TS__New(____exports.City, 15424, 5376, UID.CITY)
+    ____exports.Cities[193] = __TS__New(____exports.City, 18048, 6720, UID.CITY)
+    ____exports.Cities[194] = __TS__New(____exports.City, 17984, 3840, UID.CITY)
+    ____exports.Cities[195] = __TS__New(____exports.City, 8640, 3264, UID.CITY)
+    ____exports.Cities[196] = __TS__New(____exports.City, 10496, 1536, UID.CITY)
+    ____exports.Cities[197] = __TS__New(____exports.City, 13056, 2496, UID.CITY)
+    ____exports.Cities[198] = __TS__New(____exports.City, 11264, 3968, UID.CITY)
+    ____exports.Cities[199] = __TS__New(____exports.City, 12864, 5632, UID.CITY)
+    ____exports.Cities[200] = __TS__New(____exports.City, 16576, 15744, UID.CITY)
+    ____exports.Cities[201] = __TS__New(____exports.City, 18176, 15616, UID.CITY)
+    ____exports.Cities[202] = __TS__New(____exports.City, 15296, 8960, UID.CITY)
+    ____exports.Cities[203] = __TS__New(____exports.City, 13952, 8384, UID.CITY)
+    ____exports.Cities[204] = __TS__New(____exports.City, -8768, 15232, UID.CITY)
+    ____exports.Cities[205] = __TS__New(____exports.City, -7936, 14336, UID.CITY)
+    ____exports.Cities[206] = __TS__New(____exports.City, -9472, 13696, UID.CITY)
+    ____exports.Cities[207] = __TS__New(____exports.City, -12736, 14976, UID.CITY)
+    ____exports.Cities[208] = __TS__New(____exports.City, -12352, 13120, UID.CITY)
+    ____exports.Cities[209] = __TS__New(____exports.City, -8000, 2304, UID.CITY)
+    ____exports.Cities[210] = __TS__New(____exports.City, -8512, 1216, UID.CITY)
+    ____exports.Cities[211] = __TS__New(____exports.City, -2400, -7400, UID.PORT)
+    ____exports.Cities[212] = __TS__New(____exports.City, -1376, -8928, UID.PORT)
+    ____exports.Cities[213] = __TS__New(____exports.City, 8864, -11680, UID.PORT)
+    ____exports.Cities[214] = __TS__New(____exports.City, 7008, -12192, UID.PORT)
+    ____exports.Cities[215] = __TS__New(____exports.City, 13408, -10272, UID.PORT)
+    ____exports.Cities[216] = __TS__New(____exports.City, 12576, -11808, UID.PORT)
+end
+function City.prototype.onCast(self)
+end
+function City.prototype.onGuardChange(self)
+end
+function City.prototype.setOwner(self, newOwner)
+end
+function City.prototype.reset(self)
+    local x = GetUnitX(self.barrack)
+    local y = GetUnitY(self.barrack)
+    local name = GetUnitName(self.barrack)
+    ____exports.City.fromBarrack:delete(self.barrack)
+    RemoveUnit(self.barrack)
+    self._barrack = nil
+    self:setBarrack(x, y, name)
+    self:removeGuard(true)
+    self:setGuard(self.defaultGuardType)
+end
+function City.prototype.onOwnerChange(self)
+end
+function City.prototype.setBarrack(self, x, y, name)
+    self._barrack = CreateUnit(Players[25].handle, self.defaultBarrackType, x, y, 270)
+    ____exports.City.fromBarrack:set(self.barrack, self)
+    if name and (name ~= GetUnitName(self.barrack)) then
+        BlzSetUnitName(self.barrack, name)
+    end
+end
+function City.prototype.setGuard(self, guard)
+    (((type(guard) == "number") and (function() return (function(o, i, v)
+        o[i] = v
+        return v
+    end)(
+        self,
+        "guard",
+        CreateUnit(Players[25].handle, guard, self.x, self.y, 270)
+    ) end)) or (function() return (function(o, i, v)
+        o[i] = v
+        return v
+    end)(self, "guard", guard) end))()
+    UnitAddType(self.guard, UTYPE.GUARD)
+    ____exports.City.fromGuard:set(self.guard, self)
+end
+function City.prototype.removeGuard(self, destroy)
+    ____exports.City.fromGuard:delete(self.guard)
+    if not destroy then
+        UnitRemoveType(self.guard, UTYPE.GUARD)
+    else
+        RemoveUnit(self.guard)
+    end
+    self.guard = nil
+end
+City.fromBarrack = __TS__New(Map)
+City.fromGuard = __TS__New(Map)
+City.fromRegion = __TS__New(Map)
+City.cities = {}
+return ____exports
+ end,
+["src.resources.abilityID"] = function(...) local ____exports = {}
+____exports.AID = {
+    INDEXER = FourCC("uDex"),
+    HEAL = FourCC("a000"),
+    ROAR = FourCC("a001"),
+    DISPEL_MAGIC = FourCC("a002"),
+    FRENZY = FourCC("a003"),
+    UNHOLY_FRENZY = FourCC("a004"),
+    BERSERK = FourCC("a005"),
+    SWAP = FourCC("a030"),
+    SPWN_ALL = FourCC("a031"),
+    SPWN_3000 = FourCC("a032"),
+    SPWN_6000 = FourCC("a033"),
+    SPWN_RESET = FourCC("a034"),
+    CARGO_HOLD = FourCC("a009"),
+    LOAD = FourCC("a010"),
+    UNLOAD = FourCC("a011"),
+    FORFEIT = FourCC("a050"),
+    LOW_HEALTH_DEFENDER = FourCC("a051"),
+    HIGH_HEALTH_DEFENDER = FourCC("a052"),
+    LOW_VALUE_DEFENDER = FourCC("a053"),
+    HIGH_VALUE_DEFENDER = FourCC("a054"),
+    ALLOW_PINGS = FourCC("a055"),
+    BLOCK_PINGS = FourCC("a056"),
+    PING = FourCC("a057")
+}
+return ____exports
+ end,
+["src.app.country.spawner-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____abilityID = require("src.resources.abilityID")
+local AID = ____abilityID.AID
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+local ____unitTypes = require("src.resources.unitTypes")
+local UTYPE = ____unitTypes.UTYPE
+local ____index = require("lua_modules.w3ts.index")
+local Group = ____index.Group
+local MapPlayer = ____index.MapPlayer
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+local SpawnTypeID = UID.RIFLEMEN
+local SpawnTurnLimit = 5
+____exports.Spawner = __TS__Class()
+local Spawner = ____exports.Spawner
+Spawner.name = "Spawner"
+function Spawner.prototype.____constructor(self, country, x, y, countrySize)
+    self.playerSpawns = __TS__New(Map)
+    self:create(x, y)
+    self.spawnAmount = math.floor((countrySize + 1) / 2)
+    self.spawnMax = self.spawnAmount * SpawnTurnLimit
+    self.country = country
+    self:setName()
+end
+__TS__SetDescriptor(
+    Spawner.prototype,
+    "unit",
+    {
+        get = function(self)
+            return self._unit
+        end
+    },
+    true
+)
+function Spawner.onCast(self)
+    local area
+    if GetSpellAbilityId() == AID.SPWN_ALL then
+        area = 12000
+    end
+    if GetSpellAbilityId() == AID.SPWN_6000 then
+        area = 6000
+    end
+    if GetSpellAbilityId() == AID.SPWN_3000 then
+        area = 3000
+    end
+    if GetSpellAbilityId() == AID.SPWN_RESET then
+        area = 50000
+    end
+    local group = __TS__New(Group)
+    local u = GetTriggerUnit()
+    group:enumUnitsInRange(
+        GetUnitX(u),
+        GetUnitY(u),
+        area,
+        function()
+            local fU = GetFilterUnit()
+            if (GetUnitTypeId(fU) == UID.SPAWNER) and (GetOwningPlayer(fU) == GetOwningPlayer(u)) then
+                if GetSpellAbilityId() == AID.SPWN_RESET then
+                    if GetOwningPlayer(fU) == GetLocalPlayer() then
+                        IssuePointOrder(
+                            fU,
+                            "setrally",
+                            GetUnitX(u),
+                            GetUnitY(u)
+                        )
+                    end
+                else
+                    if GetOwningPlayer(fU) == GetLocalPlayer() then
+                        SelectUnit(fU, true)
+                    end
+                end
+            end
+            return false
+        end
+    )
+    group:destroy()
+end
+function Spawner.prototype.setOwner(self, newOwner)
+    SetUnitOwner(self.unit, newOwner.handle, true)
+    self:setName()
+    IssuePointOrder(
+        self.unit,
+        "setrally",
+        GetUnitX(self.unit),
+        GetUnitY(self.unit)
+    )
+end
+function Spawner.prototype.step(self)
+    local owner = MapPlayer:fromHandle(
+        GetOwningPlayer(self.unit)
+    )
+    if owner == Players[25] then
+        return
+    end
+    if owner.slotState ~= PLAYER_SLOT_STATE_PLAYING then
+        return
+    end
+    local spawnCount = #self.playerSpawns:get(owner)
+    if spawnCount >= self.spawnMax then
+        return
+    end
+    local amount = math.min(self.spawnAmount, self.spawnMax - spawnCount)
+    do
+        local i = 0
+        while i < amount do
+            local u = CreateUnit(
+                owner.handle,
+                SpawnTypeID,
+                GetUnitX(self.unit),
+                GetUnitY(self.unit),
+                270
+            )
+            local loc = GetUnitRallyPoint(self.unit)
+            UnitAddType(u, UTYPE.SPAWN)
+            __TS__ArrayPush(
+                self.playerSpawns:get(owner),
+                u
+            )
+            IssuePointOrderLoc(u, "attack", loc)
+            RemoveLocation(loc)
+            loc = nil
+            u = nil
+            i = i + 1
+        end
+    end
+    self:setName()
+end
+function Spawner.prototype.reset(self)
+    local x = GetUnitX(self.unit)
+    local y = GetUnitY(self.unit)
+    self.playerSpawns:clear()
+    RemoveUnit(self.unit)
+    self._unit = nil
+    self:create(x, y)
+end
+function Spawner.prototype.create(self, x, y)
+    self._unit = CreateUnit(Players[25].handle, UID.SPAWNER, x, y, 270)
+    SetUnitPathing(self.unit, false)
+end
+function Spawner.prototype.setName(self)
+    if GetOwningPlayer(self.unit) == Players[25].handle then
+        BlzSetUnitName(self.unit, self.country .. " is unowned")
+        SetUnitAnimation(self.unit, "death")
+    else
+        local spawnCount = #self.playerSpawns:get(
+            MapPlayer:fromHandle(
+                GetOwningPlayer(self.unit)
+            )
+        )
+        BlzSetUnitName(
+            self.unit,
+            (((self.country .. " ") .. tostring(spawnCount)) .. " / ") .. tostring(self.spawnMax)
+        )
+        SetUnitAnimation(self.unit, "stand")
+    end
+end
+return ____exports
+ end,
+["src.app.country.country-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____hexColors = require("src.resources.hexColors")
+local HexColors = ____hexColors.HexColors
+local ____city_2Dtype = require("src.app.country.city-type")
+local Cities = ____city_2Dtype.Cities
+local ____spawner_2Dtype = require("src.app.country.spawner-type")
+local Spawner = ____spawner_2Dtype.Spawner
+____exports.Country = __TS__Class()
+local Country = ____exports.Country
+Country.name = "Country"
+function Country.prototype.____constructor(self, name, x, y, ...)
+    local cities = {...}
+    self.cities = {}
+    self.name = name
+    __TS__ArrayForEach(
+        cities,
+        function(____, city)
+            __TS__ArrayPush(self.cities, city)
+        end
+    )
+    self:setSpawner(x, y, #self.cities)
+    self:setText(100, 300)
+    ____exports.Country.fromName:set(name, self)
+end
+function Country.init(self)
+    ____exports.Country.fromName:set(
+        "Germany",
+        __TS__New(____exports.Country, "Germany", -960, -1088, Cities[1], Cities[2], Cities[3], Cities[4], Cities[5], Cities[6])
+    )
+    ____exports.Country.fromName:set(
+        "Poland",
+        __TS__New(____exports.Country, "Poland", 2752, -64, Cities[7], Cities[8], Cities[9], Cities[10])
+    )
+    ____exports.Country.fromName:set(
+        "Czech Republic",
+        __TS__New(____exports.Country, "Czech Republic", 1216, -1984, Cities[11], Cities[12])
+    )
+    ____exports.Country.fromName:set(
+        "Austria",
+        __TS__New(____exports.Country, "Austria", 832, -3392, Cities[13], Cities[14])
+    )
+    ____exports.Country.fromName:set(
+        "Slovenia",
+        __TS__New(____exports.Country, "Slovenia", 1216, -4544, Cities[15], Cities[16])
+    )
+    ____exports.Country.fromName:set(
+        "Croatia",
+        __TS__New(____exports.Country, "Croatia", 2112, -5056, Cities[17], Cities[18])
+    )
+    ____exports.Country.fromName:set(
+        "Bosnia",
+        __TS__New(____exports.Country, "Bosnia", 3008, -6080, Cities[19], Cities[20])
+    )
+    ____exports.Country.fromName:set(
+        "Montenegro",
+        __TS__New(____exports.Country, "Montenegro", 4032, -6976, Cities[21], Cities[22])
+    )
+    ____exports.Country.fromName:set(
+        "Serbia",
+        __TS__New(____exports.Country, "Serbia", 4416, -5696, Cities[23], Cities[24])
+    )
+    ____exports.Country.fromName:set(
+        "Macedonia",
+        __TS__New(____exports.Country, "Macedonia", 5056, -7488, Cities[25], Cities[26])
+    )
+    ____exports.Country.fromName:set(
+        "Albania",
+        __TS__New(____exports.Country, "Albania", 4160, -8128, Cities[27], Cities[28])
+    )
+    ____exports.Country.fromName:set(
+        "Greece",
+        __TS__New(____exports.Country, "Greece", 5696, -9024, Cities[29], Cities[30], Cities[31], Cities[32])
+    )
+    ____exports.Country.fromName:set(
+        "Bulgaria",
+        __TS__New(____exports.Country, "Bulgaria", 6976, -6464, Cities[33], Cities[34])
+    )
+    ____exports.Country.fromName:set(
+        "Romania",
+        __TS__New(____exports.Country, "Romania", 6080, -4288, Cities[35], Cities[36], Cities[37], Cities[38])
+    )
+    ____exports.Country.fromName:set(
+        "Moldova",
+        __TS__New(____exports.Country, "Moldova", 7744, -2880, Cities[39], Cities[40])
+    )
+    ____exports.Country.fromName:set(
+        "Ukraine",
+        __TS__New(____exports.Country, "Ukraine", 8256, -1216, Cities[41], Cities[42], Cities[43], Cities[44], Cities[45], Cities[46])
+    )
+    ____exports.Country.fromName:set(
+        "Turkey",
+        __TS__New(____exports.Country, "Turkey", 12864, -7232, Cities[47], Cities[48], Cities[49], Cities[50], Cities[51], Cities[52], Cities[53])
+    )
+    ____exports.Country.fromName:set(
+        "Georgia",
+        __TS__New(____exports.Country, "Georgia", 15424, -4032, Cities[54], Cities[55])
+    )
+    ____exports.Country.fromName:set(
+        "Syria",
+        __TS__New(____exports.Country, "Syria", 16704, -10048, Cities[56], Cities[57], Cities[58])
+    )
+    ____exports.Country.fromName:set(
+        "Lebanon",
+        __TS__New(____exports.Country, "Lebanon", 14784, -10304, Cities[59], Cities[60])
+    )
+    ____exports.Country.fromName:set(
+        "Palestine",
+        __TS__New(____exports.Country, "Palestine", 16192, -12480, Cities[61])
+    )
+    ____exports.Country.fromName:set(
+        "Israel",
+        __TS__New(____exports.Country, "Israel", 14656, -12736, Cities[62], Cities[63])
+    )
+    ____exports.Country.fromName:set(
+        "Jordan",
+        __TS__New(____exports.Country, "Jordan", 16960, -13504, Cities[64], Cities[65], Cities[66])
+    )
+    ____exports.Country.fromName:set(
+        "Egypt",
+        __TS__New(____exports.Country, "Egypt", 11072, -14912, Cities[67], Cities[68], Cities[69], Cities[70])
+    )
+    ____exports.Country.fromName:set(
+        "Lybia",
+        __TS__New(____exports.Country, "Lybia", 6976, -14912, Cities[71], Cities[72], Cities[73])
+    )
+    ____exports.Country.fromName:set(
+        "Tunisia",
+        __TS__New(____exports.Country, "Tunisia", -1728, -14400, Cities[74], Cities[75])
+    )
+    ____exports.Country.fromName:set(
+        "Algeria",
+        __TS__New(____exports.Country, "Algeria", -5312, -14272, Cities[76], Cities[77], Cities[78])
+    )
+    ____exports.Country.fromName:set(
+        "Morocco",
+        __TS__New(____exports.Country, "Morocco", -10176, -14400, Cities[79], Cities[80], Cities[81])
+    )
+    ____exports.Country.fromName:set(
+        "Portugal",
+        __TS__New(____exports.Country, "Portugal", -11200, -8128, Cities[82], Cities[83], Cities[84])
+    )
+    ____exports.Country.fromName:set(
+        "Spain",
+        __TS__New(____exports.Country, "Spain", -8896, -8384, Cities[85], Cities[86], Cities[87], Cities[88], Cities[89], Cities[90])
+    )
+    ____exports.Country.fromName:set(
+        "France",
+        __TS__New(____exports.Country, "France", -5056, -4288, Cities[91], Cities[92], Cities[93], Cities[94], Cities[95], Cities[96], Cities[97], Cities[98])
+    )
+    ____exports.Country.fromName:set(
+        "Switzerland",
+        __TS__New(____exports.Country, "Switzerland", -1856, -4288, Cities[99], Cities[100])
+    )
+    ____exports.Country.fromName:set(
+        "Italy",
+        __TS__New(____exports.Country, "Italy", -1088, -5568, Cities[101], Cities[102], Cities[103], Cities[104])
+    )
+    ____exports.Country.fromName:set(
+        "Belgium",
+        __TS__New(____exports.Country, "Belgium", -3648, -1856, Cities[105], Cities[106])
+    )
+    ____exports.Country.fromName:set(
+        "Netherlands",
+        __TS__New(____exports.Country, "Netherlands", -3008, -448, Cities[107], Cities[108], Cities[109])
+    )
+    ____exports.Country.fromName:set(
+        "Denmark",
+        __TS__New(____exports.Country, "Denmark", -1344, 1600, Cities[110], Cities[111], Cities[112])
+    )
+    ____exports.Country.fromName:set(
+        "Norway",
+        __TS__New(____exports.Country, "Norway", -1344, 6336, Cities[113], Cities[114], Cities[115], Cities[116], Cities[117], Cities[118], Cities[119])
+    )
+    ____exports.Country.fromName:set(
+        "Sweden",
+        __TS__New(____exports.Country, "Sweden", 704, 7744, Cities[120], Cities[121], Cities[122], Cities[123], Cities[124])
+    )
+    ____exports.Country.fromName:set(
+        "Finland",
+        __TS__New(____exports.Country, "Finland", 3648, 7744, Cities[125], Cities[126], Cities[127], Cities[128], Cities[129])
+    )
+    ____exports.Country.fromName:set(
+        "England",
+        __TS__New(____exports.Country, "England", -6848, 832, Cities[130], Cities[131], Cities[132], Cities[133])
+    )
+    ____exports.Country.fromName:set(
+        "Ireland",
+        __TS__New(____exports.Country, "Ireland", -11584, 2112, Cities[134], Cities[135], Cities[136])
+    )
+    ____exports.Country.fromName:set(
+        "Iceland",
+        __TS__New(____exports.Country, "Iceland", -7360, 9664, Cities[137], Cities[138], Cities[139], Cities[140])
+    )
+    ____exports.Country.fromName:set(
+        "Svalbard",
+        __TS__New(____exports.Country, "Svalbard", -1088, 14784, Cities[141], Cities[142])
+    )
+    ____exports.Country.fromName:set(
+        "Estonia",
+        __TS__New(____exports.Country, "Estonia", 4544, 4928, Cities[143], Cities[144])
+    )
+    ____exports.Country.fromName:set(
+        "Latvia",
+        __TS__New(____exports.Country, "Latvia", 4672, 3776, Cities[145], Cities[146])
+    )
+    ____exports.Country.fromName:set(
+        "Lithuania",
+        __TS__New(____exports.Country, "Lithuania", 4672, 2368, Cities[147], Cities[148])
+    )
+    ____exports.Country.fromName:set(
+        "Kaliningrad",
+        __TS__New(____exports.Country, "Kaliningrad", 3520, 1472, Cities[149], Cities[150])
+    )
+    ____exports.Country.fromName:set(
+        "Belarus",
+        __TS__New(____exports.Country, "Belarus", 6336, 1216, Cities[151], Cities[152], Cities[153], Cities[154])
+    )
+    ____exports.Country.fromName:set(
+        "Malta",
+        __TS__New(____exports.Country, "Malta", 1216, -12992, Cities[155], Cities[156])
+    )
+    ____exports.Country.fromName:set(
+        "North Russia",
+        __TS__New(____exports.Country, "North Russia", 9536, 8896, Cities[157], Cities[158], Cities[159], Cities[160], Cities[161], Cities[162], Cities[163])
+    )
+    ____exports.Country.fromName:set(
+        "Slovakia",
+        __TS__New(____exports.Country, "Slovakia", 3136, -2496, Cities[164], Cities[165])
+    )
+    ____exports.Country.fromName:set(
+        "Hungary",
+        __TS__New(____exports.Country, "Hungary", 3520, -3776, Cities[166], Cities[167])
+    )
+    ____exports.Country.fromName:set(
+        "Sicily",
+        __TS__New(____exports.Country, "Sicily", 960, -10816, Cities[168], Cities[169])
+    )
+    ____exports.Country.fromName:set(
+        "Disko Bay",
+        __TS__New(____exports.Country, "Disko Bay", -11072, 14272, Cities[170], Cities[171], Cities[172])
+    )
+    ____exports.Country.fromName:set(
+        "East Greenland",
+        __TS__New(____exports.Country, "East Greenland", -6464, 14784, Cities[173], Cities[174])
+    )
+    ____exports.Country.fromName:set(
+        "Sami",
+        __TS__New(____exports.Country, "Sami", 3776, 13376, Cities[175], Cities[176])
+    )
+    ____exports.Country.fromName:set(
+        "Scotland",
+        __TS__New(____exports.Country, "Scotland", -7488, 5056, Cities[177], Cities[178], Cities[179])
+    )
+    ____exports.Country.fromName:set(
+        "Novaya",
+        __TS__New(____exports.Country, "Novaya", 10816, 15808, Cities[180], Cities[181])
+    )
+    ____exports.Country.fromName:set(
+        "Crimea",
+        __TS__New(____exports.Country, "Crimea", 10944, -3904, Cities[182], Cities[183])
+    )
+    ____exports.Country.fromName:set(
+        "Azerbaijan",
+        __TS__New(____exports.Country, "Azerbaijan", 17984, -4288, Cities[184], Cities[185])
+    )
+    ____exports.Country.fromName:set(
+        "Armenia",
+        __TS__New(____exports.Country, "Armenia", 17984, -5952, Cities[186])
+    )
+    ____exports.Country.fromName:set(
+        "Southern Russia",
+        __TS__New(____exports.Country, "Southern Russia", 15936, -320, Cities[187], Cities[188], Cities[189], Cities[190], Cities[191])
+    )
+    ____exports.Country.fromName:set(
+        "Volga",
+        __TS__New(____exports.Country, "Volga", 17088, 5184, Cities[192], Cities[193], Cities[194])
+    )
+    ____exports.Country.fromName:set(
+        "Central Russia",
+        __TS__New(____exports.Country, "Central Russia", 11584, 3392, Cities[195], Cities[196], Cities[197], Cities[198], Cities[199])
+    )
+    ____exports.Country.fromName:set(
+        "Siberia",
+        __TS__New(____exports.Country, "Siberia", 17216, 15424, Cities[200], Cities[201])
+    )
+    ____exports.Country.fromName:set(
+        "Moscow",
+        __TS__New(____exports.Country, "Moscow", 14528, 8768, Cities[202], Cities[203])
+    )
+    ____exports.Country.fromName:set(
+        "National Park",
+        __TS__New(____exports.Country, "National Park", -8640, 14400, Cities[204], Cities[205], Cities[206])
+    )
+    ____exports.Country.fromName:set(
+        "West Greeland",
+        __TS__New(____exports.Country, "West Greeland", -12864, 13888, Cities[207], Cities[208])
+    )
+    ____exports.Country.fromName:set(
+        "Wales",
+        __TS__New(____exports.Country, "Wales", -8384, 1472, Cities[209], Cities[210])
+    )
+    ____exports.Country.fromName:set(
+        "Sardinia",
+        __TS__New(____exports.Country, "Sardinia", -1856, -8256, Cities[211], Cities[212])
+    )
+    ____exports.Country.fromName:set(
+        "Crete",
+        __TS__New(____exports.Country, "Crete", 7616, -11712, Cities[213], Cities[214])
+    )
+    ____exports.Country.fromName:set(
+        "Cyprus",
+        __TS__New(____exports.Country, "Cyprus", 12608, -10944, Cities[215], Cities[216])
+    )
+end
+function Country.prototype.animate(self)
+    __TS__ArrayForEach(
+        self.cities,
+        function(____, city)
+            local effect = AddSpecialEffect(
+                "Abilities\\Spells\\Human\\Resurrect\\ResurrectCaster.mdl",
+                GetUnitX(city.barrack),
+                GetUnitY(city.barrack)
+            )
+            BlzSetSpecialEffectScale(effect, 1.1)
+            DestroyEffect(effect)
+        end
+    )
+end
+function Country.prototype.setSpawner(self, x, y, countrySize)
+    self.spawner = __TS__New(Spawner, self.name, x, y, countrySize)
+end
+function Country.prototype.setText(self, x, y)
+    local offsetX = GetUnitX(self.spawner.unit) - x
+    local offsetY = GetUnitY(self.spawner.unit) - y
+    local lengthCheck = ((((#self.name * 5.5) < 200) and (function() return #self.name * 5.5 end)) or (function() return 200 end))()
+    self.text = CreateTextTag()
+    SetTextTagText(self.text, (HexColors.TANGERINE .. " ") .. self.name, 0.028)
+    SetTextTagPos(self.text, offsetX - lengthCheck, offsetY, 16)
+    SetTextTagVisibility(self.text, true)
+    SetTextTagPermanent(self.text, true)
+end
+Country.fromName = __TS__New(Map)
+Country.fromSpawner = __TS__New(Map)
+Country.fromCity = __TS__New(Map)
+return ____exports
+ end,
 ["src.app.setup.onInit"] = function(...) require("lualib_bundle");
 local ____exports = {}
+local ____camera_2Dcontrols = require("src.app.camera-controls")
+local CameraControls = ____camera_2Dcontrols.default
+local ____city_2Dtype = require("src.app.country.city-type")
+local City = ____city_2Dtype.City
+local ____country_2Dtype = require("src.app.country.country-type")
+local Country = ____country_2Dtype.Country
 local ____index = require("lua_modules.w3ts.globals.index")
 local Players = ____index.Players
 local changeNames
@@ -8606,10 +9636,13 @@ function ____exports.onInit()
     FogEnable(false)
     FogMaskEnable(false)
     changeNames()
+    City:init()
+    Country:init()
+    CameraControls:getInstance()
 end
 return ____exports
  end,
-["src.app.UserInterface"] = function(...) require("lualib_bundle");
+["src.app.user-interface-type"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local ____translators = require("src.libs.translators")
 local Util = ____translators.Util
@@ -8700,8 +9733,8 @@ UserInterface.forTheReplays = {}
 return ____exports
  end,
 ["src.app.setup.onLoad"] = function(...) local ____exports = {}
-local ____UserInterface = require("src.app.UserInterface")
-local UserInterface = ____UserInterface.UserInterface
+local ____user_2Dinterface_2Dtype = require("src.app.user-interface-type")
+local UserInterface = ____user_2Dinterface_2Dtype.UserInterface
 local ____translators = require("src.libs.translators")
 local Util = ____translators.Util
 local ____hexColors = require("src.resources.hexColors")
@@ -8881,6 +9914,78 @@ local function tsMain()
     end
 end
 addScriptHook(W3TS_HOOK.MAIN_AFTER, tsMain)
+return ____exports
+ end,
+["src.app.commands.command-processor"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____camera_2Dcontrols = require("src.app.camera-controls")
+local CameraControls = ____camera_2Dcontrols.default
+local PlayerCamData = ____camera_2Dcontrols.PlayerCamData
+____exports.CommandProcessor = function()
+    local t = CreateTrigger()
+    do
+        local i = 0
+        while i < bj_MAX_PLAYERS do
+            TriggerRegisterPlayerChatEvent(
+                t,
+                Player(i),
+                "-",
+                false
+            )
+            i = i + 1
+        end
+    end
+    TriggerAddCondition(
+        t,
+        Condition(
+            function()
+                local command = __TS__StringSplit(
+                    GetEventPlayerChatString(),
+                    " "
+                )[1]
+                local tPlayer = GetTriggerPlayer()
+                repeat
+                    local ____switch5 = command
+                    local camData, distance, angle, rotation
+                    local ____cond5 = ____switch5 == "-cam"
+                    if ____cond5 then
+                        camData = {}
+                        distance = __TS__StringSplit(
+                            GetEventPlayerChatString(),
+                            " "
+                        )[2]
+                        angle = __TS__StringSplit(
+                            GetEventPlayerChatString(),
+                            " "
+                        )[3]
+                        rotation = __TS__StringSplit(
+                            GetEventPlayerChatString(),
+                            " "
+                        )[4]
+                        if distance and S2R(distance) then
+                            __TS__ArrayPush(camData, distance)
+                        end
+                        if angle and S2R(angle) then
+                            __TS__ArrayPush(camData, angle)
+                        end
+                        if rotation and S2R(rotation) then
+                            __TS__ArrayPush(camData, rotation)
+                        end
+                        CameraControls:getInstance():checkCamData(
+                            PlayerCamData:get(tPlayer),
+                            camData
+                        )
+                        break
+                    end
+                    do
+                        break
+                    end
+                until true
+                return true
+            end
+        )
+    )
+end
 return ____exports
  end,
 ["src.libs.EncodingBase64"] = function(...) require("lualib_bundle");
@@ -9525,34 +10630,6 @@ function ____exports.DummyCast(callback, abilityToCast)
 end
 return ____exports
  end,
-["src.resources.abilityID"] = function(...) local ____exports = {}
-____exports.AID = {
-    INDEXER = FourCC("uDex"),
-    HEAL = FourCC("a000"),
-    ROAR = FourCC("a001"),
-    DISPEL_MAGIC = FourCC("a002"),
-    FRENZY = FourCC("a003"),
-    UNHOLY_FRENZY = FourCC("a004"),
-    BERSERK = FourCC("a005"),
-    SWAP = FourCC("a030"),
-    SPWN_ALL = FourCC("a031"),
-    SPWN_3000 = FourCC("a032"),
-    SPWN_6000 = FourCC("a033"),
-    SPWN_RESET = FourCC("a034"),
-    CARGO_HOLD = FourCC("a009"),
-    LOAD = FourCC("a010"),
-    UNLOAD = FourCC("a011"),
-    FORFEIT = FourCC("a050"),
-    LOW_HEALTH_DEFENDER = FourCC("a051"),
-    HIGH_HEALTH_DEFENDER = FourCC("a052"),
-    LOW_VALUE_DEFENDER = FourCC("a053"),
-    HIGH_VALUE_DEFENDER = FourCC("a054"),
-    ALLOW_PINGS = FourCC("a055"),
-    BLOCK_PINGS = FourCC("a056"),
-    PING = FourCC("a057")
-}
-return ____exports
- end,
 ["src.resources.buffID"] = function(...) local ____exports = {}
 ____exports.BID = {
     UNHOLY_FRENZY = FourCC("b000"),
@@ -9561,32 +10638,15 @@ ____exports.BID = {
 }
 return ____exports
  end,
-["src.resources.unitID"] = function(...) local ____exports = {}
-____exports.UID = {
-    CITY = FourCC("h000"),
-    PORT = FourCC("h001"),
-    CONTROL_POINT = FourCC("h002"),
-    SPAWNER = FourCC("h004"),
-    RIFLEMEN = FourCC("u000"),
-    MEDIC = FourCC("u001"),
-    MORTAR = FourCC("u002"),
-    ROARER = FourCC("u003"),
-    KNIGHT = FourCC("u004"),
-    GENERAL = FourCC("u005"),
-    ARTILLERY = FourCC("u006"),
-    TANK = FourCC("u007"),
-    MARINE = FourCC("u008"),
-    CAPTAIN = FourCC("u009"),
-    ADMIRAL = FourCC("u010"),
-    TRANSPORT_SHIP = FourCC("s000"),
-    ARMORED_TRANSPORT_SHIP = FourCC("s001"),
-    WARSHIP_A = FourCC("s002"),
-    WARSHIP_B = FourCC("s003"),
-    BATTLESHIP_SS = FourCC("s004"),
-    DUMMY_GUARD = FourCC("u050"),
-    CAMERA_LOCK_UNIT = FourCC("u051"),
-    PLAYER_TOOLS = FourCC("H000")
-}
+["src.resources.filters"] = function(...) local ____exports = {}
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+____exports.FilterIsOwnedSpawner = function(p) return Filter(
+    function()
+        local u = GetFilterUnit()
+        return ((((GetUnitTypeId(u) == UID.SPAWNER) and (GetOwningPlayer(u) == p.handle)) and (function() return true end)) or (function() return false end))()
+    end
+) end
 return ____exports
  end,
 }

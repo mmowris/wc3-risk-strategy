@@ -1,3 +1,0 @@
-When creating countries, considering using the "builder" design pattern https://refactoring.guru/design-patterns/builder
-
-

@@ -1,4 +1,4 @@
-import { UserInterface } from "app/UserInterface";
+import { UserInterface } from "app/user-interface-type";
 import { Util } from "libs/translators";
 import { HexColors } from "resources/hexColors";
 import { GameStatus } from "./gameStatus";

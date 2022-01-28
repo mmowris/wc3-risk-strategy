@@ -4,7 +4,6 @@ import { Timer } from "w3ts";
 import { GameStatus } from "./setup/gameStatus";
 import { onInit } from "./setup/onInit";
 import { onLoad } from "./setup/onLoad";
-import { UserInterface } from "./UserInterface";
 
 export class Game {
     private static instance: Game;

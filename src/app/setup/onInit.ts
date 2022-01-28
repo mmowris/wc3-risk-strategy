@@ -1,3 +1,6 @@
+import CameraControls from "app/camera-controls";
+import { City } from "app/country/city-type";
+import { Country } from "app/country/country-type";
 import { Players } from "w3ts/globals";
 
 /**
@@ -23,6 +26,10 @@ export function onInit() {
     FogMaskEnable(false); //TODO remove
 
     changeNames();
+
+    City.init();
+    Country.init();
+    CameraControls.getInstance();
 }
 
 function changeNames() {
