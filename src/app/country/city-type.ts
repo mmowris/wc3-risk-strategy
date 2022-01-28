@@ -6,7 +6,7 @@ import { Players } from "w3ts/globals";
 const CityRegionSize: number = 185;
 
 export class City {
-    private barrack: unit;
+    private _barrack: unit;
     private cop: unit;
     private guard: unit;
     private region: region;
@@ -62,7 +62,7 @@ export class City {
 
         City.fromBarrack.delete(this.barrack);
         RemoveUnit(this.barrack)
-        this.barrack = null;
+        this._barrack = null;
         this.setBarrack(x, y, name);
         this.removeGuard(true);
         this.setGuard(this.defaultGuardType);
@@ -74,7 +74,7 @@ export class City {
     }
 
     private setBarrack(x: number, y: number, name?: string) {
-        this.barrack = CreateUnit(Players[24].handle, this.defaultBarrackType, x, y, 270);
+        this._barrack = CreateUnit(Players[24].handle, this.defaultBarrackType, x, y, 270);
         City.fromBarrack.set(this.barrack, this);
 
         if (name && name != GetUnitName(this.barrack)) BlzSetUnitName(this.barrack, name);
@@ -97,5 +97,9 @@ export class City {
         }
 
         this.guard = null;
+    }
+
+    public get barrack(): unit {
+        return this._barrack;
     }
 }

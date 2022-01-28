@@ -5,10 +5,10 @@ import { Group, MapPlayer } from "w3ts";
 import { Players } from "w3ts/globals";
 
 const SpawnTypeID: number = UID.RIFLEMEN;
-const SpawnTurnLimit = 5;
+const SpawnTurnLimit: number = 5;
 
 export class Spawner {
-    private unit: unit;
+    private _unit: unit;
     private playerSpawns: Map<MapPlayer, unit[]>;
     private country: string;
     private spawnAmount: number;
@@ -24,7 +24,6 @@ export class Spawner {
 
         //TODO: Spawn Ability Cast Trigger Event
     }
-
 
     //Static API
     /**
@@ -61,6 +60,11 @@ export class Spawner {
         });
 
         group.destroy();
+    }
+
+    //Public API
+    public get unit(): unit {
+        return this._unit;
     }
 
     /**
@@ -116,13 +120,14 @@ export class Spawner {
 
         this.playerSpawns.clear();
         RemoveUnit(this.unit);
-        this.unit = null;
+        this._unit = null;
 
         this.create(x, y);
     }
 
+    //Interal Functions
     private create(x: number, y: number) {
-        this.unit = CreateUnit(Players[24].handle, SpawnTypeID, x, y, 270);
+        this._unit = CreateUnit(Players[24].handle, UID.SPAWNER, x, y, 270);
         SetUnitPathing(this.unit, false);
     }
 
