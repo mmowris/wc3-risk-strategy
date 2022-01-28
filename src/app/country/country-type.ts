@@ -14,15 +14,22 @@ export class Country {
 
     constructor(name: string, x: number, y: number, ...cities: City[]) {
         this.name = name;
+        this.spawner = new Spawner(this.name, x, y, this.cities.length);
+        Country.fromName.set(name, this);
+
+        const offsetX: number = GetUnitX(this.spawner.unit) - 100;
+        const offsetY: number = GetUnitY(this.spawner.unit) - 300;
+        const lengthCheck: number = this.name.length * 5.5 < 200 ? this.name.length * 5.5 : 200;
+
+        this.text = CreateTextTag();
+        SetTextTagText(this.text, `${HexColors.TANGERINE} ${this.name}`, 0.028);
+        SetTextTagPos(this.text, offsetX - lengthCheck, offsetY, 16.00);
+        SetTextTagVisibility(this.text, true);
+        SetTextTagPermanent(this.text, true);
 
         cities.forEach(city => {
             this.cities.push(city);
         });
-
-        this.setSpawner(x, y, this.cities.length);
-        this.setText();
-
-        Country.fromName.set(name, this);
     }
 
     //Static API
@@ -111,19 +118,4 @@ export class Country {
     }
 
     //Interal Functions
-    private setSpawner(x: number, y: number, countrySize: number) {
-        this.spawner = new Spawner(this.name, x, y, countrySize);
-    }
-
-    private setText() {
-        let offsetX: number = GetUnitX(this.spawner.unit) - 100;
-        let offsetY: number = GetUnitY(this.spawner.unit) - 300;
-        let lengthCheck: number = this.name.length * 5.5 < 200 ? this.name.length * 5.5 : 200;
-
-        this.text = CreateTextTag();
-        SetTextTagText(this.text, `${HexColors.TANGERINE} ${this.name}`, 0.028);
-        SetTextTagPos(this.text, offsetX - lengthCheck, offsetY, 16.00);
-        SetTextTagVisibility(this.text, true);
-        SetTextTagPermanent(this.text, true);
-    }
 }
