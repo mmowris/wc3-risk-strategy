@@ -4,7 +4,7 @@ import { Spawner } from "./spawner-type";
 
 export class Country {
     private name: string;
-    private cities: City[] = [];
+    private _cities: City[] = [];
     private spawner: Spawner;
     private text: texttag;
 
@@ -109,6 +109,14 @@ export class Country {
     }
 
     //Public API
+    public get cities(): City[] {
+        return this._cities;
+    }
+
+    public getSize() {
+        return this.cities.length;
+    }
+
     public animate() {
         this.cities.forEach(city => {
             const effect = AddSpecialEffect("Abilities\\Spells\\Human\\Resurrect\\ResurrectCaster.mdl", GetUnitX(city.barrack), GetUnitY(city.barrack));
@@ -117,5 +125,5 @@ export class Country {
         });
     }
 
-    //Interal Functions
+    //Internal Functions
 }

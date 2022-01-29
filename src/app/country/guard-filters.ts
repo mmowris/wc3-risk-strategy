@@ -18,7 +18,7 @@ export const FilterFriendlyValidGuards = (city: City) => Filter(() => {
     let fUnit: unit = GetFilterUnit();
 
     if (!isGuardValid(city, fUnit)) return false;
-    if (IsUnitEnemy(fUnit, GetOwningPlayer(city.barrack))) return false;
+    if (IsUnitEnemy(fUnit, city.getOwner())) return false;
     fUnit = null;
     return true;
 });
@@ -27,7 +27,7 @@ export const FilterEnemyValidGuards = (city: City) => Filter(() => {
     let fUnit: unit = GetFilterUnit();
 
     if (!isGuardValid(city, fUnit)) return false;
-    if (IsUnitAlly(fUnit, GetOwningPlayer(city.barrack))) return false;
+    if (IsUnitAlly(fUnit, city.getOwner())) return false;
 
     fUnit = null;
     return true;

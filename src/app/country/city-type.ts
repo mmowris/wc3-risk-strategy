@@ -1,6 +1,5 @@
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
-import { MapPlayer, Unit } from "w3ts";
 import { Players } from "w3ts/globals";
 import { FilterFriendlyValidGuards, isGuardValid } from "./guard-filters";
 
@@ -53,6 +52,8 @@ export class City {
 
         this.defaultGuardType = guardType;
         this.setGuard(guardType);
+
+        rect = null;
     }
 
     //Static API
@@ -373,7 +374,7 @@ export class City {
             oldGuard = null;
         }
 
-        //this.updateOwner();
+        city.setOwner(GetOwningPlayer(targUnit));
         trigUnit = null;
         targUnit = null;
 
@@ -401,6 +402,10 @@ export class City {
         return GetUnitTypeId(this.guard) == UID.DUMMY_GUARD;
     }
 
+    public getOwner(): player {
+        return GetOwningPlayer(this.barrack);
+    }
+
     public reset() {
         const x: number = GetUnitX(this.barrack);
         const y: number = GetUnitY(this.barrack);
@@ -415,7 +420,11 @@ export class City {
 
     }
 
-    //Interal Functions
+    public changeGuardOwner() {
+        SetUnitOwner(this._guard, this.getOwner(), true);
+    }
+
+    //Internal Functions
     private setBarrack(x: number, y: number, name?: string) {
         this._barrack = CreateUnit(Players[0].handle, this.defaultBarrackType, x, y, 270);
         City.fromBarrack.set(this.barrack, this);
@@ -457,13 +466,24 @@ export class City {
         SetUnitPosition(this.guard, this.x, this.y);
     }
 
-    private setOwner() {
+    //removed full change boolean - never changes guard
+    //removed reset rally boolean - always resets now
+    //removed change color boolean - always change color
+    //removed adjustTrackers call - no solution for this yet, may add to player factory TODO
+    //Previously updateOwner & changeOwner 
+    private setOwner(newOwner: player) {
+        if (this.getOwner() == newOwner) return false;
 
+        SetUnitOwner(this.barrack, newOwner, true);
+        SetUnitOwner(this.cop, newOwner, true);
+        //SetUnitOwner(this.guard, newOwner, true);
+
+        IssuePointOrder(this.barrack, "setrally", GetUnitX(this.barrack) - 70, GetUnitY(this.barrack) - 155)
     }
 
     private dummyGuard(owner: player) {
         this.changeGuard(CreateUnit(owner, UID.DUMMY_GUARD, this.x, this.y, 270));
-        //this.updateOwner();
+        this.setOwner(owner);
     }
 
     private static onEnter() {
@@ -475,7 +495,7 @@ export class City {
             if (isGuardValid(city)) return false;
 
             city.changeGuard(GetTriggerUnit());
-            //city.updateOwner(); TODO
+            city.setOwner(GetOwningPlayer(GetTriggerUnit()));
 
             return false;
         }));
@@ -499,7 +519,7 @@ export class City {
 
             ForGroup(g, () => {
                 const fUnit: unit = GetFilterUnit();
-                //guardChoice = compareValue(filterUnit, guardChoice);
+                //guardChoice = compareValue(filterUnit, guardChoice); TODO
             });
 
             city.changeGuard(guardChoice);

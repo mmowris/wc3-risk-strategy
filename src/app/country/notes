@@ -1,10 +1,13 @@
 City:
 onTrain (swap non ship with ship guards) - 100% - tested
 onCast (swap ability) - needs updateOwner
-Create dummy (create dummy guards) - needs update owner
+Create dummy (create dummy guards) - needs testing
 onLeave (guard leaves city region processing) - needs player guard options
-onEnter (unit enters city region processing) - needs updateOwner
+onEnter (unit enters city region processing) - needs testing
 adjust city trackers
 check for alive > nomad
 check for nomad > alive
 check for dead
+
+
+teams are not taken into consideraiton for swapping guards, currently allies will take over barracks

@@ -125,7 +125,7 @@ export class Spawner {
         this.create(x, y);
     }
 
-    //Interal Functions
+    //Internal Functions
     private create(x: number, y: number) {
         this._unit = CreateUnit(Players[24].handle, UID.SPAWNER, x, y, 270);
         SetUnitPathing(this.unit, false);
