@@ -6,7 +6,7 @@ export const unitSpellEffectTrig = CreateTrigger();
 
 export function unitSpellEffect() {
     for (let i = 0; i < bj_MAX_PLAYERS; i++) {
-        TriggerRegisterPlayerUnitEvent(unitSpellEffectTrig, Player(24), EVENT_PLAYER_UNIT_SPELL_EFFECT, null);
+        TriggerRegisterPlayerUnitEvent(unitSpellEffectTrig, Player(i), EVENT_PLAYER_UNIT_SPELL_EFFECT, null);
     }
 
     TriggerAddCondition(unitSpellEffectTrig, Condition(() => {

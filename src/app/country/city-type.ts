@@ -354,7 +354,7 @@ export class City {
     public static onCast() {
         let trigUnit: unit = GetTriggerUnit();
         let targUnit: unit = GetSpellTargetUnit()
-        let city: City = City.fromBarrack.get(trigUnit);
+        const city: City = City.fromBarrack.get(trigUnit);
 
         if (!city.isPort() && IsUnitType(targUnit, UTYPE.SHIP)) return false;
 
@@ -362,12 +362,20 @@ export class City {
             (!IsUnitType(city.guard, UTYPE.SHIP) && IsTerrainPathable(GetUnitX(targUnit), GetUnitY(targUnit), PATHING_TYPE_WALKABILITY))) {
             city.changeGuard(targUnit);
         } else {
-            city.swapGuard(targUnit);
+            let oldGuard: unit = city.guard;
+            let x: number = GetUnitX(targUnit);
+            let y: number = GetUnitY(targUnit);
+    
+            city.changeGuard(targUnit);
+            SetUnitPosition(oldGuard, x, y);
+            SetUnitPosition(city.guard, city.x, city.y);
+    
+            oldGuard = null;
         }
 
+        //this.updateOwner();
         trigUnit = null;
         targUnit = null;
-        city = null;
 
         return false;
     }
@@ -440,25 +448,13 @@ export class City {
         this._guard = null;
     }
 
-    //Removed the changeOwner boolean
     private changeGuard(newGuard: unit) {
-        this.removeGuard(this.isGuardDummy());
+        if (this.guard != newGuard) {
+            this.removeGuard(this.isGuardDummy());
+            this.setGuard(newGuard); 
+        }
 
-        this.setGuard(newGuard);
-        //this.updateOwner(newGuard.owner, false, true, true);
         SetUnitPosition(this.guard, this.x, this.y);
-    }
-
-    //Removed moveOldGuard boolean
-    private swapGuard(newGuard: unit) {
-        let oldGuard: unit = this.guard;
-        let x: number = GetUnitX(newGuard);
-        let y: number = GetUnitY(newGuard);
-
-        this.changeGuard(newGuard);
-
-        SetUnitPosition(oldGuard, x, y);
-        oldGuard = null;
     }
 
     private setOwner() {
@@ -467,10 +463,22 @@ export class City {
 
     private dummyGuard(owner: player) {
         this.changeGuard(CreateUnit(owner, UID.DUMMY_GUARD, this.x, this.y, 270));
+        //this.updateOwner();
     }
 
     private static onEnter() {
+        TriggerAddCondition(leaveCityTrig, Condition(() => {
+            if (IsUnitType(GetTriggerUnit(), UTYPE.TRANSPORT)) return false;
 
+            const city: City = City.fromRegion.get(GetTriggeringRegion());
+
+            if (isGuardValid(city)) return false;
+
+            city.changeGuard(GetTriggerUnit());
+            //city.updateOwner(); TODO
+
+            return false;
+        }));
     }
 
     private static onLeave() {
@@ -478,12 +486,12 @@ export class City {
             if (!IsUnitType(GetTriggerUnit(), UTYPE.GUARD)) return false;
 
             const city: City = City.fromRegion.get(GetTriggeringRegion());
-            const triggerUnit: unit = GetTriggerUnit();
-            const g: group = CreateGroup();
+            let triggerUnit: unit = GetTriggerUnit();
+            let g: group = CreateGroup();
             let guardChoice: unit = city.guard;
 
             GroupEnumUnitsInRange(g, city.x, city.y, CityRegionSize, FilterFriendlyValidGuards(city));
-            print(BlzGroupGetSize(g))
+
             if (BlzGroupGetSize(g) == 0 && !isGuardValid(city)) {
                 city.dummyGuard(GetOwningPlayer(city.barrack));
                 return false;
@@ -497,7 +505,9 @@ export class City {
             city.changeGuard(guardChoice);
 
             DestroyGroup(g);
+            g = null;
             guardChoice = null;
+            triggerUnit = null;
 
             return false;
         }));
@@ -505,14 +515,13 @@ export class City {
 
     private static onTrain() {
         TriggerAddCondition(unitTrainedTrig, Condition(() => {
-            let city: City = City.fromBarrack.get(GetTriggerUnit());
+            const city: City = City.fromBarrack.get(GetTriggerUnit());
             let trainedUnit: unit = GetTrainedUnit();
 
             if (city.isGuardShip() && !IsUnitType(trainedUnit, UTYPE.SHIP)) {
-                city.swapGuard(trainedUnit);
+                city.changeGuard(trainedUnit);
             }
 
-            city = null;
             trainedUnit = null;
 
             return false;

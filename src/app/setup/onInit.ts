@@ -1,6 +1,7 @@
 import CameraControls from "app/camera-controls";
 import { City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
+import { unitSpellEffect } from "app/spells/unitSpellEffect";
 import { Players } from "w3ts/globals";
 
 /**
@@ -27,9 +28,15 @@ export function onInit() {
 
     changeNames();
 
+    //Type init functions
     City.init();
     Country.init();
+
+    //Singletons
     CameraControls.getInstance();
+
+    //Triggers
+    unitSpellEffect();
 }
 
 function changeNames() {

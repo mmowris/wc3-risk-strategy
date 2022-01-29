@@ -9111,11 +9111,16 @@ function City.onCast(self)
     )) then
         city:changeGuard(targUnit)
     else
-        city:swapGuard(targUnit)
+        local oldGuard = city.guard
+        local x = GetUnitX(targUnit)
+        local y = GetUnitY(targUnit)
+        city:changeGuard(targUnit)
+        SetUnitPosition(oldGuard, x, y)
+        SetUnitPosition(city.guard, city.x, city.y)
+        oldGuard = nil
     end
     trigUnit = nil
     targUnit = nil
-    city = nil
     return false
 end
 function City.prototype.isPort(self)
@@ -9173,19 +9178,13 @@ function City.prototype.removeGuard(self, destroy)
     self._guard = nil
 end
 function City.prototype.changeGuard(self, newGuard)
-    self:removeGuard(
-        self:isGuardDummy()
-    )
-    self:setGuard(newGuard)
+    if self.guard ~= newGuard then
+        self:removeGuard(
+            self:isGuardDummy()
+        )
+        self:setGuard(newGuard)
+    end
     SetUnitPosition(self.guard, self.x, self.y)
-end
-function City.prototype.swapGuard(self, newGuard)
-    local oldGuard = self.guard
-    local x = GetUnitX(newGuard)
-    local y = GetUnitY(newGuard)
-    self:changeGuard(newGuard)
-    SetUnitPosition(oldGuard, x, y)
-    oldGuard = nil
 end
 function City.prototype.setOwner(self)
 end
@@ -9195,6 +9194,29 @@ function City.prototype.dummyGuard(self, owner)
     )
 end
 function City.onEnter(self)
+    TriggerAddCondition(
+        ____exports.leaveCityTrig,
+        Condition(
+            function()
+                if IsUnitType(
+                    GetTriggerUnit(),
+                    UTYPE.TRANSPORT
+                ) then
+                    return false
+                end
+                local city = ____exports.City.fromRegion:get(
+                    GetTriggeringRegion()
+                )
+                if isGuardValid(city) then
+                    return false
+                end
+                city:changeGuard(
+                    GetTriggerUnit()
+                )
+                return false
+            end
+        )
+    )
 end
 function City.onLeave(self)
     TriggerAddCondition(
@@ -9237,7 +9259,9 @@ function City.onLeave(self)
                 )
                 city:changeGuard(guardChoice)
                 DestroyGroup(g)
+                g = nil
                 guardChoice = nil
+                triggerUnit = nil
                 return false
             end
         )
@@ -9253,9 +9277,8 @@ function City.onTrain(self)
                 )
                 local trainedUnit = GetTrainedUnit()
                 if city:isGuardShip() and (not IsUnitType(trainedUnit, UTYPE.SHIP)) then
-                    city:swapGuard(trainedUnit)
+                    city:changeGuard(trainedUnit)
                 end
-                city = nil
                 trainedUnit = nil
                 return false
             end
@@ -9797,6 +9820,53 @@ Country.fromSpawner = __TS__New(Map)
 Country.fromCity = __TS__New(Map)
 return ____exports
  end,
+["src.app.spells.unitSpellEffect"] = function(...) local ____exports = {}
+local ____city_2Dtype = require("src.app.country.city-type")
+local City = ____city_2Dtype.City
+local ____abilityID = require("src.resources.abilityID")
+local AID = ____abilityID.AID
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+____exports.unitSpellEffectTrig = CreateTrigger()
+function ____exports.unitSpellEffect()
+    do
+        local i = 0
+        while i < bj_MAX_PLAYERS do
+            TriggerRegisterPlayerUnitEvent(
+                ____exports.unitSpellEffectTrig,
+                Player(i),
+                EVENT_PLAYER_UNIT_SPELL_EFFECT,
+                nil
+            )
+            i = i + 1
+        end
+    end
+    TriggerAddCondition(
+        ____exports.unitSpellEffectTrig,
+        Condition(
+            function()
+                if GetUnitTypeId(
+                    GetTriggerUnit()
+                ) == UID.MEDIC then
+                    return false
+                end
+                repeat
+                    local ____switch6 = GetSpellAbilityId()
+                    local ____cond6 = ____switch6 == AID.SWAP
+                    if ____cond6 then
+                        City:onCast()
+                    end
+                    do
+                        break
+                    end
+                until true
+                return false
+            end
+        )
+    )
+end
+return ____exports
+ end,
 ["src.app.setup.onInit"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local ____camera_2Dcontrols = require("src.app.camera-controls")
@@ -9805,6 +9875,8 @@ local ____city_2Dtype = require("src.app.country.city-type")
 local City = ____city_2Dtype.City
 local ____country_2Dtype = require("src.app.country.country-type")
 local Country = ____country_2Dtype.Country
+local ____unitSpellEffect = require("src.app.spells.unitSpellEffect")
+local unitSpellEffect = ____unitSpellEffect.unitSpellEffect
 local ____index = require("lua_modules.w3ts.globals.index")
 local Players = ____index.Players
 local changeNames
@@ -9836,6 +9908,7 @@ function ____exports.onInit()
     City:init()
     Country:init()
     CameraControls:getInstance()
+    unitSpellEffect()
 end
 return ____exports
  end,
@@ -10098,53 +10171,6 @@ function CityAllocation.getInstance(self)
     return self.instance
 end
 function CityAllocation.prototype.start(self)
-end
-return ____exports
- end,
-["src.app.spells.unitSpellEffect"] = function(...) local ____exports = {}
-local ____city_2Dtype = require("src.app.country.city-type")
-local City = ____city_2Dtype.City
-local ____abilityID = require("src.resources.abilityID")
-local AID = ____abilityID.AID
-local ____unitID = require("src.resources.unitID")
-local UID = ____unitID.UID
-____exports.unitSpellEffectTrig = CreateTrigger()
-function ____exports.unitSpellEffect()
-    do
-        local i = 0
-        while i < bj_MAX_PLAYERS do
-            TriggerRegisterPlayerUnitEvent(
-                ____exports.unitSpellEffectTrig,
-                Player(24),
-                EVENT_PLAYER_UNIT_SPELL_EFFECT,
-                nil
-            )
-            i = i + 1
-        end
-    end
-    TriggerAddCondition(
-        ____exports.unitSpellEffectTrig,
-        Condition(
-            function()
-                if GetUnitTypeId(
-                    GetTriggerUnit()
-                ) == UID.MEDIC then
-                    return false
-                end
-                repeat
-                    local ____switch6 = GetSpellAbilityId()
-                    local ____cond6 = ____switch6 == AID.SWAP
-                    if ____cond6 then
-                        City:onCast()
-                    end
-                    do
-                        break
-                    end
-                until true
-                return false
-            end
-        )
-    )
 end
 return ____exports
  end,
