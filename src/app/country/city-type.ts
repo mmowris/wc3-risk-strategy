@@ -46,10 +46,10 @@ export class City {
         TriggerRegisterEnterRegion(enterCityTrig, this.region, null);
         TriggerRegisterLeaveRegion(leaveCityTrig, this.region, null);
 
-        if (this.isCityPort()) TriggerRegisterUnitEvent(unitTrainedTrig, this.barrack, EVENT_UNIT_TRAIN_FINISH);
+        if (this.isPort()) TriggerRegisterUnitEvent(unitTrainedTrig, this.barrack, EVENT_UNIT_TRAIN_FINISH);
 
         //Create cop
-        this.cop = CreateUnit(Players[24].handle, UID.CONTROL_POINT, offSetX, offSetY, 270);
+        this.cop = CreateUnit(Players[0].handle, UID.CONTROL_POINT, offSetX, offSetY, 270);
 
         this.defaultGuardType = guardType;
         this.setGuard(guardType);
@@ -345,60 +345,31 @@ export class City {
         //Cyprus
         Cities[214] = new City(13408.0, -10272.0, UID.PORT)
         Cities[215] = new City(12576.0, -11808.0, UID.PORT)
-    }
 
-    public static onEnter() {
-
-    }
-
-    public static onLeave() {
-        TriggerAddCondition(leaveCityTrig, () => {
-            if (!IsUnitType(GetTriggerUnit(), UTYPE.GUARD)) return false;
-
-            const city: City = City.fromRegion.get(GetTriggeringRegion());
-            const triggerUnit: unit = GetTriggerUnit();
-            const g: group = CreateGroup();
-            let guardChoice: unit = city.guard;
-
-            GroupEnumUnitsInRange(g, city.x, city.y, CityRegionSize, FilterFriendlyValidGuards(city));
-
-            if (BlzGroupGetSize(g) == 0 && !isGuardValid(city)) {
-                //city.createDummyGuard();
-                return false;
-            };
-
-            ForGroup(g, () => {
-                const fUnit: unit = GetFilterUnit();
-                //guardChoice = compareValue(filterUnit, guardChoice);
-            });
-
-            //city.changeGuard(guardChoice, false);
-
-            DestroyGroup(g);
-            guardChoice = null;
-
-            return false;
-        })
-    }
-
-    public static onTrain() {
-        TriggerAddCondition(unitTrainedTrig, () => {
-            let city: City = City.fromBarrack.get(GetTriggerUnit());
-            let trainedUnit: unit = GetTrainedUnit();
-
-            if (city.isGuardShip() && !IsUnitType(trainedUnit, UTYPE.SHIP)) {
-                //this.swapGuard();
-            }
-
-            city = null;
-            trainedUnit = null;
-
-            return false;
-        })
+        this.onEnter();
+        this.onLeave();
+        this.onTrain();
     }
 
     public static onCast() {
+        let trigUnit: unit = GetTriggerUnit();
+        let targUnit: unit = GetSpellTargetUnit()
+        let city: City = City.fromBarrack.get(trigUnit);
 
+        if (!city.isPort() && IsUnitType(targUnit, UTYPE.SHIP)) return false;
+
+        if ((IsUnitType(city.guard, UTYPE.SHIP) && IsTerrainPathable(GetUnitX(targUnit), GetUnitY(targUnit), PATHING_TYPE_FLOATABILITY)) ||
+            (!IsUnitType(city.guard, UTYPE.SHIP) && IsTerrainPathable(GetUnitX(targUnit), GetUnitY(targUnit), PATHING_TYPE_WALKABILITY))) {
+            city.changeGuard(targUnit);
+        } else {
+            city.swapGuard(targUnit);
+        }
+
+        trigUnit = null;
+        targUnit = null;
+        city = null;
+
+        return false;
     }
 
     //Public API
@@ -410,7 +381,7 @@ export class City {
         return this._guard;
     }
 
-    public isCityPort(): boolean {
+    public isPort(): boolean {
         return GetUnitTypeId(this.barrack) == UID.PORT;
     }
 
@@ -438,7 +409,7 @@ export class City {
 
     //Interal Functions
     private setBarrack(x: number, y: number, name?: string) {
-        this._barrack = CreateUnit(Players[24].handle, this.defaultBarrackType, x, y, 270);
+        this._barrack = CreateUnit(Players[0].handle, this.defaultBarrackType, x, y, 270);
         City.fromBarrack.set(this.barrack, this);
 
         if (name && name != GetUnitName(this.barrack)) BlzSetUnitName(this.barrack, name);
@@ -449,7 +420,7 @@ export class City {
      */
     private setGuard(guard: unit | number) {
         //TODO add null checking
-        typeof guard === "number" ? this._guard = CreateUnit(Players[24].handle, guard, this.x, this.y, 270) : this._guard = guard;
+        typeof guard === "number" ? this._guard = CreateUnit(Players[0].handle, guard, this.x, this.y, 270) : this._guard = guard;
         UnitAddType(this.guard, UTYPE.GUARD);
         City.fromGuard.set(this.guard, this);
     }
@@ -484,7 +455,7 @@ export class City {
         let x: number = GetUnitX(newGuard);
         let y: number = GetUnitY(newGuard);
 
-        //this.changeGuard(newGuard);
+        this.changeGuard(newGuard);
 
         SetUnitPosition(oldGuard, x, y);
         oldGuard = null;
@@ -494,7 +465,57 @@ export class City {
 
     }
 
-    private dummyGuard(owner: MapPlayer) {
-        this.changeGuard(CreateUnit(owner.handle, UID.DUMMY_GUARD, this.x, this.y, 270));
+    private dummyGuard(owner: player) {
+        this.changeGuard(CreateUnit(owner, UID.DUMMY_GUARD, this.x, this.y, 270));
+    }
+
+    private static onEnter() {
+
+    }
+
+    private static onLeave() {
+        TriggerAddCondition(leaveCityTrig, Condition(() => {
+            if (!IsUnitType(GetTriggerUnit(), UTYPE.GUARD)) return false;
+
+            const city: City = City.fromRegion.get(GetTriggeringRegion());
+            const triggerUnit: unit = GetTriggerUnit();
+            const g: group = CreateGroup();
+            let guardChoice: unit = city.guard;
+
+            GroupEnumUnitsInRange(g, city.x, city.y, CityRegionSize, FilterFriendlyValidGuards(city));
+            print(BlzGroupGetSize(g))
+            if (BlzGroupGetSize(g) == 0 && !isGuardValid(city)) {
+                city.dummyGuard(GetOwningPlayer(city.barrack));
+                return false;
+            };
+
+            ForGroup(g, () => {
+                const fUnit: unit = GetFilterUnit();
+                //guardChoice = compareValue(filterUnit, guardChoice);
+            });
+
+            city.changeGuard(guardChoice);
+
+            DestroyGroup(g);
+            guardChoice = null;
+
+            return false;
+        }));
+    }
+
+    private static onTrain() {
+        TriggerAddCondition(unitTrainedTrig, Condition(() => {
+            let city: City = City.fromBarrack.get(GetTriggerUnit());
+            let trainedUnit: unit = GetTrainedUnit();
+
+            if (city.isGuardShip() && !IsUnitType(trainedUnit, UTYPE.SHIP)) {
+                city.swapGuard(trainedUnit);
+            }
+
+            city = null;
+            trainedUnit = null;
+
+            return false;
+        }))
     }
 }

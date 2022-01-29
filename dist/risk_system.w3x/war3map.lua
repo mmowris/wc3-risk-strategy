@@ -9517,7 +9517,67 @@ ____exports.UID = {
 return ____exports
  end,
 ["src.resources.unitTypes"] = function(...) local ____exports = {}
-____exports.UTYPE = {SPAWN = UNIT_TYPE_UNDEAD, GUARD = UNIT_TYPE_SAPPER}
+____exports.UTYPE = {SPAWN = UNIT_TYPE_UNDEAD, GUARD = UNIT_TYPE_SAPPER, SHIP = UNIT_TYPE_GIANT, CITY = UNIT_TYPE_TOWNHALL, BUILDING = UNIT_TYPE_STRUCTURE, TRANSPORT = UNIT_TYPE_ANCIENT}
+return ____exports
+ end,
+["src.app.country.guard-filters"] = function(...) local ____exports = {}
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+local ____unitTypes = require("src.resources.unitTypes")
+local UTYPE = ____unitTypes.UTYPE
+____exports.isGuardValid = function(city, fUnit)
+    if not fUnit then
+        fUnit = city.guard
+    end
+    if not UnitAlive(fUnit) then
+        return false
+    end
+    if IsUnitType(fUnit, UTYPE.CITY) then
+        return false
+    end
+    if IsUnitType(fUnit, UTYPE.TRANSPORT) then
+        return false
+    end
+    if IsUnitType(fUnit, UTYPE.GUARD) and (fUnit ~= city.guard) then
+        return false
+    end
+    if (GetUnitTypeId(city.barrack) == UID.CITY) and IsUnitType(fUnit, UTYPE.SHIP) then
+        return false
+    end
+    return true
+end
+____exports.FilterFriendlyValidGuards = function(city) return Filter(
+    function()
+        local fUnit = GetFilterUnit()
+        if not ____exports.isGuardValid(city, fUnit) then
+            return false
+        end
+        if IsUnitEnemy(
+            fUnit,
+            GetOwningPlayer(city.barrack)
+        ) then
+            return false
+        end
+        fUnit = nil
+        return true
+    end
+) end
+____exports.FilterEnemyValidGuards = function(city) return Filter(
+    function()
+        local fUnit = GetFilterUnit()
+        if not ____exports.isGuardValid(city, fUnit) then
+            return false
+        end
+        if IsUnitAlly(
+            fUnit,
+            GetOwningPlayer(city.barrack)
+        ) then
+            return false
+        end
+        fUnit = nil
+        return true
+    end
+) end
 return ____exports
  end,
 ["src.app.country.city-type"] = function(...) require("lualib_bundle");
@@ -9528,8 +9588,14 @@ local ____unitTypes = require("src.resources.unitTypes")
 local UTYPE = ____unitTypes.UTYPE
 local ____index = require("lua_modules.w3ts.globals.index")
 local Players = ____index.Players
+local ____guard_2Dfilters = require("src.app.country.guard-filters")
+local FilterFriendlyValidGuards = ____guard_2Dfilters.FilterFriendlyValidGuards
+local isGuardValid = ____guard_2Dfilters.isGuardValid
 ____exports.Cities = {}
 ____exports.CityRegionSize = 185
+____exports.enterCityTrig = CreateTrigger()
+____exports.leaveCityTrig = CreateTrigger()
+____exports.unitTrainedTrig = CreateTrigger()
 ____exports.City = __TS__Class()
 local City = ____exports.City
 City.name = "City"
@@ -9548,7 +9614,12 @@ function City.prototype.____constructor(self, x, y, barrackType, name, guardType
     RegionAddRect(self.region, rect)
     RemoveRect(rect)
     ____exports.City.fromRegion:set(self.region, self)
-    self.cop = CreateUnit(Players[25].handle, UID.CONTROL_POINT, offSetX, offSetY, 270)
+    TriggerRegisterEnterRegion(____exports.enterCityTrig, self.region, nil)
+    TriggerRegisterLeaveRegion(____exports.leaveCityTrig, self.region, nil)
+    if self:isPort() then
+        TriggerRegisterUnitEvent(____exports.unitTrainedTrig, self.barrack, EVENT_UNIT_TRAIN_FINISH)
+    end
+    self.cop = CreateUnit(Players[1].handle, UID.CONTROL_POINT, offSetX, offSetY, 270)
     self.defaultGuardType = guardType
     self:setGuard(guardType)
 end
@@ -9558,6 +9629,16 @@ __TS__SetDescriptor(
     {
         get = function(self)
             return self._barrack
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    City.prototype,
+    "guard",
+    {
+        get = function(self)
+            return self._guard
         end
     },
     true
@@ -9779,12 +9860,43 @@ function City.init(self)
     ____exports.Cities[214] = __TS__New(____exports.City, 7008, -12192, UID.PORT)
     ____exports.Cities[215] = __TS__New(____exports.City, 13408, -10272, UID.PORT)
     ____exports.Cities[216] = __TS__New(____exports.City, 12576, -11808, UID.PORT)
+    self:onEnter()
+    self:onLeave()
+    self:onTrain()
 end
-function City.prototype.onCast(self)
+function City.onCast(self)
+    local trigUnit = GetTriggerUnit()
+    local targUnit = GetSpellTargetUnit()
+    local city = ____exports.City.fromBarrack:get(trigUnit)
+    if (not city:isPort()) and IsUnitType(targUnit, UTYPE.SHIP) then
+        return false
+    end
+    if (IsUnitType(city.guard, UTYPE.SHIP) and IsTerrainPathable(
+        GetUnitX(targUnit),
+        GetUnitY(targUnit),
+        PATHING_TYPE_FLOATABILITY
+    )) or ((not IsUnitType(city.guard, UTYPE.SHIP)) and IsTerrainPathable(
+        GetUnitX(targUnit),
+        GetUnitY(targUnit),
+        PATHING_TYPE_WALKABILITY
+    )) then
+        city:changeGuard(targUnit)
+    else
+        city:swapGuard(targUnit)
+    end
+    trigUnit = nil
+    targUnit = nil
+    city = nil
+    return false
 end
-function City.prototype.onGuardChange(self)
+function City.prototype.isPort(self)
+    return GetUnitTypeId(self.barrack) == UID.PORT
 end
-function City.prototype.setOwner(self, newOwner)
+function City.prototype.isGuardShip(self)
+    return IsUnitType(self.guard, UTYPE.SHIP)
+end
+function City.prototype.isGuardDummy(self)
+    return GetUnitTypeId(self.guard) == UID.DUMMY_GUARD
 end
 function City.prototype.reset(self)
     local x = GetUnitX(self.barrack)
@@ -9797,10 +9909,8 @@ function City.prototype.reset(self)
     self:removeGuard(true)
     self:setGuard(self.defaultGuardType)
 end
-function City.prototype.onOwnerChange(self)
-end
 function City.prototype.setBarrack(self, x, y, name)
-    self._barrack = CreateUnit(Players[25].handle, self.defaultBarrackType, x, y, 270)
+    self._barrack = CreateUnit(Players[1].handle, self.defaultBarrackType, x, y, 270)
     ____exports.City.fromBarrack:set(self.barrack, self)
     if name and (name ~= GetUnitName(self.barrack)) then
         BlzSetUnitName(self.barrack, name)
@@ -9812,23 +9922,116 @@ function City.prototype.setGuard(self, guard)
         return v
     end)(
         self,
-        "guard",
-        CreateUnit(Players[25].handle, guard, self.x, self.y, 270)
+        "_guard",
+        CreateUnit(Players[1].handle, guard, self.x, self.y, 270)
     ) end)) or (function() return (function(o, i, v)
         o[i] = v
         return v
-    end)(self, "guard", guard) end))()
+    end)(self, "_guard", guard) end))()
     UnitAddType(self.guard, UTYPE.GUARD)
     ____exports.City.fromGuard:set(self.guard, self)
 end
 function City.prototype.removeGuard(self, destroy)
+    if destroy == nil then
+        destroy = false
+    end
     ____exports.City.fromGuard:delete(self.guard)
     if not destroy then
         UnitRemoveType(self.guard, UTYPE.GUARD)
     else
         RemoveUnit(self.guard)
     end
-    self.guard = nil
+    self._guard = nil
+end
+function City.prototype.changeGuard(self, newGuard)
+    self:removeGuard(
+        self:isGuardDummy()
+    )
+    self:setGuard(newGuard)
+    SetUnitPosition(self.guard, self.x, self.y)
+end
+function City.prototype.swapGuard(self, newGuard)
+    local oldGuard = self.guard
+    local x = GetUnitX(newGuard)
+    local y = GetUnitY(newGuard)
+    self:changeGuard(newGuard)
+    SetUnitPosition(oldGuard, x, y)
+    oldGuard = nil
+end
+function City.prototype.setOwner(self)
+end
+function City.prototype.dummyGuard(self, owner)
+    self:changeGuard(
+        CreateUnit(owner, UID.DUMMY_GUARD, self.x, self.y, 270)
+    )
+end
+function City.onEnter(self)
+end
+function City.onLeave(self)
+    TriggerAddCondition(
+        ____exports.leaveCityTrig,
+        Condition(
+            function()
+                if not IsUnitType(
+                    GetTriggerUnit(),
+                    UTYPE.GUARD
+                ) then
+                    return false
+                end
+                local city = ____exports.City.fromRegion:get(
+                    GetTriggeringRegion()
+                )
+                local triggerUnit = GetTriggerUnit()
+                local g = CreateGroup()
+                local guardChoice = city.guard
+                GroupEnumUnitsInRange(
+                    g,
+                    city.x,
+                    city.y,
+                    ____exports.CityRegionSize,
+                    FilterFriendlyValidGuards(city)
+                )
+                print(
+                    BlzGroupGetSize(g)
+                )
+                if (BlzGroupGetSize(g) == 0) and (not isGuardValid(city)) then
+                    city:dummyGuard(
+                        GetOwningPlayer(city.barrack)
+                    )
+                    return false
+                end
+                ForGroup(
+                    g,
+                    function()
+                        local fUnit = GetFilterUnit()
+                    end
+                )
+                city:changeGuard(guardChoice)
+                DestroyGroup(g)
+                guardChoice = nil
+                return false
+            end
+        )
+    )
+end
+function City.onTrain(self)
+    TriggerAddCondition(
+        ____exports.unitTrainedTrig,
+        Condition(
+            function()
+                local city = ____exports.City.fromBarrack:get(
+                    GetTriggerUnit()
+                )
+                local trainedUnit = GetTrainedUnit()
+                if city:isGuardShip() and (not IsUnitType(trainedUnit, UTYPE.SHIP)) then
+                    city:swapGuard(trainedUnit)
+                end
+                city = nil
+                trainedUnit = nil
+                return false
+            end
+        )
+    )
 end
 City.fromBarrack = __TS__New(Map)
 City.fromGuard = __TS__New(Map)
@@ -10039,15 +10242,22 @@ function Country.prototype.____constructor(self, name, x, y, ...)
     local cities = {...}
     self.cities = {}
     self.name = name
+    self.spawner = __TS__New(Spawner, self.name, x, y, #self.cities)
+    ____exports.Country.fromName:set(name, self)
+    local offsetX = GetUnitX(self.spawner.unit) - 100
+    local offsetY = GetUnitY(self.spawner.unit) - 300
+    local lengthCheck = ((((#self.name * 5.5) < 200) and (function() return #self.name * 5.5 end)) or (function() return 200 end))()
+    self.text = CreateTextTag()
+    SetTextTagText(self.text, (HexColors.TANGERINE .. " ") .. self.name, 0.028)
+    SetTextTagPos(self.text, offsetX - lengthCheck, offsetY, 16)
+    SetTextTagVisibility(self.text, true)
+    SetTextTagPermanent(self.text, true)
     __TS__ArrayForEach(
         cities,
         function(____, city)
             __TS__ArrayPush(self.cities, city)
         end
     )
-    self:setSpawner(x, y, #self.cities)
-    self:setText(100, 300)
-    ____exports.Country.fromName:set(name, self)
 end
 function Country.init(self)
     ____exports.Country.fromName:set(
@@ -10353,19 +10563,6 @@ function Country.prototype.animate(self)
         end
     )
 end
-function Country.prototype.setSpawner(self, x, y, countrySize)
-    self.spawner = __TS__New(Spawner, self.name, x, y, countrySize)
-end
-function Country.prototype.setText(self, x, y)
-    local offsetX = GetUnitX(self.spawner.unit) - x
-    local offsetY = GetUnitY(self.spawner.unit) - y
-    local lengthCheck = ((((#self.name * 5.5) < 200) and (function() return #self.name * 5.5 end)) or (function() return 200 end))()
-    self.text = CreateTextTag()
-    SetTextTagText(self.text, (HexColors.TANGERINE .. " ") .. self.name, 0.028)
-    SetTextTagPos(self.text, offsetX - lengthCheck, offsetY, 16)
-    SetTextTagVisibility(self.text, true)
-    SetTextTagPermanent(self.text, true)
-end
 Country.fromName = __TS__New(Map)
 Country.fromSpawner = __TS__New(Map)
 Country.fromCity = __TS__New(Map)
@@ -10565,14 +10762,9 @@ function Game.getInstance(self)
 end
 return ____exports
  end,
-["src.main"] = function(...) require("lualib_bundle");
-local ____exports = {}
+["src.main"] = function(...) local ____exports = {}
 local ____game = require("src.app.game")
 local Game = ____game.Game
-local ____index = require("lua_modules.w3ts.index")
-local Unit = ____index.Unit
-local ____index = require("lua_modules.w3ts.globals.index")
-local Players = ____index.Players
 local ____index = require("lua_modules.w3ts.hooks.index")
 local addScriptHook = ____index.addScriptHook
 local W3TS_HOOK = ____index.W3TS_HOOK
@@ -10581,102 +10773,6 @@ local function tsMain()
         local ____try, e = pcall(
             function()
                 Game:getInstance()
-                __TS__New(
-                    Unit,
-                    Players[1],
-                    FourCC("hfoo"),
-                    0,
-                    -150,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[1],
-                    FourCC("hfoo"),
-                    0,
-                    -300,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[1],
-                    FourCC("hfoo"),
-                    0,
-                    -450,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[1],
-                    FourCC("hfoo"),
-                    0,
-                    -600,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[2],
-                    FourCC("hfoo"),
-                    1000,
-                    -150,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[2],
-                    FourCC("hfoo"),
-                    1000,
-                    -300,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[2],
-                    FourCC("hfoo"),
-                    1000,
-                    -450,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[2],
-                    FourCC("hfoo"),
-                    1000,
-                    -600,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[3],
-                    FourCC("hfoo"),
-                    2000,
-                    -150,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[3],
-                    FourCC("hfoo"),
-                    2000,
-                    -300,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[3],
-                    FourCC("hfoo"),
-                    2000,
-                    -450,
-                    270
-                )
-                __TS__New(
-                    Unit,
-                    Players[3],
-                    FourCC("hfoo"),
-                    2000,
-                    -600,
-                    270
-                )
             end
         )
         if not ____try then
@@ -10753,6 +10849,70 @@ ____exports.CommandProcessor = function()
                     end
                 until true
                 return true
+            end
+        )
+    )
+end
+return ____exports
+ end,
+["src.app.country.city-allocation"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.CityAllocation = __TS__Class()
+local CityAllocation = ____exports.CityAllocation
+CityAllocation.name = "CityAllocation"
+function CityAllocation.prototype.____constructor(self)
+end
+function CityAllocation.getInstance(self)
+    if self.instance == nil then
+        self.instance = __TS__New(____exports.CityAllocation)
+    end
+    return self.instance
+end
+function CityAllocation.prototype.start(self)
+end
+return ____exports
+ end,
+["src.app.spells.unitSpellEffect"] = function(...) local ____exports = {}
+local ____city_2Dtype = require("src.app.country.city-type")
+local City = ____city_2Dtype.City
+local ____abilityID = require("src.resources.abilityID")
+local AID = ____abilityID.AID
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+____exports.unitSpellEffectTrig = CreateTrigger()
+function ____exports.unitSpellEffect()
+    do
+        local i = 0
+        while i < bj_MAX_PLAYERS do
+            TriggerRegisterPlayerUnitEvent(
+                ____exports.unitSpellEffectTrig,
+                Player(24),
+                EVENT_PLAYER_UNIT_SPELL_EFFECT,
+                nil
+            )
+            i = i + 1
+        end
+    end
+    TriggerAddCondition(
+        ____exports.unitSpellEffectTrig,
+        Condition(
+            function()
+                if GetUnitTypeId(
+                    GetTriggerUnit()
+                ) == UID.MEDIC then
+                    return false
+                end
+                repeat
+                    local ____switch6 = GetSpellAbilityId()
+                    local ____cond6 = ____switch6 == AID.SWAP
+                    if ____cond6 then
+                        City:onCast()
+                    end
+                    do
+                        break
+                    end
+                until true
+                return false
             end
         )
     )
