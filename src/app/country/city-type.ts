@@ -417,7 +417,6 @@ export class City {
         this.setBarrack(x, y, name);
         this.removeGuard(true);
         this.setGuard(this.defaultGuardType);
-
     }
 
     public changeGuardOwner() {
