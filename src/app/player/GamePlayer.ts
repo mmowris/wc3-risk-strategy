@@ -72,12 +72,7 @@ export class GamePlayer {
 
     evalBounty() {
 
-    }
-
-    updateStatus() {
-        
-    }
-
+    } 
 
 
     setKills(who: GamePlayer, uID: number) {
