@@ -7,6 +7,7 @@ export class Country {
     private _cities: City[] = [];
     private spawner: Spawner;
     private text: texttag;
+    private owner: player;
 
     public static fromName = new Map<string, Country>();
     public static fromSpawner = new Map<Spawner, Country>();
@@ -30,6 +31,8 @@ export class Country {
         cities.forEach(city => {
             this.cities.push(city);
         });
+
+        this.owner == Player(25);
     }
 
     //Static API

@@ -32,7 +32,7 @@ export function MessagePlayer(who: MapPlayer | number, message: string): void {
 export function GetActivePlayers() {
     return Players.filter(currentPlayer => {
             const isPlaying = currentPlayer.slotState == PLAYER_SLOT_STATE_PLAYING;
-            const isUser = currentPlayer.controller == MAP_CONTROL_USER;
+            const isUser = currentPlayer.getState(PLAYER_STATE_OBSERVER) == 0;
         
             if (isPlaying && isUser) {
                 return true;
