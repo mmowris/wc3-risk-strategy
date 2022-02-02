@@ -17,6 +17,7 @@ interface Bonus {
 // export const BonusBase: number = 10;
 export const BonusBase: number = 9;
 export const BonusCap: number = 40;
+export const BonusDivisor: number = 200;
 // export const BonusMultiplier: number = 5;
 // export const BonusDivisor: number = 1000;
 
@@ -50,7 +51,8 @@ export class GamePlayer {
         this.cities.length = 0;
         this.bounty.delta = 0;
         this.bounty.total = 0;
-
+        this.bonus.delta = 0;
+        this.bonus.total = 0;
         //TODO init bonus
 
         this.giveGold();
@@ -87,8 +89,6 @@ export class GamePlayer {
             BlzFrameSetVisible(this.bonus.bar, true);
         }
     }
-
-
 
     onStatusChange() {
 
@@ -140,11 +140,12 @@ export class GamePlayer {
             // let bonusQty: number = Math.floor(this.kd.get(this).kills) / BonusDivisor * BonusMultiplier + BonusBase;
 
             // To increase bonus by 1 every 200 kills use below with a additive of 9
-            let bonusQty: number = Math.floor(this.kd.get(this).kills) + BonusBase
+            let bonusQty: number = Math.floor(this.kd.get(this).kills) / BonusDivisor + BonusBase
 
             bonusQty = Math.min(bonusQty, BonusCap);
+            this.bonus.total += bonusQty;
             this.giveGold(bonusQty);
-
+            
             if (GetLocalPlayer() == this.player) {
                 ClearTextMessages();
             }
@@ -155,20 +156,6 @@ export class GamePlayer {
         BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
         BlzFrameSetValue(this.bonus.bar, (this.bonus.delta / 2));
     }
-
-    // setKills(who: GamePlayer, uID: number) {
-    //     // if (!this.kd.has(this.getKey(who, uID))) {
-
-    //     //     this.kd.set(this.getKey(who, uID), {
-    //     //         kills: 0,
-    //     //         deaths: 0
-    //     //     })
-    //     // }
-
-    //     this.kd.get(this.getKey(who, uID)).kills++;
-    //     this.kd.get(this).kills++
-    //     this.kd.get(who).kills++
-    // }
 
     public static getKey(who: GamePlayer, uID: number) {
         return `${who}:${uID}`;
