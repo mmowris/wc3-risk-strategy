@@ -104,7 +104,7 @@ export class Country {
         Country.fromName.set("Siberia", new Country("Siberia", 17216.0, 15424.0, Cities[199], Cities[200]));
         Country.fromName.set("Moscow", new Country("Moscow", 14528.0, 8768.0, Cities[201], Cities[202]));
         Country.fromName.set("National Park", new Country("National Park", -8640.0, 14400.0, Cities[203], Cities[204], Cities[205]));
-        Country.fromName.set("West Greeland", new Country("West Greeland", -12864.0, 13888.0, Cities[206], Cities[207]));
+        Country.fromName.set("West Greenland", new Country("West Greenland", -12864.0, 13888.0, Cities[206], Cities[207]));
         Country.fromName.set("Wales", new Country("Wales", -8384.0, 1472.0, Cities[208], Cities[209]));
         Country.fromName.set("Sardinia", new Country("Sardinia", -1856.0, -8256.0, Cities[210], Cities[211]));
         Country.fromName.set("Crete", new Country("Crete", 7616.0, -11712.0, Cities[212], Cities[213]));

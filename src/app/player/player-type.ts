@@ -15,11 +15,11 @@ interface Bonus {
 }
 
 // export const BonusBase: number = 10;
+// export const BonusMultiplier: number = 5;
+// export const BonusDivisor: number = 1000;
 export const BonusBase: number = 9;
 export const BonusCap: number = 40;
 export const BonusDivisor: number = 200;
-// export const BonusMultiplier: number = 5;
-// export const BonusDivisor: number = 1000;
 
 export class GamePlayer {
     public player: player
@@ -53,6 +53,7 @@ export class GamePlayer {
         this.bounty.total = 0;
         this.bonus.delta = 0;
         this.bonus.total = 0;
+        BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
         //TODO init bonus
 
         this.giveGold();
@@ -97,7 +98,6 @@ export class GamePlayer {
     public onKill(victom: GamePlayer, u: unit) {
         //TODO: Do not update if not alive or nomad
         //TODO: Do not update if victom is owned/allied
-
         let val: number = GetUnitPointValue(u);
 
         this.kd.get(this).kills += val; //Total of this player
