@@ -8,6 +8,18 @@ interface Bounty {
     total: number;
 }
 
+interface Bonus {
+    delta: number;
+    total: number;
+    bar: framehandle;
+}
+
+// export const BonusBase: number = 10;
+export const BonusBase: number = 9;
+export const BonusCap: number = 40;
+// export const BonusMultiplier: number = 5;
+// export const BonusDivisor: number = 1000;
+
 export class GamePlayer {
     public player: player
     public income: number;
@@ -16,6 +28,7 @@ export class GamePlayer {
     public kd: Map<string | GamePlayer, KD>;
     public unitCount: number;
     public bounty: Bounty;
+    public bonus: Bonus;
     public cities: unit[] = [];
 
 
@@ -37,6 +50,9 @@ export class GamePlayer {
         this.cities.length = 0;
         this.bounty.delta = 0;
         this.bounty.total = 0;
+
+        //TODO init bonus
+
         this.giveGold();
 
         //init kd maps
@@ -59,17 +75,20 @@ export class GamePlayer {
         SetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD) + val);
     }
 
-    initFightBonus() {
+    initBonusUI() {
+        this.bonus.bar = BlzCreateSimpleFrame("MyBarEx", BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), GetPlayerId(this.player));
+        BlzFrameSetAbsPoint(this.bonus.bar, FRAMEPOINT_BOTTOMLEFT, 0.63, 0.165);
+        BlzFrameSetTexture(this.bonus.bar, "Replaceabletextures\\Teamcolor\\Teamcolor00.blp", 0, true);
+        BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
+        BlzFrameSetValue(this.bonus.bar, 0);
+        BlzFrameSetVisible(this.bonus.bar, false);
 
+        if (GetLocalPlayer() == this.player) {
+            BlzFrameSetVisible(this.bonus.bar, true);
+        }
     }
 
-    processFightBonus() {
 
-    }
-
-    giveFightBonus() {
-
-    }
 
     onStatusChange() {
 
@@ -81,12 +100,13 @@ export class GamePlayer {
 
         let val: number = GetUnitPointValue(u);
 
-        this.kd.get(this).kills+= val; //Total of this player
-        this.kd.get(victom).kills+= val; //Total of victom player
-        this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills+= val; //Total of victom player unit specific
+        this.kd.get(this).kills += val; //Total of this player
+        this.kd.get(victom).kills += val; //Total of victom player
+        this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills += val; //Total of victom player unit specific
 
         //TODO DO NOT give fight bonus in promode
         this.evalBounty(val);
+        this.evalBonus(val);
     }
 
     public onDeath(killer: GamePlayer, u: unit) {
@@ -94,9 +114,9 @@ export class GamePlayer {
 
         let val: number = GetUnitPointValue(u);
 
-        this.kd.get(this).deaths+= val; //Total of this player
-        this.kd.get(killer).deaths+= val; //Total from killer player
-        this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths+= val; //Total from killer player unit specific
+        this.kd.get(this).deaths += val; //Total of this player
+        this.kd.get(killer).deaths += val; //Total from killer player
+        this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total from killer player unit specific
     }
 
     private evalBounty(val: number) {
@@ -111,6 +131,30 @@ export class GamePlayer {
         }
     }
 
+    private evalBonus(val: number) {
+        this.bonus.delta += val;
+
+        if (this.bonus.delta >= 200) {
+            this.bonus.delta -= 200;
+            // To increase bonus by 5 every 1000 kills use the commented out code with divior os 1000, multiplier of 5, base of 10
+            // let bonusQty: number = Math.floor(this.kd.get(this).kills) / BonusDivisor * BonusMultiplier + BonusBase;
+
+            // To increase bonus by 1 every 200 kills use below with a additive of 9
+            let bonusQty: number = Math.floor(this.kd.get(this).kills) + BonusBase
+
+            bonusQty = Math.min(bonusQty, BonusCap);
+            this.giveGold(bonusQty);
+
+            if (GetLocalPlayer() == this.player) {
+                ClearTextMessages();
+            }
+
+            DisplayTimedTextToPlayer(this.player, 0.82, 0.81, 3.00, `Received |cffffcc00${bonusQty}|r gold from |cffff0303Fight Bonus|r!`);
+        }
+
+        BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
+        BlzFrameSetValue(this.bonus.bar, (this.bonus.delta / 2));
+    }
 
     // setKills(who: GamePlayer, uID: number) {
     //     // if (!this.kd.has(this.getKey(who, uID))) {
