@@ -32,7 +32,6 @@ export class GamePlayer {
     public bonus: Bonus;
     public cities: unit[] = [];
 
-
     public static fromString = new Map<string, GamePlayer>();
     public static fromID = new Map<number, GamePlayer>();
 

@@ -1,6 +1,35 @@
-export class PlayerStatus {
+// export const enum Status {
+//     PLAYING = "|cFF00FFF0Playing|r",
+//     OBSERVING = "|cFFFFFFFFObserving|r",
+//     ALIVE = "|cFF00FF00Alive|r",
+//     NOMAD = "|cFFFE8A0ENmd|r",
+//     DEAD = "|cFFFF0005Dead|r",
+//     FORFEIT = "|cFFFFFC01Forfeit|r",
+//     LEFT = "|cFF65656ALeft|r",
+//     STFU = "|cfffe890dSTFU |r",
+// };
 
-}
+// export class PlayerStatus {
+
+//     onForfeit() {
+//         /**
+//          * update status
+//          * send forfeit message to all players
+//          * check victory conditions
+//          * 
+//          * update income to 2
+//          * remove players gold
+//          * change name
+//          * remove unit selection
+//          */
+//     }
+
+//     onPlaying() {
+
+//     }
+
+
+// }
 
 /**
  * updateStatus calls in V2

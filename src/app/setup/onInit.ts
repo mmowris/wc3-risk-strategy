@@ -26,7 +26,10 @@ export function onInit() {
     FogEnable(false); //TODO remove
     FogMaskEnable(false); //TODO remove
 
-    changeNames();
+    Players.forEach(player => {
+        //Data.PlayerNames.push(player.name); //save names. possibly move this to a name class
+        player.name = "Player";
+    });
 
     //Type init functions
     City.init();
@@ -37,11 +40,4 @@ export function onInit() {
 
     //Triggers
     unitSpellEffect();
-}
-
-function changeNames() {
-    Players.forEach(player => {
-        //Data.PlayerNames.push(player.name); //save names. possibly move this to a name class
-        player.name = "Player";
-    });
 }

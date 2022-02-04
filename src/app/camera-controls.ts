@@ -62,7 +62,7 @@ export default class CameraControls {
             }
         });
     }
-    
+
     private checkDistance(data: CamData, val: number) {
         if (val > CamSettings.MAX_DISTANCE) val = CamSettings.MAX_DISTANCE;
         if (val < CamSettings.MIN_DISTANCE) val = CamSettings.MIN_DISTANCE;
