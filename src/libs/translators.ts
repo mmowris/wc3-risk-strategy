@@ -11,10 +11,6 @@ export function SendMessage(this: void, msg: any): void {
     DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, `${msg}`);
 }
 
-export function SendMessageUnlogged(this: void, msg: any): void {
-    DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 10, `${msg}`);
-}
-
 export function SendMessageToAdmin(this: void, msg: any): void {
     // Players.forEach(p => {
     //     const _p = PlayerStateFactory.get(p);

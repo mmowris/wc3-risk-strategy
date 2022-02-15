@@ -1,5 +1,24 @@
+import { HexColors } from "resources/hexColors";
 import { TextTag, MapPlayer, Trigger } from "w3ts";
 import { Players } from "w3ts/globals";
+
+export function ErrorMessage(p: player, msg: string) {
+    if (GetLocalPlayer() == p) ClearTextMessages();
+
+    DisplayTimedTextToPlayer(p, 0.52, 0.96, 2.00, `\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n${HexColors.TANGERINE} ${msg}|r`);
+
+    PlayLocalSound("Sound\\Interface\\Error.flac", p);
+}
+
+export function PlayLocalSound(soundPath: string, p: player) {
+    let sound = CreateSound(soundPath, false, false, true, 10, 10, "")
+
+    if (GetLocalPlayer() != p) SetSoundVolume(sound, 0);
+
+    StartSound(sound);
+    KillSoundWhenDone(sound);
+    sound = null;
+}
 
 export function showOverheadText(x: number, y: number, r: number, g: number, b: number, a: number, text: string) {
     const t = new TextTag();

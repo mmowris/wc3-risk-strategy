@@ -1,10 +1,3 @@
-import { Hooks } from "libs/Hooks";
-import { UTYPE } from "objects/unitIDs";
-import { Timer, Trigger, Unit } from "w3ts";
-import { Players } from "w3ts/globals";
-import { Data } from "./Data";
-import { Messages } from "./Messages";
-
 /** 
  * For use with TriggerRegisterPlayerUnitEvent
  * EVENT_PLAYER_UNIT_LOADED =
@@ -16,17 +9,20 @@ import { Messages } from "./Messages";
  * IsUnitLoaded = Check if given unit is loaded into any transport
 */
 
+import { ErrorMessage } from "libs/utils";
+import { UTYPE } from "resources/unitTypes";
+import { Timer, Unit } from "w3ts";
+
 export class Transports {
     private static instance: Transports;
-    public static autoLoadTimer = new Map<Unit, Timer>();
-    public static loadedUnits = new Map<Unit, Unit[]>();
-    public static onLoadTrig = new Trigger();
+    public static autoLoadTimer: Map<unit, Timer> = new Map<unit, Timer>();
+    public static loadedUnits: Map<unit, unit[]> = new Map<unit, unit[]>();
+    public static onLoadTrig: trigger = CreateTrigger();
 
     //create a trigger
     public static getInstance() {
         if (this.instance == null) {
             this.instance = new Transports();
-            Hooks.set(this.name, this.instance);
         }
         return this.instance;
     }
@@ -36,15 +32,15 @@ export class Transports {
     }
 
     private static onLoad() {
-        for (let i = 0; i < Data.Loop23; i++) {
-            Transports.onLoadTrig.registerPlayerUnitEvent(Players[i], EVENT_PLAYER_UNIT_LOADED, null);
+        for (let i = 0; i < 23; i++) {
+            TriggerRegisterPlayerUnitEvent(Transports.onLoadTrig, Player(i), EVENT_PLAYER_UNIT_LOADED, null);
         }
 
-        Transports.onLoadTrig.addCondition(Condition(() => {
-            if (Data.TransportAnywhere) return false;
+        TriggerAddCondition(Transports.onLoadTrig, (Condition(() => {
+            //if (TransportAnywhere) return false; TODO: Transport settings
 
-            let trans: Unit = Unit.fromHandle(GetTransportUnit());
-            let loadedUnit: Unit = Unit.fromHandle(GetLoadedUnit());
+            let trans: unit = GetTransportUnit();
+            let loadedUnit: unit = GetLoadedUnit();
 
             Transports.loadedUnits.get(trans).push(loadedUnit)
 
@@ -54,26 +50,25 @@ export class Transports {
             trans = null;
             loadedUnit = null
             return true
-        }));
+        })));
     }
 
     public static orderUnload() {
-        if (Data.TransportAnywhere) return false;
-        if (!IsUnitType(GetTriggerUnit(), UTYPE.TRANSPORT_TYPE)) return false;
+        //if (TransportAnywhere) return false; TODO: Transport settings
+        if (!IsUnitType(GetTriggerUnit(), UTYPE.TRANSPORT)) return false;
 
-        let trans = Unit.fromHandle(GetTriggerUnit()); //Trigger unit = transport unloading
+        let trans = GetTriggerUnit(); //Trigger unit = transport unloading
 
         //print(`target x:${GetOrderPointX}, y:${GetOrderPointY}`);
         //print(`trans x:${trans.x}, y:${trans.y}`);
 
-        if (GetTerrainType(trans.x, trans.y) != FourCC("Vcbp")) {
-            trans.pauseEx(true);
-            trans.pauseEx(false);
-            trans.issueImmediateOrder("stop");
-
-            Messages.errorMessage("You may only unload on pebble terrain!", trans.owner, true);
+        if (GetTerrainType(GetUnitX(trans), GetUnitY(trans)) != FourCC("Vcbp")) {
+            BlzPauseUnitEx(trans, true);
+            BlzPauseUnitEx(trans, false);
+            IssueImmediateOrder(trans, "stop");
+            ErrorMessage(GetOwningPlayer(trans), "You may only unload on pebble terrain!");
         } else {
-            let unloadedUnit: Unit = Unit.fromHandle(GetOrderTargetUnit());
+            let unloadedUnit: unit = GetOrderTargetUnit();
 
             Transports.loadedUnits.set(trans, Transports.loadedUnits.get(trans).filter(unit => unit !== unloadedUnit))
 
@@ -87,49 +82,45 @@ export class Transports {
     }
 
     public static onLoadCast() {
-        if (Data.TransportAnywhere) return false;
+        //if (TransportAnywhere) return false;
+        let trans: unit = GetTriggerUnit();
 
-        let trans = Unit.fromHandle(GetTriggerUnit());
-
-        trans.issueImmediateOrder("stop");
-        trans.pauseEx(true);
-        trans.pauseEx(false);
-
-        Messages.errorMessage("You may only load on pebble terrain!", trans.owner, true);
+        IssueImmediateOrder(trans, "stop");
+        BlzPauseUnitEx(trans, true);
+        BlzPauseUnitEx(trans, false);
+        ErrorMessage(GetOwningPlayer(trans), "You may only load on pebble terrain!");
 
         trans = null;
     }
 
     public static onUnloadCast() {
-        if (Data.TransportAnywhere) return false;
+        //if (TransportAnywhere) return false;
+        let trans: unit = GetTriggerUnit();
 
-        let trans = Unit.fromHandle(GetTriggerUnit());
-
-        trans.issueImmediateOrder("stop");
-
-        Messages.errorMessage("You may only unload on pebble terrain!", trans.owner, true);
+        IssueImmediateOrder(trans, "stop");
+        ErrorMessage(GetOwningPlayer(trans), "You may only unload on pebble terrain!");
 
         trans = null;
     }
 
-    public static onAutoloadCast() {
-        if (Data.TransportAnywhere) return false;
+    // public static onAutoloadCast() {
+    //     //if (TransportAnywhere) return false;
 
-        let trans = Unit.fromHandle(GetTriggerUnit());
+    //     let trans = Unit.fromHandle(GetTriggerUnit());
 
-        trans.issueImmediateOrder("stop");
+    //     trans.issueImmediateOrder("stop");
 
-        Messages.errorMessage("You may only load on pebble terrain!", trans.owner, true);
+    //     Messages.errorMessage("You may only load on pebble terrain!", trans.owner, true);
 
-        trans = null;
-    }
+    //     trans = null;
+    // }
 
     public static onUnloadEndCast() {
-        if (Data.TransportAnywhere) return false;
+        //if (TransportAnywhere) return false;
 
-        let trans = Unit.fromHandle(GetTriggerUnit());
+        let trans: unit = GetTriggerUnit();
 
-        Transports.loadedUnits.set(trans, Transports.loadedUnits.get(trans).filter(unit => unit.inTransport(trans)))
+        Transports.loadedUnits.set(trans, Transports.loadedUnits.get(trans).filter(unit => IsUnitInTransport(unit, trans)))
 
         //print(`there is ${Transports.loadedUnits.get(trans).length} units loaded`)
         //print(`-----------------------------------`)
@@ -139,23 +130,23 @@ export class Transports {
         return false
     }
 
-    public static onCreate(transport: Unit) {
-        if (Data.TransportAnywhere) return false;
+    public static onCreate(trans: unit) {
+        //if (TransportAnywhere) return false;
         
-        Transports.loadedUnits.set(transport, [] = []);
+        Transports.loadedUnits.set(trans, [] = []);
     }
 
-    public static onDeath(transport: Unit, killer: Unit) {
-        if (!transport.isUnitType(UTYPE.TRANSPORT_TYPE)) return false;
-        if (Data.TransportAnywhere) return false;
+    public static onDeath(trans: unit, killer: unit) {
+        if (!IsUnitType(trans, UTYPE.TRANSPORT)) return false;
+        //if (TransportAnywhere) return false;
 
-        if (GetTerrainType(transport.x, transport.y) != FourCC("Vcbp")) {
-            Transports.loadedUnits.get(transport).forEach(unit => {
-                unit.life = 1;
-                killer.damageTarget(unit.handle, 100, true, false, ATTACK_TYPE_CHAOS, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+        if (GetTerrainType(GetUnitX(trans), GetUnitY(trans)) != FourCC("Vcbp")) {
+            Transports.loadedUnits.get(trans).forEach(unit => {
+                BlzSetUnitMaxHP(unit, 1);
+                UnitDamageTarget(killer, unit, 100, true, false, ATTACK_TYPE_CHAOS, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS);
             });
         }
 
-        Transports.loadedUnits.delete(transport);
+        Transports.loadedUnits.delete(trans);
     }
 }
