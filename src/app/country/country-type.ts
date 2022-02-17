@@ -10,13 +10,13 @@ export class Country {
     private owner: player;
 
     public static fromName = new Map<string, Country>();
-    public static fromSpawner = new Map<Spawner, Country>();
+    public static fromSpawner = new Map<Spawner, Country>(); //TODO Determine if needed
     public static fromCity = new Map<City, Country>();
 
     constructor(name: string, x: number, y: number, ...cities: City[]) {
         this.name = name;
         this.spawner = new Spawner(this.name, x, y, this.cities.length);
-        Country.fromName.set(name, this);
+        Country.fromSpawner.set(this.spawner, this);
 
         const offsetX: number = GetUnitX(this.spawner.unit) - 100;
         const offsetY: number = GetUnitY(this.spawner.unit) - 300;
@@ -30,6 +30,7 @@ export class Country {
 
         cities.forEach(city => {
             this.cities.push(city);
+            Country.fromCity.set(city, this);
         });
 
         this.owner == Player(25);
@@ -116,7 +117,7 @@ export class Country {
         return this._cities;
     }
 
-    public getSize() {
+    public get size() {
         return this.cities.length;
     }
 

@@ -8930,423 +8930,6 @@ end
 ____exports.tsGlobals = tsGlobals
 return ____exports
  end,
-["src.libs.utils"] = function(...) require("lualib_bundle");
-local ____exports = {}
-local ____index = require("lua_modules.w3ts.index")
-local TextTag = ____index.TextTag
-local MapPlayer = ____index.MapPlayer
-local Trigger = ____index.Trigger
-local ____index = require("lua_modules.w3ts.globals.index")
-local Players = ____index.Players
-function ____exports.showOverheadText(x, y, r, g, b, a, text)
-    local t = __TS__New(TextTag)
-    t:setText(text, 10, true)
-    t:setPos(x, y, 90)
-    t:setColor(r, g, b, a)
-    t:setPermanent(false)
-    t:setLifespan(2)
-    t:setFadepoint(1)
-    t:setVisible(true)
-    t:setVelocity(
-        0,
-        (7.1 / 128) * Sin(3.14159 / 2)
-    )
-    return t
-end
-function ____exports.MessageAllPlayers(message, time)
-    DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, time, message)
-end
-function ____exports.MessagePlayer(who, message)
-    if __TS__InstanceOf(who, MapPlayer) then
-        DisplayTimedTextToPlayer(who.handle, 0, 0, 10, message)
-    else
-        DisplayTimedTextToPlayer(
-            Player(who),
-            0,
-            0,
-            10,
-            message
-        )
-    end
-end
-function ____exports.GetActivePlayers()
-    return __TS__ArrayFilter(
-        Players,
-        function(____, currentPlayer)
-            local isPlaying = currentPlayer.slotState == PLAYER_SLOT_STATE_PLAYING
-            local isUser = currentPlayer.controller == MAP_CONTROL_USER
-            if isPlaying and isUser then
-                return true
-            end
-        end
-    )
-end
-local TEMP_LOCATION = Location(0, 0)
-function ____exports.getZFromXY(x, y)
-    MoveLocation(TEMP_LOCATION, x, y)
-    local z = GetLocationZ(TEMP_LOCATION)
-    return z
-end
-function ____exports.syncData(handle, listenFor, cb)
-    local syncTrigger = __TS__New(Trigger)
-    syncTrigger:registerPlayerSyncEvent(listenFor, handle, false)
-    syncTrigger:addAction(
-        function()
-            local data = BlzGetTriggerSyncData()
-            syncTrigger:destroy()
-            cb(data)
-        end
-    )
-    return function(toSend)
-        BlzSendSyncData(handle, toSend)
-    end
-end
-function ____exports.distanceBetweenPoints(x1, y1, x2, y2)
-    return SquareRoot(
-        Pow(x2 - x1, 2) + Pow(y2 - y1, 2)
-    )
-end
-return ____exports
- end,
-["src.libs.translators"] = function(...) require("lualib_bundle");
-local ____exports = {}
-local ____utils = require("src.libs.utils")
-local getZFromXY = ____utils.getZFromXY
-function ____exports.SendMessage(msg)
-    DisplayTimedTextToForce(
-        bj_FORCE_ALL_PLAYERS,
-        10,
-        tostring(msg)
-    )
-end
-____exports.console = __TS__Class()
-local console = ____exports.console
-console.name = "console"
-function console.prototype.____constructor(self)
-end
-function console.log(self, input)
-    ____exports.SendMessage(input)
-end
-function ____exports.SendMessageUnlogged(msg)
-    DisplayTimedTextToForce(
-        bj_FORCE_ALL_PLAYERS,
-        10,
-        tostring(msg)
-    )
-end
-function ____exports.SendMessageToAdmin(msg)
-end
-function ____exports.PlayNewSound(soundPath, volume)
-    local result = CreateSound(soundPath, false, false, true, 10, 10, "")
-    SetSoundDuration(
-        result,
-        GetSoundFileDuration(soundPath)
-    )
-    SetSoundChannel(result, 0)
-    SetSoundVolume(result, volume)
-    SetSoundPitch(result, 1)
-    StartSound(result)
-    KillSoundWhenDone(result)
-    return result
-end
-function ____exports.PlayNewSoundOnUnit(soundPath, unit, volume, pitch)
-    if pitch == nil then
-        pitch = 1
-    end
-    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
-    SetSoundDuration(
-        result,
-        GetSoundFileDuration(soundPath)
-    )
-    SetSoundChannel(result, 0)
-    SetSoundVolume(result, volume)
-    SetSoundPitch(result, pitch)
-    SetSoundDistances(result, 2000, 5000)
-    SetSoundDistanceCutoff(result, 4500)
-    local loc = Location(unit.x, unit.y)
-    PlaySoundAtPointBJ(
-        result,
-        volume,
-        loc,
-        getZFromXY(unit.x, unit.y)
-    )
-    RemoveLocation(loc)
-    KillSoundWhenDone(result)
-    return result
-end
-function ____exports.PlayNewSoundAt(soundPath, x, y, volume)
-    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
-    SetSoundDuration(
-        result,
-        GetSoundFileDuration(soundPath)
-    )
-    SetSoundChannel(result, 0)
-    SetSoundVolume(result, volume)
-    SetSoundPitch(result, 1)
-    SetSoundDistances(result, 2000, 5000)
-    SetSoundDistanceCutoff(result, 4500)
-    local loc = Location(x, y)
-    PlaySoundAtPointBJ(
-        result,
-        volume,
-        loc,
-        getZFromXY(x, y)
-    )
-    RemoveLocation(loc)
-    KillSoundWhenDone(result)
-    return result
-end
-function ____exports.DecodeFourCC(fourcc)
-    return string.char((fourcc >> 24) & 255, (fourcc >> 16) & 255, (fourcc >> 8) & 255, fourcc & 255)
-end
-____exports.Util = __TS__Class()
-local Util = ____exports.Util
-Util.name = "Util"
-function Util.prototype.____constructor(self)
-end
-function Util.ColourString(self, colour, str)
-    return (("|cFF" .. colour) .. str) .. "|r"
-end
-function Util.ShuffleArray(self, arr)
-    do
-        local i = #arr - 1
-        while i > 0 do
-            local j = math.floor(
-                math.random() * (i + 1)
-            )
-            local temp = arr[i + 1]
-            arr[i + 1] = arr[j + 1]
-            arr[j + 1] = temp
-            i = i - 1
-        end
-    end
-end
-function Util.RandomHash(self, length)
-    local result = ""
-    local characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-    local charactersLength = #characters
-    do
-        local i = 0
-        while i < length do
-            result = result .. __TS__StringCharAt(
-                characters,
-                math.floor(
-                    math.random() * charactersLength
-                )
-            )
-            i = i + 1
-        end
-    end
-    return result
-end
-function Util.GetRandomKey(self, collection)
-    local index = math.floor(
-        math.random() * collection.size
-    )
-    local cntr = 0
-    for ____, key in __TS__Iterator(
-        collection:keys()
-    ) do
-        if (function()
-            local ____tmp = cntr
-            cntr = ____tmp + 1
-            return ____tmp
-        end)() == index then
-            return key
-        end
-    end
-end
-function Util.GetAllKeys(self, collection)
-    local keys = {}
-    for ____, key in __TS__Iterator(
-        collection:keys()
-    ) do
-        __TS__ArrayPush(keys, key)
-    end
-    return keys
-end
-function Util.ArraysToString(self, arr)
-    local output = "["
-    do
-        local i = 0
-        while i < #arr do
-            do
-                if i == (#arr - 1) then
-                    output = output .. (("\"" .. tostring(arr[i + 1])) .. "\"")
-                    goto __continue24
-                end
-                output = output .. (("\"" .. tostring(arr[i + 1])) .. "\", ")
-            end
-            ::__continue24::
-            i = i + 1
-        end
-    end
-    output = output .. "]"
-    return output
-end
-function Util.ParseInt(self, str)
-    return str
-end
-function Util.ParsePositiveInt(self, str)
-    local int = __TS__Number(str)
-    if int < 0 then
-        return 0
-    end
-    return int
-end
-function Util.Round(self, x)
-    return math.floor((x + 0.5) - ((x + 0.5) % 1))
-end
-function Util.RandomEnumKey(self, enumeration)
-    local values = __TS__ArrayFilter(
-        __TS__ArrayMap(
-            __TS__ObjectKeys(enumeration),
-            function(____, key) return enumeration[key] end
-        ),
-        function(____, value) return type(enumeration[value]) ~= "number" end
-    )
-    local randValue = values[math.floor(
-        math.random() * #values
-    ) + 1]
-    return randValue
-end
-Util.COLOUR_IDS = {RED = 0, BLUE = 1, TEAL = 2, PURPLE = 3, YELLOW = 4, ORANGE = 5, GREEN = 6, PINK = 7, GRAY = 8, GREY = 8, LIGHT_BLUE = 9, LIGHTBLUE = 9, LB = 9, DARK_GREEN = 10, DARKGREEN = 10, DG = 10, BROWN = 11, MAROON = 12, NAVY = 13, TURQUOISE = 14, VOILET = 15, WHEAT = 16, PEACH = 17, MINT = 18, LAVENDER = 19, COAL = 20, SNOW = 21, EMERALD = 22, PEANUT = 23}
-____exports.CREEP_TYPE = CREEP_TYPE or ({})
-____exports.CREEP_TYPE.NORMAL = 0
-____exports.CREEP_TYPE[____exports.CREEP_TYPE.NORMAL] = "NORMAL"
-____exports.CREEP_TYPE.AIR = 1
-____exports.CREEP_TYPE[____exports.CREEP_TYPE.AIR] = "AIR"
-____exports.CREEP_TYPE.CHAMPION = 2
-____exports.CREEP_TYPE[____exports.CREEP_TYPE.CHAMPION] = "CHAMPION"
-____exports.CREEP_TYPE.BOSS = 3
-____exports.CREEP_TYPE[____exports.CREEP_TYPE.BOSS] = "BOSS"
-____exports.ARMOUR_TYPE = ARMOUR_TYPE or ({})
-____exports.ARMOUR_TYPE.UNARMOURED = 0
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.UNARMOURED] = "UNARMOURED"
-____exports.ARMOUR_TYPE.LIGHT = 1
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.LIGHT] = "LIGHT"
-____exports.ARMOUR_TYPE.MEDIUM = 2
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.MEDIUM] = "MEDIUM"
-____exports.ARMOUR_TYPE.HEAVY = 3
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HEAVY] = "HEAVY"
-____exports.ARMOUR_TYPE.FORTIFIED = 4
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.FORTIFIED] = "FORTIFIED"
-____exports.ARMOUR_TYPE.HERO = 5
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HERO] = "HERO"
-return ____exports
- end,
-["src.resources.hexColors"] = function(...) local ____exports = {}
-____exports.HexColors = HexColors or ({})
-____exports.HexColors.RED = "|cffff0303"
-____exports.HexColors.BLUE = "|cff0042ff"
-____exports.HexColors.TEAL = "|cff1be7ba"
-____exports.HexColors.PURPLE = "|cff550081"
-____exports.HexColors.YELLOW = "|cfffefc00"
-____exports.HexColors.ORANGE = "|cfffe890d"
-____exports.HexColors.GREEN = "|cff21bf00"
-____exports.HexColors.PINK = "|cffe45caf"
-____exports.HexColors.LIGHT_GRAY = "|cff939596"
-____exports.HexColors.LIGHT_BLUE = "|cff77bbff"
-____exports.HexColors.DARK_GREEN = "|cff106247"
-____exports.HexColors.BROWN = "|cff4f2b05"
-____exports.HexColors.MAROON = "|cff9c0000"
-____exports.HexColors.NAVY = "|cff0000c3"
-____exports.HexColors.TURQUOISE = "|cff00ebff"
-____exports.HexColors.VIOLET = "|cffbd00ff"
-____exports.HexColors.WHEAT = "|cffecce87"
-____exports.HexColors.PEACH = "|cfff7a58b"
-____exports.HexColors.MINT = "|cffccff99"
-____exports.HexColors.LAVENDER = "|cffdbb8eb"
-____exports.HexColors.COAL = "|cff4f5055"
-____exports.HexColors.SNOW = "|cffecf0ff"
-____exports.HexColors.EMERALD = "|cff00781e"
-____exports.HexColors.PEANUT = "|cffa56f34"
-____exports.HexColors.WHITE = "|cffffffff"
-____exports.HexColors.TANGERINE = "|cffffcc00"
-____exports.HexColors.WARNING = "|cffD0342C"
-return ____exports
- end,
-["src.app.setup.gameStatus"] = function(...) require("lualib_bundle");
-local ____exports = {}
-local ____index = require("lua_modules.w3ts.index")
-local Unit = ____index.Unit
-local ____index = require("lua_modules.w3ts.globals.index")
-local Players = ____index.Players
-____exports.GameStatus = __TS__Class()
-local GameStatus = ____exports.GameStatus
-GameStatus.name = "GameStatus"
-function GameStatus.prototype.____constructor(self)
-    self.ONLINE = 0
-    self.OFFLINE = 1
-    self.REPLAY = 2
-    local humanPlayer
-    __TS__ArrayEvery(
-        Players,
-        function(____, p)
-            if (p.slotState == PLAYER_SLOT_STATE_PLAYING) and (p.controller == MAP_CONTROL_USER) then
-                humanPlayer = p
-                return false
-            end
-        end
-    )
-    local dummy = __TS__New(
-        Unit,
-        humanPlayer,
-        FourCC("hfoo"),
-        0,
-        0,
-        270
-    )
-    dummy:select(true)
-    local selected = dummy:isSelected(humanPlayer)
-    dummy:destroy()
-    if selected then
-        if ReloadGameCachesFromDisk() then
-            self.status = 1
-        else
-            self.status = 2
-        end
-    else
-        self.status = 0
-    end
-end
-function GameStatus.getInstance(self)
-    if self.instance == nil then
-        self.instance = __TS__New(____exports.GameStatus)
-    end
-    return self.instance
-end
-function GameStatus.prototype.get(self)
-    return self.status
-end
-function GameStatus.prototype.__tostring(self)
-    local result
-    repeat
-        local ____switch13 = self.status
-        local ____cond13 = ____switch13 == 0
-        if ____cond13 then
-            result = "ONLINE"
-            break
-        end
-        ____cond13 = ____cond13 or (____switch13 == 1)
-        if ____cond13 then
-            result = "OFFLINE"
-            break
-        end
-        ____cond13 = ____cond13 or (____switch13 == 2)
-        if ____cond13 then
-            result = "REPLAY"
-            break
-        end
-        do
-            result = "Unhandled case in GameStatus.toString() Case #: " .. tostring(self.status)
-            break
-        end
-    until true
-    return result
-end
-return ____exports
- end,
 ["src.app.camera-controls"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local CamSettings = CamSettings or ({})
@@ -9488,6 +9071,78 @@ ____exports.default = (function()
 end)()
 return ____exports
  end,
+["src.app.commands.command-processor"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____camera_2Dcontrols = require("src.app.camera-controls")
+local CameraControls = ____camera_2Dcontrols.default
+local PlayerCamData = ____camera_2Dcontrols.PlayerCamData
+____exports.CommandProcessor = function()
+    local t = CreateTrigger()
+    do
+        local i = 0
+        while i < bj_MAX_PLAYERS do
+            TriggerRegisterPlayerChatEvent(
+                t,
+                Player(i),
+                "-",
+                false
+            )
+            i = i + 1
+        end
+    end
+    TriggerAddCondition(
+        t,
+        Condition(
+            function()
+                local command = __TS__StringSplit(
+                    GetEventPlayerChatString(),
+                    " "
+                )[1]
+                local tPlayer = GetTriggerPlayer()
+                repeat
+                    local ____switch5 = command
+                    local camData, distance, angle, rotation
+                    local ____cond5 = ____switch5 == "-cam"
+                    if ____cond5 then
+                        camData = {}
+                        distance = __TS__StringSplit(
+                            GetEventPlayerChatString(),
+                            " "
+                        )[2]
+                        angle = __TS__StringSplit(
+                            GetEventPlayerChatString(),
+                            " "
+                        )[3]
+                        rotation = __TS__StringSplit(
+                            GetEventPlayerChatString(),
+                            " "
+                        )[4]
+                        if distance and S2R(distance) then
+                            __TS__ArrayPush(camData, distance)
+                        end
+                        if angle and S2R(angle) then
+                            __TS__ArrayPush(camData, angle)
+                        end
+                        if rotation and S2R(rotation) then
+                            __TS__ArrayPush(camData, rotation)
+                        end
+                        CameraControls:getInstance():checkCamData(
+                            PlayerCamData:get(tPlayer),
+                            camData
+                        )
+                        break
+                    end
+                    do
+                        break
+                    end
+                until true
+                return true
+            end
+        )
+    )
+end
+return ____exports
+ end,
 ["src.resources.unitID"] = function(...) local ____exports = {}
 ____exports.UID = {
     CITY = FourCC("h000"),
@@ -9554,7 +9209,7 @@ ____exports.FilterFriendlyValidGuards = function(city) return Filter(
         end
         if IsUnitEnemy(
             fUnit,
-            GetOwningPlayer(city.barrack)
+            city:getOwner()
         ) then
             return false
         end
@@ -9570,7 +9225,7 @@ ____exports.FilterEnemyValidGuards = function(city) return Filter(
         end
         if IsUnitAlly(
             fUnit,
-            GetOwningPlayer(city.barrack)
+            city:getOwner()
         ) then
             return false
         end
@@ -9622,6 +9277,7 @@ function City.prototype.____constructor(self, x, y, barrackType, name, guardType
     self.cop = CreateUnit(Players[1].handle, UID.CONTROL_POINT, offSetX, offSetY, 270)
     self.defaultGuardType = guardType
     self:setGuard(guardType)
+    rect = nil
 end
 __TS__SetDescriptor(
     City.prototype,
@@ -9890,6 +9546,9 @@ function City.onCast(self)
         SetUnitPosition(city.guard, city.x, city.y)
         oldGuard = nil
     end
+    city:setOwner(
+        GetOwningPlayer(targUnit)
+    )
     trigUnit = nil
     targUnit = nil
     return false
@@ -9903,6 +9562,9 @@ end
 function City.prototype.isGuardDummy(self)
     return GetUnitTypeId(self.guard) == UID.DUMMY_GUARD
 end
+function City.prototype.getOwner(self)
+    return GetOwningPlayer(self.barrack)
+end
 function City.prototype.reset(self)
     local x = GetUnitX(self.barrack)
     local y = GetUnitY(self.barrack)
@@ -9913,6 +9575,13 @@ function City.prototype.reset(self)
     self:setBarrack(x, y, name)
     self:removeGuard(true)
     self:setGuard(self.defaultGuardType)
+end
+function City.prototype.changeGuardOwner(self)
+    SetUnitOwner(
+        self._guard,
+        self:getOwner(),
+        true
+    )
 end
 function City.prototype.setBarrack(self, x, y, name)
     self._barrack = CreateUnit(Players[1].handle, self.defaultBarrackType, x, y, 270)
@@ -9957,12 +9626,24 @@ function City.prototype.changeGuard(self, newGuard)
     end
     SetUnitPosition(self.guard, self.x, self.y)
 end
-function City.prototype.setOwner(self)
+function City.prototype.setOwner(self, newOwner)
+    if self:getOwner() == newOwner then
+        return false
+    end
+    SetUnitOwner(self.barrack, newOwner, true)
+    SetUnitOwner(self.cop, newOwner, true)
+    IssuePointOrder(
+        self.barrack,
+        "setrally",
+        GetUnitX(self.barrack) - 70,
+        GetUnitY(self.barrack) - 155
+    )
 end
 function City.prototype.dummyGuard(self, owner)
     self:changeGuard(
         CreateUnit(owner, UID.DUMMY_GUARD, self.x, self.y, 270)
     )
+    self:setOwner(owner)
 end
 function City.onEnter(self)
     TriggerAddCondition(
@@ -9984,6 +9665,11 @@ function City.onEnter(self)
                 city:changeGuard(
                     GetTriggerUnit()
                 )
+                city:setOwner(
+                    GetOwningPlayer(
+                        GetTriggerUnit()
+                    )
+                )
                 return false
             end
         )
@@ -10003,7 +9689,6 @@ function City.onLeave(self)
                 local city = ____exports.City.fromRegion:get(
                     GetTriggeringRegion()
                 )
-                local triggerUnit = GetTriggerUnit()
                 local g = CreateGroup()
                 local guardChoice = city.guard
                 GroupEnumUnitsInRange(
@@ -10012,9 +9697,6 @@ function City.onLeave(self)
                     city.y,
                     ____exports.CityRegionSize,
                     FilterFriendlyValidGuards(city)
-                )
-                print(
-                    BlzGroupGetSize(g)
                 )
                 if (BlzGroupGetSize(g) == 0) and (not isGuardValid(city)) then
                     city:dummyGuard(
@@ -10032,7 +9714,6 @@ function City.onLeave(self)
                 DestroyGroup(g)
                 g = nil
                 guardChoice = nil
-                triggerUnit = nil
                 return false
             end
         )
@@ -10060,6 +9741,37 @@ City.fromBarrack = __TS__New(Map)
 City.fromGuard = __TS__New(Map)
 City.fromRegion = __TS__New(Map)
 City.cities = {}
+return ____exports
+ end,
+["src.resources.hexColors"] = function(...) local ____exports = {}
+____exports.HexColors = HexColors or ({})
+____exports.HexColors.RED = "|cffff0303"
+____exports.HexColors.BLUE = "|cff0042ff"
+____exports.HexColors.TEAL = "|cff1be7ba"
+____exports.HexColors.PURPLE = "|cff550081"
+____exports.HexColors.YELLOW = "|cfffefc00"
+____exports.HexColors.ORANGE = "|cfffe890d"
+____exports.HexColors.GREEN = "|cff21bf00"
+____exports.HexColors.PINK = "|cffe45caf"
+____exports.HexColors.LIGHT_GRAY = "|cff939596"
+____exports.HexColors.LIGHT_BLUE = "|cff77bbff"
+____exports.HexColors.DARK_GREEN = "|cff106247"
+____exports.HexColors.BROWN = "|cff4f2b05"
+____exports.HexColors.MAROON = "|cff9c0000"
+____exports.HexColors.NAVY = "|cff0000c3"
+____exports.HexColors.TURQUOISE = "|cff00ebff"
+____exports.HexColors.VIOLET = "|cffbd00ff"
+____exports.HexColors.WHEAT = "|cffecce87"
+____exports.HexColors.PEACH = "|cfff7a58b"
+____exports.HexColors.MINT = "|cffccff99"
+____exports.HexColors.LAVENDER = "|cffdbb8eb"
+____exports.HexColors.COAL = "|cff4f5055"
+____exports.HexColors.SNOW = "|cffecf0ff"
+____exports.HexColors.EMERALD = "|cff00781e"
+____exports.HexColors.PEANUT = "|cffa56f34"
+____exports.HexColors.WHITE = "|cffffffff"
+____exports.HexColors.TANGERINE = "|cffffcc00"
+____exports.HexColors.WARNING = "|cffD0342C"
 return ____exports
  end,
 ["src.resources.abilityID"] = function(...) local ____exports = {}
@@ -10263,7 +9975,7 @@ local Country = ____exports.Country
 Country.name = "Country"
 function Country.prototype.____constructor(self, name, x, y, ...)
     local cities = {...}
-    self.cities = {}
+    self._cities = {}
     self.name = name
     self.spawner = __TS__New(Spawner, self.name, x, y, #self.cities)
     ____exports.Country.fromName:set(name, self)
@@ -10281,7 +9993,18 @@ function Country.prototype.____constructor(self, name, x, y, ...)
             __TS__ArrayPush(self.cities, city)
         end
     )
+    local ____ = self.owner == Player(25)
 end
+__TS__SetDescriptor(
+    Country.prototype,
+    "cities",
+    {
+        get = function(self)
+            return self._cities
+        end
+    },
+    true
+)
 function Country.init(self)
     ____exports.Country.fromName:set(
         "Germany",
@@ -10552,8 +10275,8 @@ function Country.init(self)
         __TS__New(____exports.Country, "National Park", -8640, 14400, Cities[204], Cities[205], Cities[206])
     )
     ____exports.Country.fromName:set(
-        "West Greeland",
-        __TS__New(____exports.Country, "West Greeland", -12864, 13888, Cities[207], Cities[208])
+        "West Greenland",
+        __TS__New(____exports.Country, "West Greenland", -12864, 13888, Cities[207], Cities[208])
     )
     ____exports.Country.fromName:set(
         "Wales",
@@ -10571,6 +10294,9 @@ function Country.init(self)
         "Cyprus",
         __TS__New(____exports.Country, "Cyprus", 12608, -10944, Cities[215], Cities[216])
     )
+end
+function Country.prototype.getSize(self)
+    return #self.cities
 end
 function Country.prototype.animate(self)
     __TS__ArrayForEach(
@@ -10640,8 +10366,8 @@ return ____exports
  end,
 ["src.app.setup.onInit"] = function(...) require("lualib_bundle");
 local ____exports = {}
-local ____camera_2Dcontrols = require("src.app.camera-controls")
-local CameraControls = ____camera_2Dcontrols.default
+local ____command_2Dprocessor = require("src.app.commands.command-processor")
+local CommandProcessor = ____command_2Dprocessor.CommandProcessor
 local ____city_2Dtype = require("src.app.country.city-type")
 local City = ____city_2Dtype.City
 local ____country_2Dtype = require("src.app.country.country-type")
@@ -10650,15 +10376,6 @@ local ____unitSpellEffect = require("src.app.spells.unitSpellEffect")
 local unitSpellEffect = ____unitSpellEffect.unitSpellEffect
 local ____index = require("lua_modules.w3ts.globals.index")
 local Players = ____index.Players
-local changeNames
-function changeNames()
-    __TS__ArrayForEach(
-        Players,
-        function(____, player)
-            player.name = "Player"
-        end
-    )
-end
 function ____exports.onInit()
     if not BlzLoadTOCFile("war3mapimported\\Risk.toc") then
         print("Failed to load TOC file!")
@@ -10675,12 +10392,333 @@ function ____exports.onInit()
     SetAllyColorFilterState(0)
     FogEnable(false)
     FogMaskEnable(false)
-    changeNames()
+    __TS__ArrayForEach(
+        Players,
+        function(____, player)
+            player.name = "Player"
+        end
+    )
     City:init()
     Country:init()
-    CameraControls:getInstance()
     unitSpellEffect()
+    CommandProcessor()
 end
+return ____exports
+ end,
+["src.libs.utils"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____hexColors = require("src.resources.hexColors")
+local HexColors = ____hexColors.HexColors
+local ____index = require("lua_modules.w3ts.index")
+local TextTag = ____index.TextTag
+local MapPlayer = ____index.MapPlayer
+local Trigger = ____index.Trigger
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+function ____exports.PlayLocalSound(soundPath, p)
+    local sound = CreateSound(soundPath, false, false, true, 10, 10, "")
+    if GetLocalPlayer() ~= p then
+        SetSoundVolume(sound, 0)
+    end
+    StartSound(sound)
+    KillSoundWhenDone(sound)
+    sound = nil
+end
+function ____exports.ErrorMessage(p, msg)
+    if GetLocalPlayer() == p then
+        ClearTextMessages()
+    end
+    DisplayTimedTextToPlayer(p, 0.52, 0.96, 2, ((("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" .. HexColors.TANGERINE) .. " ") .. msg) .. "|r")
+    ____exports.PlayLocalSound("Sound\\Interface\\Error.flac", p)
+end
+function ____exports.showOverheadText(x, y, r, g, b, a, text)
+    local t = __TS__New(TextTag)
+    t:setText(text, 10, true)
+    t:setPos(x, y, 90)
+    t:setColor(r, g, b, a)
+    t:setPermanent(false)
+    t:setLifespan(2)
+    t:setFadepoint(1)
+    t:setVisible(true)
+    t:setVelocity(
+        0,
+        (7.1 / 128) * Sin(3.14159 / 2)
+    )
+    return t
+end
+function ____exports.MessageAllPlayers(message, time)
+    DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, time, message)
+end
+function ____exports.MessagePlayer(who, message)
+    if __TS__InstanceOf(who, MapPlayer) then
+        DisplayTimedTextToPlayer(who.handle, 0, 0, 10, message)
+    else
+        DisplayTimedTextToPlayer(
+            Player(who),
+            0,
+            0,
+            10,
+            message
+        )
+    end
+end
+function ____exports.GetActivePlayers()
+    return __TS__ArrayFilter(
+        Players,
+        function(____, currentPlayer)
+            local isPlaying = currentPlayer.slotState == PLAYER_SLOT_STATE_PLAYING
+            local isUser = currentPlayer:getState(PLAYER_STATE_OBSERVER) == 0
+            if isPlaying and isUser then
+                return true
+            end
+        end
+    )
+end
+local TEMP_LOCATION = Location(0, 0)
+function ____exports.getZFromXY(x, y)
+    MoveLocation(TEMP_LOCATION, x, y)
+    local z = GetLocationZ(TEMP_LOCATION)
+    return z
+end
+function ____exports.syncData(handle, listenFor, cb)
+    local syncTrigger = __TS__New(Trigger)
+    syncTrigger:registerPlayerSyncEvent(listenFor, handle, false)
+    syncTrigger:addAction(
+        function()
+            local data = BlzGetTriggerSyncData()
+            syncTrigger:destroy()
+            cb(data)
+        end
+    )
+    return function(toSend)
+        BlzSendSyncData(handle, toSend)
+    end
+end
+function ____exports.distanceBetweenPoints(x1, y1, x2, y2)
+    return SquareRoot(
+        Pow(x2 - x1, 2) + Pow(y2 - y1, 2)
+    )
+end
+return ____exports
+ end,
+["src.libs.translators"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____utils = require("src.libs.utils")
+local getZFromXY = ____utils.getZFromXY
+function ____exports.SendMessage(msg)
+    DisplayTimedTextToForce(
+        bj_FORCE_ALL_PLAYERS,
+        10,
+        tostring(msg)
+    )
+end
+____exports.console = __TS__Class()
+local console = ____exports.console
+console.name = "console"
+function console.prototype.____constructor(self)
+end
+function console.log(self, input)
+    ____exports.SendMessage(input)
+end
+function ____exports.SendMessageToAdmin(msg)
+end
+function ____exports.PlayNewSound(soundPath, volume)
+    local result = CreateSound(soundPath, false, false, true, 10, 10, "")
+    SetSoundDuration(
+        result,
+        GetSoundFileDuration(soundPath)
+    )
+    SetSoundChannel(result, 0)
+    SetSoundVolume(result, volume)
+    SetSoundPitch(result, 1)
+    StartSound(result)
+    KillSoundWhenDone(result)
+    return result
+end
+function ____exports.PlayNewSoundOnUnit(soundPath, unit, volume, pitch)
+    if pitch == nil then
+        pitch = 1
+    end
+    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
+    SetSoundDuration(
+        result,
+        GetSoundFileDuration(soundPath)
+    )
+    SetSoundChannel(result, 0)
+    SetSoundVolume(result, volume)
+    SetSoundPitch(result, pitch)
+    SetSoundDistances(result, 2000, 5000)
+    SetSoundDistanceCutoff(result, 4500)
+    local loc = Location(unit.x, unit.y)
+    PlaySoundAtPointBJ(
+        result,
+        volume,
+        loc,
+        getZFromXY(unit.x, unit.y)
+    )
+    RemoveLocation(loc)
+    KillSoundWhenDone(result)
+    return result
+end
+function ____exports.PlayNewSoundAt(soundPath, x, y, volume)
+    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
+    SetSoundDuration(
+        result,
+        GetSoundFileDuration(soundPath)
+    )
+    SetSoundChannel(result, 0)
+    SetSoundVolume(result, volume)
+    SetSoundPitch(result, 1)
+    SetSoundDistances(result, 2000, 5000)
+    SetSoundDistanceCutoff(result, 4500)
+    local loc = Location(x, y)
+    PlaySoundAtPointBJ(
+        result,
+        volume,
+        loc,
+        getZFromXY(x, y)
+    )
+    RemoveLocation(loc)
+    KillSoundWhenDone(result)
+    return result
+end
+function ____exports.DecodeFourCC(fourcc)
+    return string.char((fourcc >> 24) & 255, (fourcc >> 16) & 255, (fourcc >> 8) & 255, fourcc & 255)
+end
+____exports.Util = __TS__Class()
+local Util = ____exports.Util
+Util.name = "Util"
+function Util.prototype.____constructor(self)
+end
+function Util.ColourString(self, colour, str)
+    return (("|cFF" .. colour) .. str) .. "|r"
+end
+function Util.ShuffleArray(self, arr)
+    do
+        local i = #arr - 1
+        while i > 0 do
+            local j = math.floor(
+                math.random() * (i + 1)
+            )
+            local temp = arr[i + 1]
+            arr[i + 1] = arr[j + 1]
+            arr[j + 1] = temp
+            i = i - 1
+        end
+    end
+end
+function Util.RandomHash(self, length)
+    local result = ""
+    local characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    local charactersLength = #characters
+    do
+        local i = 0
+        while i < length do
+            result = result .. __TS__StringCharAt(
+                characters,
+                math.floor(
+                    math.random() * charactersLength
+                )
+            )
+            i = i + 1
+        end
+    end
+    return result
+end
+function Util.GetRandomKey(self, collection)
+    local index = math.floor(
+        math.random() * collection.size
+    )
+    local cntr = 0
+    for ____, key in __TS__Iterator(
+        collection:keys()
+    ) do
+        if (function()
+            local ____tmp = cntr
+            cntr = ____tmp + 1
+            return ____tmp
+        end)() == index then
+            return key
+        end
+    end
+end
+function Util.GetAllKeys(self, collection)
+    local keys = {}
+    for ____, key in __TS__Iterator(
+        collection:keys()
+    ) do
+        __TS__ArrayPush(keys, key)
+    end
+    return keys
+end
+function Util.ArraysToString(self, arr)
+    local output = "["
+    do
+        local i = 0
+        while i < #arr do
+            do
+                if i == (#arr - 1) then
+                    output = output .. (("\"" .. tostring(arr[i + 1])) .. "\"")
+                    goto __continue23
+                end
+                output = output .. (("\"" .. tostring(arr[i + 1])) .. "\", ")
+            end
+            ::__continue23::
+            i = i + 1
+        end
+    end
+    output = output .. "]"
+    return output
+end
+function Util.ParseInt(self, str)
+    return str
+end
+function Util.ParsePositiveInt(self, str)
+    local int = __TS__Number(str)
+    if int < 0 then
+        return 0
+    end
+    return int
+end
+function Util.Round(self, x)
+    return math.floor((x + 0.5) - ((x + 0.5) % 1))
+end
+function Util.RandomEnumKey(self, enumeration)
+    local values = __TS__ArrayFilter(
+        __TS__ArrayMap(
+            __TS__ObjectKeys(enumeration),
+            function(____, key) return enumeration[key] end
+        ),
+        function(____, value) return type(enumeration[value]) ~= "number" end
+    )
+    local randValue = values[math.floor(
+        math.random() * #values
+    ) + 1]
+    return randValue
+end
+Util.COLOUR_IDS = {RED = 0, BLUE = 1, TEAL = 2, PURPLE = 3, YELLOW = 4, ORANGE = 5, GREEN = 6, PINK = 7, GRAY = 8, GREY = 8, LIGHT_BLUE = 9, LIGHTBLUE = 9, LB = 9, DARK_GREEN = 10, DARKGREEN = 10, DG = 10, BROWN = 11, MAROON = 12, NAVY = 13, TURQUOISE = 14, VOILET = 15, WHEAT = 16, PEACH = 17, MINT = 18, LAVENDER = 19, COAL = 20, SNOW = 21, EMERALD = 22, PEANUT = 23}
+____exports.CREEP_TYPE = CREEP_TYPE or ({})
+____exports.CREEP_TYPE.NORMAL = 0
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.NORMAL] = "NORMAL"
+____exports.CREEP_TYPE.AIR = 1
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.AIR] = "AIR"
+____exports.CREEP_TYPE.CHAMPION = 2
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.CHAMPION] = "CHAMPION"
+____exports.CREEP_TYPE.BOSS = 3
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.BOSS] = "BOSS"
+____exports.ARMOUR_TYPE = ARMOUR_TYPE or ({})
+____exports.ARMOUR_TYPE.UNARMOURED = 0
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.UNARMOURED] = "UNARMOURED"
+____exports.ARMOUR_TYPE.LIGHT = 1
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.LIGHT] = "LIGHT"
+____exports.ARMOUR_TYPE.MEDIUM = 2
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.MEDIUM] = "MEDIUM"
+____exports.ARMOUR_TYPE.HEAVY = 3
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HEAVY] = "HEAVY"
+____exports.ARMOUR_TYPE.FORTIFIED = 4
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.FORTIFIED] = "FORTIFIED"
+____exports.ARMOUR_TYPE.HERO = 5
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HERO] = "HERO"
 return ____exports
  end,
 ["src.app.user-interface-type"] = function(...) require("lualib_bundle");
@@ -10773,15 +10811,98 @@ end
 UserInterface.forTheReplays = {}
 return ____exports
  end,
+["src.app.setup.game-status"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____index = require("lua_modules.w3ts.index")
+local Unit = ____index.Unit
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+____exports.GameStatus = __TS__Class()
+local GameStatus = ____exports.GameStatus
+GameStatus.name = "GameStatus"
+function GameStatus.prototype.____constructor(self)
+    self.ONLINE = 0
+    self.OFFLINE = 1
+    self.REPLAY = 2
+    local humanPlayer
+    __TS__ArrayEvery(
+        Players,
+        function(____, p)
+            if (p.slotState == PLAYER_SLOT_STATE_PLAYING) and (p.controller == MAP_CONTROL_USER) then
+                humanPlayer = p
+                return false
+            end
+        end
+    )
+    local dummy = __TS__New(
+        Unit,
+        humanPlayer,
+        FourCC("hfoo"),
+        0,
+        0,
+        270
+    )
+    dummy:select(true)
+    local selected = dummy:isSelected(humanPlayer)
+    dummy:destroy()
+    if selected then
+        if ReloadGameCachesFromDisk() then
+            self.status = 1
+        else
+            self.status = 2
+        end
+    else
+        self.status = 0
+    end
+end
+function GameStatus.getInstance(self)
+    if self.instance == nil then
+        self.instance = __TS__New(____exports.GameStatus)
+    end
+    return self.instance
+end
+function GameStatus.prototype.get(self)
+    return self.status
+end
+function GameStatus.prototype.__tostring(self)
+    local result
+    repeat
+        local ____switch13 = self.status
+        local ____cond13 = ____switch13 == 0
+        if ____cond13 then
+            result = "ONLINE"
+            break
+        end
+        ____cond13 = ____cond13 or (____switch13 == 1)
+        if ____cond13 then
+            result = "OFFLINE"
+            break
+        end
+        ____cond13 = ____cond13 or (____switch13 == 2)
+        if ____cond13 then
+            result = "REPLAY"
+            break
+        end
+        do
+            result = "Unhandled case in GameStatus.toString() Case #: " .. tostring(self.status)
+            break
+        end
+    until true
+    return result
+end
+return ____exports
+ end,
 ["src.app.setup.onLoad"] = function(...) local ____exports = {}
+local ____camera_2Dcontrols = require("src.app.camera-controls")
+local CameraControls = ____camera_2Dcontrols.default
 local ____user_2Dinterface_2Dtype = require("src.app.user-interface-type")
 local UserInterface = ____user_2Dinterface_2Dtype.UserInterface
 local ____translators = require("src.libs.translators")
 local Util = ____translators.Util
 local ____hexColors = require("src.resources.hexColors")
 local HexColors = ____hexColors.HexColors
-local ____gameStatus = require("src.app.setup.gameStatus")
-local GameStatus = ____gameStatus.GameStatus
+local ____game_2Dstatus = require("src.app.setup.game-status")
+local GameStatus = ____game_2Dstatus.GameStatus
 function ____exports.onLoad()
     print(
         (((tostring(
@@ -10793,6 +10914,7 @@ function ____exports.onLoad()
         )) .. "|r"
     )
     UserInterface:onLoad()
+    CameraControls:getInstance()
 end
 return ____exports
  end,
@@ -10856,95 +10978,396 @@ end
 addScriptHook(W3TS_HOOK.MAIN_AFTER, tsMain)
 return ____exports
  end,
-["src.app.commands.command-processor"] = function(...) require("lualib_bundle");
+["src.app.transports"] = function(...) require("lualib_bundle");
 local ____exports = {}
-local ____camera_2Dcontrols = require("src.app.camera-controls")
-local CameraControls = ____camera_2Dcontrols.default
-local PlayerCamData = ____camera_2Dcontrols.PlayerCamData
-____exports.CommandProcessor = function()
-    local t = CreateTrigger()
+local ____utils = require("src.libs.utils")
+local ErrorMessage = ____utils.ErrorMessage
+local ____unitTypes = require("src.resources.unitTypes")
+local UTYPE = ____unitTypes.UTYPE
+____exports.Transports = __TS__Class()
+local Transports = ____exports.Transports
+Transports.name = "Transports"
+function Transports.prototype.____constructor(self)
+    ____exports.Transports:onLoad()
+end
+function Transports.getInstance(self)
+    if self.instance == nil then
+        self.instance = __TS__New(____exports.Transports)
+    end
+    return self.instance
+end
+function Transports.onLoad(self)
     do
         local i = 0
-        while i < bj_MAX_PLAYERS do
-            TriggerRegisterPlayerChatEvent(
-                t,
+        while i < 23 do
+            TriggerRegisterPlayerUnitEvent(
+                ____exports.Transports.onLoadTrig,
                 Player(i),
-                "-",
-                false
+                EVENT_PLAYER_UNIT_LOADED,
+                nil
             )
             i = i + 1
         end
     end
     TriggerAddCondition(
-        t,
+        ____exports.Transports.onLoadTrig,
         Condition(
             function()
-                local command = __TS__StringSplit(
-                    GetEventPlayerChatString(),
-                    " "
-                )[1]
-                local tPlayer = GetTriggerPlayer()
-                repeat
-                    local ____switch5 = command
-                    local camData, distance, angle, rotation
-                    local ____cond5 = ____switch5 == "-cam"
-                    if ____cond5 then
-                        camData = {}
-                        distance = __TS__StringSplit(
-                            GetEventPlayerChatString(),
-                            " "
-                        )[2]
-                        angle = __TS__StringSplit(
-                            GetEventPlayerChatString(),
-                            " "
-                        )[3]
-                        rotation = __TS__StringSplit(
-                            GetEventPlayerChatString(),
-                            " "
-                        )[4]
-                        if distance and S2R(distance) then
-                            __TS__ArrayPush(camData, distance)
-                        end
-                        if angle and S2R(angle) then
-                            __TS__ArrayPush(camData, angle)
-                        end
-                        if rotation and S2R(rotation) then
-                            __TS__ArrayPush(camData, rotation)
-                        end
-                        CameraControls:getInstance():checkCamData(
-                            PlayerCamData:get(tPlayer),
-                            camData
-                        )
-                        break
-                    end
-                    do
-                        break
-                    end
-                until true
+                local trans = GetTransportUnit()
+                local loadedUnit = GetLoadedUnit()
+                __TS__ArrayPush(
+                    ____exports.Transports.loadedUnits:get(trans),
+                    loadedUnit
+                )
+                trans = nil
+                loadedUnit = nil
                 return true
             end
         )
     )
 end
+function Transports.orderUnload(self)
+    if not IsUnitType(
+        GetTriggerUnit(),
+        UTYPE.TRANSPORT
+    ) then
+        return false
+    end
+    local trans = GetTriggerUnit()
+    if GetTerrainType(
+        GetUnitX(trans),
+        GetUnitY(trans)
+    ) ~= FourCC("Vcbp") then
+        BlzPauseUnitEx(trans, true)
+        BlzPauseUnitEx(trans, false)
+        IssueImmediateOrder(trans, "stop")
+        ErrorMessage(
+            GetOwningPlayer(trans),
+            "You may only unload on pebble terrain!"
+        )
+    else
+        local unloadedUnit = GetOrderTargetUnit()
+        ____exports.Transports.loadedUnits:set(
+            trans,
+            __TS__ArrayFilter(
+                ____exports.Transports.loadedUnits:get(trans),
+                function(____, unit) return unit ~= unloadedUnit end
+            )
+        )
+        unloadedUnit = nil
+    end
+    trans = nil
+end
+function Transports.onLoadCast(self)
+    local trans = GetTriggerUnit()
+    IssueImmediateOrder(trans, "stop")
+    BlzPauseUnitEx(trans, true)
+    BlzPauseUnitEx(trans, false)
+    ErrorMessage(
+        GetOwningPlayer(trans),
+        "You may only load on pebble terrain!"
+    )
+    trans = nil
+end
+function Transports.onUnloadCast(self)
+    local trans = GetTriggerUnit()
+    IssueImmediateOrder(trans, "stop")
+    ErrorMessage(
+        GetOwningPlayer(trans),
+        "You may only unload on pebble terrain!"
+    )
+    trans = nil
+end
+function Transports.onUnloadEndCast(self)
+    local trans = GetTriggerUnit()
+    ____exports.Transports.loadedUnits:set(
+        trans,
+        __TS__ArrayFilter(
+            ____exports.Transports.loadedUnits:get(trans),
+            function(____, unit) return IsUnitInTransport(unit, trans) end
+        )
+    )
+    trans = nil
+    return false
+end
+function Transports.onCreate(self, trans)
+    ____exports.Transports.loadedUnits:set(
+        trans,
+        (function()
+            local ____ = {}
+            return ____
+        end)()
+    )
+end
+function Transports.onDeath(self, trans, killer)
+    if not IsUnitType(trans, UTYPE.TRANSPORT) then
+        return false
+    end
+    if GetTerrainType(
+        GetUnitX(trans),
+        GetUnitY(trans)
+    ) ~= FourCC("Vcbp") then
+        __TS__ArrayForEach(
+            ____exports.Transports.loadedUnits:get(trans),
+            function(____, unit)
+                BlzSetUnitMaxHP(unit, 1)
+                UnitDamageTarget(killer, unit, 100, true, false, ATTACK_TYPE_CHAOS, DAMAGE_TYPE_NORMAL, WEAPON_TYPE_WHOKNOWS)
+            end
+        )
+    end
+    ____exports.Transports.loadedUnits:delete(trans)
+end
+Transports.autoLoadTimer = __TS__New(Map)
+Transports.loadedUnits = __TS__New(Map)
+Transports.onLoadTrig = CreateTrigger()
 return ____exports
  end,
 ["src.app.country.city-allocation"] = function(...) require("lualib_bundle");
 local ____exports = {}
-____exports.CityAllocation = __TS__Class()
-local CityAllocation = ____exports.CityAllocation
-CityAllocation.name = "CityAllocation"
-function CityAllocation.prototype.____constructor(self)
-end
-function CityAllocation.getInstance(self)
-    if self.instance == nil then
-        self.instance = __TS__New(____exports.CityAllocation)
+local ____translators = require("src.libs.translators")
+local Util = ____translators.Util
+local ____country_2Dtype = require("src.app.country.country-type")
+local Country = ____country_2Dtype.Country
+____exports.CityAllocation = {}
+do
+    local function start()
+        local playerPool = self:buildPlayerPool()
+        local cityPool = self:buildCityPool()
+        local citiesMax = self:setCitiesPerPlayer(playerPool, cityPool)
+        playerPool = nil
+        cityPool = nil
     end
-    return self.instance
-end
-function CityAllocation.prototype.start(self)
+    local function buildPlayerPool()
+        local result = {}
+        do
+            local i = 0
+            while i < bj_MAX_PLAYERS do
+                if (GetPlayerSlotState(
+                    Player(i)
+                ) == PLAYER_SLOT_STATE_PLAYING) and (GetPlayerState(
+                    Player(i),
+                    PLAYER_STATE_OBSERVER
+                ) == 0) then
+                    __TS__ArrayPush(
+                        result,
+                        Player(i)
+                    )
+                end
+                i = i + 1
+            end
+        end
+        return result
+    end
+    local function buildCityPool()
+        local result = {}
+        for ____, ____value in __TS__Iterator(Country.fromName) do
+            local k = ____value[1]
+            local v
+            v = ____value[2]
+            if v:getSize() > 1 then
+                __TS__ArrayForEach(
+                    v.cities,
+                    function(____, city)
+                        __TS__ArrayPush(result, city)
+                    end
+                )
+            end
+        end
+        Util:ShuffleArray(result)
+        __TS__ArrayReverse(result)
+        Util:ShuffleArray(result)
+        return result
+    end
+    local function setCitiesPerPlayer(playerPool, cityPool)
+        local numOfCities = ((#playerPool == 2) and 18) or math.floor(#cityPool / #playerPool)
+        return math.min(numOfCities, 20)
+    end
+    local function getPlayerFromPool(playerPool, citiesMax)
+        if #playerPool == 0 then
+            return nil
+        end
+        local player = playerPool[math.floor(
+            math.random() * #playerPool
+        ) + 1]
+        return player
+    end
+    local function getCityFromPool(cityPool)
+        if #cityPool == 0 then
+            return nil
+        end
+        local city = cityPool[math.floor(
+            math.random() * #cityPool
+        ) + 1]
+        if city:getOwner() ~= Player(25) then
+            __TS__ArraySplice(
+                cityPool,
+                __TS__ArrayIndexOf(cityPool, city),
+                1
+            )
+            city = self:getCityFromPool(cityPool)
+        end
+        return city
+    end
 end
 return ____exports
  end,
+["src.app.player.player-status-type"] = function(...)  end,
+["src.app.player.player-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.BonusBase = 9
+____exports.BonusCap = 40
+____exports.BonusDivisor = 200
+____exports.GamePlayer = __TS__Class()
+local GamePlayer = ____exports.GamePlayer
+GamePlayer.name = "GamePlayer"
+function GamePlayer.prototype.____constructor(self)
+    self.cities = {}
+end
+function GamePlayer.prototype.init(self)
+    self.income = 0
+    self.health = false
+    self.value = false
+    if not self.kd then
+        self.kd = __TS__New(Map)
+    end
+    self.unitCount = 0
+    __TS__ArraySetLength(self.cities, 0)
+    self.bounty.delta = 0
+    self.bounty.total = 0
+    self.bonus.delta = 0
+    self.bonus.total = 0
+    BlzFrameSetText(
+        BlzGetFrameByName(
+            "MyBarExText",
+            GetPlayerId(self.player)
+        ),
+        ("Fight Bonus: " .. tostring(self.bonus.delta)) .. " / 200"
+    )
+    self:giveGold()
+end
+function GamePlayer.prototype.reset(self)
+    self.kd:clear()
+    SetPlayerState(self.player, PLAYER_STATE_RESOURCE_GOLD, 0)
+    self:init()
+end
+function GamePlayer.prototype.giveGold(self, val)
+    if not val then
+        val = self.income
+    end
+    SetPlayerState(
+        self.player,
+        PLAYER_STATE_RESOURCE_GOLD,
+        GetPlayerState(self.player, PLAYER_STATE_RESOURCE_GOLD) + val
+    )
+end
+function GamePlayer.prototype.initBonusUI(self)
+    self.bonus.bar = BlzCreateSimpleFrame(
+        "MyBarEx",
+        BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+        GetPlayerId(self.player)
+    )
+    BlzFrameSetAbsPoint(self.bonus.bar, FRAMEPOINT_BOTTOMLEFT, 0.63, 0.165)
+    BlzFrameSetTexture(self.bonus.bar, "Replaceabletextures\\Teamcolor\\Teamcolor00.blp", 0, true)
+    BlzFrameSetText(
+        BlzGetFrameByName(
+            "MyBarExText",
+            GetPlayerId(self.player)
+        ),
+        ("Fight Bonus: " .. tostring(self.bonus.delta)) .. " / 200"
+    )
+    BlzFrameSetValue(self.bonus.bar, 0)
+    BlzFrameSetVisible(self.bonus.bar, false)
+    if GetLocalPlayer() == self.player then
+        BlzFrameSetVisible(self.bonus.bar, true)
+    end
+end
+function GamePlayer.prototype.onStatusChange(self)
+end
+function GamePlayer.prototype.onKill(self, victom, u)
+    local val = GetUnitPointValue(u)
+    local ____obj, ____index = self.kd:get(self), "kills"
+    ____obj[____index] = ____obj[____index] + val
+    local ____obj, ____index = self.kd:get(victom), "kills"
+    ____obj[____index] = ____obj[____index] + val
+    local ____obj, ____index = self.kd:get(
+        ____exports.GamePlayer:getKey(
+            victom,
+            GetUnitTypeId(u)
+        )
+    ), "kills"
+    ____obj[____index] = ____obj[____index] + val
+    self:evalBounty(val)
+    self:evalBonus(val)
+end
+function GamePlayer.prototype.onDeath(self, killer, u)
+    local val = GetUnitPointValue(u)
+    local ____obj, ____index = self.kd:get(self), "deaths"
+    ____obj[____index] = ____obj[____index] + val
+    local ____obj, ____index = self.kd:get(killer), "deaths"
+    ____obj[____index] = ____obj[____index] + val
+    local ____obj, ____index = self.kd:get(
+        ____exports.GamePlayer:getKey(
+            killer,
+            GetUnitTypeId(u)
+        )
+    ), "deaths"
+    ____obj[____index] = ____obj[____index] + val
+end
+function GamePlayer.prototype.evalBounty(self, val)
+    local ____obj, ____index = self.bounty, "delta"
+    ____obj[____index] = ____obj[____index] + (val * 0.25)
+    if self.bounty.delta >= 1 then
+        local delta = math.floor(self.bounty.delta)
+        local ____obj, ____index = self.bounty, "delta"
+        ____obj[____index] = ____obj[____index] - delta
+        local ____obj, ____index = self.bounty, "total"
+        ____obj[____index] = ____obj[____index] + delta
+        self:giveGold(delta)
+    end
+end
+function GamePlayer.prototype.evalBonus(self, val)
+    local ____obj, ____index = self.bonus, "delta"
+    ____obj[____index] = ____obj[____index] + val
+    if self.bonus.delta >= 200 then
+        local ____obj, ____index = self.bonus, "delta"
+        ____obj[____index] = ____obj[____index] - 200
+        local bonusQty = (math.floor(
+            self.kd:get(self).kills
+        ) / ____exports.BonusDivisor) + ____exports.BonusBase
+        bonusQty = math.min(bonusQty, ____exports.BonusCap)
+        local ____obj, ____index = self.bonus, "total"
+        ____obj[____index] = ____obj[____index] + bonusQty
+        self:giveGold(bonusQty)
+        if GetLocalPlayer() == self.player then
+            ClearTextMessages()
+        end
+        DisplayTimedTextToPlayer(
+            self.player,
+            0.82,
+            0.81,
+            3,
+            ("Received |cffffcc00" .. tostring(bonusQty)) .. "|r gold from |cffff0303Fight Bonus|r!"
+        )
+    end
+    BlzFrameSetText(
+        BlzGetFrameByName(
+            "MyBarExText",
+            GetPlayerId(self.player)
+        ),
+        ("Fight Bonus: " .. tostring(self.bonus.delta)) .. " / 200"
+    )
+    BlzFrameSetValue(self.bonus.bar, self.bonus.delta / 2)
+end
+function GamePlayer.getKey(self, who, uID)
+    return (tostring(who) .. ":") .. tostring(uID)
+end
+GamePlayer.fromString = __TS__New(Map)
+GamePlayer.fromID = __TS__New(Map)
+return ____exports
+ end,
+["src.app.player.reference.KD Tracker example"] = function(...)  end,
+["src.app.player.reference.player-state-entity"] = function(...)  end,
+["src.app.player.reference.player-type"] = function(...)  end,
 ["src.libs.EncodingBase64"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local PADCHAR = "="

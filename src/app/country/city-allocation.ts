@@ -33,7 +33,7 @@ export namespace CityAllocation {
         let result: City[] = [];
 
         for (let [k, v] of Country.fromName ) {
-            if (v.getSize() > 1) {
+            if (v.size > 1) {
                 v.cities.forEach(city => {
                     result.push(city);
                 })

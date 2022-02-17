@@ -1,3 +1,4 @@
+import CameraControls from "app/camera-controls";
 import { UserInterface } from "app/user-interface-type";
 import { Util } from "libs/translators";
 import { HexColors } from "resources/hexColors";
@@ -9,4 +10,5 @@ import { GameStatus } from "./game-status";
 export function onLoad() {
     print(`${Util.RandomEnumKey(HexColors)}Game type is:|r ${Util.RandomEnumKey(HexColors)}${GameStatus.getInstance().toString()}|r`);
     UserInterface.onLoad();
+    CameraControls.getInstance();
 }

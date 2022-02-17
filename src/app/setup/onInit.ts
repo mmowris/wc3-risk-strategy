@@ -1,4 +1,4 @@
-import CameraControls from "app/camera-controls";
+import { CommandProcessor } from "app/commands/command-processor";
 import { City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { unitSpellEffect } from "app/spells/unitSpellEffect";
@@ -23,8 +23,8 @@ export function onInit() {
     SetTimeOfDay(12.00);
     SetTimeOfDayScale(0.00);
     SetAllyColorFilterState(0);
-    FogEnable(false); //TODO remove
-    FogMaskEnable(false); //TODO remove
+    FogEnable(false);
+    FogMaskEnable(false);
 
     Players.forEach(player => {
         //Data.PlayerNames.push(player.name); //save names. possibly move this to a name class
@@ -36,8 +36,8 @@ export function onInit() {
     Country.init();
 
     //Singletons
-    CameraControls.getInstance();
 
     //Triggers
     unitSpellEffect();
+    CommandProcessor();
 }

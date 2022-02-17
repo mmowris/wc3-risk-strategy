@@ -505,7 +505,7 @@ export class City {
             if (!IsUnitType(GetTriggerUnit(), UTYPE.GUARD)) return false;
 
             const city: City = City.fromRegion.get(GetTriggeringRegion());
-            let triggerUnit: unit = GetTriggerUnit();
+            //let triggerUnit: unit = GetTriggerUnit();
             let g: group = CreateGroup();
             let guardChoice: unit = city.guard;
 
@@ -526,7 +526,7 @@ export class City {
             DestroyGroup(g);
             g = null;
             guardChoice = null;
-            triggerUnit = null;
+            //triggerUnit = null;
 
             return false;
         }));
