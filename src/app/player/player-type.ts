@@ -14,12 +14,19 @@ interface Bonus {
     bar: framehandle;
 }
 
+interface Names {
+    btag: string;
+    acct: string;
+    color: string;
+}
+
 // export const BonusBase: number = 10;
 // export const BonusMultiplier: number = 5;
 // export const BonusDivisor: number = 1000;
 export const BonusBase: number = 9;
 export const BonusCap: number = 40;
 export const BonusDivisor: number = 200;
+export const PlayerNames: string[] = [];
 
 export class GamePlayer {
     public player: player
@@ -30,12 +37,30 @@ export class GamePlayer {
     public unitCount: number;
     public bounty: Bounty;
     public bonus: Bonus;
+    public names: Names;
     public cities: unit[] = [];
 
-    public static fromString = new Map<string, GamePlayer>();
-    public static fromID = new Map<number, GamePlayer>();
+    public static fromString = new Map<string, GamePlayer>(); //Set in constructor
+    public static fromID = new Map<number, GamePlayer>(); //Set onLoad
 
-    constructor() {
+    constructor(who: player) {
+        this.player = who;
+
+        this.names = {
+            btag: (who == Player(24)) ? "Neutral-Hostile" : GetPlayerName(who),
+            acct: "",
+            color: ""
+        }
+
+        if (GetPlayerController(who) == MAP_CONTROL_COMPUTER) {
+            this.names.acct = this.names.btag.split(' ')[0];
+        } else {
+            this.names.acct = this.names.btag.split('#')[0];
+        }
+
+        GamePlayer.fromString.set(this.names.acct, this);
+
+        this.init();
     }
 
     /**
@@ -48,14 +73,19 @@ export class GamePlayer {
         if (!this.kd) this.kd = new Map<string | GamePlayer, KD>();
         this.unitCount = 0;
         this.cities.length = 0;
-        this.bounty.delta = 0;
-        this.bounty.total = 0;
-        this.bonus.delta = 0;
-        this.bonus.total = 0;
-        BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
-        //TODO init bonus
 
-        this.giveGold();
+        SetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD, 0);
+
+        this.bounty = {
+            delta: 0,
+            total: 0
+        }
+
+        this.bonus = {
+            delta: 0,
+            total: 0,
+            bar: null
+        }
 
         //init kd maps
         //may need to keep track of cities a player owns in the country
@@ -65,8 +95,6 @@ export class GamePlayer {
         this.kd.clear();
 
         //TODO
-
-        SetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD, 0);
 
         this.init();
     }

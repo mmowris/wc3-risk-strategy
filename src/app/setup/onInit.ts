@@ -1,6 +1,7 @@
 import { CommandProcessor } from "app/commands/command-processor";
 import { City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
+import { PlayerNames } from "app/player/player-type";
 import { unitSpellEffect } from "app/spells/unitSpellEffect";
 import { Players } from "w3ts/globals";
 
@@ -27,7 +28,7 @@ export function onInit() {
     FogMaskEnable(false);
 
     Players.forEach(player => {
-        //Data.PlayerNames.push(player.name); //save names. possibly move this to a name class
+        PlayerNames.push(player.name);
         player.name = "Player";
     });
 

@@ -9,27 +9,78 @@
 //     STFU = "|cfffe890dSTFU |r",
 // };
 
-// export class PlayerStatus {
+export class PlayerStatus {
 
-//     onForfeit() {
-//         /**
-//          * update status
-//          * send forfeit message to all players
-//          * check victory conditions
-//          * 
-//          * update income to 2
-//          * remove players gold
-//          * change name
-//          * remove unit selection
-//          */
-//     }
+    onPlaying() {
+        /**
+         * update status
+         * update income to 4
+         * change name
+         */
+    }
 
-//     onPlaying() {
+    onObserving() {
+        /**
+         * update status
+         * update income to 0
+         * change name
+         */
+    }
 
-//     }
+    onAlive() {
+        /**
+         * update status
+         * update income to 4
+         */
+    }
+
+    onNomad() {
+        /**
+         * update status
+         * update income to 3
+         */
+    }
+
+    onForfeit() {
+        /**
+         * update status
+         * send forfeit message to all players
+         * check victory conditions
+         * update income to 2
+         * remove players gold
+         * change name
+         * remove unit selection
+         */
+    }
+
+    onDead() {
+        /**
+         * update status
+         * send dead message to all players
+         * check victory conditions
+         * update income to 1
+         * remove players gold
+         * change name
+         * remove unit selection
+         */
+    }
+
+    onLeft() {
+        /**
+         * update status
+         * send left message to all players
+         * check victory conditions
+         * update income to 0
+         * remove players gold
+         * change name
+         * remove unit selection
+         */
+    }
 
 
-// }
+
+
+}
 
 /**
  * updateStatus calls in V2

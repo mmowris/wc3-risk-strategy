@@ -10,6 +10,8 @@ export const enterCityTrig: trigger = CreateTrigger();
 export const leaveCityTrig: trigger = CreateTrigger();
 export const unitTrainedTrig: trigger = CreateTrigger();
 
+const defaultOwner: player = Player(24);
+
 export class City {
     private _barrack: unit;
     private cop: unit;
@@ -48,7 +50,7 @@ export class City {
         if (this.isPort()) TriggerRegisterUnitEvent(unitTrainedTrig, this.barrack, EVENT_UNIT_TRAIN_FINISH);
 
         //Create cop
-        this.cop = CreateUnit(Players[0].handle, UID.CONTROL_POINT, offSetX, offSetY, 270);
+        this.cop = CreateUnit(defaultOwner, UID.CONTROL_POINT, offSetX, offSetY, 270);
 
         this.defaultGuardType = guardType;
         this.setGuard(guardType);
@@ -425,7 +427,7 @@ export class City {
 
     //Internal Functions
     private setBarrack(x: number, y: number, name?: string) {
-        this._barrack = CreateUnit(Players[0].handle, this.defaultBarrackType, x, y, 270);
+        this._barrack = CreateUnit(defaultOwner, this.defaultBarrackType, x, y, 270);
         City.fromBarrack.set(this.barrack, this);
 
         if (name && name != GetUnitName(this.barrack)) BlzSetUnitName(this.barrack, name);
@@ -436,7 +438,7 @@ export class City {
      */
     private setGuard(guard: unit | number) {
         //TODO add null checking
-        typeof guard === "number" ? this._guard = CreateUnit(Players[0].handle, guard, this.x, this.y, 270) : this._guard = guard;
+        typeof guard === "number" ? this._guard = CreateUnit(defaultOwner, guard, this.x, this.y, 270) : this._guard = guard;
         UnitAddType(this.guard, UTYPE.GUARD);
         City.fromGuard.set(this.guard, this);
     }

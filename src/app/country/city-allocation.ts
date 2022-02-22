@@ -41,7 +41,6 @@ export namespace CityAllocation {
         }
 
         Util.ShuffleArray(result);
-        result.reverse();
         Util.ShuffleArray(result);
 
         return result;

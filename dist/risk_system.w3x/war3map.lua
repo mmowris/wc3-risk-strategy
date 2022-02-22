@@ -9241,8 +9241,6 @@ local ____unitID = require("src.resources.unitID")
 local UID = ____unitID.UID
 local ____unitTypes = require("src.resources.unitTypes")
 local UTYPE = ____unitTypes.UTYPE
-local ____index = require("lua_modules.w3ts.globals.index")
-local Players = ____index.Players
 local ____guard_2Dfilters = require("src.app.country.guard-filters")
 local FilterFriendlyValidGuards = ____guard_2Dfilters.FilterFriendlyValidGuards
 local isGuardValid = ____guard_2Dfilters.isGuardValid
@@ -9251,6 +9249,7 @@ ____exports.CityRegionSize = 185
 ____exports.enterCityTrig = CreateTrigger()
 ____exports.leaveCityTrig = CreateTrigger()
 ____exports.unitTrainedTrig = CreateTrigger()
+local defaultOwner = Player(24)
 ____exports.City = __TS__Class()
 local City = ____exports.City
 City.name = "City"
@@ -9274,7 +9273,7 @@ function City.prototype.____constructor(self, x, y, barrackType, name, guardType
     if self:isPort() then
         TriggerRegisterUnitEvent(____exports.unitTrainedTrig, self.barrack, EVENT_UNIT_TRAIN_FINISH)
     end
-    self.cop = CreateUnit(Players[1].handle, UID.CONTROL_POINT, offSetX, offSetY, 270)
+    self.cop = CreateUnit(defaultOwner, UID.CONTROL_POINT, offSetX, offSetY, 270)
     self.defaultGuardType = guardType
     self:setGuard(guardType)
     rect = nil
@@ -9584,7 +9583,7 @@ function City.prototype.changeGuardOwner(self)
     )
 end
 function City.prototype.setBarrack(self, x, y, name)
-    self._barrack = CreateUnit(Players[1].handle, self.defaultBarrackType, x, y, 270)
+    self._barrack = CreateUnit(defaultOwner, self.defaultBarrackType, x, y, 270)
     ____exports.City.fromBarrack:set(self.barrack, self)
     if name and (name ~= GetUnitName(self.barrack)) then
         BlzSetUnitName(self.barrack, name)
@@ -9597,7 +9596,7 @@ function City.prototype.setGuard(self, guard)
     end)(
         self,
         "_guard",
-        CreateUnit(Players[1].handle, guard, self.x, self.y, 270)
+        CreateUnit(defaultOwner, guard, self.x, self.y, 270)
     ) end)) or (function() return (function(o, i, v)
         o[i] = v
         return v
@@ -9978,7 +9977,7 @@ function Country.prototype.____constructor(self, name, x, y, ...)
     self._cities = {}
     self.name = name
     self.spawner = __TS__New(Spawner, self.name, x, y, #self.cities)
-    ____exports.Country.fromName:set(name, self)
+    ____exports.Country.fromSpawner:set(self.spawner, self)
     local offsetX = GetUnitX(self.spawner.unit) - 100
     local offsetY = GetUnitY(self.spawner.unit) - 300
     local lengthCheck = ((((#self.name * 5.5) < 200) and (function() return #self.name * 5.5 end)) or (function() return 200 end))()
@@ -9991,6 +9990,7 @@ function Country.prototype.____constructor(self, name, x, y, ...)
         cities,
         function(____, city)
             __TS__ArrayPush(self.cities, city)
+            ____exports.Country.fromCity:set(city, self)
         end
     )
     local ____ = self.owner == Player(25)
@@ -10001,6 +10001,16 @@ __TS__SetDescriptor(
     {
         get = function(self)
             return self._cities
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    Country.prototype,
+    "size",
+    {
+        get = function(self)
+            return #self.cities
         end
     },
     true
@@ -10295,9 +10305,6 @@ function Country.init(self)
         __TS__New(____exports.Country, "Cyprus", 12608, -10944, Cities[215], Cities[216])
     )
 end
-function Country.prototype.getSize(self)
-    return #self.cities
-end
 function Country.prototype.animate(self)
     __TS__ArrayForEach(
         self.cities,
@@ -10315,6 +10322,163 @@ end
 Country.fromName = __TS__New(Map)
 Country.fromSpawner = __TS__New(Map)
 Country.fromCity = __TS__New(Map)
+return ____exports
+ end,
+["src.app.player.player-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.BonusBase = 9
+____exports.BonusCap = 40
+____exports.BonusDivisor = 200
+____exports.PlayerNames = {}
+____exports.GamePlayer = __TS__Class()
+local GamePlayer = ____exports.GamePlayer
+GamePlayer.name = "GamePlayer"
+function GamePlayer.prototype.____constructor(self, who)
+    self.cities = {}
+    self.player = who
+    self.names = {
+        btag = ((who == Player(24)) and "Neutral-Hostile") or GetPlayerName(who),
+        acct = "",
+        color = ""
+    }
+    if GetPlayerController(who) == MAP_CONTROL_COMPUTER then
+        self.names.acct = __TS__StringSplit(self.names.btag, " ")[1]
+    else
+        self.names.acct = __TS__StringSplit(self.names.btag, "#")[1]
+    end
+    ____exports.GamePlayer.fromString:set(self.names.acct, self)
+    self:init()
+end
+function GamePlayer.prototype.init(self)
+    self.income = 0
+    self.health = false
+    self.value = false
+    if not self.kd then
+        self.kd = __TS__New(Map)
+    end
+    self.unitCount = 0
+    __TS__ArraySetLength(self.cities, 0)
+    SetPlayerState(self.player, PLAYER_STATE_RESOURCE_GOLD, 0)
+    self.bounty = {delta = 0, total = 0}
+    self.bonus = {delta = 0, total = 0, bar = nil}
+end
+function GamePlayer.prototype.reset(self)
+    self.kd:clear()
+    self:init()
+end
+function GamePlayer.prototype.giveGold(self, val)
+    if not val then
+        val = self.income
+    end
+    SetPlayerState(
+        self.player,
+        PLAYER_STATE_RESOURCE_GOLD,
+        GetPlayerState(self.player, PLAYER_STATE_RESOURCE_GOLD) + val
+    )
+end
+function GamePlayer.prototype.initBonusUI(self)
+    self.bonus.bar = BlzCreateSimpleFrame(
+        "MyBarEx",
+        BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+        GetPlayerId(self.player)
+    )
+    BlzFrameSetAbsPoint(self.bonus.bar, FRAMEPOINT_BOTTOMLEFT, 0.63, 0.165)
+    BlzFrameSetTexture(self.bonus.bar, "Replaceabletextures\\Teamcolor\\Teamcolor00.blp", 0, true)
+    BlzFrameSetText(
+        BlzGetFrameByName(
+            "MyBarExText",
+            GetPlayerId(self.player)
+        ),
+        ("Fight Bonus: " .. tostring(self.bonus.delta)) .. " / 200"
+    )
+    BlzFrameSetValue(self.bonus.bar, 0)
+    BlzFrameSetVisible(self.bonus.bar, false)
+    if GetLocalPlayer() == self.player then
+        BlzFrameSetVisible(self.bonus.bar, true)
+    end
+end
+function GamePlayer.prototype.onStatusChange(self)
+end
+function GamePlayer.prototype.onKill(self, victom, u)
+    local val = GetUnitPointValue(u)
+    local ____obj, ____index = self.kd:get(self), "kills"
+    ____obj[____index] = ____obj[____index] + val
+    local ____obj, ____index = self.kd:get(victom), "kills"
+    ____obj[____index] = ____obj[____index] + val
+    local ____obj, ____index = self.kd:get(
+        ____exports.GamePlayer:getKey(
+            victom,
+            GetUnitTypeId(u)
+        )
+    ), "kills"
+    ____obj[____index] = ____obj[____index] + val
+    self:evalBounty(val)
+    self:evalBonus(val)
+end
+function GamePlayer.prototype.onDeath(self, killer, u)
+    local val = GetUnitPointValue(u)
+    local ____obj, ____index = self.kd:get(self), "deaths"
+    ____obj[____index] = ____obj[____index] + val
+    local ____obj, ____index = self.kd:get(killer), "deaths"
+    ____obj[____index] = ____obj[____index] + val
+    local ____obj, ____index = self.kd:get(
+        ____exports.GamePlayer:getKey(
+            killer,
+            GetUnitTypeId(u)
+        )
+    ), "deaths"
+    ____obj[____index] = ____obj[____index] + val
+end
+function GamePlayer.prototype.evalBounty(self, val)
+    local ____obj, ____index = self.bounty, "delta"
+    ____obj[____index] = ____obj[____index] + (val * 0.25)
+    if self.bounty.delta >= 1 then
+        local delta = math.floor(self.bounty.delta)
+        local ____obj, ____index = self.bounty, "delta"
+        ____obj[____index] = ____obj[____index] - delta
+        local ____obj, ____index = self.bounty, "total"
+        ____obj[____index] = ____obj[____index] + delta
+        self:giveGold(delta)
+    end
+end
+function GamePlayer.prototype.evalBonus(self, val)
+    local ____obj, ____index = self.bonus, "delta"
+    ____obj[____index] = ____obj[____index] + val
+    if self.bonus.delta >= 200 then
+        local ____obj, ____index = self.bonus, "delta"
+        ____obj[____index] = ____obj[____index] - 200
+        local bonusQty = (math.floor(
+            self.kd:get(self).kills
+        ) / ____exports.BonusDivisor) + ____exports.BonusBase
+        bonusQty = math.min(bonusQty, ____exports.BonusCap)
+        local ____obj, ____index = self.bonus, "total"
+        ____obj[____index] = ____obj[____index] + bonusQty
+        self:giveGold(bonusQty)
+        if GetLocalPlayer() == self.player then
+            ClearTextMessages()
+        end
+        DisplayTimedTextToPlayer(
+            self.player,
+            0.82,
+            0.81,
+            3,
+            ("Received |cffffcc00" .. tostring(bonusQty)) .. "|r gold from |cffff0303Fight Bonus|r!"
+        )
+    end
+    BlzFrameSetText(
+        BlzGetFrameByName(
+            "MyBarExText",
+            GetPlayerId(self.player)
+        ),
+        ("Fight Bonus: " .. tostring(self.bonus.delta)) .. " / 200"
+    )
+    BlzFrameSetValue(self.bonus.bar, self.bonus.delta / 2)
+end
+function GamePlayer.getKey(self, who, uID)
+    return (tostring(who) .. ":") .. tostring(uID)
+end
+GamePlayer.fromString = __TS__New(Map)
+GamePlayer.fromID = __TS__New(Map)
 return ____exports
  end,
 ["src.app.spells.unitSpellEffect"] = function(...) local ____exports = {}
@@ -10372,6 +10536,8 @@ local ____city_2Dtype = require("src.app.country.city-type")
 local City = ____city_2Dtype.City
 local ____country_2Dtype = require("src.app.country.country-type")
 local Country = ____country_2Dtype.Country
+local ____player_2Dtype = require("src.app.player.player-type")
+local PlayerNames = ____player_2Dtype.PlayerNames
 local ____unitSpellEffect = require("src.app.spells.unitSpellEffect")
 local unitSpellEffect = ____unitSpellEffect.unitSpellEffect
 local ____index = require("lua_modules.w3ts.globals.index")
@@ -10395,6 +10561,7 @@ function ____exports.onInit()
     __TS__ArrayForEach(
         Players,
         function(____, player)
+            __TS__ArrayPush(PlayerNames, player.name)
             player.name = "Player"
         end
     )
@@ -10733,18 +10900,18 @@ UserInterface.name = "UserInterface"
 function UserInterface.prototype.____constructor(self)
 end
 function UserInterface.onLoad(self)
-    ____exports.UserInterface:setResourceFrames()
     print(
         tostring(
             Util:RandomEnumKey(HexColors)
         ) .. "Adjusting UI Resource Frames"
     )
-    ____exports.UserInterface:hidePMOptions()
+    ____exports.UserInterface:setResourceFrames()
     print(
         tostring(
             Util:RandomEnumKey(HexColors)
         ) .. "Hiding Private Message Options"
     )
+    ____exports.UserInterface:hidePMOptions()
 end
 function UserInterface.hideUI(self, hidden)
     BlzHideOriginFrames(hidden)
@@ -10892,15 +11059,21 @@ function GameStatus.prototype.__tostring(self)
 end
 return ____exports
  end,
-["src.app.setup.onLoad"] = function(...) local ____exports = {}
+["src.app.setup.onLoad"] = function(...) require("lualib_bundle");
+local ____exports = {}
 local ____camera_2Dcontrols = require("src.app.camera-controls")
 local CameraControls = ____camera_2Dcontrols.default
+local ____player_2Dtype = require("src.app.player.player-type")
+local GamePlayer = ____player_2Dtype.GamePlayer
+local PlayerNames = ____player_2Dtype.PlayerNames
 local ____user_2Dinterface_2Dtype = require("src.app.user-interface-type")
 local UserInterface = ____user_2Dinterface_2Dtype.UserInterface
 local ____translators = require("src.libs.translators")
 local Util = ____translators.Util
 local ____hexColors = require("src.resources.hexColors")
 local HexColors = ____hexColors.HexColors
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
 local ____game_2Dstatus = require("src.app.setup.game-status")
 local GameStatus = ____game_2Dstatus.GameStatus
 function ____exports.onLoad()
@@ -10915,6 +11088,26 @@ function ____exports.onLoad()
     )
     UserInterface:onLoad()
     CameraControls:getInstance()
+    __TS__ArrayForEach(
+        Players,
+        function(____, player)
+            player.name = __TS__ArrayShift(PlayerNames)
+            if player.slotState == PLAYER_SLOT_STATE_PLAYING then
+                if player.id >= 25 then
+                    return
+                end
+                if player.handle == Player(24) then
+                    print(
+                        (player.name .. " ") .. tostring(player.id)
+                    )
+                end
+                GamePlayer.fromID:set(
+                    player.id,
+                    __TS__New(GamePlayer, player.handle)
+                )
+            end
+        end
+    )
 end
 return ____exports
  end,
@@ -11164,7 +11357,7 @@ do
             local k = ____value[1]
             local v
             v = ____value[2]
-            if v:getSize() > 1 then
+            if v.size > 1 then
                 __TS__ArrayForEach(
                     v.cities,
                     function(____, city)
@@ -11174,7 +11367,6 @@ do
             end
         end
         Util:ShuffleArray(result)
-        __TS__ArrayReverse(result)
         Util:ShuffleArray(result)
         return result
     end
@@ -11211,158 +11403,27 @@ do
 end
 return ____exports
  end,
-["src.app.player.player-status-type"] = function(...)  end,
-["src.app.player.player-type"] = function(...) require("lualib_bundle");
+["src.app.player.player-status-type"] = function(...) require("lualib_bundle");
 local ____exports = {}
-____exports.BonusBase = 9
-____exports.BonusCap = 40
-____exports.BonusDivisor = 200
-____exports.GamePlayer = __TS__Class()
-local GamePlayer = ____exports.GamePlayer
-GamePlayer.name = "GamePlayer"
-function GamePlayer.prototype.____constructor(self)
-    self.cities = {}
+____exports.PlayerStatus = __TS__Class()
+local PlayerStatus = ____exports.PlayerStatus
+PlayerStatus.name = "PlayerStatus"
+function PlayerStatus.prototype.____constructor(self)
 end
-function GamePlayer.prototype.init(self)
-    self.income = 0
-    self.health = false
-    self.value = false
-    if not self.kd then
-        self.kd = __TS__New(Map)
-    end
-    self.unitCount = 0
-    __TS__ArraySetLength(self.cities, 0)
-    self.bounty.delta = 0
-    self.bounty.total = 0
-    self.bonus.delta = 0
-    self.bonus.total = 0
-    BlzFrameSetText(
-        BlzGetFrameByName(
-            "MyBarExText",
-            GetPlayerId(self.player)
-        ),
-        ("Fight Bonus: " .. tostring(self.bonus.delta)) .. " / 200"
-    )
-    self:giveGold()
+function PlayerStatus.prototype.onPlaying(self)
 end
-function GamePlayer.prototype.reset(self)
-    self.kd:clear()
-    SetPlayerState(self.player, PLAYER_STATE_RESOURCE_GOLD, 0)
-    self:init()
+function PlayerStatus.prototype.onObserving(self)
 end
-function GamePlayer.prototype.giveGold(self, val)
-    if not val then
-        val = self.income
-    end
-    SetPlayerState(
-        self.player,
-        PLAYER_STATE_RESOURCE_GOLD,
-        GetPlayerState(self.player, PLAYER_STATE_RESOURCE_GOLD) + val
-    )
+function PlayerStatus.prototype.onAlive(self)
 end
-function GamePlayer.prototype.initBonusUI(self)
-    self.bonus.bar = BlzCreateSimpleFrame(
-        "MyBarEx",
-        BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
-        GetPlayerId(self.player)
-    )
-    BlzFrameSetAbsPoint(self.bonus.bar, FRAMEPOINT_BOTTOMLEFT, 0.63, 0.165)
-    BlzFrameSetTexture(self.bonus.bar, "Replaceabletextures\\Teamcolor\\Teamcolor00.blp", 0, true)
-    BlzFrameSetText(
-        BlzGetFrameByName(
-            "MyBarExText",
-            GetPlayerId(self.player)
-        ),
-        ("Fight Bonus: " .. tostring(self.bonus.delta)) .. " / 200"
-    )
-    BlzFrameSetValue(self.bonus.bar, 0)
-    BlzFrameSetVisible(self.bonus.bar, false)
-    if GetLocalPlayer() == self.player then
-        BlzFrameSetVisible(self.bonus.bar, true)
-    end
+function PlayerStatus.prototype.onNomad(self)
 end
-function GamePlayer.prototype.onStatusChange(self)
+function PlayerStatus.prototype.onForfeit(self)
 end
-function GamePlayer.prototype.onKill(self, victom, u)
-    local val = GetUnitPointValue(u)
-    local ____obj, ____index = self.kd:get(self), "kills"
-    ____obj[____index] = ____obj[____index] + val
-    local ____obj, ____index = self.kd:get(victom), "kills"
-    ____obj[____index] = ____obj[____index] + val
-    local ____obj, ____index = self.kd:get(
-        ____exports.GamePlayer:getKey(
-            victom,
-            GetUnitTypeId(u)
-        )
-    ), "kills"
-    ____obj[____index] = ____obj[____index] + val
-    self:evalBounty(val)
-    self:evalBonus(val)
+function PlayerStatus.prototype.onDead(self)
 end
-function GamePlayer.prototype.onDeath(self, killer, u)
-    local val = GetUnitPointValue(u)
-    local ____obj, ____index = self.kd:get(self), "deaths"
-    ____obj[____index] = ____obj[____index] + val
-    local ____obj, ____index = self.kd:get(killer), "deaths"
-    ____obj[____index] = ____obj[____index] + val
-    local ____obj, ____index = self.kd:get(
-        ____exports.GamePlayer:getKey(
-            killer,
-            GetUnitTypeId(u)
-        )
-    ), "deaths"
-    ____obj[____index] = ____obj[____index] + val
+function PlayerStatus.prototype.onLeft(self)
 end
-function GamePlayer.prototype.evalBounty(self, val)
-    local ____obj, ____index = self.bounty, "delta"
-    ____obj[____index] = ____obj[____index] + (val * 0.25)
-    if self.bounty.delta >= 1 then
-        local delta = math.floor(self.bounty.delta)
-        local ____obj, ____index = self.bounty, "delta"
-        ____obj[____index] = ____obj[____index] - delta
-        local ____obj, ____index = self.bounty, "total"
-        ____obj[____index] = ____obj[____index] + delta
-        self:giveGold(delta)
-    end
-end
-function GamePlayer.prototype.evalBonus(self, val)
-    local ____obj, ____index = self.bonus, "delta"
-    ____obj[____index] = ____obj[____index] + val
-    if self.bonus.delta >= 200 then
-        local ____obj, ____index = self.bonus, "delta"
-        ____obj[____index] = ____obj[____index] - 200
-        local bonusQty = (math.floor(
-            self.kd:get(self).kills
-        ) / ____exports.BonusDivisor) + ____exports.BonusBase
-        bonusQty = math.min(bonusQty, ____exports.BonusCap)
-        local ____obj, ____index = self.bonus, "total"
-        ____obj[____index] = ____obj[____index] + bonusQty
-        self:giveGold(bonusQty)
-        if GetLocalPlayer() == self.player then
-            ClearTextMessages()
-        end
-        DisplayTimedTextToPlayer(
-            self.player,
-            0.82,
-            0.81,
-            3,
-            ("Received |cffffcc00" .. tostring(bonusQty)) .. "|r gold from |cffff0303Fight Bonus|r!"
-        )
-    end
-    BlzFrameSetText(
-        BlzGetFrameByName(
-            "MyBarExText",
-            GetPlayerId(self.player)
-        ),
-        ("Fight Bonus: " .. tostring(self.bonus.delta)) .. " / 200"
-    )
-    BlzFrameSetValue(self.bonus.bar, self.bonus.delta / 2)
-end
-function GamePlayer.getKey(self, who, uID)
-    return (tostring(who) .. ":") .. tostring(uID)
-end
-GamePlayer.fromString = __TS__New(Map)
-GamePlayer.fromID = __TS__New(Map)
 return ____exports
  end,
 ["src.app.player.reference.KD Tracker example"] = function(...)  end,

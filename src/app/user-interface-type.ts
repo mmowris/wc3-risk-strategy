@@ -7,10 +7,10 @@ export class UserInterface {
     constructor() { }
 
     public static onLoad() {
-        UserInterface.setResourceFrames();
         print(`${Util.RandomEnumKey(HexColors)}Adjusting UI Resource Frames`);
-        UserInterface.hidePMOptions();
+        UserInterface.setResourceFrames();
         print(`${Util.RandomEnumKey(HexColors)}Hiding Private Message Options`);
+        UserInterface.hidePMOptions();
     }
 
     public static hideUI(hidden: boolean) {
