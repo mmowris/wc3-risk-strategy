@@ -1,12 +1,11 @@
 import CameraControls from "app/camera-controls";
-import { GamePlayer, PlayerNames } from "app/player/player-type";
+import { GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Trees } from "app/Trees";
 import { UserInterface } from "app/user-interface-type";
 import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "libs/playerColorData";
 import { Util } from "libs/translators";
 import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
-import { UTYPE } from "resources/unitTypes";
 import { Players } from "w3ts/globals";
 import { GameStatus } from "./game-status";
 
@@ -40,7 +39,6 @@ export function onLoad() {
 
             GamePlayer.fromID.set(player.id, new GamePlayer(player.handle));
             //TODO: Add to ping force
-            //TODO: update status
 
             if (player.id >= 24) return; //Exclude neutral hostile
 
@@ -57,6 +55,8 @@ export function onLoad() {
         if (val.player != Player(24)) { //Exclude neutral hostile
 
             //TODO: promode, edit below
+            //Fight Bonus Setup
+            val.initBonusUI();
             SetPlayerColor(val.player, colors.pop());
             //TODO: promode, edit below
             for (let i = 0; i < GamePlayer.fromID.size; i++) {
@@ -66,27 +66,26 @@ export function onLoad() {
                 }
             }
 
-            //Round.Start
+            //Round.Start - v2
             if (GetLocalPlayer() == val.player) {
                 EnableDragSelect(false, true);
                 EnableSelect(false, true);
             }
 
-            CreateUnit(val.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270)
+            //Create Player Tools
+            SetUnitPathing(CreateUnit(val.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270), false);
 
-            //TODO: Init fight bonus
-            //TODO: Update cam if needed
-            //TODO: Update status
+            val.setStatus(PlayerStatus.ALIVE)
             //TODO: Add to multiboard array
-
-            //TODO: Allocate cities
-            //TODO: Update city counts
-            //TODO: Update unit counts
-
-            //TODO: 1 Second timer that has:
-            //Multiboard creation
-            //Turn timer start
-            //Enable selection
         }
+
+        //TODO: Allocate cities
+        //TODO: Update city counts
+        //TODO: Update unit counts
+
+        //TODO: 1 Second timer that has:
+        //Multiboard creation
+        //Turn timer start
+        //Enable selection
     });
 }

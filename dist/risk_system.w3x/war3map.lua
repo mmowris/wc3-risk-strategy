@@ -11319,6 +11319,8 @@ local ____translators = require("src.libs.translators")
 local Util = ____translators.Util
 local ____hexColors = require("src.resources.hexColors")
 local HexColors = ____hexColors.HexColors
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
 local ____index = require("lua_modules.w3ts.globals.index")
 local Players = ____index.Players
 local ____game_2Dstatus = require("src.app.setup.game-status")
@@ -11376,14 +11378,15 @@ function ____exports.onLoad()
                         i = i + 1
                     end
                 end
-            end
-        end
-    )
-    GamePlayer.fromID:forEach(
-        function(____, v, k)
-            if GetLocalPlayer() == v.player then
-                EnableDragSelect(false, true)
-                EnableSelect(false, true)
+                if GetLocalPlayer() == val.player then
+                    EnableDragSelect(false, true)
+                    EnableSelect(false, true)
+                end
+                SetUnitPathing(
+                    CreateUnit(val.player, UID.PLAYER_TOOLS, 18750, -16200, 270),
+                    false
+                )
+                val:initBonusUI()
             end
         end
     )

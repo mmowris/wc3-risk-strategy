@@ -27,14 +27,25 @@ export const BonusBase: number = 9;
 export const BonusCap: number = 40;
 export const BonusDivisor: number = 200;
 export const PlayerNames: string[] = [];
+export const enum PlayerStatus {
+    PLAYING = "|cFF00FFF0Playing|r",
+    OBSERVING = "|cFFFFFFFFObserving|r",
+    ALIVE = "|cFF00FF00Alive|r",
+    NOMAD = "|cFFFE8A0ENmd|r",
+    DEAD = "|cFFFF0005Dead|r",
+    FORFEIT = "|cFFFFFC01Forfeit|r",
+    LEFT = "|cFF65656ALeft|r",
+    STFU = "|cfffe890dSTFU |r",
+};
 
 export class GamePlayer {
-    public player: player
+    public player: player;
     public income: number;
     public health: boolean; //true == highest , false == lowest
     public value: boolean; //true == highest , false == lowest
     public kd: Map<string | GamePlayer, KD>;
     public unitCount: number;
+    public status: string;
     public bounty: Bounty;
     public bonus: Bonus;
     public names: Names;
@@ -52,6 +63,8 @@ export class GamePlayer {
             color: ""
         }
 
+        this.status = (GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0) ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING;
+
         if (GetPlayerController(who) == MAP_CONTROL_COMPUTER) {
             this.names.acct = this.names.btag.split(' ')[0];
         } else {
@@ -66,7 +79,7 @@ export class GamePlayer {
     /**
      * init data that is saved/reset
      */
-    init() {
+    public init() {
         this.income = 0;
         this.health = false;
         this.value = false;
@@ -91,7 +104,7 @@ export class GamePlayer {
         //may need to keep track of cities a player owns in the country
     }
 
-    reset() {
+    public reset() {
         this.kd.clear();
 
         //TODO
@@ -99,13 +112,13 @@ export class GamePlayer {
         this.init();
     }
 
-    giveGold(val?: number) {
+    public giveGold(val?: number) {
         if (!val) val = this.income;
 
         SetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD) + val);
     }
 
-    initBonusUI() {
+    public initBonusUI() {
         this.bonus.bar = BlzCreateSimpleFrame("MyBarEx", BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), GetPlayerId(this.player));
         BlzFrameSetAbsPoint(this.bonus.bar, FRAMEPOINT_BOTTOMLEFT, 0.63, 0.165);
         BlzFrameSetTexture(this.bonus.bar, "Replaceabletextures\\Teamcolor\\Teamcolor00.blp", 0, true);
@@ -118,8 +131,41 @@ export class GamePlayer {
         }
     }
 
-    onStatusChange() {
+    public setStatus(newStatus: PlayerStatus) {
+        this.status = newStatus;
 
+        switch (newStatus) {
+            case PlayerStatus.PLAYING:
+                this.income = 4;
+
+                break;
+            case PlayerStatus.ALIVE:
+                this.income = 4;
+
+                break;
+            case PlayerStatus.NOMAD:
+                this.income = 0;
+
+                break;
+            case PlayerStatus.FORFEIT:
+                this.income = -1;
+
+                break;
+            case PlayerStatus.DEAD:
+                this.income = -2;
+
+                break;
+            case PlayerStatus.LEFT:
+                this.income = -3;
+
+                break;
+            case PlayerStatus.OBSERVING:
+                this.income = -4;
+
+                break;
+            default:
+                break;
+        }
     }
 
     public onKill(victom: GamePlayer, u: unit) {
@@ -144,6 +190,38 @@ export class GamePlayer {
         this.kd.get(this).deaths += val; //Total of this player
         this.kd.get(killer).deaths += val; //Total from killer player
         this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total from killer player unit specific
+    }
+
+    public isAlive() {
+        return this.status == PlayerStatus.ALIVE;
+    }
+
+    public isDead() {
+        return this.status == PlayerStatus.DEAD;
+    }
+
+    public isForfeit() {
+        return this.status == PlayerStatus.FORFEIT;
+    }
+
+    public isLeft() {
+        return this.status == PlayerStatus.LEFT;
+    }
+
+    public isNomad() {
+        return this.status.split(' ')[0] == PlayerStatus.NOMAD;
+    }
+
+    public isObserving() {
+        return this.status == PlayerStatus.OBSERVING
+    }
+
+    public isPlaying() {
+        return this.status == PlayerStatus.PLAYING;
+    }
+
+    public isSTFU() {
+        return this.status.split(' ')[0] == PlayerStatus.STFU;
     }
 
     private evalBounty(val: number) {
@@ -172,7 +250,7 @@ export class GamePlayer {
             bonusQty = Math.min(bonusQty, BonusCap);
             this.bonus.total += bonusQty;
             this.giveGold(bonusQty);
-            
+
             if (GetLocalPlayer() == this.player) {
                 ClearTextMessages();
             }
