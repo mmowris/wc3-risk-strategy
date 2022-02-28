@@ -1,6 +1,5 @@
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
-import { Players } from "w3ts/globals";
 import { FilterFriendlyValidGuards, isGuardValid } from "./guard-filters";
 
 export const Cities: City[] = [];

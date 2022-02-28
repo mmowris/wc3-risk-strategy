@@ -11,7 +11,7 @@
 
 import { ErrorMessage } from "libs/utils";
 import { UTYPE } from "resources/unitTypes";
-import { Timer, Unit } from "w3ts";
+import { Timer } from "w3ts";
 
 export class Transports {
     private static instance: Transports;

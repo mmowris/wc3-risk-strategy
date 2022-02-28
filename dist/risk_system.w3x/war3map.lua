@@ -10572,6 +10572,236 @@ function ____exports.onInit()
 end
 return ____exports
  end,
+["src.app.Trees"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____index = require("lua_modules.w3ts.index")
+local Destructable = ____index.Destructable
+____exports.Trees = __TS__Class()
+local Trees = ____exports.Trees
+Trees.name = "Trees"
+function Trees.prototype.____constructor(self)
+    self.treeArray = {}
+    self:treeSetup()
+end
+function Trees.getInstance(self)
+    if self.instance == nil then
+        self.instance = __TS__New(____exports.Trees)
+    end
+    return self.instance
+end
+function Trees.prototype.resetTrees(self)
+    __TS__ArrayForEach(
+        self.treeArray,
+        function(____, tree)
+            if GetDestructableLife(tree) < GetDestructableMaxLife(tree) then
+                DestructableRestoreLife(
+                    tree,
+                    GetDestructableMaxLife(tree),
+                    false
+                )
+            end
+        end
+    )
+end
+function Trees.prototype.treeSetup(self)
+    EnumDestructablesInRect(
+        GetEntireMapRect(),
+        nil,
+        function()
+            local enumObject = Destructable:fromHandle(
+                GetEnumDestructable()
+            )
+            local treeTypeID = enumObject.typeId
+            local objectX = enumObject.x
+            local objectY = enumObject.y
+            local terrainType = GetTerrainType(objectX, objectY)
+            local newType
+            local newTree
+            repeat
+                local ____switch10 = treeTypeID
+                local ____cond10 = ____switch10 == FourCC("T000")
+                if ____cond10 then
+                    newType = self:newBarrensTree(terrainType)
+                    enumObject:destroy()
+                    break
+                end
+                ____cond10 = ____cond10 or (____switch10 == FourCC("T001"))
+                if ____cond10 then
+                    newType = self:newSnowyTree(terrainType)
+                    enumObject:destroy()
+                    break
+                end
+                ____cond10 = ____cond10 or (____switch10 == FourCC("T002"))
+                if ____cond10 then
+                    newType = self:newVillageTree(terrainType)
+                    enumObject:destroy()
+                    break
+                end
+                ____cond10 = ____cond10 or (____switch10 == FourCC("T003"))
+                if ____cond10 then
+                    newType = self:newAshenvaleCanopyTree(terrainType)
+                    enumObject:destroy()
+                    break
+                end
+                ____cond10 = ____cond10 or (____switch10 == FourCC("T004"))
+                if ____cond10 then
+                    newType = self:newBarrensCanopyTree(terrainType)
+                    enumObject:destroy()
+                    break
+                end
+                do
+                    newType = enumObject.typeId
+                    break
+                end
+            until true
+            newTree = CreateDestructable(
+                newType,
+                objectX,
+                objectY,
+                270,
+                (math.random() * (1.2 - 0.8)) + 0.8,
+                math.floor(
+                    math.random() * 10
+                ) + 1
+            )
+            __TS__ArrayPush(self.treeArray, newTree)
+            newTree = nil
+            enumObject = nil
+        end
+    )
+end
+function Trees.prototype.newBarrensTree(self, terrainTypeId)
+    local newtype
+    repeat
+        local ____switch12 = terrainTypeId
+        local ____cond12 = ____switch12 == FourCC("Cdrd")
+        if ____cond12 then
+            newtype = FourCC("B008")
+            break
+        end
+        ____cond12 = ____cond12 or (____switch12 == FourCC("Agrs"))
+        if ____cond12 then
+            newtype = FourCC("B000")
+            break
+        end
+        ____cond12 = ____cond12 or (____switch12 == FourCC("Ndrd"))
+        if ____cond12 then
+            newtype = FourCC("B001")
+            break
+        end
+        do
+            newtype = FourCC("B007")
+            break
+        end
+    until true
+    return newtype
+end
+function Trees.prototype.newSnowyTree(self, terrainTypeId)
+    local newtype
+    repeat
+        local ____switch14 = terrainTypeId
+        local ____cond14 = ____switch14 == FourCC("Cdrd")
+        if ____cond14 then
+            newtype = FourCC("B00J")
+            break
+        end
+        ____cond14 = ____cond14 or (____switch14 == FourCC("Agrs"))
+        if ____cond14 then
+            newtype = FourCC("B00I")
+            break
+        end
+        ____cond14 = ____cond14 or (____switch14 == FourCC("Ndrd"))
+        if ____cond14 then
+            newtype = FourCC("B00K")
+            break
+        end
+        do
+            newtype = FourCC("B00O")
+            break
+        end
+    until true
+    return newtype
+end
+function Trees.prototype.newVillageTree(self, terrainTypeId)
+    local newtype
+    repeat
+        local ____switch16 = terrainTypeId
+        local ____cond16 = ____switch16 == FourCC("Cdrd")
+        if ____cond16 then
+            newtype = FourCC("B00N")
+            break
+        end
+        ____cond16 = ____cond16 or (____switch16 == FourCC("Agrs"))
+        if ____cond16 then
+            newtype = FourCC("B00L")
+            break
+        end
+        ____cond16 = ____cond16 or (____switch16 == FourCC("Ndrd"))
+        if ____cond16 then
+            newtype = FourCC("B00P")
+            break
+        end
+        do
+            newtype = FourCC("B00M")
+            break
+        end
+    until true
+    return newtype
+end
+function Trees.prototype.newBarrensCanopyTree(self, terrainTypeId)
+    local newtype
+    repeat
+        local ____switch18 = terrainTypeId
+        local ____cond18 = ____switch18 == FourCC("Cdrd")
+        if ____cond18 then
+            newtype = FourCC("B00H")
+            break
+        end
+        ____cond18 = ____cond18 or (____switch18 == FourCC("Agrs"))
+        if ____cond18 then
+            newtype = FourCC("B00F")
+            break
+        end
+        ____cond18 = ____cond18 or (____switch18 == FourCC("Ndrd"))
+        if ____cond18 then
+            newtype = FourCC("B003")
+            break
+        end
+        do
+            newtype = FourCC("B00G")
+            break
+        end
+    until true
+    return newtype
+end
+function Trees.prototype.newAshenvaleCanopyTree(self, terrainTypeId)
+    local newtype
+    repeat
+        local ____switch20 = terrainTypeId
+        local ____cond20 = ____switch20 == FourCC("Cdrd")
+        if ____cond20 then
+            newtype = FourCC("B00C")
+            break
+        end
+        ____cond20 = ____cond20 or (____switch20 == FourCC("Agrs"))
+        if ____cond20 then
+            newtype = FourCC("B00D")
+            break
+        end
+        ____cond20 = ____cond20 or (____switch20 == FourCC("Ndrd"))
+        if ____cond20 then
+            newtype = FourCC("B002")
+            break
+        end
+        do
+            newtype = FourCC("B00B")
+            break
+        end
+    until true
+    return newtype
+end
+return ____exports
+ end,
 ["src.libs.utils"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local ____hexColors = require("src.resources.hexColors")
@@ -10978,6 +11208,18 @@ end
 UserInterface.forTheReplays = {}
 return ____exports
  end,
+["src.libs.playerColorData"] = function(...) local ____exports = {}
+____exports.PLAYER_COLORS = {PLAYER_COLOR_RED, PLAYER_COLOR_BLUE, PLAYER_COLOR_CYAN, PLAYER_COLOR_PURPLE, PLAYER_COLOR_YELLOW, PLAYER_COLOR_ORANGE, PLAYER_COLOR_GREEN, PLAYER_COLOR_PINK, PLAYER_COLOR_LIGHT_GRAY, PLAYER_COLOR_LIGHT_BLUE, PLAYER_COLOR_AQUA, PLAYER_COLOR_BROWN, PLAYER_COLOR_MAROON, PLAYER_COLOR_VIOLET, PLAYER_COLOR_WHEAT, PLAYER_COLOR_PEACH, PLAYER_COLOR_LAVENDER, PLAYER_COLOR_PEANUT, PLAYER_COLOR_COAL, PLAYER_COLOR_EMERALD, PLAYER_COLOR_NAVY, PLAYER_COLOR_MINT, PLAYER_COLOR_TURQUOISE}
+____exports.PLAYER_COLOR_CODES = {"|cffff0303", "|cff0042ff", "|cff1be7ba", "|cff550081", "|cfffefc00", "|cfffe890d", "|cff21bf00", "|cffe45caf", "|cff939596", "|cff77bbff", "|cff106247", "|cff4f2b05", "|cff9c0000", "|cffbd00ff", "|cffecce87", "|cfff7a58b", "|cffdbb8eb", "|cffa56f34", "|cff4f5055", "|cff00781e", "|cff0000c3", "|cffccff99", "|cff00ebff"}
+____exports.PLAYER_COLOR_NAMES = {"Red", "Blue", "Teal", "Purple", "Yellow", "Orange", "Green", "Pink", "Gray", "Light Blue", "Dark Green", "Brown", "Maroon", "Violet", "Wheat", "Peach", "Lavender", "Peanut", "Coal", "Emerald", "Navy", "Mint", "Turquoise"}
+____exports.OG_PLAYER_COLORS = {RED = PLAYER_COLOR_RED, BLUE = PLAYER_COLOR_BLUE, CYAN = PLAYER_COLOR_CYAN, PURPLE = PLAYER_COLOR_PURPLE, YELLOW = PLAYER_COLOR_YELLOW, ORANGE = PLAYER_COLOR_ORANGE, GREEN = PLAYER_COLOR_GREEN, PINK = PLAYER_COLOR_PINK, LIGHT_GRAY = PLAYER_COLOR_LIGHT_GRAY, LIGHT_BLUE = PLAYER_COLOR_LIGHT_BLUE, AQUA = PLAYER_COLOR_AQUA, BROWN = PLAYER_COLOR_BROWN, MAROON = PLAYER_COLOR_MAROON, NAVY = PLAYER_COLOR_NAVY, TURQUOISE = PLAYER_COLOR_TURQUOISE, VIOLET = PLAYER_COLOR_VIOLET, WHEAT = PLAYER_COLOR_WHEAT, PEACH = PLAYER_COLOR_PEACH, MINT = PLAYER_COLOR_MINT, LAVENDER = PLAYER_COLOR_LAVENDER, COAL = PLAYER_COLOR_COAL, SNOW = PLAYER_COLOR_SNOW, EMERALD = PLAYER_COLOR_EMERALD, PEANUT = PLAYER_COLOR_PEANUT}
+____exports.OG_PLAYER_COLOR_CODES = {RED = "|cffff0303", BLUE = "|cff0042ff", CYAN = "|cff1be7ba", PURPLE = "|cff550081", YELLOW = "|cfffefc00", ORANGE = "|cfffe890d", GREEN = "|cff21bf00", PINK = "|cffe45caf", LIGHT_GRAY = "|cff939596", LIGHT_BLUE = "|cff77bbff", AQUA = "|cff106247", BROWN = "|cff4f2b05", MAROON = "|cff9c0000", NAVY = "|cff0000c3", TURQUOISE = "|cff00ebff", VIOLET = "|cffbd00ff", WHEAT = "|cffecce87", PEACH = "|cfff7a58b", MINT = "|cffccff99", LAVENDER = "|cffdbb8eb", COAL = "|cff4f5055", SNOW = "|cffecf0ff", EMERALD = "|cff00781e", PEANUT = "|cffa56f34"}
+____exports.OG_PLAYER_COLOR_NAMES = {RED = "Red", BLUE = "Blue", CYAN = "Teal", PURPLE = "Purple", YELLOW = "Yellow", ORANGE = "Orange", GREEN = "Green", PINK = "Pink", LIGHT_GRAY = "Gray", LIGHT_BLUE = "Light Blue", AQUA = "Dark Green", BROWN = "Brown", MAROON = "Maroon", NAVY = "Navy", TURQUOISE = "Turquoise", VIOLET = "Violet", WHEAT = "Wheat", PEACH = "Peach", MINT = "Mint", LAVENDER = "Lavender", COAL = "Coal", SNOW = "Snow", EMERALD = "Emerald", PEANUT = "Peanut"}
+____exports.pingRedPercent = {100, 0, 10.98, 32.94, 100, 99.61, 12.55, 89.8, 58.43, 49.41, 6.27, 29.02, 60.78, 0, 0, 74.51, 92.16, 97.25, 74.9, 86.27, 15.69, 92.16, 0, 64.31}
+____exports.pingGreenPercent = {1.18, 25.88, 90.2, 0, 98.82, 54.12, 75.29, 35.69, 58.82, 74.9, 38.43, 16.47, 0, 0, 91.76, 0, 80.39, 64.31, 100, 72.55, 15.69, 94.12, 47.06, 43.53}
+____exports.pingBluePercent = {1.18, 100, 72.55, 50.59, 0, 5.49, 0, 69.02, 59.22, 94.51, 27.45, 1.57, 0, 76.47, 100, 99.61, 52.94, 54.51, 50.2, 92.16, 15.69, 100, 11.76, 20}
+return ____exports
+ end,
 ["src.app.setup.game-status"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local ____index = require("lua_modules.w3ts.index")
@@ -11066,8 +11308,13 @@ local CameraControls = ____camera_2Dcontrols.default
 local ____player_2Dtype = require("src.app.player.player-type")
 local GamePlayer = ____player_2Dtype.GamePlayer
 local PlayerNames = ____player_2Dtype.PlayerNames
+local ____Trees = require("src.app.Trees")
+local Trees = ____Trees.Trees
 local ____user_2Dinterface_2Dtype = require("src.app.user-interface-type")
 local UserInterface = ____user_2Dinterface_2Dtype.UserInterface
+local ____playerColorData = require("src.libs.playerColorData")
+local PLAYER_COLORS = ____playerColorData.PLAYER_COLORS
+local PLAYER_COLOR_NAMES = ____playerColorData.PLAYER_COLOR_NAMES
 local ____translators = require("src.libs.translators")
 local Util = ____translators.Util
 local ____hexColors = require("src.resources.hexColors")
@@ -11088,6 +11335,9 @@ function ____exports.onLoad()
     )
     UserInterface:onLoad()
     CameraControls:getInstance()
+    Trees:getInstance()
+    local colors = {}
+    local tracker = 0
     __TS__ArrayForEach(
         Players,
         function(____, player)
@@ -11096,15 +11346,44 @@ function ____exports.onLoad()
                 if player.id >= 25 then
                     return
                 end
-                if player.handle == Player(24) then
-                    print(
-                        (player.name .. " ") .. tostring(player.id)
-                    )
-                end
                 GamePlayer.fromID:set(
                     player.id,
                     __TS__New(GamePlayer, player.handle)
                 )
+                if player.id >= 24 then
+                    return
+                end
+                __TS__ArrayPush(colors, PLAYER_COLORS[tracker + 1])
+                tracker = tracker + 1
+            end
+        end
+    )
+    Util:ShuffleArray(colors)
+    GamePlayer.fromID:forEach(
+        function(____, val)
+            if val.player ~= Player(24) then
+                SetPlayerColor(
+                    val.player,
+                    table.remove(colors)
+                )
+                do
+                    local i = 0
+                    while i < GamePlayer.fromID.size do
+                        if GetPlayerColor(val.player) == PLAYER_COLORS[i + 1] then
+                            val.names.color = PLAYER_COLOR_NAMES[i + 1]
+                            SetPlayerName(val.player, PLAYER_COLOR_NAMES[i + 1])
+                        end
+                        i = i + 1
+                    end
+                end
+            end
+        end
+    )
+    GamePlayer.fromID:forEach(
+        function(____, v, k)
+            if GetLocalPlayer() == v.player then
+                EnableDragSelect(false, true)
+                EnableSelect(false, true)
             end
         end
     )
