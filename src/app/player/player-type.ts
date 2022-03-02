@@ -100,7 +100,18 @@ export class GamePlayer {
             bar: null
         }
 
-        //init kd maps
+        this.kd.set(this, {
+            kills: 0,
+            deaths: 0
+        });
+
+        GamePlayer.fromID.forEach(gPlayer => {
+            this.kd.set(gPlayer, {
+                kills: 0,
+                deaths: 0
+            });
+        });
+
         //may need to keep track of cities a player owns in the country
     }
 
@@ -108,7 +119,6 @@ export class GamePlayer {
         this.kd.clear();
 
         //TODO
-
         this.init();
     }
 
@@ -169,27 +179,45 @@ export class GamePlayer {
     }
 
     public onKill(victom: GamePlayer, u: unit) {
-        //TODO: Do not update if not alive or nomad
-        //TODO: Do not update if victom is owned/allied
+        if (!this.isAlive() && !this.isNomad()) return;
+        if (victom == this) return;
+        if (IsPlayerAlly(victom.player, this.player)) return;
+
         let val: number = GetUnitPointValue(u);
 
         this.kd.get(this).kills += val; //Total of this player
         this.kd.get(victom).kills += val; //Total of victom player
-        this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills += val; //Total of victom player unit specific
 
-        //TODO DO NOT give fight bonus in promode
+        if (!this.kd.has(GamePlayer.getKey(victom, GetUnitTypeId(u)))) {
+            this.kd.set(GamePlayer.getKey(victom, GetUnitTypeId(u)), {
+                kills: 0,
+                deaths: 0
+            })
+        } else {
+            this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills += val; //Total of victom player unit specific
+        }
+
         this.evalBounty(val);
+        //TODO DO NOT give fight bonus in promode
         this.evalBonus(val);
     }
 
     public onDeath(killer: GamePlayer, u: unit) {
-        //TODO: Do not update if not alive or nomad
+        if (!this.isAlive() && !this.isNomad()) return;
 
         let val: number = GetUnitPointValue(u);
 
         this.kd.get(this).deaths += val; //Total of this player
         this.kd.get(killer).deaths += val; //Total from killer player
-        this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total from killer player unit specific
+
+        if (!this.kd.has(GamePlayer.getKey(killer, GetUnitTypeId(u)))) {
+            this.kd.set(GamePlayer.getKey(killer, GetUnitTypeId(u)), {
+                kills: 0,
+                deaths: 0
+            })
+        } else {
+            this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total of victom player unit specific
+        }
     }
 
     public isAlive() {

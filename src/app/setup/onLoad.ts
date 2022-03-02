@@ -75,7 +75,7 @@ export function onLoad() {
             //Create Player Tools
             SetUnitPathing(CreateUnit(val.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270), false);
 
-            val.setStatus(PlayerStatus.ALIVE)
+            val.setStatus(PlayerStatus.ALIVE);
             //TODO: Add to multiboard array
         }
 
