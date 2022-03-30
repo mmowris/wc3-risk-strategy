@@ -10522,6 +10522,45 @@ ____exports.pingGreenPercent = {1.18, 25.88, 90.2, 0, 98.82, 54.12, 75.29, 35.69
 ____exports.pingBluePercent = {1.18, 100, 72.55, 50.59, 0, 5.49, 0, 69.02, 59.22, 94.51, 27.45, 1.57, 0, 76.47, 100, 99.61, 52.94, 54.51, 50.2, 92.16, 15.69, 100, 11.76, 20}
 return ____exports
  end,
+["src.app.game.button"] = function(...) require("lualib_bundle");
+local ____exports = {}
+____exports.Button = __TS__Class()
+local Button = ____exports.Button
+Button.name = "Button"
+function Button.prototype.____constructor(self)
+end
+function Button.CreateButton(self, name, framePoint, parent, parentPoint, x, y, width, height)
+    local bFrame = BlzCreateFrameByType("GLUETEXTBUTTON", "name", parent, "ScriptDialogButton", 0)
+    BlzFrameSetPoint(bFrame, framePoint, parent, parentPoint, x, y)
+    BlzFrameSetText(bFrame, name)
+    BlzFrameSetSize(bFrame, width, height)
+    ____exports.Button.frame:set(name, bFrame)
+    local frameTrig = CreateTrigger()
+    BlzTriggerRegisterFrameEvent(frameTrig, bFrame, FRAMEEVENT_CONTROL_CLICK)
+    TriggerAddAction(
+        frameTrig,
+        function()
+            ____exports.Button.frameFunc:get(name)
+            BlzFrameSetEnable(bFrame, false)
+            BlzFrameSetEnable(bFrame, true)
+        end
+    )
+    BlzFrameSetVisible(bFrame, false)
+    frameTrig = nil
+    bFrame = nil
+end
+function Button.toggleForPlayer(self, fName, p, bool)
+    if GetLocalPlayer() == p then
+        BlzFrameSetVisible(
+            ____exports.Button.frame:get(fName),
+            bool
+        )
+    end
+end
+Button.frame = __TS__New(Map)
+Button.frameFunc = __TS__New(Map)
+return ____exports
+ end,
 ["src.app.game.game-status"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local ____index = require("lua_modules.w3ts.index")
@@ -10633,6 +10672,8 @@ local ____index = require("lua_modules.w3ts.index")
 local Timer = ____index.Timer
 local ____index = require("lua_modules.w3ts.globals.index")
 local Players = ____index.Players
+local ____button = require("src.app.game.button")
+local Button = ____button.Button
 local ____game_2Dstatus = require("src.app.game.game-status")
 local GameStatus = ____game_2Dstatus.GameStatus
 ____exports.Game = __TS__Class()
@@ -10812,6 +10853,17 @@ function Game.buildInfoFrame(self)
                 )
             end
         end
+    )
+    Button:CreateButton(HexColors.TURQUOISE .. "START GAME|r", FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06)
+    Button.frameFunc:set(
+        HexColors.TURQUOISE .. "START GAME|r",
+        function()
+        end
+    )
+    Button:toggleForPlayer(
+        HexColors.TURQUOISE .. "START GAME|r",
+        Player(0),
+        true
     )
 end
 return ____exports

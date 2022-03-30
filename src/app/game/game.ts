@@ -11,6 +11,7 @@ import { Util } from "libs/translators";
 import { HexColors } from "resources/hexColors";
 import { Frame, Timer } from "w3ts";
 import { Players } from "w3ts/globals";
+import { Button } from "./button";
 import { GameStatus } from "./game-status";
 
 export class Game {
@@ -251,6 +252,12 @@ export class Game {
 			}
 		});
 
-		
+		//Start button
+		Button.CreateButton(`${HexColors.TURQUOISE}START GAME|r`, FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06);
+		Button.frameFunc.set(`${HexColors.TURQUOISE}START GAME|r`, () => {
+			//this.endModeSelection();
+		})
+
+		Button.toggleForPlayer(`${HexColors.TURQUOISE}START GAME|r`, Player(0), true); //TODO: introduce a global called "host player"
 	}
 }
