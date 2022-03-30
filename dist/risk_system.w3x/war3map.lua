@@ -11232,6 +11232,34 @@ function UserInterface.hideUI(self, hidden)
         ) .. "Hiding User Interface"
     )
 end
+function UserInterface.CreateButton(self, name, framePoint, parent, parentPoint, x, y, width, height)
+    local bFrame = BlzCreateFrameByType("GLUETEXTBUTTON", "name", parent, "ScriptDialogButton", 0)
+    BlzFrameSetPoint(bFrame, framePoint, parent, parentPoint, x, y)
+    BlzFrameSetText(bFrame, name)
+    BlzFrameSetSize(bFrame, width, height)
+    ____exports.UserInterface.frame:set(name, bFrame)
+    local frameTrig = CreateTrigger()
+    BlzTriggerRegisterFrameEvent(frameTrig, bFrame, FRAMEEVENT_CONTROL_CLICK)
+    TriggerAddAction(
+        frameTrig,
+        function()
+            ____exports.UserInterface.frameFunc:get(name)(nil)
+            BlzFrameSetEnable(bFrame, false)
+            BlzFrameSetEnable(bFrame, true)
+        end
+    )
+    BlzFrameSetVisible(bFrame, false)
+    frameTrig = nil
+    bFrame = nil
+end
+function UserInterface.toggleForPlayer(self, fName, p, bool)
+    if GetLocalPlayer() == p then
+        BlzFrameSetVisible(
+            ____exports.UserInterface.frame:get(fName),
+            bool
+        )
+    end
+end
 function UserInterface.setResourceFrames(self)
     local resourceFrame = BlzGetFrameByName("ResourceBarFrame", 0)
     BlzFrameSetVisible(
@@ -11279,6 +11307,8 @@ function UserInterface.hidePMOptions(self)
     end
 end
 UserInterface.forTheReplays = {}
+UserInterface.frame = __TS__New(Map)
+UserInterface.frameFunc = __TS__New(Map)
 return ____exports
  end,
 ["src.libs.playerColorData"] = function(...) local ____exports = {}
@@ -11291,45 +11321,6 @@ ____exports.OG_PLAYER_COLOR_NAMES = {RED = "Red", BLUE = "Blue", CYAN = "Teal", 
 ____exports.pingRedPercent = {100, 0, 10.98, 32.94, 100, 99.61, 12.55, 89.8, 58.43, 49.41, 6.27, 29.02, 60.78, 0, 0, 74.51, 92.16, 97.25, 74.9, 86.27, 15.69, 92.16, 0, 64.31}
 ____exports.pingGreenPercent = {1.18, 25.88, 90.2, 0, 98.82, 54.12, 75.29, 35.69, 58.82, 74.9, 38.43, 16.47, 0, 0, 91.76, 0, 80.39, 64.31, 100, 72.55, 15.69, 94.12, 47.06, 43.53}
 ____exports.pingBluePercent = {1.18, 100, 72.55, 50.59, 0, 5.49, 0, 69.02, 59.22, 94.51, 27.45, 1.57, 0, 76.47, 100, 99.61, 52.94, 54.51, 50.2, 92.16, 15.69, 100, 11.76, 20}
-return ____exports
- end,
-["src.app.game.button"] = function(...) require("lualib_bundle");
-local ____exports = {}
-____exports.Button = __TS__Class()
-local Button = ____exports.Button
-Button.name = "Button"
-function Button.prototype.____constructor(self)
-end
-function Button.CreateButton(self, name, framePoint, parent, parentPoint, x, y, width, height)
-    local bFrame = BlzCreateFrameByType("GLUETEXTBUTTON", "name", parent, "ScriptDialogButton", 0)
-    BlzFrameSetPoint(bFrame, framePoint, parent, parentPoint, x, y)
-    BlzFrameSetText(bFrame, name)
-    BlzFrameSetSize(bFrame, width, height)
-    ____exports.Button.frame:set(name, bFrame)
-    local frameTrig = CreateTrigger()
-    BlzTriggerRegisterFrameEvent(frameTrig, bFrame, FRAMEEVENT_CONTROL_CLICK)
-    TriggerAddAction(
-        frameTrig,
-        function()
-            ____exports.Button.frameFunc:get(name)
-            BlzFrameSetEnable(bFrame, false)
-            BlzFrameSetEnable(bFrame, true)
-        end
-    )
-    BlzFrameSetVisible(bFrame, false)
-    frameTrig = nil
-    bFrame = nil
-end
-function Button.toggleForPlayer(self, fName, p, bool)
-    if GetLocalPlayer() == p then
-        BlzFrameSetVisible(
-            ____exports.Button.frame:get(fName),
-            bool
-        )
-    end
-end
-Button.frame = __TS__New(Map)
-Button.frameFunc = __TS__New(Map)
 return ____exports
  end,
 ["src.app.game.game-status"] = function(...) require("lualib_bundle");
@@ -11443,8 +11434,6 @@ local ____index = require("lua_modules.w3ts.index")
 local Timer = ____index.Timer
 local ____index = require("lua_modules.w3ts.globals.index")
 local Players = ____index.Players
-local ____button = require("src.app.game.button")
-local Button = ____button.Button
 local ____game_2Dstatus = require("src.app.game.game-status")
 local GameStatus = ____game_2Dstatus.GameStatus
 ____exports.Game = __TS__Class()
@@ -11568,6 +11557,9 @@ function Game.buildInfoFrame(self)
     GamePlayer.fromID:forEach(
         function(____, gPlayer)
             if gPlayer:isPlaying() or gPlayer:isObserving() then
+                if gPlayer.player == Player(24) then
+                    return
+                end
                 BlzFrameAddText(pList, (gPlayer.names.acct .. " is ") .. gPlayer.status)
             end
         end
@@ -11625,16 +11617,50 @@ function Game.buildInfoFrame(self)
             end
         end
     )
-    Button:CreateButton(HexColors.TURQUOISE .. "START GAME|r", FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06)
-    Button.frameFunc:set(
+    UserInterface:CreateButton(HexColors.TURQUOISE .. "START GAME|r", FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06)
+    UserInterface.frameFunc:set(
         HexColors.TURQUOISE .. "START GAME|r",
         function()
+            print("start test")
         end
     )
-    Button:toggleForPlayer(
+    UserInterface:toggleForPlayer(
         HexColors.TURQUOISE .. "START GAME|r",
         Player(0),
         true
+    )
+    UserInterface:CreateButton("OBSERVE GAME", FRAMEPOINT_LEFT, cList, FRAMEPOINT_BOTTOMLEFT, 0, -0.037, 0.2, 0.06)
+    UserInterface.frameFunc:set(
+        "OBSERVE GAME",
+        function()
+            local player = GamePlayer.fromID:get(
+                GetPlayerId(
+                    GetTriggerPlayer()
+                )
+            )
+            if player:isPlaying() then
+                player:setStatus("|cFFFFFFFFObserving|r")
+                if GetLocalPlayer() == player.player then
+                    BlzFrameSetText(
+                        UserInterface.frame:get("OBSERVE GAME"),
+                        "PLAY GAME"
+                    )
+                end
+            else
+                player:setStatus("|cFF00FFF0Playing|r")
+                if GetLocalPlayer() == player.player then
+                    BlzFrameSetText(
+                        UserInterface.frame:get("OBSERVE GAME"),
+                        "OBSERVE GAME"
+                    )
+                end
+            end
+        end
+    )
+    GamePlayer.fromID:forEach(
+        function(____, gPlayer)
+            UserInterface:toggleForPlayer("OBSERVE GAME", gPlayer.player, true)
+        end
     )
 end
 return ____exports
@@ -11893,6 +11919,7 @@ do
 end
 return ____exports
  end,
+["src.app.game.button"] = function(...)  end,
 ["src.app.game.onLoad"] = function(...)  end,
 ["src.app.player.reference.KD Tracker example"] = function(...)  end,
 ["src.app.player.reference.player-state-entity"] = function(...)  end,

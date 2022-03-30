@@ -2,16 +2,15 @@ import CameraControls, { PlayerCamData } from "app/camera-controls";
 import { CommandProcessor } from "app/commands/command-processor";
 import { City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
-import { GamePlayer, PlayerNames } from "app/player/player-type";
+import { GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { unitSpellEffect } from "app/spells/unitSpellEffect";
 import { Trees } from "app/Trees";
 import { UserInterface } from "app/user-interface-type";
 import { PLAYER_COLORS } from "libs/playerColorData";
 import { Util } from "libs/translators";
 import { HexColors } from "resources/hexColors";
-import { Frame, Timer } from "w3ts";
+import { Timer } from "w3ts";
 import { Players } from "w3ts/globals";
-import { Button } from "./button";
 import { GameStatus } from "./game-status";
 
 export class Game {
@@ -190,6 +189,8 @@ export class Game {
 
 		GamePlayer.fromID.forEach(gPlayer => {
 			if (gPlayer.isPlaying() || gPlayer.isObserving()) {
+				if (gPlayer.player == Player(24)) return;
+
 				BlzFrameAddText(pList, `${gPlayer.names.acct} is ${gPlayer.status}`)
 			}
 		});
@@ -253,11 +254,36 @@ export class Game {
 		});
 
 		//Start button
-		Button.CreateButton(`${HexColors.TURQUOISE}START GAME|r`, FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06);
-		Button.frameFunc.set(`${HexColors.TURQUOISE}START GAME|r`, () => {
+		UserInterface.CreateButton(`${HexColors.TURQUOISE}START GAME|r`, FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06);
+		UserInterface.frameFunc.set(`${HexColors.TURQUOISE}START GAME|r`, () => {
+			print("start test")
 			//this.endModeSelection();
 		})
 
-		Button.toggleForPlayer(`${HexColors.TURQUOISE}START GAME|r`, Player(0), true); //TODO: introduce a global called "host player"
+		UserInterface.toggleForPlayer(`${HexColors.TURQUOISE}START GAME|r`, Player(0), true); //TODO: introduce a global called "host player"
+
+		//Observe button
+		UserInterface.CreateButton("OBSERVE GAME", FRAMEPOINT_LEFT, cList, FRAMEPOINT_BOTTOMLEFT, 0, -0.037, 0.2, 0.06);
+		UserInterface.frameFunc.set("OBSERVE GAME", () => {
+			const player: GamePlayer = GamePlayer.fromID.get(GetPlayerId(GetTriggerPlayer()));
+
+			if (player.isPlaying()) {
+				player.setStatus(PlayerStatus.OBSERVING);
+
+				if (GetLocalPlayer() == player.player) {
+					BlzFrameSetText(UserInterface.frame.get("OBSERVE GAME"), "PLAY GAME");
+				}
+			} else {
+				player.setStatus(PlayerStatus.PLAYING);
+
+				if (GetLocalPlayer() == player.player) {
+					BlzFrameSetText(UserInterface.frame.get("OBSERVE GAME"), "OBSERVE GAME");
+				}
+			}
+		})
+
+		GamePlayer.fromID.forEach(gPlayer => {
+			UserInterface.toggleForPlayer(`OBSERVE GAME`, gPlayer.player, true);
+		});
 	}
 }
