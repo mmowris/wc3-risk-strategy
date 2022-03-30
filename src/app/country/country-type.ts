@@ -1,3 +1,4 @@
+import { GamePlayer } from "app/player/player-type";
 import { HexColors } from "resources/hexColors";
 import { Cities, City } from "./city-type";
 import { Spawner } from "./spawner-type";
@@ -8,7 +9,8 @@ export class Country {
     private spawner: Spawner;
     private text: texttag;
     private owner: player;
-
+    private citiesOwned: Map<GamePlayer, number> = new Map<GamePlayer, number>();
+    
     public static fromName = new Map<string, Country>();
     public static fromSpawner = new Map<Spawner, Country>(); //TODO Determine if needed
     public static fromCity = new Map<City, Country>();

@@ -7,6 +7,7 @@ export class UserInterface {
     constructor() { }
 
     public static onLoad() {
+	UserInterface.hideUI(true);
         print(`${Util.RandomEnumKey(HexColors)}Adjusting UI Resource Frames`);
         UserInterface.setResourceFrames();
         print(`${Util.RandomEnumKey(HexColors)}Hiding Private Message Options`);
