@@ -43,7 +43,7 @@ export class ModeUI {
 		//Timer
 		const timer: framehandle = BlzCreateFrameByType("Text", "cTimer", backdrop, "EscMenuLabelTextTemplate", 0);
 		BlzFrameSetPoint(timer, FRAMEPOINT_RIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.03, 0.04);
-		BlzFrameSetText(timer, "Game starts in 15 seconds");
+		BlzFrameSetText(timer, "Mode Selection Ends in 15 Seconds");
 
 		//Discord box
 		const dBox: framehandle = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 1);
@@ -79,51 +79,50 @@ export class ModeUI {
 			}
 		});
 
-		//Start button
-		ModeUI.createButton(`${HexColors.TURQUOISE}START GAME|r`, FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06);
-		ModeUI.frameFunc.set(`${HexColors.TURQUOISE}START GAME|r`, () => {
-			print("start test")
-			//this.endModeSelection();
-		})
+		// //Start button
+		// ModeUI.createButton(`${HexColors.TURQUOISE}START GAME|r`, FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06);
+		// ModeUI.frameFunc.set(`${HexColors.TURQUOISE}START GAME|r`, () => {
+		// 	print("start test")
+		// 	//this.endModeSelection();
+		// })
 
-		ModeUI.toggleForPlayer(`${HexColors.TURQUOISE}START GAME|r`, Player(0), true); //TODO: introduce a global called "host player"
+		// ModeUI.toggleForPlayer(`${HexColors.TURQUOISE}START GAME|r`, Player(0), true); //TODO: introduce a global called "host player"
 
 		//Observe button
-		ModeUI.createButton("OBSERVE GAME", FRAMEPOINT_LEFT, cList, FRAMEPOINT_BOTTOMLEFT, 0, -0.037, 0.2, 0.06);
-		ModeUI.frameFunc.set("OBSERVE GAME", () => {
+		const obsStr: string = "OBSERVE GAME"
+		ModeUI.createButton(obsStr, FRAMEPOINT_TOP, cList, FRAMEPOINT_BOTTOM, 0, -0.01, 0.2, 0.06);
+		ModeUI.frameFunc.set(obsStr, () => {
 			const player: GamePlayer = GamePlayer.fromID.get(GetPlayerId(GetTriggerPlayer()));
 
 			if (player.isPlaying()) {
 				player.setStatus(PlayerStatus.OBSERVING);
 
 				if (GetLocalPlayer() == player.player) {
-					BlzFrameSetText(ModeUI.frame.get("OBSERVE GAME"), "PLAY GAME");
+					BlzFrameSetText(ModeUI.frame.get(obsStr), "PLAY GAME");
 				}
 			} else {
 				player.setStatus(PlayerStatus.PLAYING);
 
 				if (GetLocalPlayer() == player.player) {
-					BlzFrameSetText(ModeUI.frame.get("OBSERVE GAME"), "OBSERVE GAME");
+					BlzFrameSetText(ModeUI.frame.get(obsStr), obsStr);
 				}
 			}
 		})
 
-		GamePlayer.fromID.forEach(gPlayer => {
-			ModeUI.toggleForPlayer(`OBSERVE GAME`, gPlayer.player, true);
-		});
+		BlzFrameSetVisible(BlzGetFrameByName(obsStr, 0), true);
 
 		//Modes Info
 		const modesInfo: framehandle = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0);
 		
 		BlzFrameSetPoint(modesInfo, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, -0.27, -0.11);
 
-		const modesText: string = `${HexColors.RED}Game Settings|r\nGame Tracking: ${HexColors.GREEN}Ranked|r\nDiplomancy: ${HexColors.GREEN}FFA|r\nFog: ${HexColors.GREEN}Off|r\nReveal Names: ${HexColors.GREEN}On Victory|r\nNomad Time: ${HexColors.GREEN}Unlimited|r\nGold Sending: ${HexColors.GREEN}Disabled|r\nShips Allowed: ${HexColors.GREEN}All|r\nTransport Load/Unload: ${HexColors.GREEN}Ports Only|r`
+		const modesText: string = `${HexColors.RED}Game Settings|r\nGame Tracking: ${HexColors.GREEN}Unranked|r\nDiplomancy: ${HexColors.GREEN}FFA|r\nFog: ${HexColors.GREEN}Off|r\nReveal Names: ${HexColors.GREEN}On Victory|r\nNomad Time: ${HexColors.GREEN}Unlimited|r\nGold Sending: ${HexColors.GREEN}Disabled|r\nShips Allowed: ${HexColors.GREEN}All|r\nTransport Load/Unload: ${HexColors.GREEN}Ports Only|r`
 
 		BlzFrameSetText(modesInfo, modesText);
 	}
 
 	private static createButton(name: string, framePoint: framepointtype, parent: framehandle, parentPoint: framepointtype, x: number, y: number, width: number, height: number) {
-		let bFrame: framehandle = BlzCreateFrameByType("GLUETEXTBUTTON", "name", parent, "ScriptDialogButton", 0);
+		let bFrame: framehandle = BlzCreateFrameByType("GLUETEXTBUTTON", name, parent, "ScriptDialogButton", 0);
 		BlzFrameSetPoint(bFrame, framePoint, parent, parentPoint, x, y);
 		BlzFrameSetText(bFrame, name);
 		BlzFrameSetSize(bFrame, width, height);

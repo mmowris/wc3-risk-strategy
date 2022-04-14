@@ -9871,7 +9871,7 @@ function ModeUI.buildModeFrame(self)
     BlzFrameAddText(cList, HexColors.TANGERINE .. "F8|r  Cycles owned spawners")
     local timer = BlzCreateFrameByType("Text", "cTimer", backdrop, "EscMenuLabelTextTemplate", 0)
     BlzFrameSetPoint(timer, FRAMEPOINT_RIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.03, 0.04)
-    BlzFrameSetText(timer, "Game starts in 15 seconds")
+    BlzFrameSetText(timer, "Mode Selection Ends in 15 Seconds")
     local dBox = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 1)
     BlzFrameSetPoint(dBox, FRAMEPOINT_BOTTOMLEFT, cList, FRAMEPOINT_TOPLEFT, 0, 0.003)
     BlzFrameSetSize(dBox, 0.11, 0.03)
@@ -9907,21 +9907,10 @@ function ModeUI.buildModeFrame(self)
             end
         end
     )
-    ____exports.ModeUI:createButton(HexColors.TURQUOISE .. "START GAME|r", FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06)
+    local obsStr = "OBSERVE GAME"
+    ____exports.ModeUI:createButton(obsStr, FRAMEPOINT_TOP, cList, FRAMEPOINT_BOTTOM, 0, -0.01, 0.2, 0.06)
     ____exports.ModeUI.frameFunc:set(
-        HexColors.TURQUOISE .. "START GAME|r",
-        function()
-            print("start test")
-        end
-    )
-    ____exports.ModeUI:toggleForPlayer(
-        HexColors.TURQUOISE .. "START GAME|r",
-        Player(0),
-        true
-    )
-    ____exports.ModeUI:createButton("OBSERVE GAME", FRAMEPOINT_LEFT, cList, FRAMEPOINT_BOTTOMLEFT, 0, -0.037, 0.2, 0.06)
-    ____exports.ModeUI.frameFunc:set(
-        "OBSERVE GAME",
+        obsStr,
         function()
             local player = GamePlayer.fromID:get(
                 GetPlayerId(
@@ -9932,7 +9921,7 @@ function ModeUI.buildModeFrame(self)
                 player:setStatus("|cFFFFFFFFObserving|r")
                 if GetLocalPlayer() == player.player then
                     BlzFrameSetText(
-                        ____exports.ModeUI.frame:get("OBSERVE GAME"),
+                        ____exports.ModeUI.frame:get(obsStr),
                         "PLAY GAME"
                     )
                 end
@@ -9940,25 +9929,24 @@ function ModeUI.buildModeFrame(self)
                 player:setStatus("|cFF00FFF0Playing|r")
                 if GetLocalPlayer() == player.player then
                     BlzFrameSetText(
-                        ____exports.ModeUI.frame:get("OBSERVE GAME"),
-                        "OBSERVE GAME"
+                        ____exports.ModeUI.frame:get(obsStr),
+                        obsStr
                     )
                 end
             end
         end
     )
-    GamePlayer.fromID:forEach(
-        function(____, gPlayer)
-            ____exports.ModeUI:toggleForPlayer("OBSERVE GAME", gPlayer.player, true)
-        end
+    BlzFrameSetVisible(
+        BlzGetFrameByName(obsStr, 0),
+        true
     )
     local modesInfo = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0)
     BlzFrameSetPoint(modesInfo, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, -0.27, -0.11)
-    local modesText = ((((((((((((((((HexColors.RED .. "Game Settings|r\nGame Tracking: ") .. HexColors.GREEN) .. "Ranked|r\nDiplomancy: ") .. HexColors.GREEN) .. "FFA|r\nFog: ") .. HexColors.GREEN) .. "Off|r\nReveal Names: ") .. HexColors.GREEN) .. "On Victory|r\nNomad Time: ") .. HexColors.GREEN) .. "Unlimited|r\nGold Sending: ") .. HexColors.GREEN) .. "Disabled|r\nShips Allowed: ") .. HexColors.GREEN) .. "All|r\nTransport Load/Unload: ") .. HexColors.GREEN) .. "Ports Only|r"
+    local modesText = ((((((((((((((((HexColors.RED .. "Game Settings|r\nGame Tracking: ") .. HexColors.GREEN) .. "Unranked|r\nDiplomancy: ") .. HexColors.GREEN) .. "FFA|r\nFog: ") .. HexColors.GREEN) .. "Off|r\nReveal Names: ") .. HexColors.GREEN) .. "On Victory|r\nNomad Time: ") .. HexColors.GREEN) .. "Unlimited|r\nGold Sending: ") .. HexColors.GREEN) .. "Disabled|r\nShips Allowed: ") .. HexColors.GREEN) .. "All|r\nTransport Load/Unload: ") .. HexColors.GREEN) .. "Ports Only|r"
     BlzFrameSetText(modesInfo, modesText)
 end
 function ModeUI.createButton(self, name, framePoint, parent, parentPoint, x, y, width, height)
-    local bFrame = BlzCreateFrameByType("GLUETEXTBUTTON", "name", parent, "ScriptDialogButton", 0)
+    local bFrame = BlzCreateFrameByType("GLUETEXTBUTTON", name, parent, "ScriptDialogButton", 0)
     BlzFrameSetPoint(bFrame, framePoint, parent, parentPoint, x, y)
     BlzFrameSetText(bFrame, name)
     BlzFrameSetSize(bFrame, width, height)
