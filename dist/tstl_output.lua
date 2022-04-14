@@ -9826,6 +9826,190 @@ Country.fromSpawner = __TS__New(Map)
 Country.fromCity = __TS__New(Map)
 return ____exports
  end,
+["src.app.mode-ui-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____hexColors = require("src.resources.hexColors")
+local HexColors = ____hexColors.HexColors
+local ____camera_2Dcontrols = require("src.app.camera-controls")
+local CameraControls = ____camera_2Dcontrols.default
+local PlayerCamData = ____camera_2Dcontrols.PlayerCamData
+local ____player_2Dtype = require("src.app.player.player-type")
+local GamePlayer = ____player_2Dtype.GamePlayer
+____exports.ModeUI = __TS__Class()
+local ModeUI = ____exports.ModeUI
+ModeUI.name = "ModeUI"
+function ModeUI.prototype.____constructor(self)
+end
+function ModeUI.buildModeFrame(self)
+    local backdrop = BlzCreateFrame(
+        "EscMenuBackdrop",
+        BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
+        0,
+        0
+    )
+    BlzFrameSetAbsPoint(backdrop, FRAMEPOINT_CENTER, 0.4, 0.3)
+    BlzFrameSetSize(backdrop, 0.8, 0.46)
+    local title = BlzCreateFrameByType("BACKDROP", "title", backdrop, "", 0)
+    BlzFrameSetSize(title, 0.2, 0.15)
+    BlzFrameSetPoint(title, FRAMEPOINT_CENTER, backdrop, FRAMEPOINT_TOP, 0, -0.045)
+    BlzFrameSetTexture(title, "war3mapimported\\ModeTitle.dds", 0, true)
+    ____exports.ModeUI:pList(backdrop)
+    local cList = BlzCreateFrameByType("TEXTAREA", "cList", backdrop, "BattleNetTextAreaTemplate", 0)
+    BlzFrameSetSize(cList, 0.3, 0.26)
+    BlzFrameSetPoint(cList, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, 0, -0.1)
+    BlzFrameAddText(cList, HexColors.RED .. "Typed Commands:|r")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "-cam ####|r  Changes the camera view distance")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "-def|r  Changes the camera to the default settings")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "-forfeit / -ff|r  Forfeit the game without exiting")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "-restart / -ng|r  Restart the current game if it's over")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "-names / -players|r  Show players that were in the lobby")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "-sb 1 / -sb 2|r  Changes the scoreboard layout")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "-stfu name|r  Globally mute a player for 90 seconds")
+    BlzFrameAddText(cList, ("|n" .. HexColors.RED) .. "Hotkeys:|r")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "F1|r  Opens player tools")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "F2|r  Changes scoreboard layout")
+    BlzFrameAddText(cList, HexColors.TANGERINE .. "F8|r  Cycles owned spawners")
+    local timer = BlzCreateFrameByType("Text", "cTimer", backdrop, "EscMenuLabelTextTemplate", 0)
+    BlzFrameSetPoint(timer, FRAMEPOINT_RIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.03, 0.04)
+    BlzFrameSetText(timer, "Game starts in 15 seconds")
+    local dBox = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 1)
+    BlzFrameSetPoint(dBox, FRAMEPOINT_BOTTOMLEFT, cList, FRAMEPOINT_TOPLEFT, 0, 0.003)
+    BlzFrameSetSize(dBox, 0.11, 0.03)
+    BlzFrameSetText(dBox, "discord.me/risk")
+    local dtrig = CreateTrigger()
+    BlzTriggerRegisterFrameEvent(dtrig, dBox, FRAMEEVENT_EDITBOX_TEXT_CHANGED)
+    TriggerAddAction(
+        dtrig,
+        function()
+            local p = GetTriggerPlayer()
+            if GetLocalPlayer() == p then
+                BlzFrameSetText(dBox, "discord.me/risk")
+            end
+        end
+    )
+    local cBox = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 0)
+    BlzFrameSetPoint(cBox, FRAMEPOINT_BOTTOMRIGHT, cList, FRAMEPOINT_TOPRIGHT, 0, 0.003)
+    BlzFrameSetSize(cBox, 0.12, 0.03)
+    BlzFrameSetText(cBox, "Enter Cam Distance")
+    local ctrig = CreateTrigger()
+    BlzTriggerRegisterFrameEvent(ctrig, cBox, FRAMEEVENT_EDITBOX_TEXT_CHANGED)
+    TriggerAddAction(
+        ctrig,
+        function()
+            local distance = BlzGetTriggerFrameText()
+            local p = GetTriggerPlayer()
+            if GetLocalPlayer() == p then
+                BlzFrameSetTextSizeLimit(cBox, 4)
+                CameraControls:getInstance():checkCamData(
+                    PlayerCamData:get(p),
+                    {distance}
+                )
+            end
+        end
+    )
+    ____exports.ModeUI:createButton(HexColors.TURQUOISE .. "START GAME|r", FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06)
+    ____exports.ModeUI.frameFunc:set(
+        HexColors.TURQUOISE .. "START GAME|r",
+        function()
+            print("start test")
+        end
+    )
+    ____exports.ModeUI:toggleForPlayer(
+        HexColors.TURQUOISE .. "START GAME|r",
+        Player(0),
+        true
+    )
+    ____exports.ModeUI:createButton("OBSERVE GAME", FRAMEPOINT_LEFT, cList, FRAMEPOINT_BOTTOMLEFT, 0, -0.037, 0.2, 0.06)
+    ____exports.ModeUI.frameFunc:set(
+        "OBSERVE GAME",
+        function()
+            local player = GamePlayer.fromID:get(
+                GetPlayerId(
+                    GetTriggerPlayer()
+                )
+            )
+            if player:isPlaying() then
+                player:setStatus("|cFFFFFFFFObserving|r")
+                if GetLocalPlayer() == player.player then
+                    BlzFrameSetText(
+                        ____exports.ModeUI.frame:get("OBSERVE GAME"),
+                        "PLAY GAME"
+                    )
+                end
+            else
+                player:setStatus("|cFF00FFF0Playing|r")
+                if GetLocalPlayer() == player.player then
+                    BlzFrameSetText(
+                        ____exports.ModeUI.frame:get("OBSERVE GAME"),
+                        "OBSERVE GAME"
+                    )
+                end
+            end
+        end
+    )
+    GamePlayer.fromID:forEach(
+        function(____, gPlayer)
+            ____exports.ModeUI:toggleForPlayer("OBSERVE GAME", gPlayer.player, true)
+        end
+    )
+    local modesInfo = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0)
+    BlzFrameSetPoint(modesInfo, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, -0.27, -0.11)
+    local modesText = ((((((((((((((((HexColors.RED .. "Game Settings|r\nGame Tracking: ") .. HexColors.GREEN) .. "Ranked|r\nDiplomancy: ") .. HexColors.GREEN) .. "FFA|r\nFog: ") .. HexColors.GREEN) .. "Off|r\nReveal Names: ") .. HexColors.GREEN) .. "On Victory|r\nNomad Time: ") .. HexColors.GREEN) .. "Unlimited|r\nGold Sending: ") .. HexColors.GREEN) .. "Disabled|r\nShips Allowed: ") .. HexColors.GREEN) .. "All|r\nTransport Load/Unload: ") .. HexColors.GREEN) .. "Ports Only|r"
+    BlzFrameSetText(modesInfo, modesText)
+end
+function ModeUI.createButton(self, name, framePoint, parent, parentPoint, x, y, width, height)
+    local bFrame = BlzCreateFrameByType("GLUETEXTBUTTON", "name", parent, "ScriptDialogButton", 0)
+    BlzFrameSetPoint(bFrame, framePoint, parent, parentPoint, x, y)
+    BlzFrameSetText(bFrame, name)
+    BlzFrameSetSize(bFrame, width, height)
+    ____exports.ModeUI.frame:set(name, bFrame)
+    local frameTrig = CreateTrigger()
+    BlzTriggerRegisterFrameEvent(frameTrig, bFrame, FRAMEEVENT_CONTROL_CLICK)
+    TriggerAddAction(
+        frameTrig,
+        function()
+            ____exports.ModeUI.frameFunc:get(name)(nil)
+            BlzFrameSetEnable(bFrame, false)
+            BlzFrameSetEnable(bFrame, true)
+        end
+    )
+    BlzFrameSetVisible(bFrame, false)
+    frameTrig = nil
+    bFrame = nil
+end
+function ModeUI.toggleForPlayer(self, fName, p, bool)
+    if GetLocalPlayer() == p then
+        BlzFrameSetVisible(
+            ____exports.ModeUI.frame:get(fName),
+            bool
+        )
+    end
+end
+function ModeUI.pList(self, backdrop)
+    local pList = BlzCreateFrameByType("TEXTAREA", "pList", backdrop, "BattleNetTextAreaTemplate", 0)
+    BlzFrameSetSize(pList, 0.2, 0.38)
+    BlzFrameSetPoint(pList, FRAMEPOINT_TOPRIGHT, backdrop, FRAMEPOINT_TOPRIGHT, -0.025, -0.025)
+    GamePlayer.fromID:forEach(
+        function(____, gPlayer)
+            if gPlayer:isPlaying() or gPlayer:isObserving() then
+                if gPlayer.player == Player(24) then
+                    return
+                end
+                BlzFrameAddText(pList, (gPlayer.names.acct .. " is ") .. gPlayer.status)
+            end
+        end
+    )
+end
+function ModeUI.toggleModeFrame(self, bool)
+    BlzFrameSetVisible(
+        BlzGetFrameByName("EscMenuBackdrop", 0),
+        bool
+    )
+end
+ModeUI.frame = __TS__New(Map)
+ModeUI.frameFunc = __TS__New(Map)
+return ____exports
+ end,
 ["src.app.spells.unitSpellEffect"] = function(...) local ____exports = {}
 local ____city_2Dtype = require("src.app.country.city-type")
 local City = ____city_2Dtype.City
@@ -10461,34 +10645,6 @@ function UserInterface.hideUI(self, hidden)
         ) .. "Hiding User Interface"
     )
 end
-function UserInterface.CreateButton(self, name, framePoint, parent, parentPoint, x, y, width, height)
-    local bFrame = BlzCreateFrameByType("GLUETEXTBUTTON", "name", parent, "ScriptDialogButton", 0)
-    BlzFrameSetPoint(bFrame, framePoint, parent, parentPoint, x, y)
-    BlzFrameSetText(bFrame, name)
-    BlzFrameSetSize(bFrame, width, height)
-    ____exports.UserInterface.frame:set(name, bFrame)
-    local frameTrig = CreateTrigger()
-    BlzTriggerRegisterFrameEvent(frameTrig, bFrame, FRAMEEVENT_CONTROL_CLICK)
-    TriggerAddAction(
-        frameTrig,
-        function()
-            ____exports.UserInterface.frameFunc:get(name)(nil)
-            BlzFrameSetEnable(bFrame, false)
-            BlzFrameSetEnable(bFrame, true)
-        end
-    )
-    BlzFrameSetVisible(bFrame, false)
-    frameTrig = nil
-    bFrame = nil
-end
-function UserInterface.toggleForPlayer(self, fName, p, bool)
-    if GetLocalPlayer() == p then
-        BlzFrameSetVisible(
-            ____exports.UserInterface.frame:get(fName),
-            bool
-        )
-    end
-end
 function UserInterface.setResourceFrames(self)
     local resourceFrame = BlzGetFrameByName("ResourceBarFrame", 0)
     BlzFrameSetVisible(
@@ -10536,8 +10692,6 @@ function UserInterface.hidePMOptions(self)
     end
 end
 UserInterface.forTheReplays = {}
-UserInterface.frame = __TS__New(Map)
-UserInterface.frameFunc = __TS__New(Map)
 return ____exports
  end,
 ["src.libs.playerColorData"] = function(...) local ____exports = {}
@@ -10637,13 +10791,14 @@ return ____exports
 local ____exports = {}
 local ____camera_2Dcontrols = require("src.app.camera-controls")
 local CameraControls = ____camera_2Dcontrols.default
-local PlayerCamData = ____camera_2Dcontrols.PlayerCamData
 local ____command_2Dprocessor = require("src.app.commands.command-processor")
 local CommandProcessor = ____command_2Dprocessor.CommandProcessor
 local ____city_2Dtype = require("src.app.country.city-type")
 local City = ____city_2Dtype.City
 local ____country_2Dtype = require("src.app.country.country-type")
 local Country = ____country_2Dtype.Country
+local ____mode_2Dui_2Dtype = require("src.app.mode-ui-type")
+local ModeUI = ____mode_2Dui_2Dtype.ModeUI
 local ____player_2Dtype = require("src.app.player.player-type")
 local GamePlayer = ____player_2Dtype.GamePlayer
 local PlayerNames = ____player_2Dtype.PlayerNames
@@ -10757,7 +10912,36 @@ function Game.onLoad(self)
             end
         end
     )
-    ____exports.Game:buildInfoFrame()
+    ModeUI:buildModeFrame()
+    ModeUI:toggleModeFrame(true)
+    local tick = 15
+    local modeTimer = __TS__New(Timer)
+    modeTimer:start(
+        1,
+        true,
+        function()
+            if tick >= 1 then
+                tick = tick - 1
+                BlzFrameSetText(
+                    BlzGetFrameByName("cTimer", 0),
+                    ("Game starts in " .. tostring(tick)) .. " seconds"
+                )
+                BlzDestroyFrame(
+                    BlzGetFrameByName("pList", 0)
+                )
+                ModeUI:pList(
+                    BlzGetFrameByName("EscMenuBackdrop", 0)
+                )
+            else
+                modeTimer:pause()
+                modeTimer:destroy()
+                BlzFrameSetVisible(
+                    BlzGetFrameByName("EscMenuBackdrop", 0),
+                    false
+                )
+            end
+        end
+    )
     Util:ShuffleArray(colors)
     GamePlayer.fromID:forEach(
         function(____, gPlayer)
@@ -10767,130 +10951,6 @@ end
 function Game.preRound(self)
 end
 function Game.buildInfoFrame(self)
-    local backdrop = BlzCreateFrame(
-        "EscMenuBackdrop",
-        BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0),
-        0,
-        0
-    )
-    BlzFrameSetAbsPoint(backdrop, FRAMEPOINT_CENTER, 0.4, 0.3)
-    BlzFrameSetSize(backdrop, 0.8, 0.46)
-    BlzFrameSetVisible(backdrop, true)
-    local title = BlzCreateFrameByType("BACKDROP", "title", backdrop, "", 0)
-    BlzFrameSetSize(title, 0.2, 0.15)
-    BlzFrameSetPoint(title, FRAMEPOINT_CENTER, backdrop, FRAMEPOINT_TOP, 0, -0.045)
-    BlzFrameSetTexture(title, "war3mapimported\\ModeTitle.dds", 0, true)
-    local pList = BlzCreateFrameByType("TEXTAREA", "pList", backdrop, "BattleNetTextAreaTemplate", 0)
-    BlzFrameSetSize(pList, 0.2, 0.38)
-    BlzFrameSetPoint(pList, FRAMEPOINT_TOPRIGHT, backdrop, FRAMEPOINT_TOPRIGHT, -0.025, -0.025)
-    GamePlayer.fromID:forEach(
-        function(____, gPlayer)
-            if gPlayer:isPlaying() or gPlayer:isObserving() then
-                if gPlayer.player == Player(24) then
-                    return
-                end
-                BlzFrameAddText(pList, (gPlayer.names.acct .. " is ") .. gPlayer.status)
-            end
-        end
-    )
-    local cList = BlzCreateFrameByType("TEXTAREA", "cList", backdrop, "BattleNetTextAreaTemplate", 0)
-    BlzFrameSetSize(cList, 0.3, 0.26)
-    BlzFrameSetPoint(cList, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, 0, -0.1)
-    BlzFrameAddText(cList, HexColors.RED .. "Typed Commands:|r")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "-cam ####|r  Changes the camera view distance")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "-def|r  Changes the camera to the default settings")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "-forfeit / -ff|r  Forfeit the game without exiting")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "-restart / -ng|r  Restart the current game if it's over")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "-names / -players|r  Show players that were in the lobby")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "-sb 1 / -sb 2|r  Changes the scoreboard layout")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "-stfu name|r  Globally mute a player for 90 seconds")
-    BlzFrameAddText(cList, ("|n" .. HexColors.RED) .. "Hotkeys:|r")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "F1|r  Opens player tools")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "F2|r  Changes scoreboard layout")
-    BlzFrameAddText(cList, HexColors.TANGERINE .. "F8|r  Cycles owned spawners")
-    local timer = BlzCreateFrameByType("Text", "timer", backdrop, "EscMenuLabelTextTemplate", 0)
-    BlzFrameSetPoint(timer, FRAMEPOINT_RIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.03, 0.04)
-    BlzFrameSetText(timer, "Game starts in 45 seconds")
-    local dBox = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 1)
-    BlzFrameSetPoint(dBox, FRAMEPOINT_BOTTOMLEFT, cList, FRAMEPOINT_TOPLEFT, 0, 0.003)
-    BlzFrameSetSize(dBox, 0.11, 0.03)
-    BlzFrameSetText(dBox, "discord.me/risk")
-    local dtrig = CreateTrigger()
-    BlzTriggerRegisterFrameEvent(dtrig, dBox, FRAMEEVENT_EDITBOX_TEXT_CHANGED)
-    TriggerAddAction(
-        dtrig,
-        function()
-            local p = GetTriggerPlayer()
-            if GetLocalPlayer() == p then
-                BlzFrameSetText(dBox, "discord.me/risk")
-            end
-        end
-    )
-    local cBox = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 0)
-    BlzFrameSetPoint(cBox, FRAMEPOINT_BOTTOMRIGHT, cList, FRAMEPOINT_TOPRIGHT, 0, 0.003)
-    BlzFrameSetSize(cBox, 0.12, 0.03)
-    BlzFrameSetText(cBox, "Enter Cam Distance")
-    local ctrig = CreateTrigger()
-    BlzTriggerRegisterFrameEvent(ctrig, cBox, FRAMEEVENT_EDITBOX_TEXT_CHANGED)
-    TriggerAddAction(
-        ctrig,
-        function()
-            local distance = BlzGetTriggerFrameText()
-            local p = GetTriggerPlayer()
-            if GetLocalPlayer() == p then
-                BlzFrameSetTextSizeLimit(cBox, 4)
-                CameraControls:getInstance():checkCamData(
-                    PlayerCamData:get(p),
-                    {distance}
-                )
-            end
-        end
-    )
-    UserInterface:CreateButton(HexColors.TURQUOISE .. "START GAME|r", FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06)
-    UserInterface.frameFunc:set(
-        HexColors.TURQUOISE .. "START GAME|r",
-        function()
-            print("start test")
-        end
-    )
-    UserInterface:toggleForPlayer(
-        HexColors.TURQUOISE .. "START GAME|r",
-        Player(0),
-        true
-    )
-    UserInterface:CreateButton("OBSERVE GAME", FRAMEPOINT_LEFT, cList, FRAMEPOINT_BOTTOMLEFT, 0, -0.037, 0.2, 0.06)
-    UserInterface.frameFunc:set(
-        "OBSERVE GAME",
-        function()
-            local player = GamePlayer.fromID:get(
-                GetPlayerId(
-                    GetTriggerPlayer()
-                )
-            )
-            if player:isPlaying() then
-                player:setStatus("|cFFFFFFFFObserving|r")
-                if GetLocalPlayer() == player.player then
-                    BlzFrameSetText(
-                        UserInterface.frame:get("OBSERVE GAME"),
-                        "PLAY GAME"
-                    )
-                end
-            else
-                player:setStatus("|cFF00FFF0Playing|r")
-                if GetLocalPlayer() == player.player then
-                    BlzFrameSetText(
-                        UserInterface.frame:get("OBSERVE GAME"),
-                        "OBSERVE GAME"
-                    )
-                end
-            end
-        end
-    )
-    GamePlayer.fromID:forEach(
-        function(____, gPlayer)
-            UserInterface:toggleForPlayer("OBSERVE GAME", gPlayer.player, true)
-        end
-    )
 end
 return ____exports
  end,
@@ -11148,7 +11208,6 @@ do
 end
 return ____exports
  end,
-["src.app.game.button"] = function(...)  end,
 ["src.app.game.onLoad"] = function(...)  end,
 ["src.app.player.reference.KD Tracker example"] = function(...)  end,
 ["src.app.player.reference.player-state-entity"] = function(...)  end,

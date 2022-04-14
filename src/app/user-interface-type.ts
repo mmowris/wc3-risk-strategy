@@ -4,9 +4,6 @@ import { HexColors } from "resources/hexColors";
 export class UserInterface {
 	private static forTheReplays: location[] = [];
 
-	public static frame: Map<string, framehandle> = new Map<string, framehandle>();
-	public static frameFunc: Map<string, Function> = new Map<string, Function>();
-
 	public static onLoad() {
 		UserInterface.hideUI(true);
 		print(`${Util.RandomEnumKey(HexColors)}Adjusting UI Resource Frames`);
@@ -22,34 +19,6 @@ export class UserInterface {
 
 		//Eye Candy
 		print(`${Util.RandomEnumKey(HexColors)}Hiding User Interface`);
-	}
-
-	public static CreateButton(name: string, framePoint: framepointtype, parent: framehandle, parentPoint: framepointtype, x: number, y: number, width: number, height: number) {
-		let bFrame: framehandle = BlzCreateFrameByType("GLUETEXTBUTTON", "name", parent, "ScriptDialogButton", 0);
-		BlzFrameSetPoint(bFrame, framePoint, parent, parentPoint, x, y);
-		BlzFrameSetText(bFrame, name);
-		BlzFrameSetSize(bFrame, width, height);
-
-		UserInterface.frame.set(name, bFrame);
-
-		let frameTrig: trigger = CreateTrigger();
-		BlzTriggerRegisterFrameEvent(frameTrig, bFrame, FRAMEEVENT_CONTROL_CLICK);
-		TriggerAddAction(frameTrig, () => {
-			UserInterface.frameFunc.get(name)();
-			BlzFrameSetEnable(bFrame, false);
-			BlzFrameSetEnable(bFrame, true);
-		})
-
-		BlzFrameSetVisible(bFrame, false);
-
-		frameTrig = null;
-		bFrame = null;
-	}
-
-	public static toggleForPlayer(fName: string, p: player, bool: boolean) {
-		if (GetLocalPlayer() == p) {
-			BlzFrameSetVisible(UserInterface.frame.get(fName), bool);
-		}
 	}
 
 	private static setResourceFrames() {
