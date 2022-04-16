@@ -5,11 +5,11 @@ export class UserInterface {
 	private static forTheReplays: location[] = [];
 
 	public static onLoad() {
-		UserInterface.hideUI(true);
 		print(`${Util.RandomEnumKey(HexColors)}Adjusting UI Resource Frames`);
 		UserInterface.setResourceFrames();
 		print(`${Util.RandomEnumKey(HexColors)}Hiding Private Message Options`);
 		UserInterface.hidePMOptions();
+		UserInterface.hideUI(true);
 	}
 
 	public static hideUI(hidden: boolean) {
@@ -17,8 +17,7 @@ export class UserInterface {
 		BlzFrameSetVisible(BlzGetFrameByName("ConsoleUIBackdrop", 0), !hidden);
 		BlzFrameSetVisible(BlzGetFrameByName("UpperButtonBarFrame", 0), !hidden);
 
-		//Eye Candy
-		print(`${Util.RandomEnumKey(HexColors)}Hiding User Interface`);
+		BlzEnableSelections(!hidden, !hidden);
 	}
 
 	private static setResourceFrames() {

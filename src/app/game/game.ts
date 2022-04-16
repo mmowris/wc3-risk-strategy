@@ -3,13 +3,15 @@ import { CommandProcessor } from "app/commands/command-processor";
 import { City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { ModeUI } from "app/mode-ui-type";
-import { GamePlayer, PlayerNames } from "app/player/player-type";
+import { GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { unitSpellEffect } from "app/spells/unitSpellEffect";
 import { Trees } from "app/Trees";
 import { UserInterface } from "app/user-interface-type";
-import { PLAYER_COLORS } from "libs/playerColorData";
+import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "libs/playerColorData";
 import { Util } from "libs/translators";
 import { HexColors } from "resources/hexColors";
+import { UID } from "resources/unitID";
+import { UTYPE } from "resources/unitTypes";
 import { Timer } from "w3ts";
 import { Players } from "w3ts/globals";
 import { GameStatus } from "./game-status";
@@ -80,9 +82,6 @@ export class Game {
 		CameraControls.getInstance();
 		Trees.getInstance();
 
-		const colors: playercolor[] = [];
-		let tracker: number = 0;
-
 		Players.forEach(player => {
 			player.name = PlayerNames.shift();
 
@@ -92,102 +91,108 @@ export class Game {
 				GamePlayer.fromID.set(player.id, new GamePlayer(player.handle));
 
 				if (player.id >= 24) return; //Exclude neutral hostile
-
-				colors.push(PLAYER_COLORS[tracker]);
-				tracker++;
 			}
 		})
 
 		ModeUI.buildModeFrame();
 		ModeUI.toggleModeFrame(true);
 
-		let tick: number = 15
+		//I should refactor this somehow, right now this is a long chain of code
+		Game.runModeSelection();
+		// The chain begins with runmodeselection -> initroundsettings -> initround
+	}
+
+	private static runModeSelection() {
+		let tick: number = 5;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
 			if (tick >= 1) {
-				tick--
+				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Mode selection ends in ${tick} seconds`);
+				BlzDestroyFrame(BlzGetFrameByName("pList", 0));
+				ModeUI.pList(BlzGetFrameByName("EscMenuBackdrop", 0));
+				tick--;
+			} else {
+				modeTimer.pause();
+				modeTimer.destroy();
+				BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), false);
+				Game.initRound();
+			}
+		});
+	}
+
+	private static initRound() {
+		let tick: number = 5;
+		const modeTimer: Timer = new Timer();
+		modeTimer.start(1.00, true, () => {
+			if (tick == 5) {
+				Game.assignColors();
+				//Allocate Cities
+				//Update City count, verify allocate cities
+				//Create scoreboard
+				//Start turn timer
+
+				GamePlayer.fromID.forEach(gPlayer => {
+					//Create player tools
+					let u: unit = CreateUnit(gPlayer.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270);
+					SetUnitPathing(u, false);
+					//Set up fight bonus
+
+					if (gPlayer.isPlaying()) {
+						gPlayer.initBonusUI();
+						gPlayer.setStatus(PlayerStatus.PLAYING);
+						//TODO: Add to scoreboard?
+					}
+				});
+			}
+
+			if (tick >= 1) {
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts in ${tick} seconds`);
 				BlzDestroyFrame(BlzGetFrameByName("pList", 0));
 				ModeUI.pList(BlzGetFrameByName("EscMenuBackdrop", 0));
+				tick--;
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
 				BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), false);
-				//randomize colors
+				UserInterface.hideUI(false);
+				//TODO: Maybe a sound? at this point gmae is loaded and starting
+			}
+		});
+	}
+
+	private static assignColors() {
+		const colors: playercolor[] = [];
+		let tracker: number = 0;
+
+		GamePlayer.fromID.forEach(gPlayer => {
+			if (gPlayer.isPlaying()) {
+				if (GetPlayerId(gPlayer.player) >= 24) return; //Exclude neutral ai
+
+				colors.push(PLAYER_COLORS[tracker]);
+				tracker++;
 			}
 		})
-		//Run Round.Pre here
-		//game options (promode/standard)
-		//obverse or play
-
-		//Create ui with 2 buttons and 2 "tooltip" boxes
-		//Left side only host can see buttons, others see text
-		//Left side will have "promode" and "standard" buttons
-		//Under buttons will be explanation box
-		//Right side will have observer options
-
-		//
-		//  *********************************************************
-		//  *   Game Options                            Logo        *
-		//  * *              *                       Lobby List     *
-		//  * *              *                    *              *  *
-		//  * *              *                    *              *  *
-		//  * ****************                    *              *  *
-		//  * Observer Options                    *              *  *
-		//  *                *                    *              *  *
-		//  *                *                    *              *  *
-		//  *                *                    *              *  *
-		//  ******************                    *              *  *
-		//  *                                     ************** *  *
-		//  *                                                       *
-		//  *********************************************************
-		//
 
 		Util.ShuffleArray(colors);
 
 		GamePlayer.fromID.forEach(gPlayer => {
-			//     if (gPlayer.player == Player(24)) return; //Exclude neutral hostile
+			if (gPlayer.isPlaying()) {
+				if (GetPlayerId(gPlayer.player) >= 24) return; //Exclude neutral ai
 
-			//     SetPlayerColor(gPlayer.player, colors.pop());
-			//     //TODO: promode, edit below
-			//     for (let i = 0; i < GamePlayer.fromID.size; i++) {
-			//         if (GetPlayerColor(gPlayer.player) == PLAYER_COLORS[i]) {
-			//             gPlayer.names.color = PLAYER_COLOR_NAMES[i]
-			//             SetPlayerName(gPlayer.player, PLAYER_COLOR_NAMES[i])
-			//         }
-			//     }
+				SetPlayerColor(gPlayer.player, colors.pop())
 
-			//     //Round.Start - v2
-			//     if (GetLocalPlayer() == gPlayer.player) {
-			//         EnableDragSelect(false, true);
-			//         EnableSelect(false, true);
-			//     }
-
-			//     //Create Player Tools
-			//     SetUnitPathing(CreateUnit(gPlayer.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270), false);
-
-			//     //TODO: Round.preRound() - Settings/Promode Check/Observer Check
-			//     gPlayer.setStatus(PlayerStatus.ALIVE);
-			//     //TODO: Add to multiboard array
-
-			//     //TODO: Allocate cities
-			//     //TODO: Update city counts
-			//     //TODO: Update unit counts
-
-			//     //TODO: 1 Second timer that has:
-			//     //Multiboard creation
-			//     //Turn timer start
-			//     //Enable selection
-		});
+				for (let i = 0; i < PLAYER_COLORS.length; i++) {
+					if (GetPlayerColor(gPlayer.player) == PLAYER_COLORS[i]) {
+						gPlayer.names.color = PLAYER_COLOR_NAMES[i]
+						//print(`btag: ${gPlayer.names.btag}\nacct: ${gPlayer.names.acct}\ncolor: ${gPlayer.names.color}`)
+						//print(`real name ${GetPlayerName(gPlayer.player)}`)
+						//print(`set real name tp ${gPlayer.names.color}`)
+						SetPlayerName(gPlayer.player, gPlayer.names.color); //TODO: turn this to a func in player-type
+						//print(`real name ${GetPlayerName(gPlayer.player)}`)
+					}
+				}
+			}
+		})
 	}
 
-	private static preRound() {
-		//Create game options UI
-		//Create 15 second timer that will close game options UI
-		//After 15 seconds create UI with lobby list and game options/explanation
-	}
-
-	private static buildInfoFrame() {
-		
-	}
 }

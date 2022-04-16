@@ -43,7 +43,7 @@ export class ModeUI {
 		//Timer
 		const timer: framehandle = BlzCreateFrameByType("Text", "cTimer", backdrop, "EscMenuLabelTextTemplate", 0);
 		BlzFrameSetPoint(timer, FRAMEPOINT_RIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.03, 0.04);
-		BlzFrameSetText(timer, "Mode Selection Ends in 15 Seconds");
+		BlzFrameSetText(timer, "Mode selection ends in 15 Seconds");
 
 		//Discord box
 		const dBox: framehandle = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 1);

@@ -1,3 +1,5 @@
+//KEEP NO DEPENDANCIES
+
 interface KD {
     kills: number;
     deaths: number;

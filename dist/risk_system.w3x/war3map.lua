@@ -10642,7 +10642,7 @@ function ModeUI.buildModeFrame(self)
     BlzFrameAddText(cList, HexColors.TANGERINE .. "F8|r  Cycles owned spawners")
     local timer = BlzCreateFrameByType("Text", "cTimer", backdrop, "EscMenuLabelTextTemplate", 0)
     BlzFrameSetPoint(timer, FRAMEPOINT_RIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.03, 0.04)
-    BlzFrameSetText(timer, "Mode Selection Ends in 15 Seconds")
+    BlzFrameSetText(timer, "Mode selection ends in 15 Seconds")
     local dBox = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 1)
     BlzFrameSetPoint(dBox, FRAMEPOINT_BOTTOMLEFT, cList, FRAMEPOINT_TOPLEFT, 0, 0.003)
     BlzFrameSetSize(dBox, 0.11, 0.03)
@@ -11374,7 +11374,6 @@ UserInterface.name = "UserInterface"
 function UserInterface.prototype.____constructor(self)
 end
 function UserInterface.onLoad(self)
-    ____exports.UserInterface:hideUI(true)
     print(
         tostring(
             Util:RandomEnumKey(HexColors)
@@ -11387,6 +11386,7 @@ function UserInterface.onLoad(self)
         ) .. "Hiding Private Message Options"
     )
     ____exports.UserInterface:hidePMOptions()
+    ____exports.UserInterface:hideUI(true)
 end
 function UserInterface.hideUI(self, hidden)
     BlzHideOriginFrames(hidden)
@@ -11398,11 +11398,7 @@ function UserInterface.hideUI(self, hidden)
         BlzGetFrameByName("UpperButtonBarFrame", 0),
         not hidden
     )
-    print(
-        tostring(
-            Util:RandomEnumKey(HexColors)
-        ) .. "Hiding User Interface"
-    )
+    BlzEnableSelections(not hidden, not hidden)
 end
 function UserInterface.setResourceFrames(self)
     local resourceFrame = BlzGetFrameByName("ResourceBarFrame", 0)
@@ -11569,6 +11565,7 @@ local ____user_2Dinterface_2Dtype = require("src.app.user-interface-type")
 local UserInterface = ____user_2Dinterface_2Dtype.UserInterface
 local ____playerColorData = require("src.libs.playerColorData")
 local PLAYER_COLORS = ____playerColorData.PLAYER_COLORS
+local PLAYER_COLOR_NAMES = ____playerColorData.PLAYER_COLOR_NAMES
 local ____translators = require("src.libs.translators")
 local Util = ____translators.Util
 local ____hexColors = require("src.resources.hexColors")
@@ -11649,8 +11646,6 @@ function Game.onLoad(self)
     UserInterface:onLoad()
     CameraControls:getInstance()
     Trees:getInstance()
-    local colors = {}
-    local tracker = 0
     __TS__ArrayForEach(
         Players,
         function(____, player)
@@ -11666,21 +11661,59 @@ function Game.onLoad(self)
                 if player.id >= 24 then
                     return
                 end
-                __TS__ArrayPush(colors, PLAYER_COLORS[tracker + 1])
-                tracker = tracker + 1
             end
         end
     )
     ModeUI:buildModeFrame()
     ModeUI:toggleModeFrame(true)
-    local tick = 15
+    ____exports.Game:runModeSelection()
+end
+function Game.runModeSelection(self)
+    local tick = 5
     local modeTimer = __TS__New(Timer)
     modeTimer:start(
         1,
         true,
         function()
             if tick >= 1 then
+                BlzFrameSetText(
+                    BlzGetFrameByName("cTimer", 0),
+                    ("Mode selection ends in " .. tostring(tick)) .. " seconds"
+                )
+                BlzDestroyFrame(
+                    BlzGetFrameByName("pList", 0)
+                )
+                ModeUI:pList(
+                    BlzGetFrameByName("EscMenuBackdrop", 0)
+                )
                 tick = tick - 1
+            else
+                modeTimer:pause()
+                modeTimer:destroy()
+                BlzFrameSetVisible(
+                    BlzGetFrameByName("OBSERVE GAME", 0),
+                    false
+                )
+                ____exports.Game:initRound()
+            end
+        end
+    )
+end
+function Game.initRound(self)
+    local tick = 5
+    local modeTimer = __TS__New(Timer)
+    modeTimer:start(
+        1,
+        true,
+        function()
+            if tick == 5 then
+                ____exports.Game:assignColors()
+                GamePlayer.fromID:forEach(
+                    function(____, gPlayer)
+                    end
+                )
+            end
+            if tick >= 1 then
                 BlzFrameSetText(
                     BlzGetFrameByName("cTimer", 0),
                     ("Game starts in " .. tostring(tick)) .. " seconds"
@@ -11691,6 +11724,7 @@ function Game.onLoad(self)
                 ModeUI:pList(
                     BlzGetFrameByName("EscMenuBackdrop", 0)
                 )
+                tick = tick - 1
             else
                 modeTimer:pause()
                 modeTimer:destroy()
@@ -11698,18 +11732,49 @@ function Game.onLoad(self)
                     BlzGetFrameByName("EscMenuBackdrop", 0),
                     false
                 )
+                UserInterface:hideUI(false)
+            end
+        end
+    )
+end
+function Game.assignColors(self)
+    local colors = {}
+    local tracker = 0
+    GamePlayer.fromID:forEach(
+        function(____, gPlayer)
+            if gPlayer:isPlaying() then
+                if GetPlayerId(gPlayer.player) >= 24 then
+                    return
+                end
+                __TS__ArrayPush(colors, PLAYER_COLORS[tracker + 1])
+                tracker = tracker + 1
             end
         end
     )
     Util:ShuffleArray(colors)
     GamePlayer.fromID:forEach(
         function(____, gPlayer)
+            if gPlayer:isPlaying() then
+                if GetPlayerId(gPlayer.player) >= 24 then
+                    return
+                end
+                SetPlayerColor(
+                    gPlayer.player,
+                    table.remove(colors)
+                )
+                do
+                    local i = 0
+                    while i < #PLAYER_COLORS do
+                        if GetPlayerColor(gPlayer.player) == PLAYER_COLORS[i + 1] then
+                            gPlayer.names.color = PLAYER_COLOR_NAMES[i + 1]
+                            SetPlayerName(gPlayer.player, gPlayer.names.color)
+                        end
+                        i = i + 1
+                    end
+                end
+            end
         end
     )
-end
-function Game.preRound(self)
-end
-function Game.buildInfoFrame(self)
 end
 return ____exports
  end,
