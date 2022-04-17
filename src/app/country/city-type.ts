@@ -487,7 +487,7 @@ export class City {
 	}
 
 	private static onEnter() {
-		TriggerAddCondition(leaveCityTrig, Condition(() => {
+		TriggerAddCondition(enterCityTrig, Condition(() => {
 			if (IsUnitType(GetTriggerUnit(), UTYPE.TRANSPORT)) return false;
 
 			const city: City = City.fromRegion.get(GetTriggeringRegion());

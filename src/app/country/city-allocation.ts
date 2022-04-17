@@ -92,9 +92,8 @@ export class CityAllocation {
 	private static changeOwner(country: Country, city: City, player: GamePlayer, cityPool: City[]) {
 		city.setOwner(player.player);
 		city.changeGuardOwner();
-		player.cities.push(city.barrack);
-		country.citiesOwned.set(player, country.citiesOwned.get(player) + 1);
+		//player.cities.push(city.barrack);
+		//country.citiesOwned.set(player, country.citiesOwned.get(player) + 1);
 		cityPool.splice(cityPool.indexOf(city), 1);
-		print(`${player.names.acct} owns ${country.citiesOwned.get(player)} cities in ${country.name} and they own ${player.cities.length} total`)
 	}
 }

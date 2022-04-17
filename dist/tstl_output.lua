@@ -9494,7 +9494,7 @@ function City.prototype.dummyGuard(self, owner)
 end
 function City.onEnter(self)
     TriggerAddCondition(
-        ____exports.leaveCityTrig,
+        ____exports.enterCityTrig,
         Condition(
             function()
                 if IsUnitType(
@@ -10262,20 +10262,76 @@ end
 function CityAllocation.changeOwner(self, country, city, player, cityPool)
     city:setOwner(player.player)
     city:changeGuardOwner()
-    __TS__ArrayPush(player.cities, city.barrack)
-    country.citiesOwned:set(
-        player,
-        country.citiesOwned:get(player) + 1
-    )
     __TS__ArraySplice(
         cityPool,
         __TS__ArrayIndexOf(cityPool, city),
         1
     )
-    print(
-        ((((((player.names.acct .. " owns ") .. tostring(
-            country.citiesOwned:get(player)
-        )) .. " cities in ") .. country.name) .. " and they own ") .. tostring(#player.cities)) .. " total"
+end
+return ____exports
+ end,
+["src.app.country.city-owner-change-trigger"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____player_2Dtype = require("src.app.player.player-type")
+local GamePlayer = ____player_2Dtype.GamePlayer
+local ____city_2Dtype = require("src.app.country.city-type")
+local City = ____city_2Dtype.City
+local ____country_2Dtype = require("src.app.country.country-type")
+local Country = ____country_2Dtype.Country
+function ____exports.onOwnerChange()
+    local ownerChange = CreateTrigger()
+    do
+        local i = 0
+        while i < bj_MAX_PLAYERS do
+            TriggerRegisterPlayerUnitEvent(
+                ownerChange,
+                Player(i),
+                EVENT_PLAYER_UNIT_CHANGE_OWNER,
+                nil
+            )
+            i = i + 1
+        end
+    end
+    TriggerAddCondition(
+        ownerChange,
+        Condition(
+            function()
+                local city = City.fromBarrack:get(
+                    GetChangingUnit()
+                )
+                local country = Country.fromCity:get(city)
+                local prevOwner = GamePlayer.fromID:get(
+                    GetPlayerId(
+                        GetChangingUnitPrevOwner()
+                    )
+                )
+                local owner = GamePlayer.fromID:get(
+                    GetPlayerId(
+                        city:getOwner()
+                    )
+                )
+                __TS__ArraySplice(
+                    prevOwner.cities,
+                    __TS__ArrayIndexOf(prevOwner.cities, city.barrack),
+                    1
+                )
+                country.citiesOwned:set(
+                    prevOwner,
+                    country.citiesOwned:get(prevOwner) - 1
+                )
+                __TS__ArrayPush(owner.cities, city.barrack)
+                country.citiesOwned:set(
+                    owner,
+                    country.citiesOwned:get(owner) + 1
+                )
+                print(
+                    ((((((owner.names.acct .. " owns ") .. tostring(
+                        country.citiesOwned:get(owner)
+                    )) .. " cities in ") .. country.name) .. " and they own ") .. tostring(#owner.cities)) .. " total"
+                )
+                return true
+            end
+        )
     )
 end
 return ____exports
@@ -10903,6 +10959,8 @@ local ____command_2Dprocessor = require("src.app.commands.command-processor")
 local CommandProcessor = ____command_2Dprocessor.CommandProcessor
 local ____city_2Dallocation = require("src.app.country.city-allocation")
 local CityAllocation = ____city_2Dallocation.CityAllocation
+local ____city_2Downer_2Dchange_2Dtrigger = require("src.app.country.city-owner-change-trigger")
+local onOwnerChange = ____city_2Downer_2Dchange_2Dtrigger.onOwnerChange
 local ____city_2Dtype = require("src.app.country.city-type")
 local City = ____city_2Dtype.City
 local ____country_2Dtype = require("src.app.country.country-type")
@@ -10991,6 +11049,7 @@ function Game.onInit(self)
     Country:init()
     unitSpellEffect()
     CommandProcessor()
+    onOwnerChange()
 end
 function Game.onLoad(self)
     print(

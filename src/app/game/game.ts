@@ -1,6 +1,7 @@
 import CameraControls from "app/camera-controls";
 import { CommandProcessor } from "app/commands/command-processor";
 import { CityAllocation } from "app/country/city-allocation";
+import { onOwnerChange } from "app/country/city-owner-change-trigger";
 import { City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { ModeUI } from "app/mode-ui-type";
@@ -75,6 +76,7 @@ export class Game {
 		//Triggers
 		unitSpellEffect();
 		CommandProcessor();
+		onOwnerChange();
 	}
 
 	private static onLoad() {
