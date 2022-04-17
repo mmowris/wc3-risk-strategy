@@ -36,7 +36,7 @@ export class Country {
 			Country.fromCity.set(city, this);
 		});
 
-		this.allocLim = Math.floor(this.cities.length / 2)
+		this.allocLim = Math.floor(cities.length / 2)
 
 		this.owner == Player(25);
 	}

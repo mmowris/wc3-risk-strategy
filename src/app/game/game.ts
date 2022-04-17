@@ -10,6 +10,7 @@ import { Trees } from "app/Trees";
 import { UserInterface } from "app/user-interface-type";
 import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "libs/playerColorData";
 import { Util } from "libs/translators";
+import { AID } from "resources/abilityID";
 import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
 import { Timer } from "w3ts";
@@ -107,44 +108,44 @@ export class Game {
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
 			if (tick >= 1) {
+				tick--;
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Mode selection ends in ${tick} seconds`);
 				BlzDestroyFrame(BlzGetFrameByName("pList", 0));
 				ModeUI.pList(BlzGetFrameByName("EscMenuBackdrop", 0));
-				tick--;
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
 				BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), false);
+				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts in 5 seconds`);
 				Game.initRound();
 			}
 		});
 	}
 
 	private static initRound() {
+		Game.assignColors();
+		GamePlayer.fromID.forEach(gPlayer => {
+			//Create player tools
+			let u: unit = CreateUnit(gPlayer.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270);
+			SetUnitPathing(u, false);
+			UnitRemoveAbility(u, AID.LOW_HEALTH_DEFENDER);
+			UnitRemoveAbility(u, AID.LOW_VALUE_DEFENDER);
+			UnitRemoveAbility(u, AID.ALLOW_PINGS);
+			UnitRemoveAbility(u, AID.FORFEIT);
+			//Set Players
+			if (gPlayer.isPlaying()) {
+				gPlayer.initBonusUI();
+				gPlayer.setStatus(PlayerStatus.ALIVE);
+			}
+		});
+
+		CityAllocation.start();
+		//Create scoreboard
+		//Start turn timer
+
 		let tick: number = 5;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
-			if (tick == 5) {
-				Game.assignColors();
-				GamePlayer.fromID.forEach(gPlayer => {
-					//Create player tools
-					let u: unit = CreateUnit(gPlayer.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270);
-					SetUnitPathing(u, false);
-					//Set up fight bonus
-
-					if (gPlayer.isPlaying()) {
-						gPlayer.initBonusUI();
-						gPlayer.setStatus(PlayerStatus.ALIVE);
-						//TODO: Add to scoreboard?
-					}
-
-					CityAllocation.start();
-					//Update City count, verify allocate cities
-					//Create scoreboard
-					//Start turn timer
-				});
-			}
-
 			if (tick >= 1) {
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts in ${tick} seconds`);
 				BlzDestroyFrame(BlzGetFrameByName("pList", 0));

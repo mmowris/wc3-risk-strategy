@@ -17,18 +17,20 @@ export class CityAllocation {
 			let country: Country = Country.fromCity.get(city);
 
 			if (country.citiesOwned.get(gPlayer) < country.allocLim) {
-				CityAllocation.changeOwner(city, gPlayer, cityPool);
+				CityAllocation.changeOwner(country, city, gPlayer, cityPool);
+
 			} else {
 				let counter: number = 0;
 
 				do {
 				    city = this.getCityFromPool(cityPool);
+				    country = Country.fromCity.get(city);
 				} while (country.citiesOwned.get(gPlayer) >= country.allocLim || counter == 50 || city == null);
 	    
 				if (city == null) print(`Error in CityAllocation, No cities avaiable in pool`)
 				if (counter >= 50) print(`Error in CityAllocation, No valid city found in pool`)
 	    
-				CityAllocation.changeOwner(city, gPlayer, cityPool);
+				CityAllocation.changeOwner(country, city, gPlayer, cityPool);
 			}
 
 			if (gPlayer.cities.length < citiesMax) {
@@ -36,10 +38,9 @@ export class CityAllocation {
 			}
 		}
 
-
-
-
+		playerPool.length = 0;
 		playerPool = null;
+		cityPool.length = 0;
 		cityPool = null;
 	}
 
@@ -65,7 +66,7 @@ export class CityAllocation {
 		let result: player[] = [];
 
 		GamePlayer.fromID.forEach(gPlayer => {
-			if (gPlayer.isPlaying()) {
+			if (gPlayer.isAlive()) {
 				result.push(gPlayer.player);
 			}
 		})
@@ -73,31 +74,12 @@ export class CityAllocation {
 		return result
 	}
 
-	private static getPlayerFromPool(playerPool: player[], citiesMax: number): player | null {
-		//Ends our recursive search if no player is avaiable
-		if (playerPool.length == 0) return null;
-
-		//Get random player from pool
-		let player: player = playerPool[Math.floor(Math.random() * playerPool.length)];
-
-		//TODO
-		// if (player.ownedCities.length >= citiesMax) {
-		//     //Remove player from pool if they have to enough cities
-		//     playerPool.splice(playerPool.indexOf(player), 1)
-		//     //Recursive search for a new player
-		//     return this.getPlayerFromPool(playerPool, citiesMax);
-		// }
-
-		//Assume that the player is allowed to receive another city, thus returning that player
-		return player;
-	}
-
 	private static getCityFromPool(cityPool: City[]): City | null {
 		if (cityPool.length == 0) return null;
 
 		let city: City = cityPool[Math.floor(Math.random() * cityPool.length)];
 
-		if (city.getOwner() != Player(25)) {
+		if (city.getOwner() != Player(24)) {
 			cityPool.splice(cityPool.indexOf(city), 1);
 			city = this.getCityFromPool(cityPool);
 		}
@@ -105,10 +87,11 @@ export class CityAllocation {
 		return city;
 	}
 
-	private static changeOwner(city: City, player: GamePlayer, cityPool: City[]) {
+	private static changeOwner(country: Country, city: City, player: GamePlayer, cityPool: City[]) {
 		city.setOwner(player.player);
 		city.changeGuardOwner();
 		player.cities.push(city.barrack);
 		cityPool.splice(cityPool.indexOf(city), 1);
+		country.citiesOwned.set(player, country.citiesOwned.get(player) + 1)
 	}
 }

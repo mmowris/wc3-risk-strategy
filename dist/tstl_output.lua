@@ -2434,605 +2434,6 @@ ____exports.CommandProcessor = function()
 end
 return ____exports
  end,
-["src.resources.unitID"] = function(...) local ____exports = {}
-____exports.UID = {
-    CITY = FourCC("h000"),
-    PORT = FourCC("h001"),
-    CONTROL_POINT = FourCC("h002"),
-    SPAWNER = FourCC("h004"),
-    RIFLEMEN = FourCC("u000"),
-    MEDIC = FourCC("u001"),
-    MORTAR = FourCC("u002"),
-    ROARER = FourCC("u003"),
-    KNIGHT = FourCC("u004"),
-    GENERAL = FourCC("u005"),
-    ARTILLERY = FourCC("u006"),
-    TANK = FourCC("u007"),
-    MARINE = FourCC("u008"),
-    CAPTAIN = FourCC("u009"),
-    ADMIRAL = FourCC("u010"),
-    TRANSPORT_SHIP = FourCC("s000"),
-    ARMORED_TRANSPORT_SHIP = FourCC("s001"),
-    WARSHIP_A = FourCC("s002"),
-    WARSHIP_B = FourCC("s003"),
-    BATTLESHIP_SS = FourCC("s004"),
-    DUMMY_GUARD = FourCC("u050"),
-    CAMERA_LOCK_UNIT = FourCC("u051"),
-    PLAYER_TOOLS = FourCC("H000")
-}
-return ____exports
- end,
-["src.resources.unitTypes"] = function(...) local ____exports = {}
-____exports.UTYPE = {SPAWN = UNIT_TYPE_UNDEAD, GUARD = UNIT_TYPE_SAPPER, SHIP = UNIT_TYPE_GIANT, CITY = UNIT_TYPE_TOWNHALL, BUILDING = UNIT_TYPE_STRUCTURE, TRANSPORT = UNIT_TYPE_ANCIENT}
-return ____exports
- end,
-["src.app.country.guard-filters"] = function(...) local ____exports = {}
-local ____unitID = require("src.resources.unitID")
-local UID = ____unitID.UID
-local ____unitTypes = require("src.resources.unitTypes")
-local UTYPE = ____unitTypes.UTYPE
-____exports.isGuardValid = function(city, fUnit)
-    if not fUnit then
-        fUnit = city.guard
-    end
-    if not UnitAlive(fUnit) then
-        return false
-    end
-    if IsUnitType(fUnit, UTYPE.CITY) then
-        return false
-    end
-    if IsUnitType(fUnit, UTYPE.TRANSPORT) then
-        return false
-    end
-    if IsUnitType(fUnit, UTYPE.GUARD) and (fUnit ~= city.guard) then
-        return false
-    end
-    if (GetUnitTypeId(city.barrack) == UID.CITY) and IsUnitType(fUnit, UTYPE.SHIP) then
-        return false
-    end
-    return true
-end
-____exports.FilterFriendlyValidGuards = function(city) return Filter(
-    function()
-        local fUnit = GetFilterUnit()
-        if not ____exports.isGuardValid(city, fUnit) then
-            return false
-        end
-        if IsUnitEnemy(
-            fUnit,
-            city:getOwner()
-        ) then
-            return false
-        end
-        fUnit = nil
-        return true
-    end
-) end
-____exports.FilterEnemyValidGuards = function(city) return Filter(
-    function()
-        local fUnit = GetFilterUnit()
-        if not ____exports.isGuardValid(city, fUnit) then
-            return false
-        end
-        if IsUnitAlly(
-            fUnit,
-            city:getOwner()
-        ) then
-            return false
-        end
-        fUnit = nil
-        return true
-    end
-) end
-return ____exports
- end,
-["src.app.country.city-type"] = function(...) require("lualib_bundle");
-local ____exports = {}
-local ____unitID = require("src.resources.unitID")
-local UID = ____unitID.UID
-local ____unitTypes = require("src.resources.unitTypes")
-local UTYPE = ____unitTypes.UTYPE
-local ____guard_2Dfilters = require("src.app.country.guard-filters")
-local FilterFriendlyValidGuards = ____guard_2Dfilters.FilterFriendlyValidGuards
-local isGuardValid = ____guard_2Dfilters.isGuardValid
-____exports.Cities = {}
-____exports.CityRegionSize = 185
-____exports.enterCityTrig = CreateTrigger()
-____exports.leaveCityTrig = CreateTrigger()
-____exports.unitTrainedTrig = CreateTrigger()
-local defaultOwner = Player(24)
-____exports.City = __TS__Class()
-local City = ____exports.City
-City.name = "City"
-function City.prototype.____constructor(self, x, y, barrackType, name, guardType)
-    if guardType == nil then
-        guardType = UID.RIFLEMEN
-    end
-    self.defaultBarrackType = barrackType
-    self:setBarrack(x, y, name)
-    local offSetX = x - 125
-    local offSetY = y - 255
-    local rect = Rect(offSetX - (____exports.CityRegionSize / 2), offSetY - (____exports.CityRegionSize / 2), offSetX + (____exports.CityRegionSize / 2), offSetY + (____exports.CityRegionSize / 2))
-    self.x = GetRectCenterX(rect)
-    self.y = GetRectCenterY(rect)
-    self.region = CreateRegion()
-    RegionAddRect(self.region, rect)
-    RemoveRect(rect)
-    ____exports.City.fromRegion:set(self.region, self)
-    TriggerRegisterEnterRegion(____exports.enterCityTrig, self.region, nil)
-    TriggerRegisterLeaveRegion(____exports.leaveCityTrig, self.region, nil)
-    if self:isPort() then
-        TriggerRegisterUnitEvent(____exports.unitTrainedTrig, self.barrack, EVENT_UNIT_TRAIN_FINISH)
-    end
-    self.cop = CreateUnit(defaultOwner, UID.CONTROL_POINT, offSetX, offSetY, 270)
-    self.defaultGuardType = guardType
-    self:setGuard(guardType)
-    rect = nil
-end
-__TS__SetDescriptor(
-    City.prototype,
-    "barrack",
-    {
-        get = function(self)
-            return self._barrack
-        end
-    },
-    true
-)
-__TS__SetDescriptor(
-    City.prototype,
-    "guard",
-    {
-        get = function(self)
-            return self._guard
-        end
-    },
-    true
-)
-function City.init(self)
-    ____exports.Cities[1] = __TS__New(____exports.City, 320, 320, UID.CITY)
-    ____exports.Cities[2] = __TS__New(____exports.City, -832, 64, UID.CITY)
-    ____exports.Cities[3] = __TS__New(____exports.City, 320, -1024, UID.CITY)
-    ____exports.Cities[4] = __TS__New(____exports.City, -1472, -1024, UID.CITY)
-    ____exports.Cities[5] = __TS__New(____exports.City, -1408, -2432, UID.CITY)
-    ____exports.Cities[6] = __TS__New(____exports.City, -384, -2944, UID.CITY)
-    ____exports.Cities[7] = __TS__New(____exports.City, 3584, 128, UID.CITY)
-    ____exports.Cities[8] = __TS__New(____exports.City, 1664, -384, UID.CITY)
-    ____exports.Cities[9] = __TS__New(____exports.City, 2048, 832, UID.CITY)
-    ____exports.Cities[10] = __TS__New(____exports.City, 4032, -1152, UID.CITY)
-    ____exports.Cities[11] = __TS__New(____exports.City, 768, -2048, UID.CITY)
-    ____exports.Cities[12] = __TS__New(____exports.City, 2112, -1664, UID.CITY)
-    ____exports.Cities[13] = __TS__New(____exports.City, 1408, -3008, UID.CITY)
-    ____exports.Cities[14] = __TS__New(____exports.City, 448, -3648, UID.CITY)
-    ____exports.Cities[15] = __TS__New(____exports.City, 1856, -4032, UID.CITY)
-    ____exports.Cities[16] = __TS__New(____exports.City, 896, -4736, UID.CITY)
-    ____exports.Cities[17] = __TS__New(____exports.City, 2880, -4864, UID.CITY)
-    ____exports.Cities[18] = __TS__New(____exports.City, 1920, -5760, UID.CITY)
-    ____exports.Cities[19] = __TS__New(____exports.City, 3456, -5632, UID.CITY)
-    ____exports.Cities[20] = __TS__New(____exports.City, 2752, -6656, UID.CITY)
-    ____exports.Cities[21] = __TS__New(____exports.City, 3776, -6656, UID.CITY)
-    ____exports.Cities[22] = __TS__New(____exports.City, 4736, -6720, UID.CITY)
-    ____exports.Cities[23] = __TS__New(____exports.City, 4416, -4992, UID.CITY)
-    ____exports.Cities[24] = __TS__New(____exports.City, 5248, -5568, UID.CITY)
-    ____exports.Cities[25] = __TS__New(____exports.City, 5952, -6848, UID.CITY)
-    ____exports.Cities[26] = __TS__New(____exports.City, 5440, -7872, UID.CITY)
-    ____exports.Cities[27] = __TS__New(____exports.City, 4736, -8768, UID.CITY)
-    ____exports.Cities[28] = __TS__New(____exports.City, 3680, -7904, UID.PORT)
-    ____exports.Cities[29] = __TS__New(____exports.City, 7168, -7616, UID.CITY)
-    ____exports.Cities[30] = __TS__New(____exports.City, 6112, -11232, UID.PORT)
-    ____exports.Cities[31] = __TS__New(____exports.City, 6464, -9472, UID.CITY)
-    ____exports.Cities[32] = __TS__New(____exports.City, 5504, -9536, UID.CITY)
-    ____exports.Cities[33] = __TS__New(____exports.City, 6784, -6016, UID.CITY)
-    ____exports.Cities[34] = __TS__New(____exports.City, 7808, -5952, UID.CITY)
-    ____exports.Cities[35] = __TS__New(____exports.City, 5184, -3968, UID.CITY)
-    ____exports.Cities[36] = __TS__New(____exports.City, 6144, -4864, UID.CITY)
-    ____exports.Cities[37] = __TS__New(____exports.City, 7616, -4672, UID.CITY)
-    ____exports.Cities[38] = __TS__New(____exports.City, 6528, -3456, UID.CITY)
-    ____exports.Cities[39] = __TS__New(____exports.City, 7296, -2496, UID.CITY)
-    ____exports.Cities[40] = __TS__New(____exports.City, 8384, -3136, UID.CITY)
-    ____exports.Cities[41] = __TS__New(____exports.City, 6080, -2048, UID.CITY)
-    ____exports.Cities[42] = __TS__New(____exports.City, 5696, -1024, UID.CITY)
-    ____exports.Cities[43] = __TS__New(____exports.City, 7232, -832, UID.CITY)
-    ____exports.Cities[44] = __TS__New(____exports.City, 9344, -1984, UID.CITY)
-    ____exports.Cities[45] = __TS__New(____exports.City, 10240, -384, UID.CITY)
-    ____exports.Cities[46] = __TS__New(____exports.City, 11328, -1664, UID.CITY)
-    ____exports.Cities[47] = __TS__New(____exports.City, 10048, -9280, UID.CITY)
-    ____exports.Cities[48] = __TS__New(____exports.City, 11072, -7168, UID.CITY)
-    ____exports.Cities[49] = __TS__New(____exports.City, 12288, -8192, UID.CITY)
-    ____exports.Cities[50] = __TS__New(____exports.City, 16704, -6080, UID.CITY)
-    ____exports.Cities[51] = __TS__New(____exports.City, 15424, -7360, UID.CITY)
-    ____exports.Cities[52] = __TS__New(____exports.City, 11360, -10336, UID.PORT)
-    ____exports.Cities[53] = __TS__New(____exports.City, 8800, -7392, UID.PORT)
-    ____exports.Cities[54] = __TS__New(____exports.City, 16064, -4096, UID.CITY)
-    ____exports.Cities[55] = __TS__New(____exports.City, 14976, -3648, UID.CITY)
-    ____exports.Cities[56] = __TS__New(____exports.City, 17472, -9664, UID.CITY)
-    ____exports.Cities[57] = __TS__New(____exports.City, 16064, -9408, UID.CITY)
-    ____exports.Cities[58] = __TS__New(____exports.City, 16512, -10880, UID.CITY)
-    ____exports.Cities[59] = __TS__New(____exports.City, 14784, -9600, UID.CITY)
-    ____exports.Cities[60] = __TS__New(____exports.City, 14976, -11136, UID.CITY)
-    ____exports.Cities[61] = __TS__New(____exports.City, 15808, -12224, UID.CITY)
-    ____exports.Cities[62] = __TS__New(____exports.City, 14976, -13440, UID.CITY)
-    ____exports.Cities[63] = __TS__New(____exports.City, 13900, -12320, UID.PORT)
-    ____exports.Cities[64] = __TS__New(____exports.City, 17344, -12480, UID.CITY)
-    ____exports.Cities[65] = __TS__New(____exports.City, 17728, -13440, UID.CITY)
-    ____exports.Cities[66] = __TS__New(____exports.City, 16128, -14272, UID.CITY)
-    ____exports.Cities[67] = __TS__New(____exports.City, 14400, -14784, UID.CITY)
-    ____exports.Cities[68] = __TS__New(____exports.City, 12480, -14080, UID.CITY)
-    ____exports.Cities[69] = __TS__New(____exports.City, 12928, -15104, UID.CITY)
-    ____exports.Cities[70] = __TS__New(____exports.City, 9408, -15104, UID.CITY)
-    ____exports.Cities[71] = __TS__New(____exports.City, 7680, -14528, UID.CITY)
-    ____exports.Cities[72] = __TS__New(____exports.City, 6208, -15040, UID.CITY)
-    ____exports.Cities[73] = __TS__New(____exports.City, 5088, -14112, UID.PORT)
-    ____exports.Cities[74] = __TS__New(____exports.City, -1408, -13824, UID.CITY)
-    ____exports.Cities[75] = __TS__New(____exports.City, -160, -14496, UID.PORT)
-    ____exports.Cities[76] = __TS__New(____exports.City, -3648, -14144, UID.CITY)
-    ____exports.Cities[77] = __TS__New(____exports.City, -5760, -15040, UID.CITY)
-    ____exports.Cities[78] = __TS__New(____exports.City, -7360, -14336, UID.CITY)
-    ____exports.Cities[79] = __TS__New(____exports.City, -8832, -15104, UID.CITY)
-    ____exports.Cities[80] = __TS__New(____exports.City, -10688, -14080, UID.CITY)
-    ____exports.Cities[81] = __TS__New(____exports.City, -12320, -14368, UID.PORT)
-    ____exports.Cities[82] = __TS__New(____exports.City, -11328, -9600, UID.CITY)
-    ____exports.Cities[83] = __TS__New(____exports.City, -10624, -7296, UID.CITY)
-    ____exports.Cities[84] = __TS__New(____exports.City, -12000, -7968, UID.PORT)
-    ____exports.Cities[85] = __TS__New(____exports.City, -9728, -10240, UID.CITY)
-    ____exports.Cities[86] = __TS__New(____exports.City, -9408, -8192, UID.CITY)
-    ____exports.Cities[87] = __TS__New(____exports.City, -6976, -8384, UID.CITY)
-    ____exports.Cities[88] = __TS__New(____exports.City, -7616, -6976, UID.CITY)
-    ____exports.Cities[89] = __TS__New(____exports.City, -10112, -5952, UID.CITY)
-    ____exports.Cities[90] = __TS__New(____exports.City, -6688, -10272, UID.PORT)
-    ____exports.Cities[91] = __TS__New(____exports.City, -5504, -6272, UID.CITY)
-    ____exports.Cities[92] = __TS__New(____exports.City, -5440, -5120, UID.CITY)
-    ____exports.Cities[93] = __TS__New(____exports.City, -3584, -5568, UID.CITY)
-    ____exports.Cities[94] = __TS__New(____exports.City, -3520, -3776, UID.CITY)
-    ____exports.Cities[95] = __TS__New(____exports.City, -4800, -3136, UID.CITY)
-    ____exports.Cities[96] = __TS__New(____exports.City, -6336, -3456, UID.CITY)
-    ____exports.Cities[97] = __TS__New(____exports.City, -6944, -4704, UID.PORT)
-    ____exports.Cities[98] = __TS__New(____exports.City, -4384, -7008, UID.PORT)
-    ____exports.Cities[99] = __TS__New(____exports.City, -2432, -4160, UID.CITY)
-    ____exports.Cities[100] = __TS__New(____exports.City, -1280, -4352, UID.CITY)
-    ____exports.Cities[101] = __TS__New(____exports.City, -1856, -5440, UID.CITY)
-    ____exports.Cities[102] = __TS__New(____exports.City, -448, -6272, UID.CITY)
-    ____exports.Cities[103] = __TS__New(____exports.City, 448, -7296, UID.CITY)
-    ____exports.Cities[104] = __TS__New(____exports.City, 1408, -8256, UID.CITY)
-    ____exports.Cities[105] = __TS__New(____exports.City, -3072, -2368, UID.CITY)
-    ____exports.Cities[106] = __TS__New(____exports.City, -4384, -608, UID.PORT)
-    ____exports.Cities[107] = __TS__New(____exports.City, -3200, -1024, UID.CITY)
-    ____exports.Cities[108] = __TS__New(____exports.City, -2368, -128, UID.CITY)
-    ____exports.Cities[109] = __TS__New(____exports.City, -3168, 480, UID.PORT)
-    ____exports.Cities[110] = __TS__New(____exports.City, -960, 1408, UID.CITY)
-    ____exports.Cities[111] = __TS__New(____exports.City, -1088, 2560, UID.CITY)
-    ____exports.Cities[112] = __TS__New(____exports.City, -2272, 2464, UID.PORT)
-    ____exports.Cities[113] = __TS__New(____exports.City, -1856, 5056, UID.CITY)
-    ____exports.Cities[114] = __TS__New(____exports.City, -768, 5312, UID.CITY)
-    ____exports.Cities[115] = __TS__New(____exports.City, -640, 7232, UID.CITY)
-    ____exports.Cities[116] = __TS__New(____exports.City, 576, 10112, UID.CITY)
-    ____exports.Cities[117] = __TS__New(____exports.City, 1728, 12224, UID.CITY)
-    ____exports.Cities[118] = __TS__New(____exports.City, -2464, 3680, UID.PORT)
-    ____exports.Cities[119] = __TS__New(____exports.City, -1760, 7904, UID.PORT)
-    ____exports.Cities[120] = __TS__New(____exports.City, 1856, 10240, UID.CITY)
-    ____exports.Cities[121] = __TS__New(____exports.City, 1216, 8704, UID.CITY)
-    ____exports.Cities[122] = __TS__New(____exports.City, 576, 6400, UID.CITY)
-    ____exports.Cities[123] = __TS__New(____exports.City, 512, 3392, UID.CITY)
-    ____exports.Cities[124] = __TS__New(____exports.City, 1760, 3040, UID.PORT)
-    ____exports.Cities[125] = __TS__New(____exports.City, 3968, 11584, UID.CITY)
-    ____exports.Cities[126] = __TS__New(____exports.City, 4800, 10368, UID.CITY)
-    ____exports.Cities[127] = __TS__New(____exports.City, 4480, 8448, UID.CITY)
-    ____exports.Cities[128] = __TS__New(____exports.City, 4096, 6848, UID.CITY)
-    ____exports.Cities[129] = __TS__New(____exports.City, 3424, 9184, UID.PORT)
-    ____exports.Cities[130] = __TS__New(____exports.City, -6528, 256, UID.CITY)
-    ____exports.Cities[131] = __TS__New(____exports.City, -6784, 1600, UID.CITY)
-    ____exports.Cities[132] = __TS__New(____exports.City, -7040, 3200, UID.CITY)
-    ____exports.Cities[133] = __TS__New(____exports.City, -8352, -672, UID.PORT)
-    ____exports.Cities[134] = __TS__New(____exports.City, -11136, 2368, UID.CITY)
-    ____exports.Cities[135] = __TS__New(____exports.City, -10208, 4000, UID.PORT)
-    ____exports.Cities[136] = __TS__New(____exports.City, -11488, 800, UID.PORT)
-    ____exports.Cities[137] = __TS__New(____exports.City, -6592, 9344, UID.CITY)
-    ____exports.Cities[138] = __TS__New(____exports.City, -7936, 9792, UID.CITY)
-    ____exports.Cities[139] = __TS__New(____exports.City, -7200, 7968, UID.PORT)
-    ____exports.Cities[140] = __TS__New(____exports.City, -5920, 10464, UID.PORT)
-    ____exports.Cities[141] = __TS__New(____exports.City, -576, 14912, UID.CITY)
-    ____exports.Cities[142] = __TS__New(____exports.City, -1760, 14496, UID.PORT)
-    ____exports.Cities[143] = __TS__New(____exports.City, 5056, 5312, UID.CITY)
-    ____exports.Cities[144] = __TS__New(____exports.City, 4128, 4640, UID.PORT)
-    ____exports.Cities[145] = __TS__New(____exports.City, 5440, 3520, UID.CITY)
-    ____exports.Cities[146] = __TS__New(____exports.City, 3104, 3616, UID.PORT)
-    ____exports.Cities[147] = __TS__New(____exports.City, 5312, 2048, UID.CITY)
-    ____exports.Cities[148] = __TS__New(____exports.City, 4160, 2496, UID.CITY)
-    ____exports.Cities[149] = __TS__New(____exports.City, 4096, 1344, UID.CITY)
-    ____exports.Cities[150] = __TS__New(____exports.City, 2976, 1952, UID.PORT)
-    ____exports.Cities[151] = __TS__New(____exports.City, 6912, 2560, UID.CITY)
-    ____exports.Cities[152] = __TS__New(____exports.City, 6912, 1472, UID.CITY)
-    ____exports.Cities[153] = __TS__New(____exports.City, 7680, 512, UID.CITY)
-    ____exports.Cities[154] = __TS__New(____exports.City, 5376, 384, UID.CITY)
-    ____exports.Cities[155] = __TS__New(____exports.City, 896, -13120, UID.CITY)
-    ____exports.Cities[156] = __TS__New(____exports.City, 2400, -12896, UID.PORT)
-    ____exports.Cities[157] = __TS__New(____exports.City, 6272, 12224, UID.CITY)
-    ____exports.Cities[158] = __TS__New(____exports.City, 10624, 11776, UID.CITY)
-    ____exports.Cities[159] = __TS__New(____exports.City, 10688, 9984, UID.CITY)
-    ____exports.Cities[160] = __TS__New(____exports.City, 12288, 8448, UID.CITY)
-    ____exports.Cities[161] = __TS__New(____exports.City, 9280, 6208, UID.CITY)
-    ____exports.Cities[162] = __TS__New(____exports.City, 6048, 6112, UID.PORT)
-    ____exports.Cities[163] = __TS__New(____exports.City, 6880, 10464, UID.PORT)
-    ____exports.Cities[164] = __TS__New(____exports.City, 3968, -2304, UID.CITY)
-    ____exports.Cities[165] = __TS__New(____exports.City, 2752, -2624, UID.CITY)
-    ____exports.Cities[166] = __TS__New(____exports.City, 4416, -3200, UID.CITY)
-    ____exports.Cities[167] = __TS__New(____exports.City, 3136, -3776, UID.CITY)
-    ____exports.Cities[168] = __TS__New(____exports.City, 320, -10368, UID.CITY)
-    ____exports.Cities[169] = __TS__New(____exports.City, 1238, -11566, UID.PORT)
-    ____exports.Cities[170] = __TS__New(____exports.City, -11584, 14400, UID.CITY)
-    ____exports.Cities[171] = __TS__New(____exports.City, -10432, 15104, UID.CITY)
-    ____exports.Cities[172] = __TS__New(____exports.City, -11040, 12960, UID.PORT)
-    ____exports.Cities[173] = __TS__New(____exports.City, -6016, 15424, UID.CITY)
-    ____exports.Cities[174] = __TS__New(____exports.City, -5600, 14048, UID.PORT)
-    ____exports.Cities[175] = __TS__New(____exports.City, 3264, 13504, UID.CITY)
-    ____exports.Cities[176] = __TS__New(____exports.City, 4160, 13056, UID.CITY)
-    ____exports.Cities[177] = __TS__New(____exports.City, -8000, 4672, UID.CITY)
-    ____exports.Cities[178] = __TS__New(____exports.City, -7552, 5952, UID.CITY)
-    ____exports.Cities[179] = __TS__New(____exports.City, -6432, 4960, UID.PORT)
-    ____exports.Cities[180] = __TS__New(____exports.City, 10496, 16064, UID.CITY)
-    ____exports.Cities[181] = __TS__New(____exports.City, 11936, 15584, UID.PORT)
-    ____exports.Cities[182] = __TS__New(____exports.City, 11456, -3264, UID.CITY)
-    ____exports.Cities[183] = __TS__New(____exports.City, 10464, -4128, UID.PORT)
-    ____exports.Cities[184] = __TS__New(____exports.City, 18432, -3584, UID.CITY)
-    ____exports.Cities[185] = __TS__New(____exports.City, 17472, -4352, UID.CITY)
-    ____exports.Cities[186] = __TS__New(____exports.City, 18432, -5888, UID.CITY)
-    ____exports.Cities[187] = __TS__New(____exports.City, 14400, -1856, UID.CITY)
-    ____exports.Cities[188] = __TS__New(____exports.City, 14848, 1216, UID.CITY)
-    ____exports.Cities[189] = __TS__New(____exports.City, 16704, 1088, UID.CITY)
-    ____exports.Cities[190] = __TS__New(____exports.City, 17088, -1152, UID.CITY)
-    ____exports.Cities[191] = __TS__New(____exports.City, 13024, -3808, UID.PORT)
-    ____exports.Cities[192] = __TS__New(____exports.City, 15424, 5376, UID.CITY)
-    ____exports.Cities[193] = __TS__New(____exports.City, 18048, 6720, UID.CITY)
-    ____exports.Cities[194] = __TS__New(____exports.City, 17984, 3840, UID.CITY)
-    ____exports.Cities[195] = __TS__New(____exports.City, 8640, 3264, UID.CITY)
-    ____exports.Cities[196] = __TS__New(____exports.City, 10496, 1536, UID.CITY)
-    ____exports.Cities[197] = __TS__New(____exports.City, 13056, 2496, UID.CITY)
-    ____exports.Cities[198] = __TS__New(____exports.City, 11264, 3968, UID.CITY)
-    ____exports.Cities[199] = __TS__New(____exports.City, 12864, 5632, UID.CITY)
-    ____exports.Cities[200] = __TS__New(____exports.City, 16576, 15744, UID.CITY)
-    ____exports.Cities[201] = __TS__New(____exports.City, 18176, 15616, UID.CITY)
-    ____exports.Cities[202] = __TS__New(____exports.City, 15296, 8960, UID.CITY)
-    ____exports.Cities[203] = __TS__New(____exports.City, 13952, 8384, UID.CITY)
-    ____exports.Cities[204] = __TS__New(____exports.City, -8768, 15232, UID.CITY)
-    ____exports.Cities[205] = __TS__New(____exports.City, -7936, 14336, UID.CITY)
-    ____exports.Cities[206] = __TS__New(____exports.City, -9472, 13696, UID.CITY)
-    ____exports.Cities[207] = __TS__New(____exports.City, -12736, 14976, UID.CITY)
-    ____exports.Cities[208] = __TS__New(____exports.City, -12352, 13120, UID.CITY)
-    ____exports.Cities[209] = __TS__New(____exports.City, -8000, 2304, UID.CITY)
-    ____exports.Cities[210] = __TS__New(____exports.City, -8512, 1216, UID.CITY)
-    ____exports.Cities[211] = __TS__New(____exports.City, -2400, -7400, UID.PORT)
-    ____exports.Cities[212] = __TS__New(____exports.City, -1376, -8928, UID.PORT)
-    ____exports.Cities[213] = __TS__New(____exports.City, 8864, -11680, UID.PORT)
-    ____exports.Cities[214] = __TS__New(____exports.City, 7008, -12192, UID.PORT)
-    ____exports.Cities[215] = __TS__New(____exports.City, 13408, -10272, UID.PORT)
-    ____exports.Cities[216] = __TS__New(____exports.City, 12576, -11808, UID.PORT)
-    self:onEnter()
-    self:onLeave()
-    self:onTrain()
-end
-function City.onCast(self)
-    local trigUnit = GetTriggerUnit()
-    local targUnit = GetSpellTargetUnit()
-    local city = ____exports.City.fromBarrack:get(trigUnit)
-    if (not city:isPort()) and IsUnitType(targUnit, UTYPE.SHIP) then
-        return false
-    end
-    if (IsUnitType(city.guard, UTYPE.SHIP) and IsTerrainPathable(
-        GetUnitX(targUnit),
-        GetUnitY(targUnit),
-        PATHING_TYPE_FLOATABILITY
-    )) or ((not IsUnitType(city.guard, UTYPE.SHIP)) and IsTerrainPathable(
-        GetUnitX(targUnit),
-        GetUnitY(targUnit),
-        PATHING_TYPE_WALKABILITY
-    )) then
-        city:changeGuard(targUnit)
-    else
-        local oldGuard = city.guard
-        local x = GetUnitX(targUnit)
-        local y = GetUnitY(targUnit)
-        city:changeGuard(targUnit)
-        SetUnitPosition(oldGuard, x, y)
-        SetUnitPosition(city.guard, city.x, city.y)
-        oldGuard = nil
-    end
-    city:setOwner(
-        GetOwningPlayer(targUnit)
-    )
-    trigUnit = nil
-    targUnit = nil
-    return false
-end
-function City.prototype.isPort(self)
-    return GetUnitTypeId(self.barrack) == UID.PORT
-end
-function City.prototype.isGuardShip(self)
-    return IsUnitType(self.guard, UTYPE.SHIP)
-end
-function City.prototype.isGuardDummy(self)
-    return GetUnitTypeId(self.guard) == UID.DUMMY_GUARD
-end
-function City.prototype.getOwner(self)
-    return GetOwningPlayer(self.barrack)
-end
-function City.prototype.reset(self)
-    local x = GetUnitX(self.barrack)
-    local y = GetUnitY(self.barrack)
-    local name = GetUnitName(self.barrack)
-    ____exports.City.fromBarrack:delete(self.barrack)
-    RemoveUnit(self.barrack)
-    self._barrack = nil
-    self:setBarrack(x, y, name)
-    self:removeGuard(true)
-    self:setGuard(self.defaultGuardType)
-end
-function City.prototype.changeGuardOwner(self)
-    SetUnitOwner(
-        self._guard,
-        self:getOwner(),
-        true
-    )
-end
-function City.prototype.setBarrack(self, x, y, name)
-    self._barrack = CreateUnit(defaultOwner, self.defaultBarrackType, x, y, 270)
-    ____exports.City.fromBarrack:set(self.barrack, self)
-    if name and (name ~= GetUnitName(self.barrack)) then
-        BlzSetUnitName(self.barrack, name)
-    end
-end
-function City.prototype.setGuard(self, guard)
-    (((type(guard) == "number") and (function() return (function(o, i, v)
-        o[i] = v
-        return v
-    end)(
-        self,
-        "_guard",
-        CreateUnit(defaultOwner, guard, self.x, self.y, 270)
-    ) end)) or (function() return (function(o, i, v)
-        o[i] = v
-        return v
-    end)(self, "_guard", guard) end))()
-    UnitAddType(self.guard, UTYPE.GUARD)
-    ____exports.City.fromGuard:set(self.guard, self)
-end
-function City.prototype.removeGuard(self, destroy)
-    if destroy == nil then
-        destroy = false
-    end
-    ____exports.City.fromGuard:delete(self.guard)
-    if not destroy then
-        UnitRemoveType(self.guard, UTYPE.GUARD)
-    else
-        RemoveUnit(self.guard)
-    end
-    self._guard = nil
-end
-function City.prototype.changeGuard(self, newGuard)
-    if self.guard ~= newGuard then
-        self:removeGuard(
-            self:isGuardDummy()
-        )
-        self:setGuard(newGuard)
-    end
-    SetUnitPosition(self.guard, self.x, self.y)
-end
-function City.prototype.setOwner(self, newOwner)
-    if self:getOwner() == newOwner then
-        return false
-    end
-    SetUnitOwner(self.barrack, newOwner, true)
-    SetUnitOwner(self.cop, newOwner, true)
-    IssuePointOrder(
-        self.barrack,
-        "setrally",
-        GetUnitX(self.barrack) - 70,
-        GetUnitY(self.barrack) - 155
-    )
-end
-function City.prototype.dummyGuard(self, owner)
-    self:changeGuard(
-        CreateUnit(owner, UID.DUMMY_GUARD, self.x, self.y, 270)
-    )
-    self:setOwner(owner)
-end
-function City.onEnter(self)
-    TriggerAddCondition(
-        ____exports.leaveCityTrig,
-        Condition(
-            function()
-                if IsUnitType(
-                    GetTriggerUnit(),
-                    UTYPE.TRANSPORT
-                ) then
-                    return false
-                end
-                local city = ____exports.City.fromRegion:get(
-                    GetTriggeringRegion()
-                )
-                if isGuardValid(city) then
-                    return false
-                end
-                city:changeGuard(
-                    GetTriggerUnit()
-                )
-                city:setOwner(
-                    GetOwningPlayer(
-                        GetTriggerUnit()
-                    )
-                )
-                return false
-            end
-        )
-    )
-end
-function City.onLeave(self)
-    TriggerAddCondition(
-        ____exports.leaveCityTrig,
-        Condition(
-            function()
-                if not IsUnitType(
-                    GetTriggerUnit(),
-                    UTYPE.GUARD
-                ) then
-                    return false
-                end
-                local city = ____exports.City.fromRegion:get(
-                    GetTriggeringRegion()
-                )
-                local g = CreateGroup()
-                local guardChoice = city.guard
-                GroupEnumUnitsInRange(
-                    g,
-                    city.x,
-                    city.y,
-                    ____exports.CityRegionSize,
-                    FilterFriendlyValidGuards(city)
-                )
-                if (BlzGroupGetSize(g) == 0) and (not isGuardValid(city)) then
-                    city:dummyGuard(
-                        GetOwningPlayer(city.barrack)
-                    )
-                    return false
-                end
-                ForGroup(
-                    g,
-                    function()
-                        local fUnit = GetFilterUnit()
-                    end
-                )
-                city:changeGuard(guardChoice)
-                DestroyGroup(g)
-                g = nil
-                guardChoice = nil
-                return false
-            end
-        )
-    )
-end
-function City.onTrain(self)
-    TriggerAddCondition(
-        ____exports.unitTrainedTrig,
-        Condition(
-            function()
-                local city = ____exports.City.fromBarrack:get(
-                    GetTriggerUnit()
-                )
-                local trainedUnit = GetTrainedUnit()
-                if city:isGuardShip() and (not IsUnitType(trainedUnit, UTYPE.SHIP)) then
-                    city:changeGuard(trainedUnit)
-                end
-                trainedUnit = nil
-                return false
-            end
-        )
-    )
-end
-City.fromBarrack = __TS__New(Map)
-City.fromGuard = __TS__New(Map)
-City.fromRegion = __TS__New(Map)
-City.cities = {}
-return ____exports
- end,
 ["src.app.player.player-type"] = function(...) require("lualib_bundle");
 local ____exports = {}
 ____exports.BonusBase = 9
@@ -3303,65 +2704,6 @@ function GamePlayer.getKey(self, who, uID)
 end
 GamePlayer.fromString = __TS__New(Map)
 GamePlayer.fromID = __TS__New(Map)
-return ____exports
- end,
-["src.resources.hexColors"] = function(...) local ____exports = {}
-____exports.HexColors = HexColors or ({})
-____exports.HexColors.RED = "|cffff0303"
-____exports.HexColors.BLUE = "|cff0042ff"
-____exports.HexColors.TEAL = "|cff1be7ba"
-____exports.HexColors.PURPLE = "|cff550081"
-____exports.HexColors.YELLOW = "|cfffefc00"
-____exports.HexColors.ORANGE = "|cfffe890d"
-____exports.HexColors.GREEN = "|cff21bf00"
-____exports.HexColors.PINK = "|cffe45caf"
-____exports.HexColors.LIGHT_GRAY = "|cff939596"
-____exports.HexColors.LIGHT_BLUE = "|cff77bbff"
-____exports.HexColors.DARK_GREEN = "|cff106247"
-____exports.HexColors.BROWN = "|cff4f2b05"
-____exports.HexColors.MAROON = "|cff9c0000"
-____exports.HexColors.NAVY = "|cff0000c3"
-____exports.HexColors.TURQUOISE = "|cff00ebff"
-____exports.HexColors.VIOLET = "|cffbd00ff"
-____exports.HexColors.WHEAT = "|cffecce87"
-____exports.HexColors.PEACH = "|cfff7a58b"
-____exports.HexColors.MINT = "|cffccff99"
-____exports.HexColors.LAVENDER = "|cffdbb8eb"
-____exports.HexColors.COAL = "|cff4f5055"
-____exports.HexColors.SNOW = "|cffecf0ff"
-____exports.HexColors.EMERALD = "|cff00781e"
-____exports.HexColors.PEANUT = "|cffa56f34"
-____exports.HexColors.WHITE = "|cffffffff"
-____exports.HexColors.TANGERINE = "|cffffcc00"
-____exports.HexColors.WARNING = "|cffD0342C"
-return ____exports
- end,
-["src.resources.abilityID"] = function(...) local ____exports = {}
-____exports.AID = {
-    INDEXER = FourCC("uDex"),
-    HEAL = FourCC("a000"),
-    ROAR = FourCC("a001"),
-    DISPEL_MAGIC = FourCC("a002"),
-    FRENZY = FourCC("a003"),
-    UNHOLY_FRENZY = FourCC("a004"),
-    BERSERK = FourCC("a005"),
-    SWAP = FourCC("a030"),
-    SPWN_ALL = FourCC("a031"),
-    SPWN_3000 = FourCC("a032"),
-    SPWN_6000 = FourCC("a033"),
-    SPWN_RESET = FourCC("a034"),
-    CARGO_HOLD = FourCC("a009"),
-    LOAD = FourCC("a010"),
-    UNLOAD = FourCC("a011"),
-    FORFEIT = FourCC("a050"),
-    LOW_HEALTH_DEFENDER = FourCC("a051"),
-    HIGH_HEALTH_DEFENDER = FourCC("a052"),
-    LOW_VALUE_DEFENDER = FourCC("a053"),
-    HIGH_VALUE_DEFENDER = FourCC("a054"),
-    ALLOW_PINGS = FourCC("a055"),
-    BLOCK_PINGS = FourCC("a056"),
-    PING = FourCC("a057")
-}
 return ____exports
  end,
 ["lua_modules.w3ts.handles.handle"] = function(...) require("lualib_bundle");
@@ -9302,6 +8644,980 @@ end
 ____exports.tsGlobals = tsGlobals
 return ____exports
  end,
+["src.resources.hexColors"] = function(...) local ____exports = {}
+____exports.HexColors = HexColors or ({})
+____exports.HexColors.RED = "|cffff0303"
+____exports.HexColors.BLUE = "|cff0042ff"
+____exports.HexColors.TEAL = "|cff1be7ba"
+____exports.HexColors.PURPLE = "|cff550081"
+____exports.HexColors.YELLOW = "|cfffefc00"
+____exports.HexColors.ORANGE = "|cfffe890d"
+____exports.HexColors.GREEN = "|cff21bf00"
+____exports.HexColors.PINK = "|cffe45caf"
+____exports.HexColors.LIGHT_GRAY = "|cff939596"
+____exports.HexColors.LIGHT_BLUE = "|cff77bbff"
+____exports.HexColors.DARK_GREEN = "|cff106247"
+____exports.HexColors.BROWN = "|cff4f2b05"
+____exports.HexColors.MAROON = "|cff9c0000"
+____exports.HexColors.NAVY = "|cff0000c3"
+____exports.HexColors.TURQUOISE = "|cff00ebff"
+____exports.HexColors.VIOLET = "|cffbd00ff"
+____exports.HexColors.WHEAT = "|cffecce87"
+____exports.HexColors.PEACH = "|cfff7a58b"
+____exports.HexColors.MINT = "|cffccff99"
+____exports.HexColors.LAVENDER = "|cffdbb8eb"
+____exports.HexColors.COAL = "|cff4f5055"
+____exports.HexColors.SNOW = "|cffecf0ff"
+____exports.HexColors.EMERALD = "|cff00781e"
+____exports.HexColors.PEANUT = "|cffa56f34"
+____exports.HexColors.WHITE = "|cffffffff"
+____exports.HexColors.TANGERINE = "|cffffcc00"
+____exports.HexColors.WARNING = "|cffD0342C"
+return ____exports
+ end,
+["src.libs.utils"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____hexColors = require("src.resources.hexColors")
+local HexColors = ____hexColors.HexColors
+local ____index = require("lua_modules.w3ts.index")
+local TextTag = ____index.TextTag
+local MapPlayer = ____index.MapPlayer
+local Trigger = ____index.Trigger
+local ____index = require("lua_modules.w3ts.globals.index")
+local Players = ____index.Players
+function ____exports.PlayLocalSound(soundPath, p)
+    local sound = CreateSound(soundPath, false, false, true, 10, 10, "")
+    if GetLocalPlayer() ~= p then
+        SetSoundVolume(sound, 0)
+    end
+    StartSound(sound)
+    KillSoundWhenDone(sound)
+    sound = nil
+end
+function ____exports.ErrorMessage(p, msg)
+    if GetLocalPlayer() == p then
+        ClearTextMessages()
+    end
+    DisplayTimedTextToPlayer(p, 0.52, 0.96, 2, ((("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" .. HexColors.TANGERINE) .. " ") .. msg) .. "|r")
+    ____exports.PlayLocalSound("Sound\\Interface\\Error.flac", p)
+end
+function ____exports.showOverheadText(x, y, r, g, b, a, text)
+    local t = __TS__New(TextTag)
+    t:setText(text, 10, true)
+    t:setPos(x, y, 90)
+    t:setColor(r, g, b, a)
+    t:setPermanent(false)
+    t:setLifespan(2)
+    t:setFadepoint(1)
+    t:setVisible(true)
+    t:setVelocity(
+        0,
+        (7.1 / 128) * Sin(3.14159 / 2)
+    )
+    return t
+end
+function ____exports.MessageAllPlayers(message, time)
+    DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, time, message)
+end
+function ____exports.MessagePlayer(who, message)
+    if __TS__InstanceOf(who, MapPlayer) then
+        DisplayTimedTextToPlayer(who.handle, 0, 0, 10, message)
+    else
+        DisplayTimedTextToPlayer(
+            Player(who),
+            0,
+            0,
+            10,
+            message
+        )
+    end
+end
+function ____exports.GetActivePlayers()
+    return __TS__ArrayFilter(
+        Players,
+        function(____, currentPlayer)
+            local isPlaying = currentPlayer.slotState == PLAYER_SLOT_STATE_PLAYING
+            local isUser = currentPlayer:getState(PLAYER_STATE_OBSERVER) == 0
+            if isPlaying and isUser then
+                return true
+            end
+        end
+    )
+end
+local TEMP_LOCATION = Location(0, 0)
+function ____exports.getZFromXY(x, y)
+    MoveLocation(TEMP_LOCATION, x, y)
+    local z = GetLocationZ(TEMP_LOCATION)
+    return z
+end
+function ____exports.syncData(handle, listenFor, cb)
+    local syncTrigger = __TS__New(Trigger)
+    syncTrigger:registerPlayerSyncEvent(listenFor, handle, false)
+    syncTrigger:addAction(
+        function()
+            local data = BlzGetTriggerSyncData()
+            syncTrigger:destroy()
+            cb(data)
+        end
+    )
+    return function(toSend)
+        BlzSendSyncData(handle, toSend)
+    end
+end
+function ____exports.distanceBetweenPoints(x1, y1, x2, y2)
+    return SquareRoot(
+        Pow(x2 - x1, 2) + Pow(y2 - y1, 2)
+    )
+end
+return ____exports
+ end,
+["src.libs.translators"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____utils = require("src.libs.utils")
+local getZFromXY = ____utils.getZFromXY
+function ____exports.SendMessage(msg)
+    DisplayTimedTextToForce(
+        bj_FORCE_ALL_PLAYERS,
+        10,
+        tostring(msg)
+    )
+end
+____exports.console = __TS__Class()
+local console = ____exports.console
+console.name = "console"
+function console.prototype.____constructor(self)
+end
+function console.log(self, input)
+    ____exports.SendMessage(input)
+end
+function ____exports.SendMessageToAdmin(msg)
+end
+function ____exports.PlayNewSound(soundPath, volume)
+    local result = CreateSound(soundPath, false, false, true, 10, 10, "")
+    SetSoundDuration(
+        result,
+        GetSoundFileDuration(soundPath)
+    )
+    SetSoundChannel(result, 0)
+    SetSoundVolume(result, volume)
+    SetSoundPitch(result, 1)
+    StartSound(result)
+    KillSoundWhenDone(result)
+    return result
+end
+function ____exports.PlayNewSoundOnUnit(soundPath, unit, volume, pitch)
+    if pitch == nil then
+        pitch = 1
+    end
+    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
+    SetSoundDuration(
+        result,
+        GetSoundFileDuration(soundPath)
+    )
+    SetSoundChannel(result, 0)
+    SetSoundVolume(result, volume)
+    SetSoundPitch(result, pitch)
+    SetSoundDistances(result, 2000, 5000)
+    SetSoundDistanceCutoff(result, 4500)
+    local loc = Location(unit.x, unit.y)
+    PlaySoundAtPointBJ(
+        result,
+        volume,
+        loc,
+        getZFromXY(unit.x, unit.y)
+    )
+    RemoveLocation(loc)
+    KillSoundWhenDone(result)
+    return result
+end
+function ____exports.PlayNewSoundAt(soundPath, x, y, volume)
+    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
+    SetSoundDuration(
+        result,
+        GetSoundFileDuration(soundPath)
+    )
+    SetSoundChannel(result, 0)
+    SetSoundVolume(result, volume)
+    SetSoundPitch(result, 1)
+    SetSoundDistances(result, 2000, 5000)
+    SetSoundDistanceCutoff(result, 4500)
+    local loc = Location(x, y)
+    PlaySoundAtPointBJ(
+        result,
+        volume,
+        loc,
+        getZFromXY(x, y)
+    )
+    RemoveLocation(loc)
+    KillSoundWhenDone(result)
+    return result
+end
+function ____exports.DecodeFourCC(fourcc)
+    return string.char((fourcc >> 24) & 255, (fourcc >> 16) & 255, (fourcc >> 8) & 255, fourcc & 255)
+end
+____exports.Util = __TS__Class()
+local Util = ____exports.Util
+Util.name = "Util"
+function Util.prototype.____constructor(self)
+end
+function Util.ColourString(self, colour, str)
+    return (("|cFF" .. colour) .. str) .. "|r"
+end
+function Util.ShuffleArray(self, arr)
+    do
+        local i = #arr - 1
+        while i > 0 do
+            local j = math.floor(
+                math.random() * (i + 1)
+            )
+            local temp = arr[i + 1]
+            arr[i + 1] = arr[j + 1]
+            arr[j + 1] = temp
+            i = i - 1
+        end
+    end
+end
+function Util.RandomHash(self, length)
+    local result = ""
+    local characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    local charactersLength = #characters
+    do
+        local i = 0
+        while i < length do
+            result = result .. __TS__StringCharAt(
+                characters,
+                math.floor(
+                    math.random() * charactersLength
+                )
+            )
+            i = i + 1
+        end
+    end
+    return result
+end
+function Util.GetRandomKey(self, collection)
+    local index = math.floor(
+        math.random() * collection.size
+    )
+    local cntr = 0
+    for ____, key in __TS__Iterator(
+        collection:keys()
+    ) do
+        if (function()
+            local ____tmp = cntr
+            cntr = ____tmp + 1
+            return ____tmp
+        end)() == index then
+            return key
+        end
+    end
+end
+function Util.GetAllKeys(self, collection)
+    local keys = {}
+    for ____, key in __TS__Iterator(
+        collection:keys()
+    ) do
+        __TS__ArrayPush(keys, key)
+    end
+    return keys
+end
+function Util.ArraysToString(self, arr)
+    local output = "["
+    do
+        local i = 0
+        while i < #arr do
+            do
+                if i == (#arr - 1) then
+                    output = output .. (("\"" .. tostring(arr[i + 1])) .. "\"")
+                    goto __continue23
+                end
+                output = output .. (("\"" .. tostring(arr[i + 1])) .. "\", ")
+            end
+            ::__continue23::
+            i = i + 1
+        end
+    end
+    output = output .. "]"
+    return output
+end
+function Util.ParseInt(self, str)
+    return str
+end
+function Util.ParsePositiveInt(self, str)
+    local int = __TS__Number(str)
+    if int < 0 then
+        return 0
+    end
+    return int
+end
+function Util.Round(self, x)
+    return math.floor((x + 0.5) - ((x + 0.5) % 1))
+end
+function Util.RandomEnumKey(self, enumeration)
+    local values = __TS__ArrayFilter(
+        __TS__ArrayMap(
+            __TS__ObjectKeys(enumeration),
+            function(____, key) return enumeration[key] end
+        ),
+        function(____, value) return type(enumeration[value]) ~= "number" end
+    )
+    local randValue = values[math.floor(
+        math.random() * #values
+    ) + 1]
+    return randValue
+end
+Util.COLOUR_IDS = {RED = 0, BLUE = 1, TEAL = 2, PURPLE = 3, YELLOW = 4, ORANGE = 5, GREEN = 6, PINK = 7, GRAY = 8, GREY = 8, LIGHT_BLUE = 9, LIGHTBLUE = 9, LB = 9, DARK_GREEN = 10, DARKGREEN = 10, DG = 10, BROWN = 11, MAROON = 12, NAVY = 13, TURQUOISE = 14, VOILET = 15, WHEAT = 16, PEACH = 17, MINT = 18, LAVENDER = 19, COAL = 20, SNOW = 21, EMERALD = 22, PEANUT = 23}
+____exports.CREEP_TYPE = CREEP_TYPE or ({})
+____exports.CREEP_TYPE.NORMAL = 0
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.NORMAL] = "NORMAL"
+____exports.CREEP_TYPE.AIR = 1
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.AIR] = "AIR"
+____exports.CREEP_TYPE.CHAMPION = 2
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.CHAMPION] = "CHAMPION"
+____exports.CREEP_TYPE.BOSS = 3
+____exports.CREEP_TYPE[____exports.CREEP_TYPE.BOSS] = "BOSS"
+____exports.ARMOUR_TYPE = ARMOUR_TYPE or ({})
+____exports.ARMOUR_TYPE.UNARMOURED = 0
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.UNARMOURED] = "UNARMOURED"
+____exports.ARMOUR_TYPE.LIGHT = 1
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.LIGHT] = "LIGHT"
+____exports.ARMOUR_TYPE.MEDIUM = 2
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.MEDIUM] = "MEDIUM"
+____exports.ARMOUR_TYPE.HEAVY = 3
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HEAVY] = "HEAVY"
+____exports.ARMOUR_TYPE.FORTIFIED = 4
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.FORTIFIED] = "FORTIFIED"
+____exports.ARMOUR_TYPE.HERO = 5
+____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HERO] = "HERO"
+return ____exports
+ end,
+["src.resources.unitID"] = function(...) local ____exports = {}
+____exports.UID = {
+    CITY = FourCC("h000"),
+    PORT = FourCC("h001"),
+    CONTROL_POINT = FourCC("h002"),
+    SPAWNER = FourCC("h004"),
+    RIFLEMEN = FourCC("u000"),
+    MEDIC = FourCC("u001"),
+    MORTAR = FourCC("u002"),
+    ROARER = FourCC("u003"),
+    KNIGHT = FourCC("u004"),
+    GENERAL = FourCC("u005"),
+    ARTILLERY = FourCC("u006"),
+    TANK = FourCC("u007"),
+    MARINE = FourCC("u008"),
+    CAPTAIN = FourCC("u009"),
+    ADMIRAL = FourCC("u010"),
+    TRANSPORT_SHIP = FourCC("s000"),
+    ARMORED_TRANSPORT_SHIP = FourCC("s001"),
+    WARSHIP_A = FourCC("s002"),
+    WARSHIP_B = FourCC("s003"),
+    BATTLESHIP_SS = FourCC("s004"),
+    DUMMY_GUARD = FourCC("u050"),
+    CAMERA_LOCK_UNIT = FourCC("u051"),
+    PLAYER_TOOLS = FourCC("H000")
+}
+return ____exports
+ end,
+["src.resources.unitTypes"] = function(...) local ____exports = {}
+____exports.UTYPE = {SPAWN = UNIT_TYPE_UNDEAD, GUARD = UNIT_TYPE_SAPPER, SHIP = UNIT_TYPE_GIANT, CITY = UNIT_TYPE_TOWNHALL, BUILDING = UNIT_TYPE_STRUCTURE, TRANSPORT = UNIT_TYPE_ANCIENT}
+return ____exports
+ end,
+["src.app.country.guard-filters"] = function(...) local ____exports = {}
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+local ____unitTypes = require("src.resources.unitTypes")
+local UTYPE = ____unitTypes.UTYPE
+____exports.isGuardValid = function(city, fUnit)
+    if not fUnit then
+        fUnit = city.guard
+    end
+    if not UnitAlive(fUnit) then
+        return false
+    end
+    if IsUnitType(fUnit, UTYPE.CITY) then
+        return false
+    end
+    if IsUnitType(fUnit, UTYPE.TRANSPORT) then
+        return false
+    end
+    if IsUnitType(fUnit, UTYPE.GUARD) and (fUnit ~= city.guard) then
+        return false
+    end
+    if (GetUnitTypeId(city.barrack) == UID.CITY) and IsUnitType(fUnit, UTYPE.SHIP) then
+        return false
+    end
+    return true
+end
+____exports.FilterFriendlyValidGuards = function(city) return Filter(
+    function()
+        local fUnit = GetFilterUnit()
+        if not ____exports.isGuardValid(city, fUnit) then
+            return false
+        end
+        if IsUnitEnemy(
+            fUnit,
+            city:getOwner()
+        ) then
+            return false
+        end
+        fUnit = nil
+        return true
+    end
+) end
+____exports.FilterEnemyValidGuards = function(city) return Filter(
+    function()
+        local fUnit = GetFilterUnit()
+        if not ____exports.isGuardValid(city, fUnit) then
+            return false
+        end
+        if IsUnitAlly(
+            fUnit,
+            city:getOwner()
+        ) then
+            return false
+        end
+        fUnit = nil
+        return true
+    end
+) end
+return ____exports
+ end,
+["src.app.country.city-type"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
+local ____unitTypes = require("src.resources.unitTypes")
+local UTYPE = ____unitTypes.UTYPE
+local ____guard_2Dfilters = require("src.app.country.guard-filters")
+local FilterFriendlyValidGuards = ____guard_2Dfilters.FilterFriendlyValidGuards
+local isGuardValid = ____guard_2Dfilters.isGuardValid
+____exports.Cities = {}
+____exports.CityRegionSize = 185
+____exports.enterCityTrig = CreateTrigger()
+____exports.leaveCityTrig = CreateTrigger()
+____exports.unitTrainedTrig = CreateTrigger()
+local defaultOwner = Player(24)
+____exports.City = __TS__Class()
+local City = ____exports.City
+City.name = "City"
+function City.prototype.____constructor(self, x, y, barrackType, name, guardType)
+    if guardType == nil then
+        guardType = UID.RIFLEMEN
+    end
+    self.defaultBarrackType = barrackType
+    self:setBarrack(x, y, name)
+    local offSetX = x - 125
+    local offSetY = y - 255
+    local rect = Rect(offSetX - (____exports.CityRegionSize / 2), offSetY - (____exports.CityRegionSize / 2), offSetX + (____exports.CityRegionSize / 2), offSetY + (____exports.CityRegionSize / 2))
+    self.x = GetRectCenterX(rect)
+    self.y = GetRectCenterY(rect)
+    self.region = CreateRegion()
+    RegionAddRect(self.region, rect)
+    RemoveRect(rect)
+    ____exports.City.fromRegion:set(self.region, self)
+    TriggerRegisterEnterRegion(____exports.enterCityTrig, self.region, nil)
+    TriggerRegisterLeaveRegion(____exports.leaveCityTrig, self.region, nil)
+    if self:isPort() then
+        TriggerRegisterUnitEvent(____exports.unitTrainedTrig, self.barrack, EVENT_UNIT_TRAIN_FINISH)
+    end
+    self.cop = CreateUnit(defaultOwner, UID.CONTROL_POINT, offSetX, offSetY, 270)
+    self.defaultGuardType = guardType
+    self:setGuard(guardType)
+    rect = nil
+end
+__TS__SetDescriptor(
+    City.prototype,
+    "barrack",
+    {
+        get = function(self)
+            return self._barrack
+        end
+    },
+    true
+)
+__TS__SetDescriptor(
+    City.prototype,
+    "guard",
+    {
+        get = function(self)
+            return self._guard
+        end
+    },
+    true
+)
+function City.init(self)
+    ____exports.Cities[1] = __TS__New(____exports.City, 320, 320, UID.CITY)
+    ____exports.Cities[2] = __TS__New(____exports.City, -832, 64, UID.CITY)
+    ____exports.Cities[3] = __TS__New(____exports.City, 320, -1024, UID.CITY)
+    ____exports.Cities[4] = __TS__New(____exports.City, -1472, -1024, UID.CITY)
+    ____exports.Cities[5] = __TS__New(____exports.City, -1408, -2432, UID.CITY)
+    ____exports.Cities[6] = __TS__New(____exports.City, -384, -2944, UID.CITY)
+    ____exports.Cities[7] = __TS__New(____exports.City, 3584, 128, UID.CITY)
+    ____exports.Cities[8] = __TS__New(____exports.City, 1664, -384, UID.CITY)
+    ____exports.Cities[9] = __TS__New(____exports.City, 2048, 832, UID.CITY)
+    ____exports.Cities[10] = __TS__New(____exports.City, 4032, -1152, UID.CITY)
+    ____exports.Cities[11] = __TS__New(____exports.City, 768, -2048, UID.CITY)
+    ____exports.Cities[12] = __TS__New(____exports.City, 2112, -1664, UID.CITY)
+    ____exports.Cities[13] = __TS__New(____exports.City, 1408, -3008, UID.CITY)
+    ____exports.Cities[14] = __TS__New(____exports.City, 448, -3648, UID.CITY)
+    ____exports.Cities[15] = __TS__New(____exports.City, 1856, -4032, UID.CITY)
+    ____exports.Cities[16] = __TS__New(____exports.City, 896, -4736, UID.CITY)
+    ____exports.Cities[17] = __TS__New(____exports.City, 2880, -4864, UID.CITY)
+    ____exports.Cities[18] = __TS__New(____exports.City, 1920, -5760, UID.CITY)
+    ____exports.Cities[19] = __TS__New(____exports.City, 3456, -5632, UID.CITY)
+    ____exports.Cities[20] = __TS__New(____exports.City, 2752, -6656, UID.CITY)
+    ____exports.Cities[21] = __TS__New(____exports.City, 3776, -6656, UID.CITY)
+    ____exports.Cities[22] = __TS__New(____exports.City, 4736, -6720, UID.CITY)
+    ____exports.Cities[23] = __TS__New(____exports.City, 4416, -4992, UID.CITY)
+    ____exports.Cities[24] = __TS__New(____exports.City, 5248, -5568, UID.CITY)
+    ____exports.Cities[25] = __TS__New(____exports.City, 5952, -6848, UID.CITY)
+    ____exports.Cities[26] = __TS__New(____exports.City, 5440, -7872, UID.CITY)
+    ____exports.Cities[27] = __TS__New(____exports.City, 4736, -8768, UID.CITY)
+    ____exports.Cities[28] = __TS__New(____exports.City, 3680, -7904, UID.PORT)
+    ____exports.Cities[29] = __TS__New(____exports.City, 7168, -7616, UID.CITY)
+    ____exports.Cities[30] = __TS__New(____exports.City, 6112, -11232, UID.PORT)
+    ____exports.Cities[31] = __TS__New(____exports.City, 6464, -9472, UID.CITY)
+    ____exports.Cities[32] = __TS__New(____exports.City, 5504, -9536, UID.CITY)
+    ____exports.Cities[33] = __TS__New(____exports.City, 6784, -6016, UID.CITY)
+    ____exports.Cities[34] = __TS__New(____exports.City, 7808, -5952, UID.CITY)
+    ____exports.Cities[35] = __TS__New(____exports.City, 5184, -3968, UID.CITY)
+    ____exports.Cities[36] = __TS__New(____exports.City, 6144, -4864, UID.CITY)
+    ____exports.Cities[37] = __TS__New(____exports.City, 7616, -4672, UID.CITY)
+    ____exports.Cities[38] = __TS__New(____exports.City, 6528, -3456, UID.CITY)
+    ____exports.Cities[39] = __TS__New(____exports.City, 7296, -2496, UID.CITY)
+    ____exports.Cities[40] = __TS__New(____exports.City, 8384, -3136, UID.CITY)
+    ____exports.Cities[41] = __TS__New(____exports.City, 6080, -2048, UID.CITY)
+    ____exports.Cities[42] = __TS__New(____exports.City, 5696, -1024, UID.CITY)
+    ____exports.Cities[43] = __TS__New(____exports.City, 7232, -832, UID.CITY)
+    ____exports.Cities[44] = __TS__New(____exports.City, 9344, -1984, UID.CITY)
+    ____exports.Cities[45] = __TS__New(____exports.City, 10240, -384, UID.CITY)
+    ____exports.Cities[46] = __TS__New(____exports.City, 11328, -1664, UID.CITY)
+    ____exports.Cities[47] = __TS__New(____exports.City, 10048, -9280, UID.CITY)
+    ____exports.Cities[48] = __TS__New(____exports.City, 11072, -7168, UID.CITY)
+    ____exports.Cities[49] = __TS__New(____exports.City, 12288, -8192, UID.CITY)
+    ____exports.Cities[50] = __TS__New(____exports.City, 16704, -6080, UID.CITY)
+    ____exports.Cities[51] = __TS__New(____exports.City, 15424, -7360, UID.CITY)
+    ____exports.Cities[52] = __TS__New(____exports.City, 11360, -10336, UID.PORT)
+    ____exports.Cities[53] = __TS__New(____exports.City, 8800, -7392, UID.PORT)
+    ____exports.Cities[54] = __TS__New(____exports.City, 16064, -4096, UID.CITY)
+    ____exports.Cities[55] = __TS__New(____exports.City, 14976, -3648, UID.CITY)
+    ____exports.Cities[56] = __TS__New(____exports.City, 17472, -9664, UID.CITY)
+    ____exports.Cities[57] = __TS__New(____exports.City, 16064, -9408, UID.CITY)
+    ____exports.Cities[58] = __TS__New(____exports.City, 16512, -10880, UID.CITY)
+    ____exports.Cities[59] = __TS__New(____exports.City, 14784, -9600, UID.CITY)
+    ____exports.Cities[60] = __TS__New(____exports.City, 14976, -11136, UID.CITY)
+    ____exports.Cities[61] = __TS__New(____exports.City, 15808, -12224, UID.CITY)
+    ____exports.Cities[62] = __TS__New(____exports.City, 14976, -13440, UID.CITY)
+    ____exports.Cities[63] = __TS__New(____exports.City, 13900, -12320, UID.PORT)
+    ____exports.Cities[64] = __TS__New(____exports.City, 17344, -12480, UID.CITY)
+    ____exports.Cities[65] = __TS__New(____exports.City, 17728, -13440, UID.CITY)
+    ____exports.Cities[66] = __TS__New(____exports.City, 16128, -14272, UID.CITY)
+    ____exports.Cities[67] = __TS__New(____exports.City, 14400, -14784, UID.CITY)
+    ____exports.Cities[68] = __TS__New(____exports.City, 12480, -14080, UID.CITY)
+    ____exports.Cities[69] = __TS__New(____exports.City, 12928, -15104, UID.CITY)
+    ____exports.Cities[70] = __TS__New(____exports.City, 9408, -15104, UID.CITY)
+    ____exports.Cities[71] = __TS__New(____exports.City, 7680, -14528, UID.CITY)
+    ____exports.Cities[72] = __TS__New(____exports.City, 6208, -15040, UID.CITY)
+    ____exports.Cities[73] = __TS__New(____exports.City, 5088, -14112, UID.PORT)
+    ____exports.Cities[74] = __TS__New(____exports.City, -1408, -13824, UID.CITY)
+    ____exports.Cities[75] = __TS__New(____exports.City, -160, -14496, UID.PORT)
+    ____exports.Cities[76] = __TS__New(____exports.City, -3648, -14144, UID.CITY)
+    ____exports.Cities[77] = __TS__New(____exports.City, -5760, -15040, UID.CITY)
+    ____exports.Cities[78] = __TS__New(____exports.City, -7360, -14336, UID.CITY)
+    ____exports.Cities[79] = __TS__New(____exports.City, -8832, -15104, UID.CITY)
+    ____exports.Cities[80] = __TS__New(____exports.City, -10688, -14080, UID.CITY)
+    ____exports.Cities[81] = __TS__New(____exports.City, -12320, -14368, UID.PORT)
+    ____exports.Cities[82] = __TS__New(____exports.City, -11328, -9600, UID.CITY)
+    ____exports.Cities[83] = __TS__New(____exports.City, -10624, -7296, UID.CITY)
+    ____exports.Cities[84] = __TS__New(____exports.City, -12000, -7968, UID.PORT)
+    ____exports.Cities[85] = __TS__New(____exports.City, -9728, -10240, UID.CITY)
+    ____exports.Cities[86] = __TS__New(____exports.City, -9408, -8192, UID.CITY)
+    ____exports.Cities[87] = __TS__New(____exports.City, -6976, -8384, UID.CITY)
+    ____exports.Cities[88] = __TS__New(____exports.City, -7616, -6976, UID.CITY)
+    ____exports.Cities[89] = __TS__New(____exports.City, -10112, -5952, UID.CITY)
+    ____exports.Cities[90] = __TS__New(____exports.City, -6688, -10272, UID.PORT)
+    ____exports.Cities[91] = __TS__New(____exports.City, -5504, -6272, UID.CITY)
+    ____exports.Cities[92] = __TS__New(____exports.City, -5440, -5120, UID.CITY)
+    ____exports.Cities[93] = __TS__New(____exports.City, -3584, -5568, UID.CITY)
+    ____exports.Cities[94] = __TS__New(____exports.City, -3520, -3776, UID.CITY)
+    ____exports.Cities[95] = __TS__New(____exports.City, -4800, -3136, UID.CITY)
+    ____exports.Cities[96] = __TS__New(____exports.City, -6336, -3456, UID.CITY)
+    ____exports.Cities[97] = __TS__New(____exports.City, -6944, -4704, UID.PORT)
+    ____exports.Cities[98] = __TS__New(____exports.City, -4384, -7008, UID.PORT)
+    ____exports.Cities[99] = __TS__New(____exports.City, -2432, -4160, UID.CITY)
+    ____exports.Cities[100] = __TS__New(____exports.City, -1280, -4352, UID.CITY)
+    ____exports.Cities[101] = __TS__New(____exports.City, -1856, -5440, UID.CITY)
+    ____exports.Cities[102] = __TS__New(____exports.City, -448, -6272, UID.CITY)
+    ____exports.Cities[103] = __TS__New(____exports.City, 448, -7296, UID.CITY)
+    ____exports.Cities[104] = __TS__New(____exports.City, 1408, -8256, UID.CITY)
+    ____exports.Cities[105] = __TS__New(____exports.City, -3072, -2368, UID.CITY)
+    ____exports.Cities[106] = __TS__New(____exports.City, -4384, -608, UID.PORT)
+    ____exports.Cities[107] = __TS__New(____exports.City, -3200, -1024, UID.CITY)
+    ____exports.Cities[108] = __TS__New(____exports.City, -2368, -128, UID.CITY)
+    ____exports.Cities[109] = __TS__New(____exports.City, -3168, 480, UID.PORT)
+    ____exports.Cities[110] = __TS__New(____exports.City, -960, 1408, UID.CITY)
+    ____exports.Cities[111] = __TS__New(____exports.City, -1088, 2560, UID.CITY)
+    ____exports.Cities[112] = __TS__New(____exports.City, -2272, 2464, UID.PORT)
+    ____exports.Cities[113] = __TS__New(____exports.City, -1856, 5056, UID.CITY)
+    ____exports.Cities[114] = __TS__New(____exports.City, -768, 5312, UID.CITY)
+    ____exports.Cities[115] = __TS__New(____exports.City, -640, 7232, UID.CITY)
+    ____exports.Cities[116] = __TS__New(____exports.City, 576, 10112, UID.CITY)
+    ____exports.Cities[117] = __TS__New(____exports.City, 1728, 12224, UID.CITY)
+    ____exports.Cities[118] = __TS__New(____exports.City, -2464, 3680, UID.PORT)
+    ____exports.Cities[119] = __TS__New(____exports.City, -1760, 7904, UID.PORT)
+    ____exports.Cities[120] = __TS__New(____exports.City, 1856, 10240, UID.CITY)
+    ____exports.Cities[121] = __TS__New(____exports.City, 1216, 8704, UID.CITY)
+    ____exports.Cities[122] = __TS__New(____exports.City, 576, 6400, UID.CITY)
+    ____exports.Cities[123] = __TS__New(____exports.City, 512, 3392, UID.CITY)
+    ____exports.Cities[124] = __TS__New(____exports.City, 1760, 3040, UID.PORT)
+    ____exports.Cities[125] = __TS__New(____exports.City, 3968, 11584, UID.CITY)
+    ____exports.Cities[126] = __TS__New(____exports.City, 4800, 10368, UID.CITY)
+    ____exports.Cities[127] = __TS__New(____exports.City, 4480, 8448, UID.CITY)
+    ____exports.Cities[128] = __TS__New(____exports.City, 4096, 6848, UID.CITY)
+    ____exports.Cities[129] = __TS__New(____exports.City, 3424, 9184, UID.PORT)
+    ____exports.Cities[130] = __TS__New(____exports.City, -6528, 256, UID.CITY)
+    ____exports.Cities[131] = __TS__New(____exports.City, -6784, 1600, UID.CITY)
+    ____exports.Cities[132] = __TS__New(____exports.City, -7040, 3200, UID.CITY)
+    ____exports.Cities[133] = __TS__New(____exports.City, -8352, -672, UID.PORT)
+    ____exports.Cities[134] = __TS__New(____exports.City, -11136, 2368, UID.CITY)
+    ____exports.Cities[135] = __TS__New(____exports.City, -10208, 4000, UID.PORT)
+    ____exports.Cities[136] = __TS__New(____exports.City, -11488, 800, UID.PORT)
+    ____exports.Cities[137] = __TS__New(____exports.City, -6592, 9344, UID.CITY)
+    ____exports.Cities[138] = __TS__New(____exports.City, -7936, 9792, UID.CITY)
+    ____exports.Cities[139] = __TS__New(____exports.City, -7200, 7968, UID.PORT)
+    ____exports.Cities[140] = __TS__New(____exports.City, -5920, 10464, UID.PORT)
+    ____exports.Cities[141] = __TS__New(____exports.City, -576, 14912, UID.CITY)
+    ____exports.Cities[142] = __TS__New(____exports.City, -1760, 14496, UID.PORT)
+    ____exports.Cities[143] = __TS__New(____exports.City, 5056, 5312, UID.CITY)
+    ____exports.Cities[144] = __TS__New(____exports.City, 4128, 4640, UID.PORT)
+    ____exports.Cities[145] = __TS__New(____exports.City, 5440, 3520, UID.CITY)
+    ____exports.Cities[146] = __TS__New(____exports.City, 3104, 3616, UID.PORT)
+    ____exports.Cities[147] = __TS__New(____exports.City, 5312, 2048, UID.CITY)
+    ____exports.Cities[148] = __TS__New(____exports.City, 4160, 2496, UID.CITY)
+    ____exports.Cities[149] = __TS__New(____exports.City, 4096, 1344, UID.CITY)
+    ____exports.Cities[150] = __TS__New(____exports.City, 2976, 1952, UID.PORT)
+    ____exports.Cities[151] = __TS__New(____exports.City, 6912, 2560, UID.CITY)
+    ____exports.Cities[152] = __TS__New(____exports.City, 6912, 1472, UID.CITY)
+    ____exports.Cities[153] = __TS__New(____exports.City, 7680, 512, UID.CITY)
+    ____exports.Cities[154] = __TS__New(____exports.City, 5376, 384, UID.CITY)
+    ____exports.Cities[155] = __TS__New(____exports.City, 896, -13120, UID.CITY)
+    ____exports.Cities[156] = __TS__New(____exports.City, 2400, -12896, UID.PORT)
+    ____exports.Cities[157] = __TS__New(____exports.City, 6272, 12224, UID.CITY)
+    ____exports.Cities[158] = __TS__New(____exports.City, 10624, 11776, UID.CITY)
+    ____exports.Cities[159] = __TS__New(____exports.City, 10688, 9984, UID.CITY)
+    ____exports.Cities[160] = __TS__New(____exports.City, 12288, 8448, UID.CITY)
+    ____exports.Cities[161] = __TS__New(____exports.City, 9280, 6208, UID.CITY)
+    ____exports.Cities[162] = __TS__New(____exports.City, 6048, 6112, UID.PORT)
+    ____exports.Cities[163] = __TS__New(____exports.City, 6880, 10464, UID.PORT)
+    ____exports.Cities[164] = __TS__New(____exports.City, 3968, -2304, UID.CITY)
+    ____exports.Cities[165] = __TS__New(____exports.City, 2752, -2624, UID.CITY)
+    ____exports.Cities[166] = __TS__New(____exports.City, 4416, -3200, UID.CITY)
+    ____exports.Cities[167] = __TS__New(____exports.City, 3136, -3776, UID.CITY)
+    ____exports.Cities[168] = __TS__New(____exports.City, 320, -10368, UID.CITY)
+    ____exports.Cities[169] = __TS__New(____exports.City, 1238, -11566, UID.PORT)
+    ____exports.Cities[170] = __TS__New(____exports.City, -11584, 14400, UID.CITY)
+    ____exports.Cities[171] = __TS__New(____exports.City, -10432, 15104, UID.CITY)
+    ____exports.Cities[172] = __TS__New(____exports.City, -11040, 12960, UID.PORT)
+    ____exports.Cities[173] = __TS__New(____exports.City, -6016, 15424, UID.CITY)
+    ____exports.Cities[174] = __TS__New(____exports.City, -5600, 14048, UID.PORT)
+    ____exports.Cities[175] = __TS__New(____exports.City, 3264, 13504, UID.CITY)
+    ____exports.Cities[176] = __TS__New(____exports.City, 4160, 13056, UID.CITY)
+    ____exports.Cities[177] = __TS__New(____exports.City, -8000, 4672, UID.CITY)
+    ____exports.Cities[178] = __TS__New(____exports.City, -7552, 5952, UID.CITY)
+    ____exports.Cities[179] = __TS__New(____exports.City, -6432, 4960, UID.PORT)
+    ____exports.Cities[180] = __TS__New(____exports.City, 10496, 16064, UID.CITY)
+    ____exports.Cities[181] = __TS__New(____exports.City, 11936, 15584, UID.PORT)
+    ____exports.Cities[182] = __TS__New(____exports.City, 11456, -3264, UID.CITY)
+    ____exports.Cities[183] = __TS__New(____exports.City, 10464, -4128, UID.PORT)
+    ____exports.Cities[184] = __TS__New(____exports.City, 18432, -3584, UID.CITY)
+    ____exports.Cities[185] = __TS__New(____exports.City, 17472, -4352, UID.CITY)
+    ____exports.Cities[186] = __TS__New(____exports.City, 18432, -5888, UID.CITY)
+    ____exports.Cities[187] = __TS__New(____exports.City, 14400, -1856, UID.CITY)
+    ____exports.Cities[188] = __TS__New(____exports.City, 14848, 1216, UID.CITY)
+    ____exports.Cities[189] = __TS__New(____exports.City, 16704, 1088, UID.CITY)
+    ____exports.Cities[190] = __TS__New(____exports.City, 17088, -1152, UID.CITY)
+    ____exports.Cities[191] = __TS__New(____exports.City, 13024, -3808, UID.PORT)
+    ____exports.Cities[192] = __TS__New(____exports.City, 15424, 5376, UID.CITY)
+    ____exports.Cities[193] = __TS__New(____exports.City, 18048, 6720, UID.CITY)
+    ____exports.Cities[194] = __TS__New(____exports.City, 17984, 3840, UID.CITY)
+    ____exports.Cities[195] = __TS__New(____exports.City, 8640, 3264, UID.CITY)
+    ____exports.Cities[196] = __TS__New(____exports.City, 10496, 1536, UID.CITY)
+    ____exports.Cities[197] = __TS__New(____exports.City, 13056, 2496, UID.CITY)
+    ____exports.Cities[198] = __TS__New(____exports.City, 11264, 3968, UID.CITY)
+    ____exports.Cities[199] = __TS__New(____exports.City, 12864, 5632, UID.CITY)
+    ____exports.Cities[200] = __TS__New(____exports.City, 16576, 15744, UID.CITY)
+    ____exports.Cities[201] = __TS__New(____exports.City, 18176, 15616, UID.CITY)
+    ____exports.Cities[202] = __TS__New(____exports.City, 15296, 8960, UID.CITY)
+    ____exports.Cities[203] = __TS__New(____exports.City, 13952, 8384, UID.CITY)
+    ____exports.Cities[204] = __TS__New(____exports.City, -8768, 15232, UID.CITY)
+    ____exports.Cities[205] = __TS__New(____exports.City, -7936, 14336, UID.CITY)
+    ____exports.Cities[206] = __TS__New(____exports.City, -9472, 13696, UID.CITY)
+    ____exports.Cities[207] = __TS__New(____exports.City, -12736, 14976, UID.CITY)
+    ____exports.Cities[208] = __TS__New(____exports.City, -12352, 13120, UID.CITY)
+    ____exports.Cities[209] = __TS__New(____exports.City, -8000, 2304, UID.CITY)
+    ____exports.Cities[210] = __TS__New(____exports.City, -8512, 1216, UID.CITY)
+    ____exports.Cities[211] = __TS__New(____exports.City, -2400, -7400, UID.PORT)
+    ____exports.Cities[212] = __TS__New(____exports.City, -1376, -8928, UID.PORT)
+    ____exports.Cities[213] = __TS__New(____exports.City, 8864, -11680, UID.PORT)
+    ____exports.Cities[214] = __TS__New(____exports.City, 7008, -12192, UID.PORT)
+    ____exports.Cities[215] = __TS__New(____exports.City, 13408, -10272, UID.PORT)
+    ____exports.Cities[216] = __TS__New(____exports.City, 12576, -11808, UID.PORT)
+    self:onEnter()
+    self:onLeave()
+    self:onTrain()
+end
+function City.onCast(self)
+    local trigUnit = GetTriggerUnit()
+    local targUnit = GetSpellTargetUnit()
+    local city = ____exports.City.fromBarrack:get(trigUnit)
+    if (not city:isPort()) and IsUnitType(targUnit, UTYPE.SHIP) then
+        return false
+    end
+    if (IsUnitType(city.guard, UTYPE.SHIP) and IsTerrainPathable(
+        GetUnitX(targUnit),
+        GetUnitY(targUnit),
+        PATHING_TYPE_FLOATABILITY
+    )) or ((not IsUnitType(city.guard, UTYPE.SHIP)) and IsTerrainPathable(
+        GetUnitX(targUnit),
+        GetUnitY(targUnit),
+        PATHING_TYPE_WALKABILITY
+    )) then
+        city:changeGuard(targUnit)
+    else
+        local oldGuard = city.guard
+        local x = GetUnitX(targUnit)
+        local y = GetUnitY(targUnit)
+        city:changeGuard(targUnit)
+        SetUnitPosition(oldGuard, x, y)
+        SetUnitPosition(city.guard, city.x, city.y)
+        oldGuard = nil
+    end
+    city:setOwner(
+        GetOwningPlayer(targUnit)
+    )
+    trigUnit = nil
+    targUnit = nil
+    return false
+end
+function City.prototype.isPort(self)
+    return GetUnitTypeId(self.barrack) == UID.PORT
+end
+function City.prototype.isGuardShip(self)
+    return IsUnitType(self.guard, UTYPE.SHIP)
+end
+function City.prototype.isGuardDummy(self)
+    return GetUnitTypeId(self.guard) == UID.DUMMY_GUARD
+end
+function City.prototype.getOwner(self)
+    return GetOwningPlayer(self.barrack)
+end
+function City.prototype.reset(self)
+    local x = GetUnitX(self.barrack)
+    local y = GetUnitY(self.barrack)
+    local name = GetUnitName(self.barrack)
+    ____exports.City.fromBarrack:delete(self.barrack)
+    RemoveUnit(self.barrack)
+    self._barrack = nil
+    self:setBarrack(x, y, name)
+    self:removeGuard(true)
+    self:setGuard(self.defaultGuardType)
+end
+function City.prototype.changeGuardOwner(self)
+    SetUnitOwner(
+        self._guard,
+        self:getOwner(),
+        true
+    )
+end
+function City.prototype.setOwner(self, newOwner)
+    if self:getOwner() == newOwner then
+        return false
+    end
+    SetUnitOwner(self.barrack, newOwner, true)
+    SetUnitOwner(self.cop, newOwner, true)
+    IssuePointOrder(
+        self.barrack,
+        "setrally",
+        GetUnitX(self.barrack) - 70,
+        GetUnitY(self.barrack) - 155
+    )
+end
+function City.prototype.setBarrack(self, x, y, name)
+    self._barrack = CreateUnit(defaultOwner, self.defaultBarrackType, x, y, 270)
+    ____exports.City.fromBarrack:set(self.barrack, self)
+    if name and (name ~= GetUnitName(self.barrack)) then
+        BlzSetUnitName(self.barrack, name)
+    end
+end
+function City.prototype.setGuard(self, guard)
+    (((type(guard) == "number") and (function() return (function(o, i, v)
+        o[i] = v
+        return v
+    end)(
+        self,
+        "_guard",
+        CreateUnit(defaultOwner, guard, self.x, self.y, 270)
+    ) end)) or (function() return (function(o, i, v)
+        o[i] = v
+        return v
+    end)(self, "_guard", guard) end))()
+    UnitAddType(self.guard, UTYPE.GUARD)
+    ____exports.City.fromGuard:set(self.guard, self)
+end
+function City.prototype.removeGuard(self, destroy)
+    if destroy == nil then
+        destroy = false
+    end
+    ____exports.City.fromGuard:delete(self.guard)
+    if not destroy then
+        UnitRemoveType(self.guard, UTYPE.GUARD)
+    else
+        RemoveUnit(self.guard)
+    end
+    self._guard = nil
+end
+function City.prototype.changeGuard(self, newGuard)
+    if self.guard ~= newGuard then
+        self:removeGuard(
+            self:isGuardDummy()
+        )
+        self:setGuard(newGuard)
+    end
+    SetUnitPosition(self.guard, self.x, self.y)
+end
+function City.prototype.dummyGuard(self, owner)
+    self:changeGuard(
+        CreateUnit(owner, UID.DUMMY_GUARD, self.x, self.y, 270)
+    )
+    self:setOwner(owner)
+end
+function City.onEnter(self)
+    TriggerAddCondition(
+        ____exports.leaveCityTrig,
+        Condition(
+            function()
+                if IsUnitType(
+                    GetTriggerUnit(),
+                    UTYPE.TRANSPORT
+                ) then
+                    return false
+                end
+                local city = ____exports.City.fromRegion:get(
+                    GetTriggeringRegion()
+                )
+                if isGuardValid(city) then
+                    return false
+                end
+                city:changeGuard(
+                    GetTriggerUnit()
+                )
+                city:setOwner(
+                    GetOwningPlayer(
+                        GetTriggerUnit()
+                    )
+                )
+                return false
+            end
+        )
+    )
+end
+function City.onLeave(self)
+    TriggerAddCondition(
+        ____exports.leaveCityTrig,
+        Condition(
+            function()
+                if not IsUnitType(
+                    GetTriggerUnit(),
+                    UTYPE.GUARD
+                ) then
+                    return false
+                end
+                local city = ____exports.City.fromRegion:get(
+                    GetTriggeringRegion()
+                )
+                local g = CreateGroup()
+                local guardChoice = city.guard
+                GroupEnumUnitsInRange(
+                    g,
+                    city.x,
+                    city.y,
+                    ____exports.CityRegionSize,
+                    FilterFriendlyValidGuards(city)
+                )
+                if (BlzGroupGetSize(g) == 0) and (not isGuardValid(city)) then
+                    city:dummyGuard(
+                        GetOwningPlayer(city.barrack)
+                    )
+                    return false
+                end
+                ForGroup(
+                    g,
+                    function()
+                        local fUnit = GetFilterUnit()
+                    end
+                )
+                city:changeGuard(guardChoice)
+                DestroyGroup(g)
+                g = nil
+                guardChoice = nil
+                return false
+            end
+        )
+    )
+end
+function City.onTrain(self)
+    TriggerAddCondition(
+        ____exports.unitTrainedTrig,
+        Condition(
+            function()
+                local city = ____exports.City.fromBarrack:get(
+                    GetTriggerUnit()
+                )
+                local trainedUnit = GetTrainedUnit()
+                if city:isGuardShip() and (not IsUnitType(trainedUnit, UTYPE.SHIP)) then
+                    city:changeGuard(trainedUnit)
+                end
+                trainedUnit = nil
+                return false
+            end
+        )
+    )
+end
+City.fromBarrack = __TS__New(Map)
+City.fromGuard = __TS__New(Map)
+City.fromRegion = __TS__New(Map)
+City.cities = {}
+return ____exports
+ end,
+["src.resources.abilityID"] = function(...) local ____exports = {}
+____exports.AID = {
+    INDEXER = FourCC("uDex"),
+    HEAL = FourCC("a000"),
+    ROAR = FourCC("a001"),
+    DISPEL_MAGIC = FourCC("a002"),
+    FRENZY = FourCC("a003"),
+    UNHOLY_FRENZY = FourCC("a004"),
+    BERSERK = FourCC("a005"),
+    SWAP = FourCC("a030"),
+    SPWN_ALL = FourCC("a031"),
+    SPWN_3000 = FourCC("a032"),
+    SPWN_6000 = FourCC("a033"),
+    SPWN_RESET = FourCC("a034"),
+    CARGO_HOLD = FourCC("a009"),
+    LOAD = FourCC("a010"),
+    UNLOAD = FourCC("a011"),
+    FORFEIT = FourCC("a050"),
+    LOW_HEALTH_DEFENDER = FourCC("a051"),
+    HIGH_HEALTH_DEFENDER = FourCC("a052"),
+    LOW_VALUE_DEFENDER = FourCC("a053"),
+    HIGH_VALUE_DEFENDER = FourCC("a054"),
+    ALLOW_PINGS = FourCC("a055"),
+    BLOCK_PINGS = FourCC("a056"),
+    PING = FourCC("a057")
+}
+return ____exports
+ end,
 ["src.app.country.spawner-type"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local ____abilityID = require("src.resources.abilityID")
@@ -9464,6 +9780,8 @@ return ____exports
  end,
 ["src.app.country.country-type"] = function(...) require("lualib_bundle");
 local ____exports = {}
+local ____player_2Dtype = require("src.app.player.player-type")
+local GamePlayer = ____player_2Dtype.GamePlayer
 local ____hexColors = require("src.resources.hexColors")
 local HexColors = ____hexColors.HexColors
 local ____city_2Dtype = require("src.app.country.city-type")
@@ -9495,6 +9813,7 @@ function Country.prototype.____constructor(self, name, x, y, ...)
             ____exports.Country.fromCity:set(city, self)
         end
     )
+    self.allocLim = math.floor(#cities / 2)
     local ____ = self.owner == Player(25)
 end
 __TS__SetDescriptor(
@@ -9821,9 +10140,136 @@ function Country.prototype.animate(self)
         end
     )
 end
+function Country.prototype.initCitiesOwned(self)
+    GamePlayer.fromID:forEach(
+        function(____, gPlayer)
+            if GetPlayerId(gPlayer.player) >= 25 then
+                return
+            end
+            self.citiesOwned:set(gPlayer, 0)
+        end
+    )
+end
 Country.fromName = __TS__New(Map)
 Country.fromSpawner = __TS__New(Map)
 Country.fromCity = __TS__New(Map)
+return ____exports
+ end,
+["src.app.country.city-allocation"] = function(...) require("lualib_bundle");
+local ____exports = {}
+local ____player_2Dtype = require("src.app.player.player-type")
+local GamePlayer = ____player_2Dtype.GamePlayer
+local ____translators = require("src.libs.translators")
+local Util = ____translators.Util
+local ____country_2Dtype = require("src.app.country.country-type")
+local Country = ____country_2Dtype.Country
+____exports.CityAllocation = __TS__Class()
+local CityAllocation = ____exports.CityAllocation
+CityAllocation.name = "CityAllocation"
+function CityAllocation.prototype.____constructor(self)
+end
+function CityAllocation.start(self)
+    local playerPool = self:buildPlayerPool()
+    local cityPool = self:buildCityPool()
+    local citiesMax = math.min(
+        ((#playerPool == 2) and 18) or math.floor(#cityPool / #playerPool),
+        20
+    )
+    while #playerPool > 0 do
+        local gPlayer = GamePlayer.fromID:get(
+            GetPlayerId(
+                __TS__ArrayShift(playerPool)
+            )
+        )
+        local city = self:getCityFromPool(cityPool)
+        local country = Country.fromCity:get(city)
+        if country.citiesOwned:get(gPlayer) < country.allocLim then
+            ____exports.CityAllocation:changeOwner(country, city, gPlayer, cityPool)
+        else
+            local counter = 0
+            repeat
+                do
+                    city = self:getCityFromPool(cityPool)
+                    country = Country.fromCity:get(city)
+                end
+            until not (((country.citiesOwned:get(gPlayer) >= country.allocLim) or (counter == 50)) or (city == nil))
+            if city == nil then
+                print("Error in CityAllocation, No cities avaiable in pool")
+            end
+            if counter >= 50 then
+                print("Error in CityAllocation, No valid city found in pool")
+            end
+            ____exports.CityAllocation:changeOwner(country, city, gPlayer, cityPool)
+        end
+        if #gPlayer.cities < citiesMax then
+            __TS__ArrayPush(playerPool, gPlayer.player)
+        end
+    end
+    __TS__ArraySetLength(playerPool, 0)
+    playerPool = nil
+    __TS__ArraySetLength(cityPool, 0)
+    cityPool = nil
+end
+function CityAllocation.buildCityPool(self)
+    local result = {}
+    for ____, ____value in __TS__Iterator(Country.fromName) do
+        local v
+        v = ____value[2]
+        v:initCitiesOwned()
+        if #v.cities > 1 then
+            __TS__ArrayForEach(
+                v.cities,
+                function(____, city)
+                    __TS__ArrayPush(result, city)
+                end
+            )
+        end
+    end
+    Util:ShuffleArray(result)
+    return result
+end
+function CityAllocation.buildPlayerPool(self)
+    local result = {}
+    GamePlayer.fromID:forEach(
+        function(____, gPlayer)
+            if gPlayer:isAlive() then
+                __TS__ArrayPush(result, gPlayer.player)
+            end
+        end
+    )
+    return result
+end
+function CityAllocation.getCityFromPool(self, cityPool)
+    if #cityPool == 0 then
+        return nil
+    end
+    local city = cityPool[math.floor(
+        math.random() * #cityPool
+    ) + 1]
+    if city:getOwner() ~= Player(24) then
+        __TS__ArraySplice(
+            cityPool,
+            __TS__ArrayIndexOf(cityPool, city),
+            1
+        )
+        city = self:getCityFromPool(cityPool)
+    end
+    return city
+end
+function CityAllocation.changeOwner(self, country, city, player, cityPool)
+    city:setOwner(player.player)
+    city:changeGuardOwner()
+    __TS__ArrayPush(player.cities, city.barrack)
+    __TS__ArraySplice(
+        cityPool,
+        __TS__ArrayIndexOf(cityPool, city),
+        1
+    )
+    country.citiesOwned:set(
+        player,
+        country.citiesOwned:get(player) + 1
+    )
+end
 return ____exports
  end,
 ["src.app.mode-ui-type"] = function(...) require("lualib_bundle");
@@ -10275,322 +10721,6 @@ function Trees.prototype.newAshenvaleCanopyTree(self, terrainTypeId)
 end
 return ____exports
  end,
-["src.libs.utils"] = function(...) require("lualib_bundle");
-local ____exports = {}
-local ____hexColors = require("src.resources.hexColors")
-local HexColors = ____hexColors.HexColors
-local ____index = require("lua_modules.w3ts.index")
-local TextTag = ____index.TextTag
-local MapPlayer = ____index.MapPlayer
-local Trigger = ____index.Trigger
-local ____index = require("lua_modules.w3ts.globals.index")
-local Players = ____index.Players
-function ____exports.PlayLocalSound(soundPath, p)
-    local sound = CreateSound(soundPath, false, false, true, 10, 10, "")
-    if GetLocalPlayer() ~= p then
-        SetSoundVolume(sound, 0)
-    end
-    StartSound(sound)
-    KillSoundWhenDone(sound)
-    sound = nil
-end
-function ____exports.ErrorMessage(p, msg)
-    if GetLocalPlayer() == p then
-        ClearTextMessages()
-    end
-    DisplayTimedTextToPlayer(p, 0.52, 0.96, 2, ((("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" .. HexColors.TANGERINE) .. " ") .. msg) .. "|r")
-    ____exports.PlayLocalSound("Sound\\Interface\\Error.flac", p)
-end
-function ____exports.showOverheadText(x, y, r, g, b, a, text)
-    local t = __TS__New(TextTag)
-    t:setText(text, 10, true)
-    t:setPos(x, y, 90)
-    t:setColor(r, g, b, a)
-    t:setPermanent(false)
-    t:setLifespan(2)
-    t:setFadepoint(1)
-    t:setVisible(true)
-    t:setVelocity(
-        0,
-        (7.1 / 128) * Sin(3.14159 / 2)
-    )
-    return t
-end
-function ____exports.MessageAllPlayers(message, time)
-    DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, time, message)
-end
-function ____exports.MessagePlayer(who, message)
-    if __TS__InstanceOf(who, MapPlayer) then
-        DisplayTimedTextToPlayer(who.handle, 0, 0, 10, message)
-    else
-        DisplayTimedTextToPlayer(
-            Player(who),
-            0,
-            0,
-            10,
-            message
-        )
-    end
-end
-function ____exports.GetActivePlayers()
-    return __TS__ArrayFilter(
-        Players,
-        function(____, currentPlayer)
-            local isPlaying = currentPlayer.slotState == PLAYER_SLOT_STATE_PLAYING
-            local isUser = currentPlayer:getState(PLAYER_STATE_OBSERVER) == 0
-            if isPlaying and isUser then
-                return true
-            end
-        end
-    )
-end
-local TEMP_LOCATION = Location(0, 0)
-function ____exports.getZFromXY(x, y)
-    MoveLocation(TEMP_LOCATION, x, y)
-    local z = GetLocationZ(TEMP_LOCATION)
-    return z
-end
-function ____exports.syncData(handle, listenFor, cb)
-    local syncTrigger = __TS__New(Trigger)
-    syncTrigger:registerPlayerSyncEvent(listenFor, handle, false)
-    syncTrigger:addAction(
-        function()
-            local data = BlzGetTriggerSyncData()
-            syncTrigger:destroy()
-            cb(data)
-        end
-    )
-    return function(toSend)
-        BlzSendSyncData(handle, toSend)
-    end
-end
-function ____exports.distanceBetweenPoints(x1, y1, x2, y2)
-    return SquareRoot(
-        Pow(x2 - x1, 2) + Pow(y2 - y1, 2)
-    )
-end
-return ____exports
- end,
-["src.libs.translators"] = function(...) require("lualib_bundle");
-local ____exports = {}
-local ____utils = require("src.libs.utils")
-local getZFromXY = ____utils.getZFromXY
-function ____exports.SendMessage(msg)
-    DisplayTimedTextToForce(
-        bj_FORCE_ALL_PLAYERS,
-        10,
-        tostring(msg)
-    )
-end
-____exports.console = __TS__Class()
-local console = ____exports.console
-console.name = "console"
-function console.prototype.____constructor(self)
-end
-function console.log(self, input)
-    ____exports.SendMessage(input)
-end
-function ____exports.SendMessageToAdmin(msg)
-end
-function ____exports.PlayNewSound(soundPath, volume)
-    local result = CreateSound(soundPath, false, false, true, 10, 10, "")
-    SetSoundDuration(
-        result,
-        GetSoundFileDuration(soundPath)
-    )
-    SetSoundChannel(result, 0)
-    SetSoundVolume(result, volume)
-    SetSoundPitch(result, 1)
-    StartSound(result)
-    KillSoundWhenDone(result)
-    return result
-end
-function ____exports.PlayNewSoundOnUnit(soundPath, unit, volume, pitch)
-    if pitch == nil then
-        pitch = 1
-    end
-    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
-    SetSoundDuration(
-        result,
-        GetSoundFileDuration(soundPath)
-    )
-    SetSoundChannel(result, 0)
-    SetSoundVolume(result, volume)
-    SetSoundPitch(result, pitch)
-    SetSoundDistances(result, 2000, 5000)
-    SetSoundDistanceCutoff(result, 4500)
-    local loc = Location(unit.x, unit.y)
-    PlaySoundAtPointBJ(
-        result,
-        volume,
-        loc,
-        getZFromXY(unit.x, unit.y)
-    )
-    RemoveLocation(loc)
-    KillSoundWhenDone(result)
-    return result
-end
-function ____exports.PlayNewSoundAt(soundPath, x, y, volume)
-    local result = CreateSound(soundPath, false, true, true, 10, 10, "")
-    SetSoundDuration(
-        result,
-        GetSoundFileDuration(soundPath)
-    )
-    SetSoundChannel(result, 0)
-    SetSoundVolume(result, volume)
-    SetSoundPitch(result, 1)
-    SetSoundDistances(result, 2000, 5000)
-    SetSoundDistanceCutoff(result, 4500)
-    local loc = Location(x, y)
-    PlaySoundAtPointBJ(
-        result,
-        volume,
-        loc,
-        getZFromXY(x, y)
-    )
-    RemoveLocation(loc)
-    KillSoundWhenDone(result)
-    return result
-end
-function ____exports.DecodeFourCC(fourcc)
-    return string.char((fourcc >> 24) & 255, (fourcc >> 16) & 255, (fourcc >> 8) & 255, fourcc & 255)
-end
-____exports.Util = __TS__Class()
-local Util = ____exports.Util
-Util.name = "Util"
-function Util.prototype.____constructor(self)
-end
-function Util.ColourString(self, colour, str)
-    return (("|cFF" .. colour) .. str) .. "|r"
-end
-function Util.ShuffleArray(self, arr)
-    do
-        local i = #arr - 1
-        while i > 0 do
-            local j = math.floor(
-                math.random() * (i + 1)
-            )
-            local temp = arr[i + 1]
-            arr[i + 1] = arr[j + 1]
-            arr[j + 1] = temp
-            i = i - 1
-        end
-    end
-end
-function Util.RandomHash(self, length)
-    local result = ""
-    local characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-    local charactersLength = #characters
-    do
-        local i = 0
-        while i < length do
-            result = result .. __TS__StringCharAt(
-                characters,
-                math.floor(
-                    math.random() * charactersLength
-                )
-            )
-            i = i + 1
-        end
-    end
-    return result
-end
-function Util.GetRandomKey(self, collection)
-    local index = math.floor(
-        math.random() * collection.size
-    )
-    local cntr = 0
-    for ____, key in __TS__Iterator(
-        collection:keys()
-    ) do
-        if (function()
-            local ____tmp = cntr
-            cntr = ____tmp + 1
-            return ____tmp
-        end)() == index then
-            return key
-        end
-    end
-end
-function Util.GetAllKeys(self, collection)
-    local keys = {}
-    for ____, key in __TS__Iterator(
-        collection:keys()
-    ) do
-        __TS__ArrayPush(keys, key)
-    end
-    return keys
-end
-function Util.ArraysToString(self, arr)
-    local output = "["
-    do
-        local i = 0
-        while i < #arr do
-            do
-                if i == (#arr - 1) then
-                    output = output .. (("\"" .. tostring(arr[i + 1])) .. "\"")
-                    goto __continue23
-                end
-                output = output .. (("\"" .. tostring(arr[i + 1])) .. "\", ")
-            end
-            ::__continue23::
-            i = i + 1
-        end
-    end
-    output = output .. "]"
-    return output
-end
-function Util.ParseInt(self, str)
-    return str
-end
-function Util.ParsePositiveInt(self, str)
-    local int = __TS__Number(str)
-    if int < 0 then
-        return 0
-    end
-    return int
-end
-function Util.Round(self, x)
-    return math.floor((x + 0.5) - ((x + 0.5) % 1))
-end
-function Util.RandomEnumKey(self, enumeration)
-    local values = __TS__ArrayFilter(
-        __TS__ArrayMap(
-            __TS__ObjectKeys(enumeration),
-            function(____, key) return enumeration[key] end
-        ),
-        function(____, value) return type(enumeration[value]) ~= "number" end
-    )
-    local randValue = values[math.floor(
-        math.random() * #values
-    ) + 1]
-    return randValue
-end
-Util.COLOUR_IDS = {RED = 0, BLUE = 1, TEAL = 2, PURPLE = 3, YELLOW = 4, ORANGE = 5, GREEN = 6, PINK = 7, GRAY = 8, GREY = 8, LIGHT_BLUE = 9, LIGHTBLUE = 9, LB = 9, DARK_GREEN = 10, DARKGREEN = 10, DG = 10, BROWN = 11, MAROON = 12, NAVY = 13, TURQUOISE = 14, VOILET = 15, WHEAT = 16, PEACH = 17, MINT = 18, LAVENDER = 19, COAL = 20, SNOW = 21, EMERALD = 22, PEANUT = 23}
-____exports.CREEP_TYPE = CREEP_TYPE or ({})
-____exports.CREEP_TYPE.NORMAL = 0
-____exports.CREEP_TYPE[____exports.CREEP_TYPE.NORMAL] = "NORMAL"
-____exports.CREEP_TYPE.AIR = 1
-____exports.CREEP_TYPE[____exports.CREEP_TYPE.AIR] = "AIR"
-____exports.CREEP_TYPE.CHAMPION = 2
-____exports.CREEP_TYPE[____exports.CREEP_TYPE.CHAMPION] = "CHAMPION"
-____exports.CREEP_TYPE.BOSS = 3
-____exports.CREEP_TYPE[____exports.CREEP_TYPE.BOSS] = "BOSS"
-____exports.ARMOUR_TYPE = ARMOUR_TYPE or ({})
-____exports.ARMOUR_TYPE.UNARMOURED = 0
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.UNARMOURED] = "UNARMOURED"
-____exports.ARMOUR_TYPE.LIGHT = 1
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.LIGHT] = "LIGHT"
-____exports.ARMOUR_TYPE.MEDIUM = 2
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.MEDIUM] = "MEDIUM"
-____exports.ARMOUR_TYPE.HEAVY = 3
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HEAVY] = "HEAVY"
-____exports.ARMOUR_TYPE.FORTIFIED = 4
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.FORTIFIED] = "FORTIFIED"
-____exports.ARMOUR_TYPE.HERO = 5
-____exports.ARMOUR_TYPE[____exports.ARMOUR_TYPE.HERO] = "HERO"
-return ____exports
- end,
 ["src.app.user-interface-type"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local ____translators = require("src.libs.translators")
@@ -10777,6 +10907,8 @@ local ____camera_2Dcontrols = require("src.app.camera-controls")
 local CameraControls = ____camera_2Dcontrols.default
 local ____command_2Dprocessor = require("src.app.commands.command-processor")
 local CommandProcessor = ____command_2Dprocessor.CommandProcessor
+local ____city_2Dallocation = require("src.app.country.city-allocation")
+local CityAllocation = ____city_2Dallocation.CityAllocation
 local ____city_2Dtype = require("src.app.country.city-type")
 local City = ____city_2Dtype.City
 local ____country_2Dtype = require("src.app.country.country-type")
@@ -10797,8 +10929,12 @@ local PLAYER_COLORS = ____playerColorData.PLAYER_COLORS
 local PLAYER_COLOR_NAMES = ____playerColorData.PLAYER_COLOR_NAMES
 local ____translators = require("src.libs.translators")
 local Util = ____translators.Util
+local ____abilityID = require("src.resources.abilityID")
+local AID = ____abilityID.AID
 local ____hexColors = require("src.resources.hexColors")
 local HexColors = ____hexColors.HexColors
+local ____unitID = require("src.resources.unitID")
+local UID = ____unitID.UID
 local ____index = require("lua_modules.w3ts.index")
 local Timer = ____index.Timer
 local ____index = require("lua_modules.w3ts.globals.index")
@@ -10905,6 +11041,7 @@ function Game.runModeSelection(self)
         true,
         function()
             if tick >= 1 then
+                tick = tick - 1
                 BlzFrameSetText(
                     BlzGetFrameByName("cTimer", 0),
                     ("Mode selection ends in " .. tostring(tick)) .. " seconds"
@@ -10915,7 +11052,6 @@ function Game.runModeSelection(self)
                 ModeUI:pList(
                     BlzGetFrameByName("EscMenuBackdrop", 0)
                 )
-                tick = tick - 1
             else
                 modeTimer:pause()
                 modeTimer:destroy()
@@ -10923,25 +11059,38 @@ function Game.runModeSelection(self)
                     BlzGetFrameByName("OBSERVE GAME", 0),
                     false
                 )
+                BlzFrameSetText(
+                    BlzGetFrameByName("cTimer", 0),
+                    "Game starts in 5 seconds"
+                )
                 ____exports.Game:initRound()
             end
         end
     )
 end
 function Game.initRound(self)
+    ____exports.Game:assignColors()
+    GamePlayer.fromID:forEach(
+        function(____, gPlayer)
+            local u = CreateUnit(gPlayer.player, UID.PLAYER_TOOLS, 18750, -16200, 270)
+            SetUnitPathing(u, false)
+            UnitRemoveAbility(u, AID.LOW_HEALTH_DEFENDER)
+            UnitRemoveAbility(u, AID.LOW_VALUE_DEFENDER)
+            UnitRemoveAbility(u, AID.ALLOW_PINGS)
+            UnitRemoveAbility(u, AID.FORFEIT)
+            if gPlayer:isPlaying() then
+                gPlayer:initBonusUI()
+                gPlayer:setStatus("|cFF00FF00Alive|r")
+            end
+        end
+    )
+    CityAllocation:start()
     local tick = 5
     local modeTimer = __TS__New(Timer)
     modeTimer:start(
         1,
         true,
         function()
-            if tick == 5 then
-                ____exports.Game:assignColors()
-                GamePlayer.fromID:forEach(
-                    function(____, gPlayer)
-                    end
-                )
-            end
             if tick >= 1 then
                 BlzFrameSetText(
                     BlzGetFrameByName("cTimer", 0),
@@ -11171,94 +11320,6 @@ end
 Transports.autoLoadTimer = __TS__New(Map)
 Transports.loadedUnits = __TS__New(Map)
 Transports.onLoadTrig = CreateTrigger()
-return ____exports
- end,
-["src.app.country.city-allocation"] = function(...) require("lualib_bundle");
-local ____exports = {}
-local ____translators = require("src.libs.translators")
-local Util = ____translators.Util
-local ____country_2Dtype = require("src.app.country.country-type")
-local Country = ____country_2Dtype.Country
-____exports.CityAllocation = {}
-do
-    local function start()
-        local playerPool = self:buildPlayerPool()
-        local cityPool = self:buildCityPool()
-        local citiesMax = self:setCitiesPerPlayer(playerPool, cityPool)
-        playerPool = nil
-        cityPool = nil
-    end
-    local function buildPlayerPool()
-        local result = {}
-        do
-            local i = 0
-            while i < bj_MAX_PLAYERS do
-                if (GetPlayerSlotState(
-                    Player(i)
-                ) == PLAYER_SLOT_STATE_PLAYING) and (GetPlayerState(
-                    Player(i),
-                    PLAYER_STATE_OBSERVER
-                ) == 0) then
-                    __TS__ArrayPush(
-                        result,
-                        Player(i)
-                    )
-                end
-                i = i + 1
-            end
-        end
-        return result
-    end
-    local function buildCityPool()
-        local result = {}
-        for ____, ____value in __TS__Iterator(Country.fromName) do
-            local k = ____value[1]
-            local v
-            v = ____value[2]
-            if v.size > 1 then
-                __TS__ArrayForEach(
-                    v.cities,
-                    function(____, city)
-                        __TS__ArrayPush(result, city)
-                    end
-                )
-            end
-        end
-        Util:ShuffleArray(result)
-        Util:ShuffleArray(result)
-        return result
-    end
-    local function setCitiesPerPlayer(playerPool, cityPool)
-        local numOfCities = ((#playerPool == 2) and 18) or math.floor(#cityPool / #playerPool)
-        return math.min(numOfCities, 20)
-    end
-    local function getPlayerFromPool(playerPool, citiesMax)
-        if #playerPool == 0 then
-            return nil
-        end
-        local player = playerPool[math.floor(
-            math.random() * #playerPool
-        ) + 1]
-        return player
-    end
-    local function getCityFromPool(cityPool)
-        if #cityPool == 0 then
-            return nil
-        end
-        local city = cityPool[math.floor(
-            math.random() * #cityPool
-        ) + 1]
-        if city:getOwner() ~= Player(25) then
-            __TS__ArraySplice(
-                cityPool,
-                __TS__ArrayIndexOf(cityPool, city),
-                1
-            )
-            city = self:getCityFromPool(cityPool)
-        end
-        return city
-    end
-end
 return ____exports
  end,
 ["src.app.game.onLoad"] = function(...)  end,
