@@ -11003,6 +11003,9 @@ function CityAllocation.buildPlayerPool(self)
     local result = {}
     GamePlayer.fromID:forEach(
         function(____, gPlayer)
+            if GetPlayerId(gPlayer.player) >= 24 then
+                return
+            end
             if gPlayer:isAlive() then
                 __TS__ArrayPush(result, gPlayer.player)
             end
@@ -11031,14 +11034,19 @@ function CityAllocation.changeOwner(self, country, city, player, cityPool)
     city:setOwner(player.player)
     city:changeGuardOwner()
     __TS__ArrayPush(player.cities, city.barrack)
+    country.citiesOwned:set(
+        player,
+        country.citiesOwned:get(player) + 1
+    )
     __TS__ArraySplice(
         cityPool,
         __TS__ArrayIndexOf(cityPool, city),
         1
     )
-    country.citiesOwned:set(
-        player,
-        country.citiesOwned:get(player) + 1
+    print(
+        ((((((player.names.acct .. " owns ") .. tostring(
+            country.citiesOwned:get(player)
+        )) .. " cities in ") .. country.name) .. " and they own ") .. tostring(#player.cities)) .. " total"
     )
 end
 return ____exports
@@ -11494,27 +11502,13 @@ return ____exports
  end,
 ["src.app.user-interface-type"] = function(...) require("lualib_bundle");
 local ____exports = {}
-local ____translators = require("src.libs.translators")
-local Util = ____translators.Util
-local ____hexColors = require("src.resources.hexColors")
-local HexColors = ____hexColors.HexColors
 ____exports.UserInterface = __TS__Class()
 local UserInterface = ____exports.UserInterface
 UserInterface.name = "UserInterface"
 function UserInterface.prototype.____constructor(self)
 end
 function UserInterface.onLoad(self)
-    print(
-        tostring(
-            Util:RandomEnumKey(HexColors)
-        ) .. "Adjusting UI Resource Frames"
-    )
     ____exports.UserInterface:setResourceFrames()
-    print(
-        tostring(
-            Util:RandomEnumKey(HexColors)
-        ) .. "Hiding Private Message Options"
-    )
     ____exports.UserInterface:hidePMOptions()
     ____exports.UserInterface:hideUI(true)
 end

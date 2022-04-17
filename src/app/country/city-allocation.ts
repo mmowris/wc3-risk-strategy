@@ -66,6 +66,8 @@ export class CityAllocation {
 		let result: player[] = [];
 
 		GamePlayer.fromID.forEach(gPlayer => {
+			if (GetPlayerId(gPlayer.player) >= 24) return;
+			
 			if (gPlayer.isAlive()) {
 				result.push(gPlayer.player);
 			}
@@ -91,7 +93,8 @@ export class CityAllocation {
 		city.setOwner(player.player);
 		city.changeGuardOwner();
 		player.cities.push(city.barrack);
+		country.citiesOwned.set(player, country.citiesOwned.get(player) + 1);
 		cityPool.splice(cityPool.indexOf(city), 1);
-		country.citiesOwned.set(player, country.citiesOwned.get(player) + 1)
+		print(`${player.names.acct} owns ${country.citiesOwned.get(player)} cities in ${country.name} and they own ${player.cities.length} total`)
 	}
 }

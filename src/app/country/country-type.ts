@@ -4,7 +4,7 @@ import { Cities, City } from "./city-type";
 import { Spawner } from "./spawner-type";
 
 export class Country {
-	private name: string;
+	public name: string;
 	private _cities: City[] = [];
 	private spawner: Spawner;
 	private text: texttag;

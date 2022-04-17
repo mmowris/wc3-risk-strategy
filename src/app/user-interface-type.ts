@@ -5,9 +5,7 @@ export class UserInterface {
 	private static forTheReplays: location[] = [];
 
 	public static onLoad() {
-		print(`${Util.RandomEnumKey(HexColors)}Adjusting UI Resource Frames`);
 		UserInterface.setResourceFrames();
-		print(`${Util.RandomEnumKey(HexColors)}Hiding Private Message Options`);
 		UserInterface.hidePMOptions();
 		UserInterface.hideUI(true);
 	}
