@@ -12,13 +12,27 @@ export class CityAllocation {
 		let citiesMax: number = (Math.min((playerPool.length == 2) ? 18 : Math.floor(cityPool.length / playerPool.length), 20)); // TODO: refactor when promode is created
 
 		while (playerPool.length > 0) {
-			let player: GamePlayer = GamePlayer.fromID.get(GetPlayerId(playerPool.shift()));
+			let gPlayer: GamePlayer = GamePlayer.fromID.get(GetPlayerId(playerPool.shift()));
 			let city: City = this.getCityFromPool(cityPool);
 			let country: Country = Country.fromCity.get(city);
 
-			if (country.citiesOwned.get(player) < country.allocLim) {
-				city.setOwner(player.player);
-				city.changeGuardOwner()
+			if (country.citiesOwned.get(gPlayer) < country.allocLim) {
+				CityAllocation.changeOwner(city, gPlayer, cityPool);
+			} else {
+				let counter: number = 0;
+
+				do {
+				    city = this.getCityFromPool(cityPool);
+				} while (country.citiesOwned.get(gPlayer) >= country.allocLim || counter == 50 || city == null);
+	    
+				if (city == null) print(`Error in CityAllocation, No cities avaiable in pool`)
+				if (counter >= 50) print(`Error in CityAllocation, No valid city found in pool`)
+	    
+				CityAllocation.changeOwner(city, gPlayer, cityPool);
+			}
+
+			if (gPlayer.cities.length < citiesMax) {
+				playerPool.push(gPlayer.player)
 			}
 		}
 
@@ -91,7 +105,10 @@ export class CityAllocation {
 		return city;
 	}
 
-	private static initCityMaps() {
-
+	private static changeOwner(city: City, player: GamePlayer, cityPool: City[]) {
+		city.setOwner(player.player);
+		city.changeGuardOwner();
+		player.cities.push(city.barrack);
+		cityPool.splice(cityPool.indexOf(city), 1);
 	}
 }
