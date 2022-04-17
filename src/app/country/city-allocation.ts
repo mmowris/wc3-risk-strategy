@@ -1,86 +1,97 @@
+import { GamePlayer } from "app/player/player-type";
 import { Util } from "libs/translators";
 import { City } from "./city-type";
 import { Country } from "./country-type";
 
-export namespace CityAllocation {
-    function start() {
-        let playerPool: player[] = this.buildPlayerPool();
-        let cityPool: City[] = this.buildCityPool();
-        let citiesMax: number = this.setCitiesPerPlayer(playerPool, cityPool);
+export class CityAllocation {
+	constructor() { }
+
+	public static start() {
+		let playerPool: player[] = this.buildPlayerPool();
+		let cityPool: City[] = this.buildCityPool();
+		let citiesMax: number = (Math.min((playerPool.length == 2) ? 18 : Math.floor(cityPool.length / playerPool.length), 20)); // TODO: refactor when promode is created
+
+		while (playerPool.length > 0) {
+			let player: GamePlayer = GamePlayer.fromID.get(GetPlayerId(playerPool.shift()));
+			let city: City = this.getCityFromPool(cityPool);
+			let country: Country = Country.fromCity.get(city);
+
+			if (country.citiesOwned.get(player) < country.allocLim) {
+				city.setOwner(player.player);
+				city.changeGuardOwner()
+			}
+		}
 
 
 
 
+		playerPool = null;
+		cityPool = null;
+	}
 
+	private static buildCityPool(): City[] {
+		let result: City[] = [];
 
-        playerPool = null;
-        cityPool = null;
-    }
+		for (let [, v] of Country.fromName) {
+			v.initCitiesOwned();
+			
+			if (v.cities.length > 1) {
+				v.cities.forEach(city => {
+					result.push(city);
+				})
+			}
+		}
 
-    function buildPlayerPool(): player[] {
-        let result: player[] = [];
+		Util.ShuffleArray(result);
 
-        for (let i = 0; i < bj_MAX_PLAYERS; i++) {
-            if (GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING && GetPlayerState(Player(i), PLAYER_STATE_OBSERVER) == 0) {
-                result.push(Player(i));
-            }
-        }
+		return result;
+	}
 
-        return result
-    }
+	private static buildPlayerPool(): player[] {
+		let result: player[] = [];
 
-    function buildCityPool(): City[] {
-        let result: City[] = [];
+		GamePlayer.fromID.forEach(gPlayer => {
+			if (gPlayer.isPlaying()) {
+				result.push(gPlayer.player);
+			}
+		})
 
-        for (let [k, v] of Country.fromName ) {
-            if (v.size > 1) {
-                v.cities.forEach(city => {
-                    result.push(city);
-                })
-            }
-        }
+		return result
+	}
 
-        Util.ShuffleArray(result);
-        Util.ShuffleArray(result);
+	private static getPlayerFromPool(playerPool: player[], citiesMax: number): player | null {
+		//Ends our recursive search if no player is avaiable
+		if (playerPool.length == 0) return null;
 
-        return result;
-    }
+		//Get random player from pool
+		let player: player = playerPool[Math.floor(Math.random() * playerPool.length)];
 
-    function setCitiesPerPlayer(playerPool: player[], cityPool: City[]): number {
-        let numOfCities: number = (playerPool.length == 2) ? 18 : Math.floor(cityPool.length / playerPool.length); //18 for 1v1
+		//TODO
+		// if (player.ownedCities.length >= citiesMax) {
+		//     //Remove player from pool if they have to enough cities
+		//     playerPool.splice(playerPool.indexOf(player), 1)
+		//     //Recursive search for a new player
+		//     return this.getPlayerFromPool(playerPool, citiesMax);
+		// }
 
-        return Math.min(numOfCities, 20); //Never more then 20 cities
-    }
+		//Assume that the player is allowed to receive another city, thus returning that player
+		return player;
+	}
 
-    function getPlayerFromPool(playerPool: player[], citiesMax: number): player | null {
-        //Ends our recursive search if no player is avaiable
-        if (playerPool.length == 0) return null;
+	private static getCityFromPool(cityPool: City[]): City | null {
+		if (cityPool.length == 0) return null;
 
-        //Get random player from pool
-        let player: player = playerPool[Math.floor(Math.random() * playerPool.length)];
+		let city: City = cityPool[Math.floor(Math.random() * cityPool.length)];
 
-        //TODO
-        // if (player.ownedCities.length >= citiesMax) {
-        //     //Remove player from pool if they have to enough cities
-        //     playerPool.splice(playerPool.indexOf(player), 1)
-        //     //Recursive search for a new player
-        //     return this.getPlayerFromPool(playerPool, citiesMax);
-        // }
+		if (city.getOwner() != Player(25)) {
+			cityPool.splice(cityPool.indexOf(city), 1);
+			city = this.getCityFromPool(cityPool);
+		}
 
-        //Assume that the player is allowed to receive another city, thus returning that player
-        return player;
-    }
+		return city;
+	}
 
-    function getCityFromPool(cityPool: City[]): City | null {
-        if (cityPool.length == 0) return null;
+	private static initCityMaps() {
 
-        let city: City = cityPool[Math.floor(Math.random() * cityPool.length)];
-
-        if (city.getOwner() != Player(25)) {
-            cityPool.splice(cityPool.indexOf(city), 1);
-            city = this.getCityFromPool(cityPool);
-        }
-
-        return city;
-    }
+	}
 }

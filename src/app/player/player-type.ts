@@ -113,8 +113,6 @@ export class GamePlayer {
                 deaths: 0
             });
         });
-
-        //may need to keep track of cities a player owns in the country
     }
 
     public reset() {

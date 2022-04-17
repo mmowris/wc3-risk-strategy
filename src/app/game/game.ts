@@ -1,5 +1,6 @@
 import CameraControls from "app/camera-controls";
 import { CommandProcessor } from "app/commands/command-processor";
+import { CityAllocation } from "app/country/city-allocation";
 import { City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { ModeUI } from "app/mode-ui-type";
@@ -11,7 +12,6 @@ import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "libs/playerColorData";
 import { Util } from "libs/translators";
 import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
-import { UTYPE } from "resources/unitTypes";
 import { Timer } from "w3ts";
 import { Players } from "w3ts/globals";
 import { GameStatus } from "./game-status";
@@ -126,11 +126,6 @@ export class Game {
 		modeTimer.start(1.00, true, () => {
 			if (tick == 5) {
 				Game.assignColors();
-				//Allocate Cities
-				//Update City count, verify allocate cities
-				//Create scoreboard
-				//Start turn timer
-
 				GamePlayer.fromID.forEach(gPlayer => {
 					//Create player tools
 					let u: unit = CreateUnit(gPlayer.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270);
@@ -139,9 +134,14 @@ export class Game {
 
 					if (gPlayer.isPlaying()) {
 						gPlayer.initBonusUI();
-						gPlayer.setStatus(PlayerStatus.PLAYING);
+						gPlayer.setStatus(PlayerStatus.ALIVE);
 						//TODO: Add to scoreboard?
 					}
+
+					CityAllocation.start();
+					//Update City count, verify allocate cities
+					//Create scoreboard
+					//Start turn timer
 				});
 			}
 
