@@ -17,7 +17,7 @@ export class CityAllocation {
 			let country: Country = Country.fromCity.get(city);
 
 			if (country.citiesOwned.get(gPlayer) < country.allocLim) {
-				CityAllocation.changeOwner(country, city, gPlayer, cityPool);
+				CityAllocation.changeOwner(city, gPlayer, cityPool);
 
 			} else {
 				let counter: number = 0;
@@ -30,7 +30,7 @@ export class CityAllocation {
 				if (city == null) print(`Error in CityAllocation, No cities avaiable in pool`)
 				if (counter >= 50) print(`Error in CityAllocation, No valid city found in pool`)
 	    
-				CityAllocation.changeOwner(country, city, gPlayer, cityPool);
+				CityAllocation.changeOwner(city, gPlayer, cityPool);
 			}
 
 			if (gPlayer.cities.length < citiesMax) {
@@ -89,11 +89,9 @@ export class CityAllocation {
 		return city;
 	}
 
-	private static changeOwner(country: Country, city: City, player: GamePlayer, cityPool: City[]) {
+	private static changeOwner(city: City, player: GamePlayer, cityPool: City[]) {
 		city.setOwner(player.player);
 		city.changeGuardOwner();
-		//player.cities.push(city.barrack);
-		//country.citiesOwned.set(player, country.citiesOwned.get(player) + 1);
 		cityPool.splice(cityPool.indexOf(city), 1);
 	}
 }
