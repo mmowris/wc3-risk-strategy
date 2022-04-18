@@ -9861,16 +9861,6 @@ function ____exports.compareHealth(filterUnit, compareUnit)
     if filterUnit == compareUnit then
         return compareUnit
     end
-    print(
-        (("debug1: fUnit " .. GetUnitName(filterUnit)) .. " life ") .. tostring(
-            GetUnitState(filterUnit, UNIT_STATE_LIFE)
-        )
-    )
-    print(
-        (("debug2: cUnit " .. GetUnitName(compareUnit)) .. " life ") .. tostring(
-            GetUnitState(compareUnit, UNIT_STATE_LIFE)
-        )
-    )
     local wantedUnit = compareUnit
     local gPlayer = GamePlayer.fromID:get(
         GetPlayerId(
@@ -9879,25 +9869,10 @@ function ____exports.compareHealth(filterUnit, compareUnit)
     )
     if (not gPlayer.health) and (GetUnitState(filterUnit, UNIT_STATE_LIFE) < GetUnitState(compareUnit, UNIT_STATE_LIFE)) then
         wantedUnit = filterUnit
-        print(
-            (("debug3: wUnit " .. GetUnitName(wantedUnit)) .. " life ") .. tostring(
-                GetUnitState(wantedUnit, UNIT_STATE_LIFE)
-            )
-        )
     end
     if gPlayer.health and (GetUnitState(filterUnit, UNIT_STATE_LIFE) > GetUnitState(compareUnit, UNIT_STATE_LIFE)) then
         wantedUnit = filterUnit
-        print(
-            (("debug4: wUnit " .. GetUnitName(wantedUnit)) .. " life ") .. tostring(
-                GetUnitState(wantedUnit, UNIT_STATE_LIFE)
-            )
-        )
     end
-    print(
-        (("debug5: wUnit " .. GetUnitName(wantedUnit)) .. " life ") .. tostring(
-            GetUnitState(wantedUnit, UNIT_STATE_LIFE)
-        )
-    )
     return wantedUnit
 end
 function ____exports.compareValue(filterUnit, compareUnit)

@@ -516,7 +516,6 @@ export class City {
 				return false;
 			};
 
-			print(BlzGroupGetSize(g))
 			ForGroup(g, () => {
 				guardChoice = compareValue(GetEnumUnit(), guardChoice);
 			});

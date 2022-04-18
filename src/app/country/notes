@@ -4,7 +4,7 @@ onCast (swap ability) - needs updateOwner
 Create dummy (create dummy guards) - needs testing
 onLeave (guard leaves city region processing) - needs player guard options
 onEnter (unit enters city region processing) - needs testing
-adjust city trackers
+
 check for alive > nomad
 check for nomad > alive
 check for dead
