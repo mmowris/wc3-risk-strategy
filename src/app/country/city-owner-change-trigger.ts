@@ -21,7 +21,7 @@ export function onOwnerChange() {
 		owner.cities.push(city.barrack);
 		country.citiesOwned.set(owner, country.citiesOwned.get(owner) + 1);
 
-		print(`${owner.names.acct} owns ${country.citiesOwned.get(owner)} cities in ${country.name} and they own ${owner.cities.length} total`)
+		//print(`${owner.names.acct} owns ${country.citiesOwned.get(owner)} cities in ${country.name} and they own ${owner.cities.length} total`)
 		return true;
 	}));
 }

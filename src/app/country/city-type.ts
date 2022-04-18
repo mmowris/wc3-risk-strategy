@@ -1,6 +1,7 @@
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { FilterFriendlyValidGuards, isGuardValid } from "./guard-filters";
+import { compareValue } from "./guardOptions";
 
 export const Cities: City[] = [];
 export const CityRegionSize: number = 185;
@@ -427,7 +428,6 @@ export class City {
 	//removed full change boolean - never changes guard
 	//removed reset rally boolean - always resets now
 	//removed change color boolean - always change color
-	//removed adjustTrackers call - no solution for this yet, may add to player factory TODO
 	//Previously updateOwner & changeOwner 
 	public setOwner(newOwner: player) {
 		if (this.getOwner() == newOwner) return false;
@@ -506,7 +506,6 @@ export class City {
 			if (!IsUnitType(GetTriggerUnit(), UTYPE.GUARD)) return false;
 
 			const city: City = City.fromRegion.get(GetTriggeringRegion());
-			//let triggerUnit: unit = GetTriggerUnit();
 			let g: group = CreateGroup();
 			let guardChoice: unit = city.guard;
 
@@ -517,9 +516,9 @@ export class City {
 				return false;
 			};
 
+			print(BlzGroupGetSize(g))
 			ForGroup(g, () => {
-				const fUnit: unit = GetFilterUnit();
-				//guardChoice = compareValue(filterUnit, guardChoice); TODO
+				guardChoice = compareValue(GetEnumUnit(), guardChoice);
 			});
 
 			city.changeGuard(guardChoice);
@@ -527,7 +526,6 @@ export class City {
 			DestroyGroup(g);
 			g = null;
 			guardChoice = null;
-			//triggerUnit = null;
 
 			return false;
 		}));

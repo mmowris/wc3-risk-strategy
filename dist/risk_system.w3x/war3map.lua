@@ -9854,6 +9854,75 @@ ____exports.FilterEnemyValidGuards = function(city) return Filter(
 ) end
 return ____exports
  end,
+["src.app.country.guardOptions"] = function(...) local ____exports = {}
+local ____player_2Dtype = require("src.app.player.player-type")
+local GamePlayer = ____player_2Dtype.GamePlayer
+function ____exports.compareHealth(filterUnit, compareUnit)
+    if filterUnit == compareUnit then
+        return compareUnit
+    end
+    print(
+        (("debug1: fUnit " .. GetUnitName(filterUnit)) .. " life ") .. tostring(
+            GetUnitState(filterUnit, UNIT_STATE_LIFE)
+        )
+    )
+    print(
+        (("debug2: cUnit " .. GetUnitName(compareUnit)) .. " life ") .. tostring(
+            GetUnitState(compareUnit, UNIT_STATE_LIFE)
+        )
+    )
+    local wantedUnit = compareUnit
+    local gPlayer = GamePlayer.fromID:get(
+        GetPlayerId(
+            GetOwningPlayer(filterUnit)
+        )
+    )
+    if (not gPlayer.health) and (GetUnitState(filterUnit, UNIT_STATE_LIFE) < GetUnitState(compareUnit, UNIT_STATE_LIFE)) then
+        wantedUnit = filterUnit
+        print(
+            (("debug3: wUnit " .. GetUnitName(wantedUnit)) .. " life ") .. tostring(
+                GetUnitState(wantedUnit, UNIT_STATE_LIFE)
+            )
+        )
+    end
+    if gPlayer.health and (GetUnitState(filterUnit, UNIT_STATE_LIFE) > GetUnitState(compareUnit, UNIT_STATE_LIFE)) then
+        wantedUnit = filterUnit
+        print(
+            (("debug4: wUnit " .. GetUnitName(wantedUnit)) .. " life ") .. tostring(
+                GetUnitState(wantedUnit, UNIT_STATE_LIFE)
+            )
+        )
+    end
+    print(
+        (("debug5: wUnit " .. GetUnitName(wantedUnit)) .. " life ") .. tostring(
+            GetUnitState(wantedUnit, UNIT_STATE_LIFE)
+        )
+    )
+    return wantedUnit
+end
+function ____exports.compareValue(filterUnit, compareUnit)
+    if filterUnit == compareUnit then
+        return compareUnit
+    end
+    local wantedUnit = compareUnit
+    local gPlayer = GamePlayer.fromID:get(
+        GetPlayerId(
+            GetOwningPlayer(filterUnit)
+        )
+    )
+    if (not gPlayer.value) and (GetUnitPointValue(filterUnit) < GetUnitPointValue(compareUnit)) then
+        wantedUnit = filterUnit
+    end
+    if gPlayer.value and (GetUnitPointValue(filterUnit) > GetUnitPointValue(compareUnit)) then
+        wantedUnit = filterUnit
+    end
+    if GetUnitPointValue(filterUnit) == GetUnitPointValue(compareUnit) then
+        wantedUnit = ____exports.compareHealth(filterUnit, compareUnit)
+    end
+    return wantedUnit
+end
+return ____exports
+ end,
 ["src.app.country.city-type"] = function(...) require("lualib_bundle");
 local ____exports = {}
 local ____unitID = require("src.resources.unitID")
@@ -9863,6 +9932,8 @@ local UTYPE = ____unitTypes.UTYPE
 local ____guard_2Dfilters = require("src.app.country.guard-filters")
 local FilterFriendlyValidGuards = ____guard_2Dfilters.FilterFriendlyValidGuards
 local isGuardValid = ____guard_2Dfilters.isGuardValid
+local ____guardOptions = require("src.app.country.guardOptions")
+local compareValue = ____guardOptions.compareValue
 ____exports.Cities = {}
 ____exports.CityRegionSize = 185
 ____exports.enterCityTrig = CreateTrigger()
@@ -10322,10 +10393,16 @@ function City.onLeave(self)
                     )
                     return false
                 end
+                print(
+                    BlzGroupGetSize(g)
+                )
                 ForGroup(
                     g,
                     function()
-                        local fUnit = GetFilterUnit()
+                        guardChoice = compareValue(
+                            GetEnumUnit(),
+                            guardChoice
+                        )
                     end
                 )
                 city:changeGuard(guardChoice)
@@ -10955,7 +11032,7 @@ function CityAllocation.start(self)
         local city = self:getCityFromPool(cityPool)
         local country = Country.fromCity:get(city)
         if country.citiesOwned:get(gPlayer) < country.allocLim then
-            ____exports.CityAllocation:changeOwner(country, city, gPlayer, cityPool)
+            ____exports.CityAllocation:changeOwner(city, gPlayer, cityPool)
         else
             local counter = 0
             repeat
@@ -10970,7 +11047,7 @@ function CityAllocation.start(self)
             if counter >= 50 then
                 print("Error in CityAllocation, No valid city found in pool")
             end
-            ____exports.CityAllocation:changeOwner(country, city, gPlayer, cityPool)
+            ____exports.CityAllocation:changeOwner(city, gPlayer, cityPool)
         end
         if #gPlayer.cities < citiesMax then
             __TS__ArrayPush(playerPool, gPlayer.player)
@@ -11030,7 +11107,7 @@ function CityAllocation.getCityFromPool(self, cityPool)
     end
     return city
 end
-function CityAllocation.changeOwner(self, country, city, player, cityPool)
+function CityAllocation.changeOwner(self, city, player, cityPool)
     city:setOwner(player.player)
     city:changeGuardOwner()
     __TS__ArraySplice(
@@ -11094,11 +11171,6 @@ function ____exports.onOwnerChange()
                 country.citiesOwned:set(
                     owner,
                     country.citiesOwned:get(owner) + 1
-                )
-                print(
-                    ((((((owner.names.acct .. " owns ") .. tostring(
-                        country.citiesOwned:get(owner)
-                    )) .. " cities in ") .. country.name) .. " and they own ") .. tostring(#owner.cities)) .. " total"
                 )
                 return true
             end
@@ -12146,7 +12218,6 @@ Transports.loadedUnits = __TS__New(Map)
 Transports.onLoadTrig = CreateTrigger()
 return ____exports
  end,
-["src.app.game.onLoad"] = function(...)  end,
 ["src.app.player.reference.KD Tracker example"] = function(...)  end,
 ["src.app.player.reference.player-state-entity"] = function(...)  end,
 ["src.app.player.reference.player-type"] = function(...)  end,
