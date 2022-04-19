@@ -1,5 +1,5 @@
 import CameraControls, { PlayerCamData } from "app/camera-controls";
-
+//TODO: Commands
 export const CommandProcessor = () => {
     const t: trigger = CreateTrigger(); 
 

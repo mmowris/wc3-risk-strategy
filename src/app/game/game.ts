@@ -6,6 +6,7 @@ import { City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { ModeUI } from "app/mode-ui-type";
 import { GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
+import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { unitSpellEffect } from "app/spells/unitSpellEffect";
 import { Trees } from "app/Trees";
 import { UserInterface } from "app/user-interface-type";
@@ -20,7 +21,6 @@ import { GameStatus } from "./game-status";
 
 export class Game {
 	private static instance: Game;
-	public static promode: boolean;
 
 	constructor() {
 		Game.onInit();
@@ -158,6 +158,7 @@ export class Game {
 				modeTimer.destroy();
 				BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), false);
 				UserInterface.hideUI(false);
+				Scoreboard.getInstance().init();
 				//TODO: Maybe a sound? at this point gmae is loaded and starting
 			}
 		});
@@ -191,6 +192,7 @@ export class Game {
 						//print(`real name ${GetPlayerName(gPlayer.player)}`)
 						//print(`set real name tp ${gPlayer.names.color}`)
 						SetPlayerName(gPlayer.player, gPlayer.names.color); //TODO: turn this to a func in player-type
+						gPlayer.names.colorIndex = i;
 						//print(`real name ${GetPlayerName(gPlayer.player)}`)
 					}
 				}
