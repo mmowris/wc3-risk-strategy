@@ -1,13 +1,28 @@
 import { GamePlayer } from "app/player/player-type";
-import { Scoreboard } from "app/scoreboard/scoreboard-type";
 
 export class GameTracking {
 	private static instance: GameTracking;
-	private leader: GamePlayer;
-	private citiesToWin: number;
+	private _leader: GamePlayer;
+	private _citiesToWin: number;
 
 	constructor() {
-		//TODO set cities to win
+		this._leader = GamePlayer.fromID.get(Math.floor(Math.random() * GamePlayer.fromID.size - 1));
+	}
+
+	public get leader(): GamePlayer {
+		return this._leader;
+	}
+
+	public set leader(who: GamePlayer) {
+		this._leader = who;
+	}
+
+	public get citiesToWin(): number {
+		return this._citiesToWin;
+	}
+
+	public set citiesToWin(value: number) {
+		this._citiesToWin = value;
 	}
 
 	public koVictory() {
@@ -24,7 +39,7 @@ export class GameTracking {
 		});
 
 		if (counter == 1) {
-			this.leader = who;
+			this._leader = who;
 			this.giveVictory(who);
 		}
 	}
@@ -41,7 +56,7 @@ export class GameTracking {
 		})
 
 		if (who) {
-			this.leader = who;
+			this._leader = who;
 			this.giveVictory(who);
 		}
 		

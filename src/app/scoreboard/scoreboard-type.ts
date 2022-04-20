@@ -1,7 +1,6 @@
+import { GameTracking } from "app/game/game-tracking";
 import { GamePlayer } from "app/player/player-type";
 import { HexColors } from "resources/hexColors";
-
-//TODO: change to singleton
 
 export class Scoreboard {
 	private static instance: Scoreboard;
@@ -9,9 +8,7 @@ export class Scoreboard {
 	public playersOnBoard: GamePlayer[] = [];
 	public size: number;
 
-	constructor() {
-
-	}
+	constructor() {}
 
 	//Public API
 	public init() {
@@ -86,8 +83,7 @@ export class Scoreboard {
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).deaths}`, row, 5);
 		Scoreboard.setItemValue(this.mb, gPlayer.status, row, 6);
 
-		MultiboardSetTitleText(this.mb, `${gPlayer.coloredName()/*TODO get game leader*/} ${gPlayer.cities.length} / ${216/*TODO remove magic number*/} ${HexColors.RED}-|r Turn Time: ${tColor}${/*TODO turn timer*/0}|r`)
-		//TODO: Adjust title
+		MultiboardSetTitleText(this.mb, `${GameTracking.getInstance().leader.coloredName()} ${GameTracking.getInstance().leader.cities.length} / ${GameTracking.getInstance().citiesToWin} ${HexColors.RED}-|r Turn Time: ${tColor}${/*TODO turn timer*/0}|r`)
 	}
 
 	//Static API
@@ -104,7 +100,6 @@ export class Scoreboard {
 		MultiboardReleaseItem(mbI);
 		mbI = null;
 	}
-
 
 	public static setItemValue(mb: multiboard, value: string, row: number, col: number) {
 		let mbI: multiboarditem = MultiboardGetItem(mb, row - 1, col - 1);

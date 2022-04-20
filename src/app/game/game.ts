@@ -2,7 +2,7 @@ import CameraControls from "app/camera-controls";
 import { CommandProcessor } from "app/commands/command-processor";
 import { CityAllocation } from "app/country/city-allocation";
 import { onOwnerChange } from "app/country/city-owner-change-trigger";
-import { City } from "app/country/city-type";
+import { Cities, City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { ModeUI } from "app/mode-ui-type";
 import { GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
@@ -18,6 +18,7 @@ import { UID } from "resources/unitID";
 import { Timer } from "w3ts";
 import { Players } from "w3ts/globals";
 import { GameStatus } from "./game-status";
+import { GameTracking } from "./game-tracking";
 
 export class Game {
 	private static instance: Game;
@@ -93,7 +94,7 @@ export class Game {
 
 				GamePlayer.fromID.set(player.id, new GamePlayer(player.handle));
 
-				if (player.id >= 24) return; //Exclude neutral hostile
+				//if (player.id >= 24) return; //Exclude neutral hostile
 			}
 		})
 
@@ -141,6 +142,7 @@ export class Game {
 			}
 		});
 
+		GameTracking.getInstance().citiesToWin = Math.ceil(Cities.length * 0.60);
 		CityAllocation.start();
 		//Create scoreboard
 		//Start turn timer
