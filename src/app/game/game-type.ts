@@ -17,8 +17,8 @@ import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
 import { Timer } from "w3ts";
 import { Players } from "w3ts/globals";
-import { GameStatus } from "./game-status";
-import { GameTracking } from "./game-tracking";
+import { GameStatus } from "./game-status-type";
+import { GameTracking } from "./game-tracking-type";
 
 export class Game {
 	private static instance: Game;

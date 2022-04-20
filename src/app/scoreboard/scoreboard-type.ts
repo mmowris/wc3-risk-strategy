@@ -1,4 +1,4 @@
-import { GameTracking } from "app/game/game-tracking";
+import { GameTracking } from "app/game/game-tracking-type";
 import { GamePlayer } from "app/player/player-type";
 import { HexColors } from "resources/hexColors";
 

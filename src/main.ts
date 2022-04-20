@@ -1,4 +1,4 @@
-import { Game } from "app/game/game";
+import { Game } from "app/game/game-type";
 import { addScriptHook, W3TS_HOOK } from "w3ts/hooks";
 
 function tsMain() {
