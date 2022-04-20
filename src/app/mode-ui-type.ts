@@ -1,5 +1,5 @@
 import { HexColors } from "resources/hexColors";
-import CameraControls, { PlayerCamData } from "./camera-controls";
+import CameraControls, { PlayerCamData } from "./camera-controls-type";
 import { GamePlayer, PlayerStatus } from "./player/player-type";
 
 export class ModeUI {

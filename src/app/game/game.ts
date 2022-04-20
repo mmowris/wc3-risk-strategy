@@ -1,4 +1,4 @@
-import CameraControls from "app/camera-controls";
+import CameraControls from "app/camera-controls-type";
 import { CommandProcessor } from "app/commands/command-processor";
 import { CityAllocation } from "app/country/city-allocation";
 import { onOwnerChange } from "app/country/city-owner-change-trigger";
@@ -8,7 +8,7 @@ import { ModeUI } from "app/mode-ui-type";
 import { GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { unitSpellEffect } from "app/spells/unitSpellEffect";
-import { Trees } from "app/Trees";
+import { Trees } from "app/trees-type";
 import { UserInterface } from "app/user-interface-type";
 import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "libs/playerColorData";
 import { Util } from "libs/translators";
@@ -144,8 +144,7 @@ export class Game {
 
 		GameTracking.getInstance().citiesToWin = Math.ceil(Cities.length * 0.60);
 		CityAllocation.start();
-		//Create scoreboard
-		//Start turn timer
+
 
 		let tick: number = 5;
 		const modeTimer: Timer = new Timer();
@@ -161,6 +160,7 @@ export class Game {
 				BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), false);
 				UserInterface.hideUI(false);
 				Scoreboard.getInstance().init();
+				//Start turn timer
 				//TODO: Maybe a sound? at this point gmae is loaded and starting
 			}
 		});

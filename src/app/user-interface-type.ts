@@ -1,6 +1,3 @@
-import { Util } from "libs/translators";
-import { HexColors } from "resources/hexColors";
-
 export class UserInterface {
 	private static forTheReplays: location[] = [];
 
