@@ -1,7 +1,7 @@
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { FilterFriendlyValidGuards, isGuardValid } from "./guard-filters";
-import { compareValue } from "./guardOptions";
+import { compareValue } from "./guard-options";
 
 export const Cities: City[] = [];
 export const CityRegionSize: number = 185;

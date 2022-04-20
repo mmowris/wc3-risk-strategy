@@ -5,7 +5,7 @@ import { GamePlayer, PlayerStatus } from "./player/player-type";
 export class ModeUI {
 	public static frame: Map<string, framehandle> = new Map<string, framehandle>();
 	public static frameFunc: Map<string, Function> = new Map<string, Function>();
-	
+
 	public static buildModeFrame() {
 		//Backdrop
 		const backdrop: framehandle = BlzCreateFrame("EscMenuBackdrop", BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), 0, 0);
@@ -113,7 +113,7 @@ export class ModeUI {
 
 		//Modes Info
 		const modesInfo: framehandle = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0);
-		
+
 		BlzFrameSetPoint(modesInfo, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, -0.27, -0.11);
 
 		const modesText: string = `${HexColors.RED}Game Settings|r\nGame Tracking: ${HexColors.GREEN}Unranked|r\nDiplomancy: ${HexColors.GREEN}FFA|r\nFog: ${HexColors.GREEN}Off|r\nReveal Names: ${HexColors.GREEN}On Victory|r\nNomad Time: ${HexColors.GREEN}Unlimited|r\nGold Sending: ${HexColors.GREEN}Disabled|r\nShips Allowed: ${HexColors.GREEN}All|r\nTransport Load/Unload: ${HexColors.GREEN}Ports Only|r`

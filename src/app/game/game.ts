@@ -1,13 +1,13 @@
 import CameraControls from "app/camera-controls-type";
 import { CommandProcessor } from "app/commands/command-processor";
-import { CityAllocation } from "app/country/city-allocation";
-import { onOwnerChange } from "app/country/city-owner-change-trigger";
+import { CityAllocation } from "app/country/city-allocation-type";
+import { onOwnerChange } from "app/country/city-change-trigger";
 import { Cities, City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { ModeUI } from "app/mode-ui-type";
 import { GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
-import { unitSpellEffect } from "app/spells/unitSpellEffect";
+import { unitSpellEffect } from "app/spells/spell-effect-trigger";
 import { Trees } from "app/trees-type";
 import { UserInterface } from "app/user-interface-type";
 import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "libs/playerColorData";

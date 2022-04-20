@@ -23,13 +23,13 @@ export class CityAllocation {
 				let counter: number = 0;
 
 				do {
-				    city = this.getCityFromPool(cityPool);
-				    country = Country.fromCity.get(city);
+					city = this.getCityFromPool(cityPool);
+					country = Country.fromCity.get(city);
 				} while (country.citiesOwned.get(gPlayer) >= country.allocLim || counter == 50 || city == null);
-	    
+
 				if (city == null) print(`Error in CityAllocation, No cities avaiable in pool`)
 				if (counter >= 50) print(`Error in CityAllocation, No valid city found in pool`)
-	    
+
 				CityAllocation.changeOwner(city, gPlayer, cityPool);
 			}
 
@@ -49,7 +49,7 @@ export class CityAllocation {
 
 		for (let [, v] of Country.fromName) {
 			v.initCitiesOwned();
-			
+
 			if (v.cities.length > 1) {
 				v.cities.forEach(city => {
 					result.push(city);
@@ -67,7 +67,7 @@ export class CityAllocation {
 
 		GamePlayer.fromID.forEach(gPlayer => {
 			if (GetPlayerId(gPlayer.player) >= 24) return;
-			
+
 			if (gPlayer.isAlive()) {
 				result.push(gPlayer.player);
 			}

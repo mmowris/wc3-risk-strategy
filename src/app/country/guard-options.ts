@@ -34,6 +34,6 @@ export function compareHealth(filterUnit: unit, compareUnit: unit): unit {
 	if (gPlayer.health && GetUnitState(filterUnit, UNIT_STATE_LIFE) > GetUnitState(compareUnit, UNIT_STATE_LIFE)) {
 		wantedUnit = filterUnit;
 	}
-	
+
 	return wantedUnit;
 }

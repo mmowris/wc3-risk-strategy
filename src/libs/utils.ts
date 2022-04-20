@@ -1,5 +1,3 @@
-import { GamePlayer } from "app/player/player-type";
-import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { HexColors } from "resources/hexColors";
 import { TextTag, MapPlayer, Trigger } from "w3ts";
 import { Players } from "w3ts/globals";
