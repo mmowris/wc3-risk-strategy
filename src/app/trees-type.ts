@@ -15,7 +15,6 @@ export class Trees {
 		this.treeSetup();
 	}
 
-
 	/**
 	 * resetTrees - Regrow all trees that have been destoryed or damaged
 	 */
