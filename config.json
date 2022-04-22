@@ -1,5 +1,5 @@
-{   "fileName": "Risk Europe FFA Ranked",
-    "version": "0.80",
+{   "fileName": "Risk Europe",
+    "version": "0.90",
     "mapFolder": "risk_system.w3x",
     "minifyScript": true,
     "gameExecutable": "C:\\Program Files (x86)\\Warcraft III\\_retail_\\x86_64\\Warcraft III.exe",

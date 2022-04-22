@@ -51,7 +51,7 @@ export class Scoreboard {
 
 		let count = 2;
 		this.playersOnBoard.forEach(gPlayer => {
-			this.updateBoard(gPlayer, count, 60, true);
+			this.updateBoard(gPlayer, count, true);
 
 			count++;
 		})
@@ -61,19 +61,12 @@ export class Scoreboard {
 		MultiboardDisplay(this.mb, true);
 	}
 
-	public updateBoard(gPlayer: GamePlayer, row: number, time: number, turnUpdate: boolean = false) {
+	public updateBoard(gPlayer: GamePlayer, row: number, turnUpdate: boolean = false) {
 		
 		const sColor: string = (GetLocalPlayer() == gPlayer.player) ? HexColors.TANGERINE : HexColors.WHITE;
-		const tColor: string = time <= 3 ? HexColors.RED : HexColors.WHITE;
+
 
 		if (turnUpdate) {
-			// Scoreboard.getInstance().playersOnBoard.sort((p1, p2) => {
-			// 	if (p1.income < p2.income) return 1;
-			// 	if (p1.income > p2.income) return -1;
-			// 	return 0;
-			// })
-			//TODO: Sort players in this.playeronsb
-
 			Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.income}|r`, row, 2);
 		}
 
@@ -82,8 +75,10 @@ export class Scoreboard {
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).kills}`, row, 4);
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).deaths}`, row, 5);
 		Scoreboard.setItemValue(this.mb, gPlayer.status, row, 6);
+	}
 
-		MultiboardSetTitleText(this.mb, `${GameTracking.getInstance().leader.coloredName()} ${GameTracking.getInstance().leader.cities.length} / ${GameTracking.getInstance().citiesToWin} ${HexColors.RED}-|r Turn Time: ${tColor}${/*TODO turn timer*/0}|r`)
+	public updateTitle(str: string) {
+		MultiboardSetTitleText(this.mb, str);
 	}
 
 	//Static API

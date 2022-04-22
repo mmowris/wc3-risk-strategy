@@ -18,6 +18,7 @@ import { UID } from "resources/unitID";
 import { Timer } from "w3ts";
 import { Players } from "w3ts/globals";
 import { GameStatus } from "./game-status-type";
+import { GameTimer } from "./game-timer-type";
 import { GameTracking } from "./game-tracking-type";
 
 export class Game {
@@ -160,7 +161,7 @@ export class Game {
 				BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), false);
 				UserInterface.hideUI(false);
 				Scoreboard.getInstance().init();
-				//Start turn timer
+				GameTimer.getInstance().start();
 				//TODO: Maybe a sound? at this point gmae is loaded and starting
 			}
 		});
