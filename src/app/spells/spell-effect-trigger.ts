@@ -55,11 +55,13 @@ export function unitSpellEffect() {
 
 			case AID.ALLOW_PINGS:
 				swapAbilities(GetTriggerUnit(), AID.ALLOW_PINGS, AID.BLOCK_PINGS);
+				gplayer.ping = true;
 
 				break;
 
 			case AID.BLOCK_PINGS:
 				swapAbilities(GetTriggerUnit(), AID.BLOCK_PINGS, AID.ALLOW_PINGS);
+				gplayer.ping = false;
 
 				break;
 
@@ -71,7 +73,7 @@ export function unitSpellEffect() {
 				let pingForce: force = CreateForce()
 
 				GamePlayer.fromPlayer.forEach(gPlayer => {
-					if (!gPlayer.isLeft()) {
+					if (!gPlayer.isLeft() && gPlayer.ping) {
 						ForceAddPlayer(pingForce, gPlayer.player);
 					}
 				})

@@ -46,6 +46,7 @@ export class GamePlayer {
 	public income: number;
 	public health: boolean; //true == highest , false == lowest
 	public value: boolean; //true == highest , false == lowest
+	public ping: boolean;
 	public kd: Map<string | GamePlayer, KD>;
 	public unitCount: number;
 	public status: string;
@@ -59,6 +60,7 @@ export class GamePlayer {
 
 	constructor(who: player) {
 		this.player = who;
+		this.ping = true;
 
 		this.names = {
 			btag: (who == Player(24)) ? "Neutral-Hostile" : GetPlayerName(who),
