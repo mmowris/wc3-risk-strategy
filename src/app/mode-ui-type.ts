@@ -155,12 +155,12 @@ export class ModeUI {
 		BlzFrameSetPoint(pList, FRAMEPOINT_TOPRIGHT, backdrop, FRAMEPOINT_TOPRIGHT, -0.025, -0.025);
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.isPlaying() || gPlayer.isObserving()) {
+			//if (gPlayer.isPlaying() || gPlayer.isObserving()) {
 				if (gPlayer.player == Player(24))
 					return;
 
 				BlzFrameAddText(pList, `${gPlayer.names.acct} is ${gPlayer.status}`);
-			}
+			//}
 		});
 	}
 

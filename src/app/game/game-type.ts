@@ -118,8 +118,6 @@ export class Game {
 			if (tick >= 1) {
 				tick--;
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Mode selection ends in ${tick} seconds`);
-				BlzDestroyFrame(BlzGetFrameByName("pList", 0));
-				ModeUI.pList(BlzGetFrameByName("EscMenuBackdrop", 0));
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
@@ -127,6 +125,9 @@ export class Game {
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts in 5 seconds`);
 				Game.initRound();
 			}
+
+			BlzDestroyFrame(BlzGetFrameByName("pList", 0));
+			ModeUI.pList(BlzGetFrameByName("EscMenuBackdrop", 0));
 		});
 	}
 
