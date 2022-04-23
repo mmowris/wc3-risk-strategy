@@ -174,7 +174,6 @@ export class Game {
 				Scoreboard.getInstance().init();
 				GameTimer.getInstance().start();
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
-				//TODO: Maybe a sound? at this point gmae is loaded and starting
 			}
 		});
 	}

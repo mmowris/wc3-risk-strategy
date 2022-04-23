@@ -1,4 +1,8 @@
 import { GamePlayer } from "app/player/player-type";
+import { Scoreboard } from "app/scoreboard/scoreboard-type";
+import { PlayGlobalSound } from "libs/utils";
+import { PLAYER_COLOR_CODES } from "resources/colordata";
+import { HexColors } from "resources/hexColors";
 
 export class GameTracking {
 	private static instance: GameTracking;
@@ -71,17 +75,21 @@ export class GameTracking {
 
 		ClearTextMessages();
 
-		//Todo
-		// Players.forEach(player => {
-		//     DisplayTimedTextToPlayer(player.handle, 0.73, 0.81, 180.00, `             ${gPlayer.acctName} ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[GamePlayers[Data.LeaderID].colorIndex]}victorious|r${HexColors.TANGERINE}!|r|r`);
-		//     DisplayTimedTextToPlayer(player.handle, 0.73, 0.81, 180.00, `${gPlayer.acctName} ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[GamePlayers[Data.LeaderID].colorIndex]}${gPlayer.ownedCities.length}|r ${HexColors.TANGERINE}cities!|r`);
-		//     DisplayTimedTextToPlayer(player.handle, 0.73, 0.81, 180.00, `             ${HexColors.TANGERINE}Discord:|r  ${PLAYER_COLOR_CODES[GamePlayers[Data.LeaderID].colorIndex]}discord.me/risk`);
-		// });
-	
-		// Utils.globalSound("Sound\\Interface\\QuestCompleted.flac");
+		GamePlayer.fromPlayer.forEach(gPlayer =>{
+			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${who.names.acct} ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r|r`);
+			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${who.names.acct} ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
+			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.TANGERINE}Discord:|r  ${PLAYER_COLOR_CODES[who.names.colorIndex]}discord.me/risk`);
+		    })
 
-		//Scoreboard victory update
+		PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");
 
+		let row: number = 2;
+
+		Scoreboard.getInstance().playersOnBoard.forEach(gPlayer => {
+			Scoreboard.getInstance().victoryUpdate(who, gPlayer, row);
+			row++;
+		})
+		
 		return true;
 	}
 

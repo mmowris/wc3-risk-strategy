@@ -5,7 +5,6 @@ import { PlayGlobalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
 import { Timer } from "w3ts";
 import { GameTracking } from "./game-tracking-type";
-import { Game } from "./game-type";
 
 export class GameTimer {
 	private static instance: GameTimer

@@ -124,7 +124,7 @@ export class GamePlayer {
 	public reset() {
 		this.kd.clear();
 
-		//TODO
+		//TODO prepare reset
 		this.init();
 	}
 

@@ -1,4 +1,5 @@
 import { GamePlayer } from "app/player/player-type";
+import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 
 export class Scoreboard {
@@ -7,7 +8,7 @@ export class Scoreboard {
 	public playersOnBoard: GamePlayer[] = [];
 	public size: number;
 
-	constructor() {}
+	constructor() { }
 
 	//Public API
 	public init() {
@@ -61,7 +62,7 @@ export class Scoreboard {
 	}
 
 	public updateBoard(gPlayer: GamePlayer, row: number, turnUpdate: boolean = false) {
-		
+
 		const sColor: string = (GetLocalPlayer() == gPlayer.player) ? HexColors.TANGERINE : HexColors.WHITE;
 
 
@@ -78,6 +79,18 @@ export class Scoreboard {
 
 	public updateTitle(str: string) {
 		MultiboardSetTitleText(this.mb, str);
+	}
+
+	public victoryUpdate(winPlayer: GamePlayer, gPlayer: GamePlayer, row: number) {
+		Scoreboard.setItemValue(this.mb, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.btag}`, row, 1);
+
+		if (winPlayer == gPlayer) {
+			Scoreboard.setItemValue(this.mb, `${HexColors.GREEN}Winner|r`, row, 6);
+		} else {
+			Scoreboard.setItemValue(this.mb, `${HexColors.RED}Loser|r`, row, 6);
+		}
+
+		this.updateTitle(`${PLAYER_COLOR_CODES[winPlayer.names.colorIndex]}${winPlayer.names.btag}|r won with ${PLAYER_COLOR_CODES[winPlayer.names.colorIndex]}${winPlayer.cities.length}|r cities! `);
 	}
 
 	//Static API

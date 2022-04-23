@@ -79,15 +79,6 @@ export class ModeUI {
 			}
 		});
 
-		// //Start button
-		// ModeUI.createButton(`${HexColors.TURQUOISE}START GAME|r`, FRAMEPOINT_RIGHT, cList, FRAMEPOINT_BOTTOMRIGHT, 0, -0.037, 0.1, 0.06);
-		// ModeUI.frameFunc.set(`${HexColors.TURQUOISE}START GAME|r`, () => {
-		// 	print("start test")
-		// 	//this.endModeSelection();
-		// })
-
-		// ModeUI.toggleForPlayer(`${HexColors.TURQUOISE}START GAME|r`, Player(0), true); //TODO: introduce a global called "host player"
-
 		//Observe button
 		const obsStr: string = "OBSERVE GAME"
 		ModeUI.createButton(obsStr, FRAMEPOINT_TOP, cList, FRAMEPOINT_BOTTOM, 0, -0.01, 0.2, 0.06);
