@@ -99,10 +99,6 @@ export class Game {
 			}
 		})
 
-		GamePlayer.fromPlayer.forEach(gPlayer => {
-			gPlayer.initKDMaps();
-		})
-
 		ModeUI.buildModeFrame();
 		ModeUI.toggleModeFrame(true);
 
@@ -147,6 +143,8 @@ export class Game {
 				gPlayer.setStatus(PlayerStatus.ALIVE);
 				gPlayer.giveGold();
 			}
+
+			gPlayer.initKDMaps();
 		});
 
 		GameTracking.getInstance().citiesToWin = Math.ceil(Cities.length * 0.60);
