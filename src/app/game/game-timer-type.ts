@@ -31,15 +31,10 @@ export class GameTimer {
 		this.timer.start(1.00, true, () => {
 			let roundUpdate: boolean = false;
 
-			try {
 			if (this._tick == this.duration) roundUpdate = this.roundUpdate();
 			this.updateBoard(roundUpdate);
 			this.updateUI();
 			this._tick--;
-			} catch (error) {
-				print(error)
-			}
-
 
 			if (this._tick == 0) {
 				this._tick = this.duration;

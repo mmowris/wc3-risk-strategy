@@ -186,11 +186,13 @@ export class GamePlayer {
 		if (!this.isAlive() && !this.isNomad()) return;
 		if (victom == this) return;
 		if (IsPlayerAlly(victom.player, this.player)) return;
-
+		print(`${this.coloredName()} killed a unit kills prior: ${this.kd.get(this).kills}`)
 		let val: number = GetUnitPointValue(u);
 
 		this.kd.get(this).kills += val; //Total of this player
 		this.kd.get(victom).kills += val; //Total of victom player
+
+		print(`${this.coloredName()} killed a unit kills after: ${this.kd.get(this).kills}`)
 
 		if (!this.kd.has(GamePlayer.getKey(victom, GetUnitTypeId(u)))) {
 			this.kd.set(GamePlayer.getKey(victom, GetUnitTypeId(u)), {
