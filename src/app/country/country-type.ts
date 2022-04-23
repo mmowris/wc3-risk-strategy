@@ -1,9 +1,8 @@
 import { GamePlayer } from "app/player/player-type";
 import { HexColors } from "resources/hexColors";
-import { Players } from "w3ts/globals";
 import { Cities, City } from "./city-type";
 import { Spawner } from "./spawner-type";
-//TODO: if owned, give player income and spawns
+
 export class Country {
 	public name: string;
 	private _cities: City[] = [];
@@ -14,13 +13,11 @@ export class Country {
 	public allocLim: number;
 
 	public static fromName = new Map<string, Country>();
-	public static fromSpawner = new Map<Spawner, Country>(); //TODO Determine if needed
 	public static fromCity = new Map<City, Country>();
 
 	constructor(name: string, x: number, y: number, ...cities: City[]) {
 		this.name = name;
 		this.spawner = new Spawner(this.name, x, y, this.cities.length);
-		Country.fromSpawner.set(this.spawner, this);
 
 		const offsetX: number = GetUnitX(this.spawner.unit) - 100;
 		const offsetY: number = GetUnitY(this.spawner.unit) - 300;

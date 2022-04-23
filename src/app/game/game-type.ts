@@ -23,6 +23,7 @@ import { GameTracking } from "./game-tracking-type";
 import { unitTargetOrder } from "app/spells/unit-target-order-trigger";
 import { unitEndCast } from "app/spells/spell-end-trigger";
 import { Transports } from "app/transports-type";
+import { PlayGlobalSound } from "libs/utils";
 
 export class Game {
 	private static instance: Game;
@@ -172,6 +173,7 @@ export class Game {
 				UserInterface.hideUI(false);
 				Scoreboard.getInstance().init();
 				GameTimer.getInstance().start();
+				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 				//TODO: Maybe a sound? at this point gmae is loaded and starting
 			}
 		});
