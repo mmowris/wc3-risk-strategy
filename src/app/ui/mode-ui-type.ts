@@ -32,7 +32,7 @@ export class ModeUI {
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-forfeit / -ff|r  Forfeit the game without exiting`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-restart / -ng|r  Restart the current game if it's over`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-names / -players|r  Lists active palyers`)
-		BlzFrameAddText(cList, `${HexColors.TANGERINE}-sb 1 / -sb 2|r  Changes the scoreboard layout`)
+		//BlzFrameAddText(cList, `${HexColors.TANGERINE}-sb 1 / -sb 2|r  Changes the scoreboard layout`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-stfu name|r  Globally mute a player for 5 minutes`)
 		//Hotkeys
 		BlzFrameAddText(cList, `|n${HexColors.RED}Hotkeys:|r`)

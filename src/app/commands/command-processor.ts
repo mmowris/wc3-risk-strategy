@@ -118,7 +118,7 @@ export const CommandProcessor = () => {
 
 				let player: GamePlayer = GamePlayer.fromString.get(playerString);
 
-				if (!player.isDead() || !player.isForfeit()) return;
+				if (!player.isDead() || !player.isForfeit() || player.admin) return;
 				if (player.isSTFU()) return;
 
 				const stfuTimer: Timer = new Timer();
