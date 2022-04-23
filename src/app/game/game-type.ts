@@ -99,6 +99,10 @@ export class Game {
 			}
 		})
 
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			gPlayer.initKDMaps();
+		})
+
 		ModeUI.buildModeFrame();
 		ModeUI.toggleModeFrame(true);
 

@@ -6,7 +6,7 @@ export class GameTracking {
 	private _citiesToWin: number;
 
 	constructor() {
-		this._leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * GamePlayer.fromPlayer.size - 1)));
+		this._leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * GamePlayer.fromPlayer.size)));
 	}
 
 	public get leader(): GamePlayer {

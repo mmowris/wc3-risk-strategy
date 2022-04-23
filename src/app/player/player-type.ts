@@ -104,17 +104,19 @@ export class GamePlayer {
 			bar: null
 		}
 
-		this.kd.set(this, {
-			kills: 0,
-			deaths: 0
-		});
-
-		// GamePlayer.fromPlayer.forEach(gPlayer => {
-		// 	this.kd.set(gPlayer, {
-		// 		kills: 0,
-		// 		deaths: 0
-		// 	});
+		// this.kd.set(this, {
+		// 	kills: 0,
+		// 	deaths: 0
 		// });
+	}
+
+	public initKDMaps() {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			this.kd.set(gPlayer, {
+				kills: 0,
+				deaths: 0
+			});
+		});
 	}
 
 	public reset() {

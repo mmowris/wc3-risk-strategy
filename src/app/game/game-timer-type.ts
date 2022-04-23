@@ -1,6 +1,7 @@
 import { Country } from "app/country/country-type";
 import { GamePlayer } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
+import { PlayGlobalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
 import { Timer } from "w3ts";
 import { GameTracking } from "./game-tracking-type";
@@ -30,14 +31,14 @@ export class GameTimer {
 		this.timer.start(1.00, true, () => {
 			let roundUpdate: boolean = false;
 
-			//try {
+			try {
 			if (this._tick == this.duration) roundUpdate = this.roundUpdate();
 			this.updateBoard(roundUpdate);
 			this.updateUI();
 			this._tick--;
-			//} catch (error) {
-			//	print(error)
-			//}
+			} catch (error) {
+				print(error)
+			}
 
 
 			if (this._tick == 0) {
@@ -104,6 +105,8 @@ export class GameTimer {
 			GamePlayer.fromPlayer.forEach(gPlayer =>{
 				DisplayTimedTextToPlayer(gPlayer.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${gPlayer.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities, they need ${HexColors.RED}${gPlayer.cities.length - GameTracking.getInstance().citiesToWin}|r more to win!`);
 			})
+
+			PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");
 		}
 
 		Scoreboard.getInstance().playersOnBoard.sort((p1, p2) => {

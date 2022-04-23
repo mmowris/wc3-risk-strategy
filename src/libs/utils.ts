@@ -19,7 +19,7 @@ export function PlayLocalSound(soundPath: string, p: player) {
     sound = null;
 }
 
-export function PlayGlobalSound(soundPath: string, p: player) {
+export function PlayGlobalSound(soundPath: string) {
 	let sound = CreateSound(soundPath, false, false, true, 10, 10, "")
 
 	StartSound(sound);
