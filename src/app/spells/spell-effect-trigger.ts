@@ -91,6 +91,6 @@ export function unitSpellEffect() {
 
 function swapAbilities(castingUnit: unit, castedAbility: number, swapAbility: number) {
 	UnitRemoveAbility(castingUnit, castedAbility);
-	UnitAddAbility(castingUnit, castedAbility);
+	UnitAddAbility(castingUnit, swapAbility);
 	BlzStartUnitAbilityCooldown(castingUnit, castedAbility, 1)
     }

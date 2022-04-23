@@ -20,6 +20,9 @@ import { Players } from "w3ts/globals";
 import { GameStatus } from "./game-status-type";
 import { GameTimer } from "./game-timer-type";
 import { GameTracking } from "./game-tracking-type";
+import { unitTargetOrder } from "app/spells/unit-target-order-trigger";
+import { unitEndCast } from "app/spells/spell-end-trigger";
+import { Transports } from "app/transports-type";
 
 export class Game {
 	private static instance: Game;
@@ -77,8 +80,11 @@ export class Game {
 
 		//Triggers
 		unitSpellEffect();
+		unitEndCast();
+		unitTargetOrder();
 		CommandProcessor();
 		onOwnerChange();
+		Transports.onLoad();
 	}
 
 	private static onLoad() {

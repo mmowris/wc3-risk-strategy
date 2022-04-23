@@ -4,7 +4,7 @@ export const unitTargetOrderTrig: trigger = CreateTrigger();
 
 export function unitTargetOrder() {
 	for (let i = 0; i < bj_MAX_PLAYERS; i++) {
-		TriggerRegisterPlayerUnitEvent(unitTargetOrderTrig, Player(i), EVENT_PLAYER_UNIT_SPELL_ENDCAST, null);
+		TriggerRegisterPlayerUnitEvent(unitTargetOrderTrig, Player(i), EVENT_PLAYER_UNIT_ISSUED_TARGET_ORDER, null);
 	}
 
 	TriggerAddCondition(unitTargetOrderTrig, Condition(() => {

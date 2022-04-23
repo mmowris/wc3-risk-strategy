@@ -1,3 +1,4 @@
+import { Transports } from "app/transports-type";
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { FilterFriendlyValidGuards, isGuardValid } from "./guard-filters";
@@ -534,6 +535,10 @@ export class City {
 		TriggerAddCondition(unitTrainedTrig, Condition(() => {
 			const city: City = City.fromBarrack.get(GetTriggerUnit());
 			let trainedUnit: unit = GetTrainedUnit();
+
+			if (IsUnitType(trainedUnit, UTYPE.TRANSPORT)) {
+				Transports.onCreate(trainedUnit);
+			}
 
 			if (city.isGuardShip() && !IsUnitType(trainedUnit, UTYPE.SHIP)) {
 				city.changeGuard(trainedUnit);

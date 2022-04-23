@@ -12,10 +12,11 @@
 import { ErrorMessage } from "libs/utils";
 import { UTYPE } from "resources/unitTypes";
 
+export const onLoadTrig: trigger = CreateTrigger();
+
 export class Transports {
 	private static instance: Transports;
 	public static loadedUnits: Map<unit, unit[]> = new Map<unit, unit[]>();
-	public static onLoadTrig: trigger = CreateTrigger();
 
 	public static getInstance() {
 		if (this.instance == null) {
@@ -28,19 +29,17 @@ export class Transports {
 		Transports.onLoad();
 	}
 
-	private static onLoad() {
-		for (let i = 0; i < 23; i++) {
-			TriggerRegisterPlayerUnitEvent(Transports.onLoadTrig, Player(i), EVENT_PLAYER_UNIT_LOADED, null);
+	public static onLoad() {
+		for (let i = 0; i < bj_MAX_PLAYERS; i++) {
+			TriggerRegisterPlayerUnitEvent(onLoadTrig, Player(i), EVENT_PLAYER_UNIT_LOADED, null);
 		}
 
-		TriggerAddCondition(Transports.onLoadTrig, (Condition(() => {
+		TriggerAddCondition(onLoadTrig, (Condition(() => {
 			//if (TransportAnywhere) return false; TODO: Transport settings
-
 			let trans: unit = GetTransportUnit();
 			let loadedUnit: unit = GetLoadedUnit();
 
 			Transports.loadedUnits.get(trans).push(loadedUnit)
-
 			//print(`there is ${Transports.loadedUnits.get(trans).length} units loaded`)
 			//print(`-----------------------------------`)
 
@@ -57,7 +56,7 @@ export class Transports {
 		let trans = GetTriggerUnit(); //Trigger unit = transport unloading
 
 		//print(`target x:${GetOrderPointX}, y:${GetOrderPointY}`);
-		//print(`trans x:${trans.x}, y:${trans.y}`);
+		//print(`trans x:${GetUnitX(trans)}, y:${GetUnitY(trans)}`);
 
 		if (GetTerrainType(GetUnitX(trans), GetUnitY(trans)) != FourCC("Vcbp")) {
 			BlzPauseUnitEx(trans, true);
