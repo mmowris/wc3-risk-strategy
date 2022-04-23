@@ -1,7 +1,8 @@
+import { GamePlayer } from "app/player/player-type";
 import { AID } from "resources/abilityID";
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
-import { Group, MapPlayer } from "w3ts";
+import { Group } from "w3ts";
 import { Players } from "w3ts/globals";
 
 const SpawnTypeID: number = UID.RIFLEMEN;
@@ -9,13 +10,13 @@ const SpawnTurnLimit: number = 5;
 
 export class Spawner {
 	private _unit: unit;
-	private playerSpawns: Map<MapPlayer, unit[]>;
+	private playerSpawns: Map<GamePlayer, unit[]>;
 	private country: string;
 	private spawnAmount: number;
 	private spawnMax: number;
 
 	constructor(country: string, x: number, y: number, countrySize: number) {
-		this.playerSpawns = new Map<MapPlayer, unit[]>();
+		this.playerSpawns = new Map<GamePlayer, unit[]>();
 		this.create(x, y);
 		this.spawnAmount = Math.floor((countrySize + 1) / 2);
 		this.spawnMax = this.spawnAmount * SpawnTurnLimit;
@@ -72,8 +73,13 @@ export class Spawner {
 	 * The spawners rally point is also reset.
 	 * @param newOwner - The new owner. If the country is unowned, the owner will be Player 25 (N.H.)
 	 */
-	public setOwner(newOwner: MapPlayer) {
-		SetUnitOwner(this.unit, newOwner.handle, true);
+	public setOwner(newOwner: player) {
+		SetUnitOwner(this.unit, newOwner, true);
+
+		if (!this.playerSpawns.has(GamePlayer.fromPlayer.get(newOwner))) {
+			this.playerSpawns.set(GamePlayer.fromPlayer.get(newOwner), [])
+		}
+
 		this.setName();
 		IssuePointOrder(this.unit, "setrally", GetUnitX(this.unit), GetUnitY(this.unit));
 	}
@@ -83,10 +89,10 @@ export class Spawner {
 	 * Takes into consideration available spawns for the owner, it will not spawn if they are maxed.
 	 */
 	public step() {
-		const owner: MapPlayer = MapPlayer.fromHandle(GetOwningPlayer(this.unit));
+		const owner: GamePlayer = GamePlayer.fromPlayer.get(GetOwningPlayer(this.unit));
 
-		if (owner == Players[24]) return;
-		if (owner.slotState != PLAYER_SLOT_STATE_PLAYING) return;
+		if (owner.player == Player(24)) return;
+		if (GetPlayerSlotState(owner.player) != PLAYER_SLOT_STATE_PLAYING) return;
 
 		const spawnCount: number = this.playerSpawns.get(owner).length;
 
@@ -95,7 +101,7 @@ export class Spawner {
 		const amount: number = Math.min(this.spawnAmount, this.spawnMax - spawnCount);
 
 		for (let i = 0; i < amount; i++) {
-			let u: unit = CreateUnit(owner.handle, SpawnTypeID, GetUnitX(this.unit), GetUnitY(this.unit), 270);
+			let u: unit = CreateUnit(owner.player, SpawnTypeID, GetUnitX(this.unit), GetUnitY(this.unit), 270);
 			let loc: location = GetUnitRallyPoint(this.unit);
 
 			UnitAddType(u, UTYPE.SPAWN);
@@ -108,6 +114,7 @@ export class Spawner {
 		}
 
 		this.setName();
+
 	}
 
 	/**
@@ -136,9 +143,9 @@ export class Spawner {
 			BlzSetUnitName(this.unit, `${this.country} is unowned`);
 			SetUnitAnimation(this.unit, "death");
 		} else {
-			const spawnCount: number = this.playerSpawns.get(MapPlayer.fromHandle(GetOwningPlayer(this.unit))).length;
+			const spawnCount: number = this.playerSpawns.get(GamePlayer.fromPlayer.get(GetOwningPlayer(this.unit))).length;
 
-			BlzSetUnitName(this.unit, `${this.country} ${spawnCount} / ${this.spawnMax}`);
+			BlzSetUnitName(this.unit, `${this.country}  ${spawnCount} / ${this.spawnMax}`);
 			SetUnitAnimation(this.unit, "stand");
 		}
 	}

@@ -41,7 +41,7 @@ export const enum PlayerStatus {
 	STFU = "|cfffe890dSTFU |r",
 };
 
-export const Admin_List = [
+export const Admins = [
 	"ForLolz#11696",
 	"TacoMan#11175",
 	"Grinch#1502"
@@ -77,7 +77,7 @@ export class GamePlayer {
 			colorIndex: 0
 		}
 
-		Admin_List.forEach(name => {
+		Admins.forEach(name => {
 			if (this.names.btag == name) {
 				this.admin = true;
 			}

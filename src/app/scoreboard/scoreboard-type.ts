@@ -70,7 +70,7 @@ export class Scoreboard {
 			Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.income}|r`, row, 2);
 		}
 
-		Scoreboard.setItemValue(this.mb, gPlayer.coloredName(), row, 1);
+		Scoreboard.setItemValue(this.mb, `${gPlayer.coloredName()}`, row, 1);
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.cities.length}`, row, 3);
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).kills}`, row, 4);
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).deaths}`, row, 5);

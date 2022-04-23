@@ -148,7 +148,6 @@ export class Game {
 			if (gPlayer.isPlaying()) {
 				gPlayer.initBonusUI();
 				gPlayer.setStatus(PlayerStatus.ALIVE);
-				gPlayer.giveGold();
 			}
 
 			gPlayer.initKDMaps();

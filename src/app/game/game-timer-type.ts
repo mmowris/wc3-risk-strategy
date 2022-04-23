@@ -29,7 +29,6 @@ export class GameTimer {
 	public start() {
 		this.timer.start(1.00, true, () => {
 			let roundUpdate: boolean = false;
-
 			if (this._tick == this.duration) roundUpdate = this.roundUpdate();
 			this.updateBoard(roundUpdate);
 			this.updateUI();
@@ -39,6 +38,7 @@ export class GameTimer {
 				this._tick = this.duration;
 				this.turn++;
 			}
+
 		})
 	}
 
@@ -82,6 +82,7 @@ export class GameTimer {
 	}
 
 	private roundUpdate(): boolean {
+
 		const gameOver: boolean = GameTracking.getInstance().cityVictory();
 		if (gameOver) {
 			this.stop();
@@ -93,10 +94,14 @@ export class GameTimer {
 			}
 		});
 
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			gPlayer.giveGold();
+		})
+
 		if (GameTracking.getInstance().leader.cities.length >= Math.floor(GameTracking.getInstance().citiesToWin * 0.70)) {
 			ClearTextMessages();
 
-			GamePlayer.fromPlayer.forEach(gPlayer =>{
+			GamePlayer.fromPlayer.forEach(gPlayer => {
 				DisplayTimedTextToPlayer(gPlayer.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${gPlayer.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities, they need ${HexColors.RED}${gPlayer.cities.length - GameTracking.getInstance().citiesToWin}|r more to win!`);
 			})
 
@@ -108,6 +113,8 @@ export class GameTimer {
 			if (p1.income > p2.income) return -1;
 			return 0;
 		})
+
+
 
 		return true;
 	}

@@ -18,9 +18,11 @@ export function onOwnerChange() {
 
 		prevOwner.cities.splice(prevOwner.cities.indexOf(city.barrack), 1);
 		country.citiesOwned.set(prevOwner, country.citiesOwned.get(prevOwner) - 1);
+		if (country.owner == prevOwner.player) country.setOwner(Player(24));
 
 		owner.cities.push(city.barrack);
 		country.citiesOwned.set(owner, country.citiesOwned.get(owner) + 1);
+		if (country.cities.length == country.citiesOwned.get(owner)) country.setOwner(owner.player);
 
 		if (owner.cities.length > GameTracking.getInstance().leader.cities.length) GameTracking.getInstance().leader = owner;
 

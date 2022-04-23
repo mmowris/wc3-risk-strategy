@@ -8,7 +8,7 @@ export class Country {
 	private _cities: City[] = [];
 	private spawner: Spawner;
 	private text: texttag;
-	private owner: player;
+	private _owner: player;
 	public citiesOwned: Map<GamePlayer, number> = new Map<GamePlayer, number>();
 	public allocLim: number;
 
@@ -17,6 +17,12 @@ export class Country {
 
 	constructor(name: string, x: number, y: number, ...cities: City[]) {
 		this.name = name;
+
+		cities.forEach(city => {
+			this.cities.push(city);
+			Country.fromCity.set(city, this);
+		});
+
 		this.spawner = new Spawner(this.name, x, y, this.cities.length);
 
 		const offsetX: number = GetUnitX(this.spawner.unit) - 100;
@@ -29,14 +35,9 @@ export class Country {
 		SetTextTagVisibility(this.text, true);
 		SetTextTagPermanent(this.text, true);
 
-		cities.forEach(city => {
-			this.cities.push(city);
-			Country.fromCity.set(city, this);
-		});
+		this.allocLim = Math.floor(cities.length / 2);
 
-		this.allocLim = Math.floor(cities.length / 2)
-
-		this.owner = Player(24);
+		this._owner = Player(24);
 	}
 
 	//Static API
@@ -124,6 +125,10 @@ export class Country {
 		return this.cities.length;
 	}
 
+	public get owner(): player {
+		return this._owner;
+	}
+
 	public animate() {
 		this.cities.forEach(city => {
 			const effect = AddSpecialEffect("Abilities\\Spells\\Human\\Resurrect\\ResurrectCaster.mdl", GetUnitX(city.barrack), GetUnitY(city.barrack));
@@ -145,8 +150,17 @@ export class Country {
 	}
 
 	public step() {
-		GamePlayer.fromPlayer.get(this.owner).giveGold();
 		this.spawner.step();
+	}
+
+	public setOwner(who: player) {
+		if (who != this.owner) {
+			GamePlayer.fromPlayer.get(this.owner).income -= this.cities.length;
+		}
+
+		GamePlayer.fromPlayer.get(who).income += this.cities.length;
+		this._owner = who;
+		this.spawner.setOwner(who);
 	}
 	//Internal Functions
 }
