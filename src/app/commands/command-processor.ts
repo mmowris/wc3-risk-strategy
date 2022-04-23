@@ -111,7 +111,7 @@ export const CommandProcessor = () => {
 				//TODO make me immune to stuf and able to stfu anyone
 				if (!GameTracking.getInstance().roundInProgress) return;
 
-				let duration: number = 90;
+				let duration: number = 300;
 				let playerString: string = `${GetEventPlayerChatString().split(' ')[1].split('#')[0]}`;
 
 				playerString = StringCase(playerString, false);

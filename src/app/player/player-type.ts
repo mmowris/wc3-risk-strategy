@@ -41,12 +41,19 @@ export const enum PlayerStatus {
 	STFU = "|cfffe890dSTFU |r",
 };
 
+export const Admin_List = [
+	"ForLolz#11696",
+	"TacoMan#11175",
+	"Grinch#1502"
+];
+
 export class GamePlayer {
 	public player: player;
 	public income: number;
 	public health: boolean; //true == highest , false == lowest
 	public value: boolean; //true == highest , false == lowest
 	public ping: boolean;
+	public admin: boolean;
 	public kd: Map<string | GamePlayer, KD>;
 	public unitCount: number;
 	public status: string;
@@ -61,6 +68,7 @@ export class GamePlayer {
 	constructor(who: player) {
 		this.player = who;
 		this.ping = true;
+		this.admin = false;
 
 		this.names = {
 			btag: (who == Player(24)) ? "Neutral-Hostile" : GetPlayerName(who),
@@ -68,6 +76,12 @@ export class GamePlayer {
 			color: "",
 			colorIndex: 0
 		}
+
+		Admin_List.forEach(name => {
+			if (this.names.btag == name) {
+				this.admin = true;
+			}
+		})
 
 		this.status = (GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0) ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING;
 

@@ -31,9 +31,9 @@ export class ModeUI {
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-def|r  Changes the camera to the default settings`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-forfeit / -ff|r  Forfeit the game without exiting`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-restart / -ng|r  Restart the current game if it's over`)
-		BlzFrameAddText(cList, `${HexColors.TANGERINE}-names / -players|r  Show players that were in the lobby`)
+		BlzFrameAddText(cList, `${HexColors.TANGERINE}-names / -players|r  Lists active palyers`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-sb 1 / -sb 2|r  Changes the scoreboard layout`)
-		BlzFrameAddText(cList, `${HexColors.TANGERINE}-stfu name|r  Globally mute a player for 90 seconds`)
+		BlzFrameAddText(cList, `${HexColors.TANGERINE}-stfu name|r  Globally mute a player for 5 minutes`)
 		//Hotkeys
 		BlzFrameAddText(cList, `|n${HexColors.RED}Hotkeys:|r`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}F1|r  Opens player tools`)
