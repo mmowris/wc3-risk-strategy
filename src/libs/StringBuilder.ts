@@ -1,4 +1,3 @@
-
 export class StringBuilder {
     public contentArray: string[] = [];
     public newLine = "\n";

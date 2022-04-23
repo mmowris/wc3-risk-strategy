@@ -1,6 +1,5 @@
 import { HexColors } from "resources/hexColors";
 import { TextTag, MapPlayer, Trigger } from "w3ts";
-import { Players } from "w3ts/globals";
 
 export function ErrorMessage(p: player, msg: string) {
     if (GetLocalPlayer() == p) ClearTextMessages();
@@ -20,6 +19,14 @@ export function PlayLocalSound(soundPath: string, p: player) {
     sound = null;
 }
 
+export function PlayGlobalSound(soundPath: string, p: player) {
+	let sound = CreateSound(soundPath, false, false, true, 10, 10, "")
+
+	StartSound(sound);
+	KillSoundWhenDone(sound);
+	sound = null;
+    }
+
 export function showOverheadText(x: number, y: number, r: number, g: number, b: number, a: number, text: string) {
     const t = new TextTag();
     t.setText(text, 10, true);
@@ -31,32 +38,6 @@ export function showOverheadText(x: number, y: number, r: number, g: number, b: 
     t.setVisible(true);
     t.setVelocity(0, 7.1 / 128 * Sin(3.14159 / 2));;
     return t;
-}
-
-export function MessageAllPlayers(message: string, time: number): void {    
-    DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, time, message);
-}
-
-export function MessagePlayer(who: number, message: string);
-export function MessagePlayer(who: MapPlayer, message: string);
-export function MessagePlayer(who: MapPlayer | number, message: string): void {
-    if (who instanceof MapPlayer) {
-        DisplayTimedTextToPlayer(who.handle, 0, 0, 10, message);
-    }
-    else {
-        DisplayTimedTextToPlayer(Player(who), 0, 0, 10, message);
-    }
-}
-
-export function GetActivePlayers() {
-    return Players.filter(currentPlayer => {
-            const isPlaying = currentPlayer.slotState == PLAYER_SLOT_STATE_PLAYING;
-            const isUser = currentPlayer.getState(PLAYER_STATE_OBSERVER) == 0;
-        
-            if (isPlaying && isUser) {
-                return true;
-            }
-    });
 }
 
 /**
@@ -96,67 +77,3 @@ export function syncData(handle: string, listenFor: MapPlayer, cb: (result: stri
 export function distanceBetweenPoints(x1: number, y1: number, x2: number, y2: number) {
     return SquareRoot(Pow(x2 - x1, 2) + Pow(y2 - y1, 2));
 }
-
-// declare const udg_collision_rect: rect;
-// declare const udg_collision_item: item;
-
-// let collisionRect: Rectangle;
-// let collisionItem: Item;
-
-// export function terrainIsPathable(x: number, y: number) {
-//     if (!collisionRect) collisionRect = Rectangle.fromHandle(udg_collision_rect);
-//     if (!collisionItem) collisionItem = Item.fromHandle(udg_collision_item);
-//     if (IsTerrainPathable(x, y, PATHING_TYPE_WALKABILITY)) return false;
-
-//     collisionItem.visible = true;
-//     // move rect
-//     collisionRect.move(x, y);
-//     // Move item
-//     collisionItem.x = x;
-//     collisionItem.y = y;
-
-//     const hasItem = RectContainsItem(collisionItem.handle, collisionRect.handle)
-
-//     collisionItem.visible = false;
-
-//     return hasItem;
-// }
-
-// let camIterator = 0;
-// export function GetPlayerCamLoc(who: MapPlayer, callback: (x: number, y: number) => void) {
-//     const syncher = syncData(`${camIterator++}`, who, (data: string) => {
-//         // Log.Information(data);
-//         const x = S2R(data.split(',')[0]);
-//         const y = S2R(data.split(',')[1]);
-    
-//         callback(x,y);
-//     });
-
-//     if (GetLocalPlayer() == who.handle) {
-//         const x = GetCameraTargetPositionX();
-//         const y = GetCameraTargetPositionY();
-//         syncher(`${x},${y}`);
-//     }
-// }
-
-// const selectionGroup = CreateGroup();
-// export function GetPlayerUnitSelection(who: MapPlayer, callback: (Unit: Unit[]) => void) {
-
-//     GroupEnumUnitsSelected(selectionGroup, who.handle, null); 
-//     let sendString = '';         
-//     ForGroup(selectionGroup, () => {
-//         sendString += GetUnitUserData(GetEnumUnit())+";";
-//     });   
-//     GroupClear(selectionGroup);
-    
-//     const syncher = syncData(`${camIterator++}`, who, (data: string) => {
-//         const uIndexes = data.split(";");
-//         const result: Unit[] = [];
-//         uIndexes.forEach(uIdx => {
-//             result.push(UnitDex.unit[Number(uIdx)]);
-//         });
-//         callback(result);
-//     });
-
-//     syncher(sendString);
-// }

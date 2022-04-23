@@ -10,7 +10,7 @@ import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { unitSpellEffect } from "app/spells/spell-effect-trigger";
 import { Trees } from "app/trees-type";
 import { UserInterface } from "app/user-interface-type";
-import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "libs/playerColorData";
+import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "libs/ColorData";
 import { Util } from "libs/translators";
 import { AID } from "resources/abilityID";
 import { HexColors } from "resources/hexColors";

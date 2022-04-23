@@ -1,4 +1,4 @@
-import { PLAYER_COLOR_CODES } from "libs/playerColorData";
+import { PLAYER_COLOR_CODES } from "libs/ColorData";
 
 interface KD {
 	kills: number;

@@ -1,8 +1,10 @@
 import { Country } from "app/country/country-type";
+import { GamePlayer } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { HexColors } from "resources/hexColors";
 import { Timer } from "w3ts";
 import { GameTracking } from "./game-tracking-type";
+import { Game } from "./game-type";
 
 export class GameTimer {
 	private static instance: GameTimer
@@ -29,10 +31,10 @@ export class GameTimer {
 			let roundUpdate: boolean = false;
 
 			//try {
-				if (this._tick == this.duration) roundUpdate = this.roundUpdate();
-				this.updateBoard(roundUpdate);
-				this.updateUI();
-				this._tick--;
+			if (this._tick == this.duration) roundUpdate = this.roundUpdate();
+			this.updateBoard(roundUpdate);
+			this.updateUI();
+			this._tick--;
 			//} catch (error) {
 			//	print(error)
 			//}
@@ -85,10 +87,9 @@ export class GameTimer {
 	}
 
 	private roundUpdate(): boolean {
-		let gameOver: boolean = GameTracking.getInstance().cityVictory();
+		const gameOver: boolean = GameTracking.getInstance().cityVictory();
 		if (gameOver) {
 			this.stop();
-			//Stop game if victory
 		}
 
 		Country.fromName.forEach(country => {
@@ -96,7 +97,14 @@ export class GameTimer {
 				country.step();
 			}
 		});
-		//print warning if player has 70% of cities to win
+
+		if (GameTracking.getInstance().leader.cities.length >= Math.floor(GameTracking.getInstance().citiesToWin * 0.70)) {
+			ClearTextMessages();
+
+			GamePlayer.fromPlayer.forEach(gPlayer =>{
+				DisplayTimedTextToPlayer(gPlayer.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${gPlayer.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities, they need ${HexColors.RED}${gPlayer.cities.length - GameTracking.getInstance().citiesToWin}|r more to win!`);
+			})
+		}
 
 		Scoreboard.getInstance().playersOnBoard.sort((p1, p2) => {
 			if (p1.income < p2.income) return 1;
