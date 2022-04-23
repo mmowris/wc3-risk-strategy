@@ -83,9 +83,11 @@ export class GameTimer {
 
 	private roundUpdate(): boolean {
 
-		const gameOver: boolean = GameTracking.getInstance().cityVictory();
-		if (gameOver) {
-			this.stop();
+		if (this.turn > 1) {
+			const gameOver: boolean = GameTracking.getInstance().cityVictory();
+			if (gameOver) {
+				this.stop();
+			}	
 		}
 
 		Country.fromName.forEach(country => {
@@ -113,8 +115,6 @@ export class GameTimer {
 			if (p1.income > p2.income) return -1;
 			return 0;
 		})
-
-
 
 		return true;
 	}

@@ -30,7 +30,7 @@ export class GameTracking {
 		this._citiesToWin = value;
 	}
 
-	public koVictory() {
+	public koVictory(): boolean {
 		let counter: number = 0;
 		let who: GamePlayer;
 
@@ -45,7 +45,7 @@ export class GameTracking {
 
 		if (counter == 1) {
 			this._leader = who;
-			this.giveVictory(who);
+			return this.giveVictory(who);
 		}
 	}
 
@@ -82,7 +82,7 @@ export class GameTracking {
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${who.names.acct} ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r|r`);
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${who.names.acct} ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.TANGERINE}Discord:|r  ${PLAYER_COLOR_CODES[who.names.colorIndex]}discord.me/risk`);
-		    })
+		    });
 
 		PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");
 
@@ -92,7 +92,7 @@ export class GameTracking {
 			Scoreboard.getInstance().victoryUpdate(who, gPlayer, row);
 			row++;
 		})
-		
+
 		return true;
 	}
 

@@ -1,5 +1,6 @@
 import { GameTracking } from "app/game/game-tracking-type";
 import { GamePlayer } from "app/player/player-type";
+import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { City } from "./city-type";
 import { Country } from "./country-type";
 
@@ -22,7 +23,10 @@ export function onOwnerChange() {
 
 		owner.cities.push(city.barrack);
 		country.citiesOwned.set(owner, country.citiesOwned.get(owner) + 1);
-		if (country.cities.length == country.citiesOwned.get(owner)) country.setOwner(owner.player);
+		if (country.cities.length == country.citiesOwned.get(owner)) { 
+			country.setOwner(owner.player)
+			if (owner.player != Player(24)) Scoreboard.getInstance().cityClaimed(owner, country.name);
+		}
 
 		if (owner.cities.length > GameTracking.getInstance().leader.cities.length) GameTracking.getInstance().leader = owner;
 

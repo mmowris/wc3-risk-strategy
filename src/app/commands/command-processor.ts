@@ -1,4 +1,5 @@
 import CameraControls, { CamSettings, PlayerCamData } from "app/commands/camera-controls-type";
+import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
 import { GamePlayer, PlayerStatus } from "app/player/player-type";
 import { Util } from "libs/translators";
@@ -18,7 +19,7 @@ export const CommandProcessor = () => {
 
 	TriggerAddCondition(t, Condition(() => {
 		const command: string = GetEventPlayerChatString().split(' ')[0];
-		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetOwningPlayer(GetTriggerUnit()));
+		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
 
 		switch (command) {
 			case "-cam":
@@ -56,7 +57,8 @@ export const CommandProcessor = () => {
 
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 
-				GameTracking.getInstance().koVictory();
+				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
+
 
 				break;
 
@@ -77,7 +79,7 @@ export const CommandProcessor = () => {
 				const lobbyTimer: Timer = new Timer();
 
 				GamePlayer.fromPlayer.forEach(gPlayer => {
-					if (!gPlayer.isLeft()) {
+					if (!gPlayer.isLeft() && gPlayer.player != Player(24)) {
 						if (gPlayer.isNomad()) {
 							names.push(`${gPlayer.names.btag} is ${PlayerStatus.ALIVE}`)
 						} else {
@@ -108,7 +110,7 @@ export const CommandProcessor = () => {
 			// 	break;
 
 			case "-stfu":
-				//TODO make me immune to stuf and able to stfu anyone
+				//TODO make me able to stfu anyone
 				if (!GameTracking.getInstance().roundInProgress) return;
 
 				let duration: number = 300;
@@ -147,6 +149,7 @@ export const CommandProcessor = () => {
 			// 	break;
 			default:
 				break;
+
 		}
 
 		return true;

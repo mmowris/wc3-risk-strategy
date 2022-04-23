@@ -114,4 +114,8 @@ export class Scoreboard {
 		MultiboardReleaseItem(mbI);
 		mbI = null;
 	}
+
+	public cityClaimed(pName: GamePlayer, cName: string) {
+		Scoreboard.setItemValue(this.mb, `${pName.coloredName()} claimed ${HexColors.TANGERINE}${cName}|r`, this.size, 1);
+	}
 }

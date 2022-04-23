@@ -154,9 +154,11 @@ export class Country {
 	}
 
 	public setOwner(who: player) {
-		if (who != this.owner) {
-			GamePlayer.fromPlayer.get(this.owner).income -= this.cities.length;
-		}
+		if (who == this.owner) return;
+
+		//if (who != this.owner) {
+		GamePlayer.fromPlayer.get(this.owner).income -= this.cities.length;
+		//}
 
 		GamePlayer.fromPlayer.get(who).income += this.cities.length;
 		this._owner = who;
