@@ -173,6 +173,7 @@ export class Game {
 				UserInterface.hideUI(false);
 				Scoreboard.getInstance().init();
 				GameTimer.getInstance().start();
+				GameTracking.getInstance().roundInProgress = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 			}
 		});

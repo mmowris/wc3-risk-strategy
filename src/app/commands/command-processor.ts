@@ -1,5 +1,14 @@
 import CameraControls, { CamSettings, PlayerCamData } from "app/commands/camera-controls-type";
+import { GameTracking } from "app/game/game-tracking-type";
+import { GamePlayer, PlayerStatus } from "app/player/player-type";
+import { Util } from "libs/translators";
+import { PlayGlobalSound } from "libs/utils";
+import { HexColors } from "resources/hexColors";
+import { Timer } from "w3ts";
 //TODO: Commands
+
+export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
+
 export const CommandProcessor = () => {
 	const t: trigger = CreateTrigger();
 
@@ -9,7 +18,7 @@ export const CommandProcessor = () => {
 
 	TriggerAddCondition(t, Condition(() => {
 		const command: string = GetEventPlayerChatString().split(' ')[0];
-		const tPlayer: player = GetTriggerPlayer();
+		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetOwningPlayer(GetTriggerUnit()));
 
 		switch (command) {
 			case "-cam":
@@ -23,29 +32,73 @@ export const CommandProcessor = () => {
 				if (angle && S2R(angle)) camData.push(angle);
 				if (rotation && S2R(rotation)) camData.push(rotation);
 
-				CameraControls.getInstance().checkCamData(PlayerCamData.get(tPlayer), camData);
+				CameraControls.getInstance().checkCamData(PlayerCamData.get(gPlayer.player), camData);
 				break;
 
 			case "-def":
-				CameraControls.getInstance().checkCamData(PlayerCamData.get(tPlayer), [I2S(CamSettings.DEFAULT_DISTANCE), I2S(CamSettings.DEFAULT_ANGLE), I2S(CamSettings.DEFAULT_ROTATION)])
+				CameraControls.getInstance().checkCamData(PlayerCamData.get(gPlayer.player), [I2S(CamSettings.DEFAULT_DISTANCE), I2S(CamSettings.DEFAULT_ANGLE), I2S(CamSettings.DEFAULT_ROTATION)])
 
 				break;
 
 			case "-forfeit":
 			case "-ff":
-				Forfeit(gPlayer);
+				if (!GameTracking.getInstance().roundInProgress) return;
+
+				if (gPlayer.isAlive() || gPlayer.isNomad()) {
+					gPlayer.setStatus(PlayerStatus.FORFEIT);
+				}
+
+				ClearTextMessages();
+
+				GamePlayer.fromPlayer.forEach(gPlayer => {
+					DisplayTimedTextToPlayer(gPlayer.player, 0.92, 0.81, 5.00, `${gPlayer.names.acct} has ${HexColors.TANGERINE}forfeit!`);
+				})
+
+				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
+
+				GameTracking.getInstance().koVictory();
 
 				break;
 
-			case "-restart":
-			case "-ng":
-				Restart();
+			// case "-restart":
+			// case "-ng":
+			// 	Restart();
 
-				break;
+			// 	break;
 
 			case "-names":
 			case "-players":
-				LobbyList(gPlayer);
+				if (!GameTracking.getInstance().roundInProgress) return;
+				if (!enableList.has(gPlayer)) enableList.set(gPlayer, false);
+
+				let counter: number = 0;
+				let p: player = gPlayer.player;
+				let names: string[] = [];
+				const lobbyTimer: Timer = new Timer();
+
+				GamePlayer.fromPlayer.forEach(gPlayer => {
+					if (!gPlayer.isLeft()) {
+						if (gPlayer.isNomad()) {
+							names.push(`${gPlayer.names.btag} is ${PlayerStatus.ALIVE}`)
+						} else {
+							names.push(`${gPlayer.names.btag} is ${gPlayer.status}`)
+						}
+					}
+				});
+
+				Util.ShuffleArray(names);
+
+				lobbyTimer.start(0.75, true, () => {
+					if (counter < names.length) {
+						DisplayTimedTextToPlayer(gPlayer.player, 0.00, 0.00, 5, names[counter]);
+					} else {
+						lobbyTimer.pause();
+						lobbyTimer.destroy();
+						enableList.set(gPlayer, true);
+					}
+
+					counter++;
+				})
 
 				break;
 
@@ -55,8 +108,37 @@ export const CommandProcessor = () => {
 			// 	break;
 
 			case "-stfu":
-				STFU();
+				//TODO make me immune to stuf and able to stfu anyone
+				if (!GameTracking.getInstance().roundInProgress) return;
 
+				let duration: number = 90;
+				let playerString: string = `${GetEventPlayerChatString().split(' ')[1].split('#')[0]}`;
+
+				playerString = StringCase(playerString, false);
+
+				let player: GamePlayer = GamePlayer.fromString.get(playerString);
+
+				if (!player.isDead() || !player.isForfeit()) return;
+				if (player.isSTFU()) return;
+
+				const stfuTimer: Timer = new Timer();
+				const oldStatus: string = player.status;
+
+				SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 1);
+
+				stfuTimer.start(1, true, () => {
+					player.status = PlayerStatus.STFU + duration;
+
+					if (duration < 1.00 || !GameTracking.getInstance().roundInProgress) {
+						player.status = oldStatus;
+						SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 0);
+
+						stfuTimer.pause();
+						stfuTimer.destroy();
+					} else {
+						duration--;
+					}
+				});
 				break;
 
 			// case "-g":

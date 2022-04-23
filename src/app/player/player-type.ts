@@ -77,7 +77,7 @@ export class GamePlayer {
 			this.names.acct = this.names.btag.split('#')[0];
 		}
 
-		GamePlayer.fromString.set(this.names.acct, this);
+		GamePlayer.fromString.set(StringCase(this.names.acct, false), this);
 
 		this.init();
 	}

@@ -8,6 +8,7 @@ export class GameTracking {
 	private static instance: GameTracking;
 	private _leader: GamePlayer;
 	private _citiesToWin: number;
+	public roundInProgress: boolean;
 
 	constructor() {
 		this._leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1))));
@@ -67,6 +68,8 @@ export class GameTracking {
 			return false;
 		}
 
+		this.roundInProgress = false;
+		
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (GetLocalPlayer() == gPlayer.player) {
 				BlzEnableSelections(false, false);
