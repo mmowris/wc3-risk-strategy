@@ -1,4 +1,3 @@
-import { GameTracking } from "app/game/game-tracking-type";
 import { GamePlayer } from "app/player/player-type";
 import { HexColors } from "resources/hexColors";
 
@@ -14,7 +13,7 @@ export class Scoreboard {
 	public init() {
 		this.mb = CreateMultiboard();
 
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (gPlayer.isAlive() && gPlayer.player != Player(24)) {
 				this.playersOnBoard.push(gPlayer);
 			}

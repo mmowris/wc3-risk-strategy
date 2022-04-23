@@ -12,8 +12,8 @@ export function onOwnerChange() {
 	TriggerAddCondition(ownerChange, Condition(() => {
 		let city: City = City.fromBarrack.get(GetChangingUnit());
 		let country: Country = Country.fromCity.get(city);
-		let prevOwner: GamePlayer = GamePlayer.fromID.get(GetPlayerId(GetChangingUnitPrevOwner()));
-		let owner: GamePlayer = GamePlayer.fromID.get(GetPlayerId(city.getOwner()));
+		let prevOwner: GamePlayer = GamePlayer.fromPlayer.get(GetChangingUnitPrevOwner());
+		let owner: GamePlayer = GamePlayer.fromPlayer.get(city.getOwner());
 
 		prevOwner.cities.splice(prevOwner.cities.indexOf(city.barrack), 1);
 		country.citiesOwned.set(prevOwner, country.citiesOwned.get(prevOwner) - 1);

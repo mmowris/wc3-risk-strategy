@@ -55,7 +55,7 @@ export class GamePlayer {
 	public cities: unit[] = [];
 
 	public static fromString = new Map<string, GamePlayer>(); //Set in constructor
-	public static fromID = new Map<number, GamePlayer>(); //Set onLoad
+	public static fromPlayer = new Map<player, GamePlayer>(); //Set onLoad
 
 	constructor(who: player) {
 		this.player = who;
@@ -109,12 +109,12 @@ export class GamePlayer {
 			deaths: 0
 		});
 
-		GamePlayer.fromID.forEach(gPlayer => {
-			this.kd.set(gPlayer, {
-				kills: 0,
-				deaths: 0
-			});
-		});
+		// GamePlayer.fromPlayer.forEach(gPlayer => {
+		// 	this.kd.set(gPlayer, {
+		// 		kills: 0,
+		// 		deaths: 0
+		// 	});
+		// });
 	}
 
 	public reset() {

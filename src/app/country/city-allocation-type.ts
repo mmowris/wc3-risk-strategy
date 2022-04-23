@@ -12,7 +12,7 @@ export class CityAllocation {
 		let citiesMax: number = (Math.min((playerPool.length == 2) ? 18 : Math.floor(cityPool.length / playerPool.length), 20)); // TODO: refactor when promode is created
 
 		while (playerPool.length > 0) {
-			let gPlayer: GamePlayer = GamePlayer.fromID.get(GetPlayerId(playerPool.shift()));
+			let gPlayer: GamePlayer = GamePlayer.fromPlayer.get(playerPool.shift());
 			let city: City = this.getCityFromPool(cityPool);
 			let country: Country = Country.fromCity.get(city);
 
@@ -65,7 +65,7 @@ export class CityAllocation {
 	private static buildPlayerPool(): player[] {
 		let result: player[] = [];
 
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (GetPlayerId(gPlayer.player) >= 24) return;
 
 			if (gPlayer.isAlive()) {

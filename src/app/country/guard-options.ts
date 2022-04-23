@@ -4,7 +4,7 @@ export function compareValue(filterUnit: unit, compareUnit: unit): unit { //comp
 	if (filterUnit == compareUnit) return compareUnit;
 
 	let wantedUnit: unit = compareUnit;
-	const gPlayer: GamePlayer = GamePlayer.fromID.get(GetPlayerId(GetOwningPlayer(filterUnit)));
+	const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetOwningPlayer(filterUnit));
 
 	if (!gPlayer.value && GetUnitPointValue(filterUnit) < GetUnitPointValue(compareUnit)) {
 		wantedUnit = filterUnit;
@@ -25,7 +25,7 @@ export function compareHealth(filterUnit: unit, compareUnit: unit): unit {
 	if (filterUnit == compareUnit) return compareUnit;
 
 	let wantedUnit: unit = compareUnit;
-	const gPlayer: GamePlayer = GamePlayer.fromID.get(GetPlayerId(GetOwningPlayer(filterUnit)));
+	const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetOwningPlayer(filterUnit));
 
 	if (!gPlayer.health && GetUnitState(filterUnit, UNIT_STATE_LIFE) < GetUnitState(compareUnit, UNIT_STATE_LIFE)) {
 		wantedUnit = filterUnit;

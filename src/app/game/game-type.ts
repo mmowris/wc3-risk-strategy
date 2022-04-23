@@ -93,7 +93,7 @@ export class Game {
 			if (player.slotState == PLAYER_SLOT_STATE_PLAYING) {
 				if (player.id >= 25) return; //Exclude ai that is not neutral hostile
 
-				GamePlayer.fromID.set(player.id, new GamePlayer(player.handle));
+				GamePlayer.fromPlayer.set(player.handle, new GamePlayer(player.handle));
 
 				//if (player.id >= 24) return; //Exclude neutral hostile
 			}
@@ -128,7 +128,7 @@ export class Game {
 
 	private static initRound() {
 		Game.assignColors();
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			//Create player tools
 			let u: unit = CreateUnit(gPlayer.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270);
 			SetUnitPathing(u, false);
@@ -171,7 +171,7 @@ export class Game {
 		const colors: playercolor[] = [];
 		let tracker: number = 0;
 
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (gPlayer.isPlaying()) {
 				if (GetPlayerId(gPlayer.player) >= 24) return; //Exclude neutral ai
 
@@ -182,7 +182,7 @@ export class Game {
 
 		Util.ShuffleArray(colors);
 
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (gPlayer.isPlaying()) {
 				if (GetPlayerId(gPlayer.player) >= 24) return; //Exclude neutral ai
 

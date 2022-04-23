@@ -6,7 +6,7 @@ export class GameTracking {
 	private _citiesToWin: number;
 
 	constructor() {
-		this._leader = GamePlayer.fromID.get(Math.floor(Math.random() * GamePlayer.fromID.size - 1));
+		this._leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * GamePlayer.fromPlayer.size - 1)));
 	}
 
 	public get leader(): GamePlayer {
@@ -29,7 +29,7 @@ export class GameTracking {
 		let counter: number = 0;
 		let who: GamePlayer;
 
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (gPlayer.player == Player(24)) return;
 
 			if (gPlayer.isAlive() || gPlayer.isNomad()) {
@@ -47,7 +47,7 @@ export class GameTracking {
 	public cityVictory(): boolean {
 		let who: GamePlayer;
 
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (gPlayer.player == Player(24)) return;
 
 			if (gPlayer.cities.length >= this.citiesToWin) {
@@ -63,7 +63,7 @@ export class GameTracking {
 			return false;
 		}
 
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (GetLocalPlayer() == gPlayer.player) {
 				BlzEnableSelections(false, false);
 			}

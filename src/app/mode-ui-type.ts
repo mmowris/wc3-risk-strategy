@@ -92,7 +92,7 @@ export class ModeUI {
 		const obsStr: string = "OBSERVE GAME"
 		ModeUI.createButton(obsStr, FRAMEPOINT_TOP, cList, FRAMEPOINT_BOTTOM, 0, -0.01, 0.2, 0.06);
 		ModeUI.frameFunc.set(obsStr, () => {
-			const player: GamePlayer = GamePlayer.fromID.get(GetPlayerId(GetTriggerPlayer()));
+			const player: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
 
 			if (player.isPlaying()) {
 				player.setStatus(PlayerStatus.OBSERVING);
@@ -154,7 +154,7 @@ export class ModeUI {
 		BlzFrameSetSize(pList, 0.20, 0.38);
 		BlzFrameSetPoint(pList, FRAMEPOINT_TOPRIGHT, backdrop, FRAMEPOINT_TOPRIGHT, -0.025, -0.025);
 
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (gPlayer.isPlaying() || gPlayer.isObserving()) {
 				if (gPlayer.player == Player(24))
 					return;

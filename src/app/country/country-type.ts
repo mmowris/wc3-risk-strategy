@@ -39,7 +39,7 @@ export class Country {
 
 		this.allocLim = Math.floor(cities.length / 2)
 
-		this.owner == Player(24);
+		this.owner = Player(24);
 	}
 
 	//Static API
@@ -136,7 +136,7 @@ export class Country {
 	}
 
 	public initCitiesOwned() {
-		GamePlayer.fromID.forEach(gPlayer => {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (GetPlayerId(gPlayer.player) >= 25) return;
 
 			this.citiesOwned.set(gPlayer, 0);
@@ -148,7 +148,7 @@ export class Country {
 	}
 
 	public step() {
-		GamePlayer.fromID.get(GetPlayerId(this.owner)).giveGold();
+		GamePlayer.fromPlayer.get(this.owner).giveGold();
 		this.spawner.step();
 	}
 	//Internal Functions
