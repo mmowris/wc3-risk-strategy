@@ -14,11 +14,9 @@ import { UTYPE } from "resources/unitTypes";
 
 export class Transports {
 	private static instance: Transports;
-	//public static autoLoadTimer: Map<unit, Timer> = new Map<unit, Timer>();
 	public static loadedUnits: Map<unit, unit[]> = new Map<unit, unit[]>();
 	public static onLoadTrig: trigger = CreateTrigger();
 
-	//create a trigger
 	public static getInstance() {
 		if (this.instance == null) {
 			this.instance = new Transports();
@@ -101,18 +99,6 @@ export class Transports {
 
 		trans = null;
 	}
-
-	// public static onAutoloadCast() {
-	//     //if (TransportAnywhere) return false;
-
-	//     let trans = Unit.fromHandle(GetTriggerUnit());
-
-	//     trans.issueImmediateOrder("stop");
-
-	//     Messages.errorMessage("You may only load on pebble terrain!", trans.owner, true);
-
-	//     trans = null;
-	// }
 
 	public static onUnloadEndCast() {
 		//if (TransportAnywhere) return false;
