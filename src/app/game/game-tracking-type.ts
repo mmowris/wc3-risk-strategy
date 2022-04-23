@@ -44,7 +44,7 @@ export class GameTracking {
 		}
 	}
 
-	public cityVictory() {
+	public cityVictory(): boolean {
 		let who: GamePlayer;
 
 		GamePlayer.fromID.forEach(gPlayer => {
@@ -55,14 +55,13 @@ export class GameTracking {
 			}
 		})
 
-		if (who) {
-			this._leader = who;
-			this.giveVictory(who);
-		}
-		
+		return this.giveVictory(who);
 	}
 
-	private giveVictory(who: GamePlayer) {
+	private giveVictory(who?: GamePlayer): boolean {
+		if (!who) {
+			return false;
+		}
 
 		GamePlayer.fromID.forEach(gPlayer => {
 			if (GetLocalPlayer() == gPlayer.player) {
@@ -82,6 +81,8 @@ export class GameTracking {
 		// Utils.globalSound("Sound\\Interface\\QuestCompleted.flac");
 
 		//Scoreboard victory update
+
+		return true;
 	}
 
 

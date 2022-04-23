@@ -1,8 +1,9 @@
 import { GamePlayer } from "app/player/player-type";
 import { HexColors } from "resources/hexColors";
+import { Players } from "w3ts/globals";
 import { Cities, City } from "./city-type";
 import { Spawner } from "./spawner-type";
-
+//TODO: if owned, give player income and spawns
 export class Country {
 	public name: string;
 	private _cities: City[] = [];
@@ -38,7 +39,7 @@ export class Country {
 
 		this.allocLim = Math.floor(cities.length / 2)
 
-		this.owner == Player(25);
+		this.owner == Player(24);
 	}
 
 	//Static API
@@ -140,6 +141,15 @@ export class Country {
 
 			this.citiesOwned.set(gPlayer, 0);
 		});
+	}
+
+	public isOwned(): boolean {
+		return this.owner == Player(24) ? false : true
+	}
+
+	public step() {
+		GamePlayer.fromID.get(GetPlayerId(this.owner)).giveGold();
+		this.spawner.step();
 	}
 	//Internal Functions
 }

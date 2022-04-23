@@ -1,3 +1,4 @@
+import { Country } from "app/country/country-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { HexColors } from "resources/hexColors";
 import { Timer } from "w3ts";
@@ -24,12 +25,11 @@ export class GameTimer {
 	}
 
 	public start() {
-		this._tick = this.duration;
-
 		this.timer.start(1.00, true, () => {
-			print(`tick ${this._tick}`);
-			if (this._tick == this.duration) this.roundUpdate();
-			this.updateBoard();
+			let roundUpdate: boolean = false;
+
+			if (this._tick == this.duration) roundUpdate = this.roundUpdate();
+			this.updateBoard(roundUpdate);
 			this.updateUI();
 			this._tick--;
 
@@ -40,25 +40,26 @@ export class GameTimer {
 		})
 	}
 
-	/**
-	 * reset - Prepare GameTimer for new round
-	 */
 	public reset() {
+		this.timer = new Timer();
+		this._tick = this.duration;
+		this.turn = 1;
+	}
+
+	public stop() {
 		this.timer.pause();
 		this.timer.destroy();
-		this.timer = new Timer();
-		this.turn = 1;
 	}
 
 	public get tick(): number {
 		return this._tick;
 	}
 
-	private updateBoard() {
+	private updateBoard(turnUpdate: boolean) {
 		let row: number = 2;
 
 		Scoreboard.getInstance().playersOnBoard.forEach(gPlayer => {
-			Scoreboard.getInstance().updateBoard(gPlayer, row);
+			Scoreboard.getInstance().updateBoard(gPlayer, row, turnUpdate);
 			row++;
 		})
 
@@ -78,11 +79,18 @@ export class GameTimer {
 		BlzFrameSetText(BlzGetFrameByName("ResourceBarSupplyText", 0), `${this.turn}`);
 	}
 
-	private roundUpdate() {
-		//Check Victory
+	private roundUpdate(): boolean {
+		let gameOver: boolean = GameTracking.getInstance().cityVictory();
+		if (gameOver) {
+			this.stop();
 			//Stop game if victory
-		//Give income
-		//Give spawns
+		}
+
+		Country.fromName.forEach(country => {
+			if (country.isOwned()) {
+				country.step();
+			}
+		});
 		//print warning if player has 70% of cities to win
 
 		Scoreboard.getInstance().playersOnBoard.sort((p1, p2) => {
@@ -90,5 +98,7 @@ export class GameTimer {
 			if (p1.income > p2.income) return -1;
 			return 0;
 		})
+
+		return true;
 	}
 }
