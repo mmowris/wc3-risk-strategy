@@ -205,7 +205,7 @@ export class Game {
 						//print(`btag: ${gPlayer.names.btag}\nacct: ${gPlayer.names.acct}\ncolor: ${gPlayer.names.color}`)
 						//print(`real name ${GetPlayerName(gPlayer.player)}`)
 						//print(`set real name tp ${gPlayer.names.color}`)
-						SetPlayerName(gPlayer.player, gPlayer.names.color); //TODO: turn this to a func in player-type
+						gPlayer.setName(`${gPlayer.names.color}`);
 						gPlayer.names.colorIndex = i;
 						//print(`real name ${GetPlayerName(gPlayer.player)}`)
 					}

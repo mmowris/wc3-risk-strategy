@@ -82,9 +82,6 @@ export class GamePlayer {
 		this.init();
 	}
 
-	/**
-	 * init data that is saved/reset
-	 */
 	public init() {
 		this.income = 0;
 		this.health = false;
@@ -160,24 +157,23 @@ export class GamePlayer {
 
 				break;
 			case PlayerStatus.NOMAD:
-				this.income = 0;
+				this.income = 2;
 
 				break;
 			case PlayerStatus.FORFEIT:
 				this.income = -1;
-
+				this.killPlayer();
 				break;
 			case PlayerStatus.DEAD:
 				this.income = -2;
-
+				this.killPlayer();
 				break;
 			case PlayerStatus.LEFT:
 				this.income = -3;
-
+				this.killPlayer();
 				break;
 			case PlayerStatus.OBSERVING:
 				this.income = -4;
-
 				break;
 			default:
 				break;
@@ -264,6 +260,10 @@ export class GamePlayer {
 		return this.status.split(' ')[0] == PlayerStatus.STFU;
 	}
 
+	public setName(name: string) {
+		SetPlayerName(this.player, name);
+	}
+
 	private evalBounty(val: number) {
 		this.bounty.delta += (val * 0.25) //This is not precise math.
 
@@ -300,6 +300,18 @@ export class GamePlayer {
 
 		BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
 		BlzFrameSetValue(this.bonus.bar, (this.bonus.delta / 2));
+	}
+
+	private killPlayer() {
+		this.bounty.delta = 0;
+		this.bonus.delta = 0;
+		SetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD, 0);
+
+		this.setName(this.names.acct);
+
+		if (this.player == GetLocalPlayer() && !this.isLeft() ) {
+			BlzEnableSelections(false, true);
+		}
 	}
 
 	public static getKey(who: GamePlayer, uID: number) {

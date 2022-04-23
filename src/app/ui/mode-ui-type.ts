@@ -88,11 +88,15 @@ export class ModeUI {
 			if (player.isPlaying()) {
 				player.setStatus(PlayerStatus.OBSERVING);
 
+				SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 0)
+
 				if (GetLocalPlayer() == player.player) {
 					BlzFrameSetText(ModeUI.frame.get(obsStr), "PLAY GAME");
 				}
 			} else {
 				player.setStatus(PlayerStatus.PLAYING);
+
+				SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 1)
 
 				if (GetLocalPlayer() == player.player) {
 					BlzFrameSetText(ModeUI.frame.get(obsStr), obsStr);
@@ -146,12 +150,10 @@ export class ModeUI {
 		BlzFrameSetPoint(pList, FRAMEPOINT_TOPRIGHT, backdrop, FRAMEPOINT_TOPRIGHT, -0.025, -0.025);
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			//if (gPlayer.isPlaying() || gPlayer.isObserving()) {
-				if (gPlayer.player == Player(24))
-					return;
+			if (gPlayer.player == Player(24))
+				return;
 
-				BlzFrameAddText(pList, `${gPlayer.names.acct} is ${gPlayer.status}`);
-			//}
+			BlzFrameAddText(pList, `${gPlayer.names.acct} is ${gPlayer.status}`);
 		});
 	}
 

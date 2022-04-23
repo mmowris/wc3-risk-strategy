@@ -1,4 +1,4 @@
-import CameraControls, { PlayerCamData } from "app/commands/camera-controls-type";
+import CameraControls, { CamSettings, PlayerCamData } from "app/commands/camera-controls-type";
 //TODO: Commands
 export const CommandProcessor = () => {
 	const t: trigger = CreateTrigger();
@@ -25,38 +25,44 @@ export const CommandProcessor = () => {
 
 				CameraControls.getInstance().checkCamData(PlayerCamData.get(tPlayer), camData);
 				break;
-			// case "-def":
-			//     gPlayer.defaultCam();
 
-			//     break;
-			// case "-forfeit":
-			// case "-ff":
-			//     Forfeit(gPlayer);
+			case "-def":
+				CameraControls.getInstance().checkCamData(PlayerCamData.get(tPlayer), [I2S(CamSettings.DEFAULT_DISTANCE), I2S(CamSettings.DEFAULT_ANGLE), I2S(CamSettings.DEFAULT_ROTATION)])
 
-			//     break;
-			// case "-restart":
-			// case "-ng":
-			//     Restart();
+				break;
 
-			//     break;
-			// case "-names":
-			// case "-players":
-			//     LobbyList(gPlayer);
+			case "-forfeit":
+			case "-ff":
+				Forfeit(gPlayer);
 
-			//     break;
+				break;
+
+			case "-restart":
+			case "-ng":
+				Restart();
+
+				break;
+
+			case "-names":
+			case "-players":
+				LobbyList(gPlayer);
+
+				break;
+
 			// case "-sb":
-			//     Scoreboard(gPlayer);
+			// 	Scoreboard(gPlayer);
 
-			//     break;
-			// case "-stfu":
-			//     STFU();
+			// 	break;
 
-			//     break;
+			case "-stfu":
+				STFU();
+
+				break;
 
 			// case "-g":
-			//     SendGold(gPlayer);
+			// 	SendGold(gPlayer);
 
-			//     break;
+			// 	break;
 			default:
 				break;
 		}

@@ -4,7 +4,7 @@ interface CamData {
 	rotation: number;
 }
 
-enum CamSettings {
+export enum CamSettings {
 	MIN_DISTANCE = 1000.00,
 	MAX_DISTANCE = 8500.00,
 	DEFAULT_DISTANCE = 4000.00,
