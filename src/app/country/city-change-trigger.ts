@@ -1,3 +1,4 @@
+import { GameTracking } from "app/game/game-tracking-type";
 import { GamePlayer } from "app/player/player-type";
 import { City } from "./city-type";
 import { Country } from "./country-type";
@@ -20,6 +21,8 @@ export function onOwnerChange() {
 
 		owner.cities.push(city.barrack);
 		country.citiesOwned.set(owner, country.citiesOwned.get(owner) + 1);
+
+		if (owner.cities.length > GameTracking.getInstance().leader.cities.length) GameTracking.getInstance().leader = owner;
 
 		//print(`${owner.names.acct} owns ${country.citiesOwned.get(owner)} cities in ${country.name} and they own ${owner.cities.length} total`)
 		return true;

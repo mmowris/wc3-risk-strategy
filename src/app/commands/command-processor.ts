@@ -1,4 +1,4 @@
-import CameraControls, { PlayerCamData } from "app/camera-controls-type";
+import CameraControls, { PlayerCamData } from "app/commands/camera-controls-type";
 //TODO: Commands
 export const CommandProcessor = () => {
 	const t: trigger = CreateTrigger();

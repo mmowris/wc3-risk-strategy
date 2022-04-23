@@ -1,5 +1,5 @@
-import { PLAYER_COLOR_CODES } from "libs/ColorData";
-
+import { PLAYER_COLOR_CODES } from "resources/colordata";
+//TODO: Nomads
 interface KD {
 	kills: number;
 	deaths: number;

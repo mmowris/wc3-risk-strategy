@@ -74,7 +74,7 @@ export class GameTimer {
 		let upkeepString: string = `${this._tick}`;
 
 		if (this._tick <= 3) {
-			//Utils.globalSound("Sound\\Interface\\BattleNetTick.flac"); //TODO play sound
+			PlayGlobalSound("Sound\\Interface\\BattleNetTick.flac");
 			upkeepString = `${HexColors.RED}${this._tick}`;
 		}
 

@@ -1,6 +1,6 @@
 import { HexColors } from "resources/hexColors";
-import CameraControls, { PlayerCamData } from "./camera-controls-type";
-import { GamePlayer, PlayerStatus } from "./player/player-type";
+import CameraControls, { PlayerCamData } from "../commands/camera-controls-type";
+import { GamePlayer, PlayerStatus } from "../player/player-type";
 
 export class ModeUI {
 	public static frame: Map<string, framehandle> = new Map<string, framehandle>();

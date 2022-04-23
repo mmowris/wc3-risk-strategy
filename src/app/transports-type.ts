@@ -15,7 +15,7 @@ import { Timer } from "w3ts";
 
 export class Transports {
 	private static instance: Transports;
-	public static autoLoadTimer: Map<unit, Timer> = new Map<unit, Timer>();
+	//public static autoLoadTimer: Map<unit, Timer> = new Map<unit, Timer>();
 	public static loadedUnits: Map<unit, unit[]> = new Map<unit, unit[]>();
 	public static onLoadTrig: trigger = CreateTrigger();
 

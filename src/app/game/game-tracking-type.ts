@@ -32,7 +32,7 @@ export class GameTracking {
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (gPlayer.player == Player(24)) return;
 
-			if (gPlayer.isAlive() || gPlayer.isNomad()) {
+			if (gPlayer.isAlive()) {
 				counter++;
 				who = gPlayer;
 			}
