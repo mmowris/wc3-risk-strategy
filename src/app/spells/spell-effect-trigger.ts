@@ -1,4 +1,5 @@
 import { City } from "app/country/city-type";
+import { Spawner } from "app/country/spawner-type";
 import { GamePlayer } from "app/player/player-type";
 import { Transports } from "app/transports-type";
 import { AID } from "resources/abilityID";
@@ -84,6 +85,14 @@ export function unitSpellEffect() {
 				pingForce = null;
 
 				break;
+				
+			case AID.SPWN_3000:
+			case AID.SPWN_6000:
+			case AID.SPWN_ALL:
+			case AID.SPWN_RESET:
+				Spawner.onCast();
+
+				break;
 			default:
 				break;
 		}
@@ -96,4 +105,4 @@ function swapAbilities(castingUnit: unit, castedAbility: number, swapAbility: nu
 	UnitRemoveAbility(castingUnit, castedAbility);
 	UnitAddAbility(castingUnit, swapAbility);
 	BlzStartUnitAbilityCooldown(castingUnit, castedAbility, 1)
-    }
+}

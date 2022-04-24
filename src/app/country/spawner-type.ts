@@ -22,8 +22,6 @@ export class Spawner {
 		this.spawnMax = this.spawnAmount * SpawnTurnLimit;
 		this.country = country;
 		this.setName();
-
-		//TODO: Spawn Ability Cast Trigger Event
 	}
 
 	//Static API
