@@ -22,7 +22,6 @@ export class CityAllocation {
 
 			} else {
 				let counter: number = 0;
-
 				do {
 					city = this.getCityFromPool(cityPool);
 					country = Country.fromCity.get(city);

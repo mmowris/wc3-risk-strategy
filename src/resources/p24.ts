@@ -1,1 +1,1 @@
-export const NEUTRAL_HOSTILE: player = Player(24);
+export const NEUTRAL_HOSTILE: player = Player(PLAYER_NEUTRAL_AGGRESSIVE);

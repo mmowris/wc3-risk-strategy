@@ -13,8 +13,6 @@ export const enterCityTrig: trigger = CreateTrigger();
 export const leaveCityTrig: trigger = CreateTrigger();
 export const unitTrainedTrig: trigger = CreateTrigger();
 
-const defaultOwner: player = NEUTRAL_HOSTILE;
-
 export class City {
 	private _barrack: unit;
 	private cop: unit;
@@ -53,7 +51,7 @@ export class City {
 		TriggerRegisterUnitEvent(unitTrainedTrig, this.barrack, EVENT_UNIT_TRAIN_FINISH);
 
 		//Create cop
-		this.cop = CreateUnit(defaultOwner, UID.CONTROL_POINT, offSetX, offSetY, 270);
+		this.cop = CreateUnit(NEUTRAL_HOSTILE, UID.CONTROL_POINT, offSetX, offSetY, 270);
 
 		this.defaultGuardType = guardType;
 		this.setGuard(guardType);
@@ -444,7 +442,7 @@ export class City {
 
 	//Internal Functions
 	private setBarrack(x: number, y: number, name?: string) {
-		this._barrack = CreateUnit(defaultOwner, this.defaultBarrackType, x, y, 270);
+		this._barrack = CreateUnit(NEUTRAL_HOSTILE, this.defaultBarrackType, x, y, 270);
 		City.fromBarrack.set(this.barrack, this);
 
 		if (name && name != GetUnitName(this.barrack)) BlzSetUnitName(this.barrack, name);
@@ -455,7 +453,7 @@ export class City {
 	 */
 	private setGuard(guard: unit | number) {
 		//TODO add null checking - 4/23/2022 idk what needs null checked maybe check if guard is null and handle it
-		typeof guard === "number" ? this._guard = CreateUnit(defaultOwner, guard, this.x, this.y, 270) : this._guard = guard;
+		typeof guard === "number" ? this._guard = CreateUnit(NEUTRAL_HOSTILE, guard, this.x, this.y, 270) : this._guard = guard;
 		UnitAddType(this.guard, UTYPE.GUARD);
 		City.fromGuard.set(this.guard, this);
 	}
@@ -550,7 +548,7 @@ export class City {
 
 			if (!IsUnitType(trainedUnit, UTYPE.TRANSPORT)) {
 				GamePlayer.fromPlayer.get(city.getOwner()).unitCount++;
-				print(`${GamePlayer.fromPlayer.get(city.getOwner()).coloredName()} has ${GamePlayer.fromPlayer.get(city.getOwner()).unitCount} units`)
+				//print(`${GamePlayer.fromPlayer.get(city.getOwner()).coloredName()} has ${GamePlayer.fromPlayer.get(city.getOwner()).unitCount} units`)
 			}
 
 			trainedUnit = null;

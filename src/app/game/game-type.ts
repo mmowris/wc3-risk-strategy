@@ -24,6 +24,8 @@ import { unitTargetOrder } from "app/spells/unit-target-order-trigger";
 import { unitEndCast } from "app/spells/spell-end-trigger";
 import { Transports } from "app/transports-type";
 import { PlayGlobalSound } from "libs/utils";
+import { NEUTRAL_HOSTILE } from "resources/p24";
+import { unitDeath } from "app/unit-death-trigger";
 
 export class Game {
 	private static instance: Game;
@@ -80,6 +82,7 @@ export class Game {
 		//Singletons
 
 		//Triggers
+		unitDeath();
 		unitSpellEffect();
 		unitEndCast();
 		unitTargetOrder();
@@ -154,7 +157,6 @@ export class Game {
 		GameTracking.getInstance().citiesToWin = Math.ceil(Cities.length * 0.60);
 		CityAllocation.start();
 
-
 		let tick: number = 5;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
@@ -208,6 +210,10 @@ export class Game {
 						//print(`real name ${GetPlayerName(gPlayer.player)}`)
 					}
 				}
+			}
+
+			if (gPlayer.player == NEUTRAL_HOSTILE ) {
+				gPlayer.setName(`${`NEUTRAL HOSTILE`}`)
 			}
 		})
 	}

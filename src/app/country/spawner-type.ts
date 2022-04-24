@@ -15,6 +15,8 @@ export class Spawner {
 	private spawnAmount: number;
 	private spawnMax: number;
 
+	public static fromUnit:Map<unit, Spawner> = new Map<unit, Spawner>(); //Set in constructor
+
 	constructor(country: string, x: number, y: number, countrySize: number) {
 		this.playerSpawns = new Map<GamePlayer, unit[]>();
 		this.create(x, y);
@@ -104,6 +106,7 @@ export class Spawner {
 
 			UnitAddType(u, UTYPE.SPAWN);
 			this.playerSpawns.get(owner).push(u);
+			Spawner.fromUnit.set(u, this);
 			IssuePointOrderLoc(u, "attack", loc);
 			owner.unitCount++;
 
@@ -114,6 +117,14 @@ export class Spawner {
 
 		this.setName();
 
+	}
+
+	public static onSpawnDeath(owner: GamePlayer, u: unit, spawner: Spawner) {
+		spawner.playerSpawns.get(owner).splice(spawner.playerSpawns.get(owner).indexOf(u), 1);
+
+		if (GetOwningPlayer(spawner.unit) == owner.player) spawner.setName();
+
+		Spawner.fromUnit.delete(u);
 	}
 
 	/**

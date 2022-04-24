@@ -63,8 +63,8 @@ export class GamePlayer {
 	public names: Names;
 	public cities: unit[] = [];
 
-	public static fromString = new Map<string, GamePlayer>(); //Set in constructor
-	public static fromPlayer = new Map<player, GamePlayer>(); //Set onLoad
+	public static fromString: Map<string, GamePlayer> = new Map<string, GamePlayer>(); //Set in constructor
+	public static fromPlayer: Map<player, GamePlayer> = new Map<player, GamePlayer>(); //Set onLoad
 
 	constructor(who: player) {
 		this.player = who;
@@ -199,13 +199,10 @@ export class GamePlayer {
 		if (!this.isAlive() && !this.isNomad()) return;
 		if (victom == this) return;
 		if (IsPlayerAlly(victom.player, this.player)) return;
-		print(`${this.coloredName()} killed a unit kills prior: ${this.kd.get(this).kills}`)
 		let val: number = GetUnitPointValue(u);
 
 		this.kd.get(this).kills += val; //Total of this player
 		this.kd.get(victom).kills += val; //Total of victom player
-
-		print(`${this.coloredName()} killed a unit kills after: ${this.kd.get(this).kills}`)
 
 		if (!this.kd.has(GamePlayer.getKey(victom, GetUnitTypeId(u)))) {
 			this.kd.set(GamePlayer.getKey(victom, GetUnitTypeId(u)), {
@@ -215,6 +212,10 @@ export class GamePlayer {
 		} else {
 			this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills += val; //Total of victom player unit specific
 		}
+
+		//print(`${GetPlayerName(NEUTRAL_HOSTILE)}|r total kill value ${this.kd.get(this).kills}`)
+		//print(`${this.coloredName()}|r killed ${this.kd.get(victom).kills} value worth of units owned by ${victom.coloredName()}|r`)
+		//print(`${this.coloredName()}|r has killed ${this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills} value worth of ${GetUnitName(u)} owned by ${victom.coloredName()}|r`);
 
 		this.evalBounty(val);
 		//TODO DO NOT give fight bonus in promode
@@ -237,9 +238,11 @@ export class GamePlayer {
 		} else {
 			this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total of victom player unit specific
 		}
-	} 
+	}
 
 	public coloredName(): string {
+		if (this.player == NEUTRAL_HOSTILE) return `${GetPlayerName(this.player)}`
+
 		return `${PLAYER_COLOR_CODES[this.names.colorIndex]}${GetPlayerName(this.player)}|r`
 	}
 
@@ -324,7 +327,7 @@ export class GamePlayer {
 
 		this.setName(this.names.acct);
 
-		if (this.player == GetLocalPlayer() && !this.isLeft() ) {
+		if (this.player == GetLocalPlayer() && !this.isLeft()) {
 			BlzEnableSelections(false, true);
 		}
 	}

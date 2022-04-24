@@ -5,6 +5,7 @@ AgiDefenseBonus=0.0
 AttackNotifyDelay=15.0
 AttackNotifyRange=5500.0
 BoneDecayTime=3.0
+BuildingPlacementNotifyRadius=50.0
 DamageBonusChaos=1.75,0.75,1.00,0.35,0.35,0.50,0.05,1.50
 DamageBonusHero=1.00,1.00,1.00,0.50,0.50,1.00,0.05,1.00
 DamageBonusMagic=1.50,0.75,2.00,0.35,0.35,0.50,0.05,1.00
