@@ -82,7 +82,7 @@ function enemySearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	let g: group = CreateGroup();
 	let radius: number = 550;
 
-	if (IsUnitType(kUnit, UTYPE.SHIP) == true && !city.isPort()) radius = 700;
+	if (IsUnitType(kUnit, UTYPE.SHIP) == true && city.isPort()) radius = 700;
 
 	GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterEnemyValidGuards(city, kUnit));
 

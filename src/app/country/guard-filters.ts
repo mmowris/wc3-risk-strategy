@@ -9,7 +9,7 @@ export const isGuardValid = (city: City, fUnit?: unit) => {
 	if (IsUnitType(fUnit, UTYPE.CITY)) return false;
 	if (IsUnitType(fUnit, UTYPE.TRANSPORT)) return false;
 	if (IsUnitType(fUnit, UTYPE.GUARD) && fUnit != city.guard) return false;
-	if (GetUnitTypeId(city.barrack) == UID.CITY && IsUnitType(fUnit, UTYPE.SHIP)) return false;
+	if (!city.isPort() && IsUnitType(fUnit, UTYPE.SHIP)) return false;
 
 	return true;
 }
