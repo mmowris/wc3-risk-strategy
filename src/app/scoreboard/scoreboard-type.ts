@@ -68,7 +68,12 @@ export class Scoreboard {
 
 
 		if (turnUpdate) {
-			Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.income}|r`, row, 2);
+			if (gPlayer.isAlive() || gPlayer.isNomad()) {
+				Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.income}|r`, row, 2);
+			} else {
+				Scoreboard.setItemValue(this.mb, `${sColor}${0}|r`, row, 2);
+			}
+			
 		}
 
 		Scoreboard.setItemValue(this.mb, `${gPlayer.coloredName()}`, row, 1);
