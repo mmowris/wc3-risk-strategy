@@ -73,7 +73,6 @@ export class Scoreboard {
 			} else {
 				Scoreboard.setItemValue(this.mb, `${sColor}${0}|r`, row, 2);
 			}
-			
 		}
 
 		Scoreboard.setItemValue(this.mb, `${gPlayer.coloredName()}`, row, 1);

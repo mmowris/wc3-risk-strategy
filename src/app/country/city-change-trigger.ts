@@ -22,6 +22,12 @@ export function onOwnerChange() {
 		prevOwner.cities.splice(prevOwner.cities.indexOf(city.barrack), 1);
 		country.citiesOwned.set(prevOwner, country.citiesOwned.get(prevOwner) - 1);
 		if (country.owner == prevOwner.player) country.setOwner(NEUTRAL_HOSTILE);
+
+		if (prevOwner.cities.length == 0) {
+			// if (/*Check for units that arent player tools*/) {
+				
+			// }
+		}
 		//TODO: Check if player is dead
 		//TODO: Check is player is nomad
 

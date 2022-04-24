@@ -101,8 +101,6 @@ export class Game {
 				if (player.id >= 25) return; //Exclude ai that is not neutral hostile
 
 				GamePlayer.fromPlayer.set(player.handle, new GamePlayer(player.handle));
-
-				//if (player.id >= 24) return; //Exclude neutral hostile
 			}
 		})
 

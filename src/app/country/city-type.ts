@@ -1,3 +1,4 @@
+import { GamePlayer } from "app/player/player-type";
 import { Transports } from "app/transports-type";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { UID } from "resources/unitID";
@@ -49,7 +50,7 @@ export class City {
 		TriggerRegisterEnterRegion(enterCityTrig, this.region, null);
 		TriggerRegisterLeaveRegion(leaveCityTrig, this.region, null);
 
-		if (this.isPort()) TriggerRegisterUnitEvent(unitTrainedTrig, this.barrack, EVENT_UNIT_TRAIN_FINISH);
+		TriggerRegisterUnitEvent(unitTrainedTrig, this.barrack, EVENT_UNIT_TRAIN_FINISH);
 
 		//Create cop
 		this.cop = CreateUnit(defaultOwner, UID.CONTROL_POINT, offSetX, offSetY, 270);
@@ -537,16 +538,22 @@ export class City {
 			const city: City = City.fromBarrack.get(GetTriggerUnit());
 			let trainedUnit: unit = GetTrainedUnit();
 
-			if (IsUnitType(trainedUnit, UTYPE.TRANSPORT)) {
-				Transports.onCreate(trainedUnit);
+			if (city.isPort()) {
+				if (IsUnitType(trainedUnit, UTYPE.TRANSPORT)) {
+					Transports.onCreate(trainedUnit);
+				}
+
+				if (city.isGuardShip() && !IsUnitType(trainedUnit, UTYPE.SHIP)) {
+					city.changeGuard(trainedUnit);
+				}
 			}
 
-			if (city.isGuardShip() && !IsUnitType(trainedUnit, UTYPE.SHIP)) {
-				city.changeGuard(trainedUnit);
+			if (!IsUnitType(trainedUnit, UTYPE.TRANSPORT)) {
+				GamePlayer.fromPlayer.get(city.getOwner()).unitCount++;
+				print(`${GamePlayer.fromPlayer.get(city.getOwner()).coloredName()} has ${GamePlayer.fromPlayer.get(city.getOwner()).unitCount} units`)
 			}
 
 			trainedUnit = null;
-
 			return false;
 		}))
 	}

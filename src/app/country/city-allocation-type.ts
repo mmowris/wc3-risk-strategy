@@ -39,6 +39,10 @@ export class CityAllocation {
 			}
 		}
 
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			gPlayer.unitCount = gPlayer.cities.length;
+		});
+
 		playerPool.length = 0;
 		playerPool = null;
 		cityPool.length = 0;
