@@ -59,7 +59,6 @@ export const CommandProcessor = () => {
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 
-
 				break;
 
 			// case "-restart":

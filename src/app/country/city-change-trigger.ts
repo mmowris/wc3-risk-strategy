@@ -1,6 +1,8 @@
+import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
-import { GamePlayer } from "app/player/player-type";
+import { GamePlayer, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
+import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { City } from "./city-type";
 import { Country } from "./country-type";
@@ -24,12 +26,18 @@ export function onOwnerChange() {
 		if (country.owner == prevOwner.player) country.setOwner(NEUTRAL_HOSTILE);
 
 		if (prevOwner.cities.length == 0) {
-			// if (/*Check for units that arent player tools*/) {
-				
-			// }
+			if (prevOwner.unitCount <= 0) {
+				prevOwner.setStatus(PlayerStatus.DEAD);
+
+				GamePlayer.fromPlayer.forEach(player => {
+					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${prevOwner.names.acct} has ${HexColors.TANGERINE}been defeated!`);
+				})
+
+				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
+			} else {
+				//TODO: Check is player is nomad
+			}
 		}
-		//TODO: Check if player is dead
-		//TODO: Check is player is nomad
 
 		//Process new owner - Add city to .cities, add to cities owned in country, set owner of country if they own it.
 		owner.cities.push(city.barrack);
