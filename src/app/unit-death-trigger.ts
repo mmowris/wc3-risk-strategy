@@ -1,6 +1,7 @@
+import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { City, CityRegionSize } from "./country/city-type";
-import { FilterFriendlyValidGuards, isGuardValid } from "./country/guard-filters";
+import { FilterEnemyValidGuards, FilterFriendlyValidGuards, isGuardValid } from "./country/guard-filters";
 import { compareValue } from "./country/guard-options";
 import { Spawner } from "./country/spawner-type";
 import { GameTracking } from "./game/game-tracking-type";
@@ -43,12 +44,12 @@ function guardDies(dUnit: unit, kUnit: unit) {
 	let guardChoice: unit = null;
 
 	guardChoice = alliedCOPSearch(guardChoice, city, kUnit);
-	if (guardChoice) return city.changeGuard(guardChoice);
-
-	guardChoice = enemySearch(guardChoice, city, kUnit);
-	if (guardChoice) return city.changeGuard(guardChoice);
-
-	return killerSearch(guardChoice, city, kUnit, dUnit);
+	if (!guardChoice) guardChoice = enemySearch(guardChoice, city, kUnit);
+	//if (!guardChoice) guardChoice = killerSearch(guardChoice, city, kUnit);
+	if (!guardChoice) guardChoice = CreateUnit(GetOwningPlayer(guardChoice), UID.DUMMY_GUARD, city.x, city.y, 270);
+	
+	city.changeGuard(guardChoice);
+	city.setOwner(GetOwningPlayer(guardChoice));
 }
 
 
@@ -63,6 +64,30 @@ function alliedCOPSearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterFriendlyValidGuards(city));
 
 	if (BlzGroupGetSize(g) == 0) return guardChoice = null;
+	if (!guardChoice) guardChoice = GroupPickRandomUnit(g);
+
+	ForGroup(g, () => {
+		guardChoice = compareValue(GetEnumUnit(), guardChoice);
+	});
+
+	DestroyGroup(g);
+	g = null;
+	return guardChoice;
+}
+
+/**
+ * @returns Valid enemy unit within 200 range of killer & 600-720 max range of city
+ */
+function enemySearch(guardChoice: unit, city: City, kUnit: unit): unit {
+	let g: group = CreateGroup();
+	let radius: number = 550;
+
+	if (IsUnitType(kUnit, UTYPE.SHIP) == true && !city.isPort()) radius = 700;
+
+	GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterEnemyValidGuards(city, kUnit));
+
+	if (BlzGroupGetSize(g) == 0) return guardChoice = null;
+	print(`size ${BlzGroupGetSize(g)}`)
 	if (!guardChoice) guardChoice = GroupPickRandomUnit(g);
 
 	ForGroup(g, () => {

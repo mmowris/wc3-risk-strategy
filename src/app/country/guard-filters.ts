@@ -23,11 +23,12 @@ export const FilterFriendlyValidGuards = (city: City) => Filter(() => {
 	return true;
 });
 
-export const FilterEnemyValidGuards = (city: City) => Filter(() => {
+export const FilterEnemyValidGuards = (city: City, kUnit: unit) => Filter(() => {
 	let fUnit: unit = GetFilterUnit();
 
 	if (!isGuardValid(city, fUnit)) return false;
 	if (IsUnitAlly(fUnit, city.getOwner())) return false;
+	if (IsUnitEnemy(fUnit, GetOwningPlayer(kUnit))) return false;
 
 	fUnit = null;
 	return true;
