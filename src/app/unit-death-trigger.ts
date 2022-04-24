@@ -1,4 +1,7 @@
 import { UTYPE } from "resources/unitTypes";
+import { City, CityRegionSize } from "./country/city-type";
+import { FilterFriendlyValidGuards, isGuardValid } from "./country/guard-filters";
+import { compareValue } from "./country/guard-options";
 import { Spawner } from "./country/spawner-type";
 import { GameTracking } from "./game/game-tracking-type";
 import { GamePlayer } from "./player/player-type";
@@ -24,7 +27,7 @@ export function unitDeath() {
 		Transports.onDeath(dyingUnit, killingUnit);
 
 		if (Spawner.fromUnit.has(dyingUnit)) Spawner.onSpawnDeath(dUnitOwner, dyingUnit, Spawner.fromUnit.get(dyingUnit));
-		if (IsUnitType(dyingUnit, UTYPE.GUARD)) guardDies()
+		if (IsUnitType(dyingUnit, UTYPE.GUARD)) guardDies(dyingUnit, killingUnit);
 
 		dyingUnit = null;
 		killingUnit = null;
@@ -33,6 +36,40 @@ export function unitDeath() {
 	}));
 }
 
-function guardDies() {
+function guardDies(dUnit: unit, kUnit: unit) {
+	if (!IsUnitType(dUnit, UTYPE.GUARD)) return;
 
+	const city: City = City.fromGuard.get(dUnit);
+	let guardChoice: unit = null;
+
+	guardChoice = alliedCOPSearch(guardChoice, city, kUnit);
+	if (guardChoice) return city.changeGuard(guardChoice);
+
+	guardChoice = enemySearch(guardChoice, city, kUnit);
+	if (guardChoice) return city.changeGuard(guardChoice);
+
+	return killerSearch(guardChoice, city, kUnit, dUnit);
+}
+
+
+/**
+ * @returns Valid allied/owned unit in the cop
+ */
+function alliedCOPSearch(guardChoice: unit, city: City, kUnit: unit): unit {
+	let g: group = CreateGroup();
+	let radius: number = 225;
+	if (GetOwningPlayer(kUnit) == city.getOwner() || IsPlayerAlly(GetOwningPlayer(kUnit), city.getOwner())) radius = 550;
+
+	GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterFriendlyValidGuards(city));
+
+	if (BlzGroupGetSize(g) == 0) return guardChoice = null;
+	if (!guardChoice) guardChoice = GroupPickRandomUnit(g);
+
+	ForGroup(g, () => {
+		guardChoice = compareValue(GetEnumUnit(), guardChoice);
+	});
+
+	DestroyGroup(g);
+	g = null;
+	return guardChoice;
 }

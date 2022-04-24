@@ -18,8 +18,8 @@ export class City {
 	private cop: unit;
 	private _guard: unit;
 	private region: region;
-	private x: number;
-	private y: number;
+	private _x: number;
+	private _y: number;
 	private defaultGuardType: number;
 	private defaultBarrackType: number;
 
@@ -37,8 +37,8 @@ export class City {
 		const offSetY: number = y - 255;
 
 		let rect = Rect(offSetX - CityRegionSize / 2, offSetY - CityRegionSize / 2, offSetX + CityRegionSize / 2, offSetY + CityRegionSize / 2);
-		this.x = GetRectCenterX(rect);
-		this.y = GetRectCenterY(rect);
+		this._x = GetRectCenterX(rect);
+		this._y = GetRectCenterY(rect);
 
 		this.region = CreateRegion();
 		RegionAddRect(this.region, rect);
@@ -393,6 +393,13 @@ export class City {
 		return this._guard;
 	}
 
+	public get x(): number {
+		return this._x;
+	}
+	public get y(): number {
+		return this._y;
+	}
+
 	public isPort(): boolean {
 		return GetUnitTypeId(this.barrack) == UID.PORT;
 	}
@@ -473,7 +480,7 @@ export class City {
 		this._guard = null;
 	}
 
-	private changeGuard(newGuard: unit) {
+	public changeGuard(newGuard: unit) {
 		if (this.guard != newGuard) {
 			this.removeGuard(this.isGuardDummy());
 			this.setGuard(newGuard);
