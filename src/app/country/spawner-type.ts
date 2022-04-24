@@ -30,7 +30,7 @@ export class Spawner {
 	 */
 	public static onCast() {
 		let area: number;
-
+		//TODO for reset all they are all setting to the casting spawners
 		if (GetSpellAbilityId() == AID.SPWN_ALL) area = 12000;
 		if (GetSpellAbilityId() == AID.SPWN_6000) area = 6000;
 		if (GetSpellAbilityId() == AID.SPWN_3000) area = 3000;
@@ -45,7 +45,7 @@ export class Spawner {
 			if (GetUnitTypeId(fU) == UID.SPAWNER && GetOwningPlayer(fU) == GetOwningPlayer(u)) {
 				if (GetSpellAbilityId() == AID.SPWN_RESET) {
 					if (GetOwningPlayer(fU) == GetLocalPlayer()) {
-						IssuePointOrder(fU, "setrally", GetUnitX(u), GetUnitY(u));
+						IssuePointOrder(fU, "setrally", GetUnitX(fU), GetUnitY(fU));
 					}
 				} else {
 					if (GetOwningPlayer(fU) == GetLocalPlayer()) {
