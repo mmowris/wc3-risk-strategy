@@ -51,8 +51,8 @@ export const CommandProcessor = () => {
 
 				ClearTextMessages();
 
-				GamePlayer.fromPlayer.forEach(gPlayer => {
-					DisplayTimedTextToPlayer(gPlayer.player, 0.92, 0.81, 5.00, `${gPlayer.names.acct} has ${HexColors.TANGERINE}forfeit!`);
+				GamePlayer.fromPlayer.forEach(player => {
+					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${gPlayer.names.acct} has ${HexColors.TANGERINE}forfeit!`);
 				})
 
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
@@ -78,12 +78,12 @@ export const CommandProcessor = () => {
 				let names: string[] = [];
 				const lobbyTimer: Timer = new Timer();
 
-				GamePlayer.fromPlayer.forEach(gPlayer => {
-					if (!gPlayer.isLeft() && gPlayer.player != Player(24)) {
-						if (gPlayer.isNomad()) {
-							names.push(`${gPlayer.names.btag} is ${PlayerStatus.ALIVE}`)
+				GamePlayer.fromPlayer.forEach(player => {
+					if (!player.isLeft() && player.player != Player(24)) {
+						if (player.isNomad()) {
+							names.push(`${player.names.btag} is ${PlayerStatus.ALIVE}`)
 						} else {
-							names.push(`${gPlayer.names.btag} is ${gPlayer.status}`)
+							names.push(`${player.names.btag} is ${player.status}`)
 						}
 					}
 				});
