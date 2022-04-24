@@ -452,7 +452,7 @@ export class City {
 	 * Previously setGuard & createGuard
 	 */
 	private setGuard(guard: unit | number) {
-		//TODO add null checking
+		//TODO add null checking - 4/23/2022 idk what needs null checked maybe check if guard is null
 		typeof guard === "number" ? this._guard = CreateUnit(defaultOwner, guard, this.x, this.y, 270) : this._guard = guard;
 		UnitAddType(this.guard, UTYPE.GUARD);
 		City.fromGuard.set(this.guard, this);

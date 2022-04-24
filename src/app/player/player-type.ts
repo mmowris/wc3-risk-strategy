@@ -1,7 +1,5 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
-//TODO: Nomads
 //TODO: Leave events
-//TODO: Death
 interface KD {
 	kills: number;
 	deaths: number;
@@ -210,7 +208,7 @@ export class GamePlayer {
 
 		if (!this.kd.has(GamePlayer.getKey(victom, GetUnitTypeId(u)))) {
 			this.kd.set(GamePlayer.getKey(victom, GetUnitTypeId(u)), {
-				kills: 0,
+				kills: val,
 				deaths: 0
 			})
 		} else {
@@ -233,7 +231,7 @@ export class GamePlayer {
 		if (!this.kd.has(GamePlayer.getKey(killer, GetUnitTypeId(u)))) {
 			this.kd.set(GamePlayer.getKey(killer, GetUnitTypeId(u)), {
 				kills: 0,
-				deaths: 0
+				deaths: val
 			})
 		} else {
 			this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total of victom player unit specific
