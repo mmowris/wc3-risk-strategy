@@ -52,7 +52,7 @@ export const CommandProcessor = () => {
 				ClearTextMessages();
 
 				GamePlayer.fromPlayer.forEach(player => {
-					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${gPlayer.names.acct} has ${HexColors.TANGERINE}forfeit!`);
+					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${gPlayer.names.acct} has ${HexColors.TANGERINE}forfeit!|r`);
 				})
 
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");

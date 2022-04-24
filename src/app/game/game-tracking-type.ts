@@ -80,7 +80,7 @@ export class GameTracking {
 		ClearTextMessages();
 
 		GamePlayer.fromPlayer.forEach(gPlayer =>{
-			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${who.names.acct} ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r|r`);
+			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${who.names.acct} ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${who.names.acct} ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.TANGERINE}Discord:|r  ${PLAYER_COLOR_CODES[who.names.colorIndex]}discord.me/risk`);
 		    });
