@@ -20,6 +20,7 @@ export function unitSpellEffect() {
 			case AID.SWAP:
 				City.onCast();
 
+				break;
 			case AID.LOAD:
 				if (GetTerrainType(GetUnitX(GetTriggerUnit()), GetUnitY(GetTriggerUnit())) != FourCC("Vcbp")) {
 					Transports.onLoadCast();

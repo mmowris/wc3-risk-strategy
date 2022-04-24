@@ -6,7 +6,6 @@ import { Util } from "libs/translators";
 import { PlayGlobalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
 import { Timer } from "w3ts";
-//TODO: Commands
 
 export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
 

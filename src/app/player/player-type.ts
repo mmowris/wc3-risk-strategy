@@ -1,5 +1,7 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 //TODO: Nomads
+//TODO: Leave events
+//TODO: Death
 interface KD {
 	kills: number;
 	deaths: number;
