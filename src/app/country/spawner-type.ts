@@ -1,9 +1,9 @@
 import { GamePlayer } from "app/player/player-type";
 import { AID } from "resources/abilityID";
+import { NEUTRAL_HOSTILE } from "resources/p24";
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { Group } from "w3ts";
-import { Players } from "w3ts/globals";
 
 const SpawnTypeID: number = UID.RIFLEMEN;
 const SpawnTurnLimit: number = 5;
@@ -30,7 +30,7 @@ export class Spawner {
 	 */
 	public static onCast() {
 		let area: number;
-		//TODO for reset all they are all setting to the casting spawners
+
 		if (GetSpellAbilityId() == AID.SPWN_ALL) area = 12000;
 		if (GetSpellAbilityId() == AID.SPWN_6000) area = 6000;
 		if (GetSpellAbilityId() == AID.SPWN_3000) area = 3000;
@@ -89,7 +89,7 @@ export class Spawner {
 	public step() {
 		const owner: GamePlayer = GamePlayer.fromPlayer.get(GetOwningPlayer(this.unit));
 
-		if (owner.player == Player(24)) return;
+		if (owner.player == NEUTRAL_HOSTILE) return;
 		if (GetPlayerSlotState(owner.player) != PLAYER_SLOT_STATE_PLAYING) return;
 
 		const spawnCount: number = this.playerSpawns.get(owner).length;
@@ -132,12 +132,12 @@ export class Spawner {
 
 	//Internal Functions
 	private create(x: number, y: number) {
-		this._unit = CreateUnit(Players[24].handle, UID.SPAWNER, x, y, 270);
+		this._unit = CreateUnit(NEUTRAL_HOSTILE, UID.SPAWNER, x, y, 270);
 		SetUnitPathing(this.unit, false);
 	}
 
 	private setName() {
-		if (GetOwningPlayer(this.unit) == Players[24].handle) {
+		if (GetOwningPlayer(this.unit) == NEUTRAL_HOSTILE) {
 			BlzSetUnitName(this.unit, `${this.country} is unowned`);
 			SetUnitAnimation(this.unit, "death");
 		} else {

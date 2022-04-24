@@ -3,6 +3,7 @@ import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
+import { NEUTRAL_HOSTILE } from "resources/p24";
 
 export class GameTracking {
 	private static instance: GameTracking;
@@ -35,7 +36,7 @@ export class GameTracking {
 		let who: GamePlayer;
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.player == Player(24)) return;
+			if (gPlayer.player == NEUTRAL_HOSTILE) return;
 
 			if (gPlayer.isAlive()) {
 				counter++;
@@ -53,7 +54,7 @@ export class GameTracking {
 		let who: GamePlayer;
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.player == Player(24)) return;
+			if (gPlayer.player == NEUTRAL_HOSTILE) return;
 
 			if (gPlayer.cities.length >= this.citiesToWin) {
 				return who = gPlayer;

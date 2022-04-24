@@ -1,0 +1,1 @@
+export const NEUTRAL_HOSTILE: player = Player(24);

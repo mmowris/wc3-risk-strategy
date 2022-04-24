@@ -1,5 +1,6 @@
 import { GamePlayer } from "app/player/player-type";
 import { HexColors } from "resources/hexColors";
+import { NEUTRAL_HOSTILE } from "resources/p24";
 import { Cities, City } from "./city-type";
 import { Spawner } from "./spawner-type";
 
@@ -37,7 +38,7 @@ export class Country {
 
 		this.allocLim = Math.floor(cities.length / 2);
 
-		this._owner = Player(24);
+		this._owner = NEUTRAL_HOSTILE;
 	}
 
 	//Static API
@@ -146,7 +147,7 @@ export class Country {
 	}
 
 	public isOwned(): boolean {
-		return this.owner == Player(24) ? false : true
+		return this.owner == NEUTRAL_HOSTILE ? false : true
 	}
 
 	public step() {

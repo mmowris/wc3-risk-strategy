@@ -1,6 +1,7 @@
 import { GamePlayer } from "app/player/player-type";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
+import { NEUTRAL_HOSTILE } from "resources/p24";
 
 export class Scoreboard {
 	private static instance: Scoreboard;
@@ -15,7 +16,7 @@ export class Scoreboard {
 		this.mb = CreateMultiboard();
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.isAlive() && gPlayer.player != Player(24)) {
+			if (gPlayer.isAlive() && gPlayer.player != NEUTRAL_HOSTILE) {
 				this.playersOnBoard.push(gPlayer);
 			}
 		});

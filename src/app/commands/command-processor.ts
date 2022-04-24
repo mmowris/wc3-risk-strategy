@@ -5,6 +5,7 @@ import { GamePlayer, PlayerStatus } from "app/player/player-type";
 import { Util } from "libs/translators";
 import { PlayGlobalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
+import { NEUTRAL_HOSTILE } from "resources/p24";
 import { Timer } from "w3ts";
 
 export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
@@ -78,7 +79,7 @@ export const CommandProcessor = () => {
 				const lobbyTimer: Timer = new Timer();
 
 				GamePlayer.fromPlayer.forEach(player => {
-					if (!player.isLeft() && player.player != Player(24)) {
+					if (!player.isLeft() && player.player != NEUTRAL_HOSTILE) {
 						if (player.isNomad()) {
 							names.push(`${player.names.btag} is ${PlayerStatus.ALIVE}`)
 						} else {

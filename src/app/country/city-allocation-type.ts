@@ -1,5 +1,6 @@
 import { GamePlayer } from "app/player/player-type";
 import { Util } from "libs/translators";
+import { NEUTRAL_HOSTILE } from "resources/p24";
 import { City } from "./city-type";
 import { Country } from "./country-type";
 
@@ -81,7 +82,7 @@ export class CityAllocation {
 
 		let city: City = cityPool[Math.floor(Math.random() * cityPool.length)];
 
-		if (city.getOwner() != Player(24)) {
+		if (city.getOwner() != NEUTRAL_HOSTILE) {
 			cityPool.splice(cityPool.indexOf(city), 1);
 			city = this.getCityFromPool(cityPool);
 		}

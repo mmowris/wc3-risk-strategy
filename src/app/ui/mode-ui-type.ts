@@ -1,4 +1,5 @@
 import { HexColors } from "resources/hexColors";
+import { NEUTRAL_HOSTILE } from "resources/p24";
 import CameraControls, { PlayerCamData } from "../commands/camera-controls-type";
 import { GamePlayer, PlayerStatus } from "../player/player-type";
 
@@ -150,7 +151,7 @@ export class ModeUI {
 		BlzFrameSetPoint(pList, FRAMEPOINT_TOPRIGHT, backdrop, FRAMEPOINT_TOPRIGHT, -0.025, -0.025);
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.player == Player(24))
+			if (gPlayer.player == NEUTRAL_HOSTILE)
 				return;
 
 			BlzFrameAddText(pList, `${gPlayer.names.acct} is ${gPlayer.status}`);

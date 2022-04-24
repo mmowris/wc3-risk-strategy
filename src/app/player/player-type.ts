@@ -1,4 +1,5 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
+import { NEUTRAL_HOSTILE } from "resources/p24";
 //TODO: Leave events
 interface KD {
 	kills: number;
@@ -71,7 +72,7 @@ export class GamePlayer {
 		this.admin = false;
 
 		this.names = {
-			btag: (who == Player(24)) ? "Neutral-Hostile" : GetPlayerName(who),
+			btag: (who == NEUTRAL_HOSTILE) ? "Neutral-Hostile" : GetPlayerName(who),
 			acct: "",
 			color: "",
 			colorIndex: 0
@@ -236,7 +237,7 @@ export class GamePlayer {
 		} else {
 			this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total of victom player unit specific
 		}
-	}
+	} 
 
 	public coloredName(): string {
 		return `${PLAYER_COLOR_CODES[this.names.colorIndex]}${GetPlayerName(this.player)}|r`

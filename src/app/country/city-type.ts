@@ -1,4 +1,5 @@
 import { Transports } from "app/transports-type";
+import { NEUTRAL_HOSTILE } from "resources/p24";
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { FilterFriendlyValidGuards, isGuardValid } from "./guard-filters";
@@ -11,7 +12,7 @@ export const enterCityTrig: trigger = CreateTrigger();
 export const leaveCityTrig: trigger = CreateTrigger();
 export const unitTrainedTrig: trigger = CreateTrigger();
 
-const defaultOwner: player = Player(24);
+const defaultOwner: player = NEUTRAL_HOSTILE;
 
 export class City {
 	private _barrack: unit;
