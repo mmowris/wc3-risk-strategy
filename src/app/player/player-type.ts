@@ -1,6 +1,6 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/p24";
-//TODO: Leave events
+
 interface KD {
 	kills: number;
 	deaths: number;

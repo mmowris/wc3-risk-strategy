@@ -4,6 +4,7 @@ import { GamePlayer, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
+import { Timer } from "w3ts";
 import { City } from "./city-type";
 import { Country } from "./country-type";
 
@@ -13,7 +14,7 @@ export function onOwnerChange() {
 	for (let i = 0; i < bj_MAX_PLAYERS; i++) {
 		TriggerRegisterPlayerUnitEvent(ownerChange, Player(i), EVENT_PLAYER_UNIT_CHANGE_OWNER, null);
 	}
-	
+
 	TriggerAddCondition(ownerChange, Condition(() => {
 		let city: City = City.fromBarrack.get(GetChangingUnit());
 		let country: Country = Country.fromCity.get(city);
@@ -25,24 +26,47 @@ export function onOwnerChange() {
 		country.citiesOwned.set(prevOwner, country.citiesOwned.get(prevOwner) - 1);
 		if (country.owner == prevOwner.player) country.setOwner(NEUTRAL_HOSTILE);
 
-		if (prevOwner.cities.length == 0) {
+		if (prevOwner.cities.length == 0 && prevOwner.player != NEUTRAL_HOSTILE) {
 			if (prevOwner.unitCount <= 0) {
 				prevOwner.setStatus(PlayerStatus.DEAD);
 
 				GamePlayer.fromPlayer.forEach(player => {
-					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${prevOwner.names.acct} has ${HexColors.TANGERINE}been defeated!`);
+					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${prevOwner.names.acct} has ${HexColors.TANGERINE}been defeated!|r`);
 				})
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 			} else {
-				//TODO: Check is player is nomad
+				const nomadTimer: Timer = new Timer();
+				let duration: number = 60;
+
+				nomadTimer.start(1, true, () => {
+					prevOwner.status = `${PlayerStatus.NOMAD} ${duration}|r`;
+
+					if (duration > 0 && prevOwner.cities.length > 0) {
+						prevOwner.setStatus(PlayerStatus.ALIVE);
+						nomadTimer.pause();
+						nomadTimer.destroy();
+					} else if (duration <= 0) {
+						if (prevOwner.cities.length > 0) {
+							prevOwner.setStatus(PlayerStatus.ALIVE);
+						} else {
+							prevOwner.setStatus(PlayerStatus.DEAD);
+						}
+
+						if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
+						nomadTimer.pause();
+						nomadTimer.destroy();
+					}
+
+					duration--;
+				});
 			}
 		}
 
 		//Process new owner - Add city to .cities, add to cities owned in country, set owner of country if they own it.
 		owner.cities.push(city.barrack);
 		country.citiesOwned.set(owner, country.citiesOwned.get(owner) + 1);
-		if (country.cities.length == country.citiesOwned.get(owner)) { 
+		if (country.cities.length == country.citiesOwned.get(owner)) {
 			country.setOwner(owner.player)
 			if (owner.player != NEUTRAL_HOSTILE) Scoreboard.getInstance().cityClaimed(owner, country.name);
 		}
