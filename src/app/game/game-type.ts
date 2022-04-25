@@ -99,7 +99,7 @@ export class Game {
 	}
 
 	private static onLoad() {
-		print(`${Util.RandomEnumKey(HexColors)}Game type is:|r ${Util.RandomEnumKey(HexColors)}${GameStatus.getInstance().toString()}|r`);
+		//print(`${Util.RandomEnumKey(HexColors)}Game type is:|r ${Util.RandomEnumKey(HexColors)}${GameStatus.getInstance().toString()}|r`);
 		UserInterface.onLoad();
 		CameraControls.getInstance();
 		Trees.getInstance();

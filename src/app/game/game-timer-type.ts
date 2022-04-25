@@ -3,7 +3,7 @@ import { GamePlayer } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { PlayGlobalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
-import { Timer } from "w3ts";
+import { File, Timer } from "w3ts";
 import { GameTracking } from "./game-tracking-type";
 
 export class GameTimer {
@@ -70,6 +70,9 @@ export class GameTimer {
 	}
 
 	private updateUI() {
+		//TODO: REMOVE FOR TESTING ONLY
+		//if (this.turn == 2) File.write("wc3mt.txt", "wc3mt-GameEnd");
+
 		let upkeepString: string = `${this._tick}`;
 
 		if (this._tick <= 3) {

@@ -3,7 +3,7 @@ export class UserInterface {
 
 	public static onLoad() {
 		UserInterface.setResourceFrames();
-		UserInterface.hidePMOptions();
+		//UserInterface.hidePMOptions();
 		UserInterface.hideUI(true);
 	}
 

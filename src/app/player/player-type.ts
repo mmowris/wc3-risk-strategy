@@ -1,5 +1,6 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/p24";
+import { defineNumberValue } from "w3ts-w3mmd";
 
 interface KD {
 	kills: number;
