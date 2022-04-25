@@ -109,11 +109,10 @@ export class Game {
 
 			bList.forEach(name => {
 				if (player.name.toLowerCase() == name.toLowerCase()) {
-					CustomDefeatBJ(player.handle, "Banned for cheating");
+					CustomDefeatBJ(player.handle, "Banned for malicious behavior");
 					Players.forEach(player => {
-						DisplayTimedTextToPlayer(player.handle, 0.0, 0.0, 180.00, `${player.name} was removed for cheating`);
+						DisplayTimedTextToPlayer(player.handle, 0.0, 0.0, 180.00, `${player.name} is banned for malicious behavior`);
 					});
-					//RemovePlayer(player.handle, PLAYER_GAME_RESULT_DEFEAT);
 				}
 			});
 
