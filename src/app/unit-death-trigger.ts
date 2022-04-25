@@ -1,7 +1,7 @@
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { City } from "./country/city-type";
-import { FilterEnemyValidGuards, FilterFriendlyValidGuards, isGuardValid } from "./country/guard-filters";
+import { FilterEnemyValidGuards, FilterFriendlyValidGuards } from "./country/guard-filters";
 import { compareValue } from "./country/guard-options";
 import { Spawner } from "./country/spawner-type";
 import { GameTracking } from "./game/game-tracking-type";
