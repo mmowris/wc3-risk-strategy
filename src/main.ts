@@ -1,5 +1,5 @@
 import { Game } from "app/game/game-type";
-import { addScriptHook, W3TS_HOOK } from "w3ts/hooks";
+import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 function tsMain() {
 	try {

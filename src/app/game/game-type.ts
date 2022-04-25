@@ -229,7 +229,7 @@ export class Game {
 			}
 
 			if (gPlayer.player == NEUTRAL_HOSTILE ) {
-				gPlayer.setName(`${`NEUTRAL HOSTILE`}`)
+				gPlayer.setName(`NEUTRAL HOSTILE`);
 			}
 		})
 	}
