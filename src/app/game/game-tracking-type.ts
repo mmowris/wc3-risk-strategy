@@ -4,6 +4,7 @@ import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
+import { File } from "w3ts";
 
 export class GameTracking {
 	private static instance: GameTracking;
@@ -85,6 +86,8 @@ export class GameTracking {
 		});
 
 		PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");
+
+		File.write("wc3mt.txt", "wc3mt-GameEnd");
 
 		let row: number = 2;
 
