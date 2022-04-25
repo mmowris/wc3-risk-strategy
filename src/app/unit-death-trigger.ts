@@ -1,6 +1,6 @@
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
-import { City, CityRegionSize } from "./country/city-type";
+import { City } from "./country/city-type";
 import { FilterEnemyValidGuards, FilterFriendlyValidGuards, isGuardValid } from "./country/guard-filters";
 import { compareValue } from "./country/guard-options";
 import { Spawner } from "./country/spawner-type";
@@ -45,9 +45,9 @@ function guardDies(dUnit: unit, kUnit: unit) {
 
 	guardChoice = alliedCOPSearch(guardChoice, city, kUnit);
 	if (!guardChoice) guardChoice = enemySearch(guardChoice, city, kUnit);
-	//if (!guardChoice) guardChoice = killerSearch(guardChoice, city, kUnit);
-	if (!guardChoice) guardChoice = CreateUnit(GetOwningPlayer(guardChoice), UID.DUMMY_GUARD, city.x, city.y, 270);
-	
+	if (!guardChoice) guardChoice = killerSearch(guardChoice, city, kUnit);
+	if (!guardChoice) guardChoice = CreateUnit(city.getOwner(), UID.DUMMY_GUARD, city.x, city.y, 270);
+
 	city.changeGuard(guardChoice);
 	city.setOwner(GetOwningPlayer(guardChoice));
 }
@@ -87,12 +87,42 @@ function enemySearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterEnemyValidGuards(city, kUnit));
 
 	if (BlzGroupGetSize(g) == 0) return guardChoice = null;
-	print(`size ${BlzGroupGetSize(g)}`)
 	if (!guardChoice) guardChoice = GroupPickRandomUnit(g);
 
 	ForGroup(g, () => {
 		guardChoice = compareValue(GetEnumUnit(), guardChoice);
 	});
+
+	DestroyGroup(g);
+	g = null;
+	return guardChoice;
+}
+
+/**
+ * @returns Valid enemy unit within 200 range of killer & 600-720 max range of city
+ */
+function killerSearch(guardChoice: unit, city: City, kUnit: unit): unit {
+	let g: group = CreateGroup();
+	let radius: number = 600;
+
+	if (IsUnitType(kUnit, UTYPE.SHIP) == true && city.isPort()) radius = 720;
+	if (IsUnitType(kUnit, UTYPE.ARTILLERY) == true) radius = 1000;
+	if (GetUnitTypeId(kUnit) == UID.MORTAR) radius = 900;
+
+	GroupEnumUnitsInRange(g, GetUnitX(city.guard), GetUnitY(city.guard), radius, FilterEnemyValidGuards(city, kUnit));
+
+	if (BlzGroupGetSize(g) >= 1) {
+		guardChoice = GroupPickRandomUnit(g);
+
+		ForGroup(g, () => {
+			guardChoice = compareValue(GetEnumUnit(), guardChoice);
+		});
+	}
+
+	//At this point there is no viable guard that we found within 1000 range. so we create a dummy for ourselfs and it will take the city
+	if (IsUnitType(kUnit, UTYPE.ARTILLERY)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
+	if (IsUnitType(kUnit, UTYPE.GUARD)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
+	//If there is still no guard the city will not change owner but a dummy is created
 
 	DestroyGroup(g);
 	g = null;

@@ -1,4 +1,4 @@
-import { UID } from "resources/unitID";
+import { distanceBetweenPoints } from "libs/utils";
 import { UTYPE } from "resources/unitTypes";
 import { City } from "./city-type";
 
@@ -10,6 +10,8 @@ export const isGuardValid = (city: City, fUnit?: unit) => {
 	if (IsUnitType(fUnit, UTYPE.TRANSPORT)) return false;
 	if (IsUnitType(fUnit, UTYPE.GUARD) && fUnit != city.guard) return false;
 	if (!city.isPort() && IsUnitType(fUnit, UTYPE.SHIP)) return false;
+	if (IsUnitLoaded(fUnit)) return false;
+	if (distanceBetweenPoints(city.x, city.y, GetUnitX(fUnit), GetUnitY(fUnit)) >= 1000) return false;
 
 	return true;
 }
