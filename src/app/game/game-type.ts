@@ -27,6 +27,13 @@ import { PlayGlobalSound } from "libs/utils";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { unitDeath } from "app/unit-death-trigger";
 
+const bList: string[] = [
+	"HotWheel95#2632",
+	"footman#11549",
+	"Selinace#1683",
+	"RiskRiskRisk#1582"
+];
+
 export class Game {
 	private static instance: Game;
 
@@ -99,6 +106,16 @@ export class Game {
 
 		Players.forEach(player => {
 			player.name = PlayerNames.shift();
+
+			bList.forEach(name => {
+				if (player.name.toLowerCase() == name.toLowerCase()) {
+					CustomDefeatBJ(player.handle, "Banned for cheating");
+					Players.forEach(player => {
+						DisplayTimedTextToPlayer(player.handle, 0.0, 0.0, 180.00, `${player.name} was removed for cheating`);
+					});
+					//RemovePlayer(player.handle, PLAYER_GAME_RESULT_DEFEAT);
+				}
+			});
 
 			if (player.slotState == PLAYER_SLOT_STATE_PLAYING) {
 				if (player.id >= 25) return; //Exclude ai that is not neutral hostile
