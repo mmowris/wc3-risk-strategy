@@ -4,6 +4,7 @@ import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
+import { GameRankingHelper } from "./game-ranking-helper-type";
 
 export class GameTracking {
 	private static instance: GameTracking;
@@ -93,6 +94,7 @@ export class GameTracking {
 			row++;
 		})
 
+		GameRankingHelper.getInstance().setWinner(who.player);
 		//TODO:
 		//Track data and bot exit
 

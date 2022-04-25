@@ -1,6 +1,5 @@
 import { File, Timer } from "w3ts";
 import { setPlayerFlag } from "w3ts-w3mmd";
-import { Players } from "w3ts/globals";
 
 export class GameRankingHelper {
 	private static instance: GameRankingHelper;
@@ -22,8 +21,7 @@ export class GameRankingHelper {
 		const timer: Timer = new Timer();
 		let counter: number = 0;
 
-		//~2.4 seconds
-		timer.start(.10, true, () => {
+		timer.start(.05, true, () => {
 			if (counter > 23) {
 				timer.pause();
 				timer.destroy();
