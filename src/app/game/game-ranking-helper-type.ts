@@ -17,7 +17,7 @@ export class GameRankingHelper {
 		File.write("wc3mt.txt", "wc3mt-GameEnd");
 	}
 
-	public setWinner(who: player) {
+	public setLosers(who: player) {
 		const timer: Timer = new Timer();
 		let counter: number = 0;
 
@@ -33,7 +33,9 @@ export class GameRankingHelper {
 
 			counter++;
 		});
+	}
 
+	public setWinner(who: player) {
 		setPlayerFlag(who, "winner");
 	}
 }

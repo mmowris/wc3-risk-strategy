@@ -2,6 +2,7 @@ import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
 import { GamePlayer, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
+import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { Timer } from "w3ts";
@@ -33,7 +34,7 @@ export function onOwnerChange() {
 				ClearTextMessages();
 
 				GamePlayer.fromPlayer.forEach(player => {
-					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${prevOwner.names.acct} has ${HexColors.TANGERINE}been defeated!|r`);
+					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r ${HexColors.RED}has been defeated!|r`);
 				})
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
@@ -57,7 +58,7 @@ export function onOwnerChange() {
 							ClearTextMessages();
 
 							GamePlayer.fromPlayer.forEach(player => {
-								DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${prevOwner.names.acct} has ${HexColors.TANGERINE}been defeated!|r`);
+								DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r ${HexColors.RED}has been defeated!|r`);
 							})
 						}
 

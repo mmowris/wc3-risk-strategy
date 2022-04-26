@@ -59,13 +59,16 @@ export class Scoreboard {
 
 		MultiboardMinimize(this.mb, true);
 		MultiboardMinimize(this.mb, false);
-		MultiboardDisplay(this.mb, true);
+		MultiboardDisplay(this.mb, false);
+	}
+
+	public toggleVis(toggle: boolean) {
+		MultiboardDisplay(this.mb, toggle);
 	}
 
 	public updateBoard(gPlayer: GamePlayer, row: number, turnUpdate: boolean = false) {
 
 		const sColor: string = (GetLocalPlayer() == gPlayer.player) ? HexColors.TANGERINE : HexColors.WHITE;
-
 
 		if (turnUpdate) {
 			if (gPlayer.isAlive() || gPlayer.isNomad()) {

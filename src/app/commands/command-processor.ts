@@ -4,6 +4,7 @@ import { GameTracking } from "app/game/game-tracking-type";
 import { GamePlayer, PlayerStatus } from "app/player/player-type";
 import { Util } from "libs/translators";
 import { PlayGlobalSound } from "libs/utils";
+import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { Timer } from "w3ts";
@@ -52,7 +53,7 @@ export const CommandProcessor = () => {
 				ClearTextMessages();
 
 				GamePlayer.fromPlayer.forEach(player => {
-					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${gPlayer.names.acct} has ${HexColors.TANGERINE}forfeit!|r`);
+					DisplayTimedTextToPlayer(player.player, 0.91, 0.81, 5.00, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r ${HexColors.TANGERINE}has forfeit the round!|r`);
 				})
 
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
@@ -116,8 +117,10 @@ export const CommandProcessor = () => {
 
 				let player: GamePlayer = GamePlayer.fromString.get(playerString);
 
-				if (!player.isDead() || !player.isForfeit() || player.admin) return;
+				if (player.isAlive()) return;
+				if (player.isNomad()) return;
 				if (player.isSTFU()) return;
+				//if (player.admin) return;
 
 				const stfuTimer: Timer = new Timer();
 				const oldStatus: string = player.status;
@@ -125,12 +128,10 @@ export const CommandProcessor = () => {
 				SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 1);
 
 				stfuTimer.start(1, true, () => {
-					player.status = PlayerStatus.STFU + duration;
-
+					player.status = `${PlayerStatus.STFU} ${duration}`;
 					if (duration < 1.00 || !GameTracking.getInstance().roundInProgress) {
 						player.status = oldStatus;
 						SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 0);
-
 						stfuTimer.pause();
 						stfuTimer.destroy();
 					} else {

@@ -1,6 +1,7 @@
 import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
 import { PlayGlobalSound } from "libs/utils";
+import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { Trigger } from "w3ts";
 import { Players } from "w3ts/globals";
@@ -19,7 +20,7 @@ export function PlayerLeaves() {
 		ClearTextMessages();
 
 		Players.forEach(player => {
-		    DisplayTimedTextToPlayer(player.handle, 0.92, 0.81, 5.00, `${gPlayer.names.acct} has ${HexColors.TANGERINE}left!`);
+		    DisplayTimedTextToPlayer(player.handle, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r ${HexColors.DARK_GRAY}has left the game!|r`);
 		});
 	
 		PlayGlobalSound("Sound\\Interface\\SecretFound.flac");

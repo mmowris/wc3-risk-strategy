@@ -25,5 +25,7 @@ export enum HexColors {
 	PEANUT = "|cffa56f34",
 	WHITE = "|cffffffff",
 	TANGERINE = "|cffffcc00",
+	DARK_GRAY = "|cFF65656A",
+	DARK_YELLOW = "|cFFFFFC01",
 	WARNING = "|cffD0342C",
 };

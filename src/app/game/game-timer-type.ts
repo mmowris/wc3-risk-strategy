@@ -32,6 +32,8 @@ export class GameTimer {
 			if (this._tick == this.duration) roundUpdate = this.roundUpdate();
 			this.updateBoard(roundUpdate);
 			this.updateUI();
+			if (this.turn == 1) Scoreboard.getInstance().toggleVis(true);
+			
 			this._tick--;
 
 			if (this._tick == 0) {
@@ -104,7 +106,7 @@ export class GameTimer {
 			ClearTextMessages();
 
 			GamePlayer.fromPlayer.forEach(gPlayer => {
-				DisplayTimedTextToPlayer(gPlayer.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${GameTracking.getInstance().leader.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities, they need ${HexColors.RED}${GameTracking.getInstance().leader.cities.length - GameTracking.getInstance().citiesToWin}|r more to win!`);
+				DisplayTimedTextToPlayer(gPlayer.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${GameTracking.getInstance().leader.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities and needs ${HexColors.RED}${GameTracking.getInstance().citiesToWin - GameTracking.getInstance().leader.cities.length}|r more to win!`);
 			})
 
 			PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");

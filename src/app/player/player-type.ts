@@ -30,7 +30,7 @@ interface Names {
 export const BonusBase: number = 9;
 export const BonusCap: number = 40;
 export const BonusDivisor: number = 200;
-export const PlayerNames: string[] = [];
+export const PlayerNames: Map<player, string> = new Map<player, string>();
 export const enum PlayerStatus {
 	PLAYING = "|cFF00FFF0Playing|r",
 	OBSERVING = "|cFFFFFFFFObserving|r",
@@ -72,7 +72,7 @@ export class GamePlayer {
 		this.admin = false;
 
 		this.names = {
-			btag: (who == NEUTRAL_HOSTILE) ? "Neutral-Hostile" : GetPlayerName(who),
+			btag: (who == NEUTRAL_HOSTILE) ? "Neutral-Hostile" : PlayerNames.get(who),
 			acct: "",
 			color: "",
 			colorIndex: 0
@@ -275,7 +275,7 @@ export class GamePlayer {
 	}
 
 	public isSTFU() {
-		return this.status.split(' ')[0] == PlayerStatus.STFU;
+		return this.status.split(' ')[0] == `${PlayerStatus.STFU}`;
 	}
 
 	public setName(name: string) {
