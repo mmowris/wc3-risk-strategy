@@ -24,6 +24,7 @@ import { Transports } from "app/transports-type";
 import { PlayGlobalSound } from "libs/utils";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { unitDeath } from "app/unit-death-trigger";
+import { PlayerLeaves } from "app/player/player-leaves-trigger";
 
 const bList: string[] = [
 	"HotWheel95#2632",
@@ -37,16 +38,7 @@ export class Game {
 
 	constructor() {
 		Game.onInit();
-
-		const loadTimer = new Timer();
-		loadTimer.start(0.0, false, () => {
-			try {
-				Game.onLoad();
-			}
-			catch (e) {
-				print(e);
-			}
-		});
+		Game.onLoad();
 	}
 
 	public static getInstance() {
@@ -77,7 +69,7 @@ export class Game {
 
 		Players.forEach(player => {
 			PlayerNames.push(player.name);
-			player.name = "Player";
+			SetPlayerName(player.handle, "Player");
 		});
 
 		//Type init functions
@@ -93,44 +85,66 @@ export class Game {
 		unitTargetOrder();
 		CommandProcessor();
 		onOwnerChange();
+		PlayerLeaves();
 		Transports.onLoad();
 	}
 
 	private static onLoad() {
-		//print(`${Util.RandomEnumKey(HexColors)}Game type is:|r ${Util.RandomEnumKey(HexColors)}${GameStatus.getInstance().toString()}|r`);
-		UserInterface.onLoad();
-		CameraControls.getInstance();
-		Trees.getInstance();
+		const loadTimer = new Timer();
+		loadTimer.start(0.0, false, () => {
+			try {
+				//print(`${Util.RandomEnumKey(HexColors)}Game type is:|r ${Util.RandomEnumKey(HexColors)}${GameStatus.getInstance().toString()}|r`);
+				UserInterface.onLoad();
+				CameraControls.getInstance();
+				Trees.getInstance();
 
-		Players.forEach(player => {
-			player.name = PlayerNames.shift();
+				Players.forEach(player => {
+					SetPlayerName(player.handle, `${PlayerNames.shift()}`);
 
-			bList.forEach(name => {
-				if (player.name.toLowerCase() == name.toLowerCase()) {
-					CustomDefeatBJ(player.handle, "Banned for malicious behavior");
-					Players.forEach(player => {
-						DisplayTimedTextToPlayer(player.handle, 0.0, 0.0, 180.00, `${player.name} is banned for malicious behavior`);
+					bList.forEach(name => {
+						if (player.name.toLowerCase() == name.toLowerCase()) {
+							CustomDefeatBJ(player.handle, "Banned for malicious behavior");
+							Players.forEach(player => {
+								DisplayTimedTextToPlayer(player.handle, 0.0, 0.0, 180.00, `${player.name} is banned for malicious behavior`);
+							});
+						}
 					});
-				}
-			});
 
-			if (player.slotState == PLAYER_SLOT_STATE_PLAYING) {
-				if (player.id >= 25) return; //Exclude ai that is not neutral hostile
+					if (player.slotState == PLAYER_SLOT_STATE_PLAYING) {
+						if (player.id >= 25) return; //Exclude ai that is not neutral hostile
 
-				GamePlayer.fromPlayer.set(player.handle, new GamePlayer(player.handle));
+						GamePlayer.fromPlayer.set(player.handle, new GamePlayer(player.handle));
+					}
+
+					GamePlayer.fromPlayer.forEach(gPlayer => {
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_HELP_REQUEST, false)
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_HELP_RESPONSE, false)
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_XP, false)
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_SPELLS, false)
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_VISION, false)
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_CONTROL, false)
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_ADVANCED_CONTROL, false)
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_RESCUABLE, false)
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_VISION_FORCED, false)
+						SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_PASSIVE, false)
+					})
+				})
+
+				ModeUI.buildModeFrame();
+				ModeUI.toggleModeFrame(true);
+
+				//I should refactor this somehow, right now this is a long chain of code
+				Game.runModeSelection();
+				// The chain begins with runmodeselection -> initroundsettings -> initround
 			}
-		})
-
-		ModeUI.buildModeFrame();
-		ModeUI.toggleModeFrame(true);
-
-		//I should refactor this somehow, right now this is a long chain of code
-		Game.runModeSelection();
-		// The chain begins with runmodeselection -> initroundsettings -> initround
+			catch (e) {
+				print(e);
+			}
+		});
 	}
 
 	private static runModeSelection() {
-		let tick: number = 5;
+		let tick: number = 10;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
 			if (tick >= 1) {
@@ -140,7 +154,7 @@ export class Game {
 				modeTimer.pause();
 				modeTimer.destroy();
 				BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), false);
-				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts in 5 seconds`);
+				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts soon`);
 				Game.initRound();
 			}
 
@@ -171,7 +185,7 @@ export class Game {
 		GameTracking.getInstance().citiesToWin = Math.ceil(Cities.length * 0.60);
 		CityAllocation.start();
 
-		let tick: number = 5;
+		let tick: number = 15;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
 			if (tick >= 1) {
@@ -221,12 +235,12 @@ export class Game {
 						//print(`set real name tp ${gPlayer.names.color}`)
 						gPlayer.setName(`${gPlayer.names.color}`);
 						gPlayer.names.colorIndex = i;
-						//print(`real name ${GetPlayerName(gPlayer.player)}`)
+						print(`real name ${GetPlayerName(gPlayer.player)}`)
 					}
 				}
 			}
 
-			if (gPlayer.player == NEUTRAL_HOSTILE ) {
+			if (gPlayer.player == NEUTRAL_HOSTILE) {
 				gPlayer.setName(`NEUTRAL HOSTILE`);
 			}
 		})

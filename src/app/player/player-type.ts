@@ -279,7 +279,7 @@ export class GamePlayer {
 	}
 
 	public setName(name: string) {
-		SetPlayerName(this.player, name);
+		SetPlayerName(this.player, `${name}|r`);
 	}
 
 	private evalBounty(val: number) {

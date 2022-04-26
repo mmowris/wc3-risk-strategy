@@ -30,6 +30,8 @@ export function onOwnerChange() {
 			if (prevOwner.unitCount <= 0) {
 				prevOwner.setStatus(PlayerStatus.DEAD);
 
+				ClearTextMessages();
+
 				GamePlayer.fromPlayer.forEach(player => {
 					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${prevOwner.names.acct} has ${HexColors.TANGERINE}been defeated!|r`);
 				})
@@ -51,6 +53,12 @@ export function onOwnerChange() {
 							prevOwner.setStatus(PlayerStatus.ALIVE);
 						} else {
 							prevOwner.setStatus(PlayerStatus.DEAD);
+
+							ClearTextMessages();
+
+							GamePlayer.fromPlayer.forEach(player => {
+								DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${prevOwner.names.acct} has ${HexColors.TANGERINE}been defeated!|r`);
+							})
 						}
 
 						if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();

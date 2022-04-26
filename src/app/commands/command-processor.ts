@@ -78,13 +78,10 @@ export const CommandProcessor = () => {
 				const lobbyTimer: Timer = new Timer();
 
 				GamePlayer.fromPlayer.forEach(player => {
-					if (!player.isLeft() && player.player != NEUTRAL_HOSTILE) {
-						if (player.isNomad()) {
-							names.push(`${player.names.btag} is ${PlayerStatus.ALIVE}`)
-						} else {
-							names.push(`${player.names.btag} is ${player.status}`)
-						}
-					}
+					if (player.player == NEUTRAL_HOSTILE) return;
+					if (player.isNomad()) names.push(`${player.names.btag} is ${PlayerStatus.ALIVE}`)
+					if (player.isAlive()) names.push(`${player.names.btag} is ${player.status}`);
+
 				});
 
 				Util.ShuffleArray(names);

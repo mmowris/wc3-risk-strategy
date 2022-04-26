@@ -44,7 +44,7 @@ export class GameTracking {
 			who = gPlayer;
 		});
 
-		if (counter == 1) {
+		if (counter == 0) {
 			this._leader = who;
 			return this.giveVictory(who);
 		}
@@ -100,13 +100,6 @@ export class GameTracking {
 
 		return true;
 	}
-
-
-
-
-
-
-
 
 	//Static API
 	public static getInstance() {
