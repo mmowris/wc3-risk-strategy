@@ -120,12 +120,12 @@ export const CommandProcessor = () => {
 				if (player.isAlive()) return;
 				if (player.isNomad()) return;
 				if (player.isSTFU()) return;
-				//if (player.admin) return;
+				if (player.admin) return;
+
+				SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 1);
 
 				const stfuTimer: Timer = new Timer();
 				const oldStatus: string = player.status;
-
-				SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 1);
 
 				stfuTimer.start(1, true, () => {
 					player.status = `${PlayerStatus.STFU} ${duration}`;

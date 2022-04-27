@@ -39,7 +39,7 @@ export const enum PlayerStatus {
 	DEAD = "|cFFFF0005Dead|r",
 	FORFEIT = "|cFFFFFC01Forfeit|r",
 	LEFT = "|cFF65656ALeft|r",
-	STFU = "|cfffe890dSTFU |r",
+	STFU = "|cfffe890dSTFU|r",
 };
 
 export const Admins = [
@@ -275,7 +275,7 @@ export class GamePlayer {
 	}
 
 	public isSTFU() {
-		return this.status.split(' ')[0] == `${PlayerStatus.STFU}`;
+		return this.status.split(' ')[0] == PlayerStatus.STFU;
 	}
 
 	public setName(name: string) {
