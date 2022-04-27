@@ -26,13 +26,6 @@ import { NEUTRAL_HOSTILE } from "resources/p24";
 import { unitDeath } from "app/unit-death-trigger";
 import { PlayerLeaves } from "app/player/player-leaves-trigger";
 
-const bList: string[] = [
-	"HotWheel95#2632",
-	"footman#11549",
-	"Selinace#1683",
-	"RiskRiskRisk#1582"
-];
-
 export class Game {
 	private static instance: Game;
 
@@ -76,8 +69,6 @@ export class Game {
 		City.init();
 		Country.init();
 
-		//Singletons
-
 		//Triggers
 		unitDeath();
 		unitSpellEffect();
@@ -92,27 +83,11 @@ export class Game {
 	private static onLoad() {
 		const loadTimer = new Timer();
 		loadTimer.start(0.0, false, () => {
-			// Players.forEach(player => {
-			// 	SetPlayerName(player.handle, `${PlayerNames.shift()}|r`);
-			// })
-
-			//print(`${Util.RandomEnumKey(HexColors)}Game type is:|r ${Util.RandomEnumKey(HexColors)}${GameStatus.getInstance().toString()}|r`);
 			UserInterface.onLoad();
 			CameraControls.getInstance();
 			Trees.getInstance();
 
 			Players.forEach(player => {
-				//SetPlayerName(player.handle, `${PlayerNames.shift()}`);
-
-				bList.forEach(name => {
-					if (player.name.toLowerCase() == name.toLowerCase()) {
-						CustomDefeatBJ(player.handle, "Banned for malicious behavior");
-						Players.forEach(player => {
-							DisplayTimedTextToPlayer(player.handle, 0.0, 0.0, 180.00, `${player.name} is banned for malicious behavior`);
-						});
-					}
-				});
-
 				if (player.slotState == PLAYER_SLOT_STATE_PLAYING) {
 					if (player.id >= 25) return; //Exclude ai that is not neutral hostile
 

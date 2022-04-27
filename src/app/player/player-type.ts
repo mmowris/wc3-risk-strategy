@@ -1,5 +1,6 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/p24";
+import { Players } from "w3ts/globals";
 
 interface KD {
 	kills: number;
@@ -48,6 +49,15 @@ export const Admins = [
 	"Grinch#1502"
 ];
 
+const bList: string[] = [
+	"HotWheel95#2632",
+	"footman#11549",
+	"RiskRiskRisk#1582",
+	"MojoDarkAle#11652"
+];
+
+//	"Selinace#1683",
+
 export class GamePlayer {
 	public player: player;
 	public income: number;
@@ -84,6 +94,15 @@ export class GamePlayer {
 			}
 		})
 
+		bList.forEach(name => {
+			if (GetPlayerName(this.player).toLowerCase() == name.toLowerCase()) {
+				CustomDefeatBJ(this.player, "Banned for malicious behavior");
+				Players.forEach(p => {
+					DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `${p.name} is banned for malicious behavior`);
+				});
+			}
+		});
+
 		this.status = (GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0) ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING;
 
 		if (GetPlayerController(who) == MAP_CONTROL_COMPUTER) {
@@ -117,11 +136,6 @@ export class GamePlayer {
 			total: 0,
 			bar: null
 		}
-
-		// this.kd.set(this, {
-		// 	kills: 0,
-		// 	deaths: 0
-		// });
 	}
 
 	public initKDMaps() {
@@ -334,5 +348,9 @@ export class GamePlayer {
 
 	public static getKey(who: GamePlayer, uID: number) {
 		return `${who}:${uID}`;
+	}
+
+	public static get(player: player): GamePlayer {
+		return GamePlayer.fromPlayer.get(player);
 	}
 }

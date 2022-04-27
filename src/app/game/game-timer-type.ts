@@ -106,7 +106,7 @@ export class GameTimer {
 			ClearTextMessages();
 
 			GamePlayer.fromPlayer.forEach(gPlayer => {
-				DisplayTimedTextToPlayer(gPlayer.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${GameTracking.getInstance().leader.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities and needs ${HexColors.RED}${GameTracking.getInstance().citiesToWin - GameTracking.getInstance().leader.cities.length}|r more to win!`);
+				DisplayTimedTextToPlayer(gPlayer.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${GameTracking.getInstance().leader.coloredName()} owns ${HexColors.RED}${GameTracking.getInstance().leader.cities.length}|r cities and needs ${HexColors.RED}${GameTracking.getInstance().citiesToWin - GameTracking.getInstance().leader.cities.length}|r more to win!`);
 			})
 
 			PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");

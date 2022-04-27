@@ -24,17 +24,17 @@ export default class CameraControls {
 	private static instance: CameraControls;
 
 	private constructor() {
-		for (let i = 0; i < bj_MAX_PLAYER_SLOTS; i++) {
-			if (GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) == MAP_CONTROL_USER) {
+		for (let i = 0; i < bj_MAX_PLAYERS; i++) {
+			//if (GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) == MAP_CONTROL_USER) {
 				let data: CamData = {
 					distance: CamSettings.DEFAULT_DISTANCE,
 					angle: CamSettings.DEFAULT_ANGLE,
 					rotation: CamSettings.DEFAULT_ROTATION
 				}
 
-				PlayerCamData.set(Player(i), data)
+				PlayerCamData.set(Player(i), data);
 				data = null
-			}
+			//}
 		}
 
 		this.camReset();
