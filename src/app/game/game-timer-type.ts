@@ -50,9 +50,10 @@ export class GameTimer {
 		this.turn = 1;
 	}
 
-	public stop() {
+	public stop(): boolean {
 		this.timer.pause();
 		this.timer.destroy();
+		return true;
 	}
 
 	public get tick(): number {
@@ -87,11 +88,9 @@ export class GameTimer {
 
 		if (this.turn > 1) {
 			const gameOver: boolean = GameTracking.getInstance().cityVictory();
-			if (gameOver) {
-				this.stop();
-			}	
+			if (gameOver) return this.stop();
 		}
-
+		print("over because of victory")
 		Country.fromName.forEach(country => {
 			if (country.isOwned()) {
 				country.step();
