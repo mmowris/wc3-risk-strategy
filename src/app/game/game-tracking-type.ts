@@ -54,10 +54,8 @@ export class GameTracking {
 		let who: GamePlayer;
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.player == NEUTRAL_HOSTILE) return;
-
-			if (gPlayer.cities.length >= this.citiesToWin) {
-				return who = gPlayer;
+			if (gPlayer.cities.length >= this._citiesToWin) {
+				gPlayer.player == NEUTRAL_HOSTILE ? null : who = gPlayer;
 			}
 		})
 
@@ -65,9 +63,7 @@ export class GameTracking {
 	}
 
 	private giveVictory(who?: GamePlayer): boolean {
-		if (!who) {
-			return false;
-		}
+		if (!who) return false;
 
 		this.roundInProgress = false;
 
