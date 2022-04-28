@@ -90,7 +90,7 @@ export class GameTimer {
 			const gameOver: boolean = GameTracking.getInstance().cityVictory();
 			if (gameOver) return this.stop();
 		}
-		print("over because of victory")
+
 		Country.fromName.forEach(country => {
 			if (country.isOwned()) {
 				country.step();
