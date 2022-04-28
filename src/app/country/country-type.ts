@@ -1,4 +1,5 @@
 import { GamePlayer } from "app/player/player-type";
+import { PlayLocalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { Cities, City } from "./city-type";
@@ -157,13 +158,16 @@ export class Country {
 	public setOwner(who: player) {
 		if (who == this.owner) return;
 
-		//if (who != this.owner) {
 		GamePlayer.fromPlayer.get(this.owner).income -= this.cities.length;
-		//}
 
 		GamePlayer.fromPlayer.get(who).income += this.cities.length;
 		this._owner = who;
 		this.spawner.setOwner(who);
+
+		this.animate();
+		DisplayTimedTextToPlayer(who, 0.82, 0.81, 3.00, "|cffffcc00" + this.name + " |rhas been conquered");
+	    
+		PlayLocalSound("Sound\\Interface\\Rescue.flac", who);
 	}
 	//Internal Functions
 }

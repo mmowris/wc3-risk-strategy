@@ -27,7 +27,7 @@ export function onOwnerChange() {
 		country.citiesOwned.set(prevOwner, country.citiesOwned.get(prevOwner) - 1);
 		if (country.owner == prevOwner.player) country.setOwner(NEUTRAL_HOSTILE);
 
-		if (prevOwner.cities.length == 0 && prevOwner.player != NEUTRAL_HOSTILE) {
+		if (prevOwner.cities.length == 0 && prevOwner.player != NEUTRAL_HOSTILE && !prevOwner.isLeft()) {
 			if (prevOwner.unitCount <= 0) {
 				prevOwner.setStatus(PlayerStatus.DEAD);
 
