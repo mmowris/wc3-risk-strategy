@@ -43,8 +43,6 @@ export function onOwnerChange() {
 				let duration: number = 60;
 
 				nomadTimer.start(1, true, () => {
-					prevOwner.status = `${PlayerStatus.NOMAD} ${duration}|r`;
-
 					if (duration > 0 && prevOwner.cities.length > 0) {
 						prevOwner.setStatus(PlayerStatus.ALIVE);
 						nomadTimer.pause();
@@ -67,6 +65,7 @@ export function onOwnerChange() {
 						nomadTimer.destroy();
 					}
 
+					prevOwner.status = `${PlayerStatus.NOMAD} ${duration}|r`;
 					duration--;
 				});
 			}

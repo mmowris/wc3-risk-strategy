@@ -64,6 +64,7 @@ export class GameTracking {
 
 	private giveVictory(who?: GamePlayer): boolean {
 		if (!who) return false;
+		if (!this.roundInProgress) return false;
 
 		this.roundInProgress = false;
 

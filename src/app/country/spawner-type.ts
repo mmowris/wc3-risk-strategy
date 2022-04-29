@@ -116,7 +116,6 @@ export class Spawner {
 		}
 
 		this.setName();
-
 	}
 
 	public static onSpawnDeath(owner: GamePlayer, u: unit, spawner: Spawner) {

@@ -38,7 +38,7 @@ export class ModeUI {
 		//Hotkeys
 		BlzFrameAddText(cList, `|n${HexColors.RED}Hotkeys:|r`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}F1|r  Opens player tools`)
-		BlzFrameAddText(cList, `${HexColors.TANGERINE}F2|r  Changes scoreboard layout`)
+		//BlzFrameAddText(cList, `${HexColors.TANGERINE}F2|r  Changes scoreboard layout`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}F8|r  Cycles owned spawners`)
 
 		//Timer
@@ -65,8 +65,9 @@ export class ModeUI {
 		//Camera box
 		const cBox: framehandle = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 0);
 		BlzFrameSetPoint(cBox, FRAMEPOINT_BOTTOMRIGHT, cList, FRAMEPOINT_TOPRIGHT, 0.00, 0.003);
-		BlzFrameSetSize(cBox, 0.12, 0.03);
-		BlzFrameSetText(cBox, "Enter Cam Distance");
+		BlzFrameSetSize(cBox, 0.05, 0.03);
+		BlzFrameSetText(cBox, "");
+
 		//cBox update
 		const ctrig: trigger = CreateTrigger();
 		BlzTriggerRegisterFrameEvent(ctrig, cBox, FRAMEEVENT_EDITBOX_TEXT_CHANGED);
@@ -79,6 +80,12 @@ export class ModeUI {
 				CameraControls.getInstance().checkCamData(PlayerCamData.get(p), [distance])
 			}
 		});
+
+		//cBox text
+		const cBoxText: framehandle = BlzCreateFrameByType("TEXT", "cBoxText", cBox, "EscMenuLabelTextTemplate", 0);
+
+		BlzFrameSetPoint(cBoxText, FRAMEPOINT_RIGHT, cBox, FRAMEPOINT_LEFT, 0, -0.001);
+		BlzFrameSetText(cBoxText, `Enter Cam Distance`);
 
 		//Observe button
 		const obsStr: string = "OBSERVE GAME"

@@ -53,10 +53,9 @@ const bList: string[] = [
 	"HotWheel95#2632",
 	"footman#11549",
 	"RiskRiskRisk#1582",
-	"MojoDarkAle#11652"
+	"MojoDarkAle#11652",
+	"Selinace#1683"
 ];
-
-//	"Selinace#1683",
 
 export class GamePlayer {
 	public player: player;
@@ -95,7 +94,7 @@ export class GamePlayer {
 		})
 
 		bList.forEach(name => {
-			if (GetPlayerName(this.player).toLowerCase() == name.toLowerCase()) {
+			if (PlayerNames.get(who).toLowerCase() == name.toLowerCase()) {
 				CustomDefeatBJ(this.player, "Banned for malicious behavior");
 				Players.forEach(p => {
 					DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `${p.name} is banned for malicious behavior`);
