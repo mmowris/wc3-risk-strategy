@@ -97,19 +97,23 @@ export class GameTimer {
 			}
 		});
 
+		let citiesWarning: number = Math.floor(GameTracking.getInstance().citiesToWin * 0.70);
+		let played: boolean = false;
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			gPlayer.giveGold();
+
+			if (gPlayer.cities.length >= citiesWarning) {
+				
+				GamePlayer.fromPlayer.forEach(gP => {
+					DisplayTimedTextToPlayer(gP.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${gPlayer.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities and needs ${HexColors.RED}${GameTracking.getInstance().citiesToWin - gPlayer.cities.length}|r more to win!`);
+				})
+
+				if (!played) {
+					PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
+					played = true;
+				}
+			}
 		})
-
-		if (GameTracking.getInstance().leader.cities.length >= Math.floor(GameTracking.getInstance().citiesToWin * 0.70)) {
-			ClearTextMessages();
-
-			GamePlayer.fromPlayer.forEach(gPlayer => {
-				DisplayTimedTextToPlayer(gPlayer.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${GameTracking.getInstance().leader.coloredName()} owns ${HexColors.RED}${GameTracking.getInstance().leader.cities.length}|r cities and needs ${HexColors.RED}${GameTracking.getInstance().citiesToWin - GameTracking.getInstance().leader.cities.length}|r more to win!`);
-			})
-
-			PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");
-		}
 
 		Scoreboard.getInstance().playersOnBoard.sort((p1, p2) => {
 			if (p1.income < p2.income) return 1;

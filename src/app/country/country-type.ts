@@ -165,7 +165,7 @@ export class Country {
 		this.spawner.setOwner(who);
 
 		this.animate();
-		DisplayTimedTextToPlayer(who, 0.82, 0.81, 3.00, "|cffffcc00" + this.name + " |rhas been conquered");
+		DisplayTimedTextToPlayer(who, 0.82, 0.81, 3.00, `${HexColors.TANGERINE}${this.name}|r has been conquered!`);
 	    
 		PlayLocalSound("Sound\\Interface\\Rescue.flac", who);
 	}

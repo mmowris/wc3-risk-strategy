@@ -68,7 +68,7 @@ export const CommandProcessor = () => {
 				ClearTextMessages();
 
 				GamePlayer.fromPlayer.forEach(player => {
-					DisplayTimedTextToPlayer(player.player, 0.91, 0.81, 5.00, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r ${HexColors.TANGERINE}has forfeit the round!|r`);
+					DisplayTimedTextToPlayer(player.player, 0.91, 0.81, 5.00, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}forfeit|r the round!`);
 				})
 
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
