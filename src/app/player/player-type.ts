@@ -1,5 +1,6 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/p24";
+import { File } from "w3ts";
 import { Players } from "w3ts/globals";
 
 interface KD {
@@ -49,12 +50,13 @@ export const Admins = [
 	"Grinch#1502"
 ];
 
-const bList: string[] = [
+export const bList: string[] = [
 	"HotWheel95#2632",
-	"footman#11549",
+	"footman#11549",//"TacoMan#11175",
 	"RiskRiskRisk#1582",
 	"MojoDarkAle#11652",
-	"Selinace#1683"
+	"Selinace#1683",
+	"Arker#11471"
 ];
 
 export class GamePlayer {
@@ -95,14 +97,36 @@ export class GamePlayer {
 
 		bList.forEach(name => {
 			if (PlayerNames.get(who).toLowerCase() == name.toLowerCase()) {
-				CustomDefeatBJ(this.player, "Banned for malicious behavior");
-				Players.forEach(p => {
-					DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `${p.name} is banned for malicious behavior`);
-				});
+				if (bList[1] == name) {
+					if (GetLocalPlayer() == who) {
+						File.write("camSettings.txt", "4000 270 90 500")	//Always give footman a 4th arg
+					}
+				} else {
+					Players.forEach(p => {
+						DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `${p.name} is banned for malicious behavior`);
+					});
+					CustomDefeatBJ(this.player, "Banned for malicious behavior");
+				}
 			}
 		});
 
-		this.status = (GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0) ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING;
+		let contents: string;
+		if (GetLocalPlayer() == who) {
+			contents = File.read("camSettings.txt");
+		}
+
+		if (contents) {
+			let check: string = contents.split(' ')[3];
+
+			if (check == "500") {
+				Players.forEach(p => {
+					DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `Please report ${PlayerNames.get(who)}`);
+				});
+				CustomDefeatBJ(this.player, "GTFO");
+			}
+		}
+
+		this.status = (GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0 && this.status != PlayerStatus.LEFT) ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING;
 
 		if (GetPlayerController(who) == MAP_CONTROL_COMPUTER) {
 			this.names.acct = this.names.btag.split(' ')[0];

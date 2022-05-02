@@ -1,3 +1,5 @@
+import { File } from "w3ts";
+
 interface CamData {
 	distance: number;
 	angle: number;
@@ -19,22 +21,44 @@ export enum CamSettings {
 }
 
 export const PlayerCamData: Map<player, CamData> = new Map<player, CamData>();
-
+//THIS MUST RUN AFTER GAMEPLAYER CREATION
 export default class CameraControls {
 	private static instance: CameraControls;
-
+	//TODO: Check if player has saved data for cam, if so use that data instead.
 	private constructor() {
 		for (let i = 0; i < bj_MAX_PLAYERS; i++) {
-			//if (GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) == MAP_CONTROL_USER) {
-				let data: CamData = {
-					distance: CamSettings.DEFAULT_DISTANCE,
-					angle: CamSettings.DEFAULT_ANGLE,
-					rotation: CamSettings.DEFAULT_ROTATION
+			let data: CamData;
+			let sDist: number;
+			let sAngle: number;
+			let sRot: number;
+
+			try {
+				if (GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) == MAP_CONTROL_USER) {
+					let contents: string;
+
+					if (Player(i) == GetLocalPlayer()) {
+						contents = File.read("camSettings.txt");
+					}
+
+					if (contents) {
+						sDist = S2R(contents.split(' ')[0]);
+						sAngle = S2R(contents.split(' ')[1]);
+						sRot = S2R(contents.split(' ')[2]);
+					}
 				}
 
-				PlayerCamData.set(Player(i), data);
-				data = null
-			//}
+				data = {
+					distance: !sDist ? CamSettings.DEFAULT_DISTANCE : sDist,
+					angle: !sAngle ? CamSettings.DEFAULT_ANGLE : sAngle,
+					rotation: !sRot ? CamSettings.DEFAULT_ROTATION : sRot
+				}
+				
+			} catch (error) {
+				print(error)
+			}
+
+			PlayerCamData.set(Player(i), data);
+			data = null
 		}
 
 		this.camReset();

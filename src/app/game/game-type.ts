@@ -84,7 +84,6 @@ export class Game {
 		const loadTimer = new Timer();
 		loadTimer.start(0.0, false, () => {
 			UserInterface.onLoad();
-			CameraControls.getInstance();
 			Trees.getInstance();
 
 			Players.forEach(player => {
@@ -108,6 +107,7 @@ export class Game {
 				})
 			})
 
+			CameraControls.getInstance();
 			ModeUI.buildModeFrame();
 			ModeUI.toggleModeFrame(true);
 

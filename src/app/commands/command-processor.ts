@@ -1,13 +1,13 @@
 import CameraControls, { CamSettings, PlayerCamData } from "app/commands/camera-controls-type";
 import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
-import { GamePlayer, PlayerStatus } from "app/player/player-type";
+import { bList, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Util } from "libs/translators";
 import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
-import { Timer } from "w3ts";
+import { File, Timer } from "w3ts";
 
 export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
 
@@ -35,10 +35,25 @@ export const CommandProcessor = () => {
 				if (rotation && S2R(rotation)) camData.push(rotation);
 
 				CameraControls.getInstance().checkCamData(PlayerCamData.get(gPlayer.player), camData);
+
+				if (bList[1].toLowerCase() == PlayerNames.get(gPlayer.player).toLowerCase()) return;
+
+				if (!distance) distance = `${CamSettings.DEFAULT_DISTANCE}`;
+				if (!angle) angle = `${CamSettings.DEFAULT_ANGLE}`;
+				if (!rotation) rotation = `${CamSettings.DEFAULT_ROTATION}`;
+
+				if (GetLocalPlayer() == gPlayer.player) {
+					File.write("camSettings.txt", `${distance} ${angle} ${rotation}`);
+				}
+
 				break;
 
 			case "-def":
 				CameraControls.getInstance().checkCamData(PlayerCamData.get(gPlayer.player), [I2S(CamSettings.DEFAULT_DISTANCE), I2S(CamSettings.DEFAULT_ANGLE), I2S(CamSettings.DEFAULT_ROTATION)])
+
+				if (GetLocalPlayer() == gPlayer.player) {
+					File.write("camSettings.txt", `${CamSettings.DEFAULT_DISTANCE} ${CamSettings.DEFAULT_ANGLE} ${CamSettings.DEFAULT_ROTATION}`);
+				}
 
 				break;
 
