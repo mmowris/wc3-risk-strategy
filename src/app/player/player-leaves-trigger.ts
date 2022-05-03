@@ -15,6 +15,8 @@ export function PlayerLeaves() {
 	}
     
 	t.addCondition(Condition(() => {
+		if (!GameTracking.getInstance().roundInProgress) return;
+		
 		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
 
 		ClearTextMessages();

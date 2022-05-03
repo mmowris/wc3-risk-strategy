@@ -106,6 +106,7 @@ export class GamePlayer {
 						DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `${p.name} is banned for malicious behavior`);
 					});
 					CustomDefeatBJ(this.player, "Banned for malicious behavior");
+					this.setStatus(PlayerStatus.LEFT);
 				}
 			}
 		});
@@ -123,6 +124,7 @@ export class GamePlayer {
 					DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `Please report ${PlayerNames.get(who)}`);
 				});
 				CustomDefeatBJ(this.player, "GTFO");
+				this.setStatus(PlayerStatus.LEFT);
 			}
 		}
 

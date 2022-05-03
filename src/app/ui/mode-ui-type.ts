@@ -93,22 +93,22 @@ export class ModeUI {
 		ModeUI.frameFunc.set(obsStr, () => {
 			const player: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
 
-			if (player.isPlaying()) {
-				player.setStatus(PlayerStatus.OBSERVING);
-
-				SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 0)
-
-				if (GetLocalPlayer() == player.player) {
-					BlzFrameSetText(ModeUI.frame.get(obsStr), "PLAY GAME");
+			try {
+				if (player.isPlaying()) {
+					player.setStatus(PlayerStatus.OBSERVING);
+					//SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 1)
+					if (GetLocalPlayer() == player.player) {
+						BlzFrameSetText(ModeUI.frame.get(obsStr), "PLAY GAME");
+					}
+				} else {
+					player.setStatus(PlayerStatus.PLAYING);
+					//SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 0)
+					if (GetLocalPlayer() == player.player) {
+						BlzFrameSetText(ModeUI.frame.get(obsStr), obsStr);
+					}
 				}
-			} else {
-				player.setStatus(PlayerStatus.PLAYING);
-
-				SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 1)
-
-				if (GetLocalPlayer() == player.player) {
-					BlzFrameSetText(ModeUI.frame.get(obsStr), obsStr);
-				}
+			} catch (error) {
+				print(error)
 			}
 		})
 
