@@ -42,30 +42,32 @@ export function onOwnerChange() {
 				const nomadTimer: Timer = new Timer();
 				let duration: number = 60;
 
+				prevOwner.setStatus(PlayerStatus.NOMAD);
 				nomadTimer.start(1, true, () => {
-					if (duration > 0 && prevOwner.cities.length > 0) {
-						prevOwner.setStatus(PlayerStatus.ALIVE);
+					if (!prevOwner.isNomad()) {
 						nomadTimer.pause();
 						nomadTimer.destroy();
-					} else if (duration <= 0) {
-						if (prevOwner.cities.length > 0) {
-							prevOwner.setStatus(PlayerStatus.ALIVE);
-						} else {
-							prevOwner.setStatus(PlayerStatus.DEAD);
-
-							ClearTextMessages();
-
-							GamePlayer.fromPlayer.forEach(player => {
-								DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`);
-							})
-						}
-
-						if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
-						nomadTimer.pause();
-						nomadTimer.destroy();
+						return;
 					}
 
-					prevOwner.status = `${PlayerStatus.NOMAD} ${duration}|r`;
+					if (duration < 1) {
+						if (!prevOwner.isLeft() || !prevOwner.isForfeit()) prevOwner.setStatus(PlayerStatus.DEAD);
+
+						ClearTextMessages();
+
+						GamePlayer.fromPlayer.forEach(player => {
+							DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`);
+						})
+
+						nomadTimer.pause();
+						nomadTimer.destroy();
+						if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
+					}
+
+					if (duration >= 1) {
+						prevOwner.status = `${PlayerStatus.NOMAD} ${duration}|r`;
+					}
+
 					duration--;
 				});
 			}
@@ -80,6 +82,7 @@ export function onOwnerChange() {
 		}
 
 		if (owner.cities.length > GameTracking.getInstance().leader.cities.length) GameTracking.getInstance().leader = owner;
+		if (owner.cities.length == 1) owner.setStatus(PlayerStatus.ALIVE);
 
 		//print(`${owner.names.acct} owns ${country.citiesOwned.get(owner)} cities in ${country.name} and they own ${owner.cities.length} total`)
 		return true;

@@ -60,6 +60,7 @@ export const CommandProcessor = () => {
 			case "-forfeit":
 			case "-ff":
 				if (!GameTracking.getInstance().roundInProgress) return;
+				if (gPlayer.isDead()) return;
 
 				if (gPlayer.isAlive() || gPlayer.isNomad()) {
 					gPlayer.setStatus(PlayerStatus.FORFEIT);
@@ -143,13 +144,13 @@ export const CommandProcessor = () => {
 				const oldStatus: string = player.status;
 
 				stfuTimer.start(1, true, () => {
-					player.status = `${PlayerStatus.STFU} ${duration}`;
 					if (duration < 1.00 || !GameTracking.getInstance().roundInProgress) {
 						player.status = oldStatus;
 						SetPlayerState(player.player, PLAYER_STATE_OBSERVER, 0);
 						stfuTimer.pause();
 						stfuTimer.destroy();
 					} else {
+						player.status = `${PlayerStatus.STFU} ${duration}`;
 						duration--;
 					}
 				});
@@ -159,6 +160,13 @@ export const CommandProcessor = () => {
 			// 	SendGold(gPlayer);
 
 			// 	break;
+			case "-testMode":
+				if (!gPlayer.admin) return;
+				if (!GameTracking.getInstance().roundInProgress) return;
+
+				gPlayer.giveGold(10000);
+
+				break;
 			default:
 				break;
 

@@ -46,17 +46,19 @@ export const enum PlayerStatus {
 
 export const Admins = [
 	"ForLolz#11696",
-	"TacoMan#11175",
-	"Grinch#1502"
+	//"TacoMan#11175",
+	"Grinch#1502",
+	"Local Player"
 ];
 
 export const bList: string[] = [
 	"HotWheel95#2632",
-	"footman#11549",//"TacoMan#11175",
+	"footman#11549",
 	"RiskRiskRisk#1582",
 	"MojoDarkAle#11652",
 	"Selinace#1683",
-	"Arker#11471"
+	"Arker#11471",
+	"TacoMan#11175",
 ];
 
 export class GamePlayer {
@@ -97,17 +99,17 @@ export class GamePlayer {
 
 		bList.forEach(name => {
 			if (PlayerNames.get(who).toLowerCase() == name.toLowerCase()) {
-				if (bList[1] == name) {
-					if (GetLocalPlayer() == who) {
-						File.write("camSettings.txt", "4000 270 90 500")	//Always give footman a 4th arg
-					}
-				} else {
-					Players.forEach(p => {
-						DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `${p.name} is banned for malicious behavior`);
-					});
-					CustomDefeatBJ(this.player, "Banned for malicious behavior");
-					this.setStatus(PlayerStatus.LEFT);
+				//if (bList[1] == name) {
+				if (GetLocalPlayer() == who) {
+					File.write("camSettings.txt", "4000 270 90 500")	//Give 4th arg to ban
 				}
+				//} else {
+				// 	Players.forEach(p => {
+				// 		DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `${p.name} is banned for malicious behavior`);
+				// 	});
+				// 	CustomDefeatBJ(this.player, "Banned for malicious behavior");
+				// 	this.setStatus(PlayerStatus.LEFT);
+				// }
 			}
 		});
 
@@ -124,7 +126,7 @@ export class GamePlayer {
 					DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `Please report ${PlayerNames.get(who)}`);
 				});
 				CustomDefeatBJ(this.player, "GTFO");
-				this.setStatus(PlayerStatus.LEFT);
+				this.status == PlayerStatus.LEFT;
 			}
 		}
 
@@ -277,6 +279,9 @@ export class GamePlayer {
 		} else {
 			this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total of victom player unit specific
 		}
+
+		this.unitCount--;
+		if (this.unitCount <= 0 && this.cities.length <= 0) this.setStatus(PlayerStatus.DEAD);
 	}
 
 	public coloredName(): string {

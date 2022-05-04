@@ -10,13 +10,13 @@ export function unitTargetOrder() {
 	TriggerAddCondition(unitTargetOrderTrig, Condition(() => {
 		switch (GetIssuedOrderId()) {
 			case 852047://"unload"
-			    Transports.orderUnload()
-			    break;
-	    
+				Transports.orderUnload();
+				break;
+
 			default:
-			    break;
-		    }
-	    
-		    return false;
+				break;
+		}
+
+		return false;
 	}));
 }

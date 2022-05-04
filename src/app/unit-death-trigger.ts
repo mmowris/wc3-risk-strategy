@@ -93,6 +93,7 @@ function enemySearch(guardChoice: unit, city: City, kUnit: unit): unit {
 		guardChoice = compareValue(GetEnumUnit(), guardChoice);
 	});
 
+	print(`gChoice, eSearch: ${GetUnitName(guardChoice)}`)
 	DestroyGroup(g);
 	g = null;
 	return guardChoice;
@@ -104,7 +105,7 @@ function enemySearch(guardChoice: unit, city: City, kUnit: unit): unit {
 function killerSearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	let g: group = CreateGroup();
 	let radius: number = 600;
-
+//TODO: debug, even at 800 radius ships arent working properly in some cases
 	if (IsUnitType(kUnit, UTYPE.SHIP) == true && city.isPort()) radius = 720;
 	if (IsUnitType(kUnit, UTYPE.ARTILLERY) == true) radius = 1000;
 	if (GetUnitTypeId(kUnit) == UID.MORTAR) radius = 900;
@@ -123,7 +124,7 @@ function killerSearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	if (IsUnitType(kUnit, UTYPE.ARTILLERY)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
 	if (IsUnitType(kUnit, UTYPE.GUARD)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
 	//If there is still no guard the city will not change owner but a dummy is created
-
+	print(`gChoice, kSearch: ${GetUnitName(guardChoice)}`)
 	DestroyGroup(g);
 	g = null;
 	return guardChoice;
