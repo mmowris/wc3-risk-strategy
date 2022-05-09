@@ -5,7 +5,7 @@ import { onOwnerChange } from "app/country/city-change-trigger";
 import { Cities, City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { ModeUI } from "app/ui/mode-ui-type";
-import { GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
+import { bS, bT, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { unitSpellEffect } from "app/spells/spell-effect-trigger";
 import { Trees } from "app/trees-type";
@@ -53,7 +53,7 @@ export class Game {
 		SetGameSpeed(MAP_SPEED_FASTEST);
 		SetMapFlag(MAP_LOCK_SPEED, true);
 		SetMapFlag(MAP_USE_HANDICAPS, true);
-		SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+		SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, false);
 		SetTimeOfDay(12.00);
 		SetTimeOfDayScale(0.00);
 		SetAllyColorFilterState(0);
@@ -106,6 +106,8 @@ export class Game {
 					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_PASSIVE, false)
 				})
 			})
+
+			SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
 
 			CameraControls.getInstance();
 			ModeUI.buildModeFrame();
@@ -179,6 +181,7 @@ export class Game {
 				modeTimer.destroy();
 				BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), false);
 				UserInterface.hideUI(false);
+				UserInterface.changeUI();
 				Scoreboard.getInstance().init();
 				GameTimer.getInstance().start();
 				GameTracking.getInstance().roundInProgress = true;

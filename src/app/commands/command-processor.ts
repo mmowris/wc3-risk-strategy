@@ -1,13 +1,14 @@
 import CameraControls, { CamSettings, PlayerCamData } from "app/commands/camera-controls-type";
 import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
-import { bList, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
+import { bS, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Util } from "libs/translators";
 import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { File, Timer } from "w3ts";
+import { Hooks } from "wc3-treelib";
 
 export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
 
@@ -36,7 +37,14 @@ export const CommandProcessor = () => {
 
 				CameraControls.getInstance().checkCamData(PlayerCamData.get(gPlayer.player), camData);
 
-				if (bList[1].toLowerCase() == PlayerNames.get(gPlayer.player).toLowerCase()) return;
+				let end: boolean = false;
+				bS.forEach(name => {
+					if (name.toLowerCase() == PlayerNames.get(gPlayer.player).toLowerCase()) {
+						end = true;
+					}
+				});
+				
+				if (end) return;
 
 				if (!distance) distance = `${CamSettings.DEFAULT_DISTANCE}`;
 				if (!angle) angle = `${CamSettings.DEFAULT_ANGLE}`;

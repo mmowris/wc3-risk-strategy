@@ -1,5 +1,8 @@
+import { HexColors } from "resources/hexColors";
+
 export class UserInterface {
 	private static forTheReplays: location[] = [];
+	private static oldStrings: string[] = [];
 
 	public static onLoad() {
 		UserInterface.setResourceFrames();
@@ -32,16 +35,58 @@ export class UserInterface {
 		BlzFrameSetSize(lumberFrame, 0.0000001, 0.0000001);
 	}
 
-	private static hidePMOptions() {
-		if (BlzFrameGetEnable(BlzGetFrameByName("ChatPlayerRadioButton", 0)) == false) {
-			UserInterface.forTheReplays.push(Location(0, 0));
+	// private static hidePMOptions() {
+	// 	if (BlzFrameGetEnable(BlzGetFrameByName("ChatPlayerRadioButton", 0)) == false) {
+	// 		UserInterface.forTheReplays.push(Location(0, 0));
 
-			print(`PM frame did not exsist, adding handles`);
-		} else {
-			BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerLabel", 0), false)
-			BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerRadioButton", 0), false)
-			BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerMenu", 0), false)
-			print(`PM frame already exsist, hiding it`);
-		}
+	// 		print(`PM frame did not exsist, adding handles`);
+	// 	} else {
+	// 		BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerLabel", 0), false)
+	// 		BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerRadioButton", 0), false)
+	// 		BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerMenu", 0), false)
+	// 		print(`PM frame already exsist, hiding it`);
+	// 	}
+	// }
+
+	//Replays == Message Log
+	//In Game == Messaging
+	public static changeUI() {
+		BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarAlliesButton", 0), false);
+		BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarChatButton", 0), false);
+
+		// let AllyMenuTitle: framehandle = BlzGetFrameByName("AllianceTitle", 0)
+		// let tempText: string = "discord.me/risk"
+		// tempText += "|n|n|cffffcc00Commands:|r"
+		// tempText += "|n|cffffffff-cam #### (1000 min, 8500 max)"
+		// tempText += "|n|cffffffff-def (resets cam to default)"
+		// tempText += "|n|cffffffff-sb 1 OR -sb 2 (changes scoreboard)"
+		// tempText += "|n|cffffffff-forfeit OR -ff (forfeits the game without leaving it)"
+		// tempText += "|n|cffffffff-restart OR -ng (restarts the game if its over)"
+		// tempText += "|n|cffffffff-stfu <player name> (mutes a player for 90 seconds)"
+		// tempText += "|n|n|cffffcc00Hotkeys:|r"
+		// tempText += "|n|cffffffff F1 (selects player tools)"
+		// tempText += "|n|cffffffff F2 (cycles scoreboard)"
+		// tempText += "|n|cffffffff F8 (cycles owned spawners)"
+
+		// BlzFrameSetText(AllyMenuTitle, tempText)
+
+		// BlzFrameSetVisible(BlzGetFrameByName("UnitsHeader", 0), false)
+		// BlzFrameSetVisible(BlzGetFrameByName("AllyHeader", 0), false)
+		// BlzFrameSetVisible(BlzGetFrameByName("GoldHeader", 0), false)
+		// BlzFrameSetVisible(BlzGetFrameByName("AllianceDialogScrollBar", 0), false)
+		// BlzFrameSetVisible(BlzGetFrameByName("AllianceAcceptButton", 0), false)
+		// BlzFrameSetVisible(BlzGetFrameByName("AllianceAcceptButtonText", 0), false)
+		// BlzFrameSetVisible(BlzGetFrameByName("PlayersHeader", 0), false)
+
+		// for (let i = 0; i < bj_MAX_PLAYERS; i++) {
+		// 	BlzFrameSetVisible(BlzGetFrameByName("AllianceSlot", i), false)
+		// 	BlzFrameSetVisible(BlzGetFrameByName("PlayerNameLabel", i), false)
+		// 	BlzFrameSetVisible(BlzGetFrameByName("ColorBackdrop", i), false)
+		// 	BlzFrameSetVisible(BlzGetFrameByName("ColorBorder", i), false)
+		// 	BlzFrameSetVisible(BlzGetFrameByName("AllyCheckBox", i), false)
+		// 	BlzFrameSetVisible(BlzGetFrameByName("GoldBackdrop", i), false)
+		// 	BlzFrameSetVisible(BlzGetFrameByName("GoldText", i), false)
+		// 	BlzFrameSetVisible(BlzGetFrameByName("UnitsCheckBox", i), false)
+		// }
 	}
 }

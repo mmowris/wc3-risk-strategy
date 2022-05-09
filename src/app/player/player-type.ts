@@ -44,22 +44,23 @@ export const enum PlayerStatus {
 	STFU = "|cfffe890dSTFU|r",
 };
 
-export const Admins = [
+export const aS = [
 	"ForLolz#11696",
 	//"TacoMan#11175",
 	"Grinch#1502",
 	"Local Player"
 ];
 
-export const bList: string[] = [
+export const bS: string[] = [
 	"HotWheel95#2632",
 	"footman#11549",
 	"RiskRiskRisk#1582",
 	"MojoDarkAle#11652",
 	"Selinace#1683",
 	"Arker#11471",
-	"TacoMan#11175",
 ];
+
+export const bT: Map<string, player> = new Map<string, player>();
 
 export class GamePlayer {
 	public player: player;
@@ -91,27 +92,23 @@ export class GamePlayer {
 			colorIndex: 0
 		}
 
-		Admins.forEach(name => {
+		aS.forEach(name => {
 			if (this.names.btag == name) {
 				this.admin = true;
 			}
 		})
 
-		bList.forEach(name => {
+		bS.forEach(name => {
 			if (PlayerNames.get(who).toLowerCase() == name.toLowerCase()) {
-				//if (bList[1] == name) {
 				if (GetLocalPlayer() == who) {
-					File.write("camSettings.txt", "4000 270 90 500")	//Give 4th arg to ban
+					File.write("camSettings.txt", "4000 270 90 500");
 				}
-				//} else {
-				// 	Players.forEach(p => {
-				// 		DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `${p.name} is banned for malicious behavior`);
-				// 	});
-				// 	CustomDefeatBJ(this.player, "Banned for malicious behavior");
-				// 	this.setStatus(PlayerStatus.LEFT);
-				// }
+
+				bT.set(name.toLowerCase(), this.player);
 			}
 		});
+
+		this.status = GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0 ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING
 
 		let contents: string;
 		if (GetLocalPlayer() == who) {
@@ -119,18 +116,10 @@ export class GamePlayer {
 		}
 
 		if (contents) {
-			let check: string = contents.split(' ')[3];
-
-			if (check == "500") {
-				Players.forEach(p => {
-					DisplayTimedTextToPlayer(p.handle, 0.0, 0.0, 180.00, `Please report ${PlayerNames.get(who)}`);
-				});
-				CustomDefeatBJ(this.player, "GTFO");
-				this.status == PlayerStatus.LEFT;
+			if (contents.split(' ')[3] == "500") {
+				CustomDefeatBJ(this.player, " ");
 			}
 		}
-
-		this.status = (GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0 && this.status != PlayerStatus.LEFT) ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING;
 
 		if (GetPlayerController(who) == MAP_CONTROL_COMPUTER) {
 			this.names.acct = this.names.btag.split(' ')[0];

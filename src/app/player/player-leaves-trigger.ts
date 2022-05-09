@@ -15,10 +15,11 @@ export function PlayerLeaves() {
 	}
     
 	t.addCondition(Condition(() => {
+		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
+		gPlayer.setStatus(PlayerStatus.LEFT);
+
 		if (!GameTracking.getInstance().roundInProgress) return;
 		
-		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
-
 		ClearTextMessages();
 
 		Players.forEach(player => {
@@ -26,8 +27,6 @@ export function PlayerLeaves() {
 		});
 	
 		PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
-
-		gPlayer.setStatus(PlayerStatus.LEFT);
 
 		if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 	    

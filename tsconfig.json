@@ -42,7 +42,8 @@
       "war3-types/core/blizzard",
       "war3-types/core/commonai",
       "war3-types/core/polyfill",
-      "war3-types/special/w3ts"
+      "war3-types/special/w3ts",
+      "wc3-treelib/index"
     ]
   },
   "include": [

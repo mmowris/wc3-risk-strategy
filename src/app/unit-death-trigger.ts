@@ -58,7 +58,7 @@ function guardDies(dUnit: unit, kUnit: unit) {
  */
 function alliedCOPSearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	let g: group = CreateGroup();
-	let radius: number = 225;
+	let radius: number = 235;
 	if (GetOwningPlayer(kUnit) == city.getOwner() || IsPlayerAlly(GetOwningPlayer(kUnit), city.getOwner())) radius = 550;
 
 	GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterFriendlyValidGuards(city));
@@ -85,6 +85,7 @@ function enemySearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	if (IsUnitType(kUnit, UTYPE.SHIP) == true && city.isPort()) radius = 700;
 
 	GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterEnemyValidGuards(city, kUnit));
+	GroupEnumUnitsInRange(g, GetUnitX(city.guard), GetUnitY(city.guard), radius, FilterEnemyValidGuards(city, kUnit));
 
 	if (BlzGroupGetSize(g) == 0) return guardChoice = null;
 	if (!guardChoice) guardChoice = GroupPickRandomUnit(g);
@@ -93,7 +94,7 @@ function enemySearch(guardChoice: unit, city: City, kUnit: unit): unit {
 		guardChoice = compareValue(GetEnumUnit(), guardChoice);
 	});
 
-	print(`gChoice, eSearch: ${GetUnitName(guardChoice)}`)
+	//print(`gChoice, eSearch: ${GetUnitName(guardChoice)} radius: ${radius}`)
 	DestroyGroup(g);
 	g = null;
 	return guardChoice;
@@ -105,12 +106,17 @@ function enemySearch(guardChoice: unit, city: City, kUnit: unit): unit {
 function killerSearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	let g: group = CreateGroup();
 	let radius: number = 600;
-//TODO: debug, even at 800 radius ships arent working properly in some cases
+
 	if (IsUnitType(kUnit, UTYPE.SHIP) == true && city.isPort()) radius = 720;
 	if (IsUnitType(kUnit, UTYPE.ARTILLERY) == true) radius = 1000;
 	if (GetUnitTypeId(kUnit) == UID.MORTAR) radius = 900;
 
 	GroupEnumUnitsInRange(g, GetUnitX(city.guard), GetUnitY(city.guard), radius, FilterEnemyValidGuards(city, kUnit));
+	//print(`${BlzGroupGetSize(g)}`)
+	if (IsUnitType(kUnit, UTYPE.SHIP) == true && city.isPort() && BlzGroupGetSize(g) == 0) {
+		GroupEnumUnitsInRange(g, GetUnitX(kUnit), GetUnitY(kUnit), 200, FilterEnemyValidGuards(city, kUnit));
+		//print(`${BlzGroupGetSize(g)}`)
+	}
 
 	if (BlzGroupGetSize(g) >= 1) {
 		guardChoice = GroupPickRandomUnit(g);
@@ -124,7 +130,8 @@ function killerSearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	if (IsUnitType(kUnit, UTYPE.ARTILLERY)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
 	if (IsUnitType(kUnit, UTYPE.GUARD)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
 	//If there is still no guard the city will not change owner but a dummy is created
-	print(`gChoice, kSearch: ${GetUnitName(guardChoice)}`)
+
+	//print(`gChoice, kSearch: ${GetUnitName(guardChoice)} radius: ${radius}`)
 	DestroyGroup(g);
 	g = null;
 	return guardChoice;

@@ -35,6 +35,7 @@
     "war3-transformer": "^2.0.0",
     "war3-types": "^1.0.4",
     "war3tstlhelper": "^1.0.1",
+    "wc3-treelib": "^3.0.0",
     "winston": "^3.3.3"
   },
   "watch": {

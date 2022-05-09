@@ -46,9 +46,7 @@ export class Spawner {
 
 			if (GetUnitTypeId(fU) == UID.SPAWNER && GetOwningPlayer(fU) == GetOwningPlayer(u)) {
 				if (GetSpellAbilityId() == AID.SPWN_RESET) {
-					if (GetOwningPlayer(fU) == GetLocalPlayer()) {
-						IssuePointOrder(fU, "setrally", GetUnitX(fU), GetUnitY(fU));
-					}
+					IssuePointOrder(fU, "setrally", GetUnitX(fU), GetUnitY(fU));
 				} else {
 					if (GetOwningPlayer(fU) == GetLocalPlayer()) {
 						SelectUnit(fU, true);
