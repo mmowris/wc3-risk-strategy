@@ -51,7 +51,7 @@ export const CommandProcessor = () => {
 				if (!rotation) rotation = `${CamSettings.DEFAULT_ROTATION}`;
 
 				if (GetLocalPlayer() == gPlayer.player) {
-					File.write("camSettings.txt", `${distance} ${angle} ${rotation}`);
+					File.write("camSettings.pld", `${distance} ${angle} ${rotation}`);
 				}
 
 				break;
@@ -60,7 +60,7 @@ export const CommandProcessor = () => {
 				CameraControls.getInstance().checkCamData(PlayerCamData.get(gPlayer.player), [I2S(CamSettings.DEFAULT_DISTANCE), I2S(CamSettings.DEFAULT_ANGLE), I2S(CamSettings.DEFAULT_ROTATION)])
 
 				if (GetLocalPlayer() == gPlayer.player) {
-					File.write("camSettings.txt", `${CamSettings.DEFAULT_DISTANCE} ${CamSettings.DEFAULT_ANGLE} ${CamSettings.DEFAULT_ROTATION}`);
+					File.write("camSettings.pld", `${CamSettings.DEFAULT_DISTANCE} ${CamSettings.DEFAULT_ANGLE} ${CamSettings.DEFAULT_ROTATION}`);
 				}
 
 				break;

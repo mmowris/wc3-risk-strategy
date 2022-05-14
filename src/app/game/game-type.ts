@@ -5,7 +5,7 @@ import { onOwnerChange } from "app/country/city-change-trigger";
 import { Cities, City } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { ModeUI } from "app/ui/mode-ui-type";
-import { bS, bT, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
+import { bS, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { unitSpellEffect } from "app/spells/spell-effect-trigger";
 import { Trees } from "app/trees-type";
@@ -25,13 +25,46 @@ import { PlayGlobalSound } from "libs/utils";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { unitDeath } from "app/unit-death-trigger";
 import { PlayerLeaves } from "app/player/player-leaves-trigger";
+import { eb46 } from "libs/EncodingBase64";
+
+export let scf: string = "VGhpcyBnYW1lIGhhcyBiZWVuIHRhbXBlcmVkIHdpdGgsIGVuZGluZyBnYW1lLgpEZWxldGUgeW91ciBnYW1lIGZpbGUgYW5kIHZpc2l0IHRoZSBkaXNjb3JkIHRvIGdldCB0aGUgb2ZmaWNhbCBtYXAhCmRpc2NvcmQubWUvcmlzaw=="
 
 export class Game {
 	private static instance: Game;
 
 	constructor() {
-		Game.onInit();
-		Game.onLoad();
+		//let c: number = 0;
+		let l: number;
+		let f: number = 0;
+
+		for (const key in _G) {
+			if (!l) {
+				l = StringHash(key)
+			} else {
+				let curr = StringHash(key)
+				f += BlzBitXor(l, curr);
+
+			}
+
+			//BJDebugMsg(`Curr Hash: ${final}`)
+
+			//c++
+		}
+
+		//BJDebugMsg(`${final} cQty: ${c}`); //Final hash 1926189776
+
+		scf = eb46.dc(scf)
+
+		bS.forEach(bgy => {
+			bgy = eb46.dc(bgy)	
+		})
+
+		if (f == 1926189776) {
+			Game.onInit();
+			Game.onLoad();
+		} else {
+			Game.end();
+		}
 	}
 
 	public static getInstance() {
@@ -104,7 +137,7 @@ export class Game {
 					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_RESCUABLE, false)
 					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_VISION_FORCED, false)
 					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_PASSIVE, false)
-				})
+				});
 			})
 
 			SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
@@ -181,14 +214,19 @@ export class Game {
 				modeTimer.destroy();
 				BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), false);
 				UserInterface.hideUI(false);
-				UserInterface.changeUI();
+				//UserInterface.changeUI();
 				Scoreboard.getInstance().init();
 				GameTimer.getInstance().start();
 				GameTracking.getInstance().roundInProgress = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 				Scoreboard.getInstance().toggleVis(true);
+				//tester();
 			}
 		});
+	}
+
+	private static end() {
+		DisplayTimedTextToForce(bj_FORCE_ALL_PLAYERS, 180, scf)
 	}
 
 	private static assignColors() {
@@ -214,7 +252,7 @@ export class Game {
 
 				for (let i = 0; i < PLAYER_COLORS.length; i++) {
 					if (GetPlayerColor(gPlayer.player) == PLAYER_COLORS[i]) {
-						gPlayer.names.color = PLAYER_COLOR_NAMES[i]
+						gPlayer.names.color = PLAYER_COLOR_NAMES[i];
 						//print(`btag: ${gPlayer.names.btag}\nacct: ${gPlayer.names.acct}\ncolor: ${gPlayer.names.color}`)
 						//print(`real name ${GetPlayerName(gPlayer.player)}`)
 						//print(`set real name tp ${gPlayer.names.color}`)

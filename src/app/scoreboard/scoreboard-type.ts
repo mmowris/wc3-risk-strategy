@@ -95,7 +95,15 @@ export class Scoreboard {
 		if (winPlayer == gPlayer) {
 			Scoreboard.setItemValue(this.mb, `${HexColors.GREEN}Winner|r`, row, 6);
 		} else {
-			Scoreboard.setItemValue(this.mb, `${HexColors.RED}Loser|r`, row, 6);
+			let str: string;
+
+			if (!gPlayer.isLeft() && !gPlayer.isObserving()) {
+				str = `${HexColors.RED}Loser|r`
+			} else {
+				str = gPlayer.status
+			}
+
+			Scoreboard.setItemValue(this.mb, str, row, 6);
 		}
 
 		this.updateTitle(`${PLAYER_COLOR_CODES[winPlayer.names.colorIndex]}${winPlayer.names.btag}|r won with ${PLAYER_COLOR_CODES[winPlayer.names.colorIndex]}${winPlayer.cities.length}|r cities! `);

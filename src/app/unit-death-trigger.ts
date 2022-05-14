@@ -4,8 +4,9 @@ import { City } from "./country/city-type";
 import { FilterEnemyValidGuards, FilterFriendlyValidGuards } from "./country/guard-filters";
 import { compareValue } from "./country/guard-options";
 import { Spawner } from "./country/spawner-type";
+import { GameTimer } from "./game/game-timer-type";
 import { GameTracking } from "./game/game-tracking-type";
-import { GamePlayer } from "./player/player-type";
+import { GamePlayer, PlayerStatus } from "./player/player-type";
 import { Transports } from "./transports-type";
 
 export const unitDeathTrig: trigger = CreateTrigger();
@@ -25,6 +26,10 @@ export function unitDeath() {
 
 		kUnitOwner.onKill(dUnitOwner, dyingUnit);
 		dUnitOwner.onDeath(kUnitOwner, dyingUnit)
+
+		if (kUnitOwner.unitCount <= 0 && kUnitOwner.cities.length <= 0) this.setStatus(PlayerStatus.DEAD);
+		if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
+		
 		Transports.onDeath(dyingUnit, killingUnit);
 
 		if (Spawner.fromUnit.has(dyingUnit)) Spawner.onSpawnDeath(dUnitOwner, dyingUnit, Spawner.fromUnit.get(dyingUnit));

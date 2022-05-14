@@ -5,7 +5,9 @@ import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/p24";
 import { GameRankingHelper } from "./game-ranking-helper-type";
-
+//TODO
+//If player goes from nomad -> alive in 2 player game, it games and the winner wins
+//The bug is due to nomad -> alive, it actually goes into nomad block of code first i believe. need to print to test, for now it has no effect in a real game and can be ignored
 export class GameTracking {
 	private static instance: GameTracking;
 	private _leader: GamePlayer;
@@ -66,6 +68,7 @@ export class GameTracking {
 		if (!who) return false;
 		if (!this.roundInProgress) return false;
 
+		this.leader = who;
 		this.roundInProgress = false;
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {

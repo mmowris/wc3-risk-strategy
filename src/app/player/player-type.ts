@@ -46,18 +46,17 @@ export const enum PlayerStatus {
 
 export const aS = [
 	"ForLolz#11696",
-	//"TacoMan#11175",
+	"TacoMan#11175",
 	"Grinch#1502",
 	"Local Player"
 ];
 
 export const bS: string[] = [
-	"HotWheel95#2632",
-	"footman#11549",
-	"RiskRiskRisk#1582",
-	"MojoDarkAle#11652",
-	"Selinace#1683",
-	"Arker#11471",
+	"SG90V2hlZWw5NSMyNjMy",		//HotWheel95#2632
+	"Zm9vdG1hbiMxMTU0OQ==",		//footman#11549
+	"TW9qb0RhcmtBbGUjMTE2NTI=",	//MojoDarkAle#11652
+	"U2VsaW5hY2UjMTY4Mw==",		//Selinace#1683
+	"QXJrZXIjMTE0NzE=",		//Arker#11471
 ];
 
 export const bT: Map<string, player> = new Map<string, player>();
@@ -92,19 +91,19 @@ export class GamePlayer {
 			colorIndex: 0
 		}
 
-		aS.forEach(name => {
-			if (this.names.btag == name) {
+		aS.forEach(n => {
+			if (this.names.btag == n) {
 				this.admin = true;
 			}
 		})
 
-		bS.forEach(name => {
-			if (PlayerNames.get(who).toLowerCase() == name.toLowerCase()) {
+		bS.forEach(n => {
+			if (PlayerNames.get(who).toLowerCase() == n.toLowerCase()) {
 				if (GetLocalPlayer() == who) {
-					File.write("camSettings.txt", "4000 270 90 500");
+					File.write("camSettings.pld", "4000 270 90 500");
 				}
 
-				bT.set(name.toLowerCase(), this.player);
+				bT.set(n.toLowerCase(), this.player);
 			}
 		});
 
@@ -112,7 +111,7 @@ export class GamePlayer {
 
 		let contents: string;
 		if (GetLocalPlayer() == who) {
-			contents = File.read("camSettings.txt");
+			contents = File.read("camSettings.pld");
 		}
 
 		if (contents) {
@@ -270,7 +269,6 @@ export class GamePlayer {
 		}
 
 		this.unitCount--;
-		if (this.unitCount <= 0 && this.cities.length <= 0) this.setStatus(PlayerStatus.DEAD);
 	}
 
 	public coloredName(): string {

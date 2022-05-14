@@ -37,7 +37,7 @@ export default class CameraControls {
 					let contents: string;
 
 					if (Player(i) == GetLocalPlayer()) {
-						contents = File.read("camSettings.txt");
+						contents = File.read("camSettings.pld");
 					}
 
 					if (contents) {

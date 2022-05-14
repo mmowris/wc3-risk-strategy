@@ -1,5 +1,6 @@
 import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
+import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
@@ -17,6 +18,15 @@ export function PlayerLeaves() {
 	t.addCondition(Condition(() => {
 		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
 		gPlayer.setStatus(PlayerStatus.LEFT);
+
+		if (Scoreboard.getInstance().size > 0 && !GameTracking.getInstance().roundInProgress) {
+			let row: number = 2;
+
+			Scoreboard.getInstance().playersOnBoard.forEach(gPlayer => {
+				Scoreboard.getInstance().victoryUpdate(GameTracking.getInstance().leader, gPlayer, row);
+				row++;
+			})
+		}
 
 		if (!GameTracking.getInstance().roundInProgress) return;
 		
