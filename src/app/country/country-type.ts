@@ -1,7 +1,7 @@
 import { GamePlayer } from "app/player/player-type";
 import { PlayLocalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import { Cities, City } from "./city-type";
 import { Spawner } from "./spawner-type";
 

@@ -22,7 +22,7 @@ import { unitTargetOrder } from "app/spells/unit-target-order-trigger";
 import { unitEndCast } from "app/spells/spell-end-trigger";
 import { Transports } from "app/transports-type";
 import { PlayGlobalSound } from "libs/utils";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { MAX_PLAYERS, NEUTRAL_HOSTILE } from "resources/constants";
 import { unitDeath } from "app/unit-death-trigger";
 import { PlayerLeaves } from "app/player/player-leaves-trigger";
 import { eb46 } from "libs/EncodingBase64";
@@ -56,7 +56,7 @@ export class Game {
 		scf = eb46.dc(scf)
 
 		bS.forEach(bgy => {
-			bgy = eb46.dc(bgy)	
+			bgy = eb46.dc(bgy)
 		})
 
 		if (f == 1926189776) {
@@ -125,20 +125,9 @@ export class Game {
 
 					GamePlayer.fromPlayer.set(player.handle, new GamePlayer(player.handle));
 				}
-
-				GamePlayer.fromPlayer.forEach(gPlayer => {
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_HELP_REQUEST, false)
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_HELP_RESPONSE, false)
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_XP, false)
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_SPELLS, false)
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_VISION, false)
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_CONTROL, false)
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_ADVANCED_CONTROL, false)
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_RESCUABLE, false)
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_SHARED_VISION_FORCED, false)
-					SetPlayerAlliance(player.handle, gPlayer.player, ALLIANCE_PASSIVE, false)
-				});
 			})
+
+			this.unallyLobby();
 
 			SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
 
@@ -150,6 +139,23 @@ export class Game {
 			Game.runModeSelection();
 			// The chain begins with runmodeselection -> initroundsettings -> initround
 		});
+	}
+
+	private static unallyLobby() {
+		for (let i = 0; i < MAX_PLAYERS; i++) {
+			for (let j = 0; j < MAX_PLAYERS; j++) {
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_HELP_REQUEST, false)
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_HELP_RESPONSE, false)
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_SHARED_XP, false)
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_SHARED_SPELLS, false)
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_SHARED_VISION, false)
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_SHARED_CONTROL, false)
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_SHARED_ADVANCED_CONTROL, false)
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_RESCUABLE, false)
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_SHARED_VISION_FORCED, false)
+				SetPlayerAlliance(Players[i].handle, Players[j].handle, ALLIANCE_PASSIVE, false)
+			}
+		}
 	}
 
 	private static runModeSelection() {

@@ -1,6 +1,6 @@
 import { GamePlayer } from "app/player/player-type";
 import { Transports } from "app/transports-type";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { FilterFriendlyValidGuards, isGuardValid } from "./guard-filters";
@@ -47,7 +47,7 @@ export class City {
 
 		TriggerRegisterEnterRegion(enterCityTrig, this.region, null);
 		TriggerRegisterLeaveRegion(leaveCityTrig, this.region, null);
-
+		//TODO: Refactor so I can rebuild cities
 		TriggerRegisterUnitEvent(unitTrainedTrig, this.barrack, EVENT_UNIT_TRAIN_FINISH);
 
 		//Create cop
@@ -422,7 +422,7 @@ export class City {
 		const name: string = GetUnitName(this.barrack);
 
 		City.fromBarrack.delete(this.barrack);
-		RemoveUnit(this.barrack)
+		RemoveUnit(this.barrack);
 		this._barrack = null;
 		this.setBarrack(x, y, name);
 		this.removeGuard(true);

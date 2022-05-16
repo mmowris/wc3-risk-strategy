@@ -1,5 +1,5 @@
 import { HexColors } from "resources/hexColors";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import CameraControls, { PlayerCamData } from "../commands/camera-controls-type";
 import { GamePlayer, PlayerStatus } from "../player/player-type";
 

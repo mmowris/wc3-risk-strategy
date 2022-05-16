@@ -1,6 +1,6 @@
 import { GamePlayer } from "app/player/player-type";
 import { AID } from "resources/abilityID";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { Group } from "w3ts";

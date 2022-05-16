@@ -1,5 +1,5 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import { File } from "w3ts";
 import { Players } from "w3ts/globals";
 

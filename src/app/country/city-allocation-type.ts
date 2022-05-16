@@ -1,6 +1,6 @@
 import { GamePlayer } from "app/player/player-type";
 import { Util } from "libs/translators";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import { City } from "./city-type";
 import { Country } from "./country-type";
 

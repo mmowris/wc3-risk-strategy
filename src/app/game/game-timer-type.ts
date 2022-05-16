@@ -1,7 +1,7 @@
 import { Country } from "app/country/country-type";
 import { GamePlayer } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
-import { PlayGlobalSound } from "libs/utils";
+import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
 import { Timer } from "w3ts";
 import { GameTracking } from "./game-tracking-type";
@@ -104,9 +104,11 @@ export class GameTimer {
 
 			if (gPlayer.cities.length >= citiesWarning) {
 				
-				GamePlayer.fromPlayer.forEach(gP => {
-					DisplayTimedTextToPlayer(gP.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${gPlayer.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities and needs ${HexColors.RED}${GameTracking.getInstance().citiesToWin - gPlayer.cities.length}|r more to win!`);
-				})
+				MessageAll(false, `${HexColors.RED}WARNING:|r ${gPlayer.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities and needs ${HexColors.RED}${GameTracking.getInstance().citiesToWin - gPlayer.cities.length}|r more to win!`, 0.46)
+				
+				// GamePlayer.fromPlayer.forEach(gP => {
+				// 	DisplayTimedTextToPlayer(gP.player, 0.46, 0.81, 5.00, `${HexColors.RED}WARNING:|r ${gPlayer.coloredName()} owns ${HexColors.RED}${gPlayer.cities.length}|r cities and needs ${HexColors.RED}${GameTracking.getInstance().citiesToWin - gPlayer.cities.length}|r more to win!`);
+				// })
 
 				if (!played) {
 					PlayGlobalSound("Sound\\Interface\\SecretFound.flac");

@@ -3,7 +3,7 @@ import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import { GameRankingHelper } from "./game-ranking-helper-type";
 //TODO
 //If player goes from nomad -> alive in 2 player game, it games and the winner wins

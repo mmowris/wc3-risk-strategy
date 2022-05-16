@@ -3,10 +3,11 @@ import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
 import { bS, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Util } from "libs/translators";
-import { PlayGlobalSound } from "libs/utils";
+import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { MAX_PLAYERS, NEUTRAL_HOSTILE } from "resources/constants";
+import { UTYPE } from "resources/unitTypes";
 import { File, Timer } from "w3ts";
 import { Hooks } from "wc3-treelib";
 
@@ -74,11 +75,12 @@ export const CommandProcessor = () => {
 					gPlayer.setStatus(PlayerStatus.FORFEIT);
 				}
 
-				ClearTextMessages();
+				MessageAll(true, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}forfeit|r the round!`)
+				// ClearTextMessages();
 
-				GamePlayer.fromPlayer.forEach(player => {
-					DisplayTimedTextToPlayer(player.player, 0.91, 0.81, 5.00, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}forfeit|r the round!`);
-				})
+				// GamePlayer.fromPlayer.forEach(player => {
+				// 	DisplayTimedTextToPlayer(player.player, 0.91, 0.81, 5.00, );
+				// })
 
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 
@@ -87,10 +89,40 @@ export const CommandProcessor = () => {
 				break;
 
 			// case "-restart":
-			// case "-ng":
-			// 	Restart();
+			case "-ng":
+				if (!GameTracking.getInstance().roundInProgress) return;
 
-			// 	break;
+				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`)
+				// ClearTextMessages();
+
+				// GamePlayer.fromPlayer.forEach(player => {
+				// 	DisplayTimedTextToPlayer(player.player, 0.91, 0.81, 5.00, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`);
+				// })
+
+				PlayGlobalSound("Sound\\Interface\\Goodjob.flac");
+
+				let uGroup = CreateGroup();
+
+				for (let i = 0; i < MAX_PLAYERS; i++) {
+					GroupEnumUnitsOfPlayer(uGroup, Player(i), Filter(() => {
+						let u = GetFilterUnit();
+		
+						if (IsUnitType(u, UTYPE.BUILDING) && IsUnitType(u, UTYPE.GUARD)) {
+							RemoveUnit(u);
+						}
+		
+						return u = null;
+					}));
+		
+					GroupClear(uGroup);
+				}
+		
+				DestroyGroup(uGroup);
+				uGroup = null;
+
+				
+
+				break;
 
 			case "-names":
 			case "-players":

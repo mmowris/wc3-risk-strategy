@@ -1,7 +1,7 @@
 import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
-import { PlayGlobalSound } from "libs/utils";
+import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { Trigger } from "w3ts";
@@ -30,11 +30,13 @@ export function PlayerLeaves() {
 
 		if (!GameTracking.getInstance().roundInProgress) return;
 		
-		ClearTextMessages();
+		MessageAll(true, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}left|r the game!`);
+		
+		// ClearTextMessages();
 
-		Players.forEach(player => {
-		    DisplayTimedTextToPlayer(player.handle, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}left|r the game!`);
-		});
+		// Players.forEach(player => {
+		//     DisplayTimedTextToPlayer(player.handle, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}left|r the game!`);
+		// });
 	
 		PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 

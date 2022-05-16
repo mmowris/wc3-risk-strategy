@@ -4,10 +4,11 @@ import { GamePlayer, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
-import { NEUTRAL_HOSTILE } from "resources/p24";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import { Timer } from "w3ts";
 import { City } from "./city-type";
 import { Country } from "./country-type";
+import { MessageAll } from "libs/utils";
 
 export function onOwnerChange() {
 	const ownerChange: trigger = CreateTrigger();
@@ -31,11 +32,12 @@ export function onOwnerChange() {
 			if (prevOwner.unitCount <= 0) {
 				prevOwner.setStatus(PlayerStatus.DEAD);
 
-				ClearTextMessages();
+				MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
+				// ClearTextMessages();
 
-				GamePlayer.fromPlayer.forEach(player => {
-					DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`);
-				})
+				// GamePlayer.fromPlayer.forEach(player => {
+				// 	DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`);
+				// })
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 			} else {
@@ -53,11 +55,12 @@ export function onOwnerChange() {
 					if (duration < 1) {
 						if (!prevOwner.isLeft() || !prevOwner.isForfeit()) prevOwner.setStatus(PlayerStatus.DEAD);
 
-						ClearTextMessages();
+						MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
+						// ClearTextMessages();
 
-						GamePlayer.fromPlayer.forEach(player => {
-							DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`);
-						})
+						// GamePlayer.fromPlayer.forEach(player => {
+						// 	DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`);
+						// })
 
 						nomadTimer.pause();
 						nomadTimer.destroy();
