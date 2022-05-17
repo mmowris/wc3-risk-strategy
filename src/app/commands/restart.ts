@@ -72,7 +72,7 @@ export function SlowRestart() {
 
 export function FastRestart() {
 	try {
-		
+		Game.fastStart();
 	} catch (error) {
 		print(error)
 	}

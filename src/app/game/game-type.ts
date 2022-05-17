@@ -21,11 +21,12 @@ import { GameTracking } from "./game-tracking-type";
 import { unitTargetOrder } from "app/spells/unit-target-order-trigger";
 import { unitEndCast } from "app/spells/spell-end-trigger";
 import { Transports } from "app/transports-type";
-import { PlayGlobalSound } from "libs/utils";
+import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { MAX_PLAYERS, NEUTRAL_HOSTILE } from "resources/constants";
 import { unitDeath } from "app/unit-death-trigger";
 import { PlayerLeaves } from "app/player/player-leaves-trigger";
 import { eb46 } from "libs/EncodingBase64";
+import { HexColors } from "resources/hexColors";
 
 export let scf: string = "VGhpcyBnYW1lIGhhcyBiZWVuIHRhbXBlcmVkIHdpdGgsIGVuZGluZyBnYW1lLgpEZWxldGUgeW91ciBnYW1lIGZpbGUgYW5kIHZpc2l0IHRoZSBkaXNjb3JkIHRvIGdldCB0aGUgb2ZmaWNhbCBtYXAhCmRpc2NvcmQubWUvcmlzaw=="
 
@@ -223,6 +224,46 @@ export class Game {
 				UserInterface.hideUI(false);
 				//UserInterface.changeUI();
 				Scoreboard.getInstance().init();
+				GameTimer.getInstance().start();
+				GameTracking.getInstance().roundInProgress = true;
+				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
+				Scoreboard.getInstance().toggleVis(true);
+				//tester();
+			}
+		});
+	}
+
+	public static fastStart() {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			//Set Players
+			if ((gPlayer.isObserving() || GetPlayerState(gPlayer.player, PLAYER_STATE_OBSERVER) > 0) && !gPlayer.isLeft()) {
+				SetPlayerState(gPlayer.player, PLAYER_STATE_OBSERVER, 1)
+
+				if (!gPlayer.isObserving()) {
+					gPlayer.setStatus(PlayerStatus.OBSERVING)
+				}
+			} else if (gPlayer.isPlaying()) {
+				SetPlayerState(gPlayer.player, PLAYER_STATE_OBSERVER, 0)
+				gPlayer.setStatus(PlayerStatus.ALIVE);
+			}
+
+			gPlayer.initKDMaps();
+		});
+
+		CityAllocation.start();	
+
+		MessageAll(true, `${HexColors.TANGERINE}The round will start in a few seconds!|r`)
+
+		let tick: number = 3;
+		const quickTimer: Timer = new Timer();
+		quickTimer.start(1.00, true, () => {
+			if (tick >= 1) {
+				tick--;
+			} else {
+				quickTimer.pause();
+				quickTimer.destroy();
+				Scoreboard.getInstance().init();
+				UserInterface.hideUI(false);
 				GameTimer.getInstance().start();
 				GameTracking.getInstance().roundInProgress = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
