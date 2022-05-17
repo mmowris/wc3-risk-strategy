@@ -416,18 +416,25 @@ export class City {
 		return GetOwningPlayer(this.barrack);
 	}
 
+	
 	public reset() {
-		const x: number = GetUnitX(this.barrack);
-		const y: number = GetUnitY(this.barrack);
-		const name: string = GetUnitName(this.barrack);
-
-		City.fromBarrack.delete(this.barrack);
-		RemoveUnit(this.barrack);
-		this._barrack = null;
-		this.setBarrack(x, y, name);
+		this.setOwner(NEUTRAL_HOSTILE)
 		this.removeGuard(true);
-		this.setGuard(this.defaultGuardType);
+		this.setGuard(this.defaultGuardType)
 	}
+
+	// public reset() {
+	// 	const x: number = GetUnitX(this.barrack);
+	// 	const y: number = GetUnitY(this.barrack);
+	// 	const name: string = GetUnitName(this.barrack);
+
+	// 	City.fromBarrack.delete(this.barrack);
+	// 	RemoveUnit(this.barrack);
+	// 	this._barrack = null;
+	// 	this.setBarrack(x, y, name);
+	// 	this.removeGuard(true);
+	// 	this.setGuard(this.defaultGuardType);
+	// }
 
 	public changeGuardOwner() {
 		SetUnitOwner(this._guard, this.getOwner(), true);

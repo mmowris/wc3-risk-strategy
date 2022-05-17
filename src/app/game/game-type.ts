@@ -107,7 +107,6 @@ export class Game {
 		unitSpellEffect();
 		unitEndCast();
 		unitTargetOrder();
-		CommandProcessor();
 		onOwnerChange();
 		PlayerLeaves();
 		Transports.onLoad();
@@ -158,7 +157,7 @@ export class Game {
 		}
 	}
 
-	private static runModeSelection() {
+	public static runModeSelection() {
 		let tick: number = 10;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
@@ -182,12 +181,14 @@ export class Game {
 		Game.assignColors();
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			//Create player tools
-			let u: unit = CreateUnit(gPlayer.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270);
-			SetUnitPathing(u, false);
-			UnitRemoveAbility(u, AID.LOW_HEALTH_DEFENDER);
-			UnitRemoveAbility(u, AID.LOW_VALUE_DEFENDER);
-			UnitRemoveAbility(u, AID.ALLOW_PINGS);
-			UnitRemoveAbility(u, AID.FORFEIT);
+			if (!gPlayer.tools) {
+				gPlayer.tools = CreateUnit(gPlayer.player, UID.PLAYER_TOOLS, 18750.00, -16200.00, 270);
+				SetUnitPathing(gPlayer.tools, false);
+				UnitRemoveAbility(gPlayer.tools, AID.LOW_HEALTH_DEFENDER);
+				UnitRemoveAbility(gPlayer.tools, AID.LOW_VALUE_DEFENDER);
+				UnitRemoveAbility(gPlayer.tools, AID.ALLOW_PINGS);
+				UnitRemoveAbility(gPlayer.tools, AID.FORFEIT);
+			}
 			//Set Players
 			if ((gPlayer.isObserving() || GetPlayerState(gPlayer.player, PLAYER_STATE_OBSERVER) > 0) && !gPlayer.isLeft()) {
 				SetPlayerState(gPlayer.player, PLAYER_STATE_OBSERVER, 1)
@@ -197,7 +198,7 @@ export class Game {
 				}
 			} else if (gPlayer.isPlaying()) {
 				SetPlayerState(gPlayer.player, PLAYER_STATE_OBSERVER, 0)
-				gPlayer.initBonusUI();
+				if (gPlayer.bonus.bar === null) gPlayer.initBonusUI();
 				gPlayer.setStatus(PlayerStatus.ALIVE);
 			}
 
@@ -218,7 +219,7 @@ export class Game {
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
-				BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), false);
+				ModeUI.toggleModeFrame(false)
 				UserInterface.hideUI(false);
 				//UserInterface.changeUI();
 				Scoreboard.getInstance().init();
@@ -274,5 +275,4 @@ export class Game {
 			}
 		})
 	}
-
 }

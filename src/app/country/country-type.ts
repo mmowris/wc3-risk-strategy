@@ -169,5 +169,11 @@ export class Country {
 	    
 		PlayLocalSound("Sound\\Interface\\Rescue.flac", who);
 	}
+
+	public reset() {
+		this._owner = NEUTRAL_HOSTILE;
+		this.spawner.reset();
+		this.initCitiesOwned();
+	}
 	//Internal Functions
 }

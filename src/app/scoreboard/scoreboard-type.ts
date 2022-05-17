@@ -109,6 +109,16 @@ export class Scoreboard {
 		this.updateTitle(`${PLAYER_COLOR_CODES[winPlayer.names.colorIndex]}${winPlayer.names.btag}|r won with ${PLAYER_COLOR_CODES[winPlayer.names.colorIndex]}${winPlayer.cities.length}|r cities! `);
 	}
 
+	public cityClaimed(pName: GamePlayer, cName: string) {
+		Scoreboard.setItemValue(this.mb, `${pName.coloredName()} claimed ${HexColors.TANGERINE}${cName}|r`, this.size, 1);
+	}
+
+	public destory() {
+		this.playersOnBoard.length = 0;
+		DestroyMultiboard(this.mb);
+		this.mb = null;	
+	}
+
 	//Static API
 	public static getInstance() {
 		if (this.instance == null) {
@@ -131,7 +141,4 @@ export class Scoreboard {
 		mbI = null;
 	}
 
-	public cityClaimed(pName: GamePlayer, cName: string) {
-		Scoreboard.setItemValue(this.mb, `${pName.coloredName()} claimed ${HexColors.TANGERINE}${cName}|r`, this.size, 1);
-	}
 }

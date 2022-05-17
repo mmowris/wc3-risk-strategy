@@ -32,29 +32,24 @@ export default class CameraControls {
 			let sAngle: number;
 			let sRot: number;
 
-			try {
-				if (GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) == MAP_CONTROL_USER) {
-					let contents: string;
+			if (GetPlayerSlotState(Player(i)) == PLAYER_SLOT_STATE_PLAYING && GetPlayerController(Player(i)) == MAP_CONTROL_USER) {
+				let contents: string;
 
-					if (Player(i) == GetLocalPlayer()) {
-						contents = File.read("camSettings.pld");
-					}
-
-					if (contents) {
-						sDist = S2R(contents.split(' ')[0]);
-						sAngle = S2R(contents.split(' ')[1]);
-						sRot = S2R(contents.split(' ')[2]);
-					}
+				if (Player(i) == GetLocalPlayer()) {
+					contents = File.read("camSettings.pld");
 				}
 
-				data = {
-					distance: !sDist ? CamSettings.DEFAULT_DISTANCE : sDist,
-					angle: !sAngle ? CamSettings.DEFAULT_ANGLE : sAngle,
-					rotation: !sRot ? CamSettings.DEFAULT_ROTATION : sRot
+				if (contents) {
+					sDist = S2R(contents.split(' ')[0]);
+					sAngle = S2R(contents.split(' ')[1]);
+					sRot = S2R(contents.split(' ')[2]);
 				}
-				
-			} catch (error) {
-				print(error)
+			}
+
+			data = {
+				distance: !sDist ? CamSettings.DEFAULT_DISTANCE : sDist,
+				angle: !sAngle ? CamSettings.DEFAULT_ANGLE : sAngle,
+				rotation: !sRot ? CamSettings.DEFAULT_ROTATION : sRot
 			}
 
 			PlayerCamData.set(Player(i), data);

@@ -1,9 +1,11 @@
+import { CommandProcessor } from "app/commands/command-processor";
 import { Game } from "app/game/game-type";
 import { addScriptHook, W3TS_HOOK } from "w3ts";
 
 function tsMain() {
 	try {
 		Game.getInstance();
+		CommandProcessor();
 	}
 	catch (e) {
 		print(e);

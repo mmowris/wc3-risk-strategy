@@ -75,6 +75,7 @@ export class GamePlayer {
 	public bonus: Bonus;
 	public names: Names;
 	public cities: unit[] = [];
+	public tools: unit;
 
 	public static fromString: Map<string, GamePlayer> = new Map<string, GamePlayer>(); //Set in constructor
 	public static fromPlayer: Map<player, GamePlayer> = new Map<player, GamePlayer>(); //Set onLoad
@@ -128,6 +129,12 @@ export class GamePlayer {
 
 		GamePlayer.fromString.set(StringCase(this.names.acct, false), this);
 
+		this.bonus = {
+			delta: 0,
+			total: 0,
+			bar: null
+		}
+
 		this.init();
 	}
 
@@ -138,18 +145,14 @@ export class GamePlayer {
 		if (!this.kd) this.kd = new Map<string | GamePlayer, KD>();
 		this.unitCount = 0;
 		this.cities.length = 0;
+		this.bonus.delta = 0;
+		this.bonus.total = 0;
 
 		SetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD, 0);
 
 		this.bounty = {
 			delta: 0,
 			total: 0
-		}
-
-		this.bonus = {
-			delta: 0,
-			total: 0,
-			bar: null
 		}
 	}
 
@@ -163,10 +166,15 @@ export class GamePlayer {
 	}
 
 	public reset() {
-		this.kd.clear();
+		if (this.isLeft()) return;
+		if (!this.isObserving()) this.setStatus(PlayerStatus.PLAYING);
 
-		//TODO prepare reset
 		this.init();
+		this.kd.clear();
+		//this.initKDMaps();
+		this.setName(this.names.acct);
+		BlzFrameSetValue(this.bonus.bar, 0);
+		BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
 	}
 
 	public giveGold(val?: number) {

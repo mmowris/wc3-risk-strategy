@@ -137,6 +137,7 @@ export class Spawner {
 		this._unit = null;
 
 		this.create(x, y);
+		this.setName();
 	}
 
 	//Internal Functions

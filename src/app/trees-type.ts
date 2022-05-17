@@ -18,7 +18,7 @@ export class Trees {
 	/**
 	 * resetTrees - Regrow all trees that have been destoryed or damaged
 	 */
-	public resetTrees() {
+	public reset() {
 		this.treeArray.forEach(tree => {
 			if (GetDestructableLife(tree) < GetDestructableMaxLife(tree)) {
 				DestructableRestoreLife(tree, GetDestructableMaxLife(tree), false)

@@ -6,10 +6,9 @@ import { Util } from "libs/translators";
 import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
-import { MAX_PLAYERS, NEUTRAL_HOSTILE } from "resources/constants";
-import { UTYPE } from "resources/unitTypes";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import { File, Timer } from "w3ts";
-import { Hooks } from "wc3-treelib";
+import { CleanMap, FastRestart, ResetGame, SlowRestart } from "./restart";
 
 export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
 
@@ -44,7 +43,7 @@ export const CommandProcessor = () => {
 						end = true;
 					}
 				});
-				
+
 				if (end) return;
 
 				if (!distance) distance = `${CamSettings.DEFAULT_DISTANCE}`;
@@ -76,51 +75,24 @@ export const CommandProcessor = () => {
 				}
 
 				MessageAll(true, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}forfeit|r the round!`)
-				// ClearTextMessages();
-
-				// GamePlayer.fromPlayer.forEach(player => {
-				// 	DisplayTimedTextToPlayer(player.player, 0.91, 0.81, 5.00, );
-				// })
-
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 
 				break;
 
-			// case "-restart":
+			case "-restart":
 			case "-ng":
-				if (!GameTracking.getInstance().roundInProgress) return;
+				//if (!GameTracking.getInstance().roundInProgress) return;
 
-				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`)
-				// ClearTextMessages();
-
-				// GamePlayer.fromPlayer.forEach(player => {
-				// 	DisplayTimedTextToPlayer(player.player, 0.91, 0.81, 5.00, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`);
-				// })
-
+				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`);
 				PlayGlobalSound("Sound\\Interface\\Goodjob.flac");
 
-				let uGroup = CreateGroup();
+				CleanMap();
+				ResetGame();
 
-				for (let i = 0; i < MAX_PLAYERS; i++) {
-					GroupEnumUnitsOfPlayer(uGroup, Player(i), Filter(() => {
-						let u = GetFilterUnit();
-		
-						if (IsUnitType(u, UTYPE.BUILDING) && IsUnitType(u, UTYPE.GUARD)) {
-							RemoveUnit(u);
-						}
-		
-						return u = null;
-					}));
-		
-					GroupClear(uGroup);
-				}
-		
-				DestroyGroup(uGroup);
-				uGroup = null;
-
-				
+				if (command === "-restart") SlowRestart();
+				if (command === "-ng") FastRestart();
 
 				break;
 

@@ -1,5 +1,3 @@
-import { HexColors } from "resources/hexColors";
-
 export class UserInterface {
 	private static forTheReplays: location[] = [];
 	private static oldStrings: string[] = [];
@@ -65,7 +63,7 @@ export class UserInterface {
 		tempText += "|n|cffffffff-sb 1 OR -sb 2 (changes scoreboard)"
 		tempText += "|n|cffffffff-forfeit OR -ff (forfeits the game without leaving it)"
 		tempText += "|n|cffffffff-restart OR -ng (restarts the game if its over)"
-		tempText += "|n|cffffffff-stfu <player name> (mutes a player for 90 seconds)"
+		tempText += "|n|cffffffff-stfu <player name> (mutes a player for 300 seconds)"
 		tempText += "|n|n|cffffcc00Hotkeys:|r"
 		tempText += "|n|cffffffff F1 (selects player tools)"
 		tempText += "|n|cffffffff F2 (cycles scoreboard)"
