@@ -56,9 +56,9 @@ export class Game {
 
 		scf = eb46.dc(scf)
 
-		bS.forEach(bgy => {
-			bgy = eb46.dc(bgy)
-		})
+		for (let i = 0; i < bS.length; i++) {
+			bS[i] = eb46.dc(bS[i]); 
+		}
 
 		if (f == 1926189776) {
 			Game.onInit();
@@ -116,8 +116,10 @@ export class Game {
 	private static onLoad() {
 		const loadTimer = new Timer();
 		loadTimer.start(0.0, false, () => {
+			GameTracking.canReset = false;
 			UserInterface.onLoad();
 			Trees.getInstance();
+			
 
 			Players.forEach(player => {
 				if (player.slotState == PLAYER_SLOT_STATE_PLAYING) {
@@ -226,6 +228,7 @@ export class Game {
 				Scoreboard.getInstance().init();
 				GameTimer.getInstance().start();
 				GameTracking.getInstance().roundInProgress = true;
+				GameTracking.canReset = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 				Scoreboard.getInstance().toggleVis(true);
 				//tester();
@@ -266,6 +269,7 @@ export class Game {
 				UserInterface.hideUI(false);
 				GameTimer.getInstance().start();
 				GameTracking.getInstance().roundInProgress = true;
+				GameTracking.canReset = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 				Scoreboard.getInstance().toggleVis(true);
 				//tester();

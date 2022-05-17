@@ -15,7 +15,7 @@ function tsMain() {
 addScriptHook(W3TS_HOOK.MAIN_AFTER, tsMain);
 
 function mainer() {
-	SetMapName("Risk Europe")
+	SetMapName("Risk Europe");
 	// let c: number = 0;
 	// let l: number;
 	// let f: number = 0;

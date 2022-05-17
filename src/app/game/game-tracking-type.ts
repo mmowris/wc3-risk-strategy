@@ -13,6 +13,7 @@ export class GameTracking {
 	private _leader: GamePlayer;
 	private _citiesToWin: number;
 	public roundInProgress: boolean;
+	public static canReset: boolean; //TODO current can reset inbetween games
 
 	constructor() {
 		this._leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1))));
