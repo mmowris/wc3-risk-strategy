@@ -83,10 +83,10 @@ export const CommandProcessor = () => {
 
 			case "-restart":
 			case "-ng":
-				if (!GameTracking.getInstance().roundInProgress) return;
 				if (!GameTracking.canReset) return;
 
-				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`);
+				GameTracking.canReset = false;
+				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`, 0.73, 0.81);
 				PlayGlobalSound("Sound\\Interface\\Goodjob.flac");
 
 				CleanMap();

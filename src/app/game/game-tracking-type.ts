@@ -13,10 +13,11 @@ export class GameTracking {
 	private _leader: GamePlayer;
 	private _citiesToWin: number;
 	public roundInProgress: boolean;
-	public static canReset: boolean; //TODO current can reset inbetween games
+	public static canReset: boolean = false;
 
 	constructor() {
 		this._leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1))));
+		this.roundInProgress = false;
 	}
 
 	public get leader(): GamePlayer {
@@ -71,6 +72,7 @@ export class GameTracking {
 
 		this.leader = who;
 		this.roundInProgress = false;
+		GameTracking.canReset = true;
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (GetLocalPlayer() == gPlayer.player) {

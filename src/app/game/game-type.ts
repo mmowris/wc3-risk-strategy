@@ -116,7 +116,6 @@ export class Game {
 	private static onLoad() {
 		const loadTimer = new Timer();
 		loadTimer.start(0.0, false, () => {
-			GameTracking.canReset = false;
 			UserInterface.onLoad();
 			Trees.getInstance();
 			
@@ -228,7 +227,6 @@ export class Game {
 				Scoreboard.getInstance().init();
 				GameTimer.getInstance().start();
 				GameTracking.getInstance().roundInProgress = true;
-				GameTracking.canReset = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 				Scoreboard.getInstance().toggleVis(true);
 				//tester();
@@ -269,7 +267,6 @@ export class Game {
 				UserInterface.hideUI(false);
 				GameTimer.getInstance().start();
 				GameTracking.getInstance().roundInProgress = true;
-				GameTracking.canReset = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 				Scoreboard.getInstance().toggleVis(true);
 				//tester();
