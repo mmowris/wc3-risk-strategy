@@ -86,7 +86,8 @@ export const CommandProcessor = () => {
 				if (!GameTracking.canReset) return;
 
 				GameTracking.canReset = false;
-				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`, 0.73, 0.81);
+				//TODO center the msg on screen
+				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`, 0.63, 0.81);
 				PlayGlobalSound("Sound\\Interface\\Goodjob.flac");
 
 				CleanMap();

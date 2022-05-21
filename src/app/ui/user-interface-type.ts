@@ -1,6 +1,5 @@
 export class UserInterface {
 	private static forTheReplays: location[] = [];
-	private static oldStrings: string[] = [];
 
 	public static onLoad() {
 		UserInterface.setResourceFrames();
@@ -8,6 +7,7 @@ export class UserInterface {
 		UserInterface.ffaSetup();
 		//UserInterface.hidePMOptions();
 		UserInterface.hideUI(true);
+		UserInterface.changeUI();
 	}
 
 	public static hideUI(hidden: boolean) {
@@ -107,7 +107,7 @@ export class UserInterface {
 	//Replays == Message Log
 	//In Game == Messaging
 	public static changeUI() {
-		BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarAlliesButton", 0), false);
+		//BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarAlliesButton", 0), false);
 		BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarChatButton", 0), false);
 
 		// let AllyMenuTitle: framehandle = BlzGetFrameByName("AllianceTitle", 0)

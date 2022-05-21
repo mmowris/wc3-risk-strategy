@@ -1,7 +1,6 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { File } from "w3ts";
-import { Players } from "w3ts/globals";
 
 interface KD {
 	kills: number;
@@ -55,7 +54,7 @@ export const bS: string[] = [
 	"SG90V2hlZWw5NSMyNjMy",		//HotWheel95#2632
 	"Zm9vdG1hbiMxMTU0OQ==",		//footman#11549
 	"TW9qb0RhcmtBbGUjMTE2NTI=",	//MojoDarkAle#11652
-	"U2VsaW5hY2UjMTY4Mw==",		//Selinace#1683
+	//"U2VsaW5hY2UjMTY4Mw==",	//Selinace#1683
 	"QXJrZXIjMTE0NzE=",		//Arker#11471
 ];
 
