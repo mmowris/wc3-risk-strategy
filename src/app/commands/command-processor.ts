@@ -87,7 +87,7 @@ export const CommandProcessor = () => {
 
 				GameTracking.canReset = false;
 				//TODO center the msg on screen
-				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`, 0.63, 0.81);
+				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`, 0.62, 0.81);
 				PlayGlobalSound("Sound\\Interface\\Goodjob.flac");
 
 				CleanMap();
@@ -104,7 +104,6 @@ export const CommandProcessor = () => {
 				if (!enableList.has(gPlayer)) enableList.set(gPlayer, false);
 
 				let counter: number = 0;
-				let p: player = gPlayer.player;
 				let names: string[] = [];
 				const lobbyTimer: Timer = new Timer();
 
