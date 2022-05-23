@@ -560,11 +560,6 @@ export class City {
 				}
 			}
 
-			if (!IsUnitType(trainedUnit, UTYPE.TRANSPORT)) {
-				GamePlayer.fromPlayer.get(city.getOwner()).unitCount++;
-				//print(`${GamePlayer.fromPlayer.get(city.getOwner()).coloredName()} has ${GamePlayer.fromPlayer.get(city.getOwner()).unitCount} units`)
-			}
-
 			trainedUnit = null;
 			return false;
 		}))

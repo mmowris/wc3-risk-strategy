@@ -29,7 +29,7 @@ export function onOwnerChange() {
 		if (country.owner == prevOwner.player) country.setOwner(NEUTRAL_HOSTILE);
 
 		if (prevOwner.cities.length == 0 && prevOwner.player != NEUTRAL_HOSTILE && !prevOwner.isLeft()) {
-			if (prevOwner.unitCount <= 0) {
+			if (prevOwner.getUnitCount() <= 0) {
 				prevOwner.setStatus(PlayerStatus.DEAD);
 
 				MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)

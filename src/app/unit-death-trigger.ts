@@ -27,7 +27,7 @@ export function unitDeath() {
 		kUnitOwner.onKill(dUnitOwner, dyingUnit);
 		dUnitOwner.onDeath(kUnitOwner, dyingUnit)
 
-		if (kUnitOwner.unitCount <= 0 && kUnitOwner.cities.length <= 0) this.setStatus(PlayerStatus.DEAD);
+		if (kUnitOwner.getUnitCount() <= 0 && kUnitOwner.cities.length <= 0) this.setStatus(PlayerStatus.DEAD);
 		if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 		
 		Transports.onDeath(dyingUnit, killingUnit);

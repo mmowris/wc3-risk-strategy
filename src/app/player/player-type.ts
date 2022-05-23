@@ -1,6 +1,8 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/constants";
-import { File } from "w3ts";
+import { UTYPE } from "resources/unitTypes";
+import { File, Group } from "w3ts";
+import { IsUnitAlive } from "wc3-treelib";
 
 interface KD {
 	kills: number;
@@ -68,7 +70,6 @@ export class GamePlayer {
 	public ping: boolean;
 	public admin: boolean;
 	public kd: Map<string | GamePlayer, KD>;
-	public unitCount: number;
 	public status: string;
 	public bounty: Bounty;
 	public bonus: Bonus;
@@ -142,7 +143,6 @@ export class GamePlayer {
 		this.health = false;
 		this.value = false;
 		if (!this.kd) this.kd = new Map<string | GamePlayer, KD>();
-		this.unitCount = 0;
 		this.cities.length = 0;
 		this.bonus.delta = 0;
 		this.bonus.total = 0;
@@ -274,8 +274,6 @@ export class GamePlayer {
 		} else {
 			this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total of victom player unit specific
 		}
-
-		this.unitCount--;
 	}
 
 	public coloredName(): string {
@@ -318,6 +316,22 @@ export class GamePlayer {
 
 	public setName(name: string) {
 		SetPlayerName(this.player, `${name}|r`);
+	}
+
+	public getUnitCount(): number {
+		const g: group = CreateGroup();
+
+		GroupEnumUnitsOfPlayer(g, this.player, Filter(() => {
+			if (IsUnitType(GetFilterUnit(), UTYPE.BUILDING)) return false;
+			if (IsUnitType(GetFilterUnit(), UTYPE.TRANSPORT)) return false; //Need to check if loaded, as I don't know if it will count loaded units
+			if (!UnitAlive(GetFilterUnit())) return false;
+			return true; //Unit is not alive, not transport, not building
+		}))
+
+		const result: number = BlzGroupGetSize(g)
+		DestroyGroup(g);
+
+		return result;
 	}
 
 	private evalBounty(val: number) {

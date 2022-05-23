@@ -106,7 +106,6 @@ export class Spawner {
 			this.playerSpawns.get(owner).push(u);
 			Spawner.fromUnit.set(u, this);
 			IssuePointOrderLoc(u, "attack", loc);
-			owner.unitCount++;
 
 			RemoveLocation(loc);
 			loc = null;

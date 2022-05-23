@@ -1,6 +1,4 @@
 export class UserInterface {
-	private static forTheReplays: location[] = [];
-
 	public static onLoad() {
 		UserInterface.setResourceFrames();
 		UserInterface.initAlliesBoard();

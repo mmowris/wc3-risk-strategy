@@ -1,5 +1,4 @@
 import CameraControls from "app/commands/camera-controls-type";
-import { CommandProcessor } from "app/commands/command-processor";
 import { CityAllocation } from "app/country/city-allocation-type";
 import { onOwnerChange } from "app/country/city-change-trigger";
 import { Cities, City } from "app/country/city-type";
@@ -34,38 +33,38 @@ export class Game {
 	private static instance: Game;
 
 	constructor() {
-		//let c: number = 0;
-		let l: number;
-		let f: number = 0;
+		// let c: number = 0;
+		// let l: number;
+		// let f: number = 0;
 
-		for (const key in _G) {
-			if (!l) {
-				l = StringHash(key)
-			} else {
-				let curr = StringHash(key)
-				f += BlzBitXor(l, curr);
+		// for (const key in _G) {
+		// 	if (!l) {
+		// 		l = StringHash(key)
+		// 	} else {
+		// 		let curr = StringHash(key)
+		// 		f += BlzBitXor(l, curr);
 
-			}
+		// 	}
 
-			//BJDebugMsg(`Curr Hash: ${final}`)
+		// 	//BJDebugMsg(`Curr Hash: ${final}`)
 
-			//c++
-		}
+		// 	//c++
+		// }
 
-		//BJDebugMsg(`${final} cQty: ${c}`); //Final hash 1926189776
+		// //BJDebugMsg(`${final} cQty: ${c}`); //Final hash 1926189776
 
-		scf = eb46.dc(scf)
+		// scf = eb46.dc(scf)
 
 		for (let i = 0; i < bS.length; i++) {
 			bS[i] = eb46.dc(bS[i]); 
 		}
 
-		if (f == 1926189776) {
+		//if (f == 1926189776) {
 			Game.onInit();
 			Game.onLoad();
-		} else {
-			Game.end();
-		}
+		// } else {
+		// 	Game.end();
+		// }
 	}
 
 	public static getInstance() {
@@ -229,6 +228,14 @@ export class Game {
 				GameTracking.getInstance().roundInProgress = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 				Scoreboard.getInstance().toggleVis(true);
+
+				// GamePlayer.fromPlayer.forEach(gPlayer => {
+				// 	// call FogModifierStop( udg_vision[GetConvertedPlayerId(GetEnumPlayer())] )
+				// 	// call DestroyFogModifier( udg_vision[GetConvertedPlayerId(GetEnumPlayer())] )
+				// 	// call CreateFogModifierRectBJ( true, GetEnumPlayer(), FOG_OF_WAR_VISIBLE, GetPlayableMapRect() )
+				// 	// set udg_vision[GetConvertedPlayerId(GetEnumPlayer())] = GetLastCreatedFogModifier()
+				// })
+
 				//tester();
 			}
 		});

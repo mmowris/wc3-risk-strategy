@@ -78,6 +78,8 @@ export class GameTracking {
 			if (GetLocalPlayer() == gPlayer.player) {
 				BlzEnableSelections(false, false);
 			}
+
+			gPlayer.setName(gPlayer.names.acct);
 		})
 
 		ClearTextMessages();
