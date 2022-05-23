@@ -33,11 +33,6 @@ export function onOwnerChange() {
 				prevOwner.setStatus(PlayerStatus.DEAD);
 
 				MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
-				// ClearTextMessages();
-
-				// GamePlayer.fromPlayer.forEach(player => {
-				// 	DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`);
-				// })
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 			} else {
@@ -56,11 +51,6 @@ export function onOwnerChange() {
 						if (!prevOwner.isLeft() || !prevOwner.isForfeit()) prevOwner.setStatus(PlayerStatus.DEAD);
 
 						MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
-						// ClearTextMessages();
-
-						// GamePlayer.fromPlayer.forEach(player => {
-						// 	DisplayTimedTextToPlayer(player.player, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`);
-						// })
 
 						nomadTimer.pause();
 						nomadTimer.destroy();

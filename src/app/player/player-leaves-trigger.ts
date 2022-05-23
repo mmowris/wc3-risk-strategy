@@ -31,12 +31,6 @@ export function PlayerLeaves() {
 		if (!GameTracking.getInstance().roundInProgress) return;
 		
 		MessageAll(true, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}left|r the game!`);
-		
-		// ClearTextMessages();
-
-		// Players.forEach(player => {
-		//     DisplayTimedTextToPlayer(player.handle, 0.92, 0.81, 5.00, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}left|r the game!`);
-		// });
 	
 		PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 
