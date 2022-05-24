@@ -1,6 +1,17 @@
 import { GamePlayer } from "app/player/player-type";
-import { File, Timer } from "w3ts";
-import { setPlayerFlag } from "w3ts-w3mmd";
+import { UID } from "resources/unitID";
+import { File } from "w3ts";
+import { defineNumberValue, emitCustom, setPlayerFlag } from "w3ts-w3mmd";
+
+const setTotalKills = defineNumberValue("Kills", "high");
+const setTotalDeaths = defineNumberValue("Deaths", "high");
+const setTotalSSKills = defineNumberValue("SS Kills", "high");
+const setTotalSSDeaths = defineNumberValue("SS Deaths", "high");
+const setCitiesCaptured = defineNumberValue("Cities Captured", "high");
+const setCitiesEndedWith = defineNumberValue("Cities Ended With", "high");
+const setTotalGold = defineNumberValue("Total Gold", "high");
+const setAverageGold = defineNumberValue("Average Gold", "high");
+
 
 export class GameRankingHelper {
 	private static instance: GameRankingHelper;
@@ -14,29 +25,30 @@ export class GameRankingHelper {
 		return this.instance;
 	}
 
+	public setMode() {
+		emitCustom("mode", "FFA")
+	}
+
 	public endTracking() {
 		File.write("wc3mt.txt", "wc3mt-GameEnd");
 	}
 
-	public setLosers(who: player) {
-		const timer: Timer = new Timer();
-		let counter: number = 0;
-
-		timer.start(.05, true, () => {
-			if (counter > 23) {
-				timer.pause();
-				timer.destroy();
-			} else {
-				if (Player(counter) != who && GamePlayer.fromPlayer.has(Player(counter))) {
-					setPlayerFlag(Player(counter), "loser");
-				}
-			}
-
-			counter++;
-		});
+	public setLoser(who: player) {
+		setPlayerFlag(who, "loser");
 	}
 
 	public setWinner(who: player) {
 		setPlayerFlag(who, "winner");
+	}
+
+	public setData(who: GamePlayer) {
+		setTotalKills(who.player, who.kd.get(who).kills, "set");
+		setTotalDeaths(who.player, who.kd.get(who).deaths, "set");
+		setTotalSSKills(who.player, who.kd.get(GamePlayer.getKey(who, UID.BATTLESHIP_SS )).kills)
+		setTotalSSDeaths(who.player, who.kd.get(GamePlayer.getKey(who, UID.BATTLESHIP_SS )).deaths)
+	}
+
+	public setkillsData(who: GamePlayer, key: string) {
+		emitCustom(`${who.names.btag} kills`, "") //always falls under 32 char limit
 	}
 }

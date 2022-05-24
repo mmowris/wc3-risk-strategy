@@ -9,6 +9,7 @@ import { Timer } from "w3ts";
 import { City } from "./city-type";
 import { Country } from "./country-type";
 import { MessageAll } from "libs/utils";
+import { GameRankingHelper } from "app/game/game-ranking-helper-type";
 
 export function onOwnerChange() {
 	const ownerChange: trigger = CreateTrigger();
@@ -31,7 +32,7 @@ export function onOwnerChange() {
 		if (prevOwner.cities.length == 0 && prevOwner.player != NEUTRAL_HOSTILE && !prevOwner.isLeft()) {
 			if (prevOwner.getUnitCount() <= 0) {
 				prevOwner.setStatus(PlayerStatus.DEAD);
-
+				GameRankingHelper.getInstance().setLoser(prevOwner.player);
 				MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
@@ -48,7 +49,10 @@ export function onOwnerChange() {
 					}
 
 					if (duration < 1) {
-						if (!prevOwner.isLeft() || !prevOwner.isForfeit()) prevOwner.setStatus(PlayerStatus.DEAD);
+						if (!prevOwner.isLeft() || !prevOwner.isForfeit()) {
+							prevOwner.setStatus(PlayerStatus.DEAD);
+							GameRankingHelper.getInstance().setLoser(prevOwner.player);
+						}
 
 						MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
 

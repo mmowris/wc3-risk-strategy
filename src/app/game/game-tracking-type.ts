@@ -75,6 +75,7 @@ export class GameTracking {
 		GameTracking.canReset = true;
 
 		FogEnable(false);
+		ClearTextMessages();
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (GetLocalPlayer() == gPlayer.player) {
@@ -82,15 +83,15 @@ export class GameTracking {
 			}
 
 			gPlayer.setName(gPlayer.names.acct);
-		})
 
-		ClearTextMessages();
-
-		GamePlayer.fromPlayer.forEach(gPlayer => {
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.TANGERINE}Discord: discord.me/risk|r`);
-		});
+
+			if (gPlayer != who && gPlayer.isAlive() || gPlayer.isNomad()) {
+				GameRankingHelper.getInstance().setLoser(gPlayer.player);
+			}
+		})
 
 		PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");
 
@@ -102,7 +103,8 @@ export class GameTracking {
 		})
 
 		GameRankingHelper.getInstance().setWinner(who.player);
-		GameRankingHelper.getInstance().setLosers(who.player);
+
+		//GameRankingHelper.getInstance().setLosers(who.player);
 		//TODO:
 		//Track data and bot exit
 

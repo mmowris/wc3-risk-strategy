@@ -4,6 +4,7 @@ import { City } from "./country/city-type";
 import { FilterEnemyValidGuards, FilterFriendlyValidGuards } from "./country/guard-filters";
 import { compareValue } from "./country/guard-options";
 import { Spawner } from "./country/spawner-type";
+import { GameRankingHelper } from "./game/game-ranking-helper-type";
 import { GameTimer } from "./game/game-timer-type";
 import { GameTracking } from "./game/game-tracking-type";
 import { GamePlayer, PlayerStatus } from "./player/player-type";
@@ -27,9 +28,12 @@ export function unitDeath() {
 		kUnitOwner.onKill(dUnitOwner, dyingUnit);
 		dUnitOwner.onDeath(kUnitOwner, dyingUnit)
 
-		if (kUnitOwner.getUnitCount() <= 0 && kUnitOwner.cities.length <= 0) this.setStatus(PlayerStatus.DEAD);
+		if (kUnitOwner.getUnitCount() <= 0 && kUnitOwner.cities.length <= 0) {
+			this.setStatus(PlayerStatus.DEAD);
+			GameRankingHelper.getInstance().setLoser(kUnitOwner.player);
+		}
 		if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
-		
+
 		Transports.onDeath(dyingUnit, killingUnit);
 
 		if (Spawner.fromUnit.has(dyingUnit)) Spawner.onSpawnDeath(dUnitOwner, dyingUnit, Spawner.fromUnit.get(dyingUnit));
@@ -112,9 +116,14 @@ function killerSearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	let g: group = CreateGroup();
 	let radius: number = 600;
 
-	if (IsUnitType(kUnit, UTYPE.SHIP) == true && city.isPort()) radius = 720;
 	if (IsUnitType(kUnit, UTYPE.ARTILLERY) == true) radius = 1000;
 	if (GetUnitTypeId(kUnit) == UID.MORTAR) radius = 900;
+
+	//Fix a bug with ships not taking cities in very rare cases
+	if (IsUnitType(kUnit, UTYPE.SHIP) == true && city.isPort()) {
+		radius = 720;
+		guardChoice = kUnit
+	}
 
 	GroupEnumUnitsInRange(g, GetUnitX(city.guard), GetUnitY(city.guard), radius, FilterEnemyValidGuards(city, kUnit));
 	//print(`${BlzGroupGetSize(g)}`)

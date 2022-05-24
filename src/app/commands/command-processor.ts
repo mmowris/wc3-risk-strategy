@@ -9,6 +9,7 @@ import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { File, Timer } from "w3ts";
 import { CleanMap, FastRestart, ResetGame, SlowRestart } from "./restart";
+import { GameRankingHelper } from "app/game/game-ranking-helper-type";
 
 export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
 
@@ -72,6 +73,7 @@ export const CommandProcessor = () => {
 
 				if (gPlayer.isAlive() || gPlayer.isNomad()) {
 					gPlayer.setStatus(PlayerStatus.FORFEIT);
+					GameRankingHelper.getInstance().setLoser(gPlayer.player);
 				}
 
 				MessageAll(true, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}forfeit|r the round!`)

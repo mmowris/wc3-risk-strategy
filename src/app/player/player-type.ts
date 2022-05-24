@@ -1,8 +1,8 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/constants";
+import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
-import { File, Group } from "w3ts";
-import { IsUnitAlive } from "wc3-treelib";
+import { File } from "w3ts";
 
 interface KD {
 	kills: number;
@@ -231,6 +231,15 @@ export class GamePlayer {
 				break;
 		}
 	}
+
+	// public toString(): string {
+	// 	let str: string
+
+	// 	str == `Total: ${this.kd.get(this).kills}\n`
+	// 	str += `SS: ${this.kd.get(GamePlayer.getKey(this, UID.BATTLESHIP_SS))}`
+
+	// 	return str;
+	// }
 
 	public onKill(victom: GamePlayer, u: unit) {
 		if (!this.isAlive() && !this.isNomad()) return;
