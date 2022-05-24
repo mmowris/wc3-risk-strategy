@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Other
+project.log
+dist/tstl_output.lua
+dist/risk_system.w3x/war3map.lua
+node_modules
+dist/
