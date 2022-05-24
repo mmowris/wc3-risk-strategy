@@ -3,7 +3,7 @@ import { Util } from "libs/translators";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { City } from "./city-type";
 import { Country } from "./country-type";
-//Testing
+
 export class CityAllocation {
 	constructor() { }
 
