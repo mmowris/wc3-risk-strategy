@@ -24,7 +24,7 @@ export const PlayerCamData: Map<player, CamData> = new Map<player, CamData>();
 //THIS MUST RUN AFTER GAMEPLAYER CREATION
 export default class CameraControls {
 	private static instance: CameraControls;
-	//TODO: Check if player has saved data for cam, if so use that data instead.
+
 	private constructor() {
 		for (let i = 0; i < bj_MAX_PLAYERS; i++) {
 			let data: CamData;

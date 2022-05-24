@@ -1,3 +1,4 @@
+import { GamePlayer } from "app/player/player-type";
 import { File, Timer } from "w3ts";
 import { setPlayerFlag } from "w3ts-w3mmd";
 
@@ -13,7 +14,7 @@ export class GameRankingHelper {
 		return this.instance;
 	}
 
-	public writeExitFile() {
+	public endTracking() {
 		File.write("wc3mt.txt", "wc3mt-GameEnd");
 	}
 
@@ -26,7 +27,7 @@ export class GameRankingHelper {
 				timer.pause();
 				timer.destroy();
 			} else {
-				if (Player(counter) != who) {
+				if (Player(counter) != who && GamePlayer.fromPlayer.has(Player(counter))) {
 					setPlayerFlag(Player(counter), "loser");
 				}
 			}

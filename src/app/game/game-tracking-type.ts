@@ -74,6 +74,8 @@ export class GameTracking {
 		this.roundInProgress = false;
 		GameTracking.canReset = true;
 
+		FogEnable(false);
+
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (GetLocalPlayer() == gPlayer.player) {
 				BlzEnableSelections(false, false);

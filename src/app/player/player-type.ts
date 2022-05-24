@@ -76,6 +76,7 @@ export class GamePlayer {
 	public names: Names;
 	public cities: unit[] = [];
 	public tools: unit;
+	public fog: fogmodifier;
 
 	public static fromString: Map<string, GamePlayer> = new Map<string, GamePlayer>(); //Set in constructor
 	public static fromPlayer: Map<player, GamePlayer> = new Map<player, GamePlayer>(); //Set onLoad

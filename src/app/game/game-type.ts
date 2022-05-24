@@ -26,6 +26,7 @@ import { unitDeath } from "app/unit-death-trigger";
 import { PlayerLeaves } from "app/player/player-leaves-trigger";
 import { eb46 } from "libs/EncodingBase64";
 import { HexColors } from "resources/hexColors";
+import { GameRankingHelper } from "./game-ranking-helper-type";
 
 export let scf: string = "VGhpcyBnYW1lIGhhcyBiZWVuIHRhbXBlcmVkIHdpdGgsIGVuZGluZyBnYW1lLgpEZWxldGUgeW91ciBnYW1lIGZpbGUgYW5kIHZpc2l0IHRoZSBkaXNjb3JkIHRvIGdldCB0aGUgb2ZmaWNhbCBtYXAhCmRpc2NvcmQubWUvcmlzaw=="
 
@@ -118,6 +119,7 @@ export class Game {
 			UserInterface.onLoad();
 			Trees.getInstance();
 			
+			GameRankingHelper.getInstance().endTracking()
 
 			Players.forEach(player => {
 				if (player.slotState == PLAYER_SLOT_STATE_PLAYING) {
@@ -135,6 +137,8 @@ export class Game {
 			ModeUI.buildModeFrame();
 			ModeUI.toggleModeFrame(true);
 
+			FogEnable(true);
+			
 			//I should refactor this somehow, right now this is a long chain of code
 			Game.runModeSelection();
 			// The chain begins with runmodeselection -> initroundsettings -> initround
@@ -220,23 +224,18 @@ export class Game {
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
-				ModeUI.toggleModeFrame(false)
+				// GamePlayer.fromPlayer.forEach(gPlayer => {
+				// 	gPlayer.fog = CreateFogModifierRect(gPlayer.player, FOG_OF_WAR_VISIBLE, GetPlayableMapRect(), true, false);
+				// 	FogModifierStart(gPlayer.fog);
+				// })
+				
+				ModeUI.toggleModeFrame(false);
 				UserInterface.hideUI(false);
-				//UserInterface.changeUI();
 				Scoreboard.getInstance().init();
 				GameTimer.getInstance().start();
 				GameTracking.getInstance().roundInProgress = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 				Scoreboard.getInstance().toggleVis(true);
-
-				// GamePlayer.fromPlayer.forEach(gPlayer => {
-				// 	// call FogModifierStop( udg_vision[GetConvertedPlayerId(GetEnumPlayer())] )
-				// 	// call DestroyFogModifier( udg_vision[GetConvertedPlayerId(GetEnumPlayer())] )
-				// 	// call CreateFogModifierRectBJ( true, GetEnumPlayer(), FOG_OF_WAR_VISIBLE, GetPlayableMapRect() )
-				// 	// set udg_vision[GetConvertedPlayerId(GetEnumPlayer())] = GetLastCreatedFogModifier()
-				// })
-
-				//tester();
 			}
 		});
 	}
@@ -276,7 +275,6 @@ export class Game {
 				GameTracking.getInstance().roundInProgress = true;
 				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 				Scoreboard.getInstance().toggleVis(true);
-				//tester();
 			}
 		});
 	}
@@ -309,12 +307,8 @@ export class Game {
 				for (let i = 0; i < PLAYER_COLORS.length; i++) {
 					if (GetPlayerColor(gPlayer.player) == PLAYER_COLORS[i]) {
 						gPlayer.names.color = PLAYER_COLOR_NAMES[i];
-						//print(`btag: ${gPlayer.names.btag}\nacct: ${gPlayer.names.acct}\ncolor: ${gPlayer.names.color}`)
-						//print(`real name ${GetPlayerName(gPlayer.player)}`)
-						//print(`set real name tp ${gPlayer.names.color}`)
 						gPlayer.setName(`${gPlayer.names.color}`);
 						gPlayer.names.colorIndex = i;
-						//print(`real name ${GetPlayerName(gPlayer.player)}`)
 					}
 				}
 			}

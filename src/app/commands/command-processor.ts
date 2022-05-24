@@ -75,7 +75,7 @@ export const CommandProcessor = () => {
 				}
 
 				MessageAll(true, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}forfeit|r the round!`)
-				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
+				//PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 
@@ -86,15 +86,21 @@ export const CommandProcessor = () => {
 				if (!GameTracking.canReset) return;
 
 				GameTracking.canReset = false;
-				//TODO center the msg on screen
+
 				MessageAll(true, `${HexColors.RED}The game has been restarted!|r \n${HexColors.TANGERINE}Please wait while it loads.|r`, 0.62, 0.81);
 				PlayGlobalSound("Sound\\Interface\\Goodjob.flac");
 
 				CleanMap();
 				ResetGame();
 
-				if (command === "-restart") SlowRestart();
-				if (command === "-ng") FastRestart();
+				const quickTimer: Timer = new Timer();
+				quickTimer.start(2.00, false, () => {
+					quickTimer.pause();
+					quickTimer.destroy();
+
+					if (command === "-restart") SlowRestart();
+					if (command === "-ng") FastRestart();
+				});
 
 				break;
 
