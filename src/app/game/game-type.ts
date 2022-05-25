@@ -137,7 +137,7 @@ export class Game {
 			ModeUI.buildModeFrame();
 			ModeUI.toggleModeFrame(true);
 
-			FogEnable(true);
+			//FogEnable(true);
 			
 			//I should refactor this somehow, right now this is a long chain of code
 			Game.runModeSelection();

@@ -7,10 +7,10 @@ const setTotalKills = defineNumberValue("Kills", "high");
 const setTotalDeaths = defineNumberValue("Deaths", "high");
 const setTotalSSKills = defineNumberValue("SS Kills", "high");
 const setTotalSSDeaths = defineNumberValue("SS Deaths", "high");
-const setCitiesCaptured = defineNumberValue("Cities Captured", "high");
-const setCitiesEndedWith = defineNumberValue("Cities Ended With", "high");
-const setTotalGold = defineNumberValue("Total Gold", "high");
-const setAverageGold = defineNumberValue("Average Gold", "high");
+//const setCitiesCaptured = defineNumberValue("Cities Captured", "high");
+//const setCitiesEndedWith = defineNumberValue("Cities Ended With", "high");
+//const setTotalGold = defineNumberValue("Total Gold", "high");
+//const setAverageGold = defineNumberValue("Average Gold", "high");
 
 
 export class GameRankingHelper {

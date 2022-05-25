@@ -5,6 +5,7 @@ import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { GameRankingHelper } from "./game-ranking-helper-type";
+import { Timer } from "w3ts";
 //TODO
 //If player goes from nomad -> alive in 2 player game, it games and the winner wins
 //The bug is due to nomad -> alive, it actually goes into nomad block of code first i believe. need to print to test, for now it has no effect in a real game and can be ignored
@@ -104,7 +105,22 @@ export class GameTracking {
 
 		GameRankingHelper.getInstance().setWinner(who.player);
 
-		//GameRankingHelper.getInstance().setLosers(who.player);
+		const timer: timer = CreateTimer();
+		let count: number = 0;
+
+		TimerStart(timer, 0.5, true, () => {
+			if (count > 23) {
+				PauseTimer(timer);
+				DestroyTimer(timer);
+			} else {
+				if (GamePlayer.fromPlayer.has(Player(count)) && !GamePlayer.get(Player(count)).isObserving()) {
+					GameRankingHelper.getInstance().setData(GamePlayer.get(Player(count)));
+				}
+			}
+
+			count++;
+		});
+		
 		//TODO:
 		//Track data and bot exit
 

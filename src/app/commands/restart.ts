@@ -49,7 +49,7 @@ export function ResetGame() {
 
 		Trees.getInstance().reset();
 		GameTimer.getInstance().reset();
-		FogEnable(true);
+		//FogEnable(true);
 		//If fast restart, enable selection and reset
 		//If slow restart, bring up ui
 	} catch (error) {
