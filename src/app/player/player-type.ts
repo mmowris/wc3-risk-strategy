@@ -323,6 +323,10 @@ export class GamePlayer {
 		return this.status.split(' ')[0] == PlayerStatus.STFU;
 	}
 
+	public isNeutral() {
+		return this.player == NEUTRAL_HOSTILE;
+	}
+
 	public setName(name: string) {
 		SetPlayerName(this.player, `${name}|r`);
 	}

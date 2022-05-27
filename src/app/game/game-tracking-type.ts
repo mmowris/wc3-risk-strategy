@@ -17,7 +17,6 @@ export class GameTracking {
 	public static canReset: boolean = false;
 
 	constructor() {
-		this._leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1))));
 		this.roundInProgress = false;
 	}
 
