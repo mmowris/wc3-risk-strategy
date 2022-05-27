@@ -216,10 +216,6 @@ export class Settings {
 				this.nomad = 60;
 				break;
 		}
-
-		print(this.nomad);
-
-		//Data.NomadTime = this.nomad;
 	}
 
 	/**

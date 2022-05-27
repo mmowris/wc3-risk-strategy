@@ -14,6 +14,7 @@ import { GoldSending } from "app/modes/goldSending";
 import { NomadTimeLimit } from "app/modes/nomadTimeLimit";
 import { ShipsAllowed } from "app/modes/shipsAllowed";
 import { TransportLanding } from "app/modes/transports";
+import { Slider } from "./slider";
 
 export class ModeUI {
 	public static frame: Map<string, framehandle> = new Map<string, framehandle>();
@@ -127,96 +128,102 @@ export class ModeUI {
 
 		BlzFrameSetVisible(BlzGetFrameByName(obsStr, 0), true);
 
-		const gameType = new easySlider("Game Type", Frame.fromHandle(backdrop), 0.10, -0.06, GameType);
+		const gameType = new Slider("Game Type", backdrop, 0.06, -0.06, GameType);
 
-		gameType.sliderEventFunc = () => {
-			Settings.getInstance().gameType = gameType.sliderFrame.value;
-		}
+		// gameType.sliderEventFunc = () => {
+		// 	Settings.getInstance().gameType = gameType.sliderFrame.value;
+		// }
 
-		const diplo = new easySlider("Diplomancy", Frame.fromHandle(backdrop), 0.10, -0.10, Diplomancy)
-		diplo.sliderEventFunc = () => {
-			Settings.getInstance().diplomancy = diplo.sliderFrame.value;
+		// const gameType = new easySlider("Game Type", Frame.fromHandle(backdrop), 0.10, -0.06, GameType);
 
-			if (diplo.sliderFrame.value > 0) {
-				this.fullControlBox.setEnabled(true);
-			} else {
-				this.fullControlBox.setEnabled(false);
-			}
+		// gameType.sliderEventFunc = () => {
+		// 	Settings.getInstance().gameType = gameType.sliderFrame.value;
+		// }
 
-			if (diplo.sliderFrame.value > 1) {
-				Frame.fromName("Ally Limit", 0).setEnabled(true);
-			} else {
-				Frame.fromName("Ally Limit", 0).setEnabled(false);
-			}
-		}
+		// const diplo = new easySlider("Diplomancy", Frame.fromHandle(backdrop), 0.10, -0.10, Diplomancy)
+		// diplo.sliderEventFunc = () => {
+		// 	Settings.getInstance().diplomancy = diplo.sliderFrame.value;
 
-		const ally = new easySlider("Ally Limit", Frame.fromHandle(backdrop), 0.10, -0.14, AllyLimit)
-		ally.sliderFrame.setEnabled(false);
-		ally.sliderEventFunc = () => {
-			Settings.getInstance().allies = (ally.sliderFrame.value + 1);
-		}
+		// 	if (diplo.sliderFrame.value > 0) {
+		// 		this.fullControlBox.setEnabled(true);
+		// 	} else {
+		// 		this.fullControlBox.setEnabled(false);
+		// 	}
 
-		this.fullControlBox = new Frame("Full Unit Control", Frame.fromName("Ally Limit", 0), 0, 0, "CHECKBOX", "QuestCheckBox2");
-		const fullControlTitle = new Frame("Full Unit Control Title", this.fullControlBox, 0, 0, "TEXT", "EscMenuLabelTextTemplate");
-		const fullControlTrigger: Trigger = new Trigger();
+		// 	if (diplo.sliderFrame.value > 1) {
+		// 		Frame.fromName("Ally Limit", 0).setEnabled(true);
+		// 	} else {
+		// 		Frame.fromName("Ally Limit", 0).setEnabled(false);
+		// 	}
+		// }
 
-		this.fullControlBox.setPoint(FRAMEPOINT_CENTER, Frame.fromName("Ally Limit", 0), FRAMEPOINT_BOTTOMLEFT, 0.01, -0.01)
-		fullControlTitle.setPoint(FRAMEPOINT_LEFT, this.fullControlBox, FRAMEPOINT_RIGHT, 0, 0);
-		fullControlTitle.setText(`Full Unit Control`);
+		// const ally = new easySlider("Ally Limit", Frame.fromHandle(backdrop), 0.10, -0.14, AllyLimit)
+		// ally.sliderFrame.setEnabled(false);
+		// ally.sliderEventFunc = () => {
+		// 	Settings.getInstance().allies = (ally.sliderFrame.value + 1);
+		// }
 
-		fullControlTrigger.triggerRegisterFrameEvent(this.fullControlBox, FRAMEEVENT_CHECKBOX_CHECKED);
-		fullControlTrigger.triggerRegisterFrameEvent(this.fullControlBox, FRAMEEVENT_CHECKBOX_UNCHECKED);
+		// this.fullControlBox = new Frame("Full Unit Control", Frame.fromName("Ally Limit", 0), 0, 0, "CHECKBOX", "QuestCheckBox2");
+		// const fullControlTitle = new Frame("Full Unit Control Title", this.fullControlBox, 0, 0, "TEXT", "EscMenuLabelTextTemplate");
+		// const fullControlTrigger: Trigger = new Trigger();
 
-		fullControlTrigger.addAction(() => {
-			if (Frame.getEventHandle() == FRAMEEVENT_CHECKBOX_CHECKED) {
-				Settings.getInstance().alliesControl = 1;
-			} else {
-				Settings.getInstance().alliesControl = 0;
-			}
-		})
+		// this.fullControlBox.setPoint(FRAMEPOINT_CENTER, Frame.fromName("Ally Limit", 0), FRAMEPOINT_BOTTOMLEFT, 0.01, -0.01)
+		// fullControlTitle.setPoint(FRAMEPOINT_LEFT, this.fullControlBox, FRAMEPOINT_RIGHT, 0, 0);
+		// fullControlTitle.setText(`Full Unit Control`);
 
-		this.fullControlBox.setEnabled(false);
+		// fullControlTrigger.triggerRegisterFrameEvent(this.fullControlBox, FRAMEEVENT_CHECKBOX_CHECKED);
+		// fullControlTrigger.triggerRegisterFrameEvent(this.fullControlBox, FRAMEEVENT_CHECKBOX_UNCHECKED);
 
-		const fog = new easySlider("Fog", Frame.fromHandle(backdrop), 0.10, -0.19, Fog)
-		fog.sliderEventFunc = () => {
-		    Settings.getInstance().fog = fog.sliderFrame.value;
-		}
+		// fullControlTrigger.addAction(() => {
+		// 	if (Frame.getEventHandle() == FRAMEEVENT_CHECKBOX_CHECKED) {
+		// 		Settings.getInstance().alliesControl = 1;
+		// 	} else {
+		// 		Settings.getInstance().alliesControl = 0;
+		// 	}
+		// })
 
-		const names = new easySlider("Reveal Names", Frame.fromHandle(backdrop), 0.10, -0.23, RevealNames)
-		names.sliderEventFunc = () => {
-		    Settings.getInstance().names = names.sliderFrame.value;
-		}
+		// this.fullControlBox.setEnabled(false);
 
-		const nomad = new easySlider("Nomad Time Limit", Frame.fromHandle(backdrop), 0.10, -0.27, NomadTimeLimit)
-		nomad.sliderEventFunc = () => {
-		    Settings.getInstance().nomad = nomad.sliderFrame.value;
-		}
+		// const fog = new easySlider("Fog", Frame.fromHandle(backdrop), 0.10, -0.19, Fog)
+		// fog.sliderEventFunc = () => {
+		//     Settings.getInstance().fog = fog.sliderFrame.value;
+		// }
 
-		const gold = new easySlider("Gold Sending", Frame.fromHandle(backdrop), 0.10, -0.31, GoldSending)
-		gold.sliderEventFunc = () => {
-		    Settings.getInstance().gold = gold.sliderFrame.value;
-		}
+		// const names = new easySlider("Reveal Names", Frame.fromHandle(backdrop), 0.10, -0.23, RevealNames)
+		// names.sliderEventFunc = () => {
+		//     Settings.getInstance().names = names.sliderFrame.value;
+		// }
 
-		const ships = new easySlider("Ships Allowed", Frame.fromHandle(backdrop), 0.10, -0.35, ShipsAllowed)
-		ships.sliderEventFunc = () => {
-		    Settings.getInstance().ships = ships.sliderFrame.value;
+		// const nomad = new easySlider("Nomad Time Limit", Frame.fromHandle(backdrop), 0.10, -0.27, NomadTimeLimit)
+		// nomad.sliderEventFunc = () => {
+		//     Settings.getInstance().nomad = nomad.sliderFrame.value;
+		// }
+
+		// const gold = new easySlider("Gold Sending", Frame.fromHandle(backdrop), 0.10, -0.31, GoldSending)
+		// gold.sliderEventFunc = () => {
+		//     Settings.getInstance().gold = gold.sliderFrame.value;
+		// }
+
+		// const ships = new easySlider("Ships Allowed", Frame.fromHandle(backdrop), 0.10, -0.35, ShipsAllowed)
+		// ships.sliderEventFunc = () => {
+		//     Settings.getInstance().ships = ships.sliderFrame.value;
 	
-		    if (Settings.getInstance().ships == 1) {
-			const transportOptions: Frame = Frame.fromName("Transports Load/Unload", 0);
-			transportOptions.value = 1;
-			transportOptions.enabled = false;
+		//     if (Settings.getInstance().ships == 1) {
+		// 	const transportOptions: Frame = Frame.fromName("Transports Load/Unload", 0);
+		// 	transportOptions.value = 1;
+		// 	transportOptions.enabled = false;
 			
-		    } else {
-			const transportOptions: Frame = Frame.fromName("Transports Load/Unload", 0);
-			transportOptions.value = 0;
-			transportOptions.enabled = true; 
-		    }
-		}
+		//     } else {
+		// 	const transportOptions: Frame = Frame.fromName("Transports Load/Unload", 0);
+		// 	transportOptions.value = 0;
+		// 	transportOptions.enabled = true; 
+		//     }
+		// }
 
-		const transports = new easySlider("Transports Load/Unload", Frame.fromHandle(backdrop), 0.10, -0.39, TransportLanding)
-		transports.sliderEventFunc = () => {
-		    Settings.getInstance().transport = transports.sliderFrame.value;
-		}
+		// const transports = new easySlider("Transports Load/Unload", Frame.fromHandle(backdrop), 0.10, -0.39, TransportLanding)
+		// transports.sliderEventFunc = () => {
+		//     Settings.getInstance().transport = transports.sliderFrame.value;
+		// }
 		// //Modes Info
 		// const modesInfo: framehandle = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0);
 
