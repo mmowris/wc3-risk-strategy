@@ -1,6 +1,5 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/constants";
-import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { File } from "w3ts";
 
@@ -31,7 +30,7 @@ interface Names {
 // export const BonusMultiplier: number = 5;
 // export const BonusDivisor: number = 1000;
 export const BonusBase: number = 9;
-export const BonusCap: number = 40;
+export const BonusCap: number = 60;
 export const BonusDivisor: number = 200;
 export const PlayerNames: Map<player, string> = new Map<player, string>();
 export const enum PlayerStatus {
@@ -56,8 +55,8 @@ export const bS: string[] = [
 	"SG90V2hlZWw5NSMyNjMy",		//HotWheel95#2632
 	"Zm9vdG1hbiMxMTU0OQ==",		//footman#11549
 	"TW9qb0RhcmtBbGUjMTE2NTI=",	//MojoDarkAle#11652
-	//"U2VsaW5hY2UjMTY4Mw==",	//Selinace#1683
-	"QXJrZXIjMTE0NzE=",		//Arker#11471
+	"U2VsaW5hY2UjMTY4Mw==",		//Selinace#1683
+	"QXJrZXIjMTE0NzE=",			//Arker#11471
 ];
 
 export const bT: Map<string, player> = new Map<string, player>();
