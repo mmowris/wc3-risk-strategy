@@ -10,6 +10,7 @@ import { City } from "./city-type";
 import { Country } from "./country-type";
 import { MessageAll } from "libs/utils";
 import { GameRankingHelper } from "app/game/game-ranking-helper-type";
+import { Settings } from "app/game/round-settings";
 
 export function onOwnerChange() {
 	const ownerChange: trigger = CreateTrigger();
@@ -38,7 +39,7 @@ export function onOwnerChange() {
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 			} else {
 				const nomadTimer: Timer = new Timer();
-				let duration: number = 60;
+				let duration: number = Settings.getInstance().nomad;
 
 				prevOwner.setStatus(PlayerStatus.NOMAD);
 				nomadTimer.start(1, true, () => {

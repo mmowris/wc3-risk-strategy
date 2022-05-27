@@ -15,6 +15,7 @@ import { UID } from "resources/unitID";
 import { Timer } from "w3ts";
 import { GameTimer } from "./game-timer-type";
 import { GameTracking } from "./game-tracking-type";
+import { Settings } from "./round-settings";
 
 export class Round {
 	private static instance: Round;
@@ -45,6 +46,17 @@ export class Round {
 				modeTimer.destroy();
 				BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), false);
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts soon`);
+
+				BlzFrameSetVisible(BlzGetFrameByName("Game Type", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Diplomancy", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Ally Limit", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Fog", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Reveal Names", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Nomad Time Limit", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Gold Sending", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Ships Allowed", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Transports Load/Unload", 0), false);
+
 				this.start();
 			}
 
@@ -59,6 +71,7 @@ export class Round {
 		this.assignColors();
 		this.setupPlayerStatus();
 
+		Settings.getInstance().processSettings();
 		CityAllocation.start();
 
 		let tick: number = 15;
@@ -125,24 +138,6 @@ export class Round {
 			this.instance = new Round();
 		}
 		return this.instance;
-	}
-
-	private static unallyLobby() {
-		//TODO mode to settings
-		for (let i = 0; i < MAX_PLAYERS; i++) {
-			for (let j = 0; j < MAX_PLAYERS; j++) {
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_REQUEST, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_RESPONSE, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_XP, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_SPELLS, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_CONTROL, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_ADVANCED_CONTROL, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_RESCUABLE, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION_FORCED, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_PASSIVE, false)
-			}
-		}
 	}
 	
 	private assignColors() {

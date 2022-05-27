@@ -2,10 +2,9 @@ export class UserInterface {
 	public static onLoad() {
 		UserInterface.setResourceFrames();
 		UserInterface.initAlliesBoard();
-		UserInterface.ffaSetup();
-		//UserInterface.hidePMOptions();
+		//UserInterface.ffaSetup();
 		UserInterface.hideUI(true);
-		UserInterface.changeUI();
+		BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarChatButton", 0), false);
 	}
 
 	public static hideUI(hidden: boolean) {
@@ -35,24 +34,24 @@ export class UserInterface {
 
 	private static initAlliesBoard() {
 		let newTitle: string = "discord.me/risk";
-		let newResourceHeader: string = "Xace#5821 @ discord"
+		let newResourceHeader: string = "Xace#5821 @ discord";
 
-		BlzFrameSetText(BlzGetFrameByName("AllianceTitle", 0), newTitle)
-		BlzFrameSetText(BlzGetFrameByName("ResourceTradingTitle", 0), newResourceHeader)
+		BlzFrameSetText(BlzGetFrameByName("AllianceTitle", 0), newTitle);
+		BlzFrameSetText(BlzGetFrameByName("ResourceTradingTitle", 0), newResourceHeader);
 
-		BlzFrameSetVisible(BlzGetFrameByName("VisionHeader", 0), false)
-		BlzFrameSetVisible(BlzGetFrameByName("LumberHeader", 0), false)
-		BlzFrameSetVisible(BlzGetFrameByName("AlliedVictoryLabel", 0), false)
-		BlzFrameSetVisible(BlzGetFrameByName("AlliedVictoryCheckBox", 0), false)
+		BlzFrameSetVisible(BlzGetFrameByName("VisionHeader", 0), false);
+		BlzFrameSetVisible(BlzGetFrameByName("LumberHeader", 0), false);
+		BlzFrameSetVisible(BlzGetFrameByName("AlliedVictoryLabel", 0), false);
+		BlzFrameSetVisible(BlzGetFrameByName("AlliedVictoryCheckBox", 0), false);
 
 		for (let i = 0; i < 23; i++) {
-			BlzFrameSetVisible(BlzGetFrameByName("LumberBackdrop", i), false)
-			BlzFrameSetVisible(BlzGetFrameByName("LumberText", i), false)
-			BlzFrameSetVisible(BlzGetFrameByName("VisionCheckBox", i), false)
+			BlzFrameSetVisible(BlzGetFrameByName("LumberBackdrop", i), false);
+			BlzFrameSetVisible(BlzGetFrameByName("LumberText", i), false);
+			BlzFrameSetVisible(BlzGetFrameByName("VisionCheckBox", i), false);
 		}
 	}
 
-	private static ffaSetup() {
+	public static ffaSetup() {
 		let AllyMenuTitle: framehandle = BlzGetFrameByName("AllianceTitle", 0)
 		let tempText: string = "discord.me/risk"
 		tempText += "|n|n|cffffcc00Commands:|r"

@@ -2,10 +2,23 @@ import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import CameraControls, { PlayerCamData } from "../commands/camera-controls-type";
 import { GamePlayer, PlayerStatus } from "../player/player-type";
+import { easySlider } from "./easySlider";
+import { GameType } from "app/modes/gameType";
+import { Frame, Trigger } from "w3ts";
+import { Settings } from "app/game/round-settings";
+import { AllyLimit } from "app/modes/allyLimit";
+import { Diplomancy } from "app/modes/diplomancy";
+import { Fog } from "app/modes/fog";
+import { RevealNames } from "app/modes/revealNames";
+import { GoldSending } from "app/modes/goldSending";
+import { NomadTimeLimit } from "app/modes/nomadTimeLimit";
+import { ShipsAllowed } from "app/modes/shipsAllowed";
+import { TransportLanding } from "app/modes/transports";
 
 export class ModeUI {
 	public static frame: Map<string, framehandle> = new Map<string, framehandle>();
 	public static frameFunc: Map<string, Function> = new Map<string, Function>();
+	public static fullControlBox: Frame;
 
 	public static buildModeFrame() {
 		//Backdrop
@@ -114,14 +127,104 @@ export class ModeUI {
 
 		BlzFrameSetVisible(BlzGetFrameByName(obsStr, 0), true);
 
-		//Modes Info
-		const modesInfo: framehandle = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0);
+		const gameType = new easySlider("Game Type", Frame.fromHandle(backdrop), 0.10, -0.06, GameType);
 
-		BlzFrameSetPoint(modesInfo, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, -0.27, -0.11);
+		gameType.sliderEventFunc = () => {
+			Settings.getInstance().gameType = gameType.sliderFrame.value;
+		}
 
-		const modesText: string = `${HexColors.RED}Game Settings|r\nGame Tracking: ${HexColors.GREEN}Unranked|r\nDiplomancy: ${HexColors.GREEN}FFA|r\nFog: ${HexColors.GREEN}Off|r\nReveal Names: ${HexColors.GREEN}On Victory|r\nNomad Time: ${HexColors.GREEN}60 Seconds|r\nGold Sending: ${HexColors.GREEN}Disabled|r\nShips Allowed: ${HexColors.GREEN}All|r\nTransport Load/Unload: ${HexColors.GREEN}Ports Only|r`
+		const diplo = new easySlider("Diplomancy", Frame.fromHandle(backdrop), 0.10, -0.10, Diplomancy)
+		diplo.sliderEventFunc = () => {
+			Settings.getInstance().diplomancy = diplo.sliderFrame.value;
 
-		BlzFrameSetText(modesInfo, modesText);
+			if (diplo.sliderFrame.value > 0) {
+				this.fullControlBox.setEnabled(true);
+			} else {
+				this.fullControlBox.setEnabled(false);
+			}
+
+			if (diplo.sliderFrame.value > 1) {
+				Frame.fromName("Ally Limit", 0).setEnabled(true);
+			} else {
+				Frame.fromName("Ally Limit", 0).setEnabled(false);
+			}
+		}
+
+		const ally = new easySlider("Ally Limit", Frame.fromHandle(backdrop), 0.10, -0.14, AllyLimit)
+		ally.sliderFrame.setEnabled(false);
+		ally.sliderEventFunc = () => {
+			Settings.getInstance().allies = (ally.sliderFrame.value + 1);
+		}
+
+		this.fullControlBox = new Frame("Full Unit Control", Frame.fromName("Ally Limit", 0), 0, 0, "CHECKBOX", "QuestCheckBox2");
+		const fullControlTitle = new Frame("Full Unit Control Title", this.fullControlBox, 0, 0, "TEXT", "EscMenuLabelTextTemplate");
+		const fullControlTrigger: Trigger = new Trigger();
+
+		this.fullControlBox.setPoint(FRAMEPOINT_CENTER, Frame.fromName("Ally Limit", 0), FRAMEPOINT_BOTTOMLEFT, 0.01, -0.01)
+		fullControlTitle.setPoint(FRAMEPOINT_LEFT, this.fullControlBox, FRAMEPOINT_RIGHT, 0, 0);
+		fullControlTitle.setText(`Full Unit Control`);
+
+		fullControlTrigger.triggerRegisterFrameEvent(this.fullControlBox, FRAMEEVENT_CHECKBOX_CHECKED);
+		fullControlTrigger.triggerRegisterFrameEvent(this.fullControlBox, FRAMEEVENT_CHECKBOX_UNCHECKED);
+
+		fullControlTrigger.addAction(() => {
+			if (Frame.getEventHandle() == FRAMEEVENT_CHECKBOX_CHECKED) {
+				Settings.getInstance().alliesControl = 1;
+			} else {
+				Settings.getInstance().alliesControl = 0;
+			}
+		})
+
+		this.fullControlBox.setEnabled(false);
+
+		const fog = new easySlider("Fog", Frame.fromHandle(backdrop), 0.10, -0.19, Fog)
+		fog.sliderEventFunc = () => {
+		    Settings.getInstance().fog = fog.sliderFrame.value;
+		}
+
+		const names = new easySlider("Reveal Names", Frame.fromHandle(backdrop), 0.10, -0.23, RevealNames)
+		names.sliderEventFunc = () => {
+		    Settings.getInstance().names = names.sliderFrame.value;
+		}
+
+		const nomad = new easySlider("Nomad Time Limit", Frame.fromHandle(backdrop), 0.10, -0.27, NomadTimeLimit)
+		nomad.sliderEventFunc = () => {
+		    Settings.getInstance().nomad = nomad.sliderFrame.value;
+		}
+
+		const gold = new easySlider("Gold Sending", Frame.fromHandle(backdrop), 0.10, -0.31, GoldSending)
+		gold.sliderEventFunc = () => {
+		    Settings.getInstance().gold = gold.sliderFrame.value;
+		}
+
+		const ships = new easySlider("Ships Allowed", Frame.fromHandle(backdrop), 0.10, -0.35, ShipsAllowed)
+		ships.sliderEventFunc = () => {
+		    Settings.getInstance().ships = ships.sliderFrame.value;
+	
+		    if (Settings.getInstance().ships == 1) {
+			const transportOptions: Frame = Frame.fromName("Transports Load/Unload", 0);
+			transportOptions.value = 1;
+			transportOptions.enabled = false;
+			
+		    } else {
+			const transportOptions: Frame = Frame.fromName("Transports Load/Unload", 0);
+			transportOptions.value = 0;
+			transportOptions.enabled = true; 
+		    }
+		}
+
+		const transports = new easySlider("Transports Load/Unload", Frame.fromHandle(backdrop), 0.10, -0.39, TransportLanding)
+		transports.sliderEventFunc = () => {
+		    Settings.getInstance().transport = transports.sliderFrame.value;
+		}
+		// //Modes Info
+		// const modesInfo: framehandle = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0);
+
+		// BlzFrameSetPoint(modesInfo, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, -0.27, -0.11);
+
+		// const modesText: string = `${HexColors.RED}Game Settings|r\nGame Tracking: ${HexColors.GREEN}Unranked|r\nDiplomancy: ${HexColors.GREEN}FFA|r\nFog: ${HexColors.GREEN}Off|r\nReveal Names: ${HexColors.GREEN}On Victory|r\nNomad Time: ${HexColors.GREEN}60 Seconds|r\nGold Sending: ${HexColors.GREEN}Disabled|r\nShips Allowed: ${HexColors.GREEN}All|r\nTransport Load/Unload: ${HexColors.GREEN}Ports Only|r`
+
+		// BlzFrameSetText(modesInfo, modesText);
 	}
 
 	private static createButton(name: string, framePoint: framepointtype, parent: framehandle, parentPoint: framepointtype, x: number, y: number, width: number, height: number) {
@@ -146,12 +249,6 @@ export class ModeUI {
 		bFrame = null;
 	}
 
-	public static toggleForPlayer(fName: string, p: player, bool: boolean) {
-		if (GetLocalPlayer() == p) {
-			BlzFrameSetVisible(ModeUI.frame.get(fName), bool);
-		}
-	}
-
 	public static pList(backdrop: framehandle) {
 		const pList: framehandle = BlzCreateFrameByType("TEXTAREA", "pList", backdrop, "BattleNetTextAreaTemplate", 0);
 		BlzFrameSetSize(pList, 0.20, 0.38);
@@ -163,6 +260,12 @@ export class ModeUI {
 
 			BlzFrameAddText(pList, `${gPlayer.names.acct} is ${gPlayer.status}`);
 		});
+	}
+
+	public static toggleForPlayer(fName: string, p: player, bool: boolean) {
+		if (GetLocalPlayer() == p) {
+			BlzFrameSetVisible(ModeUI.frame.get(fName), bool);
+		}
 	}
 
 	public static toggleModeFrame(bool: boolean) {
