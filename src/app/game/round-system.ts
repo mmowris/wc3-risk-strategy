@@ -51,7 +51,6 @@ export class Round {
 				BlzFrameSetVisible(BlzGetFrameByName("Diplomancy slider", 0), false);
 				BlzFrameSetVisible(BlzGetFrameByName("Ally Limit slider", 0), false);
 				BlzFrameSetVisible(BlzGetFrameByName("Fog slider", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Reveal Names slider", 0), false);
 				BlzFrameSetVisible(BlzGetFrameByName("Nomad Time Limit slider", 0), false);
 				BlzFrameSetVisible(BlzGetFrameByName("Gold Sending slider", 0), false);
 				BlzFrameSetVisible(BlzGetFrameByName("Ships Allowed slider", 0), false);

@@ -2,14 +2,12 @@ import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import CameraControls, { PlayerCamData } from "../commands/camera-controls-type";
 import { GamePlayer, PlayerStatus } from "../player/player-type";
-import { easySlider } from "./easySlider";
 import { GameType } from "app/modes/gameType";
-import { Frame, Trigger } from "w3ts";
+import { Frame } from "w3ts";
 import { Settings } from "app/game/round-settings";
 import { AllyLimit } from "app/modes/allyLimit";
 import { Diplomancy } from "app/modes/diplomancy";
 import { Fog } from "app/modes/fog";
-import { RevealNames } from "app/modes/revealNames";
 import { GoldSending } from "app/modes/goldSending";
 import { NomadTimeLimit } from "app/modes/nomadTimeLimit";
 import { ShipsAllowed } from "app/modes/shipsAllowed";
@@ -49,6 +47,7 @@ export class ModeUI {
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-names / -players|r  Lists active players`)
 		//BlzFrameAddText(cList, `${HexColors.TANGERINE}-sb 1 / -sb 2|r  Changes the scoreboard layout`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-stfu name|r  Globally mute a player for 5 minutes`)
+		BlzFrameAddText(cList, `${HexColors.TANGERINE}-g name qty|r  Send a player gold`)
 		//Hotkeys
 		BlzFrameAddText(cList, `|n${HexColors.RED}Hotkeys:|r`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}F1|r  Opens player tools`)
@@ -201,16 +200,6 @@ export class ModeUI {
 			}
 		});
 
-		new Slider("Reveal Names", backdrop, 0.064, -0.23, -0.004, RevealNames, () => {
-			Settings.getInstance().names = BlzFrameGetValue(Slider.fromName("Reveal Names").slider);
-
-			if (BlzFrameGetValue(Slider.fromName("Reveal Names").slider) > 0) {
-				BlzFrameSetTextColor(Slider.fromName("Reveal Names").text, BlzConvertColor(255, 255, 0 ,0))
-			} else {
-				BlzFrameSetTextColor(Slider.fromName("Reveal Names").text, BlzConvertColor(255, 255, 255 ,255))
-			}
-		});
-
 		new Slider("Nomad Time Limit", backdrop, 0.075, -0.27, -0.015, NomadTimeLimit, () => {
 			Settings.getInstance().nomad = BlzFrameGetValue(Slider.fromName("Nomad Time Limit").slider);
 
@@ -263,7 +252,7 @@ export class ModeUI {
 		// //Modes Info
 		// const modesInfo: framehandle = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0);
 		// BlzFrameSetPoint(modesInfo, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, -0.27, -0.11);
-		// const modesText: string = `${HexColors.RED}Game Settings|r\nGame Tracking: ${HexColors.GREEN}Unranked|r\nDiplomancy: ${HexColors.GREEN}FFA|r\nFog: ${HexColors.GREEN}Off|r\nReveal Names: ${HexColors.GREEN}On Victory|r\nNomad Time: ${HexColors.GREEN}60 Seconds|r\nGold Sending: ${HexColors.GREEN}Disabled|r\nShips Allowed: ${HexColors.GREEN}All|r\nTransport Load/Unload: ${HexColors.GREEN}Ports Only|r`
+		// const modesText: string = `${HexColors.RED}Game Settings|r\nGame Tracking: ${HexColors.GREEN}Unranked|r\nDiplomancy: ${HexColors.GREEN}FFA|r\nFog: ${HexColors.GREEN}Off|r\nNomad Time: ${HexColors.GREEN}60 Seconds|r\nGold Sending: ${HexColors.GREEN}Disabled|r\nShips Allowed: ${HexColors.GREEN}All|r\nTransport Load/Unload: ${HexColors.GREEN}Ports Only|r`
 		// BlzFrameSetText(modesInfo, modesText);
 	}
 
@@ -313,7 +302,6 @@ export class ModeUI {
 		BlzFrameSetVisible(BlzGetFrameByName("Diplomancy slider", 0), true);
 		BlzFrameSetVisible(BlzGetFrameByName("Ally Limit slider", 0), true);
 		BlzFrameSetVisible(BlzGetFrameByName("Fog slider", 0), true);
-		BlzFrameSetVisible(BlzGetFrameByName("Reveal Names slider", 0), true);
 		BlzFrameSetVisible(BlzGetFrameByName("Nomad Time Limit slider", 0), true);
 		BlzFrameSetVisible(BlzGetFrameByName("Gold Sending slider", 0), true);
 		BlzFrameSetVisible(BlzGetFrameByName("Ships Allowed slider", 0), true);

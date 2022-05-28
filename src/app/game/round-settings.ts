@@ -11,7 +11,6 @@ export class Settings {
 	public allies: number = 1;
 	public alliesControl: number = 0;
 	public fog: number = 0;
-	public names: number = 0;
 	public nomad: number = 0;
 	public gold: number = 0;
 	public ships: number = 0;
@@ -34,7 +33,6 @@ export class Settings {
 		this.diplomancySetup();
 		this.alliesSetup();
 		this.fogSetup();
-		this.namesSetup();
 		this.nomadSetup();
 		this.goldSetup();
 		this.shipsSetup();
@@ -163,22 +161,6 @@ export class Settings {
 	}
 
 	/**
-	 * namesSetup
-	 */
-	private namesSetup() {
-		switch (this.names) {
-			case 1:
-				//Data.NamesOnDefeat = false;
-				break;
-			default:
-				//Data.NamesOnDefeat = true;
-				break;
-		}
-
-		RoundSettings.names = this.names;
-	}
-
-	/**
 	 * nomadSetup
 	 */
 	private nomadSetup() {
@@ -196,7 +178,10 @@ export class Settings {
 				this.nomad = 180;
 				break;
 			case 5:
-				this.nomad = 0;
+				this.nomad = 0; //Unlimited Time
+				break;
+			case 6: 
+				this.nomad = -1; //Insta Death
 				break;
 			default:
 				this.nomad = 60;

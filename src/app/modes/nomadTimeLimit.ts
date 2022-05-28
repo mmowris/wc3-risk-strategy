@@ -4,5 +4,6 @@ export const NomadTimeLimit = [
 	"120 Seconds",
 	"150 Seconds",
 	"180 Seconds",
-	"Unlimited"
+	"Unlimited",
+	"No Nomads"
 ];

@@ -10,7 +10,7 @@ import { City } from "./city-type";
 import { Country } from "./country-type";
 import { MessageAll } from "libs/utils";
 import { GameRankingHelper } from "app/game/game-ranking-helper-type";
-import { Settings } from "app/game/round-settings";
+import { RoundSettings } from "app/game/settings-data";
 
 export function onOwnerChange() {
 	const ownerChange: trigger = CreateTrigger();
@@ -31,15 +31,15 @@ export function onOwnerChange() {
 		if (country.owner == prevOwner.player) country.setOwner(NEUTRAL_HOSTILE);
 
 		if (prevOwner.cities.length == 0 && prevOwner.player != NEUTRAL_HOSTILE && !prevOwner.isLeft()) {
-			if (prevOwner.getUnitCount() <= 0) {
+			if (prevOwner.getUnitCount() <= 0 || RoundSettings.nomad < 0) {
 				prevOwner.setStatus(PlayerStatus.DEAD);
 				GameRankingHelper.getInstance().setLoser(prevOwner.player);
 				MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
-			} else {
+			} else if (RoundSettings.nomad > 0) {
 				const nomadTimer: Timer = new Timer();
-				let duration: number = Settings.getInstance().nomad;
+				let duration: number = RoundSettings.nomad
 
 				prevOwner.setStatus(PlayerStatus.NOMAD);
 				nomadTimer.start(1, true, () => {

@@ -4,7 +4,6 @@ interface RoundSettings {
 	allies: number;
 	alliesControl: number;
 	fog: number;
-	names: number;
 	nomad: number;
 	gold: boolean;
 	ships: number;
@@ -20,7 +19,6 @@ export const RoundSettings: RoundSettings = {
 	allies: 0,
 	alliesControl: 0,
 	fog: 0,
-	names: 0,
 	nomad: 0,
 	gold: false,
 	ships: 0,
