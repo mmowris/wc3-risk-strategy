@@ -62,7 +62,7 @@ export function ResetGame() {
 export function SlowRestart() {
 	try {
 		UserInterface.hideUI(true);
-		ModeUI.toggleModeFrame(true);
+		//ModeUI.toggleModeFrame(true);
 		BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), true);
 		Round.getInstance().runModeSelection();
 	} catch (error) {

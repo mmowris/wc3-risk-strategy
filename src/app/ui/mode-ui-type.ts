@@ -125,8 +125,6 @@ export class ModeUI {
 			}
 		})
 
-		BlzFrameSetVisible(BlzGetFrameByName(obsStr, 0), true);
-
 		new Slider("Game Type", backdrop, 0.058, -0.06, 0.002, GameType, () => {
 			Settings.getInstance().gameType = BlzFrameGetValue(Slider.fromName("Game Type").slider);
 
@@ -291,22 +289,32 @@ export class ModeUI {
 		});
 	}
 
-	public static toggleForPlayer(fName: string, p: player, bool: boolean) {
+	public static toggleForPlayer(frame: framehandle, p: player, bool: boolean) {
 		if (GetLocalPlayer() == p) {
-			BlzFrameSetVisible(ModeUI.frame.get(fName), bool);
+			BlzFrameSetVisible(frame, bool);
 		}
 	}
 
-	public static toggleModeFrame(bool: boolean) {
-		BlzFrameSetVisible(BlzGetFrameByName("Game Type slider", 0), true);
-		BlzFrameSetVisible(BlzGetFrameByName("Diplomancy slider", 0), true);
-		BlzFrameSetVisible(BlzGetFrameByName("Ally Limit slider", 0), true);
-		BlzFrameSetVisible(BlzGetFrameByName("Fog slider", 0), true);
-		BlzFrameSetVisible(BlzGetFrameByName("Nomad Time Limit slider", 0), true);
-		BlzFrameSetVisible(BlzGetFrameByName("Gold Sending slider", 0), true);
-		BlzFrameSetVisible(BlzGetFrameByName("Ships Allowed slider", 0), true);
-		BlzFrameSetVisible(BlzGetFrameByName("Transports Load/Unload slider", 0), true);
+	public static toggleSliders(bool: boolean) {
+		//TODO instead of playe(0) it would be better to find an alive/human player
+		ModeUI.toggleForPlayer(BlzGetFrameByName("Game Type slider", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("Diplomancy slider", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("Ally Limit slider", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("Fog slider", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("Nomad Time Limit slider", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("Gold Sending slider", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("Ships Allowed slider", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("Transports Load/Unload slider", 0), Player(0), bool);
+	}
 
+	public static toggleModeFrame(bool: boolean) {
 		BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), bool);
+
+		if (bool) ModeUI.toggleSliders(bool);
+		if (bool) ModeUI.toggleObsButton(bool)
+	}
+
+	public static toggleObsButton(bool: boolean) {
+		BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), bool);
 	}
 }

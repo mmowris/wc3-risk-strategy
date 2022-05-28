@@ -44,17 +44,9 @@ export class Round {
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
-				BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), false);
+				ModeUI.toggleSliders(false);
+				ModeUI.toggleObsButton(false);
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts soon`);
-
-				BlzFrameSetVisible(BlzGetFrameByName("Game Type slider", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Diplomancy slider", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Ally Limit slider", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Fog slider", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Nomad Time Limit slider", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Gold Sending slider", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Ships Allowed slider", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Transports Load/Unload slider", 0), false);
 
 				this.start();
 			}
