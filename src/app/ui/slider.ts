@@ -1,3 +1,5 @@
+import { HexColors } from "resources/hexColors";
+
 export class Slider {
 	public title: framehandle
 	public slider: framehandle
@@ -15,12 +17,12 @@ export class Slider {
 		this.text = BlzCreateFrameByType("TEXT", `${name} text`, this.title, "EscMenuLabelTextTemplate", 0);
 
 		BlzFrameSetPoint(this.title, FRAMEPOINT_CENTER, parent, FRAMEPOINT_TOPLEFT, x, y)
-		BlzFrameSetText(this.title, name);
+		BlzFrameSetText(this.title, `${HexColors.WHITE}${name}: |r`);
 		BlzFrameSetTextColor(this.title, BlzConvertColor(255, 255, 255, 255));
 		BlzFrameSetTextAlignment(this.title, TEXT_JUSTIFY_LEFT, TEXT_JUSTIFY_CENTER)
 
 		BlzFrameSetPoint(this.text, FRAMEPOINT_LEFT, this.title, FRAMEPOINT_RIGHT, 0, 0)
-		BlzFrameSetText(this.text, `: ${choices[0]}`)
+		BlzFrameSetText(this.text, `${choices[0]}`)
 
 		BlzFrameSetPoint(this.slider, FRAMEPOINT_CENTER, this.title, FRAMEPOINT_BOTTOM, 0.04 + sOffSet, -0.01);
 		BlzFrameSetMinMaxValue(this.slider, 0, choices.length - 1);
@@ -33,7 +35,7 @@ export class Slider {
 		this.event = event;
 
 		TriggerAddAction(this.onDrag, () => {
-			BlzFrameSetText(this.text, `: ${choices[BlzFrameGetValue(this.slider)]}`)
+			BlzFrameSetText(this.text, `${choices[BlzFrameGetValue(this.slider)]}`)
 			this.event();
 		})
 

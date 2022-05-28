@@ -2,7 +2,6 @@ import { GamePlayer } from "app/player/player-type";
 import { UserInterface } from "app/ui/user-interface-type";
 import { MAX_PLAYERS } from "resources/constants";
 import { UID } from "resources/unitID";
-import { UTYPE } from "resources/unitTypes";
 
 export interface RoundSettings {
 	gameType: number;

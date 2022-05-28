@@ -130,6 +130,12 @@ export class ModeUI {
 
 		new Slider("Game Type", backdrop, 0.058, -0.06, 0.002, GameType, () => {
 			Settings.getInstance().gameType = BlzFrameGetValue(Slider.fromName("Game Type").slider);
+
+			if (BlzFrameGetValue(Slider.fromName("Game Type").slider) > 0) {
+				BlzFrameSetTextColor(Slider.fromName("Game Type").text, BlzConvertColor(255, 255, 0 ,0))
+			} else {
+				BlzFrameSetTextColor(Slider.fromName("Game Type").text, BlzConvertColor(255, 255, 255 ,255))
+			}
 		});
 
 		new Slider("Diplomancy", backdrop, 0.061, -0.10, -0.001, Diplomancy, () => {
@@ -151,11 +157,18 @@ export class ModeUI {
 			} else {
 				BlzFrameSetEnable(aLimit.slider, false);
 			}
+
+			if (BlzFrameGetValue(Slider.fromName("Diplomancy").slider) > 0) {
+				BlzFrameSetTextColor(Slider.fromName("Diplomancy").text, BlzConvertColor(255, 255, 0 ,0))
+			} else {
+				BlzFrameSetTextColor(Slider.fromName("Diplomancy").text, BlzConvertColor(255, 255, 255 ,255))
+			}
 		});
 
 		new Slider("Ally Limit", backdrop, 0.053, -0.14, 0.007, AllyLimit, () => {
 			Settings.getInstance().allies = (BlzFrameGetValue(Slider.fromName("Ally Limit").slider) + 1);
 		});
+			BlzFrameSetEnable(Slider.fromName("Ally Limit").slider, false);
 
 		// this.fullControlBox = new Frame("Full Unit Control", Frame.fromName("Ally Limit", 0), 0, 0, "CHECKBOX", "QuestCheckBox2");
 		// const fullControlTitle = new Frame("Full Unit Control Title", this.fullControlBox, 0, 0, "TEXT", "EscMenuLabelTextTemplate");
@@ -180,18 +193,42 @@ export class ModeUI {
 
 		new Slider("Fog", backdrop, 0.039, -0.19, 0.021, Fog, () => {
 			Settings.getInstance().fog = BlzFrameGetValue(Slider.fromName("Fog").slider);
+
+			if (BlzFrameGetValue(Slider.fromName("Fog").slider) > 0) {
+				BlzFrameSetTextColor(Slider.fromName("Fog").text, BlzConvertColor(255, 255, 0 ,0))
+			} else {
+				BlzFrameSetTextColor(Slider.fromName("Fog").text, BlzConvertColor(255, 255, 255 ,255))
+			}
 		});
 
 		new Slider("Reveal Names", backdrop, 0.064, -0.23, -0.004, RevealNames, () => {
 			Settings.getInstance().names = BlzFrameGetValue(Slider.fromName("Reveal Names").slider);
+
+			if (BlzFrameGetValue(Slider.fromName("Reveal Names").slider) > 0) {
+				BlzFrameSetTextColor(Slider.fromName("Reveal Names").text, BlzConvertColor(255, 255, 0 ,0))
+			} else {
+				BlzFrameSetTextColor(Slider.fromName("Reveal Names").text, BlzConvertColor(255, 255, 255 ,255))
+			}
 		});
 
 		new Slider("Nomad Time Limit", backdrop, 0.075, -0.27, -0.015, NomadTimeLimit, () => {
 			Settings.getInstance().nomad = BlzFrameGetValue(Slider.fromName("Nomad Time Limit").slider);
+
+			if (BlzFrameGetValue(Slider.fromName("Nomad Time Limit").slider) > 0) {
+				BlzFrameSetTextColor(Slider.fromName("Nomad Time Limit").text, BlzConvertColor(255, 255, 0 ,0))
+			} else {
+				BlzFrameSetTextColor(Slider.fromName("Nomad Time Limit").text, BlzConvertColor(255, 255, 255 ,255))
+			}
 		});
 
 		new Slider("Gold Sending", backdrop, 0.065, -0.31, -0.005, GoldSending, () => {
 			Settings.getInstance().gold = BlzFrameGetValue(Slider.fromName("Gold Sending").slider);
+
+			if (BlzFrameGetValue(Slider.fromName("Gold Sending").slider) > 0) {
+				BlzFrameSetTextColor(Slider.fromName("Gold Sending").text, BlzConvertColor(255, 255, 0 ,0))
+			} else {
+				BlzFrameSetTextColor(Slider.fromName("Gold Sending").text, BlzConvertColor(255, 255, 255 ,255))
+			}
 		});
 
 		new Slider("Ships Allowed", backdrop, 0.066, -0.35, -0.006, ShipsAllowed, () => {
@@ -206,10 +243,22 @@ export class ModeUI {
 				BlzFrameSetValue(transports.slider, 0);
 				BlzFrameSetEnable(transports.slider, true);
 			}
+
+			if (BlzFrameGetValue(Slider.fromName("Ships Allowed").slider) > 0) {
+				BlzFrameSetTextColor(Slider.fromName("Ships Allowed").text, BlzConvertColor(255, 255, 0 ,0))
+			} else {
+				BlzFrameSetTextColor(Slider.fromName("Ships Allowed").text, BlzConvertColor(255, 255, 255 ,255))
+			}
 		});
 
 		new Slider("Transports Load/Unload", backdrop, 0.089, -0.39, -0.029, TransportLanding, () => {
 			Settings.getInstance().transport = BlzFrameGetValue(Slider.fromName("Transports Load/Unload").slider);
+
+			if (BlzFrameGetValue(Slider.fromName("Transports Load/Unload").slider) > 0) {
+				BlzFrameSetTextColor(Slider.fromName("Transports Load/Unload").text, BlzConvertColor(255, 255, 0 ,0))
+			} else {
+				BlzFrameSetTextColor(Slider.fromName("Transports Load/Unload").text, BlzConvertColor(255, 255, 255 ,255))
+			}
 		});
 		// //Modes Info
 		// const modesInfo: framehandle = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0);
