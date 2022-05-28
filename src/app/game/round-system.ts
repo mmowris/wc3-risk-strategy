@@ -47,15 +47,15 @@ export class Round {
 				BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), false);
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts soon`);
 
-				BlzFrameSetVisible(BlzGetFrameByName("Game Type", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Diplomancy", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Ally Limit", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Fog", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Reveal Names", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Nomad Time Limit", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Gold Sending", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Ships Allowed", 0), false);
-				BlzFrameSetVisible(BlzGetFrameByName("Transports Load/Unload", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Game Type slider", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Diplomancy slider", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Ally Limit slider", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Fog slider", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Reveal Names slider", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Nomad Time Limit slider", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Gold Sending slider", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Ships Allowed slider", 0), false);
+				BlzFrameSetVisible(BlzGetFrameByName("Transports Load/Unload slider", 0), false);
 
 				this.start();
 			}

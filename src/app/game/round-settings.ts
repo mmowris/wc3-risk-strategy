@@ -1,5 +1,8 @@
+import { GamePlayer } from "app/player/player-type";
 import { UserInterface } from "app/ui/user-interface-type";
 import { MAX_PLAYERS } from "resources/constants";
+import { UID } from "resources/unitID";
+import { UTYPE } from "resources/unitTypes";
 
 export interface RoundSettings {
 	gameType: number;
@@ -238,19 +241,18 @@ export class Settings {
 	private shipsSetup() {
 		switch (this.ships) {
 			case 1: //Transport only
-				// GamePlayers.forEach(gPlayer => {
-				// 	gPlayer.player.setTechMaxAllowed(UTYPE.BATTLESHIP_SS, 0);
-				// 	gPlayer.player.setTechMaxAllowed(UTYPE.WARSHIP_A, 0);
-				// 	gPlayer.player.setTechMaxAllowed(UTYPE.WARSHIP_B, 0);
-				// });
+				GamePlayer.fromPlayer.forEach(gPlayer => {
+					SetPlayerTechMaxAllowed(gPlayer.player, UID.BATTLESHIP_SS, 0);
+					SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_A, 0);
+					SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B, 0);
+				});
 				break;
 			case 2: //No SS
-				// GamePlayers.forEach(gPlayer => {
-				// 	gPlayer.player.setTechMaxAllowed(UTYPE.BATTLESHIP_SS, 0);
-				// });
+				GamePlayer.fromPlayer.forEach(gPlayer => {
+					SetPlayerTechMaxAllowed(gPlayer.player, UID.BATTLESHIP_SS, 0);
+				});
 				break;
 			default:
-				//Nothing
 				break;
 		}
 	}

@@ -128,40 +128,34 @@ export class ModeUI {
 
 		BlzFrameSetVisible(BlzGetFrameByName(obsStr, 0), true);
 
-		const gameType = new Slider("Game Type", backdrop, 0.06, -0.06, GameType);
+		new Slider("Game Type", backdrop, 0.058, -0.06, 0.002, GameType, () => {
+			Settings.getInstance().gameType = BlzFrameGetValue(Slider.fromName("Game Type").slider);
+		});
 
-		// gameType.sliderEventFunc = () => {
-		// 	Settings.getInstance().gameType = gameType.sliderFrame.value;
-		// }
+		new Slider("Diplomancy", backdrop, 0.061, -0.10, -0.001, Diplomancy, () => {
+			let val: number = BlzFrameGetValue(Slider.fromName("Diplomancy").slider)
 
-		// const gameType = new easySlider("Game Type", Frame.fromHandle(backdrop), 0.10, -0.06, GameType);
+			Settings.getInstance().diplomancy = val;
 
-		// gameType.sliderEventFunc = () => {
-		// 	Settings.getInstance().gameType = gameType.sliderFrame.value;
-		// }
+			const aLimit: Slider = Slider.fromName("Ally Limit");
+			//const box: Slider = Slider.fromName("Transports Load/Unload");
 
-		// const diplo = new easySlider("Diplomancy", Frame.fromHandle(backdrop), 0.10, -0.10, Diplomancy)
-		// diplo.sliderEventFunc = () => {
-		// 	Settings.getInstance().diplomancy = diplo.sliderFrame.value;
+			if (val > 0) {
+				// this.fullControlBox.setEnabled(true);
+			} else {
+				// this.fullControlBox.setEnabled(false);
+			}
 
-		// 	if (diplo.sliderFrame.value > 0) {
-		// 		this.fullControlBox.setEnabled(true);
-		// 	} else {
-		// 		this.fullControlBox.setEnabled(false);
-		// 	}
+			if (val > 1) {
+				BlzFrameSetEnable(aLimit.slider, true);
+			} else {
+				BlzFrameSetEnable(aLimit.slider, false);
+			}
+		});
 
-		// 	if (diplo.sliderFrame.value > 1) {
-		// 		Frame.fromName("Ally Limit", 0).setEnabled(true);
-		// 	} else {
-		// 		Frame.fromName("Ally Limit", 0).setEnabled(false);
-		// 	}
-		// }
-
-		// const ally = new easySlider("Ally Limit", Frame.fromHandle(backdrop), 0.10, -0.14, AllyLimit)
-		// ally.sliderFrame.setEnabled(false);
-		// ally.sliderEventFunc = () => {
-		// 	Settings.getInstance().allies = (ally.sliderFrame.value + 1);
-		// }
+		new Slider("Ally Limit", backdrop, 0.053, -0.14, 0.007, AllyLimit, () => {
+			Settings.getInstance().allies = (BlzFrameGetValue(Slider.fromName("Ally Limit").slider) + 1);
+		});
 
 		// this.fullControlBox = new Frame("Full Unit Control", Frame.fromName("Ally Limit", 0), 0, 0, "CHECKBOX", "QuestCheckBox2");
 		// const fullControlTitle = new Frame("Full Unit Control Title", this.fullControlBox, 0, 0, "TEXT", "EscMenuLabelTextTemplate");
@@ -184,53 +178,43 @@ export class ModeUI {
 
 		// this.fullControlBox.setEnabled(false);
 
-		// const fog = new easySlider("Fog", Frame.fromHandle(backdrop), 0.10, -0.19, Fog)
-		// fog.sliderEventFunc = () => {
-		//     Settings.getInstance().fog = fog.sliderFrame.value;
-		// }
+		new Slider("Fog", backdrop, 0.039, -0.19, 0.021, Fog, () => {
+			Settings.getInstance().fog = BlzFrameGetValue(Slider.fromName("Fog").slider);
+		});
 
-		// const names = new easySlider("Reveal Names", Frame.fromHandle(backdrop), 0.10, -0.23, RevealNames)
-		// names.sliderEventFunc = () => {
-		//     Settings.getInstance().names = names.sliderFrame.value;
-		// }
+		new Slider("Reveal Names", backdrop, 0.064, -0.23, -0.004, RevealNames, () => {
+			Settings.getInstance().names = BlzFrameGetValue(Slider.fromName("Reveal Names").slider);
+		});
 
-		// const nomad = new easySlider("Nomad Time Limit", Frame.fromHandle(backdrop), 0.10, -0.27, NomadTimeLimit)
-		// nomad.sliderEventFunc = () => {
-		//     Settings.getInstance().nomad = nomad.sliderFrame.value;
-		// }
+		new Slider("Nomad Time Limit", backdrop, 0.075, -0.27, -0.015, NomadTimeLimit, () => {
+			Settings.getInstance().nomad = BlzFrameGetValue(Slider.fromName("Nomad Time Limit").slider);
+		});
 
-		// const gold = new easySlider("Gold Sending", Frame.fromHandle(backdrop), 0.10, -0.31, GoldSending)
-		// gold.sliderEventFunc = () => {
-		//     Settings.getInstance().gold = gold.sliderFrame.value;
-		// }
+		new Slider("Gold Sending", backdrop, 0.065, -0.31, -0.005, GoldSending, () => {
+			Settings.getInstance().gold = BlzFrameGetValue(Slider.fromName("Gold Sending").slider);
+		});
 
-		// const ships = new easySlider("Ships Allowed", Frame.fromHandle(backdrop), 0.10, -0.35, ShipsAllowed)
-		// ships.sliderEventFunc = () => {
-		//     Settings.getInstance().ships = ships.sliderFrame.value;
-	
-		//     if (Settings.getInstance().ships == 1) {
-		// 	const transportOptions: Frame = Frame.fromName("Transports Load/Unload", 0);
-		// 	transportOptions.value = 1;
-		// 	transportOptions.enabled = false;
-			
-		//     } else {
-		// 	const transportOptions: Frame = Frame.fromName("Transports Load/Unload", 0);
-		// 	transportOptions.value = 0;
-		// 	transportOptions.enabled = true; 
-		//     }
-		// }
+		new Slider("Ships Allowed", backdrop, 0.066, -0.35, -0.006, ShipsAllowed, () => {
+			Settings.getInstance().ships = BlzFrameGetValue(Slider.fromName("Ships Allowed").slider);
 
-		// const transports = new easySlider("Transports Load/Unload", Frame.fromHandle(backdrop), 0.10, -0.39, TransportLanding)
-		// transports.sliderEventFunc = () => {
-		//     Settings.getInstance().transport = transports.sliderFrame.value;
-		// }
+			const transports: Slider = Slider.fromName("Transports Load/Unload");
+
+			if (Settings.getInstance().ships == 1) {
+				BlzFrameSetValue(transports.slider, 1);
+				BlzFrameSetEnable(transports.slider, false);
+			} else {
+				BlzFrameSetValue(transports.slider, 0);
+				BlzFrameSetEnable(transports.slider, true);
+			}
+		});
+
+		new Slider("Transports Load/Unload", backdrop, 0.089, -0.39, -0.029, TransportLanding, () => {
+			Settings.getInstance().transport = BlzFrameGetValue(Slider.fromName("Transports Load/Unload").slider);
+		});
 		// //Modes Info
 		// const modesInfo: framehandle = BlzCreateFrameByType("TEXT", "modesInfo", backdrop, "EscMenuLabelTextTemplate", 0);
-
 		// BlzFrameSetPoint(modesInfo, FRAMEPOINT_TOP, backdrop, FRAMEPOINT_TOP, -0.27, -0.11);
-
 		// const modesText: string = `${HexColors.RED}Game Settings|r\nGame Tracking: ${HexColors.GREEN}Unranked|r\nDiplomancy: ${HexColors.GREEN}FFA|r\nFog: ${HexColors.GREEN}Off|r\nReveal Names: ${HexColors.GREEN}On Victory|r\nNomad Time: ${HexColors.GREEN}60 Seconds|r\nGold Sending: ${HexColors.GREEN}Disabled|r\nShips Allowed: ${HexColors.GREEN}All|r\nTransport Load/Unload: ${HexColors.GREEN}Ports Only|r`
-
 		// BlzFrameSetText(modesInfo, modesText);
 	}
 
@@ -276,6 +260,16 @@ export class ModeUI {
 	}
 
 	public static toggleModeFrame(bool: boolean) {
+		BlzFrameSetVisible(BlzGetFrameByName("Game Type slider", 0), true);
+		BlzFrameSetVisible(BlzGetFrameByName("Diplomancy slider", 0), true);
+		BlzFrameSetVisible(BlzGetFrameByName("Ally Limit slider", 0), true);
+		BlzFrameSetVisible(BlzGetFrameByName("Fog slider", 0), true);
+		BlzFrameSetVisible(BlzGetFrameByName("Reveal Names slider", 0), true);
+		BlzFrameSetVisible(BlzGetFrameByName("Nomad Time Limit slider", 0), true);
+		BlzFrameSetVisible(BlzGetFrameByName("Gold Sending slider", 0), true);
+		BlzFrameSetVisible(BlzGetFrameByName("Ships Allowed slider", 0), true);
+		BlzFrameSetVisible(BlzGetFrameByName("Transports Load/Unload slider", 0), true);
+
 		BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), bool);
 	}
 }

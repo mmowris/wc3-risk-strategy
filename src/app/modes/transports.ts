@@ -1,4 +1,4 @@
 export const TransportLanding = [
-    "Ports Only",
-    "Anywhere"
+	"Ports Only",
+	"Anywhere"
 ];

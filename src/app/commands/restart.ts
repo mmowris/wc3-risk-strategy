@@ -1,7 +1,6 @@
 import { Cities } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { GameTimer } from "app/game/game-timer-type";
-import { Game } from "app/game/game-type";
 import { Round } from "app/game/round-system";
 import { GamePlayer } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";

@@ -1,5 +1,6 @@
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/constants";
+import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { File } from "w3ts";
 
@@ -174,6 +175,10 @@ export class GamePlayer {
 		this.setName(this.names.acct);
 		BlzFrameSetValue(this.bonus.bar, 0);
 		BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
+
+		SetPlayerTechMaxAllowed(this.player, UID.BATTLESHIP_SS, 1);
+		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_A, 1);
+		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_B, 1);
 	}
 
 	public giveGold(val?: number) {
