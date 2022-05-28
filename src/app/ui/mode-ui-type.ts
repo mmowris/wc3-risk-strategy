@@ -221,7 +221,7 @@ export class ModeUI {
 			}
 		});
 
-		new Slider("Gold Sending", backdrop, 0.065, -0.31, -0.005, GoldSending, () => {
+		new Slider("Gold Sending", backdrop, 0.064, -0.31, -0.004, GoldSending, () => {
 			Settings.getInstance().gold = BlzFrameGetValue(Slider.fromName("Gold Sending").slider);
 
 			if (BlzFrameGetValue(Slider.fromName("Gold Sending").slider) > 0) {

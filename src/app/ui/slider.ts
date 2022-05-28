@@ -17,12 +17,12 @@ export class Slider {
 		this.text = BlzCreateFrameByType("TEXT", `${name} text`, this.title, "EscMenuLabelTextTemplate", 0);
 
 		BlzFrameSetPoint(this.title, FRAMEPOINT_CENTER, parent, FRAMEPOINT_TOPLEFT, x, y)
-		BlzFrameSetText(this.title, `${HexColors.WHITE}${name}: |r`);
+		BlzFrameSetText(this.title, `${HexColors.TANGERINE}${name}: |r`);
 		BlzFrameSetTextColor(this.title, BlzConvertColor(255, 255, 255, 255));
 		BlzFrameSetTextAlignment(this.title, TEXT_JUSTIFY_LEFT, TEXT_JUSTIFY_CENTER)
 
 		BlzFrameSetPoint(this.text, FRAMEPOINT_LEFT, this.title, FRAMEPOINT_RIGHT, 0, 0)
-		BlzFrameSetText(this.text, `${choices[0]}`)
+		BlzFrameSetText(this.text, `${HexColors.WHITE}${choices[0]}|r`)
 
 		BlzFrameSetPoint(this.slider, FRAMEPOINT_CENTER, this.title, FRAMEPOINT_BOTTOM, 0.04 + sOffSet, -0.01);
 		BlzFrameSetMinMaxValue(this.slider, 0, choices.length - 1);

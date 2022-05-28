@@ -3,13 +3,14 @@ import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
 import { bS, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Util } from "libs/translators";
-import { MessageAll, PlayGlobalSound } from "libs/utils";
+import { ErrorMessage, MessageAll, PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { File, Timer } from "w3ts";
 import { CleanMap, FastRestart, ResetGame, SlowRestart } from "./restart";
 import { GameRankingHelper } from "app/game/game-ranking-helper-type";
+import { RoundSettings } from "app/game/settings-data";
 
 export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
 
@@ -177,10 +178,59 @@ export const CommandProcessor = () => {
 				});
 				break;
 
-			// case "-g":
-			// 	SendGold(gPlayer);
+			case "-g":
+				if (!GameTracking.getInstance().roundInProgress) return;
+				if (GetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD) == 0) {
+					ErrorMessage(gPlayer.player, "You have no gold to send!");
+					return;
+				}
 
-			// 	break;
+				try {
+					const pName: string = StringCase(GetEventPlayerChatString().split(' ')[1], false);
+					if (!pName) return;
+
+					let gQty: number = S2I(GetEventPlayerChatString().split(' ')[2]);
+					if (!gQty) return;
+
+					let gCounter: number = 0;
+					let receiver: GamePlayer;
+
+					GamePlayer.fromPlayer.forEach(tPlayer => {
+						const compareName: string = (RoundSettings.promode) ? tPlayer.names.acct.toLowerCase() : tPlayer.names.color.toLowerCase()
+
+						if (compareName.slice(0, pName.length) == pName) {
+							gCounter++;
+							receiver = tPlayer;
+						}
+					})
+
+					if (!receiver) {
+						ErrorMessage(gPlayer.player, "Player not found!");
+						return;
+					}
+
+					if (gCounter > 1) {
+						ErrorMessage(gPlayer.player, "Multiple matches found, try a longer name!")
+						return;
+					}
+
+					if (!RoundSettings.gold && (IsPlayerEnemy(gPlayer.player, receiver.player) || gPlayer.player == receiver.player)) {
+						ErrorMessage(gPlayer.player, `You may not send gold to ${receiver.coloredName()}`);
+					}
+
+					if (gQty > GetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD)) {
+						gQty = GetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD);
+					}
+
+					SetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD) - gQty);
+					SetPlayerState(receiver.player, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(receiver.player, PLAYER_STATE_RESOURCE_GOLD) + gQty);
+					DisplayTimedTextToPlayer(gPlayer.player, 0, 0, 3, `You sent ${HexColors.TANGERINE}${gQty}|r gold to ${receiver.coloredName()}`);
+					DisplayTimedTextToPlayer(receiver.player, 0, 0, 3, `You received ${HexColors.TANGERINE}${gQty}|r gold from ${gPlayer.coloredName()}`);
+
+				} catch (error) {
+					print(error)
+				}
+				break;
 			case "-testMode":
 				if (!gPlayer.admin) return;
 				if (!GameTracking.getInstance().roundInProgress) return;

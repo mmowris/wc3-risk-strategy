@@ -11,7 +11,7 @@
 
 import { ErrorMessage } from "libs/utils";
 import { UTYPE } from "resources/unitTypes";
-import { Settings } from "./game/round-settings";
+import { RoundSettings } from "./game/settings-data";
 
 export const onLoadTrig: trigger = CreateTrigger();
 
@@ -36,7 +36,7 @@ export class Transports {
 		}
 
 		TriggerAddCondition(onLoadTrig, (Condition(() => {
-			if (Settings.getInstance().transport == 1) return false;
+			if (!RoundSettings.transport) return false;
 			let trans: unit = GetTransportUnit();
 			let loadedUnit: unit = GetLoadedUnit();
 
@@ -51,7 +51,7 @@ export class Transports {
 	}
 
 	public static orderUnload() {
-		if (Settings.getInstance().transport == 1) return false;
+		if (!RoundSettings.transport) return false;
 		if (!IsUnitType(GetTriggerUnit(), UTYPE.TRANSPORT)) return false;
 
 		let trans = GetTriggerUnit(); //Trigger unit = transport unloading
@@ -79,7 +79,7 @@ export class Transports {
 	}
 
 	public static onLoadCast() {
-		if (Settings.getInstance().transport == 1) return false;
+		if (!RoundSettings.transport) return false;
 		let trans: unit = GetTriggerUnit();
 
 		IssueImmediateOrder(trans, "stop");
@@ -91,7 +91,7 @@ export class Transports {
 	}
 
 	public static onUnloadCast() {
-		if (Settings.getInstance().transport == 1) return false;
+		if (!RoundSettings.transport) return false;
 		let trans: unit = GetTriggerUnit();
 
 		IssueImmediateOrder(trans, "stop");
@@ -101,7 +101,7 @@ export class Transports {
 	}
 
 	public static onUnloadEndCast() {
-		if (Settings.getInstance().transport == 1) return false;
+		if (!RoundSettings.transport) return false;
 
 		let trans: unit = GetTriggerUnit();
 
@@ -116,13 +116,13 @@ export class Transports {
 	}
 
 	public static onCreate(trans: unit) {
-		if (Settings.getInstance().transport == 1) return false;
+		if (!RoundSettings.transport) return false;
 
 		Transports.loadedUnits.set(trans, [] = []);
 	}
 
 	public static onDeath(trans: unit, killer: unit) {
-		if (Settings.getInstance().transport == 1) return false;
+		if (!RoundSettings.transport) return false;
 		if (!IsUnitType(trans, UTYPE.TRANSPORT)) return false;
 
 		if (GetTerrainType(GetUnitX(trans), GetUnitY(trans)) != FourCC("Vcbp")) {

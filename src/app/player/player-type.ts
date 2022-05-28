@@ -1,3 +1,4 @@
+import { RoundSettings } from "app/game/settings-data";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { UID } from "resources/unitID";
@@ -293,7 +294,13 @@ export class GamePlayer {
 	public coloredName(): string {
 		if (this.player == NEUTRAL_HOSTILE) return `${GetPlayerName(this.player)}`
 
-		return `${PLAYER_COLOR_CODES[this.names.colorIndex]}${GetPlayerName(this.player)}|r`
+		if (!RoundSettings.promode) {
+			return `${PLAYER_COLOR_CODES[this.names.colorIndex]}${GetPlayerName(this.player)}|r`
+		} else {
+			return `${PLAYER_COLOR_CODES[this.names.colorIndex]}${this.names.acct}|r`
+		}
+
+
 	}
 
 	public isAlive() {

@@ -2,32 +2,7 @@ import { GamePlayer } from "app/player/player-type";
 import { UserInterface } from "app/ui/user-interface-type";
 import { MAX_PLAYERS } from "resources/constants";
 import { UID } from "resources/unitID";
-
-export interface RoundSettings {
-	gameType: number;
-	diplomancy: number;
-	allies: number;
-	alliesControl: number;
-	fog: number;
-	names: number;
-	nomad: number;
-	gold: number;
-	ships: number;
-	transport: number;
-}
-
-// private test: RoundSettings = {
-// 	gameType: 0,
-// 	diplomancy: 0,
-// 	allies: 0,
-// 	alliesControl: 0,
-// 	fog: 0,
-// 	names: 0,
-// 	nomad: 0,
-// 	gold: 0,
-// 	ships: 0,
-// 	transport: 0,
-// }
+import { RoundSettings } from "./settings-data";
 
 export class Settings {
 	private static instance: Settings;
@@ -83,6 +58,8 @@ export class Settings {
 			default: //Conquest
 				break;
 		}
+
+		RoundSettings.gameType = this.gameType;
 	}
 
 	/**
@@ -113,6 +90,8 @@ export class Settings {
 		if (this.alliesControl == 1) {
 			this.alliesControlSetup();
 		}
+
+		RoundSettings.diplomancy = this.diplomancy;
 	}
 
 	/**
@@ -140,12 +119,14 @@ export class Settings {
 	 */
 	private alliesSetup() {
 		//TODO Set Ally Limit
+		RoundSettings.allies = this.allies;
 	}
 
 	/**
 	 * alliesControlSetup
 	 */
 	private alliesControlSetup() {
+		RoundSettings.alliesControl = this.alliesControl;
 		//TODO
 	}
 
@@ -178,6 +159,7 @@ export class Settings {
 		// 		}
 		// 	}
 		// })
+		RoundSettings.fog = this.fog;
 	}
 
 	/**
@@ -192,6 +174,8 @@ export class Settings {
 				//Data.NamesOnDefeat = true;
 				break;
 		}
+
+		RoundSettings.names = this.names;
 	}
 
 	/**
@@ -218,6 +202,8 @@ export class Settings {
 				this.nomad = 60;
 				break;
 		}
+
+		RoundSettings.nomad = this.nomad;
 	}
 
 	/**
@@ -226,10 +212,10 @@ export class Settings {
 	private goldSetup() {
 		switch (this.gold) {
 			case 1:
-				//Data.SendGold = true;
+				RoundSettings.gold = true;
 				break;
 			default:
-				//Data.SendGold = false;
+				RoundSettings.gold = false;
 				break;
 		}
 	}
@@ -254,6 +240,8 @@ export class Settings {
 			default:
 				break;
 		}
+
+		RoundSettings.ships = this.ships;
 	}
 
 	/**
@@ -261,9 +249,9 @@ export class Settings {
 	 */
 	private transportSetup() {
 		if (this.transport == 1) {
-			//Data.TransportAnywhere = true;
+			RoundSettings.transport = true
 		} else {
-			//Data.TransportAnywhere = false;
+			RoundSettings.transport = false;
 		}
 	}
 }
