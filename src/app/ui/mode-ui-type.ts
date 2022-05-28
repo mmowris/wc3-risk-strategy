@@ -200,7 +200,7 @@ export class ModeUI {
 			}
 		});
 
-		new Slider("Nomad Time Limit", backdrop, 0.075, -0.27, -0.015, NomadTimeLimit, () => {
+		new Slider("Nomad Time Limit", backdrop, 0.075, -0.23, -0.015, NomadTimeLimit, () => {
 			Settings.getInstance().nomad = BlzFrameGetValue(Slider.fromName("Nomad Time Limit").slider);
 
 			if (BlzFrameGetValue(Slider.fromName("Nomad Time Limit").slider) > 0) {
@@ -210,7 +210,7 @@ export class ModeUI {
 			}
 		});
 
-		new Slider("Gold Sending", backdrop, 0.064, -0.31, -0.004, GoldSending, () => {
+		new Slider("Gold Sending", backdrop, 0.064, -0.27, -0.004, GoldSending, () => {
 			Settings.getInstance().gold = BlzFrameGetValue(Slider.fromName("Gold Sending").slider);
 
 			if (BlzFrameGetValue(Slider.fromName("Gold Sending").slider) > 0) {
@@ -220,7 +220,7 @@ export class ModeUI {
 			}
 		});
 
-		new Slider("Ships Allowed", backdrop, 0.066, -0.35, -0.006, ShipsAllowed, () => {
+		new Slider("Ships Allowed", backdrop, 0.066, -0.31, -0.006, ShipsAllowed, () => {
 			Settings.getInstance().ships = BlzFrameGetValue(Slider.fromName("Ships Allowed").slider);
 
 			const transports: Slider = Slider.fromName("Transports Load/Unload");
@@ -240,7 +240,7 @@ export class ModeUI {
 			}
 		});
 
-		new Slider("Transports Load/Unload", backdrop, 0.089, -0.39, -0.029, TransportLanding, () => {
+		new Slider("Transports Load/Unload", backdrop, 0.089, -0.35, -0.029, TransportLanding, () => {
 			Settings.getInstance().transport = BlzFrameGetValue(Slider.fromName("Transports Load/Unload").slider);
 
 			if (BlzFrameGetValue(Slider.fromName("Transports Load/Unload").slider) > 0) {
