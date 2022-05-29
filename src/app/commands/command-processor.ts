@@ -274,7 +274,7 @@ export const CommandProcessor = () => {
 					}
 
 					//TODO: check ally limit
-					Alliances.getInstance().set(gPlayer.player, receiver.player, true);
+					Alliances.getInstance().setAlliance(gPlayer.player, receiver.player, true);
 
 					MessageAll(false, `${gPlayer.coloredName()} has allied ${receiver.coloredName()}`, 0.0, 0.0);
 				} catch (error) {
@@ -322,8 +322,8 @@ export const CommandProcessor = () => {
 						return;
 					}
 
-					Alliances.getInstance().set(gPlayer.player, receiver.player, false);
-					Alliances.getInstance().set(receiver.player, gPlayer.player, false);
+					Alliances.getInstance().setAlliance(gPlayer.player, receiver.player, false);
+					Alliances.getInstance().setAlliance(receiver.player, gPlayer.player, false);
 
 					MessageAll(false, `${gPlayer.coloredName()} and ${receiver.coloredName()} are no longer allies!`, 0.0, 0.0);
 				} catch (error) {

@@ -1,7 +1,7 @@
 import { GamePlayer } from "app/player/player-type";
 import { UserInterface } from "app/ui/user-interface-type";
-import { MAX_PLAYERS } from "resources/constants";
 import { UID } from "resources/unitID";
+import { Alliances } from "./round-allies";
 import { RoundSettings } from "./settings-data";
 
 export class Settings {
@@ -37,6 +37,7 @@ export class Settings {
 		this.goldSetup();
 		this.shipsSetup();
 		this.transportSetup();
+		print("debug 2")
 	}
 
 	/**
@@ -64,54 +65,41 @@ export class Settings {
 	 * diplomancySetup
 	 */
 	private diplomancySetup() {
-		switch (this.diplomancy) {
-			case 1: //Lobby Teams
-				//TODO: Set adv control
-				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
-				break;
-
-			case 2: //Random Teams
-				this.unallyLobby();
-				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
-				//TODO: Create random teams based off allies number
-				break;
-
-			case 3: //Free Ally
-				this.unallyLobby();
-				
-				break;
-			default: //FFA
-				this.unallyLobby();
-				UserInterface.ffaSetup();
-				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
-				break;
-		}
+		Alliances.getInstance();
+		//try {
+			switch (this.diplomancy) {
+				case 1: //Lobby Teams
+					//TODO: Set adv control
+					SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+					break;
+	
+				case 2: //Random Teams
+					Alliances.getInstance().unAllyLobby()
+					SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+					//TODO: Create random teams based off allies number
+					break;
+	
+				case 3: //Free Ally
+					Alliances.getInstance().unAllyLobby()
+	
+					break;
+				default: //FFA
+					Alliances.getInstance().unAllyLobby()
+					UserInterface.ffaSetup();
+					SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+					break;
+			}
+		// } catch (error) {
+		// 	print(error)
+		// }
 
 		if (this.alliesControl == 1) {
 			this.alliesControlSetup();
 		}
 
 		RoundSettings.diplomancy = this.diplomancy;
-	}
 
-	/**
-	 * unallyLobby
-	 */
-	private unallyLobby() {
-		for (let i = 0; i < MAX_PLAYERS; i++) {
-			for (let j = 0; j < MAX_PLAYERS; j++) {
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_PASSIVE, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_REQUEST, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_RESPONSE, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_XP, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_SPELLS, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_CONTROL, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_ADVANCED_CONTROL, false)
-				//SetPlayerAlliance(Player(i), Player(j), ALLIANCE_RESCUABLE, false)
-				//SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION_FORCED, false)
-			}
-		}
+		print("debug 1")
 	}
 
 	/**
