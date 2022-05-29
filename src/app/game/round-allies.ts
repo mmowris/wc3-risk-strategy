@@ -15,15 +15,16 @@ export class Alliances {
 	private setTeams() {
 		for (let i = 0; i < MAX_PLAYERS; i++) {
 			let p1: player = Player(i);
+			if (!GamePlayer.fromPlayer.has(p1)) continue;
 
 			if (!this.teams.has(p1)) this.teams.set(p1, []);
 
 			for (let j = 0; j < MAX_PLAYERS; j++) {
 				let p2: player = Player(j);
+				if (!GamePlayer.fromPlayer.has(p2)) continue;
+				if (p1 == p2) continue;
 
-				if (this.isAllied(p1, p2)) {
-					this.teams.get(p1).push(p2);
-				}
+				if (this.isAllied(p1, p2)) this.teams.get(p1).push(p2);
 
 				p2 = null;
 			}
@@ -32,11 +33,12 @@ export class Alliances {
 		}
 
 		this.teams.forEach((val: [], key: player) => {
-			print(`        ${key} is allied to ${val.length} players`)
+			print(`${GetPlayerName(key)} is allied to ${val.length} players`)
 		})
 	}
 
 	public setAlliance(p1: player, p2: player, bool: boolean) {
+		//TODO: check ally limit
 		SetPlayerAlliance(p1, p2, ALLIANCE_PASSIVE, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_HELP_REQUEST, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_HELP_RESPONSE, bool)

@@ -273,7 +273,6 @@ export const CommandProcessor = () => {
 						return;
 					}
 
-					//TODO: check ally limit
 					Alliances.getInstance().setAlliance(gPlayer.player, receiver.player, true);
 
 					MessageAll(false, `${gPlayer.coloredName()} has allied ${receiver.coloredName()}`, 0.0, 0.0);
