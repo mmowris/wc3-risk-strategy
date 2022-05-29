@@ -6,10 +6,14 @@ import { MAX_PLAYERS } from "resources/constants";
 export class Alliances {
 	private static instance: Alliances;
 	private teams: Map<player, player[]>;
+	//private teamNumber: Map<number, player[]>;
+	private teamNumber: Map<player, number>;
 	//TODO: if all humans are on one team, disband team.
 	constructor() {
+		this.teamNumber = new Map<player, number>();
 		this.teams = new Map<player, player[]>();
 		this.setTeams();
+		this.setTeamNumbers();
 	}
 
 	private setTeams() {
@@ -37,6 +41,19 @@ export class Alliances {
 		})
 	}
 
+	private setTeamNumbers() {
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			//if (gPlayer.isNeutral()) return;
+			//if (gPlayer.isObserving()) return;
+
+			this.teamNumber.set(gPlayer.player, GetPlayerTeam(gPlayer.player));
+		})
+
+		this.teamNumber.forEach((val: number, key: player) => {
+			print(`${GamePlayer.get(key).coloredName()} team #: ${val}`);
+		})
+	}
+
 	public setAlliance(p1: player, p2: player, bool: boolean) {
 		//TODO: check ally limit
 		SetPlayerAlliance(p1, p2, ALLIANCE_PASSIVE, bool)
@@ -58,6 +75,7 @@ export class Alliances {
 	}
 
 	private remove(p1: player, p2: player) {
+		if (!this.teams.has(p1)) return;
 		if (this.teams.get(p1).indexOf(p2) == -1) return;
 
 		this.teams.get(p1).splice(this.teams.get(p1).indexOf(p2), 1)
