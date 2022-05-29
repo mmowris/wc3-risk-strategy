@@ -2,7 +2,6 @@ export class UserInterface {
 	public static onLoad() {
 		UserInterface.setResourceFrames();
 		UserInterface.initAlliesBoard();
-		//UserInterface.ffaSetup();
 		UserInterface.hideUI(true);
 		BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarChatButton", 0), false);
 	}

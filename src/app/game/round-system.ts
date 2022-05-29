@@ -77,11 +77,6 @@ export class Round {
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
-				// GamePlayer.fromPlayer.forEach(gPlayer => {
-				// 	gPlayer.fog = CreateFogModifierRect(gPlayer.player, FOG_OF_WAR_VISIBLE, GetPlayableMapRect(), true, false);
-				// 	FogModifierStart(gPlayer.fog);
-				// })
-
 				ModeUI.toggleModeFrame(false);
 				UserInterface.hideUI(false);
 				Scoreboard.getInstance().init();

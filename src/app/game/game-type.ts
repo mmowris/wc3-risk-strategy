@@ -37,7 +37,7 @@ export class Game {
 		SetGameSpeed(MAP_SPEED_FASTEST);
 		SetMapFlag(MAP_LOCK_SPEED, true);
 		SetMapFlag(MAP_USE_HANDICAPS, true);
-		//SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, false);
+		SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, false);
 		SetTimeOfDay(12.00);
 		SetTimeOfDayScale(0.00);
 		SetAllyColorFilterState(0);
@@ -91,9 +91,6 @@ export class Game {
 			})
 
 			Round.getInstance();
-
-			// this.unallyLobby(); //TODO Move to settings
-			// SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true); //TODO Move to settings
 		});
 	}
 }

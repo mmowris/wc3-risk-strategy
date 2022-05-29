@@ -8,7 +8,7 @@ export class Settings {
 	private static instance: Settings;
 	public gameType: number = 0;
 	public diplomancy: number = 0;
-	public allies: number = 1;
+	public allyLimit: number = 1;
 	public alliesControl: number = 0;
 	public fog: number = 0;
 	public nomad: number = 0;
@@ -66,22 +66,24 @@ export class Settings {
 	private diplomancySetup() {
 		switch (this.diplomancy) {
 			case 1: //Lobby Teams
-				//TODO: Nothing?
+				//TODO: Set adv control
+				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
 				break;
 
 			case 2: //Random Teams
 				this.unallyLobby();
+				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
 				//TODO: Create random teams based off allies number
 				break;
 
 			case 3: //Free Ally
-				//TODO: Turn on trigger that will allow players to ally one another
 				this.unallyLobby();
-				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, false);
+				
 				break;
 			default: //FFA
 				this.unallyLobby();
 				UserInterface.ffaSetup();
+				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
 				break;
 		}
 
@@ -98,6 +100,7 @@ export class Settings {
 	private unallyLobby() {
 		for (let i = 0; i < MAX_PLAYERS; i++) {
 			for (let j = 0; j < MAX_PLAYERS; j++) {
+				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_PASSIVE, false)
 				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_REQUEST, false)
 				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_HELP_RESPONSE, false)
 				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_XP, false)
@@ -105,9 +108,8 @@ export class Settings {
 				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION, false)
 				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_CONTROL, false)
 				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_ADVANCED_CONTROL, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_RESCUABLE, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION_FORCED, false)
-				SetPlayerAlliance(Player(i), Player(j), ALLIANCE_PASSIVE, false)
+				//SetPlayerAlliance(Player(i), Player(j), ALLIANCE_RESCUABLE, false)
+				//SetPlayerAlliance(Player(i), Player(j), ALLIANCE_SHARED_VISION_FORCED, false)
 			}
 		}
 	}
@@ -117,7 +119,7 @@ export class Settings {
 	 */
 	private alliesSetup() {
 		//TODO Set Ally Limit
-		RoundSettings.allies = this.allies;
+		RoundSettings.allies = this.allyLimit;
 	}
 
 	/**

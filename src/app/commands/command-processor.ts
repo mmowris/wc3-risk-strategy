@@ -11,6 +11,7 @@ import { File, Timer } from "w3ts";
 import { CleanMap, FastRestart, ResetGame, SlowRestart } from "./restart";
 import { GameRankingHelper } from "app/game/game-ranking-helper-type";
 import { RoundSettings } from "app/game/settings-data";
+import { Alliances } from "app/game/round-allies";
 
 export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
 
@@ -22,7 +23,7 @@ export const CommandProcessor = () => {
 	}
 
 	TriggerAddCondition(t, Condition(() => {
-		const command: string = GetEventPlayerChatString().split(' ')[0];
+		const command: string = StringCase(GetEventPlayerChatString().split(' ')[0], false);
 		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
 
 		switch (command) {
@@ -227,6 +228,104 @@ export const CommandProcessor = () => {
 					DisplayTimedTextToPlayer(gPlayer.player, 0, 0, 3, `You sent ${HexColors.TANGERINE}${gQty}|r gold to ${receiver.coloredName()}`);
 					DisplayTimedTextToPlayer(receiver.player, 0, 0, 3, `You received ${HexColors.TANGERINE}${gQty}|r gold from ${gPlayer.coloredName()}`);
 
+				} catch (error) {
+					print(error)
+				}
+				break;
+			case "-ally":
+			case "-peace":
+				if (!GameTracking.getInstance().roundInProgress) return;
+				if (RoundSettings.diplomancy != 3) return;
+
+				try {
+					const pName: string = StringCase(GetEventPlayerChatString().split(' ')[1], false);
+					if (!pName) return;
+
+					let gCounter: number = 0;
+					let receiver: GamePlayer;
+
+					GamePlayer.fromPlayer.forEach(tPlayer => {
+						const compareName: string = (RoundSettings.promode) ? tPlayer.names.acct.toLowerCase() : tPlayer.names.color.toLowerCase()
+
+						if (compareName.slice(0, pName.length) == pName) {
+							gCounter++;
+							receiver = tPlayer;
+						}
+					})
+
+					if (!receiver) {
+						ErrorMessage(gPlayer.player, "Player not found!");
+						return;
+					}
+
+					if (gCounter > 1) {
+						ErrorMessage(gPlayer.player, "Multiple matches found, try a longer name!")
+						return;
+					}
+
+					if (gPlayer == receiver) {
+						ErrorMessage(gPlayer.player, "You cant ally yourself. Duh!")
+						return;
+					}
+
+					if (IsPlayerAlly(gPlayer.player, receiver.player)) {
+						ErrorMessage(gPlayer.player, `You are already allied to ${receiver.coloredName()}`)
+						return;
+					}
+
+					//TODO: check ally limit
+					Alliances.getInstance().set(gPlayer.player, receiver.player, true);
+
+					MessageAll(false, `${gPlayer.coloredName()} has allied ${receiver.coloredName()}`, 0.0, 0.0);
+				} catch (error) {
+					print(error)
+				}
+				break;
+			case "-unally":
+			case "-war":
+				if (!GameTracking.getInstance().roundInProgress) return;
+				if (RoundSettings.diplomancy != 3) return;
+
+				try {
+					const pName: string = StringCase(GetEventPlayerChatString().split(' ')[1], false);
+					if (!pName) return;
+
+					let gCounter: number = 0;
+					let receiver: GamePlayer;
+
+					GamePlayer.fromPlayer.forEach(tPlayer => {
+						const compareName: string = (RoundSettings.promode) ? tPlayer.names.acct.toLowerCase() : tPlayer.names.color.toLowerCase()
+
+						if (compareName.slice(0, pName.length) == pName) {
+							gCounter++;
+							receiver = tPlayer;
+						}
+					})
+
+					if (!receiver) {
+						ErrorMessage(gPlayer.player, "Player not found!");
+						return;
+					}
+
+					if (gCounter > 1) {
+						ErrorMessage(gPlayer.player, "Multiple matches found, try a longer name!")
+						return;
+					}
+
+					if (gPlayer == receiver) {
+						ErrorMessage(gPlayer.player, "Come on, really?")
+						return;
+					}
+
+					if (IsPlayerEnemy(gPlayer.player, receiver.player)) {
+						ErrorMessage(gPlayer.player, `You are not allied to ${receiver.coloredName()}`)
+						return;
+					}
+
+					Alliances.getInstance().set(gPlayer.player, receiver.player, false);
+					Alliances.getInstance().set(receiver.player, gPlayer.player, false);
+
+					MessageAll(false, `${gPlayer.coloredName()} and ${receiver.coloredName()} are no longer allies!`, 0.0, 0.0);
 				} catch (error) {
 					print(error)
 				}

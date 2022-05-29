@@ -163,7 +163,7 @@ export class ModeUI {
 		});
 
 		new Slider("Ally Limit", backdrop, 0.053, -0.14, 0.007, AllyLimit, () => {
-			Settings.getInstance().allies = (BlzFrameGetValue(Slider.fromName("Ally Limit").slider) + 1);
+			Settings.getInstance().allyLimit = (BlzFrameGetValue(Slider.fromName("Ally Limit").slider) + 1);
 		});
 			BlzFrameSetEnable(Slider.fromName("Ally Limit").slider, false);
 
