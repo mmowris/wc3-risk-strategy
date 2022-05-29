@@ -29,6 +29,7 @@ export class Round {
 		GameTracking.getInstance().leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1))));
 
 		ModeUI.buildModeFrame();
+		FogEnable(true);
 		this.runModeSelection();
 	}
 
@@ -178,6 +179,7 @@ export class Round {
 			//Set Players
 			if ((gPlayer.isObserving() || GetPlayerState(gPlayer.player, PLAYER_STATE_OBSERVER) > 0) && !gPlayer.isLeft()) {
 				SetPlayerState(gPlayer.player, PLAYER_STATE_OBSERVER, 1)
+				FogModifierStart(gPlayer.fog);
 
 				if (!gPlayer.isObserving()) {
 					gPlayer.setStatus(PlayerStatus.OBSERVING)

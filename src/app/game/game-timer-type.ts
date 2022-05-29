@@ -5,6 +5,7 @@ import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
 import { Timer } from "w3ts";
 import { GameTracking } from "./game-tracking-type";
+import { RoundSettings } from "./settings-data";
 
 export class GameTimer {
 	private static instance: GameTimer
@@ -12,6 +13,7 @@ export class GameTimer {
 	private duration: number;
 	private _tick: number;
 	private turn: number;
+	private fog: number = -1;
 
 	constructor() {
 		this.duration = 60;
@@ -118,6 +120,23 @@ export class GameTimer {
 			if (p1.income > p2.income) return -1;
 			return 0;
 		})
+
+		if (RoundSettings.fog == 2) {
+			this.fog++;
+
+			if (this.fog == 2) {
+				SetTimeOfDay(24.00);
+				GamePlayer.fromPlayer.forEach(player => {
+					if (player.isAlive()) FogModifierStop(player.fog);
+				})
+			} else if (this.fog == 4) {
+				SetTimeOfDay(12.00);
+				GamePlayer.fromPlayer.forEach(player => {
+					if (player.isAlive()) FogModifierStart(player.fog);
+				})
+				this.fog = 0;
+			}
+		}
 
 		return true;
 	}

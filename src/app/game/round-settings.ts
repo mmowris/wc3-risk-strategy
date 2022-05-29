@@ -132,31 +132,20 @@ export class Settings {
 	 * fogSetup
 	 */
 	public fogSetup() {
-		FogMaskEnable(false);
-		//FogEnable(true);
-
 		switch (this.fog) {
 			case 1:
-				FogEnable(true);
-				//FogMaskEnable(true);
+				GamePlayer.fromPlayer.forEach(player => {
+					if (player.isAlive()) FogModifierStop(player.fog);
+				})
 				break;
 			case 2:
-				FogEnable(false);
-				//Data.NightFog = true;
-				break;
 			default:
-				FogEnable(false);
+				GamePlayer.fromPlayer.forEach(player => {
+					if (player.isAlive()) FogModifierStart(player.fog);
+				})
 				break;
 		}
 
-		// GetPlayers.forEach(gPlayer => {
-		// 	if (gPlayer.isObserving()) {
-		// 		if (gPlayer.player.isLocal()) {
-		// 			FogMaskEnable(false);
-		// 			FogEnable(false);
-		// 		}
-		// 	}
-		// })
 		RoundSettings.fog = this.fog;
 	}
 
@@ -180,7 +169,7 @@ export class Settings {
 			case 5:
 				this.nomad = 0; //Unlimited Time
 				break;
-			case 6: 
+			case 6:
 				this.nomad = -1; //Insta Death
 				break;
 			default:

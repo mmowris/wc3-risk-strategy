@@ -49,20 +49,15 @@ export function ResetGame() {
 
 		Trees.getInstance().reset();
 		GameTimer.getInstance().reset();
-		//FogEnable(true);
-		//If fast restart, enable selection and reset
-		//If slow restart, bring up ui
+
 	} catch (error) {
 		print(error)
 	}
 }
 
-//TODO no obs button on modeui
-//TODO reset game timer
 export function SlowRestart() {
 	try {
 		UserInterface.hideUI(true);
-		//ModeUI.toggleModeFrame(true);
 		BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), true);
 		Round.getInstance().runModeSelection();
 	} catch (error) {

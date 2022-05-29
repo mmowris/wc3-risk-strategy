@@ -112,6 +112,8 @@ export class GamePlayer {
 
 		this.status = GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0 ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING
 
+		//SetPlayerState(this.player, PLAYER_STATE_OBSERVER, 0);
+
 		let contents: string;
 		if (GetLocalPlayer() == who) {
 			contents = File.read("camSettings.pld");
@@ -136,6 +138,8 @@ export class GamePlayer {
 			total: 0,
 			bar: null
 		}
+
+		this.fog = CreateFogModifierRect(this.player, FOG_OF_WAR_VISIBLE, GetPlayableMapRect(), true, false);
 
 		this.init();
 	}
@@ -180,6 +184,8 @@ export class GamePlayer {
 		SetPlayerTechMaxAllowed(this.player, UID.BATTLESHIP_SS, 1);
 		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_A, 1);
 		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_B, 1);
+
+		SetPlayerState(this.player, PLAYER_STATE_OBSERVER, 0);
 	}
 
 	public giveGold(val?: number) {

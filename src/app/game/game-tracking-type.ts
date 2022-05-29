@@ -73,7 +73,6 @@ export class GameTracking {
 		this.roundInProgress = false;
 		GameTracking.canReset = true;
 
-		FogEnable(false);
 		ClearTextMessages();
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {

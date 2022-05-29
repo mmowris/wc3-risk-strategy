@@ -83,7 +83,7 @@ export class Game {
 			CameraControls.getInstance();
 
 			Players.forEach(player => {
-				if (player.slotState == PLAYER_SLOT_STATE_PLAYING) {
+				if (player.slotState == PLAYER_SLOT_STATE_PLAYING/* || player.getState(PLAYER_STATE_OBSERVER) > 0*/) {
 					if (player.id >= 25) return; //Exclude ai that is not neutral hostile
 
 					GamePlayer.fromPlayer.set(player.handle, new GamePlayer(player.handle));
@@ -94,15 +94,6 @@ export class Game {
 
 			// this.unallyLobby(); //TODO Move to settings
 			// SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true); //TODO Move to settings
-
-			// ModeUI.buildModeFrame(); //TODO Move to Round
-			// ModeUI.toggleModeFrame(true); //TODO Move to Round
-
-			// //FogEnable(true); //TODO Move to settings
-
-			// //I should refactor this somehow, right now this is a long chain of code
-			// Game.runModeSelection(); //TODO Move to settings
-			// // The chain begins with runmodeselection -> initroundsettings -> initround
 		});
 	}
 }
