@@ -1,5 +1,7 @@
 import { GamePlayer } from "app/player/player-type";
+import { ErrorMessage } from "libs/utils";
 import { MAX_PLAYERS } from "resources/constants";
+import { RoundSettings } from "./settings-data";
 
 //TODO: reset alliances on new round
 //TODO: free ally needs triggers that ally/unally on alliance change
@@ -76,7 +78,13 @@ export class Alliances {
 	}
 
 	public setAlliance(p1: player, p2: player, bool: boolean) {
-		//TODO: check ally limit
+		if (this.alliesOf.has(p1)) {
+			if (this.alliesOf.get(p1).length > RoundSettings.allies) {
+				ErrorMessage(p1, "You have the max amount of allies!");
+				return;
+			}
+		}
+
 		SetPlayerAlliance(p1, p2, ALLIANCE_PASSIVE, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_HELP_REQUEST, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_HELP_RESPONSE, bool)

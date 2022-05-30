@@ -5,6 +5,8 @@ import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { GameRankingHelper } from "./game-ranking-helper-type";
+import { RoundSettings } from "./settings-data";
+import { Alliances } from "./round-allies";
 //TODO
 //If player goes from nomad -> alive in 2 player game, it games and the winner wins
 //The bug is due to nomad -> alive, it actually goes into nomad block of code first i believe. need to print to test, for now it has no effect in a real game and can be ignored
@@ -82,8 +84,13 @@ export class GameTracking {
 
 			gPlayer.setName(gPlayer.names.acct);
 
-			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
-			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
+			if (RoundSettings.diplomancy > 0) {
+				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.WHITE}Team ${Alliances.getInstance().getPlayerTeam(who.player)}|r ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
+				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${HexColors.WHITE}Team ${Alliances.getInstance().getPlayerTeam(who.player)}|r ${HexColors.TANGERINE}won the game with|r ${Alliances.getInstance().getTeamCities(Alliances.getInstance().getPlayerTeam(who.player))} ${HexColors.TANGERINE}cities!|r`);
+			} else {
+				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
+				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
+			}
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.TANGERINE}Discord: discord.me/risk|r`);
 
 			if (gPlayer != who && gPlayer.isAlive() || gPlayer.isNomad()) {

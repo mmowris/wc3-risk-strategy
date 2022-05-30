@@ -141,7 +141,6 @@ export class ModeUI {
 			Settings.getInstance().diplomancy = val;
 
 			const aLimit: Slider = Slider.fromName("Ally Limit");
-			//const box: Slider = Slider.fromName("Transports Load/Unload");
 
 			if (val > 0) {
 				// this.fullControlBox.setEnabled(true);
