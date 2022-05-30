@@ -37,7 +37,6 @@ export class Settings {
 		this.goldSetup();
 		this.shipsSetup();
 		this.transportSetup();
-		print("debug 2")
 	}
 
 	/**
@@ -66,47 +65,41 @@ export class Settings {
 	 */
 	private diplomancySetup() {
 		Alliances.getInstance();
-		//try {
-			switch (this.diplomancy) {
-				case 1: //Lobby Teams
-					//TODO: Set adv control
-					SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
-					break;
-	
-				case 2: //Random Teams
-					Alliances.getInstance().unAllyLobby()
-					SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
-					//TODO: Create random teams based off allies number
-					break;
-	
-				case 3: //Free Ally
-					Alliances.getInstance().unAllyLobby()
-	
-					break;
-				default: //FFA
-					Alliances.getInstance().unAllyLobby()
-					UserInterface.ffaSetup();
-					SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
-					break;
-			}
-		// } catch (error) {
-		// 	print(error)
-		// }
+
+		switch (this.diplomancy) {
+			case 1: //Lobby Teams
+				//TODO: Set adv control
+				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+				break;
+
+			case 2: //Random Teams
+				Alliances.getInstance().unAllyLobby()
+				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+				//TODO: Create random teams based off allies number
+				break;
+
+			case 3: //Free Ally
+				Alliances.getInstance().unAllyLobby();
+
+				break;
+			default: //FFA
+				Alliances.getInstance().unAllyLobby()
+				UserInterface.ffaSetup();
+				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+				break;
+		}
 
 		if (this.alliesControl == 1) {
 			this.alliesControlSetup();
 		}
 
 		RoundSettings.diplomancy = this.diplomancy;
-
-		print("debug 1")
 	}
 
 	/**
 	 * alliesSetup
 	 */
 	private alliesSetup() {
-		//TODO Set Ally Limit
 		RoundSettings.allies = this.allyLimit;
 	}
 

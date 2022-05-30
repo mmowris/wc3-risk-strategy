@@ -215,8 +215,14 @@ export const CommandProcessor = () => {
 						return;
 					}
 
-					if (!RoundSettings.gold && (IsPlayerEnemy(gPlayer.player, receiver.player) || gPlayer.player == receiver.player)) {
+					if (gPlayer == receiver) {
+						ErrorMessage(gPlayer.player, "You can't send gold to yourself, retard!")
+						return;
+					}
+
+					if (!RoundSettings.gold && (IsPlayerEnemy(gPlayer.player, receiver.player))) {
 						ErrorMessage(gPlayer.player, `You may not send gold to ${receiver.coloredName()}`);
+						return;
 					}
 
 					if (gQty > GetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD)) {

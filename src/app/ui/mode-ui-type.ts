@@ -47,7 +47,7 @@ export class ModeUI {
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-names / -players|r  Lists active players`)
 		//BlzFrameAddText(cList, `${HexColors.TANGERINE}-sb 1 / -sb 2|r  Changes the scoreboard layout`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}-stfu name|r  Globally mute a player for 5 minutes`)
-		BlzFrameAddText(cList, `${HexColors.TANGERINE}-g name qty|r  Send a player gold`)
+		BlzFrameAddText(cList, `${HexColors.TANGERINE}-g name #|r  Send a player gold`)
 		//Hotkeys
 		BlzFrameAddText(cList, `|n${HexColors.RED}Hotkeys:|r`)
 		BlzFrameAddText(cList, `${HexColors.TANGERINE}F1|r  Opens player tools`)

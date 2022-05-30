@@ -2,17 +2,22 @@ import { GamePlayer } from "app/player/player-type";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
+import { RoundSettings } from "app/game/settings-data";
+import { Alliances } from "app/game/round-allies";
 
 export class Scoreboard {
 	private static instance: Scoreboard;
 	private mb: multiboard;
 	public playersOnBoard: GamePlayer[] = [];
 	public size: number;
+	public allyBoard: boolean;
 
 	constructor() { }
 
 	//Public API
 	public init() {
+		this.allyBoard = RoundSettings.diplomancy == 1 || RoundSettings.diplomancy == 2 ? true : false
+
 		this.mb = CreateMultiboard();
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
@@ -67,8 +72,16 @@ export class Scoreboard {
 	}
 
 	public updateBoard(gPlayer: GamePlayer, row: number, turnUpdate: boolean = false) {
+		//let sColor: string = (GetLocalPlayer() == gPlayer.player) ? HexColors.TANGERINE : HexColors.WHITE;
+		let sColor: string = HexColors.WHITE;
 
-		const sColor: string = (GetLocalPlayer() == gPlayer.player) ? HexColors.TANGERINE : HexColors.WHITE;
+		if (this.allyBoard && Alliances.getInstance().isAllied(GetLocalPlayer(), gPlayer.player)) {
+			sColor = HexColors.GREEN;
+		}
+
+		if (GetLocalPlayer() == gPlayer.player) {
+			sColor = HexColors.TANGERINE;
+		}
 
 		if (turnUpdate) {
 			if (gPlayer.isAlive() || gPlayer.isNomad()) {
@@ -78,7 +91,12 @@ export class Scoreboard {
 			}
 		}
 
-		Scoreboard.setItemValue(this.mb, `${gPlayer.coloredName()}`, row, 1);
+		if (!this.allyBoard) {
+			Scoreboard.setItemValue(this.mb, `${gPlayer.coloredName()}`, row, 1);
+		} else {
+			Scoreboard.setItemValue(this.mb, `${HexColors.TANGERINE}[${Alliances.getInstance().getPlayerTeam(gPlayer.player)}]|r${gPlayer.coloredName()}`, row, 1);
+		}
+		
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.cities.length}`, row, 3);
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).kills}`, row, 4);
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).deaths}`, row, 5);
@@ -107,10 +125,19 @@ export class Scoreboard {
 		}
 
 		this.updateTitle(`${PLAYER_COLOR_CODES[winPlayer.names.colorIndex]}${winPlayer.names.btag}|r won with ${PLAYER_COLOR_CODES[winPlayer.names.colorIndex]}${winPlayer.cities.length}|r cities! `);
+		
+		MultiboardMinimize(this.mb, true);
+		MultiboardMinimize(this.mb, false);
 	}
 
-	public cityClaimed(pName: GamePlayer, cName: string) {
-		Scoreboard.setItemValue(this.mb, `${pName.coloredName()} claimed ${HexColors.TANGERINE}${cName}|r`, this.size, 1);
+	public countryClaimed(pName: GamePlayer, cName: string) {
+		if (this.allyBoard) {
+			Scoreboard.setItemValue(this.mb, `${HexColors.TANGERINE}[${Alliances.getInstance().getPlayerTeam(pName.player)}]|r${pName.coloredName()} claimed ${HexColors.TANGERINE}${cName}|r`, this.size, 1);
+		} else {
+			Scoreboard.setItemValue(this.mb, `${pName.coloredName()} claimed ${HexColors.TANGERINE}${cName}|r`, this.size, 1);
+		}
+
+		
 	}
 
 	public destory() {

@@ -76,7 +76,7 @@ export function onOwnerChange() {
 		country.citiesOwned.set(owner, country.citiesOwned.get(owner) + 1);
 		if (country.cities.length == country.citiesOwned.get(owner)) {
 			country.setOwner(owner.player)
-			if (owner.player != NEUTRAL_HOSTILE) Scoreboard.getInstance().cityClaimed(owner, country.name);
+			if (owner.player != NEUTRAL_HOSTILE) Scoreboard.getInstance().countryClaimed(owner, country.name);
 		}
 
 		if (owner.cities.length > GameTracking.getInstance().leader.cities.length) GameTracking.getInstance().leader = owner;
