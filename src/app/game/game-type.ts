@@ -79,6 +79,7 @@ export class Game {
 		const loadTimer = new Timer();
 		loadTimer.start(0.0, false, () => {
 			GameRankingHelper.getInstance().endTracking() // TODO: Stay for bot to exit, will be moved at some point
+			//TODO add try/catch
 			UserInterface.onLoad();
 			CameraControls.getInstance();
 

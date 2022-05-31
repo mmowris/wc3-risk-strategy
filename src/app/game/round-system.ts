@@ -13,6 +13,7 @@ import { MAX_PLAYERS, NEUTRAL_HOSTILE } from "resources/constants";
 import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
 import { Timer } from "w3ts";
+import { Players } from "w3ts/globals";
 import { GameTimer } from "./game-timer-type";
 import { GameTracking } from "./game-tracking-type";
 import { Settings } from "./round-settings";
@@ -23,14 +24,20 @@ export class Round {
 	private modes: boolean;
 
 	constructor() {
-		this.count = 0;
-		this.modes = false;
-		Trees.getInstance();
-		GameTracking.getInstance().leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1))));
+		try {
+			this.count = 0;
+			this.modes = false;
+			Trees.getInstance();
+			GameTracking.getInstance().leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1))));
 
-		ModeUI.buildModeFrame();
-		FogEnable(true);
-		this.runModeSelection();
+			ModeUI.buildModeFrame();
+			FogEnable(true);
+			this.runModeSelection();
+		} catch (error) {
+			Players.forEach(p => {
+				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `${error}\nPlease take a screenshot and report this on the official discord!\ndiscord.me/risk\nEC:1`);
+			});
+		}
 	}
 
 	public runModeSelection() {
@@ -58,34 +65,47 @@ export class Round {
 	}
 
 	public start() {
-		this.count++;
+		try {
 
-		this.assignColors();
-		this.setupPlayerStatus();
+			this.count++;
 
-		Settings.getInstance().processSettings();
-		CityAllocation.start();
+			this.assignColors();
+			this.setupPlayerStatus();
 
-		let tick: number = 15;
-		const modeTimer: Timer = new Timer();
-		modeTimer.start(1.00, true, () => {
-			if (tick >= 1) {
-				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts in ${tick} seconds`);
-				BlzDestroyFrame(BlzGetFrameByName("pList", 0));
-				ModeUI.pList(BlzGetFrameByName("EscMenuBackdrop", 0));
-				tick--;
-			} else {
-				modeTimer.pause();
-				modeTimer.destroy();
-				ModeUI.toggleModeFrame(false);
-				UserInterface.hideUI(false);
-				Scoreboard.getInstance().init();
-				GameTimer.getInstance().start();
-				GameTracking.getInstance().roundInProgress = true;
-				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
-				Scoreboard.getInstance().toggleVis(true);
-			}
-		});
+			Settings.getInstance().processSettings();
+			CityAllocation.start();
+
+			let tick: number = 15;
+			const modeTimer: Timer = new Timer();
+			modeTimer.start(1.00, true, () => {
+				if (tick >= 1) {
+					BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts in ${tick} seconds`);
+					BlzDestroyFrame(BlzGetFrameByName("pList", 0));
+					ModeUI.pList(BlzGetFrameByName("EscMenuBackdrop", 0));
+					tick--;
+				} else {
+					try {
+						modeTimer.pause();
+						modeTimer.destroy();
+						ModeUI.toggleModeFrame(false);
+						UserInterface.hideUI(false);
+						Scoreboard.getInstance().init();
+						GameTimer.getInstance().start();
+						GameTracking.getInstance().roundInProgress = true;
+						PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
+						Scoreboard.getInstance().toggleVis(true);
+					} catch (error) {
+						Players.forEach(p => {
+							DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `${error}\nPlease take a screenshot and report this on the official discord!\ndiscord.me/risk\nEC:3`);
+						});
+					}
+				}
+			});
+		} catch (error) {
+			Players.forEach(p => {
+				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `${error}\nPlease take a screenshot and report this on the official discord!\ndiscord.me/risk\nEC:2`);
+			});
+		}
 	}
 
 	public quickStart() {
@@ -126,7 +146,7 @@ export class Round {
 		}
 		return this.instance;
 	}
-	
+
 	private assignColors() {
 		const colors: playercolor[] = [];
 		let tracker: number = 0;
