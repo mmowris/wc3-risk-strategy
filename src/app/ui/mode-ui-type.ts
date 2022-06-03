@@ -13,6 +13,7 @@ import { NomadTimeLimit } from "app/modes/nomadTimeLimit";
 import { ShipsAllowed } from "app/modes/shipsAllowed";
 import { TransportLanding } from "app/modes/transports";
 import { Slider } from "./slider";
+import { RoundSettings } from "app/game/settings-data";
 
 export class ModeUI {
 	public static frame: Map<string, framehandle> = new Map<string, framehandle>();
@@ -23,8 +24,8 @@ export class ModeUI {
 	public static buildModeFrame() {
 		//Backdrop
 		const backdrop: framehandle = BlzCreateFrame("EscMenuBackdrop", BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), 0, 0);
-		BlzFrameSetAbsPoint(backdrop, FRAMEPOINT_CENTER, 0.4, 0.3);
-		BlzFrameSetSize(backdrop, 0.80, 0.50);
+		BlzFrameSetAbsPoint(backdrop, FRAMEPOINT_CENTER, 0.4, 0.36);
+		BlzFrameSetSize(backdrop, 0.80, 0.46);
 
 		//Title
 		const title: framehandle = BlzCreateFrameByType("BACKDROP", "title", backdrop, "", 0);
@@ -57,7 +58,7 @@ export class ModeUI {
 
 		//Timer
 		const timer: framehandle = BlzCreateFrameByType("Text", "cTimer", backdrop, "EscMenuLabelTextTemplate", 0);
-		BlzFrameSetPoint(timer, FRAMEPOINT_RIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.04, 0.08);
+		BlzFrameSetPoint(timer, FRAMEPOINT_BOTTOMRIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.135, 0.043);
 		BlzFrameSetText(timer, "Autostart in: 45 seconds");
 
 		//Discord box
@@ -128,19 +129,37 @@ export class ModeUI {
 
 		//Pro mode button
 		const proMode: string = "PRO MODE"
-		ModeUI.createButton(proMode, FRAMEPOINT_BOTTOMLEFT, backdrop, FRAMEPOINT_BOTTOMLEFT, 0.03, 0.02, 0.09, 0.05);
+		ModeUI.createButton(proMode, FRAMEPOINT_BOTTOMLEFT, backdrop, FRAMEPOINT_BOTTOMLEFT, 0.17, 0.03, 0.09, 0.035);
 		ModeUI.frameFunc.set(proMode, () => {
-			try {
-				print("promode pushed");
-			} catch (error) {
-				print(error)
-			}
+			Frame.fromName("Game Type slider", 0).setValue(0);
+			Frame.fromName("Ally Limit slider", 0).setValue(0);
+			Frame.fromName("Diplomancy slider", 0).setValue(1);
+			Frame.fromName("Fog slider", 0).setValue(1);
+			Frame.fromName("Nomad Time Limit slider", 0).setValue(0);
+			Frame.fromName("Gold Sending slider", 0).setValue(0);
+			Frame.fromName("Ships Allowed slider", 0).setValue(0);
+			Frame.fromName("Transports Load/Unload slider", 0).setValue(0);
+			RoundSettings.promode = true;
+		})
+
+		//default settings button
+		const standardMode: string = "DEFAULT SETTINGS"
+		ModeUI.createButton(standardMode, FRAMEPOINT_BOTTOMLEFT, backdrop, FRAMEPOINT_BOTTOMLEFT, 0.03, 0.03, 0.13, 0.035);
+		ModeUI.frameFunc.set(standardMode, () => {
+			Frame.fromName("Game Type slider", 0).setValue(0);
+			Frame.fromName("Ally Limit slider", 0).setValue(0);
+			Frame.fromName("Diplomancy slider", 0).setValue(0);
+			Frame.fromName("Fog slider", 0).setValue(0);
+			Frame.fromName("Nomad Time Limit slider", 0).setValue(0);
+			Frame.fromName("Gold Sending slider", 0).setValue(0);
+			Frame.fromName("Ships Allowed slider", 0).setValue(0);
+			Frame.fromName("Transports Load/Unload slider", 0).setValue(0);
+			RoundSettings.promode = false;
 		})
 
 		//Start button
 		const startButton: string = "START NOW";
-		ModeUI.createButton(startButton, FRAMEPOINT_LEFT, BlzGetFrameByName("OBSERVE GAME", 0), FRAMEPOINT_RIGHT, 0.17, -0.05, 0.1, 0.035);
-		//ModeUI.createButton(startButton, FRAMEPOINT_BOTTOMRIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.23, 0.03, 0.1, 0.035);
+		ModeUI.createButton(startButton, FRAMEPOINT_BOTTOMRIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.03, 0.03, 0.1, 0.035);
 		ModeUI.frameFunc.set(startButton, () => {
 			this.startPressed = true;
 		})
@@ -180,6 +199,7 @@ export class ModeUI {
 				BlzFrameSetTextColor(Slider.fromName("Diplomancy").text, BlzConvertColor(255, 255, 255, 255))
 			}
 		});
+		BlzFrameSetVisible(BlzGetFrameByName("Game Type slider", 0), false);
 
 		new Slider("Ally Limit", backdrop, 0.053, -0.14, 0.007, AllyLimit, () => {
 			Settings.getInstance().allyLimit = (BlzFrameGetValue(Slider.fromName("Ally Limit").slider) + 1);
@@ -297,7 +317,7 @@ export class ModeUI {
 
 	public static pList(backdrop: framehandle) {
 		const pList: framehandle = BlzCreateFrameByType("TEXTAREA", "pList", backdrop, "BattleNetTextAreaTemplate", 0);
-		BlzFrameSetSize(pList, 0.20, 0.38);
+		BlzFrameSetSize(pList, 0.20, 0.36);
 		BlzFrameSetPoint(pList, FRAMEPOINT_TOPRIGHT, backdrop, FRAMEPOINT_TOPRIGHT, -0.025, -0.025);
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
@@ -326,6 +346,7 @@ export class ModeUI {
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Transports Load/Unload slider", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("PRO MODE", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("START NOW", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("DEFAULT SETTINGS", 0), Player(0), bool);
 	}
 
 	public static toggleModeFrame(bool: boolean) {
@@ -333,14 +354,24 @@ export class ModeUI {
 
 		if (bool) ModeUI.toggleOptions(bool);
 		if (bool) ModeUI.toggleObsButton(bool);
-		if (bool) ModeUI.showPromodeButton(bool);
+		if (bool) ModeUI.togglePromodeButton(bool);
+		if (bool) ModeUI.toggleDefaultButton(bool);
+		if (bool) ModeUI.toggleStartButton(bool);
 	}
 
 	public static toggleObsButton(bool: boolean) {
 		BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), bool);
 	}
 
-	public static showPromodeButton(bool: boolean) {
+	public static togglePromodeButton(bool: boolean) {
 		BlzFrameSetVisible(BlzGetFrameByName("PRO MODE", 0), bool);
+	}
+
+	public static toggleDefaultButton(bool: boolean) {
+		BlzFrameSetVisible(BlzGetFrameByName("DEFAULT SETTINGS", 0), bool);
+	}
+
+	public static toggleStartButton(bool: boolean) {
+		BlzFrameSetVisible(BlzGetFrameByName("START NOW", 0), bool);
 	}
 }

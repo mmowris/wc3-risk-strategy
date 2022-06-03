@@ -67,7 +67,6 @@ export class Round {
 
 	public start() {
 		try {
-
 			this.count++;
 
 			this.assignColors();
@@ -76,7 +75,7 @@ export class Round {
 			Settings.getInstance().processSettings();
 			CityAllocation.start();
 
-			let tick: number = 10;
+			let tick: number = 7;
 			const modeTimer: Timer = new Timer();
 			modeTimer.start(1.00, true, () => {
 				if (tick >= 1) {
@@ -114,7 +113,8 @@ export class Round {
 		CityAllocation.start();
 
 		MessageAll(true, `${HexColors.TANGERINE}The round will start in a few seconds!|r`)
-
+		this.count++;
+		
 		let tick: number = 3;
 		const quickTimer: Timer = new Timer();
 		quickTimer.start(1.00, true, () => {
