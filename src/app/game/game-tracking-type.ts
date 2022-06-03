@@ -7,9 +7,7 @@ import { NEUTRAL_HOSTILE } from "resources/constants";
 import { GameRankingHelper } from "./game-ranking-helper-type";
 import { RoundSettings } from "./settings-data";
 import { Alliances } from "./round-allies";
-//TODO
-//If player goes from nomad -> alive in 2 player game, it games and the winner wins
-//The bug is due to nomad -> alive, it actually goes into nomad block of code first i believe. need to print to test, for now it has no effect in a real game and can be ignored
+
 export class GameTracking {
 	private static instance: GameTracking;
 	private _leader: GamePlayer;

@@ -1,3 +1,4 @@
+import { RoundSettings } from "app/game/settings-data";
 import { GamePlayer } from "app/player/player-type";
 import { Util } from "libs/translators";
 import { NEUTRAL_HOSTILE } from "resources/constants";
@@ -10,7 +11,7 @@ export class CityAllocation {
 	public static start() {
 		let playerPool: player[] = this.buildPlayerPool();
 		let cityPool: City[] = this.buildCityPool();
-		let citiesMax: number = (Math.min((playerPool.length == 2) ? 18 : Math.floor(cityPool.length / playerPool.length), 20)); // TODO: refactor when promode is created
+		let citiesMax: number = RoundSettings.promode == true ? 18 : Math.min(Math.floor(cityPool.length / playerPool.length), 20);
 
 		while (playerPool.length > 0) {
 			let gPlayer: GamePlayer = GamePlayer.fromPlayer.get(playerPool.shift());

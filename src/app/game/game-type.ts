@@ -63,7 +63,7 @@ export class Game {
 		onOwnerChange();
 		PlayerLeaves();
 		Transports.onLoad();
-		
+
 		//Load Game
 		this.onLoad();
 	}
@@ -79,19 +79,24 @@ export class Game {
 		const loadTimer = new Timer();
 		loadTimer.start(0.0, false, () => {
 			GameRankingHelper.getInstance().endTracking() // TODO: Stay for bot to exit, will be moved at some point
-			//TODO add try/catch
-			UserInterface.onLoad();
-			CameraControls.getInstance();
 
-			Players.forEach(player => {
-				if (player.slotState == PLAYER_SLOT_STATE_PLAYING/* || player.getState(PLAYER_STATE_OBSERVER) > 0*/) {
-					if (player.id >= 25) return; //Exclude ai that is not neutral hostile
+			try {
+				UserInterface.onLoad();
+				CameraControls.getInstance();
 
-					GamePlayer.fromPlayer.set(player.handle, new GamePlayer(player.handle));
-				}
-			})
+				Players.forEach(player => {
+					if (player.slotState == PLAYER_SLOT_STATE_PLAYING/* || player.getState(PLAYER_STATE_OBSERVER) > 0*/) {
+						if (player.id >= 25) return; //Exclude ai that is not neutral hostile
 
-			Round.getInstance();
+						GamePlayer.fromPlayer.set(player.handle, new GamePlayer(player.handle));
+					}
+				})
+
+				Round.getInstance();
+			} catch (error) {
+				print(error)
+			}
+
 		});
 	}
 }

@@ -467,6 +467,7 @@ export class City {
 	 */
 	private setGuard(guard: unit | number) {
 		//TODO add null checking - 4/23/2022 idk what needs null checked maybe check if guard is null and handle it
+		//TODO would this have fixed the ship not taking ports bug? 6-2-2022
 		typeof guard === "number" ? this._guard = CreateUnit(NEUTRAL_HOSTILE, guard, this.x, this.y, 270) : this._guard = guard;
 		UnitAddType(this.guard, UTYPE.GUARD);
 		City.fromGuard.set(this.guard, this);

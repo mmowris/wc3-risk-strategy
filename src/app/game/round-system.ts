@@ -17,6 +17,7 @@ import { Players } from "w3ts/globals";
 import { GameTimer } from "./game-timer-type";
 import { GameTracking } from "./game-tracking-type";
 import { Settings } from "./round-settings";
+import { RoundSettings } from "./settings-data";
 
 export class Round {
 	private static instance: Round;
@@ -46,7 +47,7 @@ export class Round {
 		let tick: number = 45;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
-			if (tick >= 1 && !ModeUI.startPressed) {//TODO tick >= 1 or start press == true
+			if (tick >= 1 && !ModeUI.startPressed) {
 				tick--;
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Autostart in: ${tick} seconds`);
 			} else {
@@ -114,7 +115,7 @@ export class Round {
 
 		MessageAll(true, `${HexColors.TANGERINE}The round will start in a few seconds!|r`)
 		this.count++;
-		
+
 		let tick: number = 3;
 		const quickTimer: Timer = new Timer();
 		quickTimer.start(1.00, true, () => {
@@ -172,7 +173,7 @@ export class Round {
 				for (let i = 0; i < PLAYER_COLORS.length; i++) {
 					if (GetPlayerColor(gPlayer.player) == PLAYER_COLORS[i]) {
 						gPlayer.names.color = PLAYER_COLOR_NAMES[i];
-						gPlayer.setName(`${gPlayer.names.color}`);
+						(!RoundSettings.promode) ? gPlayer.setName(`${gPlayer.names.color}`) : gPlayer.setName(gPlayer.names.acct);
 						gPlayer.names.colorIndex = i;
 					}
 				}
@@ -202,7 +203,7 @@ export class Round {
 				}
 			} else if (gPlayer.isPlaying()) {
 				SetPlayerState(gPlayer.player, PLAYER_STATE_OBSERVER, 0)
-				if (gPlayer.bonus.bar === null) gPlayer.initBonusUI();
+				if (gPlayer.bonus.bar === null && !RoundSettings.promode) gPlayer.initBonusUI();
 				gPlayer.setStatus(PlayerStatus.ALIVE);
 			}
 

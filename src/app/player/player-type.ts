@@ -275,7 +275,8 @@ export class GamePlayer {
 		//print(`${this.coloredName()}|r has killed ${this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills} value worth of ${GetUnitName(u)} owned by ${victom.coloredName()}|r`);
 
 		this.evalBounty(val);
-		//TODO DO NOT give fight bonus in promode
+		
+		if (RoundSettings.promode) return;
 		this.evalBonus(val);
 	}
 
