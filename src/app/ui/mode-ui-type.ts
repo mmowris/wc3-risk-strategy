@@ -182,9 +182,9 @@ export class ModeUI {
 			const aLimit: Slider = Slider.fromName("Ally Limit");
 
 			if (val > 0) {
-				// this.fullControlBox.setEnabled(true);
+				BlzFrameSetEnable(fControlBox, true);
 			} else {
-				// this.fullControlBox.setEnabled(false);
+				BlzFrameSetEnable(fControlBox, false);
 			}
 
 			if (val > 1) {
@@ -199,33 +199,34 @@ export class ModeUI {
 				BlzFrameSetTextColor(Slider.fromName("Diplomancy").text, BlzConvertColor(255, 255, 255, 255))
 			}
 		});
-		BlzFrameSetVisible(BlzGetFrameByName("Game Type slider", 0), false);
 
 		new Slider("Ally Limit", backdrop, 0.053, -0.14, 0.007, AllyLimit, () => {
 			Settings.getInstance().allyLimit = (BlzFrameGetValue(Slider.fromName("Ally Limit").slider) + 1);
 		});
 		BlzFrameSetEnable(Slider.fromName("Ally Limit").slider, false);
 
-		// this.fullControlBox = new Frame("Full Unit Control", Frame.fromName("Ally Limit", 0), 0, 0, "CHECKBOX", "QuestCheckBox2");
-		// const fullControlTitle = new Frame("Full Unit Control Title", this.fullControlBox, 0, 0, "TEXT", "EscMenuLabelTextTemplate");
-		// const fullControlTrigger: Trigger = new Trigger();
+		//Ally control box
+		const fControlBox: framehandle = BlzCreateFrameByType("CHECKBOX","FUnit Control", backdrop, "QuestCheckBox2", 0);
+		const fUnitTitle: framehandle = BlzCreateFrameByType("TEXT", "FUnit Title", fControlBox, "EscMenuLabelTextTemplate", 0);
+		const fullControlTrigger: trigger = CreateTrigger();
 
-		// this.fullControlBox.setPoint(FRAMEPOINT_CENTER, Frame.fromName("Ally Limit", 0), FRAMEPOINT_BOTTOMLEFT, 0.01, -0.01)
-		// fullControlTitle.setPoint(FRAMEPOINT_LEFT, this.fullControlBox, FRAMEPOINT_RIGHT, 0, 0);
-		// fullControlTitle.setText(`Full Unit Control`);
+		BlzFrameSetPoint(fControlBox, FRAMEPOINT_CENTER, Slider.fromName("Ally Limit").slider, FRAMEPOINT_BOTTOMLEFT, 0.01, -0.01);
+		BlzFrameSetPoint(fUnitTitle, FRAMEPOINT_LEFT, fControlBox, FRAMEPOINT_RIGHT, 0, 0)
+		BlzFrameSetText(fUnitTitle, "Full Unit Control?")
 
-		// fullControlTrigger.triggerRegisterFrameEvent(this.fullControlBox, FRAMEEVENT_CHECKBOX_CHECKED);
-		// fullControlTrigger.triggerRegisterFrameEvent(this.fullControlBox, FRAMEEVENT_CHECKBOX_UNCHECKED);
+		BlzTriggerRegisterFrameEvent(fullControlTrigger, fControlBox, FRAMEEVENT_CHECKBOX_CHECKED);
+		BlzTriggerRegisterFrameEvent(fullControlTrigger, fControlBox, FRAMEEVENT_CHECKBOX_UNCHECKED);
 
-		// fullControlTrigger.addAction(() => {
-		// 	if (Frame.getEventHandle() == FRAMEEVENT_CHECKBOX_CHECKED) {
-		// 		Settings.getInstance().alliesControl = 1;
-		// 	} else {
-		// 		Settings.getInstance().alliesControl = 0;
-		// 	}
-		// })
+		TriggerAddAction(fullControlTrigger, () => {
+			if (BlzGetTriggerFrameEvent() == FRAMEEVENT_CHECKBOX_CHECKED) {
+				Settings.getInstance().alliesControl = 1
+			} else {
+				Settings.getInstance().alliesControl = 0
+			}
+		})
 
-		// this.fullControlBox.setEnabled(false);
+		BlzFrameSetVisible(fControlBox, false);
+		BlzFrameSetEnable(fControlBox, false);
 
 		new Slider("Fog", backdrop, 0.039, -0.19, 0.021, Fog, () => {
 			Settings.getInstance().fog = BlzFrameGetValue(Slider.fromName("Fog").slider);
@@ -339,6 +340,7 @@ export class ModeUI {
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Game Type slider", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Diplomancy slider", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Ally Limit slider", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("FUnit Control", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Fog slider", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Nomad Time Limit slider", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Gold Sending slider", 0), Player(0), bool);

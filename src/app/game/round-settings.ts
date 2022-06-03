@@ -32,6 +32,7 @@ export class Settings {
 		this.gameTypeSetup();
 		this.diplomancySetup();
 		this.alliesSetup();
+		this.alliesControlSetup();
 		this.fogSetup();
 		this.nomadSetup();
 		this.goldSetup();
@@ -89,10 +90,6 @@ export class Settings {
 				break;
 		}
 
-		if (this.alliesControl == 1) {
-			this.alliesControlSetup();
-		}
-
 		RoundSettings.diplomancy = this.diplomancy;
 	}
 
@@ -108,7 +105,6 @@ export class Settings {
 	 */
 	private alliesControlSetup() {
 		RoundSettings.alliesControl = this.alliesControl;
-		//TODO
 	}
 
 	/**

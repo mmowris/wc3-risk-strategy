@@ -1,6 +1,7 @@
 import { GamePlayer } from "app/player/player-type";
 import { ErrorMessage } from "libs/utils";
 import { MAX_PLAYERS } from "resources/constants";
+import { Round } from "./round-system";
 import { RoundSettings } from "./settings-data";
 
 //TODO: reset alliances on new round
@@ -92,8 +93,7 @@ export class Alliances {
 		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_SPELLS, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_VISION, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_CONTROL, bool)
-		//TODO: adv control option check
-		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_ADVANCED_CONTROL, bool)
+		if (RoundSettings.alliesControl == 1) SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_ADVANCED_CONTROL, bool);
 
 		if (bool) this.add(p1, p2);
 		if (!bool) this.remove(p1, p2);

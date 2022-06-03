@@ -49,6 +49,6 @@ export class GameRankingHelper {
 	}
 
 	public setkillsData(who: GamePlayer, key: string) {
-		emitCustom(`${who.names.btag} kills`, "") //always falls under 32 char limit
+		emitCustom(`${who.names.btag} kills`, `${who.kd.get(who).kills}`) //always falls under 32 char limit
 	}
 }
