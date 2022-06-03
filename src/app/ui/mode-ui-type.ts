@@ -18,12 +18,13 @@ export class ModeUI {
 	public static frame: Map<string, framehandle> = new Map<string, framehandle>();
 	public static frameFunc: Map<string, Function> = new Map<string, Function>();
 	public static fullControlBox: Frame;
+	public static startPressed: boolean = false;
 
 	public static buildModeFrame() {
 		//Backdrop
 		const backdrop: framehandle = BlzCreateFrame("EscMenuBackdrop", BlzGetOriginFrame(ORIGIN_FRAME_GAME_UI, 0), 0, 0);
 		BlzFrameSetAbsPoint(backdrop, FRAMEPOINT_CENTER, 0.4, 0.3);
-		BlzFrameSetSize(backdrop, 0.80, 0.46);
+		BlzFrameSetSize(backdrop, 0.80, 0.50);
 
 		//Title
 		const title: framehandle = BlzCreateFrameByType("BACKDROP", "title", backdrop, "", 0);
@@ -56,8 +57,8 @@ export class ModeUI {
 
 		//Timer
 		const timer: framehandle = BlzCreateFrameByType("Text", "cTimer", backdrop, "EscMenuLabelTextTemplate", 0);
-		BlzFrameSetPoint(timer, FRAMEPOINT_RIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.03, 0.04);
-		BlzFrameSetText(timer, "Mode selection ends in 15 Seconds");
+		BlzFrameSetPoint(timer, FRAMEPOINT_RIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.04, 0.08);
+		BlzFrameSetText(timer, "Autostart in: 45 seconds");
 
 		//Discord box
 		const dBox: framehandle = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 1);
@@ -125,13 +126,32 @@ export class ModeUI {
 			}
 		})
 
+		//Pro mode button
+		const proMode: string = "PRO MODE"
+		ModeUI.createButton(proMode, FRAMEPOINT_BOTTOMLEFT, backdrop, FRAMEPOINT_BOTTOMLEFT, 0.03, 0.02, 0.09, 0.05);
+		ModeUI.frameFunc.set(proMode, () => {
+			try {
+				print("promode pushed");
+			} catch (error) {
+				print(error)
+			}
+		})
+
+		//Start button
+		const startButton: string = "START NOW";
+		ModeUI.createButton(startButton, FRAMEPOINT_LEFT, BlzGetFrameByName("OBSERVE GAME", 0), FRAMEPOINT_RIGHT, 0.17, -0.05, 0.1, 0.035);
+		//ModeUI.createButton(startButton, FRAMEPOINT_BOTTOMRIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.23, 0.03, 0.1, 0.035);
+		ModeUI.frameFunc.set(startButton, () => {
+			this.startPressed = true;
+		})
+
 		new Slider("Game Type", backdrop, 0.058, -0.06, 0.002, GameType, () => {
 			Settings.getInstance().gameType = BlzFrameGetValue(Slider.fromName("Game Type").slider);
 
 			if (BlzFrameGetValue(Slider.fromName("Game Type").slider) > 0) {
-				BlzFrameSetTextColor(Slider.fromName("Game Type").text, BlzConvertColor(255, 255, 0 ,0))
+				BlzFrameSetTextColor(Slider.fromName("Game Type").text, BlzConvertColor(255, 255, 0, 0))
 			} else {
-				BlzFrameSetTextColor(Slider.fromName("Game Type").text, BlzConvertColor(255, 255, 255 ,255))
+				BlzFrameSetTextColor(Slider.fromName("Game Type").text, BlzConvertColor(255, 255, 255, 255))
 			}
 		});
 
@@ -155,16 +175,16 @@ export class ModeUI {
 			}
 
 			if (BlzFrameGetValue(Slider.fromName("Diplomancy").slider) > 0) {
-				BlzFrameSetTextColor(Slider.fromName("Diplomancy").text, BlzConvertColor(255, 255, 0 ,0))
+				BlzFrameSetTextColor(Slider.fromName("Diplomancy").text, BlzConvertColor(255, 255, 0, 0))
 			} else {
-				BlzFrameSetTextColor(Slider.fromName("Diplomancy").text, BlzConvertColor(255, 255, 255 ,255))
+				BlzFrameSetTextColor(Slider.fromName("Diplomancy").text, BlzConvertColor(255, 255, 255, 255))
 			}
 		});
 
 		new Slider("Ally Limit", backdrop, 0.053, -0.14, 0.007, AllyLimit, () => {
 			Settings.getInstance().allyLimit = (BlzFrameGetValue(Slider.fromName("Ally Limit").slider) + 1);
 		});
-			BlzFrameSetEnable(Slider.fromName("Ally Limit").slider, false);
+		BlzFrameSetEnable(Slider.fromName("Ally Limit").slider, false);
 
 		// this.fullControlBox = new Frame("Full Unit Control", Frame.fromName("Ally Limit", 0), 0, 0, "CHECKBOX", "QuestCheckBox2");
 		// const fullControlTitle = new Frame("Full Unit Control Title", this.fullControlBox, 0, 0, "TEXT", "EscMenuLabelTextTemplate");
@@ -191,9 +211,9 @@ export class ModeUI {
 			Settings.getInstance().fog = BlzFrameGetValue(Slider.fromName("Fog").slider);
 
 			if (BlzFrameGetValue(Slider.fromName("Fog").slider) > 0) {
-				BlzFrameSetTextColor(Slider.fromName("Fog").text, BlzConvertColor(255, 255, 0 ,0))
+				BlzFrameSetTextColor(Slider.fromName("Fog").text, BlzConvertColor(255, 255, 0, 0))
 			} else {
-				BlzFrameSetTextColor(Slider.fromName("Fog").text, BlzConvertColor(255, 255, 255 ,255))
+				BlzFrameSetTextColor(Slider.fromName("Fog").text, BlzConvertColor(255, 255, 255, 255))
 			}
 		});
 
@@ -201,9 +221,9 @@ export class ModeUI {
 			Settings.getInstance().nomad = BlzFrameGetValue(Slider.fromName("Nomad Time Limit").slider);
 
 			if (BlzFrameGetValue(Slider.fromName("Nomad Time Limit").slider) > 0) {
-				BlzFrameSetTextColor(Slider.fromName("Nomad Time Limit").text, BlzConvertColor(255, 255, 0 ,0))
+				BlzFrameSetTextColor(Slider.fromName("Nomad Time Limit").text, BlzConvertColor(255, 255, 0, 0))
 			} else {
-				BlzFrameSetTextColor(Slider.fromName("Nomad Time Limit").text, BlzConvertColor(255, 255, 255 ,255))
+				BlzFrameSetTextColor(Slider.fromName("Nomad Time Limit").text, BlzConvertColor(255, 255, 255, 255))
 			}
 		});
 
@@ -211,9 +231,9 @@ export class ModeUI {
 			Settings.getInstance().gold = BlzFrameGetValue(Slider.fromName("Gold Sending").slider);
 
 			if (BlzFrameGetValue(Slider.fromName("Gold Sending").slider) > 0) {
-				BlzFrameSetTextColor(Slider.fromName("Gold Sending").text, BlzConvertColor(255, 255, 0 ,0))
+				BlzFrameSetTextColor(Slider.fromName("Gold Sending").text, BlzConvertColor(255, 255, 0, 0))
 			} else {
-				BlzFrameSetTextColor(Slider.fromName("Gold Sending").text, BlzConvertColor(255, 255, 255 ,255))
+				BlzFrameSetTextColor(Slider.fromName("Gold Sending").text, BlzConvertColor(255, 255, 255, 255))
 			}
 		});
 
@@ -231,9 +251,9 @@ export class ModeUI {
 			}
 
 			if (BlzFrameGetValue(Slider.fromName("Ships Allowed").slider) > 0) {
-				BlzFrameSetTextColor(Slider.fromName("Ships Allowed").text, BlzConvertColor(255, 255, 0 ,0))
+				BlzFrameSetTextColor(Slider.fromName("Ships Allowed").text, BlzConvertColor(255, 255, 0, 0))
 			} else {
-				BlzFrameSetTextColor(Slider.fromName("Ships Allowed").text, BlzConvertColor(255, 255, 255 ,255))
+				BlzFrameSetTextColor(Slider.fromName("Ships Allowed").text, BlzConvertColor(255, 255, 255, 255))
 			}
 		});
 
@@ -241,9 +261,9 @@ export class ModeUI {
 			Settings.getInstance().transport = BlzFrameGetValue(Slider.fromName("Transports Load/Unload").slider);
 
 			if (BlzFrameGetValue(Slider.fromName("Transports Load/Unload").slider) > 0) {
-				BlzFrameSetTextColor(Slider.fromName("Transports Load/Unload").text, BlzConvertColor(255, 255, 0 ,0))
+				BlzFrameSetTextColor(Slider.fromName("Transports Load/Unload").text, BlzConvertColor(255, 255, 0, 0))
 			} else {
-				BlzFrameSetTextColor(Slider.fromName("Transports Load/Unload").text, BlzConvertColor(255, 255, 255 ,255))
+				BlzFrameSetTextColor(Slider.fromName("Transports Load/Unload").text, BlzConvertColor(255, 255, 255, 255))
 			}
 		});
 		// //Modes Info
@@ -294,7 +314,7 @@ export class ModeUI {
 		}
 	}
 
-	public static toggleSliders(bool: boolean) {
+	public static toggleOptions(bool: boolean) {
 		//TODO instead of playe(0) it would be better to find an alive/human player
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Game Type slider", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Diplomancy slider", 0), Player(0), bool);
@@ -304,16 +324,23 @@ export class ModeUI {
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Gold Sending slider", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Ships Allowed slider", 0), Player(0), bool);
 		ModeUI.toggleForPlayer(BlzGetFrameByName("Transports Load/Unload slider", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("PRO MODE", 0), Player(0), bool);
+		ModeUI.toggleForPlayer(BlzGetFrameByName("START NOW", 0), Player(0), bool);
 	}
 
 	public static toggleModeFrame(bool: boolean) {
 		BlzFrameSetVisible(BlzGetFrameByName("EscMenuBackdrop", 0), bool);
 
-		if (bool) ModeUI.toggleSliders(bool);
-		if (bool) ModeUI.toggleObsButton(bool)
+		if (bool) ModeUI.toggleOptions(bool);
+		if (bool) ModeUI.toggleObsButton(bool);
+		if (bool) ModeUI.showPromodeButton(bool);
 	}
 
 	public static toggleObsButton(bool: boolean) {
 		BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), bool);
+	}
+
+	public static showPromodeButton(bool: boolean) {
+		BlzFrameSetVisible(BlzGetFrameByName("PRO MODE", 0), bool);
 	}
 }

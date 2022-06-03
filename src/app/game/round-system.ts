@@ -43,18 +43,19 @@ export class Round {
 	public runModeSelection() {
 		ModeUI.toggleModeFrame(true);
 
-		let tick: number = 10;
+		let tick: number = 45;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
-			if (tick >= 1) {
+			if (tick >= 1 && !ModeUI.startPressed) {//TODO tick >= 1 or start press == true
 				tick--;
-				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Mode selection ends in ${tick} seconds`);
+				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Autostart in: ${tick} seconds`);
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
-				ModeUI.toggleSliders(false);
+				ModeUI.toggleOptions(false);
 				ModeUI.toggleObsButton(false);
-				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts soon`);
+				ModeUI.startPressed = false;
+				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), "");
 
 				this.start();
 			}
@@ -75,11 +76,11 @@ export class Round {
 			Settings.getInstance().processSettings();
 			CityAllocation.start();
 
-			let tick: number = 15;
+			let tick: number = 10;
 			const modeTimer: Timer = new Timer();
 			modeTimer.start(1.00, true, () => {
 				if (tick >= 1) {
-					BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game starts in ${tick} seconds`);
+					BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Game begins in ${tick} seconds`);
 					BlzDestroyFrame(BlzGetFrameByName("pList", 0));
 					ModeUI.pList(BlzGetFrameByName("EscMenuBackdrop", 0));
 					tick--;
