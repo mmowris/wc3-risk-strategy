@@ -1,6 +1,6 @@
 import { CityAllocation } from "app/country/city-allocation-type";
 import { Cities } from "app/country/city-type";
-import { GamePlayer, PlayerStatus } from "app/player/player-type";
+import { bS, GamePlayer, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { Trees } from "app/trees-type";
 import { ModeUI } from "app/ui/mode-ui-type";
@@ -36,7 +36,7 @@ export class Round {
 			this.runModeSelection();
 		} catch (error) {
 			Players.forEach(p => {
-				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `${error}\nPlease take a screenshot and report this on the official discord!\ndiscord.me/risk\nEC:1`);
+				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `EC:1`);
 			});
 		}
 	}
@@ -44,7 +44,7 @@ export class Round {
 	public runModeSelection() {
 		ModeUI.toggleModeFrame(true);
 
-		let tick: number = 45;
+		let tick: number = 20;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
 			if (tick >= 1 && !ModeUI.startPressed) {
@@ -69,11 +69,11 @@ export class Round {
 	public start() {
 		try {
 			this.count++;
-
+			Settings.getInstance().processSettings();
 			this.assignColors();
 			this.setupPlayerStatus();
 
-			Settings.getInstance().processSettings();
+
 			CityAllocation.start();
 
 			let tick: number = 7;
@@ -95,17 +95,16 @@ export class Round {
 						GameTracking.getInstance().roundInProgress = true;
 						PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 						Scoreboard.getInstance().toggleVis(true);
-						print(`${GamePlayer.fromPlayer.size}`)
 					} catch (error) {
 						Players.forEach(p => {
-							DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `${error}\nPlease take a screenshot and report this on the official discord!\ndiscord.me/risk\nEC:3`);
+							DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `EC:3`);
 						});
 					}
 				}
 			});
 		} catch (error) {
 			Players.forEach(p => {
-				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `${error}\nPlease take a screenshot and report this on the official discord!\ndiscord.me/risk\nEC:2`);
+				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `EC:2`);
 			});
 		}
 	}
@@ -151,35 +150,48 @@ export class Round {
 	}
 
 	private assignColors() {
-		const colors: playercolor[] = [];
-		let tracker: number = 0;
+		if (!RoundSettings.promode) {
+			const colors: playercolor[] = [];
+			let tracker: number = 0;
 
-		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.isPlaying()) {
-				if (GetPlayerId(gPlayer.player) >= 24) return; //Exclude neutral ai
+			GamePlayer.fromPlayer.forEach(gPlayer => {
+				if (gPlayer.isPlaying()) {
+					if (GetPlayerId(gPlayer.player) >= 24) return; //Exclude neutral ai
 
-				colors.push(PLAYER_COLORS[tracker]);
-				tracker++;
-			}
-		})
+					colors.push(PLAYER_COLORS[tracker]);
+					tracker++;
+				}
+			})
 
-		Util.ShuffleArray(colors);
+			Util.ShuffleArray(colors);
 
-		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.isPlaying()) {
-				if (GetPlayerId(gPlayer.player) >= 24) return; //Exclude neutral ai
+			GamePlayer.fromPlayer.forEach(gPlayer => {
+				if (gPlayer.isPlaying()) {
+					if (GetPlayerId(gPlayer.player) >= 24) return; //Exclude neutral ai
 
-				SetPlayerColor(gPlayer.player, colors.pop())
+					SetPlayerColor(gPlayer.player, colors.pop())
 
+					for (let i = 0; i < PLAYER_COLORS.length; i++) {
+						if (GetPlayerColor(gPlayer.player) == PLAYER_COLORS[i]) {
+							gPlayer.names.color = PLAYER_COLOR_NAMES[i];
+							gPlayer.setName(`${gPlayer.names.color}`)
+							//(!RoundSettings.promode) ? gPlayer.setName(`${gPlayer.names.color}`) : gPlayer.setName(gPlayer.names.acct);
+							gPlayer.names.colorIndex = i;
+						}
+					}
+				}
+			})
+		} else {
+			GamePlayer.fromPlayer.forEach(gPlayer => {
 				for (let i = 0; i < PLAYER_COLORS.length; i++) {
 					if (GetPlayerColor(gPlayer.player) == PLAYER_COLORS[i]) {
 						gPlayer.names.color = PLAYER_COLOR_NAMES[i];
-						(!RoundSettings.promode) ? gPlayer.setName(`${gPlayer.names.color}`) : gPlayer.setName(gPlayer.names.acct);
+						gPlayer.setName(gPlayer.names.acct);
 						gPlayer.names.colorIndex = i;
 					}
 				}
-			}
-		})
+			})
+		}
 	}
 
 	private setupPlayerStatus() {

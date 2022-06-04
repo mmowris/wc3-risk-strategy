@@ -16,7 +16,7 @@ export class Scoreboard {
 
 	//Public API
 	public init() {
-		this.allyBoard = RoundSettings.diplomancy == 1 || RoundSettings.diplomancy == 2 ? true : false
+		this.allyBoard = RoundSettings.diplomancy == 1 || RoundSettings.diplomancy == 2 ? true : false;
 
 		this.mb = CreateMultiboard();
 
@@ -92,10 +92,10 @@ export class Scoreboard {
 			}
 		}
 
-		if (!this.allyBoard) {
-			Scoreboard.setItemValue(this.mb, `${gPlayer.coloredName()}`, row, 1);
-		} else {
+		if (this.allyBoard && Alliances.getInstance().getNumOfAllies(gPlayer.player) >= 1) {
 			Scoreboard.setItemValue(this.mb, `${HexColors.TANGERINE}[${Alliances.getInstance().getPlayerTeam(gPlayer.player)}]|r${gPlayer.coloredName()}`, row, 1);
+		} else {
+			Scoreboard.setItemValue(this.mb, `${gPlayer.coloredName()}`, row, 1);
 		}
 		
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.cities.length}`, row, 3);

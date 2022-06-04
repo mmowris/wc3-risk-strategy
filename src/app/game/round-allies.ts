@@ -79,7 +79,7 @@ export class Alliances {
 	}
 
 	public setAlliance(p1: player, p2: player, bool: boolean) {
-		if (this.alliesOf.has(p1)) {
+		if (this.alliesOf.has(p1) && RoundSettings.diplomancy == 3) {
 			if (this.alliesOf.get(p1).length > RoundSettings.allies) {
 				ErrorMessage(p1, "You have the max amount of allies!");
 				return;
@@ -93,7 +93,9 @@ export class Alliances {
 		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_SPELLS, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_VISION, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_CONTROL, bool)
-		if (RoundSettings.alliesControl == 1) SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_ADVANCED_CONTROL, bool);
+		if (RoundSettings.promode) {
+			SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_ADVANCED_CONTROL, bool);
+		}
 
 		if (bool) this.add(p1, p2);
 		if (!bool) this.remove(p1, p2);
@@ -180,6 +182,10 @@ export class Alliances {
 
 	public getPlayerTeam(player: player): number {
 		return GetPlayerTeam(player) + 1;
+	}
+
+	public getNumOfAllies(player: player): number {
+		return this.alliesOf.get(player).length;
 	}
 
 	public static getInstance() {

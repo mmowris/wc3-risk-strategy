@@ -9,40 +9,46 @@ export class CityAllocation {
 	constructor() { }
 
 	public static start() {
-		let playerPool: player[] = this.buildPlayerPool();
-		let cityPool: City[] = this.buildCityPool();
-		let citiesMax: number = RoundSettings.promode == true ? 18 : Math.min(Math.floor(cityPool.length / playerPool.length), 20);
+		try {
+			let playerPool: player[] = this.buildPlayerPool();
+			let cityPool: City[] = this.buildCityPool();
+			let citiesMax: number = (RoundSettings.promode == true) ? Math.min(Math.floor(cityPool.length / playerPool.length), 18) : Math.min(Math.floor(cityPool.length / playerPool.length), 20);
 
-		while (playerPool.length > 0) {
-			let gPlayer: GamePlayer = GamePlayer.fromPlayer.get(playerPool.shift());
-			let city: City = this.getCityFromPool(cityPool);
-			let country: Country = Country.fromCity.get(city);
+			while (playerPool.length > 0) {
+				let gPlayer: GamePlayer = GamePlayer.fromPlayer.get(playerPool.shift());
+				let city: City = this.getCityFromPool(cityPool);
+				let country: Country = Country.fromCity.get(city);
 
-			if (country.citiesOwned.get(gPlayer) < country.allocLim) {
-				CityAllocation.changeOwner(city, gPlayer, cityPool);
+				if (country.citiesOwned.get(gPlayer) < country.allocLim) {
+					CityAllocation.changeOwner(city, gPlayer, cityPool);
 
-			} else {
-				let counter: number = 0;
-				do {
-					city = this.getCityFromPool(cityPool);
-					country = Country.fromCity.get(city);
-				} while (country.citiesOwned.get(gPlayer) >= country.allocLim || counter == 50 || city == null);
+				} else {
+					let counter: number = 0;
+					do {
+						city = this.getCityFromPool(cityPool);
+						country = Country.fromCity.get(city);
+					} while (country.citiesOwned.get(gPlayer) >= country.allocLim || counter == 50 || city == null);
 
-				if (city == null) print(`Error in CityAllocation, No cities avaiable in pool`)
-				if (counter >= 50) print(`Error in CityAllocation, No valid city found in pool`)
+					if (city == null) print(`Error in CityAllocation, No cities avaiable in pool`)
+					if (counter >= 50) print(`Error in CityAllocation, No valid city found in pool`)
 
-				CityAllocation.changeOwner(city, gPlayer, cityPool);
+					CityAllocation.changeOwner(city, gPlayer, cityPool);
+				}
+
+				if (gPlayer.cities.length < citiesMax) {
+					playerPool.push(gPlayer.player)
+				}
 			}
 
-			if (gPlayer.cities.length < citiesMax) {
-				playerPool.push(gPlayer.player)
-			}
+			playerPool.length = 0;
+			playerPool = null;
+			cityPool.length = 0;
+			cityPool = null;
+
+		} catch (error) {
+			print(error)
 		}
 
-		playerPool.length = 0;
-		playerPool = null;
-		cityPool.length = 0;
-		cityPool = null;
 	}
 
 	private static buildCityPool(): City[] {
