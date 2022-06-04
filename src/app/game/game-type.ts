@@ -16,7 +16,6 @@ import { PlayerLeaves } from "app/player/player-leaves-trigger";
 import { eb46 } from "libs/EncodingBase64";
 import { Round } from "./round-system";
 import { CommandProcessor } from "app/commands/command-processor";
-import { GameRankingHelper } from "./game-ranking-helper-type";
 
 export class Game {
 	private static instance: Game;
@@ -78,8 +77,6 @@ export class Game {
 	private onLoad() {
 		const loadTimer = new Timer();
 		loadTimer.start(0.0, false, () => {
-			GameRankingHelper.getInstance().endTracking() // TODO: Stay for bot to exit, will be moved at some point
-
 			try {
 				UserInterface.onLoad();
 				CameraControls.getInstance();

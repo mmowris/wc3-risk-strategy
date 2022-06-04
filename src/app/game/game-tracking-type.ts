@@ -4,7 +4,6 @@ import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
-import { GameRankingHelper } from "./game-ranking-helper-type";
 import { RoundSettings } from "./settings-data";
 import { Alliances } from "./round-allies";
 
@@ -74,13 +73,13 @@ export class GameTracking {
 		GameTracking.canReset = true;
 
 		ClearTextMessages();
-
+		
 		GamePlayer.fromPlayer.forEach(gPlayer => {
+			gPlayer.setName(gPlayer.names.acct);
+
 			if (GetLocalPlayer() == gPlayer.player) {
 				BlzEnableSelections(false, false);
 			}
-
-			gPlayer.setName(gPlayer.names.acct);
 
 			if (RoundSettings.diplomancy > 0) {
 				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.WHITE}Team ${Alliances.getInstance().getPlayerTeam(who.player)}|r ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
@@ -90,10 +89,6 @@ export class GameTracking {
 				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
 			}
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.TANGERINE}Discord: discord.me/risk|r`);
-
-			if (gPlayer != who && gPlayer.isAlive() || gPlayer.isNomad()) {
-				GameRankingHelper.getInstance().setLoser(gPlayer.player);
-			}
 		})
 
 		PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");
@@ -104,27 +99,6 @@ export class GameTracking {
 			Scoreboard.getInstance().victoryUpdate(who, gPlayer, row);
 			row++;
 		})
-
-		GameRankingHelper.getInstance().setWinner(who.player);
-
-		const timer: timer = CreateTimer();
-		let count: number = 0;
-
-		TimerStart(timer, 0.5, true, () => {
-			if (count > 23) {
-				PauseTimer(timer);
-				DestroyTimer(timer);
-			} else {
-				if (GamePlayer.fromPlayer.has(Player(count)) && !GamePlayer.get(Player(count)).isObserving()) {
-					GameRankingHelper.getInstance().setData(GamePlayer.get(Player(count)));
-				}
-			}
-
-			count++;
-		});
-		
-		//TODO:
-		//Track data and bot exit
 
 		return true;
 	}

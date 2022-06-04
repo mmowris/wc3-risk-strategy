@@ -9,7 +9,6 @@ import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { File, Timer } from "w3ts";
 import { CleanMap, FastRestart, ResetGame, SlowRestart } from "./restart";
-import { GameRankingHelper } from "app/game/game-ranking-helper-type";
 import { RoundSettings } from "app/game/settings-data";
 import { Alliances } from "app/game/round-allies";
 
@@ -75,7 +74,14 @@ export const CommandProcessor = () => {
 
 				if (gPlayer.isAlive() || gPlayer.isNomad()) {
 					gPlayer.setStatus(PlayerStatus.FORFEIT);
-					GameRankingHelper.getInstance().setLoser(gPlayer.player);
+
+					if (gPlayer.turnDied == -1) {
+						gPlayer.setTurnDied(GameTimer.getInstance().turn);
+					}
+
+					if (gPlayer.cityData.endCities == 0) {
+						gPlayer.cityData.endCities = gPlayer.cities.length
+					}
 				}
 
 				MessageAll(true, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}forfeit|r the round!`)

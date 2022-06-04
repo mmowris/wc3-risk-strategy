@@ -4,9 +4,9 @@ import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
 import { Timer } from "w3ts";
+import { GameRankingHelper } from "./game-ranking-helper-type";
 import { GameTracking } from "./game-tracking-type";
 import { Alliances } from "./round-allies";
-import { Round } from "./round-system";
 import { RoundSettings } from "./settings-data";
 
 export class GameTimer {
@@ -14,13 +14,13 @@ export class GameTimer {
 	private timer: Timer = new Timer();
 	private duration: number;
 	private _tick: number;
-	private turn: number;
+	private _turn: number;
 	private fog: number = -1;
 
 	constructor() {
 		this.duration = 60;
 		this._tick = this.duration;
-		this.turn = 1;
+		this._turn = 1;
 	}
 
 	public static getInstance() {
@@ -36,13 +36,13 @@ export class GameTimer {
 			if (this._tick == this.duration) roundUpdate = this.roundUpdate();
 			this.updateBoard(roundUpdate);
 			this.updateUI();
-			if (this.turn == 1) Scoreboard.getInstance().toggleVis(true);
+			if (this._turn == 1) Scoreboard.getInstance().toggleVis(true);
 
 			this._tick--;
 
 			if (this._tick == 0) {
 				this._tick = this.duration;
-				this.turn++;
+				this._turn++;
 			}
 
 		})
@@ -51,10 +51,29 @@ export class GameTimer {
 	public reset() {
 		this.timer = new Timer();
 		this._tick = this.duration;
-		this.turn = 1;
+		this._turn = 1;
 	}
 
 	public stop(): boolean {
+		let counter: number = 0;
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			if (gPlayer.turnDied == -1) {
+				gPlayer.setTurnDied(this.turn);
+			}
+
+			if (gPlayer.cityData.endCities == 0) {
+				gPlayer.cityData.endCities = gPlayer.cities.length
+			}
+
+			if (GetPlayerController(gPlayer.player) == MAP_CONTROL_USER) {
+				counter++;
+			}
+		})
+
+		if (counter >= 14 && this.turn > 10) {
+			GameRankingHelper.getInstance().setData(GameTracking.getInstance().leader.player);
+		}
+
 		this.timer.pause();
 		this.timer.destroy();
 		return true;
@@ -62,6 +81,10 @@ export class GameTimer {
 
 	public get tick(): number {
 		return this._tick;
+	}
+
+	public get turn(): number {
+		return this._turn;
 	}
 
 	private updateBoard(turnUpdate: boolean) {
@@ -90,11 +113,11 @@ export class GameTimer {
 		}
 
 		BlzFrameSetText(BlzGetFrameByName("ResourceBarUpkeepText", 0), upkeepString);
-		BlzFrameSetText(BlzGetFrameByName("ResourceBarSupplyText", 0), `${this.turn}`);
+		BlzFrameSetText(BlzGetFrameByName("ResourceBarSupplyText", 0), `${this._turn}`);
 	}
 
 	private roundUpdate(): boolean {
-		if (this.turn > 1) {
+		if (this._turn > 1) {
 			const gameOver: boolean = GameTracking.getInstance().cityVictory();
 			if (gameOver) return this.stop();
 		}

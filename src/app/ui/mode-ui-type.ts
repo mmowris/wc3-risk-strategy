@@ -356,24 +356,9 @@ export class ModeUI {
 
 		if (bool) ModeUI.toggleOptions(bool);
 		if (bool) ModeUI.toggleObsButton(bool);
-		if (bool) ModeUI.togglePromodeButton(bool);
-		if (bool) ModeUI.toggleDefaultButton(bool);
-		if (bool) ModeUI.toggleStartButton(bool);
 	}
 
 	public static toggleObsButton(bool: boolean) {
 		BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), bool);
-	}
-
-	public static togglePromodeButton(bool: boolean) {
-		BlzFrameSetVisible(BlzGetFrameByName("PRO MODE", 0), bool);
-	}
-
-	public static toggleDefaultButton(bool: boolean) {
-		BlzFrameSetVisible(BlzGetFrameByName("DEFAULT SETTINGS", 0), bool);
-	}
-
-	public static toggleStartButton(bool: boolean) {
-		BlzFrameSetVisible(BlzGetFrameByName("START NOW", 0), bool);
 	}
 }

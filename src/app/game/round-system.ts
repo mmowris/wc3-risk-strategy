@@ -95,6 +95,7 @@ export class Round {
 						GameTracking.getInstance().roundInProgress = true;
 						PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
 						Scoreboard.getInstance().toggleVis(true);
+						print(`${GamePlayer.fromPlayer.size}`)
 					} catch (error) {
 						Players.forEach(p => {
 							DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `${error}\nPlease take a screenshot and report this on the official discord!\ndiscord.me/risk\nEC:3`);

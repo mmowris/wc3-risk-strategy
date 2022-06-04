@@ -6,8 +6,10 @@ import { UTYPE } from "resources/unitTypes";
 import { File } from "w3ts";
 
 interface KD {
+	killValue: number;
+	deathValue: number;
 	kills: number;
-	deaths: number;
+	deaths: number
 }
 
 interface Bounty {
@@ -26,6 +28,11 @@ interface Names {
 	acct: string;
 	color: string;
 	colorIndex: number;
+}
+
+interface CityData {
+	maxCities: number;
+	endCities: number;
 }
 
 // export const BonusBase: number = 10;
@@ -78,6 +85,9 @@ export class GamePlayer {
 	public cities: unit[] = [];
 	public tools: unit;
 	public fog: fogmodifier;
+	public turnDied: number;
+	public goldTotal: number;
+	public cityData: CityData;
 
 	public static fromString: Map<string, GamePlayer> = new Map<string, GamePlayer>(); //Set in constructor
 	public static fromPlayer: Map<player, GamePlayer> = new Map<player, GamePlayer>(); //Set onLoad
@@ -86,6 +96,12 @@ export class GamePlayer {
 		this.player = who;
 		this.ping = true;
 		this.admin = false;
+		this.goldTotal = 0;
+		this.cityData = {
+			maxCities: 0,
+			endCities: 0
+		}
+		this.turnDied = -1;
 
 		this.names = {
 			btag: (who == NEUTRAL_HOSTILE) ? "Neutral-Hostile" : PlayerNames.get(who),
@@ -164,10 +180,23 @@ export class GamePlayer {
 	public initKDMaps() {
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			this.kd.set(gPlayer, {
+				killValue: 0,
+				deathValue: 0,
 				kills: 0,
 				deaths: 0
 			});
 		});
+
+		for (const key in UID) {
+			const val = UID[key]
+
+			this.kd.set(`${val}`, {
+				killValue: 0,
+				deathValue: 0,
+				kills: 0,
+				deaths: 0
+			})
+		}
 	}
 
 	public reset() {
@@ -192,6 +221,8 @@ export class GamePlayer {
 		if (!val) val = this.income;
 
 		SetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD) + val);
+
+		this.goldTotal+= val;
 	}
 
 	public initBonusUI() {
@@ -258,21 +289,43 @@ export class GamePlayer {
 		if (IsPlayerAlly(victom.player, this.player)) return;
 		let val: number = GetUnitPointValue(u);
 
-		this.kd.get(this).kills += val; //Total of this player
-		this.kd.get(victom).kills += val; //Total of victom player
+		this.kd.get(this).killValue += val; //Total of this player
+		this.kd.get(victom).killValue += val; //Total of victom player
+		this.kd.get(`${GetUnitTypeId(u)}`).killValue += val;
 
-		if (!this.kd.has(GamePlayer.getKey(victom, GetUnitTypeId(u)))) {
-			this.kd.set(GamePlayer.getKey(victom, GetUnitTypeId(u)), {
-				kills: val,
-				deaths: 0
-			})
-		} else {
-			this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills += val; //Total of victom player unit specific
-		}
+		this.kd.get(this).kills++; //Total of this player
+		this.kd.get(victom).kills++; //Total of victom player
+		this.kd.get(`${GetUnitTypeId(u)}`).kills++;
+
+		// if (!this.kd.has(`${GetUnitTypeId(u)}`)) {
+		// 	this.kd.set(`${GetUnitTypeId(u)}`, {
+		// 		kills: val,
+		// 		deaths: 0
+		// 	})
+		// } else {
+		// 	this.kd.get(`${GetUnitTypeId(u)}`).kills += val;
+		// }
+
+		// if (!this.kd.has(GamePlayer.getKey(victom, GetUnitTypeId(u)))) {
+		// 	this.kd.set(GamePlayer.getKey(victom, GetUnitTypeId(u)), {
+		// 		kills: val,
+		// 		deaths: 0
+		// 	})
+		// } else {
+		 	//this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills += val; //Total of victom player unit specific
+		// }
 
 		//print(`${GetPlayerName(NEUTRAL_HOSTILE)}|r total kill value ${this.kd.get(this).kills}`)
 		//print(`${this.coloredName()}|r killed ${this.kd.get(victom).kills} value worth of units owned by ${victom.coloredName()}|r`)
+		//print(GetUnitTypeId(u))
+		//print(UID.RIFLEMEN)
 		//print(`${this.coloredName()}|r has killed ${this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills} value worth of ${GetUnitName(u)} owned by ${victom.coloredName()}|r`);
+		// try {
+		// 	//print(this.kd.get(GamePlayer.getKey(this, UID.RIFLEMEN)).kills)
+		// 	print(this.kd.get(`${GetUnitTypeId(u)}`).kills)
+		// } catch (error) {
+		// 	print(error)
+		// }
 
 		this.evalBounty(val);
 		
@@ -285,17 +338,33 @@ export class GamePlayer {
 
 		let val: number = GetUnitPointValue(u);
 
-		this.kd.get(this).deaths += val; //Total of this player
-		this.kd.get(killer).deaths += val; //Total from killer player
+		this.kd.get(this).deathValue += val; //Total of this player
+		this.kd.get(killer).deathValue += val; //Total from killer player
+		this.kd.get(`${GetUnitTypeId(u)}`).deathValue += val;
 
-		if (!this.kd.has(GamePlayer.getKey(killer, GetUnitTypeId(u)))) {
-			this.kd.set(GamePlayer.getKey(killer, GetUnitTypeId(u)), {
-				kills: 0,
-				deaths: val
-			})
-		} else {
-			this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total of victom player unit specific
-		}
+		this.kd.get(this).deaths++; //Total of this player
+		this.kd.get(killer).deaths++; //Total from killer player
+		this.kd.get(`${GetUnitTypeId(u)}`).deaths++;
+
+		// if (!this.kd.has(`${GetUnitTypeId(u)}`)) {
+		// 	this.kd.set(`${GetUnitTypeId(u)}`, {
+		// 		kills: 0,
+		// 		deaths: val
+		// 	})
+		// } else {
+		// 	this.kd.get(`${GetUnitTypeId(u)}`).deaths += val;
+		// }
+
+		// if (!this.kd.has(GamePlayer.getKey(killer, GetUnitTypeId(u)))) {
+		// 	this.kd.set(GamePlayer.getKey(killer, GetUnitTypeId(u)), {
+		// 		killValue: 0,
+		// 		deathValue: val,
+		// 		kills: 0,
+		// 		deaths: 1
+		// 	})
+		// } else {
+		// 	this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deathValue += val; //Total of victom player unit specific
+		// }
 	}
 
 	public coloredName(): string {
@@ -350,6 +419,10 @@ export class GamePlayer {
 		SetPlayerName(this.player, `${name}|r`);
 	}
 
+	public setTurnDied(val: number) {
+		this.turnDied = val;
+	}
+
 	public getUnitCount(): number {
 		const g: group = CreateGroup();
 
@@ -387,7 +460,7 @@ export class GamePlayer {
 			// let bonusQty: number = Math.floor(this.kd.get(this).kills) / BonusDivisor * BonusMultiplier + BonusBase;
 
 			// To increase bonus by 1 every 200 kills use below with a additive of 9
-			let bonusQty: number = Math.floor(this.kd.get(this).kills) / BonusDivisor + BonusBase
+			let bonusQty: number = Math.floor(this.kd.get(this).killValue) / BonusDivisor + BonusBase
 
 			bonusQty = Math.min(bonusQty, BonusCap);
 			this.bonus.total += bonusQty;

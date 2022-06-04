@@ -9,7 +9,6 @@ import { Timer } from "w3ts";
 import { City } from "./city-type";
 import { Country } from "./country-type";
 import { MessageAll } from "libs/utils";
-import { GameRankingHelper } from "app/game/game-ranking-helper-type";
 import { RoundSettings } from "app/game/settings-data";
 
 export function onOwnerChange() {
@@ -33,8 +32,15 @@ export function onOwnerChange() {
 		if (prevOwner.cities.length == 0 && prevOwner.player != NEUTRAL_HOSTILE && !prevOwner.isLeft()) {
 			if (prevOwner.getUnitCount() <= 0 || RoundSettings.nomad < 0) {
 				prevOwner.setStatus(PlayerStatus.DEAD);
-				GameRankingHelper.getInstance().setLoser(prevOwner.player);
 				MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
+
+				if (prevOwner.turnDied == -1) {
+					prevOwner.setTurnDied(GameTimer.getInstance().turn);
+				}
+
+				if (prevOwner.cityData.endCities == 0) {
+					prevOwner.cityData.endCities = prevOwner.cities.length
+				}
 
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 			} else if (RoundSettings.nomad > 0) {
@@ -52,9 +58,16 @@ export function onOwnerChange() {
 					if (duration < 1) {
 						if (!prevOwner.isLeft() || !prevOwner.isForfeit()) {
 							prevOwner.setStatus(PlayerStatus.DEAD);
-							GameRankingHelper.getInstance().setLoser(prevOwner.player);
 						}
 
+						if (prevOwner.turnDied == -1) {
+							prevOwner.setTurnDied(GameTimer.getInstance().turn);
+						}
+
+						if (prevOwner.cityData.endCities == 0) {
+							prevOwner.cityData.endCities = prevOwner.cities.length
+						}
+						
 						MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
 
 						nomadTimer.pause();
@@ -83,6 +96,9 @@ export function onOwnerChange() {
 		if (owner.cities.length == 1) owner.setStatus(PlayerStatus.ALIVE);
 
 		//print(`${owner.names.acct} owns ${country.citiesOwned.get(owner)} cities in ${country.name} and they own ${owner.cities.length} total`)
+
+		if (owner.cityData.maxCities < owner.cities.length) owner.cityData.maxCities = owner.cities.length;
+
 		return true;
 	}));
 }

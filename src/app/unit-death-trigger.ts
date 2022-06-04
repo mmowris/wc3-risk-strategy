@@ -4,7 +4,6 @@ import { City } from "./country/city-type";
 import { FilterEnemyValidGuards, FilterFriendlyValidGuards } from "./country/guard-filters";
 import { compareValue } from "./country/guard-options";
 import { Spawner } from "./country/spawner-type";
-import { GameRankingHelper } from "./game/game-ranking-helper-type";
 import { GameTimer } from "./game/game-timer-type";
 import { GameTracking } from "./game/game-tracking-type";
 import { GamePlayer, PlayerStatus } from "./player/player-type";
@@ -28,10 +27,18 @@ export function unitDeath() {
 		kUnitOwner.onKill(dUnitOwner, dyingUnit);
 		dUnitOwner.onDeath(kUnitOwner, dyingUnit)
 
-		if (kUnitOwner.getUnitCount() <= 0 && kUnitOwner.cities.length <= 0) {
-			this.setStatus(PlayerStatus.DEAD);
-			GameRankingHelper.getInstance().setLoser(kUnitOwner.player);
+		if (dUnitOwner.getUnitCount() <= 0 && dUnitOwner.cities.length <= 0) {
+			dUnitOwner.setStatus(PlayerStatus.DEAD);
+
+			if (dUnitOwner.turnDied == -1) {
+				dUnitOwner.setTurnDied(GameTimer.getInstance().turn);
+			}
+
+			if (dUnitOwner.cityData.endCities == 0) {
+				dUnitOwner.cityData.endCities = dUnitOwner.cities.length
+			}
 		}
+
 		if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
 
 		Transports.onDeath(dyingUnit, killingUnit);

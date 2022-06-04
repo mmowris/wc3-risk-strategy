@@ -28,6 +28,7 @@ export class Scoreboard {
 
 		MultiboardSetColumnCount(this.mb, 6);
 		this.size = 3 + this.playersOnBoard.length;
+		//TODO get num of teams and add to size
 
 		for (let i = 1; i <= this.size; i++) {
 			MultiboardSetRowCount(this.mb, MultiboardGetRowCount(this.mb) + 1);
@@ -98,8 +99,8 @@ export class Scoreboard {
 		}
 		
 		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.cities.length}`, row, 3);
-		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).kills}`, row, 4);
-		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).deaths}`, row, 5);
+		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).killValue}`, row, 4);
+		Scoreboard.setItemValue(this.mb, `${sColor}${gPlayer.kd.get(gPlayer).deathValue}`, row, 5);
 		Scoreboard.setItemValue(this.mb, gPlayer.status, row, 6);
 	}
 
