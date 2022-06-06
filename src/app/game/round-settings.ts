@@ -114,13 +114,13 @@ export class Settings {
 		switch (this.fog) {
 			case 1:
 				GamePlayer.fromPlayer.forEach(player => {
-					if (player.isAlive()) FogModifierStop(player.fog);
+					if (player.isAlive() || player.isPlaying()) FogModifierStop(player.fog);
 				})
 				break;
 			case 2:
 			default:
 				GamePlayer.fromPlayer.forEach(player => {
-					if (player.isAlive()) FogModifierStart(player.fog);
+					if (player.isAlive() || player.isPlaying()) FogModifierStart(player.fog);
 				})
 				break;
 		}
@@ -202,9 +202,9 @@ export class Settings {
 	 */
 	private transportSetup() {
 		if (this.transport == 1) {
-			RoundSettings.transport = true
+			RoundSettings.transport = false
 		} else {
-			RoundSettings.transport = false;
+			RoundSettings.transport = true;
 		}
 	}
 }
