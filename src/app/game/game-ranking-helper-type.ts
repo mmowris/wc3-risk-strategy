@@ -1,26 +1,30 @@
 import { GamePlayer } from "app/player/player-type";
+import { MessageAll } from "libs/utils";
 import { UID } from "resources/unitID";
 import { File } from "w3ts";
 import { defineNumberValue, defineStringValue, setPlayerFlag } from "w3ts-w3mmd";
 import { RoundSettings } from "./settings-data";
 
-const setTotalKillsValue = defineNumberValue("Kills Total Value", "high");
-const setTotalDeathsValue = defineNumberValue("Deaths Total Value", "high");
-const setTotalKills = defineNumberValue("Kills Total", "high");
-const setTotalDeaths = defineNumberValue("Deaths Total", "high");
-const setTotalSSKills = defineNumberValue("Kills SS", "high");
-const setTotalSSDeaths = defineNumberValue("Deaths SS", "high");
-const setKDValue = defineNumberValue("Kd Value Ratio", "high");
-const setKD = defineNumberValue("Kd Ratio", "high");
+const setKillsValue = defineNumberValue("Value Kills", "high");
+const setDeathsValue = defineNumberValue("Value Deaths", "high");
+const setSSKillValue = defineNumberValue("Value SS Kills", "high");
+const setSSDeathValue = defineNumberValue("Value SS Deaths", "high");
+const setKDValue = defineNumberValue("Value KD", "high");
 
-const setTurnDied = defineNumberValue("Turn Defeated", "high");
+const setKillsTotal = defineNumberValue("Total Kills", "high");
+const setDeathsTotal = defineNumberValue("Total Deaths", "high");
+const setSSKillTotal = defineNumberValue("Total SS Kills", "high");
+const setSSDeathTotal = defineNumberValue("Total SS Deaths", "high");
+const setKDTotal = defineNumberValue("Total KD", "high");
 
 const setGoldTotal = defineNumberValue("Gold Earned", "high");
 const setBountyGold = defineNumberValue("Bounty Gold", "high");
 const setBonusGold = defineNumberValue("Bonus Gold", "high");
 
-const setEndCities = defineNumberValue("Cities Ended With", "high");
-const setMaxCities = defineNumberValue("Most Cities Held", "high");
+const setEndCities = defineNumberValue("End Cities", "high");
+const setMaxCities = defineNumberValue("Most Cities", "high");
+
+const setTurnDied = defineNumberValue("Last Turn", "high");
 
 // const setTotalRiflemenKills = defineNumberValue("Kills - Riflemen", "high");
 // const setTotalRiflemenDeaths = defineNumberValue("Deaths - Riflemen", "high");
@@ -77,24 +81,26 @@ export class GameRankingHelper {
 
 		const timer: timer = CreateTimer();
 		let count: number = 0;
-
+		MessageAll(true, `Saving game data`, 0, 0);
 		TimerStart(timer, 0.50, true, () => {
 			try {
 				if (count > 23) {
 					PauseTimer(timer);
 					DestroyTimer(timer);
 					this.endTracking();
-					print("Tracking Complete")
 				} else {
 					if (GamePlayer.fromPlayer.has(Player(count)) && !GamePlayer.get(Player(count)).isObserving()) {
 						try {
 							let p: GamePlayer = GamePlayer.get(Player(count));
-							setTotalKillsValue(p.player, p.kd.get(p).killValue, "set");
-							setTotalDeathsValue(p.player, p.kd.get(p).deathValue, "set");
-							setTotalKills(p.player, p.kd.get(p).kills, "set");
-							setTotalDeaths(p.player, p.kd.get(p).deaths, "set");
-							setTotalSSKills(p.player, p.kd.get(`${UID.BATTLESHIP_SS}`).killValue, "set");
-							setTotalSSDeaths(p.player, p.kd.get(`${UID.BATTLESHIP_SS}`).deathValue, "set");
+							MessageAll(false, `Saving Data for ${p.names.acct}`, 0, 0);
+							setKillsValue(p.player, p.kd.get(p).killValue, "set");
+							setDeathsValue(p.player, p.kd.get(p).deathValue, "set");
+							setKillsTotal(p.player, p.kd.get(p).kills, "set");
+							setDeathsTotal(p.player, p.kd.get(p).deaths, "set");
+							setSSKillValue(p.player, p.kd.get(`${UID.BATTLESHIP_SS}`).killValue, "set");
+							setSSDeathValue(p.player, p.kd.get(`${UID.BATTLESHIP_SS}`).deathValue, "set");
+							setSSKillTotal(p.player, p.kd.get(`${UID.BATTLESHIP_SS}`).kills, "set");
+							setSSDeathTotal(p.player, p.kd.get(`${UID.BATTLESHIP_SS}`).deaths, "set");
 
 							let num: number = p.kd.get(p).killValue / p.kd.get(p).deathValue;
 							num = num * 100
@@ -106,7 +112,7 @@ export class GameRankingHelper {
 							num = num * 100
 							num = Math.round(num)
 							num = num / 100
-							setKD(p.player, num, "set");
+							setKDTotal(p.player, num, "set");
 
 							setTurnDied(p.player, p.turnDied, "set");
 							
@@ -153,6 +159,7 @@ export class GameRankingHelper {
 							} else {
 								setPlayerFlag(p.player, "loser");
 							}
+							MessageAll(false, `Data saved for ${p.names.acct}`, 0, 0);
 						} catch (error) {
 							print(`Error for player ${GamePlayer.get(Player(count)).names.acct}\n${error}`)
 						}
@@ -166,7 +173,7 @@ export class GameRankingHelper {
 			count++;
 		});
 
-		//this.setMode();
+		MessageAll(false, `Finished Saving Data`, 0, 0);
 	}
 
 	public trackGame() {

@@ -1,4 +1,3 @@
-import { GamePlayer } from "app/player/player-type";
 import { Transports } from "app/transports-type";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { UID } from "resources/unitID";
