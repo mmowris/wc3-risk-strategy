@@ -103,8 +103,16 @@ export const CommandProcessor = () => {
 				CleanMap();
 				ResetGame();
 
+				if (RoundSettings.promode) {
+					GamePlayer.fromPlayer.forEach(gPlayer => {
+						if (!gPlayer.isObserving() && !gPlayer.isLeft()) {
+							FogModifierStop(gPlayer.fog);
+						}
+					})
+				}
+				
 				const quickTimer: Timer = new Timer();
-				quickTimer.start(2.00, false, () => {
+				quickTimer.start(3.00, false, () => {
 					quickTimer.pause();
 					quickTimer.destroy();
 
@@ -342,10 +350,10 @@ export const CommandProcessor = () => {
 				}
 				break;
 			case "-testMode":
-				if (!gPlayer.admin) return;
-				if (!GameTracking.getInstance().roundInProgress) return;
+				// if (!gPlayer.admin) return;
+				// if (!GameTracking.getInstance().roundInProgress) return;
 
-				gPlayer.giveGold(10000);
+				// gPlayer.giveGold(10000);
 
 				break;
 			default:

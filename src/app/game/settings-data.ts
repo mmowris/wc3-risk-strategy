@@ -33,5 +33,5 @@ export const RoundSettings: RoundSettings = {
 	promode: false,
 	tournament: false,
 	standard: true,
-	mode: MODES.UNRANKED
+	mode: MODES.FFA
 }

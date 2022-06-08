@@ -18,8 +18,8 @@ const setSSDeathTotal = defineNumberValue("Total SS Deaths", "high");
 const setKDTotal = defineNumberValue("Total KD", "high");
 
 const setGoldTotal = defineNumberValue("Gold Earned", "high");
-const setBountyGold = defineNumberValue("Bounty Gold", "high");
-const setBonusGold = defineNumberValue("Bonus Gold", "high");
+const setBountyGold = defineNumberValue("Gold Bounty", "high");
+const setBonusGold = defineNumberValue("Gold Bonus", "high");
 
 const setEndCities = defineNumberValue("End Cities", "high");
 const setMaxCities = defineNumberValue("Most Cities", "high");
@@ -77,7 +77,7 @@ export class GameRankingHelper {
 	}
 
 	public setData(who: player) {
-		//if (!this.track) return;
+		if (!this.track) return;
 
 		const timer: timer = CreateTimer();
 		let count: number = 0;
@@ -180,7 +180,7 @@ export class GameRankingHelper {
 		this.track = true;
 	}
 
-	private endTracking() {
+	public endTracking() {
 		File.write("wc3mt.txt", "wc3mt-GameEnd");
 	}
 }

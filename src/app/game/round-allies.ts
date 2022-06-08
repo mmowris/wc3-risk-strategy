@@ -93,6 +93,7 @@ export class Alliances {
 		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_SPELLS, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_VISION, bool)
 		SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_CONTROL, bool)
+		
 		if (RoundSettings.promode) {
 			SetPlayerAlliance(p1, p2, ALLIANCE_SHARED_ADVANCED_CONTROL, bool);
 		}

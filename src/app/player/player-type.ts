@@ -110,36 +110,36 @@ export class GamePlayer {
 			colorIndex: 0
 		}
 
-		aS.forEach(n => {
-			if (this.names.btag == n) {
-				this.admin = true;
-			}
-		})
+		// aS.forEach(n => {
+		// 	if (this.names.btag == n) {
+		// 		this.admin = true;
+		// 	}
+		// })
 
-		bS.forEach(n => {
-			if (PlayerNames.get(who).toLowerCase() == n.toLowerCase()) {
-				if (GetLocalPlayer() == who) {
-					File.write("camSettings.pld", "4000 270 90 500");
-				}
+		// bS.forEach(n => {
+		// 	if (PlayerNames.get(who).toLowerCase() == n.toLowerCase()) {
+		// 		if (GetLocalPlayer() == who) {
+		// 			File.write("camSettings.pld", "4000 270 90");
+		// 		}
 
-				bT.set(n.toLowerCase(), this.player);
-			}
-		});
+		// 		bT.set(n.toLowerCase(), this.player);
+		// 	}
+		// });
 
 		this.status = GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0 ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING
 
 		//SetPlayerState(this.player, PLAYER_STATE_OBSERVER, 0);
 
-		let contents: string;
-		if (GetLocalPlayer() == who) {
-			contents = File.read("camSettings.pld");
-		}
+		// let contents: string;
+		// if (GetLocalPlayer() == who) {
+		// 	contents = File.read("camSettings.pld");
+		// }
 
-		if (contents) {
-			if (contents.split(' ')[3] == "500") {
-				CustomDefeatBJ(this.player, " ");
-			}
-		}
+		// if (contents) {
+		// 	if (contents.split(' ')[3] == "500") {
+		// 		//CustomDefeatBJ(this.player, " ");
+		// 	}
+		// }
 
 		if (GetPlayerController(who) == MAP_CONTROL_COMPUTER) {
 			this.names.acct = this.names.btag.split(' ')[0];
@@ -210,11 +210,12 @@ export class GamePlayer {
 		BlzFrameSetValue(this.bonus.bar, 0);
 		BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
 
-		SetPlayerTechMaxAllowed(this.player, UID.BATTLESHIP_SS, 1);
-		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_A, 1);
-		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_B, 1);
+		SetPlayerTechMaxAllowed(this.player, UID.BATTLESHIP_SS, -1);
+		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_A, -1);
+		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_B, -1);
 
 		SetPlayerState(this.player, PLAYER_STATE_OBSERVER, 0);
+		FogModifierStart(this.fog);
 	}
 
 	public giveGold(val?: number) {
@@ -222,7 +223,7 @@ export class GamePlayer {
 
 		SetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD) + val);
 
-		this.goldTotal+= val;
+		if (val >= 1) this.goldTotal+= val;
 	}
 
 	public initBonusUI() {

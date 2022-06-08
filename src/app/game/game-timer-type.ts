@@ -55,24 +55,12 @@ export class GameTimer {
 	}
 
 	public stop(): boolean {
-		let counter: number = 0;
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.turnDied == -1) {
-				gPlayer.setTurnDied(this.turn);
-			}
-
-			if (gPlayer.cityData.endCities == 0) {
-				gPlayer.cityData.endCities = gPlayer.cities.length
-			}
-
-			if (GetPlayerController(gPlayer.player) == MAP_CONTROL_USER) {
-				counter++;
-			}
+			if (gPlayer.turnDied == -1) gPlayer.setTurnDied(this.turn);
+			if (gPlayer.cityData.endCities == 0) gPlayer.cityData.endCities = gPlayer.cities.length
 		})
 
-		if (counter >= 14 && this.turn > 10) {
-			GameRankingHelper.getInstance().setData(GameTracking.getInstance().leader.player);
-		}
+		if (this.turn > 10) GameRankingHelper.getInstance().setData(GameTracking.getInstance().leader.player);
 
 		this.timer.pause();
 		this.timer.destroy();

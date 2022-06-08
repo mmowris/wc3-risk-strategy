@@ -14,6 +14,7 @@ import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
 import { Timer } from "w3ts";
 import { Players } from "w3ts/globals";
+import { GameRankingHelper } from "./game-ranking-helper-type";
 import { GameTimer } from "./game-timer-type";
 import { GameTracking } from "./game-tracking-type";
 import { Settings } from "./round-settings";
@@ -64,6 +65,22 @@ export class Round {
 			BlzDestroyFrame(BlzGetFrameByName("pList", 0));
 			ModeUI.pList(BlzGetFrameByName("EscMenuBackdrop", 0));
 		});
+
+		let counter: number = 0;
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			if (gPlayer.isObserving()) return;
+			if (gPlayer.isLeft()) return;
+
+			if (GetPlayerController(gPlayer.player) == MAP_CONTROL_USER) {
+				counter++;
+			}
+		})
+
+		if (counter < 14) {
+			GameRankingHelper.getInstance().endTracking();
+		} else {
+			GameRankingHelper.getInstance().trackGame();
+		}
 	}
 
 	public start() {
