@@ -1,6 +1,6 @@
 import { CityAllocation } from "app/country/city-allocation-type";
 import { Cities } from "app/country/city-type";
-import { bS, GamePlayer, PlayerStatus } from "app/player/player-type";
+import { bS, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { Trees } from "app/trees-type";
 import { ModeUI } from "app/ui/mode-ui-type";
@@ -30,16 +30,36 @@ export class Round {
 			this.count = 0;
 			this.modes = false;
 			Trees.getInstance();
-			GameTracking.getInstance().leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1))));
+			GameTracking.getInstance().leader = this.getRandomPlayer();
+			 //GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1)))); <- This caused the game breaking bug on start FML
 
 			ModeUI.buildModeFrame();
 			FogEnable(true);
 			this.runModeSelection();
 		} catch (error) {
 			Players.forEach(p => {
-				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `EC:1`);
+				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `Please screenshot this and send report on discord\nEC:1\n${error}`);
 			});
 		}
+	}
+
+	private getRandomPlayer() {
+		let playerNumber = Math.floor(Math.random() * GamePlayer.fromPlayer.size);
+		let gPlayer = GamePlayer.get(Player(playerNumber));
+
+		while (!GamePlayer.fromPlayer.has(Player(playerNumber)) || (!gPlayer.isAlive() && !gPlayer.isPlaying()) || gPlayer.isNeutral() || gPlayer.isObserving()) {
+			playerNumber = Math.floor(Math.random() * GamePlayer.fromPlayer.size);
+			gPlayer = GamePlayer.get(Player(playerNumber));
+		}
+
+		return gPlayer;
+		// let counter = 0;
+
+		// for (let key of GamePlayer.fromPlayer.keys()) {
+		// 	if (counter++ === playerNumber) {
+		// 		return key;
+		// 	}
+		// }
 	}
 
 	private hostIsBot(): boolean {
@@ -51,15 +71,17 @@ export class Round {
 			}
 		});
 
+		//MessageAll(false, "Checked for Bot", 0, 0);
 		return result;
 	}
 
 	public runModeSelection() {
 		ModeUI.toggleModeFrame(true);
-
+		//MessageAll(false, "Mode Frame Visable", 0, 0);
 		let tick: number = 20;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
+			//MessageAll(false, `tick: ${tick}`, 0, 0);
 			if (tick >= 1 && !ModeUI.startPressed && !this.hostIsBot()) {
 				tick--;
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Autostart in: ${tick} seconds`);
@@ -128,14 +150,14 @@ export class Round {
 						Scoreboard.getInstance().toggleVis(true);
 					} catch (error) {
 						Players.forEach(p => {
-							DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `EC:3`);
+							DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `Please screenshot this and send report on discord\nEC:3\n${error}`);
 						});
 					}
 				}
 			});
 		} catch (error) {
 			Players.forEach(p => {
-				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `EC:2`);
+				DisplayTimedTextToPlayer(p.handle, 0, 0, 35.00, `Please screenshot this and send report on discord\nEC:2\n${error}`);
 			});
 		}
 	}

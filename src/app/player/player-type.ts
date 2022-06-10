@@ -215,7 +215,6 @@ export class GamePlayer {
 		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_B, -1);
 
 		SetPlayerState(this.player, PLAYER_STATE_OBSERVER, 0);
-		FogModifierStart(this.fog);
 	}
 
 	public giveGold(val?: number) {

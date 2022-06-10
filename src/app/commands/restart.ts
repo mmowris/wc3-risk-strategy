@@ -7,6 +7,7 @@ import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { Trees } from "app/trees-type";
 import { ModeUI } from "app/ui/mode-ui-type";
 import { UserInterface } from "app/ui/user-interface-type";
+import { MessageAll } from "libs/utils";
 import { MAX_PLAYERS } from "resources/constants";
 import { UTYPE } from "resources/unitTypes";
 
@@ -31,10 +32,13 @@ export function CleanMap() {
 	uGroup = null;
 
 	Scoreboard.getInstance().destory();
+	MessageAll(false, "Map Cleaned", 0, 0);
 }
 
 export function ResetGame() {
 	try {
+		Trees.getInstance().reset();
+		
 		Cities.forEach(city => {
 			city.reset();
 		})
@@ -47,18 +51,21 @@ export function ResetGame() {
 			gPlayer.reset();
 		})
 
-		Trees.getInstance().reset();
 		GameTimer.getInstance().reset();
 
 	} catch (error) {
 		print(error)
 	}
+	MessageAll(false, "Game Reset", 0, 0);
 }
 
 export function SlowRestart() {
 	try {
+		//MessageAll(false, "Slow Restart", 0, 0);
 		UserInterface.hideUI(true);
+		//MessageAll(false, "UI Hidden", 0, 0);
 		BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), true);
+		//MessageAll(false, "Obs Button Visable", 0, 0);
 		Round.getInstance().runModeSelection();
 	} catch (error) {
 		print(error)

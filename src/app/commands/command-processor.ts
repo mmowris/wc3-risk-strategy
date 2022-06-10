@@ -103,19 +103,15 @@ export const CommandProcessor = () => {
 				CleanMap();
 				ResetGame();
 
-				if (RoundSettings.promode) {
-					GamePlayer.fromPlayer.forEach(gPlayer => {
-						if (!gPlayer.isObserving() && !gPlayer.isLeft()) {
-							FogModifierStop(gPlayer.fog);
-						}
+				if (RoundSettings.fog == 1) {
+					GamePlayer.fromPlayer.forEach(player => {
+						if (player.isAlive() || player.isPlaying()) FogModifierStop(player.fog);
 					})
 				}
-				
+				//MessageAll(false, "Fog set", 0, 0);
 				const quickTimer: Timer = new Timer();
 				quickTimer.start(4.00, false, () => {
-					quickTimer.pause();
-					quickTimer.destroy();
-
+					//MessageAll(false, "Calling Restart...", 0, 0);
 					if (command === "-restart") SlowRestart();
 					if (command === "-ng") FastRestart();
 				});

@@ -108,7 +108,7 @@ export class GameTimer {
 			Scoreboard.getInstance().toggleVis(true);
 
 			if (GameRankingHelper.getInstance().track) {
-				MessageAll(true, `${HexColors.TANGERINE}This game will be ranked!|r\n${HexColors.GREEN}wc3stats.com/risk-europe|r\nYou can find rankings at the site above!`, 0, 0);
+				MessageAll(false, `${HexColors.TANGERINE}This game will be ranked!|r\n${HexColors.GREEN}wc3stats.com/risk-europe|r\nYou can find rankings at the site above!`, 0, 0);
 			}
 		}
 
