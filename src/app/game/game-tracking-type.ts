@@ -1,6 +1,6 @@
 import { GamePlayer } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
-import { PlayGlobalSound } from "libs/utils";
+import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";

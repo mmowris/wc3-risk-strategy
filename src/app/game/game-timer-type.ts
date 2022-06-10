@@ -36,7 +36,6 @@ export class GameTimer {
 			if (this._tick == this.duration) roundUpdate = this.roundUpdate();
 			this.updateBoard(roundUpdate);
 			this.updateUI();
-			if (this._turn == 1) Scoreboard.getInstance().toggleVis(true);
 
 			this._tick--;
 
@@ -105,6 +104,18 @@ export class GameTimer {
 	}
 
 	private roundUpdate(): boolean {
+		if (this._turn == 1) {
+			Scoreboard.getInstance().toggleVis(true);
+
+			if (GameRankingHelper.getInstance().track) {
+				MessageAll(true, `${HexColors.TANGERINE}This game will be ranked!|r\n${HexColors.GREEN}wc3stats.com/risk-europe|r\nYou can find rankings at the site above!`, 0, 0);
+			}
+		}
+
+		if (this._turn == 2) {
+			MessageAll(true, `${HexColors.TANGERINE}You can download the official version on the discord!|r\n${HexColors.GREEN}Discord Link:|r discord.me/risk`, 0, 0);
+		}
+
 		if (this._turn > 1) {
 			const gameOver: boolean = GameTracking.getInstance().cityVictory();
 			if (gameOver) return this.stop();

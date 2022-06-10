@@ -12,7 +12,7 @@ import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "resources/colordata";
 import { MAX_PLAYERS, NEUTRAL_HOSTILE } from "resources/constants";
 import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
-import { Timer } from "w3ts";
+import { getHost, Timer } from "w3ts";
 import { Players } from "w3ts/globals";
 import { GameRankingHelper } from "./game-ranking-helper-type";
 import { GameTimer } from "./game-timer-type";
@@ -42,13 +42,25 @@ export class Round {
 		}
 	}
 
+	private hostIsBot(): boolean {
+		let result = false;
+
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			if (gPlayer.names.acct == `RiskBot`.split('#')[0]) {
+				result = true;
+			}
+		});
+
+		return result;
+	}
+
 	public runModeSelection() {
 		ModeUI.toggleModeFrame(true);
 
 		let tick: number = 20;
 		const modeTimer: Timer = new Timer();
 		modeTimer.start(1.00, true, () => {
-			if (tick >= 1 && !ModeUI.startPressed) {
+			if (tick >= 1 && !ModeUI.startPressed && !this.hostIsBot()) {
 				tick--;
 				BlzFrameSetText(BlzGetFrameByName("cTimer", 0), `Autostart in: ${tick} seconds`);
 			} else {
@@ -75,6 +87,8 @@ export class Round {
 				counter++;
 			}
 		})
+
+		MessageAll(true, `Valid Players: ${counter}`);
 
 		if (counter < 14) {
 			GameRankingHelper.getInstance().endTracking();
@@ -133,21 +147,16 @@ export class Round {
 		MessageAll(true, `${HexColors.TANGERINE}The round will start in a few seconds!|r`)
 		this.count++;
 
-		let tick: number = 3;
 		const quickTimer: Timer = new Timer();
-		quickTimer.start(1.00, true, () => {
-			if (tick >= 1) {
-				tick--;
-			} else {
-				quickTimer.pause();
-				quickTimer.destroy();
-				Scoreboard.getInstance().init();
-				UserInterface.hideUI(false);
-				GameTimer.getInstance().start();
-				GameTracking.getInstance().roundInProgress = true;
-				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
-				Scoreboard.getInstance().toggleVis(true);
-			}
+		quickTimer.start(4.50, false, () => {
+			quickTimer.pause();
+			quickTimer.destroy();
+			Scoreboard.getInstance().init();
+			UserInterface.hideUI(false);
+			GameTimer.getInstance().start();
+			GameTracking.getInstance().roundInProgress = true;
+			PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
+			Scoreboard.getInstance().toggleVis(true);
 		});
 	}
 

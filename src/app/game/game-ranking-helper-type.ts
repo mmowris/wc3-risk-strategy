@@ -1,5 +1,6 @@
 import { GamePlayer } from "app/player/player-type";
 import { MessageAll } from "libs/utils";
+import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
 import { File } from "w3ts";
 import { defineNumberValue, defineStringValue, setPlayerFlag } from "w3ts-w3mmd";
@@ -65,7 +66,7 @@ const setMode = defineStringValue("mode", "track");
 
 export class GameRankingHelper {
 	private static instance: GameRankingHelper;
-	private track: boolean;
+	public track: boolean;
 
 	constructor() { }
 
@@ -82,7 +83,7 @@ export class GameRankingHelper {
 		const timer: timer = CreateTimer();
 		let count: number = 0;
 		MessageAll(true, `Saving game data`, 0, 0);
-		TimerStart(timer, 0.50, true, () => {
+		TimerStart(timer, 1.00, true, () => {
 			try {
 				if (count > 23) {
 					PauseTimer(timer);
@@ -173,7 +174,9 @@ export class GameRankingHelper {
 			count++;
 		});
 
-		MessageAll(false, `Finished Saving Data`, 0, 0);
+		MessageAll(true, `Finished Saving Data`, 0, 0);
+		MessageAll(false, `${HexColors.TANGERINE}This game was ranked|r\n${HexColors.GREEN}wc3stats.com/risk-europe|r\nYou can find rankings at the site above!`, 0, 0);
+		MessageAll(false, `${HexColors.TANGERINE}You can download the official version on the discord!|r\n${HexColors.GREEN}Discord Link:|r discord.me/risk`, 0, 0);
 	}
 
 	public trackGame() {

@@ -82,7 +82,7 @@ export class Game {
 				CameraControls.getInstance();
 
 				Players.forEach(player => {
-					if (player.slotState == PLAYER_SLOT_STATE_PLAYING/* || player.getState(PLAYER_STATE_OBSERVER) > 0*/) {
+					if (player.slotState == PLAYER_SLOT_STATE_PLAYING || player.getState(PLAYER_STATE_OBSERVER) > 0) {
 						if (player.id >= 25) return; //Exclude ai that is not neutral hostile
 
 						GamePlayer.fromPlayer.set(player.handle, new GamePlayer(player.handle));

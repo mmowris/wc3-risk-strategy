@@ -112,7 +112,7 @@ export const CommandProcessor = () => {
 				}
 				
 				const quickTimer: Timer = new Timer();
-				quickTimer.start(3.00, false, () => {
+				quickTimer.start(4.00, false, () => {
 					quickTimer.pause();
 					quickTimer.destroy();
 

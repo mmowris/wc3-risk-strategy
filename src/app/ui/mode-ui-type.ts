@@ -59,7 +59,7 @@ export class ModeUI {
 		//Timer
 		const timer: framehandle = BlzCreateFrameByType("Text", "cTimer", backdrop, "EscMenuLabelTextTemplate", 0);
 		BlzFrameSetPoint(timer, FRAMEPOINT_BOTTOMRIGHT, backdrop, FRAMEPOINT_BOTTOMRIGHT, -0.135, 0.043);
-		BlzFrameSetText(timer, "Autostart in: 45 seconds");
+		BlzFrameSetText(timer, "Autostart in: 20 seconds");
 
 		//Discord box
 		const dBox: framehandle = BlzCreateFrame("EscMenuEditBoxTemplate", backdrop, 0, 1);
