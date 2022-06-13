@@ -18,6 +18,19 @@ export class Scoreboard {
 	public init() {
 		this.allyBoard = RoundSettings.diplomancy == 1 || RoundSettings.diplomancy == 2 ? true : false;
 
+		let counter: number = 0;
+		GamePlayer.fromPlayer.forEach(gPlayer => {
+			if (gPlayer.isObserving()) return;
+			if (gPlayer.isLeft()) return;
+			if (gPlayer.isNeutral()) return;
+
+			counter++;
+		})
+
+		if (counter == 2) {
+			this.allyBoard = false;
+		}
+
 		this.mb = CreateMultiboard();
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {

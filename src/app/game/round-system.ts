@@ -164,22 +164,26 @@ export class Round {
 
 	public quickStart() {
 		this.setupPlayerStatus();
-		CityAllocation.start();
 
-		MessageAll(true, `${HexColors.TANGERINE}The round will start in a few seconds!|r`)
-		this.count++;
+		const timer: Timer = new Timer();
+		timer.start(3.00, false, () => {
+			CityAllocation.start();
 
-		const quickTimer: Timer = new Timer();
-		quickTimer.start(4.50, false, () => {
-			quickTimer.pause();
-			quickTimer.destroy();
-			Scoreboard.getInstance().init();
-			UserInterface.hideUI(false);
-			GameTimer.getInstance().start();
-			GameTracking.getInstance().roundInProgress = true;
-			PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
-			Scoreboard.getInstance().toggleVis(true);
-		});
+			MessageAll(true, `${HexColors.TANGERINE}The round will start in a few seconds!|r`)
+			this.count++;
+	
+			const quickTimer: Timer = new Timer();
+			quickTimer.start(3, false, () => {
+				quickTimer.pause();
+				quickTimer.destroy();
+				Scoreboard.getInstance().init();
+				UserInterface.hideUI(false);
+				GameTimer.getInstance().start();
+				GameTracking.getInstance().roundInProgress = true;
+				PlayGlobalSound("Sound\\Interface\\SecretFound.flac");
+				Scoreboard.getInstance().toggleVis(true);
+			});
+		})
 	}
 
 	public end() {
