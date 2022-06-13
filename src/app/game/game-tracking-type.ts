@@ -1,4 +1,4 @@
-import { GamePlayer } from "app/player/player-type";
+import { GamePlayer, PlayerNames } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
@@ -75,7 +75,8 @@ export class GameTracking {
 		ClearTextMessages();
 		
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			gPlayer.setName(gPlayer.names.acct);
+			//gPlayer.setName(gPlayer.names.btag);
+			SetPlayerName(gPlayer.player, PlayerNames.get(gPlayer.player))
 
 			if (GetLocalPlayer() == gPlayer.player) {
 				BlzEnableSelections(false, false);
