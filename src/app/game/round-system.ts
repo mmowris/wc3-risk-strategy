@@ -66,6 +66,7 @@ export class Round {
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
+				if (this.hostIsBot()) Settings.getInstance().fog = 1;
 				ModeUI.toggleOptions(false);
 				ModeUI.toggleObsButton(false);
 				ModeUI.startPressed = false;
@@ -90,7 +91,7 @@ export class Round {
 
 		MessageAll(true, `Valid Players: ${counter}`);
 
-		if (counter < 14) {
+		if (counter < 12) {
 			GameRankingHelper.getInstance().endTracking();
 		} else {
 			GameRankingHelper.getInstance().trackGame();
