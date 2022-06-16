@@ -1,6 +1,6 @@
-import { GamePlayer } from "app/player/player-type";
+import { GamePlayer, PlayerNames } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
-import { MessageAll, PlayGlobalSound } from "libs/utils";
+import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
@@ -75,13 +75,14 @@ export class GameTracking {
 		ClearTextMessages();
 		
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			gPlayer.setName(gPlayer.names.acct);
+			//gPlayer.setName(gPlayer.names.btag);
+			SetPlayerName(gPlayer.player, PlayerNames.get(gPlayer.player))
 
 			if (GetLocalPlayer() == gPlayer.player) {
 				BlzEnableSelections(false, false);
 			}
 
-			if (RoundSettings.diplomancy > 0) {
+			if (RoundSettings.diplomancy > 0 && Scoreboard.getInstance().allyBoard) {
 				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.WHITE}Team ${Alliances.getInstance().getPlayerTeam(who.player)}|r ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
 				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${HexColors.WHITE}Team ${Alliances.getInstance().getPlayerTeam(who.player)}|r ${HexColors.TANGERINE}won the game with|r ${Alliances.getInstance().getTeamCities(Alliances.getInstance().getPlayerTeam(who.player))} ${HexColors.TANGERINE}cities!|r`);
 			} else {
@@ -89,6 +90,8 @@ export class GameTracking {
 				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
 			}
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.TANGERINE}Discord: discord.me/risk|r`);
+
+			FogModifierStart(gPlayer.fog);
 		})
 
 		PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");

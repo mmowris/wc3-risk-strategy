@@ -112,13 +112,13 @@ export class Settings {
 	 */
 	public fogSetup() {
 		switch (this.fog) {
-			case 1:
+			case 1://Fog On
 				GamePlayer.fromPlayer.forEach(player => {
 					if (player.isAlive() || player.isPlaying()) FogModifierStop(player.fog);
 				})
 				break;
 			case 2:
-			default:
+			default://Fog Off
 				GamePlayer.fromPlayer.forEach(player => {
 					if (player.isAlive() || player.isPlaying()) FogModifierStart(player.fog);
 				})

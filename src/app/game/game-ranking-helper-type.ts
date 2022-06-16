@@ -3,7 +3,7 @@ import { MessageAll } from "libs/utils";
 import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
 import { File } from "w3ts";
-import { defineNumberValue, defineStringValue, setPlayerFlag } from "w3ts-w3mmd";
+import { defineNumberValue, defineStringValue, init, setPlayerFlag } from "w3ts-w3mmd";
 import { RoundSettings } from "./settings-data";
 
 const setKillsValue = defineNumberValue("Value Kills", "high");
@@ -79,6 +79,8 @@ export class GameRankingHelper {
 
 	public setData(who: player) {
 		if (!this.track) return;
+
+		init();
 
 		const timer: timer = CreateTimer();
 		let count: number = 0;
