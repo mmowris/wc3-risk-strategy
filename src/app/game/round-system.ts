@@ -88,7 +88,7 @@ export class Round {
 			} else {
 				modeTimer.pause();
 				modeTimer.destroy();
-				if (this.hostIsBot()) Settings.getInstance().fog = 1;
+				//if (this.hostIsBot()) Settings.getInstance().fog = 1;
 				ModeUI.toggleOptions(false);
 				ModeUI.toggleObsButton(false);
 				ModeUI.startPressed = false;
