@@ -15,7 +15,7 @@
   "dependencies": {
     "linked-list-typescript": "^1.0.15",
     "w3ts": "^2.3.1",
-    "w3ts-w3mmd": "^1.1.0"
+    "w3ts-w3mmd": "^1.1.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^8.1.1",
