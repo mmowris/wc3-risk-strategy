@@ -2,7 +2,7 @@ import { Transports } from "app/transports-type";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
-import { FilterFriendlyValidGuards, isGuardValid } from "./guard-filters";
+import { FilterFriendlyValidGuards, FilterOwnedGuards, isGuardValid } from "./guard-filters";
 import { compareValue } from "./guard-options";
 
 export const Cities: City[] = [];
@@ -524,7 +524,10 @@ export class City {
 			let g: group = CreateGroup();
 			let guardChoice: unit = city.guard;
 
-			GroupEnumUnitsInRange(g, city.x, city.y, CityRegionSize, FilterFriendlyValidGuards(city));
+
+			GroupEnumUnitsInRange(g, city.x, city.y, CityRegionSize, FilterOwnedGuards(city));
+			
+			if (BlzGroupGetSize(g) == 0) GroupEnumUnitsInRange(g, city.x, city.y, CityRegionSize, FilterFriendlyValidGuards(city));
 
 			if (BlzGroupGetSize(g) == 0 && !isGuardValid(city)) {
 				city.dummyGuard(GetOwningPlayer(city.barrack));

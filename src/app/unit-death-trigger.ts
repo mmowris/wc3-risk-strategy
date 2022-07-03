@@ -1,7 +1,7 @@
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
 import { City } from "./country/city-type";
-import { FilterEnemyValidGuards, FilterFriendlyValidGuards } from "./country/guard-filters";
+import { FilterEnemyValidGuards, FilterFriendlyValidGuards, FilterOwnedGuards } from "./country/guard-filters";
 import { compareValue } from "./country/guard-options";
 import { Spawner } from "./country/spawner-type";
 import { GameTimer } from "./game/game-timer-type";
@@ -77,9 +77,13 @@ function alliedCOPSearch(guardChoice: unit, city: City, kUnit: unit): unit {
 	let radius: number = 235;
 	if (GetOwningPlayer(kUnit) == city.getOwner() || IsPlayerAlly(GetOwningPlayer(kUnit), city.getOwner())) radius = 550;
 
-	GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterFriendlyValidGuards(city));
+	GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterOwnedGuards(city));
 
-	if (BlzGroupGetSize(g) == 0) return guardChoice = null;
+	if (BlzGroupGetSize(g) == 0) {
+		GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterFriendlyValidGuards(city));
+		if (BlzGroupGetSize(g) == 0) return guardChoice = null;
+	}
+
 	if (!guardChoice) guardChoice = GroupPickRandomUnit(g);
 
 	ForGroup(g, () => {
