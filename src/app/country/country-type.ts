@@ -132,6 +132,8 @@ export class Country {
 	}
 
 	public animate() {
+		if (this.owner == NEUTRAL_HOSTILE ) return;
+
 		this.cities.forEach(city => {
 			const effect = AddSpecialEffect("Abilities\\Spells\\Human\\Resurrect\\ResurrectCaster.mdl", GetUnitX(city.barrack), GetUnitY(city.barrack));
 			BlzSetSpecialEffectScale(effect, 1.10);

@@ -27,42 +27,8 @@ const setMaxCities = defineNumberValue("Most Cities", "high");
 
 const setTurnDied = defineNumberValue("Last Turn", "high");
 
-// const setTotalRiflemenKills = defineNumberValue("Kills - Riflemen", "high");
-// const setTotalRiflemenDeaths = defineNumberValue("Deaths - Riflemen", "high");
-// const setTotalMedicKills = defineNumberValue("Kills - Medic", "high");
-// const setTotalMedicDeaths = defineNumberValue("Deaths - Medic", "high");
-// const setTotalMortarKills = defineNumberValue("Kills - Mortar", "high");
-// const setTotalMortarDeaths = defineNumberValue("Deaths - Mortar", "high");
-// const setTotalRoarerKills = defineNumberValue("Kills - Roarer", "high");
-// const setTotalRoarerDeaths = defineNumberValue("Deaths - Roarer", "high");
-// const setTotalKnightKills = defineNumberValue("Kills - Knight", "high");
-// const setTotalKnightDeaths = defineNumberValue("Deaths - Knight", "high");
-// const setTotalGeneralKills = defineNumberValue("Kills - General", "high");
-// const setTotalGeneralDeaths = defineNumberValue("Deaths - General", "high");
-// const setTotalArtilleryKills = defineNumberValue("Kills - Artillery", "high");
-// const setTotalArtilleryDeaths = defineNumberValue("Deaths - Artillery", "high");
-// const setTotalTankKills = defineNumberValue("Kills - Tank", "high");
-// const setTotalTankDeaths = defineNumberValue("Deaths - Tank", "high");
-// const setTotalMarineKills = defineNumberValue("Kills - Marine", "high");
-// const setTotalMarineDeaths = defineNumberValue("Deaths - Marine", "high");
-// const setTotalCaptainKills = defineNumberValue("Kills - Captain", "high");
-// const setTotalCaptainDeaths = defineNumberValue("Deaths - Captain", "high");
-// const setTotalAdmiralKills = defineNumberValue("Kills - Admiral", "high");
-// const setTotalAdmiralDeaths = defineNumberValue("Deaths - Admiral", "high");
-// const setTotalTransportKills = defineNumberValue("Kills - Transport", "high");
-// const setTotalTransportDeaths = defineNumberValue("Deaths - Transport", "high");
-// const setTotalHeavyTransportKills = defineNumberValue("Kills - Heavy Transport", "high");
-// const setTotalHeavyTransportDeaths = defineNumberValue("Deaths - Heavy Transport", "high");
-// const setTotalWarshipAKills = defineNumberValue("Kills - Warship A", "high");
-// const setTotalWarshipADeaths = defineNumberValue("Deaths - Warship A", "high");
-// const setTotalWarshipBKills = defineNumberValue("Kills - Warship B", "high");
-// const setTotalWarshipBDeaths = defineNumberValue("Deaths - Warship B", "high");
-
 const setMode = defineStringValue("mode", "track");
 //const setCitiesCaptured = defineNumberValue("Cities Captured", "high");
-//const setCitiesEndedWith = defineNumberValue("Cities Ended With", "high");
-//const setTotalGold = defineNumberValue("Total Gold", "high");
-//const setAverageGold = defineNumberValue("Average Gold", "high");
 
 export class GameRankingHelper {
 	private static instance: GameRankingHelper;
@@ -128,36 +94,6 @@ export class GameRankingHelper {
 								setMaxCities(p.player, p.cityData.maxCities, "set");
 								setEndCities(p.player, p.cityData.endCities, "set");
 
-								// setTotalRiflemenKills(p.player, p.kd.get(`${UID.RIFLEMEN}`).kills, "set");
-								// setTotalRiflemenDeaths(p.player, p.kd.get(`${UID.RIFLEMEN}`).kills, "set");
-								// setTotalMedicKills(p.player, p.kd.get(`${UID.MEDIC}`).kills, "set");
-								// setTotalMedicDeaths(p.player, p.kd.get(`${UID.MEDIC}`).kills, "set");
-								// setTotalMortarKills(p.player, p.kd.get(`${UID.MORTAR}`).kills, "set");
-								// setTotalMortarDeaths(p.player, p.kd.get(`${UID.MORTAR}`).kills, "set");
-								// setTotalRoarerKills(p.player, p.kd.get(`${UID.ROARER}`).kills, "set");
-								// setTotalRoarerDeaths(p.player, p.kd.get(`${UID.ROARER}`).kills, "set");
-								// setTotalKnightKills(p.player, p.kd.get(`${UID.KNIGHT}`).kills, "set");
-								// setTotalKnightDeaths(p.player, p.kd.get(`${UID.KNIGHT}`).kills, "set");
-								// setTotalGeneralKills(p.player, p.kd.get(`${UID.GENERAL}`).kills, "set");
-								// setTotalGeneralDeaths(p.player, p.kd.get(`${UID.GENERAL}`).kills, "set");
-								// setTotalArtilleryKills(p.player, p.kd.get(`${UID.ARTILLERY}`).kills, "set");
-								// setTotalArtilleryDeaths(p.player, p.kd.get(`${UID.ARTILLERY}`).kills, "set");
-								// setTotalTankKills(p.player, p.kd.get(`${UID.TANK}`).kills, "set");
-								// setTotalTankDeaths(p.player, p.kd.get(`${UID.TANK}`).kills, "set");
-								// setTotalMarineKills(p.player, p.kd.get(`${UID.MARINE}`).kills, "set");
-								// setTotalMarineDeaths(p.player, p.kd.get(`${UID.MARINE}`).kills, "set");
-								// setTotalCaptainKills(p.player, p.kd.get(`${UID.CAPTAIN}`).kills, "set");
-								// setTotalCaptainDeaths(p.player, p.kd.get(`${UID.CAPTAIN}`).kills, "set");
-								// setTotalAdmiralKills(p.player, p.kd.get(`${UID.ADMIRAL}`).kills, "set");
-								// setTotalAdmiralDeaths(p.player, p.kd.get(`${UID.ADMIRAL}`).kills, "set");
-								// setTotalTransportKills(p.player, p.kd.get(`${UID.TRANSPORT_SHIP}`).kills, "set");
-								// setTotalTransportDeaths(p.player, p.kd.get(`${UID.TRANSPORT_SHIP}`).kills, "set");
-								// setTotalHeavyTransportKills(p.player, p.kd.get(`${UID.ARMORED_TRANSPORT_SHIP}`).kills, "set");
-								// setTotalHeavyTransportDeaths(p.player, p.kd.get(`${UID.ARMORED_TRANSPORT_SHIP}`).kills, "set");
-								// setTotalWarshipAKills(p.player, p.kd.get(`${UID.WARSHIP_A}`).kills, "set");
-								// setTotalWarshipADeaths(p.player, p.kd.get(`${UID.WARSHIP_A}`).kills, "set");
-								// setTotalWarshipBKills(p.player, p.kd.get(`${UID.WARSHIP_B}`).kills, "set");
-								// setTotalWarshipBDeaths(p.player, p.kd.get(`${UID.WARSHIP_B}`).kills, "set");
 								setMode(p.player, RoundSettings.mode)
 								if (p.player == who /*|| Alliances.getInstance().isAllied(who, p.player)) && RoundSettings.diplomancy != 3*/) {
 									setPlayerFlag(p.player, "winner");
@@ -182,8 +118,6 @@ export class GameRankingHelper {
 			MessageAll(false, `${HexColors.TANGERINE}This game was ranked|r\n${HexColors.GREEN}wc3stats.com/risk-europe|r\nYou can find rankings at the site above!`, 0, 0);
 			MessageAll(false, `${HexColors.TANGERINE}You can download the official version on the discord!|r\n${HexColors.GREEN}Discord Link:|r discord.me/risk`, 0, 0);
 		})
-
-
 	}
 
 	public trackGame() {
