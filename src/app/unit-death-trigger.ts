@@ -99,38 +99,30 @@ function alliedCOPSearch(guardChoice: unit, city: City, kUnit: unit): unit {
  * @returns Valid guard enemy of city
  */
 function enemySearch(guardChoice: unit, city: City, kUnit: unit, dUnit: unit): unit {
-	try {
-		let g: group = CreateGroup();
-		let radius: number = 600;
+	let g: group = CreateGroup();
+	let radius: number = 600;
 
-		if (IsUnitType(kUnit, UTYPE.SHIP) && city.isPort()) radius = 720;
-		if (GetUnitTypeId(kUnit) == UID.MORTAR) radius = 900;
-		if (IsUnitType(kUnit, UTYPE.ARTILLERY)) radius = 1000;
+	if (IsUnitType(kUnit, UTYPE.SHIP) && city.isPort()) radius = 720;
+	if (GetUnitTypeId(kUnit) == UID.MORTAR) radius = 900;
+	if (IsUnitType(kUnit, UTYPE.ARTILLERY)) radius = 1000;
 
-		//GroupEnumUnitsInRange(g, city.x, city.y, radius, FilterEnemyValidGuards(city, kUnit));
-		GroupEnumUnitsInRange(g, GetUnitX(city.guard), GetUnitY(city.guard), radius, FilterEnemyValidGuards(city, kUnit));
+	GroupEnumUnitsInRange(g, GetUnitX(city.guard), GetUnitY(city.guard), radius, FilterEnemyValidGuards(city, kUnit));
 
-		if (BlzGroupGetSize(g) == 0) GroupEnumUnitsInRange(g, GetUnitX(kUnit), GetUnitY(kUnit), 200, FilterEnemyValidGuards(city, kUnit));
+	if (BlzGroupGetSize(g) == 0) GroupEnumUnitsInRange(g, GetUnitX(kUnit), GetUnitY(kUnit), 200, FilterEnemyValidGuards(city, kUnit));
 
-		guardChoice = BlzGroupGetSize(g) == 0 ? kUnit : GroupPickRandomUnit(g)
-		//print(`Size ${BlzGroupGetSize(g)} choice ${guardChoice}`);
+	guardChoice = BlzGroupGetSize(g) == 0 ? kUnit : GroupPickRandomUnit(g)
 
-		ForGroup(g, () => {
-			guardChoice = compareValue(GetEnumUnit(), guardChoice);
-		});
+	ForGroup(g, () => {
+		guardChoice = compareValue(GetEnumUnit(), guardChoice);
+	});
 
-		//print(GetUnitName(guardChoice));
-		if (IsUnitType(guardChoice, UTYPE.ARTILLERY)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
-		if (IsUnitType(guardChoice, UTYPE.GUARD)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
-		if (IsUnitType(guardChoice, UTYPE.SHIP) && !city.isPort()) guardChoice = null;
+	if (IsUnitType(guardChoice, UTYPE.ARTILLERY)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
+	if (IsUnitType(guardChoice, UTYPE.GUARD)) guardChoice = CreateUnit(GetOwningPlayer(kUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
+	if (IsUnitType(guardChoice, UTYPE.SHIP) && !city.isPort()) guardChoice = null;
 
-		if (IsUnitType(kUnit, UTYPE.CITY)) guardChoice = CreateUnit(GetOwningPlayer(dUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
+	if (IsUnitType(kUnit, UTYPE.CITY)) guardChoice = CreateUnit(GetOwningPlayer(dUnit), UID.DUMMY_GUARD, city.x, city.y, 270);
 
-		DestroyGroup(g);
-		g = null;
-		return guardChoice;
-	} catch (error) {
-		print(error)
-	}
-
+	DestroyGroup(g);
+	g = null;
+	return guardChoice;
 }
