@@ -4,6 +4,10 @@ export class UserInterface {
 		UserInterface.initAlliesBoard();
 		UserInterface.hideUI(true);
 		BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarChatButton", 0), false);
+
+		//BlzFrameSetScale(BlzGetFrameByName("LogDialog",0), 0.001);
+		//BlzFrameSetSize(BlzGetFrameByName("LogDialog",0), 0.001, 0.001);
+		//BlzFrameSetSize(BlzGetFrameByName("ChatDialog",0), 0.001, 0.001);
 	}
 
 	public static hideUI(hidden: boolean) {
