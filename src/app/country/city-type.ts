@@ -264,7 +264,7 @@ export class City {
 		Cities[153] = new City(5376.0, 384.0, UID.CITY)
 		//Malta
 		Cities[154] = new City(896.0, -13120.0, UID.CITY)
-		Cities[155] = new City(2400.0, -12896.0, UID.PORT)
+		Cities[155] = new City(2410.0, -12836.0, UID.PORT)
 		//North District|n(Russia)
 		Cities[156] = new City(6272.0, 12224.0, UID.CITY)
 		Cities[157] = new City(10624.0, 11776.0, UID.CITY)
