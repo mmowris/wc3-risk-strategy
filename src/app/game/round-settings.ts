@@ -76,17 +76,20 @@ export class Settings {
 			case 2: //Random Teams
 				Alliances.getInstance().unAllyLobby()
 				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+				Alliances.teamGame = true;
 				//TODO: Create random teams based off allies number
 				break;
 
 			case 3: //Free Ally
 				Alliances.getInstance().unAllyLobby();
+				Alliances.teamGame = true;
 
 				break;
 			default: //FFA
 				Alliances.getInstance().unAllyLobby()
 				UserInterface.ffaSetup();
 				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+				Alliances.teamGame = true;
 				break;
 		}
 

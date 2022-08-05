@@ -1,17 +1,19 @@
 import { GamePlayer } from "app/player/player-type";
 import { ErrorMessage } from "libs/utils";
 import { MAX_PLAYERS } from "resources/constants";
-import { Round } from "./round-system";
 import { RoundSettings } from "./settings-data";
 
 //TODO: reset alliances on new round
 //TODO: free ally needs triggers that ally/unally on alliance change
+
 export class Alliances {
 	private static instance: Alliances;
 	private alliesOf: Map<player, player[]>;
 	private teamNumber: Map<player, number>;
 	private team: Map<number, player[]>;
 	public leadingTeam: number;
+
+	public static teamGame: boolean;
 
 	//TODO: if all humans are on one team, disband team.
 	constructor() {
@@ -20,6 +22,8 @@ export class Alliances {
 		this.team = new Map<number, player[]>();
 		this.leadingTeam = 1;
 		this.setTeams();
+
+		Alliances.teamGame = false;
 	}
 
 	private setTeams() {

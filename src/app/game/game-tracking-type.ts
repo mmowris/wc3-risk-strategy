@@ -35,6 +35,7 @@ export class GameTracking {
 	}
 
 	public koVictory(): boolean {
+		//TODO for tgs - check if remaining players are all on same team, can check if team size == remaining alive
 		let counter: number = 0;
 		let who: GamePlayer;
 
@@ -46,7 +47,10 @@ export class GameTracking {
 			who = gPlayer;
 		});
 
-		if (counter == 1) {
+		let teamsize: number = 1
+		if (Alliances.teamGame) teamsize = Alliances.getInstance().getNumOfAllies(who.player) + 1
+
+		if (counter == teamsize) {
 			this._leader = who;
 			return this.giveVictory(this._leader);
 		}
@@ -56,8 +60,15 @@ export class GameTracking {
 		let who: GamePlayer;
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.cities.length >= this._citiesToWin) {
-				gPlayer.player == NEUTRAL_HOSTILE ? null : who = gPlayer;
+			if (Alliances.teamGame) {
+				if (Alliances.getInstance().getTeamCities(Alliances.getInstance().getPlayerTeam(who.player)) >= this._citiesToWin) {
+					gPlayer.player == NEUTRAL_HOSTILE ? null : who = gPlayer;
+				}
+
+			} else {
+				if (gPlayer.cities.length >= this._citiesToWin) {
+					gPlayer.player == NEUTRAL_HOSTILE ? null : who = gPlayer;
+				}
 			}
 		})
 
@@ -73,7 +84,7 @@ export class GameTracking {
 		GameTracking.canReset = true;
 
 		ClearTextMessages();
-		
+
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			//gPlayer.setName(gPlayer.names.btag);
 			SetPlayerName(gPlayer.player, PlayerNames.get(gPlayer.player))
