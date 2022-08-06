@@ -3,11 +3,31 @@ export class UserInterface {
 		UserInterface.setResourceFrames();
 		UserInterface.initAlliesBoard();
 		UserInterface.hideUI(true);
-		BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarChatButton", 0), false);
+		//BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarChatButton", 0), false);
 
-		//BlzFrameSetScale(BlzGetFrameByName("LogDialog",0), 0.001);
-		//BlzFrameSetSize(BlzGetFrameByName("LogDialog",0), 0.001, 0.001);
-		//BlzFrameSetSize(BlzGetFrameByName("ChatDialog",0), 0.001, 0.001);
+		if (GetHandleId(BlzGetFrameByName("ChatPlayerLabel", 0)) == 0) {
+			Location(0, 0)
+			//print("add handle for plabel")
+		} else {
+			BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerLabel", 0), false)
+			//print("hide label")
+		}
+
+		if (GetHandleId(BlzGetFrameByName("ChatPlayerRadioButton", 0)) == 0) {
+			Location(0, 0)
+			//print("add handle for radio")
+		} else {
+			BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerRadioButton", 0), false)
+			//print("hide radio")
+		}
+
+		if (GetHandleId(BlzGetFrameByName("ChatPlayerMenu", 0)) == 0) {
+			Location(0, 0)
+			//print("add handle for menu")
+		} else {
+			BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerMenu", 0), false)
+			//print("hide menu")
+		}
 	}
 
 	public static hideUI(hidden: boolean) {

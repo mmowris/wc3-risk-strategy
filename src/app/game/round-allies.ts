@@ -13,7 +13,7 @@ export class Alliances {
 	private team: Map<number, player[]>;
 	public leadingTeam: number;
 
-	public static teamGame: boolean;
+	public static teamGame: boolean = false;
 
 	//TODO: if all humans are on one team, disband team.
 	constructor() {
@@ -22,8 +22,6 @@ export class Alliances {
 		this.team = new Map<number, player[]>();
 		this.leadingTeam = 1;
 		this.setTeams();
-
-		Alliances.teamGame = false;
 	}
 
 	private setTeams() {

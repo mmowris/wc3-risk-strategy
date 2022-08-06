@@ -71,6 +71,7 @@ export class Settings {
 			case 1: //Lobby Teams
 				//TODO: Set adv control
 				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
+				Alliances.teamGame = true;
 				break;
 
 			case 2: //Random Teams
@@ -89,7 +90,6 @@ export class Settings {
 				Alliances.getInstance().unAllyLobby()
 				UserInterface.ffaSetup();
 				SetMapFlag(MAP_LOCK_ALLIANCE_CHANGES, true);
-				Alliances.teamGame = true;
 				break;
 		}
 

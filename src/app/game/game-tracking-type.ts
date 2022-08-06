@@ -58,7 +58,6 @@ export class GameTracking {
 
 	public cityVictory(): boolean {
 		let who: GamePlayer;
-
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (Alliances.teamGame) {
 				if (Alliances.getInstance().getTeamCities(Alliances.getInstance().getPlayerTeam(who.player)) >= this._citiesToWin) {
