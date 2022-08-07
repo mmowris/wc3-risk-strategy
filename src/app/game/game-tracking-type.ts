@@ -60,7 +60,7 @@ export class GameTracking {
 		let who: GamePlayer;
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			if (Alliances.teamGame) {
-				if (Alliances.getInstance().getTeamCities(Alliances.getInstance().getPlayerTeam(who.player)) >= this._citiesToWin) {
+				if (Alliances.getInstance().getTeamCities(Alliances.getInstance().getPlayerTeam(gPlayer.player)) >= this._citiesToWin) {
 					gPlayer.player == NEUTRAL_HOSTILE ? null : who = gPlayer;
 				}
 
