@@ -22,6 +22,7 @@ export const UID = {
 	WARSHIP_A: FourCC('s002'),
 	WARSHIP_B: FourCC('s003'),
 	BATTLESHIP_SS: FourCC('s004'),
+	WARSHIP_B_PROMODE: FourCC('s005'),
 	//Dummy Unit
 	DUMMY_GUARD: FourCC('u050'),
 	//Special Units

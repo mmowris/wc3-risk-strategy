@@ -59,6 +59,8 @@ export class GameTracking {
 	public cityVictory(): boolean {
 		let who: GamePlayer;
 		GamePlayer.fromPlayer.forEach(gPlayer => {
+			if (gPlayer.isObserving()) return;
+
 			if (Alliances.teamGame) {
 				if (Alliances.getInstance().getTeamCities(Alliances.getInstance().getPlayerTeam(gPlayer.player)) >= this._citiesToWin) {
 					gPlayer.player == NEUTRAL_HOSTILE ? null : who = gPlayer;
@@ -70,7 +72,6 @@ export class GameTracking {
 				}
 			}
 		})
-
 		return this.giveVictory(who);
 	}
 

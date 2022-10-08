@@ -213,6 +213,7 @@ export class GamePlayer {
 		SetPlayerTechMaxAllowed(this.player, UID.BATTLESHIP_SS, -1);
 		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_A, -1);
 		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_B, -1);
+		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_B_PROMODE, -1);
 
 		SetPlayerState(this.player, PLAYER_STATE_OBSERVER, 0);
 	}

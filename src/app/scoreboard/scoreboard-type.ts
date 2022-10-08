@@ -48,8 +48,8 @@ export class Scoreboard {
 			Scoreboard.setItemWidth(this.mb, 8.00, i, 1);
 			Scoreboard.setItemWidth(this.mb, 2.50, i, 2);
 			Scoreboard.setItemWidth(this.mb, 2.50, i, 3);
-			Scoreboard.setItemWidth(this.mb, 3.50, i, 4);
-			Scoreboard.setItemWidth(this.mb, 3.50, i, 5);
+			Scoreboard.setItemWidth(this.mb, 4.00, i, 4);
+			Scoreboard.setItemWidth(this.mb, 4.00, i, 5);
 			Scoreboard.setItemWidth(this.mb, 4.50, i, 6);
 		}
 

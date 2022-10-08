@@ -185,15 +185,38 @@ export class Settings {
 				GamePlayer.fromPlayer.forEach(gPlayer => {
 					SetPlayerTechMaxAllowed(gPlayer.player, UID.BATTLESHIP_SS, 0);
 					SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_A, 0);
-					SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B, 0);
+
+					if (RoundSettings.promode) {
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B, 0);
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B_PROMODE, -1);
+					} else {
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B, -1);
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B_PROMODE, 0);
+					}
+
 				});
 				break;
 			case 2: //No SS
 				GamePlayer.fromPlayer.forEach(gPlayer => {
 					SetPlayerTechMaxAllowed(gPlayer.player, UID.BATTLESHIP_SS, 0);
+
+					if (RoundSettings.promode) {
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B, 0);
+					} else {
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B_PROMODE, 0);
+					}
 				});
 				break;
 			default:
+				GamePlayer.fromPlayer.forEach(gPlayer => {
+					if (RoundSettings.promode) {
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B, 0);
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B_PROMODE, -1);
+					} else {
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B, -1);
+						SetPlayerTechMaxAllowed(gPlayer.player, UID.WARSHIP_B_PROMODE, 0);
+					}
+				});
 				break;
 		}
 
