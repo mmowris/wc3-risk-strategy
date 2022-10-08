@@ -1,6 +1,5 @@
 import { CityAllocation } from "app/country/city-allocation-type";
-import { Cities } from "app/country/city-type";
-import { bS, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
+import { GamePlayer, PlayerStatus } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { Trees } from "app/trees-type";
 import { ModeUI } from "app/ui/mode-ui-type";
@@ -9,12 +8,11 @@ import { Util } from "libs/translators";
 import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { AID } from "resources/abilityID";
 import { PLAYER_COLORS, PLAYER_COLOR_NAMES } from "resources/colordata";
-import { MAX_PLAYERS, NEUTRAL_HOSTILE } from "resources/constants";
+import { NEUTRAL_HOSTILE } from "resources/constants";
 import { HexColors } from "resources/hexColors";
 import { UID } from "resources/unitID";
-import { getHost, Timer } from "w3ts";
+import { Timer } from "w3ts";
 import { Players } from "w3ts/globals";
-import { GameRankingHelper } from "./game-ranking-helper-type";
 import { GameTimer } from "./game-timer-type";
 import { GameTracking } from "./game-tracking-type";
 import { Settings } from "./round-settings";
@@ -113,11 +111,11 @@ export class Round {
 
 		MessageAll(true, `Valid Players: ${counter}`);
 
-		if (counter < 12) {
-			GameRankingHelper.getInstance().endTracking();
-		} else {
-			GameRankingHelper.getInstance().trackGame();
-		}
+		// if (counter < 12) {
+		// 	GameRankingHelper.getInstance().endTracking();
+		// } else {
+		// 	GameRankingHelper.getInstance().trackGame();
+		// }
 	}
 
 	public start() {

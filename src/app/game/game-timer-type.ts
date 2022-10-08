@@ -4,7 +4,6 @@ import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { MessageAll, PlayGlobalSound } from "libs/utils";
 import { HexColors } from "resources/hexColors";
 import { Timer } from "w3ts";
-import { GameRankingHelper } from "./game-ranking-helper-type";
 import { GameTracking } from "./game-tracking-type";
 import { Alliances } from "./round-allies";
 import { RoundSettings } from "./settings-data";
@@ -59,7 +58,7 @@ export class GameTimer {
 			if (gPlayer.cityData.endCities == 0) gPlayer.cityData.endCities = gPlayer.cities.length
 		})
 
-		if (this.turn > 10) GameRankingHelper.getInstance().setData(GameTracking.getInstance().leader.player);
+		//if (this.turn > 10) GameRankingHelper.getInstance().setData(GameTracking.getInstance().leader.player);
 
 		this.timer.pause();
 		this.timer.destroy();
@@ -107,9 +106,9 @@ export class GameTimer {
 		if (this._turn == 1) {
 			Scoreboard.getInstance().toggleVis(true);
 
-			if (GameRankingHelper.getInstance().track) {
-				MessageAll(false, `${HexColors.TANGERINE}This game will be ranked!|r\n${HexColors.GREEN}wc3stats.com/risk-europe|r\nYou can find rankings at the site above!`, 0, 0);
-			}
+			// if (GameRankingHelper.getInstance().track) {
+			// 	MessageAll(false, `${HexColors.TANGERINE}This game will be ranked!|r\n${HexColors.GREEN}wc3stats.com/risk-europe|r\nYou can find rankings at the site above!`, 0, 0);
+			// }
 		}
 
 		if (this._turn == 2) {
