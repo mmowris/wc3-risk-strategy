@@ -1,13 +1,12 @@
-import { GamePlayer } from "app/player/player-type";
+import { GamePlayer, PlayerNames } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
-import { GameRankingHelper } from "./game-ranking-helper-type";
-//TODO
-//If player goes from nomad -> alive in 2 player game, it games and the winner wins
-//The bug is due to nomad -> alive, it actually goes into nomad block of code first i believe. need to print to test, for now it has no effect in a real game and can be ignored
+import { RoundSettings } from "./settings-data";
+import { Alliances } from "./round-allies";
+
 export class GameTracking {
 	private static instance: GameTracking;
 	private _leader: GamePlayer;
@@ -16,7 +15,6 @@ export class GameTracking {
 	public static canReset: boolean = false;
 
 	constructor() {
-		this._leader = GamePlayer.fromPlayer.get(Player(Math.floor(Math.random() * (GamePlayer.fromPlayer.size - 1))));
 		this.roundInProgress = false;
 	}
 
@@ -37,6 +35,7 @@ export class GameTracking {
 	}
 
 	public koVictory(): boolean {
+		//TODO for tgs - check if remaining players are all on same team, can check if team size == remaining alive
 		let counter: number = 0;
 		let who: GamePlayer;
 
@@ -48,7 +47,10 @@ export class GameTracking {
 			who = gPlayer;
 		});
 
-		if (counter == 1) {
+		let teamsize: number = 1
+		if (Alliances.teamGame) teamsize = Alliances.getInstance().getNumOfAllies(who.player) + 1
+
+		if (counter == teamsize) {
 			this._leader = who;
 			return this.giveVictory(this._leader);
 		}
@@ -56,10 +58,16 @@ export class GameTracking {
 
 	public cityVictory(): boolean {
 		let who: GamePlayer;
-
 		GamePlayer.fromPlayer.forEach(gPlayer => {
-			if (gPlayer.cities.length >= this._citiesToWin) {
-				gPlayer.player == NEUTRAL_HOSTILE ? null : who = gPlayer;
+			if (Alliances.teamGame) {
+				if (Alliances.getInstance().getTeamCities(Alliances.getInstance().getPlayerTeam(gPlayer.player)) >= this._citiesToWin) {
+					gPlayer.player == NEUTRAL_HOSTILE ? null : who = gPlayer;
+				}
+
+			} else {
+				if (gPlayer.cities.length >= this._citiesToWin) {
+					gPlayer.player == NEUTRAL_HOSTILE ? null : who = gPlayer;
+				}
 			}
 		})
 
@@ -74,23 +82,26 @@ export class GameTracking {
 		this.roundInProgress = false;
 		GameTracking.canReset = true;
 
-		FogEnable(false);
 		ClearTextMessages();
 
 		GamePlayer.fromPlayer.forEach(gPlayer => {
+			//gPlayer.setName(gPlayer.names.btag);
+			SetPlayerName(gPlayer.player, PlayerNames.get(gPlayer.player))
+
 			if (GetLocalPlayer() == gPlayer.player) {
 				BlzEnableSelections(false, false);
 			}
 
-			gPlayer.setName(gPlayer.names.acct);
-
-			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
-			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
+			if (RoundSettings.diplomancy > 0 && Scoreboard.getInstance().allyBoard) {
+				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.WHITE}Team ${Alliances.getInstance().getPlayerTeam(who.player)}|r ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
+				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${HexColors.WHITE}Team ${Alliances.getInstance().getPlayerTeam(who.player)}|r ${HexColors.TANGERINE}won the game with|r ${Alliances.getInstance().getTeamCities(Alliances.getInstance().getPlayerTeam(who.player))} ${HexColors.TANGERINE}cities!|r`);
+			} else {
+				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}is ${PLAYER_COLOR_CODES[who.names.colorIndex]}victorious|r${HexColors.TANGERINE}!|r`);
+				DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.names.acct}|r ${HexColors.TANGERINE}won the game with|r ${PLAYER_COLOR_CODES[who.names.colorIndex]}${who.cities.length}|r ${HexColors.TANGERINE}cities!|r`);
+			}
 			DisplayTimedTextToPlayer(gPlayer.player, 0.73, 0.81, 180.00, `             ${HexColors.TANGERINE}Discord: discord.me/risk|r`);
 
-			if (gPlayer != who && gPlayer.isAlive() || gPlayer.isNomad()) {
-				GameRankingHelper.getInstance().setLoser(gPlayer.player);
-			}
+			FogModifierStart(gPlayer.fog);
 		})
 
 		PlayGlobalSound("Sound\\Interface\\QuestCompleted.flac");
@@ -101,12 +112,6 @@ export class GameTracking {
 			Scoreboard.getInstance().victoryUpdate(who, gPlayer, row);
 			row++;
 		})
-
-		GameRankingHelper.getInstance().setWinner(who.player);
-
-		//GameRankingHelper.getInstance().setLosers(who.player);
-		//TODO:
-		//Track data and bot exit
 
 		return true;
 	}

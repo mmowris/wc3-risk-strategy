@@ -1,9 +1,8 @@
-import { GamePlayer } from "app/player/player-type";
 import { Transports } from "app/transports-type";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { UID } from "resources/unitID";
 import { UTYPE } from "resources/unitTypes";
-import { FilterFriendlyValidGuards, isGuardValid } from "./guard-filters";
+import { FilterFriendlyValidGuards, FilterOwnedGuards, isGuardValid } from "./guard-filters";
 import { compareValue } from "./guard-options";
 
 export const Cities: City[] = [];
@@ -265,7 +264,7 @@ export class City {
 		Cities[153] = new City(5376.0, 384.0, UID.CITY)
 		//Malta
 		Cities[154] = new City(896.0, -13120.0, UID.CITY)
-		Cities[155] = new City(2400.0, -12896.0, UID.PORT)
+		Cities[155] = new City(2410.0, -12836.0, UID.PORT)
 		//North District|n(Russia)
 		Cities[156] = new City(6272.0, 12224.0, UID.CITY)
 		Cities[157] = new City(10624.0, 11776.0, UID.CITY)
@@ -467,6 +466,7 @@ export class City {
 	 */
 	private setGuard(guard: unit | number) {
 		//TODO add null checking - 4/23/2022 idk what needs null checked maybe check if guard is null and handle it
+		//TODO would this have fixed the ship not taking ports bug? 6-2-2022
 		typeof guard === "number" ? this._guard = CreateUnit(NEUTRAL_HOSTILE, guard, this.x, this.y, 270) : this._guard = guard;
 		UnitAddType(this.guard, UTYPE.GUARD);
 		City.fromGuard.set(this.guard, this);
@@ -524,7 +524,10 @@ export class City {
 			let g: group = CreateGroup();
 			let guardChoice: unit = city.guard;
 
-			GroupEnumUnitsInRange(g, city.x, city.y, CityRegionSize, FilterFriendlyValidGuards(city));
+
+			GroupEnumUnitsInRange(g, city.x, city.y, CityRegionSize, FilterOwnedGuards(city));
+			
+			if (BlzGroupGetSize(g) == 0) GroupEnumUnitsInRange(g, city.x, city.y, CityRegionSize, FilterFriendlyValidGuards(city));
 
 			if (BlzGroupGetSize(g) == 0 && !isGuardValid(city)) {
 				city.dummyGuard(GetOwningPlayer(city.barrack));

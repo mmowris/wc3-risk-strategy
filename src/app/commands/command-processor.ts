@@ -3,13 +3,14 @@ import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
 import { bS, GamePlayer, PlayerNames, PlayerStatus } from "app/player/player-type";
 import { Util } from "libs/translators";
-import { MessageAll, PlayGlobalSound } from "libs/utils";
+import { ErrorMessage, MessageAll, PlayGlobalSound } from "libs/utils";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { HexColors } from "resources/hexColors";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { File, Timer } from "w3ts";
 import { CleanMap, FastRestart, ResetGame, SlowRestart } from "./restart";
-import { GameRankingHelper } from "app/game/game-ranking-helper-type";
+import { RoundSettings } from "app/game/settings-data";
+import { Alliances } from "app/game/round-allies";
 
 export const enableList: Map<GamePlayer, boolean> = new Map<GamePlayer, boolean>();
 
@@ -21,7 +22,7 @@ export const CommandProcessor = () => {
 	}
 
 	TriggerAddCondition(t, Condition(() => {
-		const command: string = GetEventPlayerChatString().split(' ')[0];
+		const command: string = StringCase(GetEventPlayerChatString().split(' ')[0], false);
 		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
 
 		switch (command) {
@@ -73,7 +74,14 @@ export const CommandProcessor = () => {
 
 				if (gPlayer.isAlive() || gPlayer.isNomad()) {
 					gPlayer.setStatus(PlayerStatus.FORFEIT);
-					GameRankingHelper.getInstance().setLoser(gPlayer.player);
+
+					if (gPlayer.turnDied == -1) {
+						gPlayer.setTurnDied(GameTimer.getInstance().turn);
+					}
+
+					if (gPlayer.cityData.endCities == 0) {
+						gPlayer.cityData.endCities = gPlayer.cities.length
+					}
 				}
 
 				MessageAll(true, `${PLAYER_COLOR_CODES[gPlayer.names.colorIndex]}${gPlayer.names.acct}|r has ${HexColors.TANGERINE}forfeit|r the round!`)
@@ -95,11 +103,20 @@ export const CommandProcessor = () => {
 				CleanMap();
 				ResetGame();
 
-				const quickTimer: Timer = new Timer();
-				quickTimer.start(2.00, false, () => {
-					quickTimer.pause();
-					quickTimer.destroy();
+				const firstTImer: Timer = new Timer();
+				firstTImer.start(2.00, false, () => {
 
+					if (RoundSettings.fog == 1) {
+						GamePlayer.fromPlayer.forEach(player => {
+							if (player.isAlive() || player.isPlaying()) FogModifierStop(player.fog);
+						})
+					}
+
+				})
+				//MessageAll(false, "Fog set", 0, 0);
+				const quickTimer: Timer = new Timer();
+				quickTimer.start(5.00, false, () => {
+					//MessageAll(false, "Calling Restart...", 0, 0);
 					if (command === "-restart") SlowRestart();
 					if (command === "-ng") FastRestart();
 				});
@@ -177,15 +194,167 @@ export const CommandProcessor = () => {
 				});
 				break;
 
-			// case "-g":
-			// 	SendGold(gPlayer);
-
-			// 	break;
-			case "-testMode":
-				if (!gPlayer.admin) return;
+			case "-g":
 				if (!GameTracking.getInstance().roundInProgress) return;
+				if (GetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD) == 0) {
+					ErrorMessage(gPlayer.player, "You have no gold to send!");
+					return;
+				}
 
-				gPlayer.giveGold(10000);
+				try {
+					const pName: string = StringCase(GetEventPlayerChatString().split(' ')[1], false);
+					if (!pName) return;
+
+					let gQty: number = S2I(GetEventPlayerChatString().split(' ')[2]);
+					if (!gQty) return;
+
+					let gCounter: number = 0;
+					let receiver: GamePlayer;
+
+					GamePlayer.fromPlayer.forEach(tPlayer => {
+						const compareName: string = (RoundSettings.promode) ? tPlayer.names.acct.toLowerCase() : tPlayer.names.color.toLowerCase()
+
+						if (compareName.slice(0, pName.length) == pName) {
+							gCounter++;
+							receiver = tPlayer;
+						}
+					})
+
+					if (!receiver) {
+						ErrorMessage(gPlayer.player, "Player not found!");
+						return;
+					}
+
+					if (gCounter > 1) {
+						ErrorMessage(gPlayer.player, "Multiple matches found, try a longer name!")
+						return;
+					}
+
+					if (gPlayer == receiver) {
+						ErrorMessage(gPlayer.player, "You can't send gold to yourself, retard!")
+						return;
+					}
+
+					if (!RoundSettings.gold && (IsPlayerEnemy(gPlayer.player, receiver.player))) {
+						ErrorMessage(gPlayer.player, `You may not send gold to ${receiver.coloredName()}`);
+						return;
+					}
+
+					if (gQty > GetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD)) {
+						gQty = GetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD);
+					}
+
+					SetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(gPlayer.player, PLAYER_STATE_RESOURCE_GOLD) - gQty);
+					SetPlayerState(receiver.player, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(receiver.player, PLAYER_STATE_RESOURCE_GOLD) + gQty);
+					DisplayTimedTextToPlayer(gPlayer.player, 0, 0, 3, `You sent ${HexColors.TANGERINE}${gQty}|r gold to ${receiver.coloredName()}`);
+					DisplayTimedTextToPlayer(receiver.player, 0, 0, 3, `You received ${HexColors.TANGERINE}${gQty}|r gold from ${gPlayer.coloredName()}`);
+
+				} catch (error) {
+					print(error)
+				}
+				break;
+			case "-ally":
+			case "-peace":
+				if (!GameTracking.getInstance().roundInProgress) return;
+				if (RoundSettings.diplomancy != 3) return;
+
+				try {
+					const pName: string = StringCase(GetEventPlayerChatString().split(' ')[1], false);
+					if (!pName) return;
+
+					let gCounter: number = 0;
+					let receiver: GamePlayer;
+
+					GamePlayer.fromPlayer.forEach(tPlayer => {
+						const compareName: string = (RoundSettings.promode) ? tPlayer.names.acct.toLowerCase() : tPlayer.names.color.toLowerCase()
+
+						if (compareName.slice(0, pName.length) == pName) {
+							gCounter++;
+							receiver = tPlayer;
+						}
+					})
+
+					if (!receiver) {
+						ErrorMessage(gPlayer.player, "Player not found!");
+						return;
+					}
+
+					if (gCounter > 1) {
+						ErrorMessage(gPlayer.player, "Multiple matches found, try a longer name!")
+						return;
+					}
+
+					if (gPlayer == receiver) {
+						ErrorMessage(gPlayer.player, "You cant ally yourself. Duh!")
+						return;
+					}
+
+					if (IsPlayerAlly(gPlayer.player, receiver.player)) {
+						ErrorMessage(gPlayer.player, `You are already allied to ${receiver.coloredName()}`)
+						return;
+					}
+
+					Alliances.getInstance().setAlliance(gPlayer.player, receiver.player, true);
+
+					MessageAll(false, `${gPlayer.coloredName()} has allied ${receiver.coloredName()}`, 0.0, 0.0);
+				} catch (error) {
+					print(error)
+				}
+				break;
+			case "-unally":
+			case "-war":
+				if (!GameTracking.getInstance().roundInProgress) return;
+				if (RoundSettings.diplomancy != 3) return;
+
+				try {
+					const pName: string = StringCase(GetEventPlayerChatString().split(' ')[1], false);
+					if (!pName) return;
+
+					let gCounter: number = 0;
+					let receiver: GamePlayer;
+
+					GamePlayer.fromPlayer.forEach(tPlayer => {
+						const compareName: string = (RoundSettings.promode) ? tPlayer.names.acct.toLowerCase() : tPlayer.names.color.toLowerCase()
+
+						if (compareName.slice(0, pName.length) == pName) {
+							gCounter++;
+							receiver = tPlayer;
+						}
+					})
+
+					if (!receiver) {
+						ErrorMessage(gPlayer.player, "Player not found!");
+						return;
+					}
+
+					if (gCounter > 1) {
+						ErrorMessage(gPlayer.player, "Multiple matches found, try a longer name!")
+						return;
+					}
+
+					if (gPlayer == receiver) {
+						ErrorMessage(gPlayer.player, "Come on, really?")
+						return;
+					}
+
+					if (IsPlayerEnemy(gPlayer.player, receiver.player)) {
+						ErrorMessage(gPlayer.player, `You are not allied to ${receiver.coloredName()}`)
+						return;
+					}
+
+					Alliances.getInstance().setAlliance(gPlayer.player, receiver.player, false);
+					Alliances.getInstance().setAlliance(receiver.player, gPlayer.player, false);
+
+					MessageAll(false, `${gPlayer.coloredName()} and ${receiver.coloredName()} are no longer allies!`, 0.0, 0.0);
+				} catch (error) {
+					print(error)
+				}
+				break;
+			case "-testMode":
+				// if (!gPlayer.admin) return;
+				// if (!GameTracking.getInstance().roundInProgress) return;
+
+				// gPlayer.giveGold(10000);
 
 				break;
 			default:

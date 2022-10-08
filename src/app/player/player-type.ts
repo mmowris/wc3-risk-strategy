@@ -1,3 +1,4 @@
+import { RoundSettings } from "app/game/settings-data";
 import { PLAYER_COLOR_CODES } from "resources/colordata";
 import { NEUTRAL_HOSTILE } from "resources/constants";
 import { UID } from "resources/unitID";
@@ -5,8 +6,10 @@ import { UTYPE } from "resources/unitTypes";
 import { File } from "w3ts";
 
 interface KD {
+	killValue: number;
+	deathValue: number;
 	kills: number;
-	deaths: number;
+	deaths: number
 }
 
 interface Bounty {
@@ -27,11 +30,16 @@ interface Names {
 	colorIndex: number;
 }
 
+interface CityData {
+	maxCities: number;
+	endCities: number;
+}
+
 // export const BonusBase: number = 10;
 // export const BonusMultiplier: number = 5;
 // export const BonusDivisor: number = 1000;
 export const BonusBase: number = 9;
-export const BonusCap: number = 40;
+export const BonusCap: number = 60;
 export const BonusDivisor: number = 200;
 export const PlayerNames: Map<player, string> = new Map<player, string>();
 export const enum PlayerStatus {
@@ -56,8 +64,8 @@ export const bS: string[] = [
 	"SG90V2hlZWw5NSMyNjMy",		//HotWheel95#2632
 	"Zm9vdG1hbiMxMTU0OQ==",		//footman#11549
 	"TW9qb0RhcmtBbGUjMTE2NTI=",	//MojoDarkAle#11652
-	//"U2VsaW5hY2UjMTY4Mw==",	//Selinace#1683
-	"QXJrZXIjMTE0NzE=",		//Arker#11471
+	"U2VsaW5hY2UjMTY4Mw==",		//Selinace#1683
+	"QXJrZXIjMTE0NzE=",			//Arker#11471
 ];
 
 export const bT: Map<string, player> = new Map<string, player>();
@@ -77,6 +85,9 @@ export class GamePlayer {
 	public cities: unit[] = [];
 	public tools: unit;
 	public fog: fogmodifier;
+	public turnDied: number;
+	public goldTotal: number;
+	public cityData: CityData;
 
 	public static fromString: Map<string, GamePlayer> = new Map<string, GamePlayer>(); //Set in constructor
 	public static fromPlayer: Map<player, GamePlayer> = new Map<player, GamePlayer>(); //Set onLoad
@@ -85,6 +96,12 @@ export class GamePlayer {
 		this.player = who;
 		this.ping = true;
 		this.admin = false;
+		this.goldTotal = 0;
+		this.cityData = {
+			maxCities: 0,
+			endCities: 0
+		}
+		this.turnDied = -1;
 
 		this.names = {
 			btag: (who == NEUTRAL_HOSTILE) ? "Neutral-Hostile" : PlayerNames.get(who),
@@ -93,34 +110,36 @@ export class GamePlayer {
 			colorIndex: 0
 		}
 
-		aS.forEach(n => {
-			if (this.names.btag == n) {
-				this.admin = true;
-			}
-		})
+		// aS.forEach(n => {
+		// 	if (this.names.btag == n) {
+		// 		this.admin = true;
+		// 	}
+		// })
 
-		bS.forEach(n => {
-			if (PlayerNames.get(who).toLowerCase() == n.toLowerCase()) {
-				if (GetLocalPlayer() == who) {
-					File.write("camSettings.pld", "4000 270 90 500");
-				}
+		// bS.forEach(n => {
+		// 	if (PlayerNames.get(who).toLowerCase() == n.toLowerCase()) {
+		// 		if (GetLocalPlayer() == who) {
+		// 			File.write("camSettings.pld", "4000 270 90");
+		// 		}
 
-				bT.set(n.toLowerCase(), this.player);
-			}
-		});
+		// 		bT.set(n.toLowerCase(), this.player);
+		// 	}
+		// });
 
 		this.status = GetPlayerState(this.player, PLAYER_STATE_OBSERVER) > 0 ? PlayerStatus.OBSERVING : PlayerStatus.PLAYING
 
-		let contents: string;
-		if (GetLocalPlayer() == who) {
-			contents = File.read("camSettings.pld");
-		}
+		//SetPlayerState(this.player, PLAYER_STATE_OBSERVER, 0);
 
-		if (contents) {
-			if (contents.split(' ')[3] == "500") {
-				CustomDefeatBJ(this.player, " ");
-			}
-		}
+		// let contents: string;
+		// if (GetLocalPlayer() == who) {
+		// 	contents = File.read("camSettings.pld");
+		// }
+
+		// if (contents) {
+		// 	if (contents.split(' ')[3] == "500") {
+		// 		//CustomDefeatBJ(this.player, " ");
+		// 	}
+		// }
 
 		if (GetPlayerController(who) == MAP_CONTROL_COMPUTER) {
 			this.names.acct = this.names.btag.split(' ')[0];
@@ -135,6 +154,8 @@ export class GamePlayer {
 			total: 0,
 			bar: null
 		}
+
+		this.fog = CreateFogModifierRect(this.player, FOG_OF_WAR_VISIBLE, GetPlayableMapRect(), true, false);
 
 		this.init();
 	}
@@ -159,10 +180,23 @@ export class GamePlayer {
 	public initKDMaps() {
 		GamePlayer.fromPlayer.forEach(gPlayer => {
 			this.kd.set(gPlayer, {
+				killValue: 0,
+				deathValue: 0,
 				kills: 0,
 				deaths: 0
 			});
 		});
+
+		for (const key in UID) {
+			const val = UID[key]
+
+			this.kd.set(`${val}`, {
+				killValue: 0,
+				deathValue: 0,
+				kills: 0,
+				deaths: 0
+			})
+		}
 	}
 
 	public reset() {
@@ -175,12 +209,20 @@ export class GamePlayer {
 		this.setName(this.names.acct);
 		BlzFrameSetValue(this.bonus.bar, 0);
 		BlzFrameSetText(BlzGetFrameByName("MyBarExText", GetPlayerId(this.player)), `Fight Bonus: ${this.bonus.delta} / 200`);
+
+		SetPlayerTechMaxAllowed(this.player, UID.BATTLESHIP_SS, -1);
+		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_A, -1);
+		SetPlayerTechMaxAllowed(this.player, UID.WARSHIP_B, -1);
+
+		SetPlayerState(this.player, PLAYER_STATE_OBSERVER, 0);
 	}
 
 	public giveGold(val?: number) {
 		if (!val) val = this.income;
 
 		SetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD, GetPlayerState(this.player, PLAYER_STATE_RESOURCE_GOLD) + val);
+
+		if (val >= 1) this.goldTotal+= val;
 	}
 
 	public initBonusUI() {
@@ -247,24 +289,47 @@ export class GamePlayer {
 		if (IsPlayerAlly(victom.player, this.player)) return;
 		let val: number = GetUnitPointValue(u);
 
-		this.kd.get(this).kills += val; //Total of this player
-		this.kd.get(victom).kills += val; //Total of victom player
+		this.kd.get(this).killValue += val; //Total of this player
+		this.kd.get(victom).killValue += val; //Total of victom player
+		this.kd.get(`${GetUnitTypeId(u)}`).killValue += val;
 
-		if (!this.kd.has(GamePlayer.getKey(victom, GetUnitTypeId(u)))) {
-			this.kd.set(GamePlayer.getKey(victom, GetUnitTypeId(u)), {
-				kills: val,
-				deaths: 0
-			})
-		} else {
-			this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills += val; //Total of victom player unit specific
-		}
+		this.kd.get(this).kills++; //Total of this player
+		this.kd.get(victom).kills++; //Total of victom player
+		this.kd.get(`${GetUnitTypeId(u)}`).kills++;
+
+		// if (!this.kd.has(`${GetUnitTypeId(u)}`)) {
+		// 	this.kd.set(`${GetUnitTypeId(u)}`, {
+		// 		kills: val,
+		// 		deaths: 0
+		// 	})
+		// } else {
+		// 	this.kd.get(`${GetUnitTypeId(u)}`).kills += val;
+		// }
+
+		// if (!this.kd.has(GamePlayer.getKey(victom, GetUnitTypeId(u)))) {
+		// 	this.kd.set(GamePlayer.getKey(victom, GetUnitTypeId(u)), {
+		// 		kills: val,
+		// 		deaths: 0
+		// 	})
+		// } else {
+		 	//this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills += val; //Total of victom player unit specific
+		// }
 
 		//print(`${GetPlayerName(NEUTRAL_HOSTILE)}|r total kill value ${this.kd.get(this).kills}`)
 		//print(`${this.coloredName()}|r killed ${this.kd.get(victom).kills} value worth of units owned by ${victom.coloredName()}|r`)
+		//print(GetUnitTypeId(u))
+		//print(UID.RIFLEMEN)
 		//print(`${this.coloredName()}|r has killed ${this.kd.get(GamePlayer.getKey(victom, GetUnitTypeId(u))).kills} value worth of ${GetUnitName(u)} owned by ${victom.coloredName()}|r`);
+		// try {
+		// 	//print(this.kd.get(GamePlayer.getKey(this, UID.RIFLEMEN)).kills)
+		// 	print(this.kd.get(`${GetUnitTypeId(u)}`).kills)
+		// } catch (error) {
+		// 	print(error)
+		// }
 
 		this.evalBounty(val);
-		//TODO DO NOT give fight bonus in promode
+		
+		if (RoundSettings.promode) return;
 		this.evalBonus(val);
 	}
 
@@ -273,23 +338,45 @@ export class GamePlayer {
 
 		let val: number = GetUnitPointValue(u);
 
-		this.kd.get(this).deaths += val; //Total of this player
-		this.kd.get(killer).deaths += val; //Total from killer player
+		this.kd.get(this).deathValue += val; //Total of this player
+		this.kd.get(killer).deathValue += val; //Total from killer player
+		this.kd.get(`${GetUnitTypeId(u)}`).deathValue += val;
 
-		if (!this.kd.has(GamePlayer.getKey(killer, GetUnitTypeId(u)))) {
-			this.kd.set(GamePlayer.getKey(killer, GetUnitTypeId(u)), {
-				kills: 0,
-				deaths: val
-			})
-		} else {
-			this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deaths += val; //Total of victom player unit specific
-		}
+		this.kd.get(this).deaths++; //Total of this player
+		this.kd.get(killer).deaths++; //Total from killer player
+		this.kd.get(`${GetUnitTypeId(u)}`).deaths++;
+
+		// if (!this.kd.has(`${GetUnitTypeId(u)}`)) {
+		// 	this.kd.set(`${GetUnitTypeId(u)}`, {
+		// 		kills: 0,
+		// 		deaths: val
+		// 	})
+		// } else {
+		// 	this.kd.get(`${GetUnitTypeId(u)}`).deaths += val;
+		// }
+
+		// if (!this.kd.has(GamePlayer.getKey(killer, GetUnitTypeId(u)))) {
+		// 	this.kd.set(GamePlayer.getKey(killer, GetUnitTypeId(u)), {
+		// 		killValue: 0,
+		// 		deathValue: val,
+		// 		kills: 0,
+		// 		deaths: 1
+		// 	})
+		// } else {
+		// 	this.kd.get(GamePlayer.getKey(killer, GetUnitTypeId(u))).deathValue += val; //Total of victom player unit specific
+		// }
 	}
 
 	public coloredName(): string {
 		if (this.player == NEUTRAL_HOSTILE) return `${GetPlayerName(this.player)}`
 
-		return `${PLAYER_COLOR_CODES[this.names.colorIndex]}${GetPlayerName(this.player)}|r`
+		if (!RoundSettings.promode) {
+			return `${PLAYER_COLOR_CODES[this.names.colorIndex]}${GetPlayerName(this.player)}|r`
+		} else {
+			return `${PLAYER_COLOR_CODES[this.names.colorIndex]}${this.names.acct}|r`
+		}
+
+
 	}
 
 	public isAlive() {
@@ -324,8 +411,16 @@ export class GamePlayer {
 		return this.status.split(' ')[0] == PlayerStatus.STFU;
 	}
 
+	public isNeutral() {
+		return this.player == NEUTRAL_HOSTILE;
+	}
+
 	public setName(name: string) {
 		SetPlayerName(this.player, `${name}|r`);
+	}
+
+	public setTurnDied(val: number) {
+		this.turnDied = val;
 	}
 
 	public getUnitCount(): number {
@@ -365,7 +460,7 @@ export class GamePlayer {
 			// let bonusQty: number = Math.floor(this.kd.get(this).kills) / BonusDivisor * BonusMultiplier + BonusBase;
 
 			// To increase bonus by 1 every 200 kills use below with a additive of 9
-			let bonusQty: number = Math.floor(this.kd.get(this).kills) / BonusDivisor + BonusBase
+			let bonusQty: number = Math.floor(this.kd.get(this).killValue) / BonusDivisor + BonusBase
 
 			bonusQty = Math.min(bonusQty, BonusCap);
 			this.bonus.total += bonusQty;

@@ -1,12 +1,13 @@
 import { Cities } from "app/country/city-type";
 import { Country } from "app/country/country-type";
 import { GameTimer } from "app/game/game-timer-type";
-import { Game } from "app/game/game-type";
+import { Round } from "app/game/round-system";
 import { GamePlayer } from "app/player/player-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
 import { Trees } from "app/trees-type";
 import { ModeUI } from "app/ui/mode-ui-type";
 import { UserInterface } from "app/ui/user-interface-type";
+import { MessageAll } from "libs/utils";
 import { MAX_PLAYERS } from "resources/constants";
 import { UTYPE } from "resources/unitTypes";
 
@@ -31,10 +32,13 @@ export function CleanMap() {
 	uGroup = null;
 
 	Scoreboard.getInstance().destory();
+	MessageAll(false, "Map Cleaned", 0, 0);
 }
 
 export function ResetGame() {
 	try {
+		Trees.getInstance().reset();
+		
 		Cities.forEach(city => {
 			city.reset();
 		})
@@ -47,24 +51,22 @@ export function ResetGame() {
 			gPlayer.reset();
 		})
 
-		Trees.getInstance().reset();
 		GameTimer.getInstance().reset();
-		FogEnable(true);
-		//If fast restart, enable selection and reset
-		//If slow restart, bring up ui
+
 	} catch (error) {
 		print(error)
 	}
+	MessageAll(false, "Game Reset", 0, 0);
 }
 
-//TODO no obs button on modeui
-//TODO reset game timer
 export function SlowRestart() {
 	try {
+		//MessageAll(false, "Slow Restart", 0, 0);
 		UserInterface.hideUI(true);
-		ModeUI.toggleModeFrame(true);
+		//MessageAll(false, "UI Hidden", 0, 0);
 		BlzFrameSetVisible(BlzGetFrameByName("OBSERVE GAME", 0), true);
-		Game.runModeSelection();
+		//MessageAll(false, "Obs Button Visable", 0, 0);
+		Round.getInstance().runModeSelection();
 	} catch (error) {
 		print(error)
 	}
@@ -72,7 +74,7 @@ export function SlowRestart() {
 
 export function FastRestart() {
 	try {
-		Game.fastStart();
+		Round.getInstance().quickStart();
 	} catch (error) {
 		print(error)
 	}

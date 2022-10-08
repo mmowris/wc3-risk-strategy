@@ -9,7 +9,7 @@ import { Timer } from "w3ts";
 import { City } from "./city-type";
 import { Country } from "./country-type";
 import { MessageAll } from "libs/utils";
-import { GameRankingHelper } from "app/game/game-ranking-helper-type";
+import { RoundSettings } from "app/game/settings-data";
 
 export function onOwnerChange() {
 	const ownerChange: trigger = CreateTrigger();
@@ -30,15 +30,22 @@ export function onOwnerChange() {
 		if (country.owner == prevOwner.player) country.setOwner(NEUTRAL_HOSTILE);
 
 		if (prevOwner.cities.length == 0 && prevOwner.player != NEUTRAL_HOSTILE && !prevOwner.isLeft()) {
-			if (prevOwner.getUnitCount() <= 0) {
+			if (prevOwner.getUnitCount() <= 0 || RoundSettings.nomad < 0) {
 				prevOwner.setStatus(PlayerStatus.DEAD);
-				GameRankingHelper.getInstance().setLoser(prevOwner.player);
 				MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
 
+				if (prevOwner.turnDied == -1) {
+					prevOwner.setTurnDied(GameTimer.getInstance().turn);
+				}
+
+				if (prevOwner.cityData.endCities == 0) {
+					prevOwner.cityData.endCities = prevOwner.cities.length
+				}
+
 				if (GameTracking.getInstance().koVictory()) GameTimer.getInstance().stop();
-			} else {
+			} else if (RoundSettings.nomad > 0) {
 				const nomadTimer: Timer = new Timer();
-				let duration: number = 60;
+				let duration: number = RoundSettings.nomad
 
 				prevOwner.setStatus(PlayerStatus.NOMAD);
 				nomadTimer.start(1, true, () => {
@@ -51,9 +58,16 @@ export function onOwnerChange() {
 					if (duration < 1) {
 						if (!prevOwner.isLeft() || !prevOwner.isForfeit()) {
 							prevOwner.setStatus(PlayerStatus.DEAD);
-							GameRankingHelper.getInstance().setLoser(prevOwner.player);
 						}
 
+						if (prevOwner.turnDied == -1) {
+							prevOwner.setTurnDied(GameTimer.getInstance().turn);
+						}
+
+						if (prevOwner.cityData.endCities == 0) {
+							prevOwner.cityData.endCities = prevOwner.cities.length
+						}
+						
 						MessageAll(true, `${PLAYER_COLOR_CODES[prevOwner.names.colorIndex]}${prevOwner.names.acct}|r has been ${HexColors.TANGERINE}defeated|r!`)
 
 						nomadTimer.pause();
@@ -75,13 +89,16 @@ export function onOwnerChange() {
 		country.citiesOwned.set(owner, country.citiesOwned.get(owner) + 1);
 		if (country.cities.length == country.citiesOwned.get(owner)) {
 			country.setOwner(owner.player)
-			if (owner.player != NEUTRAL_HOSTILE) Scoreboard.getInstance().cityClaimed(owner, country.name);
+			if (owner.player != NEUTRAL_HOSTILE) Scoreboard.getInstance().countryClaimed(owner, country.name);
 		}
 
 		if (owner.cities.length > GameTracking.getInstance().leader.cities.length) GameTracking.getInstance().leader = owner;
 		if (owner.cities.length == 1) owner.setStatus(PlayerStatus.ALIVE);
 
 		//print(`${owner.names.acct} owns ${country.citiesOwned.get(owner)} cities in ${country.name} and they own ${owner.cities.length} total`)
+
+		if (owner.cityData.maxCities < owner.cities.length) owner.cityData.maxCities = owner.cities.length;
+
 		return true;
 	}));
 }

@@ -16,6 +16,16 @@ export const isGuardValid = (city: City, fUnit?: unit) => {
 	return true;
 }
 
+export const FilterOwnedGuards = (city: City) => Filter(() => {
+	let fUnit: unit = GetFilterUnit();
+
+	if (!isGuardValid(city, fUnit)) return false;
+	if (!IsUnitOwnedByPlayer(fUnit, city.getOwner())) return false;
+
+	fUnit = null;
+	return true;
+});
+
 export const FilterFriendlyValidGuards = (city: City) => Filter(() => {
 	let fUnit: unit = GetFilterUnit();
 

@@ -1,4 +1,3 @@
-import { GameRankingHelper } from "app/game/game-ranking-helper-type";
 import { GameTimer } from "app/game/game-timer-type";
 import { GameTracking } from "app/game/game-tracking-type";
 import { Scoreboard } from "app/scoreboard/scoreboard-type";
@@ -19,7 +18,14 @@ export function PlayerLeaves() {
 	t.addCondition(Condition(() => {
 		const gPlayer: GamePlayer = GamePlayer.fromPlayer.get(GetTriggerPlayer());
 		gPlayer.setStatus(PlayerStatus.LEFT);
-		GameRankingHelper.getInstance().setLoser(gPlayer.player);
+
+		if (gPlayer.turnDied == -1) {
+			gPlayer.setTurnDied(GameTimer.getInstance().turn);
+		}
+
+		if (gPlayer.cityData.endCities == 0) {
+			gPlayer.cityData.endCities = gPlayer.cities.length
+		}
 
 		if (Scoreboard.getInstance().size > 0 && !GameTracking.getInstance().roundInProgress) {
 			let row: number = 2;

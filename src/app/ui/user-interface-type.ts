@@ -2,10 +2,32 @@ export class UserInterface {
 	public static onLoad() {
 		UserInterface.setResourceFrames();
 		UserInterface.initAlliesBoard();
-		UserInterface.ffaSetup();
-		//UserInterface.hidePMOptions();
 		UserInterface.hideUI(true);
-		UserInterface.changeUI();
+		//BlzFrameSetEnable(BlzGetFrameByName("UpperButtonBarChatButton", 0), false);
+
+		if (GetHandleId(BlzGetFrameByName("ChatPlayerLabel", 0)) == 0) {
+			Location(0, 0)
+			//print("add handle for plabel")
+		} else {
+			BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerLabel", 0), false)
+			//print("hide label")
+		}
+
+		if (GetHandleId(BlzGetFrameByName("ChatPlayerRadioButton", 0)) == 0) {
+			Location(0, 0)
+			//print("add handle for radio")
+		} else {
+			BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerRadioButton", 0), false)
+			//print("hide radio")
+		}
+
+		if (GetHandleId(BlzGetFrameByName("ChatPlayerMenu", 0)) == 0) {
+			Location(0, 0)
+			//print("add handle for menu")
+		} else {
+			BlzFrameSetVisible(BlzGetFrameByName("ChatPlayerMenu", 0), false)
+			//print("hide menu")
+		}
 	}
 
 	public static hideUI(hidden: boolean) {
@@ -35,24 +57,24 @@ export class UserInterface {
 
 	private static initAlliesBoard() {
 		let newTitle: string = "discord.me/risk";
-		let newResourceHeader: string = "Xace#5821 @ discord"
+		let newResourceHeader: string = "Xace#5821 @ discord";
 
-		BlzFrameSetText(BlzGetFrameByName("AllianceTitle", 0), newTitle)
-		BlzFrameSetText(BlzGetFrameByName("ResourceTradingTitle", 0), newResourceHeader)
+		BlzFrameSetText(BlzGetFrameByName("AllianceTitle", 0), newTitle);
+		BlzFrameSetText(BlzGetFrameByName("ResourceTradingTitle", 0), newResourceHeader);
 
-		BlzFrameSetVisible(BlzGetFrameByName("VisionHeader", 0), false)
-		BlzFrameSetVisible(BlzGetFrameByName("LumberHeader", 0), false)
-		BlzFrameSetVisible(BlzGetFrameByName("AlliedVictoryLabel", 0), false)
-		BlzFrameSetVisible(BlzGetFrameByName("AlliedVictoryCheckBox", 0), false)
+		BlzFrameSetVisible(BlzGetFrameByName("VisionHeader", 0), false);
+		BlzFrameSetVisible(BlzGetFrameByName("LumberHeader", 0), false);
+		BlzFrameSetVisible(BlzGetFrameByName("AlliedVictoryLabel", 0), false);
+		BlzFrameSetVisible(BlzGetFrameByName("AlliedVictoryCheckBox", 0), false);
 
 		for (let i = 0; i < 23; i++) {
-			BlzFrameSetVisible(BlzGetFrameByName("LumberBackdrop", i), false)
-			BlzFrameSetVisible(BlzGetFrameByName("LumberText", i), false)
-			BlzFrameSetVisible(BlzGetFrameByName("VisionCheckBox", i), false)
+			BlzFrameSetVisible(BlzGetFrameByName("LumberBackdrop", i), false);
+			BlzFrameSetVisible(BlzGetFrameByName("LumberText", i), false);
+			BlzFrameSetVisible(BlzGetFrameByName("VisionCheckBox", i), false);
 		}
 	}
 
-	private static ffaSetup() {
+	public static ffaSetup() {
 		let AllyMenuTitle: framehandle = BlzGetFrameByName("AllianceTitle", 0)
 		let tempText: string = "discord.me/risk"
 		tempText += "|n|n|cffffcc00Commands:|r"
