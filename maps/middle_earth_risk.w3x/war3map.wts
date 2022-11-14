@@ -1,0 +1,2357 @@
+﻿STRING 7055
+// Units: n00T (Urûk-hai Crossbowman), Hotkey (Hotkey)
+{
+C
+}
+
+STRING 7061
+// Units: h00F (Orthanc), Ubertip (Tooltip - Extended)
+{
+Trains units and gives income when full region is owned.
+}
+
+STRING 7066
+// Units: o000 (Urûk-hai Swordsman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Urûk-hai Warrior |r|c00b22222[U|r|c00b22222]|r
+}
+
+STRING 7067
+// Units: o000 (Urûk-hai Swordsman), Hotkey (Hotkey)
+{
+U
+}
+
+STRING 7068
+// Units: u000 (Goblin), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Goblins are one of most weakest units in Midde-Earth. They are most effective for their low cost and ability to mass|r|c00ff7f00.|r
+}
+
+STRING 7070
+// Units: u000 (Goblin), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Goblin|r |c00b22222[G|r|c00b22222]|r
+}
+
+STRING 7079
+// Units: o00G (Urûk-hai Pikeman), Hotkey (Hotkey)
+{
+P
+}
+
+STRING 7083
+// Units: o00N (Black Númenorean), Hotkey (Hotkey)
+{
+B
+}
+
+STRING 7089
+// Units: n001 (Olag Hai), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Very powerful troll under the direct command of Sauron and the high-authority in Barad-d�r.|r|c00ff7f00 |r
+}
+
+STRING 7091
+// Units: n001 (Olag Hai), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Mordorian Troll |r|c00b22222[T|r|c00b22222]|r
+}
+
+STRING 7092
+// Units: n001 (Olag Hai), Hotkey (Hotkey)
+{
+T
+}
+
+STRING 7118
+// Units: h05F (Swordsman of Gondor), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Warrior of Gondor|r |c00b22222[W|r|c00b22222]|r
+}
+
+STRING 7119
+// Units: o008 (Southron Pikeman), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7120
+// Units: n002 (Cave Troll), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Strong trolls which live in the dark places of Middle-Earth. These units rarely answer to the call of anyone - they are masters of themselves|r|c00ff7f00.|r
+}
+
+STRING 7122
+// Units: n002 (Cave Troll), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Cade Troll|r |c00b22222[T|r|c00b22222]|r
+}
+
+STRING 7123
+// Units: n002 (Cave Troll), Hotkey (Hotkey)
+{
+T
+}
+
+STRING 7124
+// Units: o00V (Nazgul Mounted), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Highly mobile warg rider - these orcs are capable of raiding small towns, quickly, and painlessly|r|c00ff7f00.|r
+}
+
+STRING 7126
+// Units: o00V (Nazgul Mounted), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Warg|r |c00b22222[W|r|c00b22222]|r
+}
+
+STRING 7127
+// Units: h029 (Dwarven Pikeman), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7133
+// Units: h01Y (Axe Thrower), Hotkey (Hotkey)
+{
+H
+}
+
+STRING 7157
+// Units: h03Q (Dwarven Heavy Infantry), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7166
+// Units: h05F (Swordsman of Gondor), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7185
+// Units: h05E (Rider of Rohan), Hotkey (Hotkey)
+{
+R
+}
+
+STRING 7193
+// Units: n00Z (Light Archer), Hotkey (Hotkey)
+{
+H
+}
+
+STRING 7218
+// Units: h05J (High Elf Swordsman), Hotkey (Hotkey)
+{
+H
+}
+
+STRING 7222
+// Units: n009 (High Elf Archer), Hotkey (Hotkey)
+{
+A
+}
+
+STRING 7227
+// Units: h01W (High Elf Spearman), Hotkey (Hotkey)
+{
+T
+}
+
+STRING 7264
+// Units: o00F (Southron Banner Carrier), Hotkey (Hotkey)
+{
+A
+}
+
+STRING 7268
+// Units: h03B (Knight of Gondor), Hotkey (Hotkey)
+{
+M
+}
+
+STRING 7293
+// Units: h006 (Dwarven Cavalry), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7294
+// Units: o008 (Southron Pikeman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00The typical warrior of the Haradrim. Although very poorly equiped, these warriors will march to their death; mostly due to the lack of education funding in Harad :]|r|c00ff7f00.|r
+}
+
+STRING 7296
+// Units: o008 (Southron Pikeman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Haradrim Warrior |r|c00b22222[W|r|c00b22222]|r
+}
+
+STRING 7297
+// Units: h061 (Gimli), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7303
+// Units: o00V (Nazgul Mounted), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7317
+// Units: n009 (High Elf Archer), Tip (Tooltip - Basic)
+{
+|c00ffd700Train High-elf Archer |r|c00b22222[A|r|c00b22222]|r
+}
+
+STRING 7319
+// Units: o00T (High Elf Cavalry), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Rider of Lorien - a warrior who decends from the chain of nobilitity in Lothlorien. Under the watchful command of Caras Galadhon, these riders accomplish what their king/queen want of them|r|c00ff7f00.|r
+}
+
+STRING 7321
+// Units: o00T (High Elf Cavalry), Tip (Tooltip - Basic)
+{
+|c00ffd700Build Moon Raider |r|c00b22222[M|r|c00b22222]|r
+}
+
+STRING 7322
+// Units: h03P (Dwarven Light Infantry), Hotkey (Hotkey)
+{
+M
+}
+
+STRING 7325
+// Units: h029 (Dwarven Pikeman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Weapons smith of the dwarfs assists in making the weapons for the normal soldiers. However, when the horn sounds, these men are drawn to war to serve their nation|r|c00ff7f00.|r
+}
+
+STRING 7327
+// Units: h029 (Dwarven Pikeman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Weapon Smith|r |c00b22222[W|r|c00b22222]|r
+}
+
+STRING 7328
+// Units: o00W (Witch King), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7331
+// Units: h059 (Soldier of Gondor), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00The famed axeman of Lossarnach - these men defend Gondor with their lives. They answer to the call of Minas Tirith to their general|r|c00ff7f00.|r|c00ff7f00|r|n
+}
+
+STRING 7333
+// Units: h059 (Soldier of Gondor), Tip (Tooltip - Basic)
+{
+|c00ffd700Axeman of Lossarnach|r |c00b22222[L|r|c00b22222]|r
+}
+
+STRING 7334
+// Units: h059 (Soldier of Gondor), Hotkey (Hotkey)
+{
+L
+}
+
+STRING 7340
+// Units: h05J (High Elf Swordsman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Highly skilled swordsman of the northern elves. These men answer to the call of their elven masters - they protect their boarders against the Goblins and the wildmen of Dunland|r|c00ff7f00.|r
+}
+
+STRING 7342
+// Units: h05J (High Elf Swordsman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train High-elf Swordsman |r|c00b22222[H|r|c00b22222]|r
+}
+
+STRING 7343
+// Units: h05W (Dwarven Hunter), Hotkey (Hotkey)
+{
+H
+}
+
+STRING 7347
+// Units: o00T (High Elf Cavalry), Hotkey (Hotkey)
+{
+M
+}
+
+STRING 7348
+// Units: o00A (Balrog), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Mele|r|c004876ffe|r|c004876ff|r|n|c00ff7f00Best unit in the game - if massed, this unit will be unstoppable from any other force|r|c00ff7f00.|r
+}
+
+STRING 7350
+// Units: o00A (Balrog), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Balrog|r |c00b22222[L|r|c00b22222]|r
+}
+
+STRING 7351
+// Units: o00A (Balrog), Hotkey (Hotkey)
+{
+L
+}
+
+STRING 7354
+// Units: h02A (Southron Swordsman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Typical unit of the Cosair army. These units strike fear into the residents of the coastal Gondorian cities|r|c00ff7f00.|r
+}
+
+STRING 7356
+// Units: h02A (Southron Swordsman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Pirate of Umbar |r|c00b22222[U|r|c00b22222]|r
+}
+
+STRING 7357
+// Units: h02A (Southron Swordsman), Hotkey (Hotkey)
+{
+U
+}
+
+STRING 7376
+// Units: n01B (Legolas, Son of Thranduil), Ubertip (Tooltip - Extended)
+{
+A good bowman of Esgaroth, Rhun, they are a good substitute for the reason being that spearthrowers of Rhun aren't trained that well.
+}
+
+STRING 7377
+// Units: n01B (Legolas, Son of Thranduil), Name (Name)
+{
+Legolas, Son of Thranduil
+}
+
+STRING 7378
+// Units: n01B (Legolas, Son of Thranduil), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Bowman of Esgaroth |r|c00b22222[O|r|c00b22222]|r
+}
+
+STRING 7380
+// Units: h03B (Knight of Gondor), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Powerful mounted warrior - these mounted soldiers of Ithilien stop at nothing to defend their pass from intruders|r|c00ff7f00.|r
+}
+
+STRING 7382
+// Units: h03B (Knight of Gondor), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Mounted Swordsman |r|c00b22222[M|r|c00b22222]|r
+}
+
+STRING 7402
+// Units: o00X (Nazgul), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7412
+// Units: o00Z (Southron Cavalry), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 7415
+// Units: o00D (Archer Mounted Mumakil), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Range|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Weaker than the typical M�makil because of it is range; however, the unit is one of the most powerful range units in the game|r|c00ff7f00.|r
+}
+
+STRING 7417
+// Units: o00D (Archer Mounted Mumakil), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Mounted Mumakil|r |c00b22222[U|r|c00b22222]|r
+}
+
+STRING 7418
+// Units: o00D (Archer Mounted Mumakil), Hotkey (Hotkey)
+{
+U
+}
+
+STRING 7449
+// Units: h05E (Rider of Rohan), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Powerful mounted rider of the Rohirrim - this is the basic rider of Rohan. They answer to the call of their captain and to the call of their king, Theoden|r|c00ff7f00.|r
+}
+
+STRING 7451
+// Units: h05E (Rider of Rohan), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Rider of Rohan |r|c00b22222[R|r|c00b22222]|r
+}
+
+STRING 7459
+// Units: o00F (Southron Banner Carrier), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Strong warlord from Harad. These captains lead their people with pride and might - they are willing to throw any amount of them to their death for the succession of his nation|r|c00ff7f00.|r
+}
+
+STRING 7461
+// Units: o00F (Southron Banner Carrier), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Haradrim Captain |r|c00b22222[A|r|c00b22222]|r
+}
+
+STRING 7478
+// Units: o00G (Urûk-hai Pikeman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Urûk-hai Pikeman|r |c00b22222[P|r|c00b22222]|r
+}
+
+STRING 7479
+// Units: o00U (Sauron), Hotkey (Hotkey)
+{
+P
+}
+
+STRING 7493
+// Units: o00U (Sauron), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Very strong, however, slow moving warrior. They are useful for serving as sheilds for faster attack units. These orcs are made for the purpose of storming the citadel and bypassing its trebuchets|r|c00ff7f00.|r
+}
+
+STRING 7495
+// Units: o00U (Sauron), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Black-Orc Pikeman|r |c00b22222[P|r|c00b22222]|r
+}
+
+STRING 7592
+// Units: o00M (Variag Light Cavalry), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These mounted soldiers are the keepers of Khand; they are called to war by they Sultan, at which they fight to their death in his name|r|c00ff7f00.|r
+}
+
+STRING 7594
+// Units: o00M (Variag Light Cavalry), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Variag of Khand|r |c00b22222[V|r|c00b22222]|r
+}
+
+STRING 7595
+// Units: o00M (Variag Light Cavalry), Hotkey (Hotkey)
+{
+V
+}
+
+STRING 7598
+// Units: h03M (Pikeman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00An odd comination of strengths and weaknesses, this unit has a lot of health. Worth the gold if somone is trying to invade Osgiliath|r|c00ff7f00.|r
+}
+
+STRING 7600
+// Units: h03M (Pikeman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Swordsman of Osgiliath |r|c00b22222[O|r|c00b22222]|r
+}
+
+STRING 7601
+// Units: h03M (Pikeman), Hotkey (Hotkey)
+{
+O
+}
+
+STRING 7612
+// Units: o00N (Black Númenorean), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These men are the powerful Númenorian knights whom protect their cursed pirate nation of Umbar. These generals do the bidding of Sauron and Barad-d_c00ff7f00.|r
+}
+
+STRING 7614
+// Units: o00N (Black Númenorean), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Black Númenorian|r |c00b22222[B|r|c00b22222]|r
+}
+
+STRING 7652
+// Units: h03P (Dwarven Light Infantry), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Mine worker of the caves; weak and low damage, however, they cost hardly nothing. Excellent for serving as a milita unit|r|c00ff7f00.|r
+}
+
+STRING 7654
+// Units: h03P (Dwarven Light Infantry), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Mine Worker|r |c00b22222[M|r|c00b22222]|r
+}
+
+STRING 7662
+// Units: n00Q (Heavy Archer), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Range|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Basic ranged unit of the Gondorian army. Has average attack, and average defence - perfect unit for back-up|r|c00ff7f00.|r
+}
+
+STRING 7664
+// Units: n00Q (Heavy Archer), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Archer of Gondor|r |c00b22222[R|r|c00b22222]|r
+}
+
+STRING 7670
+// Units: h03Q (Dwarven Heavy Infantry), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00They lead the armies of the Dwarves with harsh command, and they get the job done. One of the best units in the game - strong with evasio|r|c00ff7f00n|r|c00ff7f00|r|n
+}
+
+STRING 7672
+// Units: h03Q (Dwarven Heavy Infantry), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Dwarven Warlord|r |c00b22222[W|r|c00b22222]|r
+}
+
+STRING 7679
+// Units: n00R (Saruman, The Corrupt), Name (Name)
+{
+Saruman, The Corrupt
+}
+
+STRING 7700
+// Units: n00T (Urûk-hai Crossbowman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Range|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Strong attack, however, they are very low. They posses criticle stike, they are highly effective in numbers|r|c00ff7f00.|r
+}
+
+STRING 7702
+// Units: n00T (Urûk-hai Crossbowman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Urûk-hai Crossbowman|r |c00b22222[C|r|c00b22222]|r
+}
+
+STRING 7734
+// Units: h01V (Fountain Guard), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These warriors defend the fountain and the white tree. They are more formally known as Guards of the Cidatel, however, they are slightly more powerful, and they are melee|r|c00ff7f00.|r
+}
+
+STRING 7736
+// Units: h01V (Fountain Guard), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Foutain Guard|r |c00b22222[F|r|c00b22222]|r
+}
+
+STRING 7749
+// Units: h01W (High Elf Spearman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00The elite guard of the armies which reside in Mirkwood. These elves are assigned to guard the highking and the nobles|r|c00ff7f00.|r
+}
+
+STRING 7751
+// Units: h01W (High Elf Spearman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Taurdirim|r |c00b22222[T|r|c00b22222]|r
+}
+
+STRING 7781
+// Units: h01Y (Axe Thrower), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Range|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These hammer throwing units are stright from work, sent to war. They willingly give their lives to defend their country|r|c00ff7f00.|r
+}
+
+STRING 7783
+// Units: h01Y (Axe Thrower), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Hammer Thrower|r |c00b22222[H|r|c00b22222]|r
+}
+
+STRING 7792
+// Units: n00Z (Light Archer), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Range|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Weak ranged unit answering to the call of their Dunedain masters. Very basic archer, although weak, it is very good for its price|r|c00ff7f00.|r
+}
+
+STRING 7794
+// Units: n00Z (Light Archer), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Northern Archer|r |c00b22222[H|r|c00b22222]|r
+}
+
+STRING 7807
+// Units: h05F (Swordsman of Gondor), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Basic foot infantry of the Gondorian army. The units answer to the call of the Stewart of Gondor, due to the absence of the kingship of Elendil|r|c00ff7f00.|r
+}
+
+STRING 7812
+// Units: h05L (Southron Archer), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Easterling |r|c00b22222[E|r|c00b22222]|r
+}
+
+STRING 8095
+// Units: h05K (Black Gate), Name (Name)
+{
+Black Gate
+}
+
+STRING 8104
+// Units: h01K (Barad-Dûr), Name (Name)
+{
+Barad-Dûr
+}
+
+STRING 8108
+// Units: h05L (Southron Archer), Name (Name)
+{
+Southron Archer
+}
+
+STRING 8125
+// Units: h05M (Black Gate Tower Left), Name (Name)
+{
+Black Gate Tower Left
+}
+
+STRING 8126
+// Units: h05N (Black Gate Tower Right), Name (Name)
+{
+Black Gate Tower Right
+}
+
+STRING 8131
+// Units: h04N (Lindon building 1), Name (Name)
+{
+Lindon building 1
+}
+
+STRING 8132
+// Units: h05O (Lindon building 2), Name (Name)
+{
+Lindon building 2
+}
+
+STRING 8133
+// Units: h05P (Lindon building 3), Name (Name)
+{
+Lindon building 3
+}
+
+STRING 8134
+// Units: h05Q (Lindon Gate), Name (Name)
+{
+Lindon Gate
+}
+
+STRING 8135
+// Units: h00F (Orthanc), Name (Name)
+{
+Orthanc
+}
+
+STRING 8136
+// Units: h05R (Lindon tower), Name (Name)
+{
+Lindon tower
+}
+
+STRING 8150
+// Units: h05S (The Hornburg), Name (Name)
+{
+The Hornburg
+}
+
+STRING 8162
+// Units: h00T (Minas Tirith), Name (Name)
+{
+Minas Tirith
+}
+
+STRING 8167
+// Units: h02O (Bag End), Name (Name)
+{
+Bag End
+}
+
+STRING 8252
+// Units: o000 (Urûk-hai Swordsman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Powerful Urûk-hai under the command of Isengard - these warriors are far more superior in strength and attack than any foot soldier of Rohan|r|c00ff7f00.|r
+}
+
+STRING 8253
+// Units: o000 (Urûk-hai Swordsman), Name (Name)
+{
+Urûk-hai Swordsman
+}
+
+STRING 8254
+// Units: o00G (Urûk-hai Pikeman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Warrior who wields a strong pike; these men fight ruthlessly for their nation of Isengard and its master, Saruman|r|c00ff7f00.|r
+}
+
+STRING 8255
+// Units: o00G (Urûk-hai Pikeman), Name (Name)
+{
+Urûk-hai Pikeman
+}
+
+STRING 8256
+// Units: n00T (Urûk-hai Crossbowman), Name (Name)
+{
+Urûk-hai Crossbowman
+}
+
+STRING 8258
+// Units: o00Z (Southron Cavalry), Name (Name)
+{
+Southron Cavalry
+}
+
+STRING 8260
+// Units: h02A (Southron Swordsman), Name (Name)
+{
+Southron Swordsman
+}
+
+STRING 8263
+// Units: o008 (Southron Pikeman), Name (Name)
+{
+Southron Pikeman
+}
+
+STRING 8264
+// Units: o00D (Archer Mounted Mumakil), Name (Name)
+{
+Archer Mounted Mumakil
+}
+
+STRING 8266
+// Units: o00M (Variag Light Cavalry), Name (Name)
+{
+Variag Light Cavalry
+}
+
+STRING 8268
+// Units: o00Q (Variag Mounted Javelineer), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These mounted soldiers are the keepers of Khand; they are called to war by they Sultan, at which they fight to their death in his name|r|c00ff7f00.|r
+}
+
+STRING 8269
+// Units: o00Q (Variag Mounted Javelineer), Name (Name)
+{
+Variag Mounted Javelineer
+}
+
+STRING 8270
+// Units: o00Q (Variag Mounted Javelineer), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Variag of Khand|r |c00b22222[V|r|c00b22222]|r
+}
+
+STRING 8271
+// Units: o00Q (Variag Mounted Javelineer), Hotkey (Hotkey)
+{
+V
+}
+
+STRING 8272
+// Units: o00R (Variag Horse Archer), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These mounted soldiers are the keepers of Khand; they are called to war by they Sultan, at which they fight to their death in his name|r|c00ff7f00.|r
+}
+
+STRING 8273
+// Units: o00R (Variag Horse Archer), Name (Name)
+{
+Variag Horse Archer
+}
+
+STRING 8274
+// Units: o00R (Variag Horse Archer), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Variag of Khand|r |c00b22222[V|r|c00b22222]|r
+}
+
+STRING 8275
+// Units: o00R (Variag Horse Archer), Hotkey (Hotkey)
+{
+V
+}
+
+STRING 8277
+// Units: o00S (Variag Swordsman), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These mounted soldiers are the keepers of Khand; they are called to war by they Sultan, at which they fight to their death in his name|r|c00ff7f00.|r
+}
+
+STRING 8279
+// Units: o00S (Variag Swordsman), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Variag of Khand|r |c00b22222[V|r|c00b22222]|r
+}
+
+STRING 8280
+// Units: o00S (Variag Swordsman), Hotkey (Hotkey)
+{
+V
+}
+
+STRING 8282
+// Units: o00S (Variag Swordsman), Name (Name)
+{
+Variag Swordsman
+}
+
+STRING 8285
+// Units: n009 (High Elf Archer), Name (Name)
+{
+High Elf Archer
+}
+
+STRING 8287
+// Units: h01W (High Elf Spearman), Name (Name)
+{
+High Elf Spearman
+}
+
+STRING 8289
+// Units: h05J (High Elf Swordsman), Name (Name)
+{
+High Elf Swordsman
+}
+
+STRING 8291
+// Units: o00T (High Elf Cavalry), Name (Name)
+{
+High Elf Cavalry
+}
+
+STRING 8308
+// Units: o00N (Black Númenorean), Name (Name)
+{
+Black Númenorean
+}
+
+STRING 8309
+// Units: h029 (Dwarven Pikeman), Name (Name)
+{
+Dwarven Pikeman
+}
+
+STRING 8310
+// Units: h006 (Dwarven Cavalry), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Weapons smith of the dwarfs assists in making the weapons for the normal soldiers. However, when the horn sounds, these men are drawn to war to serve their nation|r|c00ff7f00.|r
+}
+
+STRING 8311
+// Units: h006 (Dwarven Cavalry), Name (Name)
+{
+Dwarven Cavalry
+}
+
+STRING 8312
+// Units: h006 (Dwarven Cavalry), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Weapon Smith|r |c00b22222[W|r|c00b22222]|r
+}
+
+STRING 8319
+// Units: h05W (Dwarven Hunter), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Range|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These hammer throwing units are stright from work, sent to war. They willingly give their lives to defend their country|r|c00ff7f00.|r
+}
+
+STRING 8321
+// Units: h05W (Dwarven Hunter), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Hammer Thrower|r |c00b22222[H|r|c00b22222]|r
+}
+
+STRING 8325
+// Units: h01Y (Axe Thrower), Name (Name)
+{
+Axe Thrower
+}
+
+STRING 8327
+// Units: h061 (Gimli), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00They lead the armies of the Dwarves with harsh command, and they get the job done. One of the best units in the game - strong with evasio|r|c00ff7f00n|r|c00ff7f00|r|n
+}
+
+STRING 8328
+// Units: h061 (Gimli), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Dwarven Warlord|r |c00b22222[W|r|c00b22222]|r
+}
+
+STRING 8331
+// Units: h05W (Dwarven Hunter), Name (Name)
+{
+Dwarven Hunter
+}
+
+STRING 8348
+// Units: h060 (Aragorn Elessar), Name (Name)
+{
+Aragorn Elessar
+}
+
+STRING 8351
+// Units: h061 (Gimli), Name (Name)
+{
+Gimli
+}
+
+STRING 8355
+// Units: h05F (Swordsman of Gondor), Name (Name)
+{
+Swordsman of Gondor
+}
+
+STRING 8358
+// Units: h03M (Pikeman), Name (Name)
+{
+Pikeman
+}
+
+STRING 8363
+// Units: h03B (Knight of Gondor), Name (Name)
+{
+Knight of Gondor
+}
+
+STRING 8365
+// Units: h01V (Fountain Guard), Name (Name)
+{
+Fountain Guard
+}
+
+STRING 8370
+// Units: o00U (Sauron), Name (Name)
+{
+Sauron
+}
+
+STRING 8373
+// Units: o00W (Witch King), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Highly mobile warg rider - these orcs are capable of raiding small towns, quickly, and painlessly|r|c00ff7f00.|r
+}
+
+STRING 8374
+// Units: o00V (Nazgul Mounted), Name (Name)
+{
+Nazgul Mounted
+}
+
+STRING 8375
+// Units: o00W (Witch King), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Warg|r |c00b22222[W|r|c00b22222]|r
+}
+
+STRING 8377
+// Units: o00X (Nazgul), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Highly mobile warg rider - these orcs are capable of raiding small towns, quickly, and painlessly|r|c00ff7f00.|r
+}
+
+STRING 8378
+// Units: o00W (Witch King), Name (Name)
+{
+Witch King
+}
+
+STRING 8379
+// Units: o00X (Nazgul), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Warg|r |c00b22222[W|r|c00b22222]|r
+}
+
+STRING 8382
+// Units: o00X (Nazgul), Name (Name)
+{
+Nazgul
+}
+
+STRING 8389
+// Units: n001 (Olag Hai), Name (Name)
+{
+Olag Hai
+}
+
+STRING 8390
+// Units: o00A (Balrog), Name (Name)
+{
+Balrog
+}
+
+STRING 8391
+// Units: n002 (Cave Troll), Name (Name)
+{
+Cave Troll
+}
+
+STRING 8392
+// Units: u000 (Goblin), Name (Name)
+{
+Goblin
+}
+
+STRING 8397
+// Units: h05E (Rider of Rohan), Name (Name)
+{
+Rider of Rohan
+}
+
+STRING 8398
+// Units: o00Z (Southron Cavalry), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00The typical warrior of the Haradrim. Although very poorly equiped, these warriors will march to their death; mostly due to the lack of education funding in Harad :]|r|c00ff7f00.|r
+}
+
+STRING 8399
+// Units: o00Z (Southron Cavalry), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Haradrim Warrior |r|c00b22222[W|r|c00b22222]|r
+}
+
+STRING 8401
+// Units: o00F (Southron Banner Carrier), Name (Name)
+{
+Southron Banner Carrier
+}
+
+STRING 8402
+// Units: h03P (Dwarven Light Infantry), Name (Name)
+{
+Dwarven Light Infantry
+}
+
+STRING 8403
+// Units: h03Q (Dwarven Heavy Infantry), Name (Name)
+{
+Dwarven Heavy Infantry
+}
+
+STRING 8407
+// Units: h057 (Footman of Rohan), Name (Name)
+{
+Footman of Rohan
+}
+
+STRING 8408
+// Units: n00Q (Heavy Archer), Name (Name)
+{
+Heavy Archer
+}
+
+STRING 8409
+// Units: n00Z (Light Archer), Name (Name)
+{
+Light Archer
+}
+
+STRING 8425
+// Units: o001 (Nazgul Fellbeast), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00Highly mobile warg rider - these orcs are capable of raiding small towns, quickly, and painlessly|r|c00ff7f00.|r
+}
+
+STRING 8426
+// Units: o001 (Nazgul Fellbeast), Name (Name)
+{
+Nazgul Fellbeast
+}
+
+STRING 8427
+// Units: o001 (Nazgul Fellbeast), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Warg|r |c00b22222[W|r|c00b22222]|r
+}
+
+STRING 8428
+// Units: o001 (Nazgul Fellbeast), Hotkey (Hotkey)
+{
+W
+}
+
+STRING 8465
+// Units: u001 (Gargoyle Statue), Name (Name)
+{
+Gargoyle Statue
+}
+
+STRING 8466
+// Units: u001 (Gargoyle Statue), Hotkey (Hotkey)
+{
+G
+}
+
+STRING 8471
+// Units: o002 (Troll Man of Harad), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Calvary|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These mounted soldiers are the keepers of Khand; they are called to war by they Sultan, at which they fight to their death in his name|r|c00ff7f00.|r
+}
+
+STRING 8472
+// Units: o002 (Troll Man of Harad), Name (Name)
+{
+Troll Man of Harad
+}
+
+STRING 8473
+// Units: o002 (Troll Man of Harad), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Variag of Khand|r |c00b22222[V|r|c00b22222]|r
+}
+
+STRING 8474
+// Units: o002 (Troll Man of Harad), Hotkey (Hotkey)
+{
+V
+}
+
+STRING 8511
+// Units: o003 (Soldier of Rhun), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Heavy Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00These men are the powerful Númenorian knights whom protect their cursed pirate nation of Umbar. These generals do the bidding of Sauron and Barad-d_c00ff7f00.|r
+}
+
+STRING 8512
+// Units: o003 (Soldier of Rhun), Name (Name)
+{
+Soldier of Rhun
+}
+
+STRING 8513
+// Units: o003 (Soldier of Rhun), Tip (Tooltip - Basic)
+{
+|c00ffd700Train Black Númenorian|r |c00b22222[B|r|c00b22222]|r
+}
+
+STRING 8514
+// Units: o003 (Soldier of Rhun), Hotkey (Hotkey)
+{
+B
+}
+
+STRING 8526
+// Doodads: ZPsh (Bush - Wild), Name (Name)
+{
+Bush - Wild
+}
+
+STRING 8527
+// Doodads: APms (Mushrooms Mirkwood), Name (Name)
+{
+Mushrooms Mirkwood
+}
+
+STRING 8528
+// Doodads: ARrk (Rocks Forest), Name (Name)
+{
+Rocks Forest
+}
+
+STRING 8529
+// Doodads: YSaw (Archway City), Name (Name)
+{
+Archway City
+}
+
+STRING 8530
+// Doodads: DOob (Obelisk Evil), Name (Name)
+{
+Obelisk Evil
+}
+
+STRING 8531
+// Doodads: YOob (Obelisk Good), Name (Name)
+{
+Obelisk Good
+}
+
+STRING 8532
+// Doodads: ZSab (Archway Sunken Ruins Broken), Name (Name)
+{
+Archway Sunken Ruins Broken
+}
+
+STRING 8533
+// Doodads: ZSas (Archway Sunken Ruins), Name (Name)
+{
+Archway Sunken Ruins
+}
+
+STRING 8534
+// Doodads: CPms (Mushrooms Moria), Name (Name)
+{
+Mushrooms Moria
+}
+
+STRING 8535
+// Doodads: ZPms (Mushrooms Shire), Name (Name)
+{
+Mushrooms Shire
+}
+
+STRING 8536
+// Doodads: APbs (Bush - City), Name (Name)
+{
+Bush - City
+}
+
+STRING 8537
+// Doodads: ZRrk (Rocks Tropical), Name (Name)
+{
+Rocks Tropical
+}
+
+STRING 8538
+// Doodads: ISsr (Archway Numenorean), Name (Name)
+{
+Archway Numenorean
+}
+
+STRING 8539
+// Doodads: ZPvp (Jungle Plant), Name (Name)
+{
+Jungle Plant
+}
+
+STRING 8540
+// Doodads: D000 (Fog), Name (Name)
+{
+Fog
+}
+
+STRING 8541
+// Doodads: D001 (Water Wheel), Name (Name)
+{
+Water Wheel
+}
+
+STRING 8542
+// Doodads: D002 (Fireflies), Name (Name)
+{
+Fireflies
+}
+
+STRING 8543
+// Doodads: D005 (Rock - Cave), Name (Name)
+{
+Rock - Cave
+}
+
+STRING 8544
+// Doodads: D006 (Building - Blacksmith), Name (Name)
+{
+Building - Blacksmith
+}
+
+STRING 8545
+// Doodads: D007 (Dwarf Pillar), Name (Name)
+{
+Dwarf Pillar
+}
+
+STRING 8546
+// Doodads: D008 (Moria Wall Horizontal), Name (Name)
+{
+Moria Wall Horizontal
+}
+
+STRING 8547
+// Doodads: D00A (Statue White Hand), Name (Name)
+{
+Statue White Hand
+}
+
+STRING 8548
+// Doodads: D00B (Wall (Straight)), Name (Name)
+{
+Wall (Straight)
+}
+
+STRING 8549
+// Doodads: D00C (Wall (Wooden)), Name (Name)
+{
+Wall (Wooden)
+}
+
+STRING 8550
+// Doodads: D00D (Lava), Name (Name)
+{
+Lava
+}
+
+STRING 8551
+// Doodads: D00G (MinasTirithTower), Name (Name)
+{
+MinasTirithTower
+}
+
+STRING 8552
+// Doodads: D00H (Tent - Orc 1), Name (Name)
+{
+Tent - Orc 1
+}
+
+STRING 8553
+// Doodads: D00I (Tent - Orc 2), Name (Name)
+{
+Tent - Orc 2
+}
+
+STRING 8554
+// Doodads: D00J (Statue King), Name (Name)
+{
+Statue King
+}
+
+STRING 8555
+// Doodads: D00K (Statue King Bending), Name (Name)
+{
+Statue King Bending
+}
+
+STRING 8556
+// Doodads: D00L (Statue of Wickedness), Name (Name)
+{
+Statue of Wickedness
+}
+
+STRING 8557
+// Doodads: D00M (Light Red), Name (Name)
+{
+Light Red
+}
+
+STRING 8558
+// Doodads: D00O (Living Roots), Name (Name)
+{
+Living Roots
+}
+
+STRING 8559
+// Doodads: D00P (Light Green), Name (Name)
+{
+Light Green
+}
+
+STRING 8560
+// Doodads: D00Q (Light Blue), Name (Name)
+{
+Light Blue
+}
+
+STRING 8561
+// Doodads: D00R (Fountain Royal), Name (Name)
+{
+Fountain Royal
+}
+
+STRING 8562
+// Doodads: D00S (Edoras - Shed), Name (Name)
+{
+Edoras - Shed
+}
+
+STRING 8563
+// Doodads: D00U (Archway Moria), Name (Name)
+{
+Archway Moria
+}
+
+STRING 8564
+// Doodads: D00W (Mirkwood Gatehouse), Name (Name)
+{
+Mirkwood Gatehouse
+}
+
+STRING 8565
+// Doodads: D00X (Mirkwood Tower 1), Name (Name)
+{
+Mirkwood Tower 1
+}
+
+STRING 8566
+// Doodads: D00Z (Rock - Mountain), Name (Name)
+{
+Rock - Mountain
+}
+
+STRING 8567
+// Doodads: D011 (Ambient Wind), Name (Name)
+{
+Ambient Wind
+}
+
+STRING 8568
+// Doodads: D012 (Building - Numenorean Ruin), Name (Name)
+{
+Building - Numenorean Ruin
+}
+
+STRING 8569
+// Doodads: D014 (Angmar Doodad 01), Name (Name)
+{
+Angmar Doodad 01
+}
+
+STRING 8570
+// Doodads: D015 (Breeland - Homestead), Name (Name)
+{
+Breeland - Homestead
+}
+
+STRING 8571
+// Doodads: D016 (Breeland - Home), Name (Name)
+{
+Breeland - Home
+}
+
+STRING 8572
+// Doodads: D017 (Building - Crypt), Name (Name)
+{
+Building - Crypt
+}
+
+STRING 8573
+// Doodads: D018 (Breeland - Bell), Name (Name)
+{
+Breeland - Bell
+}
+
+STRING 8574
+// Doodads: D019 (Breeland - Watchtower), Name (Name)
+{
+Breeland - Watchtower
+}
+
+STRING 8575
+// Doodads: D01A (Gibbet), Name (Name)
+{
+Gibbet
+}
+
+STRING 8576
+// Doodads: D01C (Building - Gryphon Aviary), Name (Name)
+{
+Building - Gryphon Aviary
+}
+
+STRING 8577
+// Doodads: D01E (Angmar Doodad 02), Name (Name)
+{
+Angmar Doodad 02
+}
+
+STRING 8578
+// Doodads: D01F (Angmar Doodad 03), Name (Name)
+{
+Angmar Doodad 03
+}
+
+STRING 8579
+// Doodads: D01G (Market Stall 1), Name (Name)
+{
+Market Stall 1
+}
+
+STRING 8580
+// Doodads: D01H (Market Stall 2), Name (Name)
+{
+Market Stall 2
+}
+
+STRING 8581
+// Doodads: D01J (Banner Isengard), Name (Name)
+{
+Banner Isengard
+}
+
+STRING 8582
+// Doodads: D01K (Banner Post), Name (Name)
+{
+Banner Post
+}
+
+STRING 8583
+// Doodads: D01M (Lavafall), Name (Name)
+{
+Lavafall
+}
+
+STRING 8584
+// Doodads: D01O (Seer's Orb), Name (Name)
+{
+Seer's Orb
+}
+
+STRING 8585
+// Doodads: D01P (Building - Dwarf Hall), Name (Name)
+{
+Building - Dwarf Hall
+}
+
+STRING 8586
+// Doodads: D00N (Banner Angmar), Name (Name)
+{
+Banner Angmar
+}
+
+STRING 8587
+// Doodads: D01Q (Grass Dead), Name (Name)
+{
+Grass Dead
+}
+
+STRING 8588
+// Doodads: D00V (Angmar Doodad 04), Name (Name)
+{
+Angmar Doodad 04
+}
+
+STRING 8589
+// Doodads: D01R (Grass Rohan), Name (Name)
+{
+Grass Rohan
+}
+
+STRING 8590
+// Doodads: D01U (Railway), Name (Name)
+{
+Railway
+}
+
+STRING 8591
+// Doodads: D01V (Mirkwood Arch), Name (Name)
+{
+Mirkwood Arch
+}
+
+STRING 8592
+// Doodads: D01W (Wooden Spike), Name (Name)
+{
+Wooden Spike
+}
+
+STRING 8593
+// Doodads: D01X (Rocks Forest Noclip), Name (Name)
+{
+Rocks Forest Noclip
+}
+
+STRING 8594
+// Doodads: D01Y (Archway Morgul), Name (Name)
+{
+Archway Morgul
+}
+
+STRING 8595
+// Doodads: D003 (Tent - Gondor), Name (Name)
+{
+Tent - Gondor
+}
+
+STRING 8596
+// Doodads: D004 (Broken Bridge), Name (Name)
+{
+Broken Bridge
+}
+
+STRING 8597
+// Doodads: D010 (Mirkwood Shrub 2), Name (Name)
+{
+Mirkwood Shrub 2
+}
+
+STRING 8598
+// Doodads: D01Z (Mirkwood Shrub 1), Name (Name)
+{
+Mirkwood Shrub 1
+}
+
+STRING 8599
+// Doodads: D021 (Helms Deep Pillar), Name (Name)
+{
+Helms Deep Pillar
+}
+
+STRING 8600
+// Doodads: D024 (Helms Deep Inner Wall), Name (Name)
+{
+Helms Deep Inner Wall
+}
+
+STRING 8601
+// Doodads: D025 (Banner Harad), Name (Name)
+{
+Banner Harad
+}
+
+STRING 8602
+// Doodads: D026 (Arch Cirith Ungol), Name (Name)
+{
+Arch Cirith Ungol
+}
+
+STRING 8603
+// Doodads: D027 (Edoras - Awning), Name (Name)
+{
+Edoras - Awning
+}
+
+STRING 8604
+// Doodads: D028 (Edoras - Building 1), Name (Name)
+{
+Edoras - Building 1
+}
+
+STRING 8605
+// Doodads: D029 (Edoras - Building 2), Name (Name)
+{
+Edoras - Building 2
+}
+
+STRING 8606
+// Doodads: D02A (Edoras - Building 3), Name (Name)
+{
+Edoras - Building 3
+}
+
+STRING 8607
+// Doodads: D02B (Edoras - Tower), Name (Name)
+{
+Edoras - Tower
+}
+
+STRING 8608
+// Doodads: D02C (Edoras - Gate), Name (Name)
+{
+Edoras - Gate
+}
+
+STRING 8609
+// Doodads: D02D (Edoras - Wall), Name (Name)
+{
+Edoras - Wall
+}
+
+STRING 8610
+// Doodads: D02E (Well), Name (Name)
+{
+Well
+}
+
+STRING 8611
+// Doodads: D02F (Breeland Wall), Name (Name)
+{
+Breeland Wall
+}
+
+STRING 8612
+// Doodads: D00Y (Mirkwood Tower 2), Name (Name)
+{
+Mirkwood Tower 2
+}
+
+STRING 8613
+// Doodads: D02I (Mirkwood Tower 3), Name (Name)
+{
+Mirkwood Tower 3
+}
+
+STRING 8614
+// Doodads: D009 (Breeland - Tower), Name (Name)
+{
+Breeland - Tower
+}
+
+STRING 8615
+// Doodads: D00T (Breeland - Gate), Name (Name)
+{
+Breeland - Gate
+}
+
+STRING 8616
+// Doodads: D013 (Flowers (White)), Name (Name)
+{
+Flowers (White)
+}
+
+STRING 8617
+// Doodads: D00E (Rhun Pillar), Name (Name)
+{
+Rhun Pillar
+}
+
+STRING 8618
+// Doodads: D00F (Rhun Tower), Name (Name)
+{
+Rhun Tower
+}
+
+STRING 8619
+// Doodads: D01B (Rhun Roof), Name (Name)
+{
+Rhun Roof
+}
+
+STRING 8620
+// Doodads: D01D (Urugarth Venomfall), Name (Name)
+{
+Urugarth Venomfall
+}
+
+STRING 8621
+// Doodads: D01I (Urugarth Venom), Name (Name)
+{
+Urugarth Venom
+}
+
+STRING 8622
+// Doodads: D01L (Statue Dwarf), Name (Name)
+{
+Statue Dwarf
+}
+
+STRING 8623
+// Doodads: D01N (Dwarf Pillar (Tilted)), Name (Name)
+{
+Dwarf Pillar (Tilted)
+}
+
+STRING 8624
+// Doodads: D01T (Tent - Orc 3), Name (Name)
+{
+Tent - Orc 3
+}
+
+STRING 8625
+// Doodads: D01S (Elven Ruins), Name (Name)
+{
+Elven Ruins
+}
+
+STRING 8626
+// Doodads: D020 (Elven Wall), Name (Name)
+{
+Elven Wall
+}
+
+STRING 8627
+// Doodads: D022 (#Tree-Oak (Fallen)), Name (Name)
+{
+#Tree-Oak (Fallen)
+}
+
+STRING 8628
+// Doodads: D023 (Rock - Mountain Angled), Name (Name)
+{
+Rock - Mountain Angled
+}
+
+STRING 8629
+// Doodads: D02G (Waterfall 2), Name (Name)
+{
+Waterfall 2
+}
+
+STRING 8630
+// Doodads: D02H (Water Stream), Name (Name)
+{
+Water Stream
+}
+
+STRING 8631
+// Doodads: D02J (Erebor Wall Horizontal), Name (Name)
+{
+Erebor Wall Horizontal
+}
+
+STRING 8632
+// Doodads: D02K (Erebor Minel Horizontal), Name (Name)
+{
+Erebor Minel Horizontal
+}
+
+STRING 8633
+// Doodads: D02L (Dwarf lantern), Name (Name)
+{
+Dwarf lantern
+}
+
+STRING 8634
+// Doodads: D02M (Dwarf Grate), Name (Name)
+{
+Dwarf Grate
+}
+
+STRING 8635
+// Doodads: D02N (Iron Hills Wall Horizontal), Name (Name)
+{
+Iron Hills Wall Horizontal
+}
+
+STRING 8636
+// Doodads: D02O (Iron Hills Wall Hub), Name (Name)
+{
+Iron Hills Wall Hub
+}
+
+STRING 8637
+// Doodads: D02P (Archway Iron Hills), Name (Name)
+{
+Archway Iron Hills
+}
+
+STRING 8638
+// Doodads: D02Q (Iron Hills Wall Horizontal (2)), Name (Name)
+{
+Iron Hills Wall Horizontal (2)
+}
+
+STRING 8639
+// Doodads: D02R (Iron Hills Wall Hub (2)), Name (Name)
+{
+Iron Hills Wall Hub (2)
+}
+
+STRING 8640
+// Doodads: D02S (Blue Mountains Wall Horizontal), Name (Name)
+{
+Blue Mountains Wall Horizontal
+}
+
+STRING 8641
+// Doodads: D02T (Blue Mountains Wall Hub), Name (Name)
+{
+Blue Mountains Wall Hub
+}
+
+STRING 8642
+// Doodads: D02U (Archway Blue Mountains), Name (Name)
+{
+Archway Blue Mountains
+}
+
+STRING 8643
+// Doodads: D02V (Blue Mountains Wall Horizontal (2)), Name (Name)
+{
+Blue Mountains Wall Horizontal (2)
+}
+
+STRING 8644
+// Doodads: D02W (Blue Mountains Wall Hub (2)), Name (Name)
+{
+Blue Mountains Wall Hub (2)
+}
+
+STRING 8645
+// Doodads: D02X (Water - Bog), Name (Name)
+{
+Water - Bog
+}
+
+STRING 8647
+// Doodads: D02Z (Smoke), Name (Name)
+{
+Smoke
+}
+
+STRING 8648
+// Doodads: D030 (Obelisk Evil 2), Name (Name)
+{
+Obelisk Evil 2
+}
+
+STRING 8649
+// Doodads: D032 (Jungle tree), Name (Name)
+{
+Jungle tree
+}
+
+STRING 8650
+// Doodads: D033 (Jungle tree 2), Name (Name)
+{
+Jungle tree 2
+}
+
+STRING 8651
+// Doodads: D034 (Jungle tree 3), Name (Name)
+{
+Jungle tree 3
+}
+
+STRING 8652
+// Doodads: D035 (Banner Coldfells), Name (Name)
+{
+Banner Coldfells
+}
+
+STRING 8653
+// Doodads: D036 (Dwarf Archway 2), Name (Name)
+{
+Dwarf Archway 2
+}
+
+STRING 8654
+// Doodads: D037 (Dwarf Archway 1), Name (Name)
+{
+Dwarf Archway 1
+}
+
+STRING 8655
+// Doodads: D038 (Dwarf Building Prop), Name (Name)
+{
+Dwarf Building Prop
+}
+
+STRING 8656
+// Doodads: D039 (Dwarf Building 1), Name (Name)
+{
+Dwarf Building 1
+}
+
+STRING 8657
+// Doodads: D03A (Dwarf Tower), Name (Name)
+{
+Dwarf Tower
+}
+
+STRING 8658
+// Doodads: D03B (Dwarf Building 2), Name (Name)
+{
+Dwarf Building 2
+}
+
+STRING 8659
+// Doodads: D03C (Dwarf Obelisk (Red)), Name (Name)
+{
+Dwarf Obelisk (Red)
+}
+
+STRING 8660
+// Doodads: D031 (Dwarf Obelisk (Green)), Name (Name)
+{
+Dwarf Obelisk (Green)
+}
+
+STRING 8661
+// Doodads: D03D (Dwarf Barricade), Name (Name)
+{
+Dwarf Barricade
+}
+
+STRING 8662
+// Doodads: D03E (Ice), Name (Name)
+{
+Ice
+}
+
+STRING 8663
+// Doodads: D03F (Ice Angled), Name (Name)
+{
+Ice Angled
+}
+
+STRING 8664
+// Doodads: D03G (Ice Angled 2), Name (Name)
+{
+Ice Angled 2
+}
+
+STRING 8665
+// Destructibles: DTg6 (Morannon), Name (Name)
+{
+Morannon
+}
+
+STRING 8666
+// Destructibles: LTbr (Pumpkin), Name (Name)
+{
+Pumpkin
+}
+
+STRING 8667
+// Destructibles: LTex (Deeping Wall), Name (Name)
+{
+Deeping Wall
+}
+
+STRING 8668
+// Destructibles: DTg1 (Goblin Gate), Name (Name)
+{
+Goblin Gate
+}
+
+STRING 8669
+// Destructibles: LTrt (Rock Chunks), EditorSuffix (Editor Suffix)
+{
+ (Misty Mountains
+}
+
+STRING 8670
+// Destructibles: ITag (Gates of Moria), Name (Name)
+{
+Gates of Moria
+}
+
+STRING 8671
+// Destructibles: B000 (#TreeOak), Name (Name)
+{
+#TreeOak
+}
+
+STRING 8672
+// Destructibles: B001 (#TreeSpruce), Name (Name)
+{
+#TreeSpruce
+}
+
+STRING 8673
+// Destructibles: B002 (#ShadowBig), Name (Name)
+{
+#ShadowBig
+}
+
+STRING 8674
+// Destructibles: B003 (#TreePalm), Name (Name)
+{
+#TreePalm
+}
+
+STRING 8675
+// Destructibles: B005 (#TreeMirkwood), Name (Name)
+{
+#TreeMirkwood
+}
+
+STRING 8676
+// Destructibles: B00B (#TreeMallorn), Name (Name)
+{
+#TreeMallorn
+}
+
+STRING 8678
+// Destructibles: B00D (Pathing Blocker (Ground) (Very Large)), Name (Name)
+{
+Pathing Blocker (Ground) (Very Large)
+}
+
+STRING 8679
+// Destructibles: B00E (#TreeSpruce (Winter)), Name (Name)
+{
+#TreeSpruce (Winter)
+}
+
+STRING 8680
+// Destructibles: B00F (Pathing Blocker (Ground) (Medium)), Name (Name)
+{
+Pathing Blocker (Ground) (Medium)
+}
+
+STRING 8681
+// Destructibles: B00G (#Stone Troll), Name (Name)
+{
+#Stone Troll
+}
+
+STRING 8682
+// Destructibles: B00I (#TreeMordor), Name (Name)
+{
+#TreeMordor
+}
+
+STRING 8683
+// Destructibles: B00J (#TreeSpruce (Burned)), Name (Name)
+{
+#TreeSpruce (Burned)
+}
+
+STRING 8685
+// Destructibles: B00M (#TreeOak (Small)), Name (Name)
+{
+#TreeOak (Small)
+}
+
+STRING 8686
+// Destructibles: B00N (Bridge Mordor), Name (Name)
+{
+Bridge Mordor
+}
+
+STRING 8687
+// Destructibles: B00O (Stairs Angmar), Name (Name)
+{
+Stairs Angmar
+}
+
+STRING 8688
+// Destructibles: B00P (Angmar Eye Circle), Name (Name)
+{
+Angmar Eye Circle
+}
+
+STRING 8689
+// Destructibles: B00Q (Building Blocker (Ground) (Very Large)), Name (Name)
+{
+Building Blocker (Ground) (Very Large)
+}
+
+STRING 8690
+// Destructibles: B00S (#TreeOak (Autumn)), Name (Name)
+{
+#TreeOak (Autumn)
+}
+
+STRING 8691
+// Destructibles: B00T (Bridge Wooden), Name (Name)
+{
+Bridge Wooden
+}
+
+STRING 8692
+// Destructibles: B00V (Bridge Dwarven), Name (Name)
+{
+Bridge Dwarven
+}
+
+STRING 8693
+// Destructibles: B00W (Stairs Dwarf), Name (Name)
+{
+Stairs Dwarf
+}
+
+STRING 8694
+// Destructibles: B00X (Pathing Blocker (Ground) (Really quite small)), Name (Name)
+{
+Pathing Blocker (Ground) (Really quite small)
+}
+
+STRING 8695
+// Destructibles: B00Y (#TreeMirkwoodStump), Name (Name)
+{
+#TreeMirkwoodStump
+}
+
+STRING 8696
+// Destructibles: B00Z (#TreeMirkwoodLog), Name (Name)
+{
+#TreeMirkwoodLog
+}
+
+STRING 8697
+// Destructibles: B010 (#TreeHaradwaith), Name (Name)
+{
+#TreeHaradwaith
+}
+
+STRING 8698
+// Destructibles: B011 (#TreeCherry), Name (Name)
+{
+#TreeCherry
+}
+
+STRING 8699
+// Destructibles: B00U (Helms_Wall), Name (Name)
+{
+Helms_Wall
+}
+
+STRING 8700
+// Destructibles: B013 (Helms_Wall Ramp), Name (Name)
+{
+Helms_Wall Ramp
+}
+
+STRING 8701
+// Destructibles: B014 (Helms_Wall Stairs), Name (Name)
+{
+Helms_Wall Stairs
+}
+
+STRING 8702
+// Destructibles: B015 (Helms_Wall Culvert), Name (Name)
+{
+Helms_Wall Culvert
+}
+
+STRING 8703
+// Destructibles: B00A (#ShadowSmall), Name (Name)
+{
+#ShadowSmall
+}
+
+STRING 8704
+// Destructibles: B019 (Orc Hovel), Name (Name)
+{
+Orc Hovel
+}
+
+STRING 8705
+// Destructibles: B01B (Hobbit Hole), Name (Name)
+{
+Hobbit Hole
+}
+
+STRING 8706
+// Destructibles: B01C (#TreeMirkwoodSmall), Name (Name)
+{
+#TreeMirkwoodSmall
+}
+
+STRING 8707
+// Destructibles: B01E (Mirkwood_Wall), Name (Name)
+{
+Mirkwood_Wall
+}
+
+STRING 8708
+// Destructibles: B004 (Rhun_Wall), Name (Name)
+{
+Rhun_Wall
+}
+
+STRING 8709
+// Destructibles: B006 (Rhun_Wall Ramp), Name (Name)
+{
+Rhun_Wall Ramp
+}
+
+STRING 8710
+// Destructibles: B007 (Rhun_Wall Stairs), Name (Name)
+{
+Rhun_Wall Stairs
+}
+
+STRING 8711
+// Destructibles: B008 (Tent - Harad), Name (Name)
+{
+Tent - Harad
+}
+
+STRING 8712
+// Destructibles: B009 (Gold Pile), Name (Name)
+{
+Gold Pile
+}
+
+STRING 8713
+// Destructibles: B00H (Mirkwood_Wall), Name (Name)
+{
+Mirkwood_Wall
+}
+
+STRING 8714
+// Destructibles: B00K (#TreeSpruce Angled), Name (Name)
+{
+#TreeSpruce Angled
+}
+
+STRING 8715
+// Destructibles: B00R (Stairs Dwarf Blue), Name (Name)
+{
+Stairs Dwarf Blue
+}
+
+STRING 8716
+// Destructibles: B012 (#TreePalm Dark), Name (Name)
+{
+#TreePalm Dark
+}
+
+STRING 8717
+// Destructibles: B016 (MinasT_Wall), Name (Name)
+{
+MinasT_Wall
+}
+
+STRING 8718
+// Doodads: D02Y (Wall Minas Tirith Base), Name (Name)
+{
+Wall Minas Tirith Base
+}
+
+STRING 8719
+// Destructibles: B017 (MinasT_Base), Name (Name)
+{
+MinasT_Base
+}
+
+STRING 8720
+// Destructibles: B00C (#TreeSpruce1), Name (Name)
+{
+#TreeSpruce1
+}
+
+STRING 8721
+// Units: h000 (Military Base), Name (Name)
+{
+Military Base
+}
+
+STRING 8722
+// Units: h000 (Military Base), Ubertip (Tooltip - Extended)
+{
+Main unit production center.
+}
+
+STRING 8723
+// Doodads: D03H (Rivendel Building 1), Name (Name)
+{
+Rivendel Building 1
+}
+
+STRING 8724
+// Doodads: D03I (Lavaflow), Name (Name)
+{
+Lavaflow
+}
+
+STRING 8725
+// Units: h059 (Soldier of Gondor), Name (Name)
+{
+Soldier of Gondor
+}
+
+STRING 8726
+// Units: h001 (Soldier of Mordor), Ubertip (Tooltip - Extended)
+{
+|c004876ff[Type: Light Melee|r|c004876ff]|r|c004876ff|r|n|c00ff7f00The famed axeman of Lossarnach - these men defend Gondor with their lives. They answer to the call of Minas Tirith to their general|r|c00ff7f00.|r|c00ff7f00|r|n
+}
+
+STRING 8727
+// Units: h001 (Soldier of Mordor), Name (Name)
+{
+Soldier of Mordor
+}
+
+STRING 8728
+// Units: h001 (Soldier of Mordor), Tip (Tooltip - Basic)
+{
+|c00ffd700Axeman of Lossarnach|r |c00b22222[L|r|c00b22222]|r
+}
+
+STRING 8729
+// Units: h001 (Soldier of Mordor), Hotkey (Hotkey)
+{
+L
+}
+
+STRING 8730
+{
+ConnachtTheWolf - ? Original Author ?
+}
+
